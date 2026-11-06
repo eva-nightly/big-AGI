@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/big-agi/BigAgiSquircleIcon::BigAgiSquircleIcon
 export function BigAgiSquircleIcon(props: { inverted?: boolean, altColor?: string } & SvgIconProps) {
   const { inverted, altColor, ...rest } = props;
   return <SvgIcon

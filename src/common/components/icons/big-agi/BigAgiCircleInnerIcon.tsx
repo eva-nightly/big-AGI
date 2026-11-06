@@ -3,6 +3,7 @@ import * as React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
 
+// @uxid src/common/components/icons/big-agi/BigAgiCircleInnerIcon::BigAgiCircleInnerIcon
 export function BigAgiCircleInnerIcon(props: { outerColor: string, compensateThinline?: boolean } & SvgIconProps) {
   const { outerColor, compensateThinline, ...rest } = props;
   return (
