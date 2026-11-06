@@ -3,6 +3,7 @@ import * as React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
 
+// @uxid src/common/components/icons/phosphor/PhRamble::PhRamble
 export function PhRamble(props: SvgIconProps) {
   return (
     <SvgIcon viewBox='0 0 256 256' stroke='none' fill='currentColor' width='24' height='24' {...props}>
