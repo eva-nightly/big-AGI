@@ -12,6 +12,7 @@ import { ExpanderControlledBox } from '~/common/components/ExpanderControlledBox
 import { DrawProviderSelector } from './DrawProviderSelector';
 
 
+// @uxid src/apps/draw/create/DrawProviderConfigure::DrawProviderConfigure
 export function DrawProviderConfigure(props: {
   providers: TextToImageProvider[],
   activeProviderId: string | null,

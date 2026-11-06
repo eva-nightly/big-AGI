@@ -13,6 +13,7 @@ import { hideOnMobile } from '~/common/app.theme';
 import { optimaSelectSlotProps } from '~/common/layout/optima/bar/OptimaBarDropdown';
 
 
+// @uxid src/apps/draw/create/DrawProviderSelector::DrawProviderSelector
 export function DrawProviderSelector(props: {
   title?: string,
   variant: VariantProp,

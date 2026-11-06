@@ -11,6 +11,7 @@ import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
 //   </Box>;
 
 
+// @uxid src/apps/draw/create/ButtonPromptFromIdea::ButtonPromptFromIdea
 export function ButtonPromptFromIdea(props: {
   isMobile?: boolean,
   disabled: boolean,
