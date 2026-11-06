@@ -10,6 +10,7 @@ import { GoodModal } from '~/common/components/modals/GoodModal';
  * A confirmation dialog (Joy Modal)
  * Pass the question and the positive answer, and get called when it's time to close the dialog, or when the positive action is taken
  */
+// @uxid src/common/components/modals/ConfirmationModal::ConfirmationModal
 export function ConfirmationModal(props: {
   open?: boolean, onClose?: () => void, onPositive: () => void,
   title?: React.ReactNode,

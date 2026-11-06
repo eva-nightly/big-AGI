@@ -8,6 +8,7 @@ import { noBackdropSlotProps } from './GoodModal';
 /**
  * A simple modal that centers content and uses the 'sherpa' theme.
  */
+// @uxid src/common/components/modals/SherpaModal::SherpaModal
 export function SherpaModal(props: {
   themedColor?: ColorPaletteProp,
   unfilterBackdrop?: boolean,

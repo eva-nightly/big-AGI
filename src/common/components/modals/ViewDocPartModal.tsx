@@ -52,6 +52,7 @@ const textPageSx: SxProps = {
 };
 
 
+// @uxid src/common/components/modals/ViewDocPartModal::ViewDocPartModal
 export function ViewDocPartModal(props: {
   docPart: DMessageDocPart,
   onClose: () => void,

@@ -6,6 +6,7 @@ import { SvgIcon, SvgIconProps } from '@mui/joy';
  * Sakana AI mark: three calligraphic strokes forming a fish (sakana = 'fish') swimming up-right.
  * Curve-fit against the official brand mark (sakana.ai/sakana-logo.png).
  */
+// @uxid src/common/components/icons/vendors/SakanaAIIcon::SakanaAIIcon
 export function SakanaAIIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 0 32 32' width='24' height='24' fill='none' stroke='currentColor' strokeWidth={1.8} strokeLinecap='round' strokeLinejoin='round' {...props}>
     {/* body: tail-left tip -> back -> nose -> belly -> bottom tip */}

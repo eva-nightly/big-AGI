@@ -28,6 +28,7 @@ export const noBackdropSlotProps = {
 /**
  * Base for our Modal components (Preferences, Models Setup, etc.)
  */
+// @uxid src/common/components/modals/GoodModal::GoodModal
 export function GoodModal(props: {
   title?: React.ReactNode,
   titleStartDecorator?: React.JSX.Element,
