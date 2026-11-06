@@ -8,6 +8,7 @@ const _fullscreenSx = {
 } as const;
 
 
+// @uxid src/modules/blocks/code/code-renderers/RenderCodeSyntax::RenderCodeSyntax
 export function RenderCodeSyntax(props: {
   highlightedSyntaxAsHtml: string | null;
   presenterMode?: boolean;

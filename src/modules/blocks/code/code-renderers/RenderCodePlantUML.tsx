@@ -195,6 +195,7 @@ async function fetchPlantUmlSvg(plantUmlCode: string): Promise<{ svg: string | n
 }
 
 
+// @uxid src/modules/blocks/code/code-renderers/RenderCodePlantUML::RenderCodePlantUML
 export const RenderCodePlantUML = React.forwardRef(function RenderCodePlantUML(props: {
   plantUMLCode: string;
   fitContainer: boolean;

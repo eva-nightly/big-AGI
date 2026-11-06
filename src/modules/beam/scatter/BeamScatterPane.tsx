@@ -60,6 +60,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/modules/beam/scatter/BeamScatterPane::BeamScatterPane
 export function BeamScatterPane(props: {
   beamStore: BeamStoreApi,
   isMobile: boolean,

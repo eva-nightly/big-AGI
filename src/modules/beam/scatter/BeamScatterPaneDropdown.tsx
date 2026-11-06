@@ -17,6 +17,7 @@ import { useModuleBeamStore } from '../store-module-beam';
 
 /// Naming Dialog ///
 
+// @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::DialogNamePreset
 function DialogNamePreset(props: {
   open: boolean,
   onClose: () => void,
@@ -57,6 +58,7 @@ function DialogNamePreset(props: {
 }
 
 
+// @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown
 export function BeamScatterDropdown(props: {
   beamStore: BeamStoreApi,
   onExplainerShow: () => any,
