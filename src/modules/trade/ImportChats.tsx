@@ -21,6 +21,7 @@ export type ImportConfig = { dir: 'import' };
  * Components and functionality to import conversations
  * Supports our own JSON/backup files
  */
+// @uxid src/modules/trade/ImportChats::ImportChats
 export function ImportChats(props: { onConversationActivate: (conversationId: DConversationId) => void, onClose: () => void }) {
 
   // state

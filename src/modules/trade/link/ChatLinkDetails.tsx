@@ -26,6 +26,7 @@ import type { StorageDeleteSchema, StoragePutSchema } from '../server/link';
 import { forgetChatLinkItem } from './store-share-link';
 
 
+// @uxid src/modules/trade/link/ChatLinkDetails::ChatLinkDetails
 export function ChatLinkDetails(props: {
   open: boolean,
   onClose: () => void,

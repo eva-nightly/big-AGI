@@ -28,6 +28,7 @@ export type ExportConfig = {
 /**
  * Export Buttons and functionality
  */
+// @uxid src/modules/trade/ExportChats::ExportChats
 export function ExportChats(props: { config: ExportConfig, onClose: () => void }) {
 
   // state

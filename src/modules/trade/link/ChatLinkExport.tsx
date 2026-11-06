@@ -18,6 +18,7 @@ import { ChatLinkDetails } from './ChatLinkDetails';
 import { rememberChatLinkItem, updateChatLinkDeletionKey, useLinkStorageOwnerId } from './store-share-link';
 
 
+// @uxid src/modules/trade/link/ChatLinkExport::ChatLinkExport
 export function ChatLinkExport(props: {
   conversationId: DConversationId | null;
   enableSharing: boolean;
