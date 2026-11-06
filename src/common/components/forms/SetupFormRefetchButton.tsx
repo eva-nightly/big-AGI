@@ -9,6 +9,7 @@ import type { ToggleableBoolean } from '~/common/util/hooks/useToggleableBoolean
 /**
  * Bottom row: model reload and optional 'advanced' toggle
  */
+// @uxid src/common/components/forms/SetupFormRefetchButton::SetupFormRefetchButton
 export function SetupFormRefetchButton(props: {
   refetch: () => void,
   disabled: boolean,

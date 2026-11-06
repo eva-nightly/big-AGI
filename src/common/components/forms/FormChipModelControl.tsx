@@ -14,6 +14,7 @@ export type FormChipModelLabels<TModel extends string> = Readonly<Record<TModel,
  * Engine model picker: an 'Auto' chip (stores no model - see modelPickOrAuto) followed by the catalog's models.
  * The labels are keyed by the catalog, so a model added or retired without its label fails the build.
  */
+// @uxid src/common/components/forms/FormChipModelControl::FormChipModelControl
 export function FormChipModelControl<TModel extends string>(props: {
   title?: string;
   catalog: readonly TModel[];
