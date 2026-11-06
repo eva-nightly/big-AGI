@@ -60,6 +60,7 @@ const _tokenCountingMethodOptions: FormSelectOption<TokenCountingMethod>[] = [
 ] as const;
 
 
+// @uxid src/apps/settings-modal/AppChatSettingsAI::FormControlDomainModel
 function FormControlDomainModel(props: {
   domainId: DModelDomainId,
   title: React.ReactNode,
@@ -90,6 +91,7 @@ function FormControlDomainModel(props: {
 }
 
 
+// @uxid src/apps/settings-modal/AppChatSettingsAI::AppChatSettingsAI
 export function AppChatSettingsAI() {
 
   const {

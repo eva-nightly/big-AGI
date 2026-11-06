@@ -35,6 +35,7 @@ import coverV113 from '../../../public/images/covers/release-cover-v1.13.0.png';
 import coverV112 from '../../../public/images/covers/release-cover-v1.12.0.png';
 
 
+// @uxid src/apps/news/news.data::NewsData
 const beamBlogUrl = 'https://big-agi.com/blog/beam-multi-model-ai-reasoning/';
 
 
@@ -426,6 +427,7 @@ export const NewsItems: NewsItem[] = [
 ] as const;
 
 
+// @uxid src/apps/news/news.data::B
 function B(props: {
   // one-of
   href?: string,
