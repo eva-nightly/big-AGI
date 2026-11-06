@@ -17,6 +17,7 @@ interface DraggableWindowTitleProps {
   sxStable?: SxProps;
 }
 
+// @uxid src/common/components/dnd-window/DraggableWindowTitle::DraggableWindowTitle
 export function DraggableWindowTitle(props: DraggableWindowTitleProps) {
   const { active, color, title, onClose, onMouseDown, onTouchStart, sxStable, children } = props;
 

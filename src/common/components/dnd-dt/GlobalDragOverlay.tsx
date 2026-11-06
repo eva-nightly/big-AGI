@@ -33,6 +33,7 @@ function _setDragState(active: boolean, data?: DataTransfer | null) {
 }
 
 
+// @uxid src/common/components/dnd-dt/GlobalDragOverlay::GlobalDragOverlay
 export function GlobalDragOverlay() {
 
   const { isWindowDragActive } = useGlobalDragStore();

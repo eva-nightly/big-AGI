@@ -111,6 +111,7 @@ const SubMenuHostContext = React.createContext<SubMenuHostController | null>(nul
 // id of the enclosing SubMenuItem (0 = top-level). Lets a nested SubMenuItem know its parent so single-open spares ancestors.
 const SubMenuParentIdContext = React.createContext<number>(0);
 
+// @uxid src/common/components/SubMenu::SubMenuHost
 export function SubMenuHost(props: { host: SubMenuHostController, children: React.ReactNode }) {
   const descriptors = React.useSyncExternalStore(props.host._subscribe, props.host._getSnapshot, props.host._getSnapshot);
   return (
@@ -136,6 +137,7 @@ export function SubMenuHost(props: { host: SubMenuHostController, children: Reac
  * Encapsulates: the trigger row (decorator + label + right arrow), open/close anchor state,
  * the parent keep-open trick, single-open behavior, and responsive (mobile-safe) placement.
  */
+// @uxid src/common/components/SubMenu::SubMenuItem
 export function SubMenuItem(props: {
   label: React.ReactNode,
   decorator?: React.ReactNode, // left ListItemDecorator content (empty spacer if omitted, for alignment)

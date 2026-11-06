@@ -24,23 +24,28 @@ const starIconStyles = {
 
 // Memoized star components for performance
 
+// @uxid src/common/components/StarIcons::Starred
 export const Starred = React.memo(function Starred() {
   return <StarIcon sx={starIconStyles.starred} />;
 });
 
+// @uxid src/common/components/StarIcons::StarredNoXL2
 export const StarredNoXL2 = React.memo(function StarredNoXL2() {
   return <StarIcon sx={starIconStyles.starredNoXl2} />;
 });
 
+// @uxid src/common/components/StarIcons::UnStarredNoXL2
 const UnStarredNoXL2 = React.memo(function UnStarred() {
   return <StarBorderIcon />;
 })
 
+// @uxid src/common/components/StarIcons::StarredState
 export const StarredState = React.memo(function StarredState({ isStarred }: { isStarred: boolean }) {
   return isStarred ? <Starred /> : <UnStarredNoXL2 />;
 });
 
 // have an unstyled that just returns StarIcon or StarBorderIcon and we can use with our own styles and props {...}
+// @uxid src/common/components/StarIcons::StarIconUnstyled
 export const StarIconUnstyled = React.memo(function StarIconUnstyled({ isStarred }: { isStarred: boolean }) {
   return isStarred ? <StarIcon /> : <StarBorderIcon />;
 });
@@ -67,6 +72,7 @@ export const starredToggleStyle = {
   },
 } as const satisfies SxProps;
 
+// @uxid src/common/components/StarIcons::StarredToggle
 export const StarredToggle = React.memo(function StarredToggle({ isStarred }: { isStarred: boolean }) {
   return isStarred
     ? <StarIcon aria-checked={true} className='agi-star' />

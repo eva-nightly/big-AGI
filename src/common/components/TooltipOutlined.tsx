@@ -10,6 +10,7 @@ const largePaneSx: SxProps = {
 };
 
 
+// @uxid src/common/components/TooltipOutlined::TooltipOutlined
 export function TooltipOutlined(props: {
   title: React.ReactNode;
   size?: TooltipProps['size'];

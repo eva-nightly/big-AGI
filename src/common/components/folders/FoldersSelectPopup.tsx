@@ -32,6 +32,7 @@ interface FoldersSelectPopupProps {
 /**
  * Note: state is external so we recycle 1 component in the parent instead of one per item
  */
+// @uxid src/common/components/folders/FoldersSelectPopup::FoldersSelectPopup
 export function FoldersSelectPopup({ allFolders, request, onClose }: FoldersSelectPopupProps) {
 
   // state
