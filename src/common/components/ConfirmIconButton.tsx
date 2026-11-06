@@ -37,6 +37,7 @@ const _confirmSideSx = {
  * Icon button behind a two-step confirm. Armed, the clicked spot becomes Cancel and the confirm floats
  * (solid danger) on `side` - a double-click slip cancels. Esc cancels too. Icons come as components, sized by the button.
  */
+// @uxid src/common/components/ConfirmIconButton::ConfirmIconButton
 export function ConfirmIconButton(props: {
   icon?: React.ComponentType, // defaults to DeleteOutline
   confirmIcon?: React.ComponentType, // defaults to `icon`, or DeleteForever when `icon` is the default

@@ -69,6 +69,7 @@ const _styles = {
  * Semi-controlled: `expandRequest` nudges the internal state when its value changes.
  * Between controlled changes, the user can freely toggle via the header.
  */
+// @uxid src/common/components/ExpanderSection::ExpanderSection
 export function ExpanderSection(props: {
   title: string | ((expanded: boolean) => string),
   description?: string | ((expanded: boolean) => string),

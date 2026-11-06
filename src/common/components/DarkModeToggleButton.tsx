@@ -45,6 +45,7 @@ function _themeModeIcon(mode: ThemeMode) {
   }
 }
 
+// @uxid src/common/components/DarkModeToggleButton::DarkModeToggleButton
 export function DarkModeToggleButton(props: { hasText?: boolean, inPage?: boolean }) {
 
   // external state

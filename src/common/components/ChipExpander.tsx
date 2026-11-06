@@ -15,6 +15,7 @@ export const chipExpanderSx = {
 } as const;
 
 
+// @uxid src/common/components/ChipExpander::ChipExpander
 export function ChipExpander(props: {
   text: React.ReactNode,
   expanded: boolean,
