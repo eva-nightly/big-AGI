@@ -22,6 +22,7 @@ export interface AppCallIntent {
 }
 
 
+// @uxid src/apps/call/AppCall::AppCall
 export function AppCall() {
 
   // state
