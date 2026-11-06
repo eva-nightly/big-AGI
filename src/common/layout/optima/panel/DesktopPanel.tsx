@@ -78,6 +78,7 @@ const DesktopPanelTranslatingSheet = styled(Sheet, { name: 'DesktopPanelTranslat
 })) as typeof Sheet;
 
 
+// @uxid src/common/layout/optima/panel/DesktopPanel::DesktopPanel
 export function DesktopPanel(props: { component: React.ElementType, currentApp?: NavItemApp }) {
 
   // external state

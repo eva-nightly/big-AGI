@@ -20,6 +20,7 @@ import { ClipboardHistoryItem, scratchClipActions, useScratchClipHistory } from 
 const MAX_DISPLAY_LENGTH = 100; // and still will be ellipsized
 
 
+// @uxid src/common/layout/optima/scratchclip/ScratchClip::ScratchClip
 export function ScratchClip() {
 
   // external state

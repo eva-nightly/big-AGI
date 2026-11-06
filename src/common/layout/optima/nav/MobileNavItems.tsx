@@ -68,6 +68,7 @@ const _styles = {
 /**
  * This can be plugged to the Drawer or Panel, to have nav items on Mobile.
  */
+// @uxid src/common/layout/optima/nav/MobileNavItems::MobileNavItems
 export function MobileNavItems(props: { currentApp?: NavItemApp }) {
 
   // group apps into visible (rendered as of now) and overflow (rendered with a dropdown menu)

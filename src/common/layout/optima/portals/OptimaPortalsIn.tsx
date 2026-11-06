@@ -21,6 +21,7 @@ const panelWrapperStyle = {
 } as const;
 
 
+// @uxid src/common/layout/optima/portals/OptimaPortalsIn::OptimaDrawerIn
 export function OptimaDrawerIn(props: { children: React.ReactNode }) {
   const portalElement = useOptimaPortalTargetElement('optima-portal-drawer');
   if (!portalElement) return null;
@@ -38,6 +39,7 @@ export function OptimaDrawerIn(props: { children: React.ReactNode }) {
     </div>, portalElement);
 }
 
+// @uxid src/common/layout/optima/portals/OptimaPortalsIn::OptimaPanelIn
 export function OptimaPanelIn(props: { children: React.ReactNode }) {
   const portalElement = useOptimaPortalTargetElement('optima-portal-panel');
   if (!portalElement) return null;

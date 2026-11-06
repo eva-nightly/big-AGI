@@ -6,6 +6,7 @@ import { PanelContentPortal } from './PanelContentPortal';
 import { optimaClosePanel } from '../useOptima';
 
 
+// @uxid src/common/layout/optima/panel/PopupPanel::PopupPanel
 export function PopupPanel(props: { anchorEl: HTMLElement | null }) {
   return (
     <CloseablePopup
