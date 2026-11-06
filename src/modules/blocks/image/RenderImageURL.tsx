@@ -57,6 +57,7 @@ export type RenderImageURLVariant = 'content-part' | 'attachment-card' | 'attach
 /**
  * Renders an Image Data URL, or a remote URL.
  */
+// @uxid src/modules/blocks/image/RenderImageURL::RenderImageURL
 export const RenderImageURL = (props: {
   imageURL: string | null,        // remote URL, or data URL: `data:image/png;base64,...`
   overlayText?: React.ReactNode,  // bottom overlay text

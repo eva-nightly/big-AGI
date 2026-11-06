@@ -15,6 +15,7 @@ import { humanReadableBytes } from '~/common/util/textUtils';
 import { RenderImageURL, RenderImageURLVariant } from './RenderImageURL';
 
 
+// @uxid src/modules/blocks/image/RenderImageRefDBlob::RenderImageRefDBlob
 export function RenderImageRefDBlob(props: {
   // from ImageRef
   dataRefDBlobAssetId: DBlobAssetId,

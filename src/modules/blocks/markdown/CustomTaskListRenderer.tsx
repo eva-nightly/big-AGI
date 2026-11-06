@@ -124,6 +124,7 @@ export function useMarkdownTaskListToggler(content: string, replaceContent?: (cu
  * If we intercepted the outer node (li), we could have a richer presentation for input (e.g. clickable text), but also
  * we may lose markdown rendering of text therein.
  */
+// @uxid src/modules/blocks/markdown/CustomTaskListRenderer::CustomInputRenderer
 export function CustomInputRenderer({ node, children, ...props }: {
   node?: any; // rehype node
   children: React.JSX.Element; // expected: undefined

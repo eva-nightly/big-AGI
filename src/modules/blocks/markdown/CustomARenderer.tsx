@@ -55,6 +55,7 @@ function _analyzeUrl(url: string): URLInfo {
 }
 
 
+// @uxid src/modules/blocks/markdown/CustomARenderer::GoogleFavicon
 function GoogleFavicon(props: {
   domain: string;
   size?: number;
@@ -93,6 +94,7 @@ function GoogleFavicon(props: {
   );
 }
 
+// @uxid src/modules/blocks/markdown/CustomARenderer::LinkPreview
 function LinkPreview({ urlInfo }: { urlInfo: URLInfo }) {
   return (
     <FormControl sx={{ px: 0.5, py: 0.75, minWidth: 200 }}>
@@ -113,6 +115,7 @@ function LinkPreview({ urlInfo }: { urlInfo: URLInfo }) {
 
 
 // Inert link: the text of a link the browser must not navigate, with the reason on hover
+// @uxid src/modules/blocks/markdown/CustomARenderer::InertLink
 function InertLink({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <TooltipOutlined title={title}>
@@ -124,6 +127,7 @@ function InertLink({ title, children }: { title: string; children: React.ReactNo
 }
 
 
+// @uxid src/modules/blocks/markdown/CustomARenderer::CustomARenderer
 export function CustomARenderer({ node, href, children, ...props }: {
   node?: any;
   href?: string;
