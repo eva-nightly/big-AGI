@@ -12,6 +12,7 @@ import { toggleAixDebuggerNoStreaming, useAixClientDebuggerStore } from './memst
 const ENABLE_UNLOCK_REFRESH = false;
 
 
+// @uxid src/modules/aix/client/debugger/DebugAdvancedOptions::DebugAdvancedOptions
 export function DebugAdvancedOptions() {
 
   // external state

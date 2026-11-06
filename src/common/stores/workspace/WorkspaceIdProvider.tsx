@@ -16,6 +16,7 @@ interface WorkspaceContextData {
 /**
  * Provides the workspaceId for its children
  */
+// @uxid src/common/stores/workspace/WorkspaceIdProvider::WorkspaceIdProvider
 export function WorkspaceIdProvider(props: {
   conversationId: DConversationId | null,
   children?: React.ReactNode,

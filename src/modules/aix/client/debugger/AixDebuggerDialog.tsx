@@ -99,6 +99,7 @@ function useDebouncedAixDebuggerStore() {
 // auto-enable inspection the first time the dialog is opened (per app session); afterwards it follows the on/off toggle
 let inspectorAutoArmed = false;
 
+// @uxid src/modules/aix/client/debugger/AixDebuggerDialog::AixDebuggerDialog
 export function AixDebuggerDialog(props: {
   onClose: () => void;
 }) {
