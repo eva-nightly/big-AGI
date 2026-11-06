@@ -22,6 +22,7 @@ import { ModelVendorNvidiaNIM } from './nvidianim.vendor';
 const NVIDIA_REG_LINK = 'https://build.nvidia.com/settings/api-keys';
 
 
+// @uxid src/modules/llms/vendors/nvidianim/NvidiaNIMServiceSetup::NvidiaNIMServiceSetup
 export function NvidiaNIMServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

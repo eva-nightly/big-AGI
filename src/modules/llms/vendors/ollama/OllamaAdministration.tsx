@@ -21,6 +21,7 @@ const FALLBACK_PRESELECT_MODEL = 'llama3.3';
 const _stableNoPullable = [] as const;
 const _stableNoPullableTags = [] as const;
 
+// @uxid src/modules/llms/vendors/ollama/OllamaAdministration::OllamaAdministration
 export function OllamaAdministration(props: { access: OllamaAccessSchema, onClose: () => void }) {
 
   // state

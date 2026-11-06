@@ -15,6 +15,7 @@ import { capitalizeFirstLetter } from '~/common/util/textUtils';
 import type { OpenAIAccessSchema } from '../../server/openai/openai.access';
 
 
+// @uxid src/modules/llms/vendors/localai/LocalAIAdmin::ListItemSwitch
 function ListItemSwitch(props: { title: string, checked: boolean, onChange: (checked: boolean) => void }) {
   return (
     <ListItem variant='soft'>
@@ -36,6 +37,7 @@ function ListItemSwitch(props: { title: string, checked: boolean, onChange: (che
  * Show the progress of a model install job by polling the server every 1 second until complete.
  *  - uses the LocalAI /models/jobs API
  */
+// @uxid src/modules/llms/vendors/localai/LocalAIAdmin::ModelJobStatusChecker
 function ModelJobStatusChecker(props: { access: OpenAIAccessSchema, jobId: string }) {
 
   // local state
@@ -80,6 +82,7 @@ function ModelJobStatusChecker(props: { access: OpenAIAccessSchema, jobId: strin
  * Every model being installed has a panel showing the status.
  *  - uses the LocalAI /models/apply API
  */
+// @uxid src/modules/llms/vendors/localai/LocalAIAdmin::ModelInstallPanel
 function ModelInstallPanel(props: { access: OpenAIAccessSchema, modelName: string, galleryName: string }) {
 
   // state
@@ -120,6 +123,7 @@ function ModelInstallPanel(props: { access: OpenAIAccessSchema, modelName: strin
 /**
  * Administration panel for LocalAI. Mainly to install models from the Gallery.
  */
+// @uxid src/modules/llms/vendors/localai/LocalAIAdmin::LocalAIAdmin
 export function LocalAIAdmin(props: { access: OpenAIAccessSchema, onClose: () => void }) {
 
   // state

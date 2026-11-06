@@ -22,6 +22,7 @@ const MOONSHOT_API_LINK = 'https://platform.moonshot.ai/console/api-keys';
 const KIMI_CODE_API_LINK = 'https://www.kimi.com/code/console';
 
 
+// @uxid src/modules/llms/vendors/moonshot/MoonshotServiceSetup::MoonshotServiceSetup
 export function MoonshotServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

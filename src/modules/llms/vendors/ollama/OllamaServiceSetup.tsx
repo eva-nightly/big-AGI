@@ -20,6 +20,7 @@ import { ModelVendorOllama } from './ollama.vendor';
 import { OllamaAdministration } from './OllamaAdministration';
 
 
+// @uxid src/modules/llms/vendors/ollama/OllamaServiceSetup::OllamaServiceSetup
 export function OllamaServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state

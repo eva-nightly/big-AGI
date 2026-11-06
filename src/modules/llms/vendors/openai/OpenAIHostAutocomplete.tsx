@@ -68,6 +68,7 @@ export function findMatchingOpenAIAutoProvider(host: string): VerifiedProvider |
 
 // Autocomplete component for selecting verified OpenAI-compatible providers or typing custom URLs
 
+// @uxid src/modules/llms/vendors/openai/OpenAIHostAutocomplete::OpenAIHostAutocomplete
 export function OpenAIHostAutocomplete(props: {
   value: string;
   onChange: (value: string) => void;

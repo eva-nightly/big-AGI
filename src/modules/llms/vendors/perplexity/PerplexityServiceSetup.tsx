@@ -20,6 +20,7 @@ import { useServiceSetup } from '../useServiceSetup';
 const PERPLEXITY_REG_LINK = 'https://www.perplexity.ai/settings/api';
 
 
+// @uxid src/modules/llms/vendors/perplexity/PerplexityServiceSetup::PerplexityServiceSetup
 export function PerplexityServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
