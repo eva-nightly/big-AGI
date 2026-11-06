@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/vendors/GroqIcon::GroqIcon
 export function GroqIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 0 834 305' width='24' height='24' fill='currentColor' stroke='none' strokeLinecap='round' strokeLinejoin='round' {...props}>
     <path
