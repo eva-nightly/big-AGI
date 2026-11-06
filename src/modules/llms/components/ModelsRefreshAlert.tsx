@@ -14,6 +14,7 @@ import { llmsRefreshAllServices, useModelsRefreshBatchStore, useModelsRefreshSum
 
 
 /** Starts the refresh session of every eligible service; disabled with a spinner while one runs. */
+// @uxid src/modules/llms/components/ModelsRefreshAlert::ModelsRefreshIconButton
 export function ModelsRefreshIconButton(props: { sx?: SxProps }) {
   const isRunning = useModelsRefreshBatchStore(state => state.runningAt !== null);
   return (
@@ -29,6 +30,7 @@ export function ModelsRefreshIconButton(props: { sx?: SxProps }) {
  * One-line status of the refresh session, while it runs and after it ends (until something newer is logged).
  * Clicking opens the AI Models dialog on the Updates screen.
  */
+// @uxid src/modules/llms/components/ModelsRefreshAlert::ModelsRefreshAlert
 export function ModelsRefreshAlert() {
 
   const summary = useModelsRefreshSummary();

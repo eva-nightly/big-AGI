@@ -40,6 +40,7 @@ export function useWordsDifference(_text: string, _diffText: string | undefined,
 }
 
 
+// @uxid src/modules/blocks/wordsdiff/RenderWordsDiff::RenderWordsDiff
 export function RenderWordsDiff(props: { wordsDiff: WordsDiff; sx?: SxProps; }) {
   return (
     <Typography
