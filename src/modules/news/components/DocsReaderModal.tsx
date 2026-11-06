@@ -553,17 +553,20 @@ function _viewEquals(a: DocsView, b: DocsView): boolean {
 }
 
 
+// @uxid src/modules/news/components/DocsReaderModal::DocsTierChip
 function DocsTierChip(props: { tier: string }) {
   if (props.tier === 'open') return null;
   return <Chip size='sm' variant='soft' color='neutral'>{props.tier.charAt(0).toUpperCase() + props.tier.slice(1)}</Chip>;
 }
 
+// @uxid src/modules/news/components/DocsReaderModal::DocsNewChip
 function DocsNewChip() {
   return <Chip size='sm' variant='solid' color='accent' sx={_styles.newChip}>new</Chip>;
 }
 
 
 /** Home: one block per section - title, the lead's summary, a few pages and the rest as a count; Start Here tinted */
+// @uxid src/modules/news/components/DocsReaderModal::DocsHomeView
 function DocsHomeView(props: { sections: DocsSection[], onOpenSection: (title: string) => void, onOpen: (slug: SiteDocSlug) => void }) {
   const { onOpenSection, onOpen } = props;
   return (
@@ -607,6 +610,7 @@ function _homePicks(section: DocsSection): { picks: DocsIndexEntry[], more: numb
 
 
 /** A section: its pages with summaries; provider pages as a grid of AI services */
+// @uxid src/modules/news/components/DocsReaderModal::DocsSectionView
 function DocsSectionView(props: { docs: DocsIndexEntry[], onOpen: (slug: SiteDocSlug) => void }) {
   const { onOpen } = props;
   const pages = props.docs.filter(doc => doc.kind !== 'provider');
@@ -648,6 +652,7 @@ function DocsSectionView(props: { docs: DocsIndexEntry[], onOpen: (slug: SiteDoc
 }
 
 
+// @uxid src/modules/news/components/DocsReaderModal::DocsNavPage
 function DocsNavPage(props: { doc: DocsIndexEntry, nested: boolean, selected: boolean, onOpen: (slug: SiteDocSlug) => void }) {
   const { doc, selected, onOpen } = props;
   return (
@@ -674,6 +679,7 @@ function DocsNavPage(props: { doc: DocsIndexEntry, nested: boolean, selected: bo
  * them is current; the provider set under one row, open unless folded by hand.
  * ArrowUp/ArrowDown move through the visible rows, up from the first returns to search; Enter opens.
  */
+// @uxid src/modules/news/components/DocsReaderModal::DocsNavTree
 function DocsNavTree(props: {
   sections: DocsSection[],
   currentSlug: SiteDocSlug | null,
@@ -793,6 +799,7 @@ function DocsNavTree(props: {
  * Search results: title and section, then the best-matching question (else the summary) with the hits
  * in bold. While the search field has focus, the first result is marked as the Enter target.
  */
+// @uxid src/modules/news/components/DocsReaderModal::DocsSearchResults
 function DocsSearchResults(props: { hits: DocsHit[], words: string[], enterTarget: boolean, onOpen: (slug: SiteDocSlug) => void, onExitUp: () => void }) {
 
   const { onOpen, onExitUp } = props;
@@ -854,6 +861,7 @@ function _brandTileSx(accent: string) {
 }
 
 /** Why a view is empty, with its way out: the site unreachable, a page it no longer has, or another failure */
+// @uxid src/modules/news/components/DocsReaderModal::DocsFailure
 function DocsFailure(props: { error: Error | null, onRetry: () => void, onHome?: () => void }) {
   const missing = props.error instanceof DocsPageMissingError;
   return (
@@ -870,6 +878,7 @@ function DocsFailure(props: { error: Error | null, onRetry: () => void, onHome?:
 
 
 /** A page: title, summary as the lead, tier and update day, then the markdown */
+// @uxid src/modules/news/components/DocsReaderModal::DocsPageView
 function DocsPageView(props: { page: DocsPage, entry: DocsIndexEntry | undefined }) {
   const { page, entry } = props;
   const summary = page.summary || entry?.summary;
@@ -911,6 +920,7 @@ function DocsPageView(props: { page: DocsPage, entry: DocsIndexEntry | undefined
  * its markdown twin, rendered with the app's markdown renderer; links to other docs pages navigate in
  * place, with back and forward.
  */
+// @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal
 export function DocsReaderModal(props: { target: NewsDocsTarget }) {
 
   // state

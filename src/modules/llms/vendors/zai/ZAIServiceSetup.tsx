@@ -20,6 +20,7 @@ import { ModelVendorZAI } from './zai.vendor';
 const ZAI_REG_LINK = 'https://z.ai/manage-apikey/apikey-list';
 
 
+// @uxid src/modules/llms/vendors/zai/ZAIServiceSetup::ZAIServiceSetup
 export function ZAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state
