@@ -7,6 +7,7 @@ import FormatPaintTwoToneIcon from '@mui/icons-material/FormatPaintTwoTone';
 import { PhSlidersHorizontalIcon } from '~/common/components/icons/phosphor/PhSlidersHorizontalIcon';
 
 
+// @uxid src/apps/chat/components/composer/buttons/ButtonOptionsDraw::ButtonOptionsDraw
 export function ButtonOptionsDraw(props: { isMobile?: boolean, onClick: () => void, sx?: SxProps }) {
   return props.isMobile ? (
     <IconButton variant='soft' color='warning' onClick={props.onClick} sx={props.sx}>

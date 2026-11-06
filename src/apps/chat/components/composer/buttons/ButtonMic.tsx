@@ -27,6 +27,7 @@ const micLegend = (errorMessage: string | null) =>
 
 export const ButtonMicMemo = React.memo(ButtonMic);
 
+// @uxid src/apps/chat/components/composer/buttons/ButtonMic::ButtonMic
 function ButtonMic(props: {
   variant: VariantProp,
   color: ColorPaletteProp,

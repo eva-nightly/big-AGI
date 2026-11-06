@@ -38,6 +38,7 @@ const brightenSx: SxProps = {
   boxShadow: 'xs',
 };
 
+// @uxid src/apps/chat/components/composer/llmattachments/LLMAttachmentsPromptsButton::LLMAttachmentsPromptsButton
 function LLMAttachmentsPromptsButton({ data }: { data: AgiAttachmentPromptsData }) {
 
   const tooltipTitle =
