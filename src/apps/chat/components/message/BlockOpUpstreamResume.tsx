@@ -26,6 +26,7 @@ const ARM_TIMEOUT_MS = 4000;
  * IMPORTANT: in-flight state is owned by the parent (`inFlightMode` + `onDetach`) so it survives
  * unmounts that happen while a long-running stream is active (e.g. Deep Research).
  */
+// @uxid src/apps/chat/components/message/BlockOpUpstreamResume::BlockOpUpstreamResume
 export function BlockOpUpstreamResume(props: {
   upstreamHandle: Exclude<DMessageGenerator['upstreamHandle'], undefined>,
   pending?: boolean; // true iff a local in-flight op (initial POST or resume); drives the state machine + hides the expiry footer

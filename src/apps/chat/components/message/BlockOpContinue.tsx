@@ -32,6 +32,7 @@ const chipSx: SxProps = {
 };
 
 
+// @uxid src/apps/chat/components/message/BlockOpContinue::BlockOpContinue
 export function BlockOpContinue(props: {
   contentScaling: ContentScaling,
   messageRole: DMessageRole,

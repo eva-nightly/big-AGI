@@ -205,6 +205,7 @@ const LIVESVG_TEMPLATES: { label: string; prompt: string; steers: string[] }[] =
 ];
 
 
+// @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::Stat
 function Stat(props: { label: string; value: React.ReactNode }) {
   return (
     <Box sx={{ textAlign: 'right', minWidth: 52 }}>
@@ -214,6 +215,7 @@ function Stat(props: { label: string; value: React.ReactNode }) {
   );
 }
 
+// @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::TpsSparkline
 function TpsSparkline(props: { values: number[] }) {
   const max = Math.max(1, ...props.values);
   if (!props.values.length)
@@ -227,6 +229,7 @@ function TpsSparkline(props: { values: number[] }) {
   );
 }
 
+// @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator
 export function LiveSvgAnimator(props: { isMobile: boolean }) {
 
   // store state

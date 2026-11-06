@@ -9,6 +9,7 @@ import { FolderChangeRequest, FoldersSelectPopup } from '~/common/components/fol
 import { useChatFoldersForConversation } from '~/common/stores/folders/hooks/useChatFoldersForConversation';
 
 
+// @uxid src/apps/chat/components/layout-panel/ActionFolder::ActionFolder
 export function ActionFolder({ conversationId, disabled }: {
   conversationId: DConversationId | null;
   disabled: boolean;

@@ -56,6 +56,7 @@ const _styles = {
 } as const satisfies Record<string, SxProps>;
 
 
+// @uxid src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble
 export function ChatMessageBubble(props: {
   anchorEl: HTMLElement;
   onClose: (event?: MouseEvent | TouchEvent) => void;

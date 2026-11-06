@@ -11,6 +11,7 @@ import { CodiconSplitVerticalRemove } from '~/common/components/icons/CodiconSpl
 import { chatPanesActions, usePaneDuplicateOrClose } from '../panes/store-panes-manager';
 
 
+// @uxid src/apps/chat/components/layout-panel/WindowSplitControls::WindowSplitControls
 export function WindowSplitControls(props: {
   isVerticalSplit: boolean,
 }) {
