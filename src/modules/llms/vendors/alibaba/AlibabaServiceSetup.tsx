@@ -25,6 +25,7 @@ const ALIBABA_REG_LINK = 'https://bailian.console.alibabacloud.com/?apiKey=1#/ap
 const ALIBABA_MODELS = 'https://www.alibabacloud.com/help/en/model-studio/getting-started/models';
 
 
+// @uxid src/modules/llms/vendors/alibaba/AlibabaServiceSetup::AlibabaServiceSetup
 export function AlibabaServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

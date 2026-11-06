@@ -90,6 +90,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/modules/llms/models-modal/ModelsWizard::WizardProviderSetup
 function WizardProviderSetup(props: {
   provider: WizardProvider,
   isFirst: boolean,
@@ -287,6 +288,7 @@ function WizardProviderSetup(props: {
 }
 
 
+// @uxid src/modules/llms/models-modal/ModelsWizard::ModelsWizard
 export function ModelsWizard(props: {
   isMobile: boolean,
   onSkip?: () => void,
