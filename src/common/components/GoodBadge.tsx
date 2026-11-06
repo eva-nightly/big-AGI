@@ -6,6 +6,7 @@ import { Chip, ChipProps } from '@mui/joy';
 /**
  * Simple badge/label component for inline status indicators like "New", "Beta", etc.
  */
+// @uxid src/common/components/GoodBadge::GoodBadge
 export function GoodBadge(props: {
   badge: React.ReactNode;
   color?: ChipProps['color'];

@@ -46,6 +46,7 @@ const _headerStaticSx = { ..._styles.headerButton, pointerEvents: 'none' } as co
 const _headerCollapserHiddenSx = { ..._styles.headerCollapser, visibility: 'hidden' } as const satisfies SxProps;
 
 
+// @uxid src/common/components/ListItemGroupCollapser::ListItemGroupCollapser
 export function ListItemGroupCollapser<TId extends string>(props: {
   id: TId;
   label: string;

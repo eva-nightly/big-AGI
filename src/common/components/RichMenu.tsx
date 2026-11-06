@@ -80,6 +80,7 @@ export const richMenuCompactSx = {
  * With a `label`: the desktop pill (full width, left aligned, flattens its top corners while the menu is open).
  * Without: a plain IconButton trigger (mobile).
  */
+// @uxid src/common/components/RichMenu::RichMenuButton
 export function RichMenuButton(props: {
   icon?: React.ReactNode,
   label?: undefined | React.ReactNode,
@@ -162,6 +163,7 @@ const _richPopperOptions = {
  * Rich (default): docks on top of the pill trigger with the polished chrome.
  * Compact: the default Joy menu look (mobile).
  */
+// @uxid src/common/components/RichMenu::RichMenu
 export function RichMenu(props: {
   compact?: boolean,
   stagger?: boolean, // staggered item entrance - for click-opened menus with many items
@@ -243,6 +245,7 @@ export const richMenuItemSx = {
  * The uniform two-line menu item: icon, name, optional description, optional end action.
  * Entrance animation is owned by the rich menu surface, not the item.
  */
+// @uxid src/common/components/RichMenu::RichMenuItem
 export function RichMenuItem(props: {
   name: React.ReactNode;
   description?: React.ReactNode;

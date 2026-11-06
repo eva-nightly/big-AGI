@@ -5,6 +5,7 @@ import { Box, Card, Link as MuiLink, Typography } from '@mui/joy';
 import GitHubIcon from '@mui/icons-material/GitHub';
 
 
+// @uxid src/common/components/GitHubProjectIssueCard::GitHubProjectIssueCard
 export const GitHubProjectIssueCard = (props: {
   issue: number,
   text: string,
