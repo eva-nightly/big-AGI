@@ -34,6 +34,7 @@ const OptionsPageSize = [
 ] as const;
 
 
+// @uxid src/apps/settings-modal/settings-ui/AppChatSettingsUI::ModelsSetupButton
 export function ModelsSetupButton(props: { isMissingModels?: boolean }) {
   return <Button
     // variant='soft' color='success'
@@ -52,6 +53,7 @@ export function ModelsSetupButton(props: { isMissingModels?: boolean }) {
 }
 
 
+// @uxid src/apps/settings-modal/settings-ui/AppChatSettingsUI::AppChatSettingsUI
 export function AppChatSettingsUI() {
 
   // external state

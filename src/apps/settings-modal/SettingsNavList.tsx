@@ -61,6 +61,7 @@ const _styles = {
  * indented beneath. Selecting a top-level item shows all its sub-sections on the right;
  * selecting a sub-item shows just that one.
  */
+// @uxid src/apps/settings-modal/SettingsNavList::SettingsNavList
 export function SettingsNavList(props: {
   value: SettingsNavId,
   onSelect: (id: SettingsNavId) => void,

@@ -27,6 +27,7 @@ const _styles = {
  * Mobile section selector: a single dropdown listing every nav node (sub-items indented),
  * replacing the side-by-side panes used on desktop.
  */
+// @uxid src/apps/settings-modal/SettingsNavSelect::SettingsNavSelect
 export function SettingsNavSelect(props: {
   value: SettingsNavId,
   onSelect: (id: SettingsNavId) => void,

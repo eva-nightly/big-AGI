@@ -51,6 +51,7 @@ const actionButtonsSx: SxProps = {
 };
 
 
+// @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu
 export function AttachmentDraftMenu(props: {
   attachmentDraftsStoreApi: AttachmentDraftsStoreApi,
   draft: AttachmentDraft,
