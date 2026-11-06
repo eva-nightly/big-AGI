@@ -16,6 +16,7 @@ export const ChatToolbarMemo = React.memo(ChatToolbar);
 /**
  * Toolbar of the focused chat: derives its state from the conversation id, so AppChat does not re-render for it.
  */
+// @uxid src/apps/chat/components/layout-bar/ChatToolbar::ChatToolbar
 function ChatToolbar(props: {
   conversationId: DConversationId | null,
   isMobile: boolean,

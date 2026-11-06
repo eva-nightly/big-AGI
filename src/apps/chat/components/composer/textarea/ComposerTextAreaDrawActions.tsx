@@ -23,6 +23,7 @@ const _style = {
   } as const,
 } as const;
 
+// @uxid src/apps/chat/components/composer/textarea/ComposerTextAreaDrawActions::ComposerTextAreaDrawActions
 export function ComposerTextAreaDrawActions(props: {
   composerText: string,
   onReplaceText: (text: string) => void,
