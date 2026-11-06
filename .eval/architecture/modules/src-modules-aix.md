@@ -1,0 +1,278 @@
+# Module: src/modules/aix [AI]
+
+(part 1 of 9) Provides the client-side infrastructure and developer debugging tools for AI execution (Aix), managing chat request assembly, payload translation, client-side streaming reassembly, and live inspection/injection of AI request frames. (part 2 of 9) Provides the AI Execution (AIX) module for multi-model chat orchestration, bridging client requests and server/edge streaming dispatches across heterogeneous AI model providers with resilient error handling, rate limiting decimation, reattachment, and tool/content transformations. (part 3 of 9) Adapters for the AIX chat dispatch layer that transform universal AIX chat request payloads into vendor-specific API request formats for Anthropic, AWS Bedrock Converse, Google Gemini generateContent, Google Gemini Interactions, and OpenAI Chat Completions dialects. (part 4 of 9) Provides server-side dispatch adapters, particle parsing interfaces, and streaming companions for AIX (AI eXchange) to normalize and handle LLM chat generation requests and streaming responses across multiple providers (OpenAI Responses API, xAI, Anthropic). (part 5 of 9) Provides protocol parsers, stream decoders, audio converters, and metrics backfill transformers for normalizing AI model streaming outputs (Anthropic Messages, AWS Bedrock Converse, and Gemini Interactions/Agents) into particle transmitter events. (part 6 of 9) Provides response parsing, stream translation, error classification, and defect cleanup for Gemini, OpenAI (Chat Completions and Responses API), and xAI upstream LLM responses within the AIX module. (part 7 of 9) Provides the core dispatch execution, streaming transmitter, continuation loops, and provider-specific wire schemas for AI model chat generation across multiple AI vendors (Anthropic, OpenAI, AWS Bedrock, Gemini, Ollama, xAI). (part 8 of 9) Defines Zod schemas and wire types for Google Gemini APIs, including standard multimodal content parts, tool calling, and the Gemini Interactions API (used for Deep Research and autonomous agents). (part 9 of 9) Provides low-level wire formats, stream demuxers (SSE, AWS EventStream, JSON-NL), heartbeat management, and performance profiling for AI model streaming and dispatching.
+
+_This module does not fit in one model call, so it was read in 9 parts and their summaries were combined without a further model call._
+
+## Key files
+- `src/modules/aix/client/ContentReassembler.ts`: Reassembles streaming Aix particle events into UI message content fragments, tracking metrics, errors, thinking blocks, and debugger notifications.
+- `src/modules/aix/client/aix.client.chatGenerateRequest.ts`: Translates chat text, UI message fragments, attachments, and Zync asset references into wire-ready Aix ChatGenerate request structures.
+- `src/modules/aix/client/aix.client.direct-chatGenerate.ts`: Executes AIX chat generation, upstream reattachment, and deletion directly in the browser via client-side dispatch without routing through the tRPC server.
+- `src/modules/aix/client/aix.client.errors.ts`: Classifies streaming and transport-level failures (aborts, disconnects, captive portals, payload size limits) into human-friendly error codes and messages.
+- `src/modules/aix/client/debugger/memstore-aix-client-debugger.ts`: In-memory Zustand store managing Aix debugger request frames, particle logging, payload injection override, and streaming toggles.
+- `src/modules/aix/client/debugger/AixDebuggerDialog.tsx`: Modal UI component for inspecting sent AI request frames, received response particles, timings, and injecting test JSON payloads.
+- `src/modules/aix/client/debugger/AixDebuggerFrame.tsx`: Viewer component displaying request headers, body, metadata, and particle timeline for a single AI execution frame.
+- `src/modules/aix/client/debugger/AixDebuggerMeasurementsTable.tsx`: Table view rendering performance profiler measurements for an AI execution frame.
+- `src/modules/aix/client/debugger/DebugAdvancedOptions.tsx`: Debugger options UI controls including global streaming toggle and performance refresh rates.
+- `src/modules/aix/client/debugger/DebugPayloadOverride.tsx`: UI editor for inspecting and setting client-side JSON request body overrides (RBO).
+- `src/modules/aix/client/debugger/reassembler-debug.ts`: Bridge functions linking ContentReassembler lifecycle events to the Aix debugger Zustand store.
+- `src/modules/aix/client/aix.client.ts`: Client-facing AIX controller configuring model options, handling client-side execution/CSF fallback, streaming reassembly, audio/visual responses, and dispatch triggers.
+- `src/modules/aix/client/aix.client.fromSimpleFunction.ts`: Translates Zod function schemas into standard AIX tool function definitions and verifies single-function invocations.
+- `src/modules/aix/client/aix.client.retry.ts`: Manages streaming reconnection and resume attempts using exponential backoff, jitter, and error classification.
+- `src/modules/aix/client/aix.client.transform-antFileInline.ts`: Transforms Anthropic File API artifacts on the client by downloading them via proxied tRPC endpoints to bypass CORS limitations in direct fetch mode.
+- `src/modules/aix/client/withDecimator.ts`: Higher-order rate limiter function that decimates rapid streaming UI callbacks to prevent main thread blocking while guaranteeing deadline execution.
+- `src/modules/aix/server/api/aix.router.ts`: tRPC Edge API router handling chat content generation streams, upstream handle reattachment, and run deletion with execution watchdogs.
+- `src/modules/aix/server/api/aix.wiretypes.ts`: Zod wire schemas and TypeScript types defining AIX access models, request/response parts, vendor-specific continuity state, and tool specifications.
+- `src/modules/aix/server/api/aix.wiretypes.openrouter.ts`: Zod wire schemas for OpenRouter server tools (web search, web fetch, budget controls).
+- `src/modules/aix/server/api/aix.security.ts`: Enforces build-environment security boundaries and allowed contexts for AIX debugging and request inspection.
+- `src/modules/aix/server/api/aix.resilience.ts`: Handles unknown or unexpected wire fields resiliently (throwing in dev/strict mode and warning in production).
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/adapters.common.ts`: Common helpers for dispatch adapters, handling missing tool result stubs, system-to-user prompt splitting, and fallback string encodings for unsupported parts.
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/anthropic.messageCreate.ts`: Converts AIX chat generate requests and hosted feature flags into Anthropic Messages API payloads targeting direct Anthropic or AWS Bedrock endpoints.
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/bedrock.converse.ts`: Converts AIX chat generate requests, tool calls, and model configurations into AWS Bedrock Converse API request format.
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/gemini.generateContent.ts`: Translates AIX chat requests, safety thresholds, thinking budgets, and multimodal options into Google Gemini generateContent request structures.
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/gemini.interactionsCreate.ts`: Transforms AIX chat sequences into multi-turn input steps and payloads for Gemini managed agents (such as Deep Research and Antigravity) and Gemini Omni video models via the Interactions API.
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/openai.chatCompletions.ts`: Formats AIX chat sequences and tools for OpenAI Chat Completions API and handles dialect-specific quirks for Azure, OpenRouter, DeepSeek, Moonshot, Mistral, and Perplexity.
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/openai.responsesCreate.ts`: Translates AIX request formats to the OpenAI Responses API schema with per-dialect adjustments for Azure, Sakana.ai, Meta AI, and others.
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/xai.responsesCreate.ts`: Adapts AIX chat generation requests into the xAI Responses API payload, configuring xAI-specific tools and reasoning settings.
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/openai.companion-containerKeepAlive.ts`: Maintains alive the OpenAI code-interpreter sandbox containers during long reasoning passes by periodically querying container endpoints.
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/IParticleTransmitter.ts`: Defines the streaming particle transmitter interface implemented by vendor parsers to emit standardized stream tokens, tool calls, and control messages.
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/anthropic.companion-fileInline.ts`: Intercepts Anthropic hosted container file particles during generation and downloads or inlines them as text or base64 images.
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/anthropic.parser.ts`: Parses Anthropic streaming chat completion events (message_start, content deltas, tool uses, containers, and stop reasons) and pushes particles to transmitter
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/bedrock-converse.parser.ts`: Parses AWS Bedrock Converse streaming and non-streaming event payloads, tool invocations, and token metrics
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/gemini.audioutils.ts`: Converts raw PCM audio output from Gemini to WAV format and calculates audio duration
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/gemini.interactions.companion-usageBackfill.ts`: Transforms Gemini Deep Research interaction particles by fetching and backfilling final token usage metrics after stream completion
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/gemini.interactions.parser.ts`: Parses Server-Sent Events from Gemini Interactions API (Deep Research, Antigravity) into message text, reasoning, tool steps, and lifecycle state
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/gemini.parser.ts`: Parses streaming and non-streaming Gemini generateContent responses into AIX particles and metrics.
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/openai.error-severity.ts`: Classifies OpenAI and OpenAI-compatible in-band upstream errors to determine log levels and transient HTTP retry mappings.
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/openai.parser.ts`: Parses OpenAI Chat Completions streaming chunk events into AIX particles, tracking metrics, audio, and tool calls.
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/openai.responses.parser.ts`: Parses OpenAI Responses API events and output items using a state machine with support for failed-response salvaging and tool calls.
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/xai.transform-citationsLeak.ts`: Cleans leaked citation directives from xAI web search completions in both one-shot and streaming modes.
+- `src/modules/aix/server/dispatch/chatGenerate/ChatGenerateTransmitter.ts`: Stateful particle accumulator and transmitter converting raw model tokens and events into standardized client particles while managing secrets redaction and metrics.
+- `src/modules/aix/server/dispatch/chatGenerate/chatGenerate.dispatch.ts`: Constructs vendor-specific request payloads, headers, parser bindings, and companion lifecycle hooks for each supported LLM dialect.
+- `src/modules/aix/server/dispatch/chatGenerate/chatGenerate.executor.ts`: Handles the core execution of dispatch requests, HTTP connection setup, companion hooks, and streaming/non-streaming response parsing.
+- `src/modules/aix/server/dispatch/chatGenerate/chatGenerate.operation-retry.ts`: Wraps dispatch execution with operation-level retries and backoff handling mid-stream or connection failures.
+- `src/modules/aix/server/dispatch/chatGenerate/chatGenerate.continuation.ts`: Manages multi-turn dispatch continuation loops (such as Anthropic pause_turn) and aggregates completion stats and metrics across turns.
+- `src/modules/aix/server/dispatch/chatGenerate/chatGenerate.debug.ts`: Configures performance profiling, request body overriding, and wire-level debugging for chat generation dispatches.
+- `src/modules/aix/server/dispatch/wiretypes/anthropic.wiretypes.ts`: Defines wire schemas, types, and model feature matrices for Anthropic Messages API requests and streaming responses.
+- `src/modules/aix/server/dispatch/wiretypes/bedrock-converse.wiretypes.ts`: Defines Zod schemas and wire types for AWS Bedrock Converse API requests, responses, content blocks, and streaming events.
+- `src/modules/aix/server/dispatch/wiretypes/gemini.interactions.wiretypes.ts`: Defines wire endpoints and schemas for the Gemini Interactions API (agent config, input steps, deep research configuration, cancel/delete paths).
+- `src/modules/aix/server/dispatch/wiretypes/gemini.wiretypes.ts`: Defines wire type schemas for standard Gemini API content parts, MIME types, thoughts, function calls, function responses, and code execution results.
+- `src/modules/aix/server/dispatch/wiretypes/openai.wiretypes.ts`: Defines Zod schemas and TypeScript namespaces for OpenAI and OpenRouter wire protocol requests, content parts, and tool calls.
+- `src/modules/aix/server/dispatch/wiretypes/xai.wiretypes.ts`: Defines Zod schemas and types for xAI Responses API requests and hosted tools (web_search, x_search, code_interpreter).
+- `src/modules/aix/server/dispatch/stream.demuxers.ts`: Defines the AixDemuxers namespace, body transformation routing, and demuxer factory for fast-sse and json-nl formats.
+- `src/modules/aix/server/dispatch/stream.demuxer.fastsse.ts`: Implements an optimized hand-rolled Server-Sent Events (SSE) demuxer for parsing model token streams.
+- `src/modules/aix/server/dispatch/stream.demuxer.aws-eventstream.ts`: Provides a TransformStream to convert AWS Bedrock EventStream binary chunks into SSE-formatted text events.
+- `src/modules/aix/server/dispatch/heartbeatsWhileAwaiting.ts`: Async generator utility that yields periodic heartbeat signals during long-running model operations to keep streams alive.
+- `src/modules/aix/server/dispatch/PerformanceProfiler.ts`: Lightweight performance profiling class compatible with Edge and Node runtimes to measure AI dispatch operations.
+
+## Public interface
+- ContentReassembler
+- aixCGR_FromSimpleText
+- aixCGR_SystemMessageText
+- aixCGR_UserMessageText
+- aixCGR_SystemMessage_FromDMessageOrThrow
+- clientSideChatGenerate
+- clientSideReattachUpstream
+- clientSideDeleteUpstream
+- aixClassifyStreamingError
+- AixDebuggerDialog
+- AixDebuggerFrame
+- AixDebuggerMeasurementsTable
+- DebugAdvancedOptions
+- DebugPayloadOverride
+- useAixClientDebuggerStore
+- aixClientDebuggerActions
+- aixClientDebuggerSetRBO
+- aixClientDebuggerGetRBO
+- getAixDebuggerNoStreaming
+- toggleAixDebuggerNoStreaming
+- aixClientDebugger_init
+- aixClientDebugger_setRequest
+- aixClientDebugger_setProfilerMeasurements
+- aixClientDebugger_recordParticleReceived
+- aixClientDebugger_completeFrame
+- aixRouter (tRPC router with chatGenerateContent, upstreamReattachContent, upstreamDeleteContent procedures)
+- aixFunctionCallTool
+- aixRequireSingleFunctionCallInvocation
+- AixStreamRetry
+- createClientAnthropicFileInlineTransform
+- aixCreateChatGenerateContext
+- aixCreateModelFromLLMOptions
+- withDecimator
+- aixResilientUnknownValue
+- aixSpillSystemToUser
+- approxDocPart_To_String
+- approxMediaUrlPart_To_String
+- approxCodeCell_To_String
+- approxInReferenceTo_To_XMLString
+- AIX_MISSING_TOOL_RESULT_TEXT
+- AIX_SECURITY_ONLY_IN_DEV_BUILDS
+- AIX_INSPECTOR_ALLOWED_CONTEXTS
+- aixAnthropicHostedFeatures(model: AixAPI_Model, chatGenerate: AixAPIChatGenerate_Request, target?: AixAnthropicTarget): AnthropicHostedFeatures
+- aixToAnthropicMessageCreate(target: AixAnthropicTarget, model: AixAPI_Model, _chatGenerate: AixAPIChatGenerate_Request, streaming: boolean, hostedFeatures: AnthropicHostedFeatures): AnthropicWire_API_Message_Create.Request
+- aixToBedrockConverse(model: AixAPI_Model, _chatGenerate: AixAPIChatGenerate_Request): BedrockConverseWire_API.Request
+- aixToGeminiGenerateContent(model: AixAPI_Model, _chatGenerate: AixAPIChatGenerate_Request, geminiSafetyThreshold: GeminiWire_Safety.HarmBlockThreshold, jsonOutput: boolean, _streaming: boolean): GeminiWire_API_Generate_Content.Request
+- aixToGeminiInteractionsCreate(model: AixAPI_Model, chatGenerateRaw: AixAPIChatGenerate_Request): GeminiInteractionsWire_API_Interactions.RequestBody
+- aixToOpenAIChatCompletions(openAIDialect: OpenAIDialects, model: AixAPI_Model, _chatGenerate: AixAPIChatGenerate_Request, streaming: boolean, sessionAffinityId?: string): OpenAIWire_API_Chat_Completions.Request
+- type AixAnthropicTarget = 'anthropic' | 'bedrock'
+- OpenAIContainerKeepAlive
+- AIX_OAI_DEFAULT_IMAGE_GEN_MODEL
+- openAIDialectToRspVendor(dialect: OpenAIDialects): AixWire_Vendors.RspVendor
+- aixToOpenAIResponses(openAIDialect: OpenAIDialects, model: AixAPI_Model, _chatGenerate: AixAPIChatGenerate_Request, streaming: boolean, enableResumability: boolean): OpenAIWire_API_Responses.Request
+- aixToXAIResponses(model: AixAPI_Model, _chatGenerate: AixAPIChatGenerate_Request, streaming: boolean, enableResumability: boolean): XAIWire_API_Responses.Request
+- IParticleTransmitter
+- ParticleServerLogLevel
+- ParticleCGDialectEndReason
+- createAnthropicFileInlineCompanion(fileApiRequest: ReturnType<typeof anthropicAccess>, policy: AnthropicFileInlinePolicy): ChatGenerateDispatchCompanion
+- createAnthropicMessageParser(thinkingOrigins?: () => AnthropicThinkingOrigins): ChatGenerateParseFunction
+- createBedrockConverseStreamParser(): ChatGenerateParseFunction
+- createBedrockConverseParserNS(): ChatGenerateParseFunction
+- geminiConvertPCM2WAV(mimeType: string, base64PCMData: string): ConvertedAudio
+- createWAVFromPCM(pcmData: Uint8Array, format: AudioFormat): Uint8Array
+- calculateDurationMs(dataSize: number, format: AudioFormat): number
+- createGeminiInteractionsUsageBackfillCompanion(access: GeminiAccessSchema): ChatGenerateDispatchCompanion
+- createGeminiInteractionsParserSSE(requestedModelName: string | null): ChatGenerateParseFunction
+- createGeminiGenerateContentResponseParser(requestedModelName: string, isStreaming: boolean): ChatGenerateParseFunction
+- openAIUpstreamErrorLogLevel(error: null | undefined | { code?: string | number | null, type?: string | null }): ParticleServerLogLevel
+- openAITransientErrorToHttpStatus(error: null | undefined | { type?: string | null, code?: string | number | null, message?: string | null }): 429 | 500 | 529 | undefined
+- createOpenAIChatCompletionsChunkParser(): ChatGenerateParseFunction
+- stripXAIDefectiveCitations(text: string): string
+- XAIDefectiveCitationsFilter.prototype.streamingDelta(textDelta: string): string
+- XAIDefectiveCitationsFilter.prototype.flush(): string
+- ChatGenerateTransmitter
+- trpcFetcherError_to_IssueCause
+- IssueSymbols
+- createChatGenerateDispatch
+- executeChatGenerateDispatch
+- executeChatGenerateWithOperationRetry
+- executeChatGenerateWithContinuation
+- withChatGenerateCompletionStats
+- DispatchContinuationSignal
+- OperationRetrySignal
+- _createDebugConfig
+- BedrockConverseWire_Blocks
+- BedrockConverseWire_Messages
+- BedrockConverseWire_API
+- GeminiInteractionsWire_API_Interactions
+- GeminiInteractionsWire_API_Interactions.postPath
+- GeminiInteractionsWire_API_Interactions.getPath
+- GeminiInteractionsWire_API_Interactions.deletePath
+- GeminiInteractionsWire_API_Interactions.cancelPath
+- GeminiInteractionsWire_API_Interactions.InputContentPart_schema
+- GeminiInteractionsWire_API_Interactions.InputStep_schema
+- GeminiInteractionsWire_API_Interactions.AgentConfig_schema
+- GeminiWire_ContentParts
+- GeminiWire_ContentParts.ContentPartModality_enum
+- GeminiWire_ContentParts.mediaResolution_enum
+- GeminiWire_ContentParts.TextPart_schema
+- GeminiWire_ContentParts.FunctionCallPart_schema
+- GeminiWire_ContentParts.ExecutableCodePart_schema
+- GeminiWire_ContentParts.CodeExecutionResultPart_schema
+- AixDemuxers.applyBodyTransformer
+- AixDemuxers.createStreamDemuxer
+- createFastEventSourceDemuxer
+- createEventStreamToSSETransform
+- heartbeatsWhileAwaiting
+- PerformanceProfiler
+- performanceProfilerLog
+- OpenAIWire_ContentParts
+- OpenAIWire_Messages
+- XAIWire_Responses_Tools
+- XAIWire_API_Responses
+
+## Dependencies
+- @mui/joy
+- @mui/icons-material
+- @trpc/client
+- zustand
+- zod/v4
+- ~/server/trpc/trpc.server
+- ~/common/util/trpc.client
+- ~/common/stores/chat/chat.fragments
+- ~/common/stores/chat/chat.message
+- ~/common/stores/llms/llms.parameters
+- ~/common/stores/llms/llms.types
+- ~/common/stores/metrics/metrics.chatgenerate
+- ~/common/stores/metrics/store-metrics
+- ~/common/stores/store-ai
+- ~/common/stores/store-ui
+- ~/common/stores/store-ux-labs
+- ~/common/util/abortUtils
+- ~/common/util/blobUtils
+- ~/common/util/objectUtils
+- ~/common/util/pwaUtils
+- ~/common/util/screenWakeLock
+- ~/common/util/video/videoPlayManaged
+- ~/common/util/webGeolocationUtils
+- ~/modules/google/vertexai.client
+- ~/modules/llms/server/anthropic/anthropic.access
+- ~/modules/llms/server/bedrock/bedrock.access
+- ~/modules/llms/server/gemini/gemini.access
+- ~/modules/llms/server/ollama/ollama.access
+- ~/modules/llms/server/openai/openai.access
+- ~/modules/llms/vendors/openrouter/openrouter.webtools
+- ~/modules/llms/vendors/vendor.helpers
+- ~/server/trpc/trpc.router.fetchers
+- ~/modules/llms/server/llm.server.types
+- ~/server/wire
+- ~/common/app.release
+- ~/common/util/costUtils
+- ~/server/trpc/trpc.nanoid
+- ~/server/trpc/trpc.fetchers.retrier
+- ~/common/util/fetchFailures
+- ~/modules/llms/shared/llm.appIdentity
+
+## AI touchpoints [AI]
+- `src/modules/aix/client/ContentReassembler.ts`
+- `src/modules/aix/client/aix.client.chatGenerateRequest.ts`
+- `src/modules/aix/client/aix.client.transform-antFileInline.ts`
+- `src/modules/aix/client/aix.client.ts`
+- `src/modules/aix/server/api/aix.router.ts`
+- `src/modules/aix/server/api/aix.wiretypes.openrouter.ts`
+- `src/modules/aix/server/api/aix.wiretypes.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/ChatGenerateTransmitter.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/adapters.common.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/anthropic.messageCreate.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/bedrock.converse.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/gemini.generateContent.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/gemini.interactionsCreate.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/openai.chatCompletions.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/openai.companion-containerKeepAlive.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/openai.responsesCreate.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/adapters/xai.responsesCreate.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/chatGenerate.continuation.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/chatGenerate.debug.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/chatGenerate.dispatch.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/chatGenerate.executor.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/chatGenerate.operation-retry.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/IParticleTransmitter.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/anthropic.companion-fileInline.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/anthropic.parser.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/bedrock-converse.parser.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/gemini.interactions.companion-usageBackfill.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/gemini.interactions.parser.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/gemini.parser.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/openai.error-severity.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/openai.parser.ts`
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/openai.responses.parser.ts`
+- `src/modules/aix/server/dispatch/heartbeatsWhileAwaiting.ts`
+- `src/modules/aix/server/dispatch/stream.demuxer.aws-eventstream.ts`
+- `src/modules/aix/server/dispatch/stream.demuxer.fastsse.ts`
+- `src/modules/aix/server/dispatch/stream.demuxer.sse.ts`
+- `src/modules/aix/server/dispatch/wiretypes/anthropic.wiretypes.ts`
+- `src/modules/aix/server/dispatch/wiretypes/gemini.wiretypes.ts`
+- `src/modules/aix/server/dispatch/wiretypes/openai.wiretypes.ts`
+- `src/modules/aix/server/dispatch/wiretypes/xai.wiretypes.ts`
+- `src/modules/aix/client/aix.client.direct-chatGenerate.ts`
+- `src/modules/aix/client/debugger/DebugPayloadOverride.tsx`
+- `src/modules/aix/server/dispatch/chatGenerate/parsers/xai.transform-citationsLeak.ts`
+- `src/modules/aix/server/dispatch/wiretypes/bedrock-converse.wiretypes.ts`
+- `src/modules/aix/server/dispatch/wiretypes/gemini.interactions.wiretypes.ts`
+
+## Open questions
+- How are the truncated response streams parsed and dispatched back to clients across these different wire formats?
+- Are there additional provider-specific adapters (such as Ollama or local LLM backends) within the same dispatch subsystem?
+- OpenAI container keep-alive contains pending TODO items for handling error descriptions on sandbox expiry and differentiating cross-turn container reuse behavior between pro and non-pro modes (#1211).
+- xAI Responses API adapter has a commented-out flag for inline citations pending protocol implementation details.
+- How will Anthropic Server-side tools vs Client-driven tools (including MCP) be formally unified at the AIX and DMessageFragment layer?
+- Is stream.demuxer.sse.ts permanently deprecated in favor of stream.demuxer.fastsse.ts, or retained as an eventsource-parser reference?
