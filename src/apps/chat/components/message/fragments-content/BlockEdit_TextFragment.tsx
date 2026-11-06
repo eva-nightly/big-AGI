@@ -56,6 +56,7 @@ const _styles = {
  * Very similar to <InlineTextArea /> but with externally controlled state rather than internal.
  * Made it for as the editing alternative for <ContentPartText />.
  */
+// @uxid src/apps/chat/components/message/fragments-content/BlockEdit_TextFragment::BlockEdit_TextFragment
 export function BlockEdit_TextFragment(props: {
   // current value
   initialText: string,

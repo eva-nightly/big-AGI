@@ -49,6 +49,7 @@ const _styles = {
  * With `drafts`, a footer row adds attachments to this group (after its last member; Insert now, else at Done).
  * The view-mode lists (`ImageAttachmentFragments`, `DocumentAttachmentFragments`) render the same items, per kind.
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-edit/EditAttachmentFragments::EditAttachmentFragments
 export function EditAttachmentFragments(props: {
   fragments: readonly DMessageAttachmentFragment[],
   contentScaling: ContentScaling,

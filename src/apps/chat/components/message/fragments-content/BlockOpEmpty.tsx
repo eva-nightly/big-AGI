@@ -27,6 +27,7 @@ const chipSx: SxProps = {
 };
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockOpEmpty::BlockOpEmpty
 export function BlockOpEmpty(props: {
   text: string,
   contentScaling: ContentScaling,
