@@ -18,6 +18,7 @@ const ModelsModalsLazy = React.lazy(() => import('~/modules/llms/models-modal/Mo
 const SettingsModalLazy = React.lazy(() => import('../../../apps/settings-modal/SettingsModal').then(module => ({ default: module.SettingsModal })));
 
 
+// @uxid src/common/layout/optima/Modals::Modals
 export function Modals(props: { suspendAutoModelsSetup?: boolean }) {
 
   // external state

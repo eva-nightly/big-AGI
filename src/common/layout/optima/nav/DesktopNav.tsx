@@ -48,6 +48,7 @@ const navItemsDividerSx: SxProps = {
 };
 
 
+// @uxid src/common/layout/optima/nav/DesktopNav::DesktopNav
 export function DesktopNav(props: { component: React.ElementType, currentApp?: NavItemApp }) {
 
   // external state

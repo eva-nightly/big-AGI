@@ -158,6 +158,7 @@ export type OptimaBarControlMethods = {
 /**
  * A Select component that blends-in nicely (cleaner, easier to the eyes)
  */
+// @uxid src/common/layout/optima/bar/OptimaBarDropdown::OptimaBarDropdown
 function OptimaBarDropdown<TValue extends string>(props: {
   // required
   items: OptimaDropdownItems,

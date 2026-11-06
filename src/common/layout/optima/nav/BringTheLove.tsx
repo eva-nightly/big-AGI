@@ -9,6 +9,7 @@ import { animationColorRainbow } from '~/common/util/animUtils';
 import { DesktopNavIcon, navItemClasses } from './DesktopNavIcon';
 
 
+// @uxid src/common/layout/optima/nav/BringTheLove::BringTheLove
 export function BringTheLove(props: { text: string, link: string, asIcon?: boolean, icon: React.FC, sx?: SxProps }) {
   // state
   const [loved, setLoved] = React.useState(false);

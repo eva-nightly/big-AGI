@@ -38,6 +38,7 @@ const centerItemsContainerSx: SxProps = {
   '& > *': { WebkitAppRegion: 'no-drag' },
 };
 
+// @uxid src/common/layout/optima/bar/OptimaBar::CenterItemsPortal
 function CenterItemsPortal(props: { currentApp?: NavItemApp }) {
 
   // external state
@@ -54,6 +55,7 @@ function CenterItemsPortal(props: { currentApp?: NavItemApp }) {
   );
 }
 
+// @uxid src/common/layout/optima/bar/OptimaBar::CenterItemsFallback
 function CenterItemsFallback(props: { currentApp?: NavItemApp }) {
   return <Box sx={{
     display: 'flex',
@@ -78,6 +80,7 @@ function CenterItemsFallback(props: { currentApp?: NavItemApp }) {
 /**
  * Top bar displayed on the Optima Layout
  */
+// @uxid src/common/layout/optima/bar/OptimaBar::OptimaBar
 export function OptimaBar(props: { component: React.ElementType, currentApp?: NavItemApp, isMobile: boolean, sx?: SxProps }) {
 
   // state
