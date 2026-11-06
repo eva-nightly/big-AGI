@@ -13,6 +13,7 @@ import { useModuleBeamStore } from '../store-module-beam';
 
 
 // Editor for a ChatInstruction
+// @uxid src/modules/beam/gather/FusionInstructionsEditor::EditableChatInstructionPrompt
 function EditableChatInstructionPrompt(props: {
   isEditable: boolean,
   itemKey: keyof GatherInstruction,
@@ -81,6 +82,7 @@ function EditableChatInstructionPrompt(props: {
 
 
 // Editor for any Instruction (specializes the implementation)
+// @uxid src/modules/beam/gather/FusionInstructionsEditor::EditableInstruction
 function EditableInstruction(props: {
   instruction: Instruction,
   instructionIndex: number,
@@ -165,6 +167,7 @@ const instructionsListSx: SxProps = {
 };
 
 
+// @uxid src/modules/beam/gather/FusionInstructionsEditor::FusionInstructionsEditor
 export function FusionInstructionsEditor(props: {
   beamStore: BeamStoreApi,
   factory: FusionFactorySpec,

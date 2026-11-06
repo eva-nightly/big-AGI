@@ -36,6 +36,7 @@ const fusionGridMobileSx: SxProps = {
 } as const;
 
 
+// @uxid src/modules/beam/gather/BeamFusionGrid::FusionAddButton
 export function FusionAddButton(props: {
   canGather: boolean,
   currentFactory: FusionFactorySpec | null,
@@ -66,6 +67,7 @@ export function FusionAddButton(props: {
 }
 
 
+// @uxid src/modules/beam/gather/BeamFusionGrid::BeamFusionGrid
 export function BeamFusionGrid(props: {
   beamStore: BeamStoreApi,
   canGather: boolean,
