@@ -37,6 +37,7 @@ const tileSize = 7; // rem
 const tileGap = 0.5; // rem
 
 
+// @uxid src/apps/chat/components/persona-selector/PersonaSelector::Tile
 function Tile(props: {
   text?: string,
   imageUrl?: string,
@@ -115,6 +116,7 @@ function Tile(props: {
 /**
  * Purpose selector for the current chat. Clicking on any item activates it for the current chat.
  */
+// @uxid src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector
 export function PersonaSelector(props: {
   conversationId: DConversationId,
   isMobile: boolean,

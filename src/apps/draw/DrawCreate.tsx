@@ -98,6 +98,7 @@ function TempPromptImageGen(props: { prompt: DesignerPrompt, sx?: SxProps }) {
 }
 */
 
+// @uxid src/apps/draw/DrawCreate::DrawCreate
 export function DrawCreate(props: {
   queue: DrawCreateQueue,
   isMobile: boolean,

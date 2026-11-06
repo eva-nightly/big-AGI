@@ -150,6 +150,7 @@ type FragmentsReorderHandler = (reorderedIds: DMessageFragmentId[]) => void;
 
 // fused nodes: memoized on the node object, which the recycler keeps while the members are unchanged
 
+// @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMCitationsNode
 const CMCitationsNode = React.memo(function CMCitationsNode(props: {
   node: CMNodeCitations,
   contentScaling: ContentScaling,
@@ -158,6 +159,7 @@ const CMCitationsNode = React.memo(function CMCitationsNode(props: {
   return <BlockPartModelAnnotations annotations={annotations} contentScaling={props.contentScaling} />;
 });
 
+// @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMReasoningNode
 const CMReasoningNode = React.memo(function CMReasoningNode(props: {
   node: CMNodeReasoning,
   inFluxFragmentId?: DMessageFragmentId,
@@ -223,6 +225,7 @@ const CMReasoningNode = React.memo(function CMReasoningNode(props: {
  * code block actions) and the stream cursor stay per fragment. Joining members into one flow is a per-node decision
  * left to a producer that splits one paragraph (citation-split text).
  */
+// @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMTextNode
 const CMTextNode = React.memo(function CMTextNode(props: {
   node: CMNodeText,
   inFluxFragmentId?: DMessageFragmentId,
@@ -267,6 +270,7 @@ const CMTextNode = React.memo(function CMTextNode(props: {
 
 
 /** Edit mode: a node as one block, movable by its gutter handle and deletable from the right gutter (on mobile, under the handle). */
+// @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMSortableBlock
 function CMSortableBlock(props: { id: string, isMobile: boolean, deleteConfirm: string | null, onDelete?: () => void, children: React.ReactNode }) {
   const { dragContainerSetRef, dragContainerStyle, dragHandle } = useDndDragHandleSortable(props.id, false, 'warning');
   const { showPromisedOverlay } = useOverlayComponents();
@@ -318,6 +322,7 @@ function _blockDeleteConfirm(node: CMRenderNode): string | null {
 /**
  * Renders a CMRenderTree: the citations row, then the body grid.
  */
+// @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes
 export function CMRenderTreeNodes(props: {
 
   tree: CMRenderTree,
