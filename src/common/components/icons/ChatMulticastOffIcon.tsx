@@ -5,6 +5,7 @@ import { SvgIcon, SvgIconProps } from '@mui/joy';
 /*
  * Source: the PodcastsIcon from '@mui/icons-material/Podcasts';
  */
+// @uxid src/common/components/icons/ChatMulticastOffIcon::ChatMulticastOffIcon
 export function ChatMulticastOffIcon(props: SvgIconProps) {
   return (
     <SvgIcon viewBox='0 0 24 24' width='24' height='24' {...props}>
