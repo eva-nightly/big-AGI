@@ -10,6 +10,7 @@ import { takeScreenCapture } from '~/common/util/screenCaptureUtils';
 
 export const ButtonAttachScreenCaptureMemo = React.memo(ButtonAttachScreenCapture);
 
+// @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachScreenCapture::ButtonAttachScreenCapture
 function ButtonAttachScreenCapture(props: {
   color?: ColorPaletteProp,
   isMobile?: boolean,

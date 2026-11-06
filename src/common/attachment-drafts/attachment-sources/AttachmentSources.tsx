@@ -40,6 +40,7 @@ const _style = {
 
 
 // Live feed record button - returns null if onClick is undefined
+// @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::LiveFeedButton
 function LiveFeedButton(props: { isActive: boolean, tooltip: string, onClick: () => void }) {
   return (
     <TooltipOutlined title={props.tooltip} placement='top'>
@@ -62,6 +63,7 @@ function LiveFeedButton(props: { isActive: boolean, tooltip: string, onClick: ()
 
 
 // Auto-download toggle (shown when browsing capability exists)
+// @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AutoDownloadToggle
 function AutoDownloadToggle() {
 
   // external state
@@ -110,6 +112,7 @@ function AutoDownloadToggle() {
  */
 export const AttachmentSourcesMemo = React.memo(AttachmentSources);
 
+// @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources
 function AttachmentSources(props: {
   // mode
   mode: 'menu-compact' | 'menu-rich' | 'inline-buttons' | 'menu-message',

@@ -23,6 +23,7 @@ const _breadcrumbSlotProps: BreadcrumbsSlotsAndSlotProps['slotProps'] = {
 } as const;
 
 
+// @uxid src/common/components/AppBreadcrumbs::AppBreadcrumbs
 export function AppBreadcrumbs(props: {
   size?: 'sm' | 'md' | 'lg';
   children?: React.ReactNode;

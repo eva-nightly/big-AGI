@@ -7,6 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 
 const _btnSx: SxProps = { borderColor: 'neutral.outlinedBorder' } as const;
 
+// @uxid src/common/components/ButtonServiceAdd::ButtonServiceAdd
 export function ButtonServiceAdd(props: {
   isMobile: boolean;
   isEmpty: boolean;

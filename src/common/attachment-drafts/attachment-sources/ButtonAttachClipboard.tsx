@@ -9,6 +9,7 @@ import { buttonAttachSx } from '~/common/components/ButtonAttachFiles';
 
 export const ButtonAttachClipboardMemo = React.memo(ButtonAttachClipboard);
 
+// @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachClipboard::ButtonAttachClipboard
 function ButtonAttachClipboard(props: {
   color?: ColorPaletteProp,
   isMobile?: boolean,

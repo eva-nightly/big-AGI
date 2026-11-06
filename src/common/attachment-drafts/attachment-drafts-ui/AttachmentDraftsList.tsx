@@ -66,6 +66,7 @@ const _style = {
  * Generic renderer of attachment drafts, with menus, etc.
  * Portable across Composer, ChatMessage edit, FollowUps, etc.
  */
+// @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList
 export function AttachmentDraftsList(props: {
   attachmentDraftsStoreApi: AttachmentDraftsStoreApi,
   attachmentDrafts: AttachmentDraft[],

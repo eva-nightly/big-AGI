@@ -5,6 +5,7 @@ import { Avatar } from '@mui/joy';
 import { urlExtractDomain } from '~/common/util/urlUtils';
 
 
+// @uxid src/common/components/AvatarDomainFavicon::AvatarDomainFavicon
 export function AvatarDomainFavicon(props: {
   url: string;
   size?: number;
