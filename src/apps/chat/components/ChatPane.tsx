@@ -61,6 +61,7 @@ const _styles = {
  */
 export const ChatPaneMemo = React.memo(ChatPane);
 
+// @uxid src/apps/chat/components/ChatPane::ChatPane
 function ChatPane(props: {
   paneId: string,
   paneIdx: number,

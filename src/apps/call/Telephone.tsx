@@ -90,6 +90,7 @@ const _chipRowEndSx: SxProps = {
 };
 
 
+// @uxid src/apps/call/Telephone::CallMenu
 function CallMenu(props: {
   pushToTalk: boolean,
   setPushToTalk: (pushToTalk: boolean) => void,
@@ -165,6 +166,7 @@ function CallMenu(props: {
 }
 
 
+// @uxid src/apps/call/Telephone::Telephone
 export function Telephone(props: {
   callIntent: AppCallIntent,
   backToContacts: () => void,

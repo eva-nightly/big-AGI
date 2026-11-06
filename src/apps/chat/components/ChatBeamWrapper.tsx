@@ -38,6 +38,7 @@ const beamWrapperStyles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/ChatBeamWrapper::ChatBeamWrapper
 export function ChatBeamWrapper(props: {
   beamStore: BeamStoreApi,
   isFocused: boolean,
