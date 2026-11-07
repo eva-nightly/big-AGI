@@ -1,0 +1,1825 @@
+# Components
+
+Every row is an applied `// @uxid` identifier. Ids are path-derived and permanent.
+
+| identifier | file | flow | type | description |
+| --- | --- | --- | --- | --- |
+| `pages/_app::Big_AGI_App` | pages/_app.tsx | all | component | Arrow function component. Props: Component, emotionCache, pageProps. Renders: title, meta, Head, ProviderTheming, ProviderSingleTab, ProviderBackendCapabilities, ErrorBoundary, ProviderBootstrapLogic. |
+| `pages/_document::MyDocument` | pages/_document.tsx | all | component | Function component. Props: emotionStyleTags. Renders: meta, link, script, body, Html, Head, InitColorSchemeScript, Main, +1 more. |
+| `pages/dev/debug::AppDebug` | pages/dev/debug.tsx | all | component | Function component. Hooks: useState, useCapabilityBrowserSpeechRecognition, useCapabilityTextToImage. Renders: AppPlaceholder, Box, Button, DownloadIcon, Card, CardContent. |
+| `pages/dev/debug::DebugCard` | pages/dev/debug.tsx | all | component | Function component. Renders: Box, Typography. |
+| `pages/dev/debug::DebugJsonCard` | pages/dev/debug.tsx | all | component | Function component. Renders: DebugCard, Typography. |
+| `pages/link/callback_openrouter::CallbackOpenRouterPage` | pages/link/callback_openrouter.tsx | all | component | Function component. Hooks: useQuery, useEffect. Renders: Box, Typography, InlineError. |
+| `pages/link/share_target::AppShareTarget` | pages/link/share_target.tsx | all | component | Function component. Hooks: useState, useRouterQuery, useCallback, useEffect. Renders: Box, LogoProgress, Typography, Alert, Button, ArrowBackIcon. |
+| `public/closed.html::ClosedPage` | public/closed.html | all | component | Web page at /closed, titled "Closed". 1 interactive element. |
+| `public/dev/index.html::DevPage` | public/dev/index.html | all | component | Web page at /dev, titled "big-AGI dev tools". 5 interactive elements. |
+| `public/dev/inspect/doctor.html::DevInspectDoctorPage` | public/dev/inspect/doctor.html | all | component | Web page at /dev/inspect/doctor, titled "Inspect · Boot Doctor - big-AGI". 5 interactive elements. |
+| `public/dev/inspect/heal.html::DevInspectHealPage` | public/dev/inspect/heal.html | all | component | Web page at /dev/inspect/heal, titled "Inspect · Heal - big-AGI". 7 interactive elements. |
+| `public/dev/inspect/logs.html::DevInspectLogsPage` | public/dev/inspect/logs.html | all | component | Web page at /dev/inspect/logs, titled "Inspect · Logs - big-AGI". 6 interactive elements. |
+| `public/dev/inspect/storage.html::DevInspectStoragePage` | public/dev/inspect/storage.html | all | component | Web page at /dev/inspect/storage, titled "Inspect · Storage - big-AGI". 3 interactive elements. |
+| `src/apps/AppPlaceholder::AppPlaceholder` | src/apps/AppPlaceholder.tsx | all | component | Function component. Hooks: useRouterRoute. Renders: Box, Typography. |
+| `src/apps/AppSmallContainer::AppSmallContainer` | src/apps/AppSmallContainer.tsx | all | component | Function component. Props: title, description, children. Renders: Box, Container, Typography. |
+| `src/apps/beam/AppBeam::AppBeam` | src/apps/beam/AppBeam.tsx | all | component | Function component. Hooks: useState, useEffect, useIsMobile, useBeamStore, useShallow, useCallback, +1 more. Renders: Button, OptimaToolbarIn, Box, BeamView, Typography. |
+| `src/apps/call/AppCall::AppCall` | src/apps/call/AppCall.tsx | all | component | Function component. Hooks: useState, useAppCallStore, useRouterQuery, useEffect. Renders: Sheet, Container, Contacts, CallWizard, Telephone. |
+| `src/apps/call/CallWizard::CallWizard` | src/apps/call/CallWizard.tsx | all | component | Function component. Hooks: useState, useCapabilityBrowserSpeechRecognition, useSpeexGlobalEngine, useChatStore, useUICounter, useCallback. Renders: br, Box, Typography, StatusCard, ChatIcon, Button, MicIcon. |
+| `src/apps/call/CallWizard::StatusCard` | src/apps/call/CallWizard.tsx | all | component | Function component. Renders: Card, CardContent, ListItemDecorator, Typography, WarningRoundedIcon, CheckRoundedIcon. |
+| `src/apps/call/components/CallAvatar::CallAvatar` | src/apps/call/components/CallAvatar.tsx | all | component | Function component. Renders: Avatar, Box. |
+| `src/apps/call/components/CallButton::CallButton` | src/apps/call/components/CallButton.tsx | all | component | Function component. Renders: props.Icon, FormControl, IconButton, Typography. |
+| `src/apps/call/components/CallMessage::CallMessage` | src/apps/call/components/CallMessage.tsx | all | component | Function component. Renders: Chip. |
+| `src/apps/call/components/CallStatus::CallStatus` | src/apps/call/components/CallStatus.tsx | all | component | Function component. Renders: b, Box, Typography, InlineError. |
+| `src/apps/call/Contacts::CallContactCard` | src/apps/call/Contacts.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: Box, Card, ContactCardAvatar, CardContent, Typography, ContactCardConversationCall. |
+| `src/apps/call/Contacts::ContactCardAvatar` | src/apps/call/Contacts.tsx | all | component | Arrow function component. Renders: Avatar, Box. |
+| `src/apps/call/Contacts::ContactCardConversationCall` | src/apps/call/Contacts.tsx | all | component | Arrow function component. Renders: Chip, CallIcon. |
+| `src/apps/call/Contacts::Contacts` | src/apps/call/Contacts.tsx | all | component | Function component. Hooks: useMockPersonas, useAppCallStore, useConversationsByPersona. Renders: OptimaPanelIn, ContactsMenuItems, Box, IconButton, CallIcon, Typography. |
+| `src/apps/call/Contacts::ContactsMenuItems` | src/apps/call/Contacts.tsx | all | component | Function component. Hooks: useAppCallStore. Renders: OptimaPanelGroupedList, MenuItem, ListItemDecorator, Checkbox. |
+| `src/apps/call/Telephone::CallMenu` | src/apps/call/Telephone.tsx | all | component | Function component. Hooks: useAppCallStore, useChatMicTimeoutMsValue, useMemo. Renders: OptimaPanelGroupedList, MenuItem, ListItemDecorator, Checkbox, ListItem, FormChipGroupControl. |
+| `src/apps/call/Telephone::Telephone` | src/apps/call/Telephone.tsx | all | component | Function component. Hooks: useState, useRef, useChatLLMDropdown, useChatStore, useShallow, useCallback, +7 more. Renders: i, br, OptimaToolbarIn, OptimaPanelIn, CallMenu, Box, Typography, CallAvatar. |
+| `src/apps/chat/AppChat::AppChat` | src/apps/chat/AppChat.tsx | all | component | Function component. Hooks: useOverlayComponents, useState, useRef, useIsMobile, useIsTallScreen, useUIComplexityIsMinimal, +8 more. Renders: ConfirmationModal, ChatShortcutsMemo, OptimaToolbarIn, ChatToolbarMemo, OptimaDrawerIn, ChatDrawerMemo. |
+| `src/apps/chat/components/ChatBeamWrapper::ChatBeamWrapper` | src/apps/chat/components/ChatBeamWrapper.tsx | all | component | Function component. Hooks: useBeamStore, useCallback, useMemo. Renders: BeamView, Modal, Box, ScrollToBottom, GoodTooltip, IconButton. |
+| `src/apps/chat/components/ChatCleanupList::ChatCleanupControls` | src/apps/chat/components/ChatCleanupList.tsx | all | component | Function component. Hooks: useOverlayComponents, useMemo, useCallback. Renders: ConfirmationModal, MessagesSelectionHeader, CleanerMessage. |
+| `src/apps/chat/components/ChatMessageList::ChatMessageList` | src/apps/chat/components/ChatMessageList.tsx | all | component | Function component. Hooks: useState, useUIContentScaling, useScrollToBottom, useChatShowSystemMessages, useChatMessageTimestampMode, useChatStore, +9 more. Renders: CMLZeroConversation, Box, PersonaSelector, WhatsNewEmptyChatLine, ERCDiffContextProvider, List. |
+| `src/apps/chat/components/ChatPane::ChatPane` | src/apps/chat/components/ChatPane.tsx | all | component | Function component. Hooks: useTheme, useMemo, useIsBeamOpenForConversation, useCallback. Renders: WorkspaceIdProvider, ErrorBoundary, Panel, PaneTitleOverlayMemo, ScrollToBottom, RenderDecayZone. |
+| `src/apps/chat/components/composer/actile/ActilePopup::ActilePopup` | src/apps/chat/components/composer/actile/ActilePopup.tsx | all | component | Function component. Hooks: useMemo. Renders: item.Icon, span, b, CloseablePopup, ListItem, Typography, React.Fragment, Sheet, +1 more. |
+| `src/apps/chat/components/composer/buttons/ButtonBeam::ButtonBeam` | src/apps/chat/components/composer/buttons/ButtonBeam.tsx | all | component | Function component. Renders: IconButton, ChatBeamIcon, Tooltip, Button. |
+| `src/apps/chat/components/composer/buttons/ButtonCall::ButtonCall` | src/apps/chat/components/composer/buttons/ButtonCall.tsx | all | component | Function component. Renders: IconButton, CallIcon, Tooltip, Button. |
+| `src/apps/chat/components/composer/buttons/ButtonGroupDrawRepeat::ButtonGroupDrawRepeat` | src/apps/chat/components/composer/buttons/ButtonGroupDrawRepeat.tsx | all | component | Function component. Renders: FormControl, Box, IconButton. |
+| `src/apps/chat/components/composer/buttons/ButtonMic::ButtonMic` | src/apps/chat/components/composer/buttons/ButtonMic.tsx | all | component | Function component. Renders: GoodTooltip, IconButton, MicIcon. |
+| `src/apps/chat/components/composer/buttons/ButtonMicContinuation::ButtonMicContinuation` | src/apps/chat/components/composer/buttons/ButtonMicContinuation.tsx | all | component | Function component. Renders: Tooltip, IconButton, RepeatOnIcon, RepeatIcon. |
+| `src/apps/chat/components/composer/buttons/ButtonMultiChat::ButtonMultiChat` | src/apps/chat/components/composer/buttons/ButtonMultiChat.tsx | all | component | Function component. Renders: IconButton, ChatMulticastOnIcon, FormControl, FormLabel, Box, ChatMulticastOffIcon. |
+| `src/apps/chat/components/composer/buttons/ButtonOptionsDraw::ButtonOptionsDraw` | src/apps/chat/components/composer/buttons/ButtonOptionsDraw.tsx | all | component | Function component. Renders: IconButton, FormatPaintTwoToneIcon, Button, PhSlidersHorizontalIcon. |
+| `src/apps/chat/components/composer/Composer::Composer` | src/apps/chat/components/composer/Composer.tsx | all | component | Function component. Hooks: useState, useChatExecuteMode, useRef, useOverlayComponents, useRouterQuery, useUXLabsStore, +30 more. Renders: span, ConfirmationModal, SendIcon, PsychologyIcon, ChatBeamIcon, PhPaintBrush, TelegramIcon. |
+| `src/apps/chat/components/composer/composer.input-enhancers::VideoUrlDisabledHint` | src/apps/chat/components/composer/composer.input-enhancers.tsx | all | component | Function component. Props: props: AttachmentEnhancerHintItem. Hooks: useModelsStore. Renders: img, Box, PlayArrowRoundedIcon, Typography, Button, IconButton, CloseRoundedIcon. |
+| `src/apps/chat/components/composer/composer.input-enhancers::VideoUrlPendingChip` | src/apps/chat/components/composer/composer.input-enhancers.tsx | all | component | Function component. Renders: img, Box, PlayArrowRoundedIcon, YouTubeIcon, Tooltip, Typography, IconButton. |
+| `src/apps/chat/components/composer/ComposerDock::ComposerDock` | src/apps/chat/components/composer/ComposerDock.tsx | all | component | Function component. Hooks: useState, useIsBeamOpenForConversation, useLiveSvgStore, useOptimaChromeless, useComposerAutoHide, useMemo. Renders: div, Box. |
+| `src/apps/chat/components/composer/llmattachments/ComposerAttachmentDraftsList::ComposerAttachmentDraftsList` | src/apps/chat/components/composer/llmattachments/ComposerAttachmentDraftsList.tsx | all | component | Function component. Hooks: useMemo, useCallback. Renders: LLMAttachmentsPromptsButtonMemo, MessageFragmentOrderControl, ListDivider, AttachmentDraftsList, Box. |
+| `src/apps/chat/components/composer/llmattachments/LLMAttachmentsPromptsButton::LLMAttachmentsPromptsButton` | src/apps/chat/components/composer/llmattachments/LLMAttachmentsPromptsButton.tsx | all | component | Function component. Props: data. Renders: Box, BigAgiSquircleIcon, IconButton, CircularProgress, AutoFixHighIcon, GoodTooltip. |
+| `src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::MessageFragmentOrderControl` | src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl.tsx | all | component | Function component. Hooks: useDndDefaultSensors, useUserMessageFragmentPlacement, useMemo, useCallback. Renders: Box, Typography, Button, DndContext, SortableContext, SortableGroupRow. |
+| `src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::SortableGroupRow` | src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl.tsx | all | component | Function component. Hooks: useDndDragHandleSortable. Renders: Box, ListItemDecorator, Icon. |
+| `src/apps/chat/components/composer/textarea/ComposerTextAreaActions::ComposerTextAreaActions` | src/apps/chat/components/composer/textarea/ComposerTextAreaActions.tsx | all | component | Function component. Renders: Box, Button. |
+| `src/apps/chat/components/composer/textarea/ComposerTextAreaDrawActions::ComposerTextAreaDrawActions` | src/apps/chat/components/composer/textarea/ComposerTextAreaDrawActions.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: Box, Button, AutoFixHighIcon. |
+| `src/apps/chat/components/composer/tokens/TokenBadge::TokenBadge` | src/apps/chat/components/composer/tokens/TokenBadge.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: TokenTooltip, Badge. |
+| `src/apps/chat/components/composer/tokens/TokenProgressbar::TokenProgressbar` | src/apps/chat/components/composer/tokens/TokenProgressbar.tsx | all | component | Function component. Hooks: useTheme. Renders: TokenTooltip, Box. |
+| `src/apps/chat/components/composer/tokens/TokenTooltip::TokenTooltip` | src/apps/chat/components/composer/tokens/TokenTooltip.tsx | all | component | Function component. Hooks: useUIContentScaling. Renders: Tooltip, Box. |
+| `src/apps/chat/components/Ephemerals::EphemeralItem` | src/apps/chat/components/Ephemerals.tsx | all | component | Function component. Hooks: useCallback. Renders: Box, Typography, IconButton, VerticalSplitIcon, VerticalSplitOutlinedIcon, MaximizeIcon. |
+| `src/apps/chat/components/Ephemerals::Ephemerals` | src/apps/chat/components/Ephemerals.tsx | all | component | Function component. Hooks: useUIPreferencesStore. Renders: Sheet, EphemeralItem. |
+| `src/apps/chat/components/Ephemerals::ListRenderer` | src/apps/chat/components/Ephemerals.tsx | all | component | Function component. Props: name, list. Renders: b, StateLine. |
+| `src/apps/chat/components/Ephemerals::ObjectRenderer` | src/apps/chat/components/Ephemerals.tsx | all | component | Function component. Props: name. Renders: b, i, StateLine. |
+| `src/apps/chat/components/Ephemerals::PrimitiveRender` | src/apps/chat/components/Ephemerals.tsx | all | component | Function component. Props: name, value. Renders: b, i, StateLine. |
+| `src/apps/chat/components/Ephemerals::StateRenderer` | src/apps/chat/components/Ephemerals.tsx | all | component | Function component. Renders: pre, Box, ScaledTextBlockRenderer, Typography, PrimitiveRender, ListRenderer, ObjectRenderer. |
+| `src/apps/chat/components/layout-bar/ChatBarAltTitle::ChatBarAltTitle` | src/apps/chat/components/layout-bar/ChatBarAltTitle.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: Box, Typography, FadeInButton, AutoFixHighIcon. |
+| `src/apps/chat/components/layout-bar/ChatBarBeam::ChatBarBeam` | src/apps/chat/components/layout-bar/ChatBarBeam.tsx | all | component | Function component. Hooks: useState, useBeamStore, useShallow, useCallback, useGlobalShortcuts, useMemo. Renders: Box, GoodTooltip, IconButton, ChatBarBreadcrumbs, Typography, KeyStroke. |
+| `src/apps/chat/components/layout-bar/ChatBarBreadcrumbs::ChatBarBreadcrumbs` | src/apps/chat/components/layout-bar/ChatBarBreadcrumbs.tsx | all | component | Function component. Hooks: useEditableConversationTitle. Renders: InlineTextarea, Box, TooltipOutlined, AppBreadcrumbs. |
+| `src/apps/chat/components/layout-bar/ChatBarChat::ChatBarChat` | src/apps/chat/components/layout-bar/ChatBarChat.tsx | all | component | Function component. Hooks: useChatShowToolbarNavigation, useConversationTitle, useChatLLMDropdown, usePersonaIdDropdown, useFolderDropdown. Renders: ChatBarBreadcrumbs. |
+| `src/apps/chat/components/layout-bar/ChatToolbar::ChatToolbar` | src/apps/chat/components/layout-bar/ChatToolbar.tsx | all | component | Function component. Hooks: useMemo, useConversationTitle, useIsBeamOpenForConversation. Renders: ChatBarBeam, ChatBarChat. |
+| `src/apps/chat/components/layout-bar/useLLMDropdown::LLMDropdown` | src/apps/chat/components/layout-bar/useLLMDropdown.tsx | all | component | Function component. Hooks: useState, useUIComplexityMode, useCallback, useRef, useMemo. Renders: GoodTooltip, Box, KeyStroke, IconButton, PhGearSixIcon, DebouncedInputMemo. |
+| `src/apps/chat/components/layout-bar/usePersonaDropdown::PersonaDropdown` | src/apps/chat/components/layout-bar/usePersonaDropdown.tsx | all | component | Function component. Hooks: usePurposeStore, useUIComplexityIsMinimal, useMemo, useCallback. Renders: OptimaBarDropdownMemo. |
+| `src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer` | src/apps/chat/components/layout-drawer/ChatDrawer.tsx | all | component | Function component. Hooks: useState, useChatDrawerFilters, useChatFolderActive, useChatDrawerRenderItems, useUIPreferencesStore, useShallow, +5 more. Renders: Dropdown, MenuButton, MoreVertIcon, Menu, ListItem, Typography. |
+| `src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem` | src/apps/chat/components/layout-drawer/ChatDrawerItem.tsx | all | component | Function component. Hooks: useState, useEffect, useCallback, useMemo. Renders: em, ListItemDecorator, ChatBeamIcon, Avatar, VisibilityOffIcon, TelegramIcon, Typography. |
+| `src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::ChatDrawerStorageWarning` | src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning.tsx | all | component | Function component. Hooks: useState, useChatStorageWarning, useCallback. Renders: Box, Typography, IconButton, CloseRoundedIcon, StorageWarningConfirmationModal. |
+| `src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::StorageWarningConfirmationModal` | src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning.tsx | all | component | Function component. Hooks: useState. Renders: b, GoodModal, ModalClose, Box, Typography, Input, Button. |
+| `src/apps/chat/components/layout-drawer/folders/ChatFolderList::ChatFolderList` | src/apps/chat/components/layout-drawer/folders/ChatFolderList.tsx | all | component | Function component. Hooks: useState, useDndDefaultSensors, useMemo, useCallback. Renders: Box, List, ListItem, ListItemButton, CreateNewFolderOutlinedIcon, ListItemDecorator. |
+| `src/apps/chat/components/layout-drawer/folders/FolderListItem::FolderListItem` | src/apps/chat/components/layout-drawer/folders/FolderListItem.tsx | all | component | Function component. Hooks: useState, useSortable, useCallback. Renders: span, ListItem, IconButton, MoreVertIcon, ListItemButton, ListItemDecorator, FolderIcon. |
+| `src/apps/chat/components/layout-panel/ActionFolder::ActionFolder` | src/apps/chat/components/layout-panel/ActionFolder.tsx | all | component | Function component. Props: conversationId, disabled. Hooks: useState, useChatFoldersForConversation, useCallback. Renders: span, MenuItem, ListItemDecorator, ButtonIcon, FoldersSelectPopup. |
+| `src/apps/chat/components/layout-panel/ChatPanel::ChatPanel` | src/apps/chat/components/layout-panel/ChatPanel.tsx | all | component | Function component. Hooks: useChatShowSystemMessages, useChatStore, useShallow, useCallback. Renders: b, OptimaPanelGroupedList, WindowSplitControls, ChromelessItemButton, Box, MenuItem, ListItemDecorator. |
+| `src/apps/chat/components/layout-panel/ChatPanel::VariformPaneFrame` | src/apps/chat/components/layout-panel/ChatPanel.tsx | all | component | Function component. Renders: OptimaPanelGroupGutter, Typography, Box. |
+| `src/apps/chat/components/layout-panel/WindowSplitControls::WindowSplitControls` | src/apps/chat/components/layout-panel/WindowSplitControls.tsx | all | component | Function component. Hooks: usePaneDuplicateOrClose, useCallback. Renders: ListItem, Tooltip, IconButton, AddIcon, ListItemButton, ListItemDecorator. |
+| `src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator` | src/apps/chat/components/live-svg/LiveSvgAnimator.tsx | all | component | Function component. Hooks: useLiveSvgStore, useShallow, useRef, useEffect, useState, useLLM, +2 more. Renders: Box, Typography, Textarea, Tooltip, Chip, Button. |
+| `src/apps/chat/components/live-svg/LiveSvgAnimator::Stat` | src/apps/chat/components/live-svg/LiveSvgAnimator.tsx | all | component | Function component. Renders: Box, Typography. |
+| `src/apps/chat/components/live-svg/LiveSvgAnimator::TpsSparkline` | src/apps/chat/components/live-svg/LiveSvgAnimator.tsx | all | component | Function component. Renders: Box, Typography. |
+| `src/apps/chat/components/message/BlockOpContinue::BlockOpContinue` | src/apps/chat/components/message/BlockOpContinue.tsx | all | component | Function component. Renders: Box, ScaledTextBlockRenderer, Chip. |
+| `src/apps/chat/components/message/BlockOpOptions::BlockOpOptions` | src/apps/chat/components/message/BlockOpOptions.tsx | all | component | Function component. Hooks: useMemo. Renders: Box, Button. |
+| `src/apps/chat/components/message/BlockOpResolveVertexAILinks::BlockOpResolveVertexAILinks` | src/apps/chat/components/message/BlockOpResolveVertexAILinks.tsx | all | component | Function component. Hooks: useMutation. Renders: Box, Chip, CircularProgress, LinkIcon. |
+| `src/apps/chat/components/message/BlockOpUpstreamResume::BlockOpUpstreamResume` | src/apps/chat/components/message/BlockOpUpstreamResume.tsx | all | component | Function component. Hooks: useState, useCallback, useEffect. Renders: Box, ButtonGroup, Tooltip, Button, PlayArrowRoundedIcon, DownloadIcon. |
+| `src/apps/chat/components/message/ChatMessage::ChatMessage` | src/apps/chat/components/message/ChatMessage.tsx | all | component | Function component. Hooks: useRef, useState, useUIPreferencesStore, useShallow, useERCDiffActions, useUXLabsStore, +8 more. Renders: Box, CMMobileHeader, Button, CloseRoundedIcon, CheckRoundedIcon, CMDesktopAvatar. |
+| `src/apps/chat/components/message/ChatMessage::CMDesktopAvatar` | src/apps/chat/components/message/ChatMessage.tsx | all | component | Wrapped component. Renders: Box, IconButton, MoreVertIcon, TooltipOutlined, Typography. |
+| `src/apps/chat/components/message/ChatMessage::CMMobileHeader` | src/apps/chat/components/message/ChatMessage.tsx | all | component | Wrapped component. Renders: Box, Typography, TimeAgo, Button, CloseRoundedIcon, CheckRoundedIcon. |
+| `src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble` | src/apps/chat/components/message/ChatMessageBubble.tsx | all | component | Function component. Hooks: useCallback. Renders: Popper, ClickAwayListener, Box, Tooltip, IconButton, ReplyAllRoundedIcon. |
+| `src/apps/chat/components/message/ChatMessageInfoPopup::ChatMessageInfoPopup` | src/apps/chat/components/message/ChatMessageInfoPopup.tsx | all | component | Function component. Hooks: useLLMExists, useCallback. Renders: div, GoodModal, Box, VendorIcon, Typography, Link, TooltipOutlined. |
+| `src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu` | src/apps/chat/components/message/ChatMessageMenu.tsx | all | component | Function component. Hooks: useUIPreferencesStore, useSubMenuHost, useCallback. Renders: span, SubMenuHost, CloseablePopup, ListItem, Typography, Box, TooltipOutlined. |
+| `src/apps/chat/components/message/ChatMessageTimestamp::ChatMessageTimestamp` | src/apps/chat/components/message/ChatMessageTimestamp.tsx | all | component | Function component. Renders: time, span, Typography. |
+| `src/apps/chat/components/message/CleanerMessage::CleanerMessage` | src/apps/chat/components/message/CleanerMessage.tsx | all | component | Function component. Hooks: useCallback, useMemo. Renders: span, ListItem, Box, Checkbox, TokenBadgeMemo, Chip, TextFieldsIcon. |
+| `src/apps/chat/components/message/CleanerMessage::MessagesSelectionHeader` | src/apps/chat/components/message/CleanerMessage.tsx | all | component | Arrow function component. Renders: Sheet, Checkbox, Box, Button, VisibilityIcon, VisibilityOffIcon. |
+| `src/apps/chat/components/message/CMEditAttach::CMEditAttach` | src/apps/chat/components/message/CMEditAttach.tsx | all | component | Function component. Hooks: useState, useEffect, useAttachmentDrafts, useBrowseCapability, useAttachHandler_Files, useAttachHandler_CameraOpen, +4 more. Renders: AttachmentSourcesMemo, AttachmentDraftsList, Button, CheckRoundedIcon, Divider, Box. |
+| `src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton::DocAttachmentDeleteButton` | src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton.tsx | all | component | Function component. Renders: Box, ConfirmIconButton. |
+| `src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton::DocAttachmentFragmentButton` | src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton.tsx | all | component | Function component. Hooks: useLiveFileMetadata, useCallback, useMemo. Renders: span, Box, Button, Icon, TooltipOutlined, LiveFileIcon, DocAttachmentDeleteButton. |
+| `src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane::DocAttachmentFragmentPane` | src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane.tsx | all | component | Wrapped component. Hooks: useState, useContextWorkspaceId, useScrollToBottom, useCallback, useLiveFileSync, useArmedConfirm, +1 more. Renders: div, Box, Switch, Tooltip, TitleIcon, Typography, InlineTextarea. |
+| `src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::DocumentAttachmentFragments` | src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments.tsx | all | component | Wrapped component. Hooks: useState, useDndDefaultSensors, useMemo, useCallback, useEffect. Renders: Box, DocAttachmentFragmentButton, Button, DndContext, SortableContext, SortableDocAttachmentButton. |
+| `src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::SortableDocAttachmentButton` | src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments.tsx | all | component | Function component. Hooks: useDndDragHandleSortable. Renders: Box, DocAttachmentFragmentButton. |
+| `src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/LiveFileControlButton::LiveFileControlButton` | src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/LiveFileControlButton.tsx | all | component | Function component. Hooks: useCallback, useDragDropDataTransfer. Renders: Box, TooltipOutlined, Button, LiveFileIcon, LiveFileChooseIcon. |
+| `src/apps/chat/components/message/fragments-attachment-edit/EditAttachmentFragments::EditAttachmentFragments` | src/apps/chat/components/message/fragments-attachment-edit/EditAttachmentFragments.tsx | all | component | Function component. Hooks: useState, useRef, useDndDefaultSensors, useMemo, useCallback. Renders: Sheet, Box, DndContext, SortableContext, SortableImageAttachmentCard, SortableDocAttachmentButton. |
+| `src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentCard` | src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments.tsx | all | component | Function component. Renders: strong, Box, RenderImageRefDBlob, ImageTitleEditorOverlay, Typography. |
+| `src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentFragments` | src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments.tsx | all | component | Function component. Hooks: useState, useDndDefaultSensors, useMemo, useCallback. Renders: Box, ImageAttachmentCard, DndContext, SortableContext, SortableImageAttachmentCard, ViewImageRefPartModal. |
+| `src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageTitleEditorOverlay` | src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments.tsx | all | component | Function component. Hooks: useState, useRef, useCallback. Renders: Sheet, Input, Typography. |
+| `src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::SortableImageAttachmentCard` | src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments.tsx | all | component | Function component. Hooks: useDndDragHandleSortable. Renders: Box, ImageAttachmentCard. |
+| `src/apps/chat/components/message/fragments-content/BlockEdit_TextFragment::BlockEdit_TextFragment` | src/apps/chat/components/message/fragments-content/BlockEdit_TextFragment.tsx | all | component | Function component. Hooks: useState, useRef, useEffect, useUIPreferencesStore, useCallback, useGlobalShortcuts, +1 more. Renders: small, BlocksTextarea. |
+| `src/apps/chat/components/message/fragments-content/BlockOpEmpty::BlockOpEmpty` | src/apps/chat/components/message/fragments-content/BlockOpEmpty.tsx | all | component | Function component. Hooks: useOverlayComponents, useCallback. Renders: ConfirmationModal, Box, ScaledTextBlockRenderer, Chip, DeleteForeverIcon. |
+| `src/apps/chat/components/message/fragments-content/BlockPartError_NetDisconnected::BlockPartError_NetDisconnected` | src/apps/chat/components/message/fragments-content/BlockPartError_NetDisconnected.tsx | all | component | Function component. Hooks: useLLM, useModelServiceClientSideFetch. Renders: div, strong, li, Alert, Box, WifiOffRoundedIcon, FormHelperText, Switch. |
+| `src/apps/chat/components/message/fragments-content/BlockPartError_RequestExceeded::BlockPartError_RequestExceeded` | src/apps/chat/components/message/fragments-content/BlockPartError_RequestExceeded.tsx | all | component | Function component. Hooks: useLLM, useModelServiceClientSideFetch. Renders: div, strong, li, Alert, WarningRoundedIcon, Box, FormHelperText, Switch. |
+| `src/apps/chat/components/message/fragments-content/BlockPartError::BlockPartError` | src/apps/chat/components/message/fragments-content/BlockPartError.tsx | all | component | Function component. Renders: BlockPartError_NetDisconnected, BlockPartError_RequestExceeded, ScaledTextBlockRenderer. |
+| `src/apps/chat/components/message/fragments-content/BlockPartHostedResource::AnthropicFileChip` | src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx | all | component | Function component. Hooks: useState, useOverlayComponents, useAIPreferencesStore, useQuery, useCallback. Renders: br, b, div, ConfirmationModal, HostedFileChip, TimeAgo, MenuItem, ListItemDecorator, +1 more. |
+| `src/apps/chat/components/message/fragments-content/BlockPartHostedResource::BlockPartHostedResource` | src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx | all | component | Function component. Hooks: useCallback, useLlmServiceAccess. Renders: UrlVideoChip, AnthropicFileChip, OpenAIContainerFileChip, GeminiFileChip, NoAccessChip. |
+| `src/apps/chat/components/message/fragments-content/BlockPartHostedResource::GeminiFileChip` | src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx | all | component | Function component. Hooks: useState, useQuery, useCallback. Renders: HostedFileChip, TimeAgo, HostedFileChipButton, PlayArrowRoundedIcon. |
+| `src/apps/chat/components/message/fragments-content/BlockPartHostedResource::NoAccessChip` | src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx | all | component | Function component. Renders: Sheet, AttachFileRoundedIcon, Typography. |
+| `src/apps/chat/components/message/fragments-content/BlockPartHostedResource::OpenAIContainerFileChip` | src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx | all | component | Function component. Hooks: useState, useCallback, useQuery, useHostedLinkRegister, useEffect. Renders: span, HostedFileChip. |
+| `src/apps/chat/components/message/fragments-content/BlockPartHostedResource::UrlVideoChip` | src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx | all | component | Function component. Renders: img, Sheet, PlayArrowRoundedIcon, GoodTooltip, Typography, IconButton, VisibilityOffOutlinedIcon. |
+| `src/apps/chat/components/message/fragments-content/BlockPartImageRef::BlockPartImageRef` | src/apps/chat/components/message/fragments-content/BlockPartImageRef.tsx | all | component | Function component. Hooks: useState, useCallback, useMemo. Renders: BlocksContainer, RenderImageRefDBlob, RenderImageURL, ViewImageRefPartModal. |
+| `src/apps/chat/components/message/fragments-content/BlockPartText_AutoBlocks::BlockPartText_AutoBlocks` | src/apps/chat/components/message/fragments-content/BlockPartText_AutoBlocks.tsx | all | component | Function component. Hooks: useCallback. Renders: AutoBlocksRenderer. |
+| `src/apps/chat/components/message/fragments-content/BlockPartToolInvocation::BlockPartToolInvocation` | src/apps/chat/components/message/fragments-content/BlockPartToolInvocation.tsx | all | component | Function component. Hooks: useState, useScaledTypographySx, useMemo, useCallback. Renders: div, BlocksContainer, Box, Sheet, IconButton, KeyboardArrowDownIcon, KeyboardArrowRightIcon. |
+| `src/apps/chat/components/message/fragments-content/BlockPartToolInvocation::KeyValueGrid` | src/apps/chat/components/message/fragments-content/BlockPartToolInvocation.tsx | all | component | Function component. Hooks: useMemo. Renders: div, Box, React.Fragment. |
+| `src/apps/chat/components/message/fragments-content/BlockPartToolResponse::BlockPartToolResponse` | src/apps/chat/components/message/fragments-content/BlockPartToolResponse.tsx | all | component | Function component. Hooks: useState, useScaledTypographySx, useMemo, useCallback. Renders: BlocksContainer, Box, Sheet, IconButton, KeyboardArrowDownIcon, KeyboardArrowRightIcon. |
+| `src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChip` | src/apps/chat/components/message/fragments-content/HostedFileChip.tsx | all | component | Function component. Renders: span, div, Sheet, AttachFileRoundedIcon, Box, TooltipOutlined, GoodTooltip, IconButton. |
+| `src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChipButton` | src/apps/chat/components/message/fragments-content/HostedFileChip.tsx | all | component | Function component. Renders: GoodTooltip, IconButton, CircularProgress. |
+| `src/apps/chat/components/message/fragments-void/BlockPartModelAnnotations::BlockPartModelAnnotations` | src/apps/chat/components/message/fragments-void/BlockPartModelAnnotations.tsx | all | component | Function component. Hooks: useState, useScaledTypographySx, useCallback, useRef, useMemo. Renders: span, div, Box, Button, TooltipOutlined, AvatarDomainFavicon, Chip, ContentCopyIcon. |
+| `src/apps/chat/components/message/fragments-void/BlockPartModelAux::BlockPartModelAux` | src/apps/chat/components/message/fragments-void/BlockPartModelAux.tsx | all | component | Function component. Hooks: useState, useOverlayComponents, useRef, useMemo, useScaledTypographySx, useCallback. Renders: br, AutoBlocksRenderer, ConfirmationModal, Box, Chip, AllInclusiveIcon, TextFieldsIcon. |
+| `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::BlockPartPlaceholder` | src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx | all | component | Function component. Props: placeholderPart, contentScaling, messagePendingIncomplete, showAsDataStreamViz, zenMode, showNotices, +2 more. Hooks: useState, useEffect. Renders: DataStreamViz, RenderChipFollowUp, RenderChipAixControl, RenderDividerNotice, RenderChipNotice, RenderChipListModelOps. |
+| `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::ModelOperationChip` | src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx | all | component | Function component. Hooks: useState, useVertexLinksForDisplay, useEffect, useMemo. Renders: span, div, Chip, CloseRoundedIcon, CheckRoundedIcon, Icon, Tooltip, RenderCodeMemo. |
+| `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::OperationsHarakiriChip` | src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx | all | component | Function component. Hooks: useCallback, useMemo. Renders: Chip, ClearAllIcon. |
+| `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipAixControl` | src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx | all | component | Function component. Props: aixControl, text. Renders: div, Chip, Icon. |
+| `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipFollowUp` | src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx | all | component | Function component. Renders: Chip, HourglassEmptyIcon. |
+| `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipListModelOps` | src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx | all | component | Function component. Hooks: useMemo. Renders: div, BlocksContainer, Box, ModelOperationChip, OperationsHarakiriChip. |
+| `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipNotice` | src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx | all | component | Function component. Props: text, detail, warn, fragmentId, onFragmentDelete. Renders: Chip, WarningRoundedIcon, InfoOutlinedIcon, ChipDelete, Tooltip, RenderNoticeDetail. |
+| `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderDividerNotice` | src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx | all | component | Function component. Props: text, detail. Renders: div, Chip, PauseRoundedIcon, Box, Divider, TooltipOutlined. |
+| `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderNoticeDetail` | src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx | all | component | Function component. Props: detail. Renders: div, span, Box. |
+| `src/apps/chat/components/message/in-reference-to/InReferenceToBubble::InReferenceToBubble` | src/apps/chat/components/message/in-reference-to/InReferenceToBubble.tsx | all | component | Function component. Hooks: useCallback. Renders: Box, Tooltip, ReplyRoundedIcon, Typography, IconButton, CloseRoundedIcon. |
+| `src/apps/chat/components/message/in-reference-to/InReferenceToList::InReferenceToList` | src/apps/chat/components/message/in-reference-to/InReferenceToList.tsx | all | component | Function component. Renders: Box, InReferenceToBubble. |
+| `src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMCitationsNode` | src/apps/chat/components/message/render-tree/CMRenderTreeNodes.tsx | all | component | Wrapped component. Hooks: useMemo. Renders: BlockPartModelAnnotations. |
+| `src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMReasoningNode` | src/apps/chat/components/message/render-tree/CMRenderTreeNodes.tsx | all | component | Wrapped component. Hooks: useMemo, useCallback. Renders: BlockPartModelAuxMemo. |
+| `src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes` | src/apps/chat/components/message/render-tree/CMRenderTreeNodes.tsx | all | component | Function component. Hooks: useMemo, useDndDefaultSensors, useCallback. Renders: CMEditAttach, BlockPartImageRef, BlockPartError, CMCitationsNode, ImageAttachmentFragments, DocumentAttachmentFragments. |
+| `src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMSortableBlock` | src/apps/chat/components/message/render-tree/CMRenderTreeNodes.tsx | all | component | Function component. Hooks: useDndDragHandleSortable, useOverlayComponents. Renders: IconButton, ConfirmationModal, DeleteOutlineIcon, Box. |
+| `src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMTextNode` | src/apps/chat/components/message/render-tree/CMRenderTreeNodes.tsx | all | component | Wrapped component. Renders: BlockPartText_AutoBlocksMemo. |
+| `src/apps/chat/components/messages-list/CMLZeroConversation::CMLZeroConversation` | src/apps/chat/components/messages-list/CMLZeroConversation.tsx | all | component | Function component. Renders: Box, Sheet, Typography, Button, AddIcon. |
+| `src/apps/chat/components/PaneTitleOverlay::PaneTitleOverlay` | src/apps/chat/components/PaneTitleOverlay.tsx | all | component | Function component. Hooks: useState, useConversationTitle, useCallback. Renders: Sheet, IconButton, OpenInFullIcon, InlineTextarea, Box, TooltipOutlined. |
+| `src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector` | src/apps/chat/components/persona-selector/PersonaSelector.tsx | all | component | Function component. Hooks: useState, useUIPreferencesStore, useShallow, useChipBoolean, useChatStore, usePurposeStore, +3 more. Renders: Box, Input, SearchIcon, IconButton, ClearIcon, Typography. |
+| `src/apps/chat/components/persona-selector/PersonaSelector::Tile` | src/apps/chat/components/persona-selector/PersonaSelector.tsx | all | component | Function component. Renders: div, Button, Checkbox, Avatar. |
+| `src/apps/chat/components/StatusBar::ShortcutItem` | src/apps/chat/components/StatusBar.tsx | all | component | Function component. Hooks: useCallback. Renders: span, props.shortcut.startDecoratorIcon, props.shortcut.endDecoratorIcon, Box, Typography. |
+| `src/apps/chat/components/StatusBar::StatusBar` | src/apps/chat/components/StatusBar.tsx | all | component | Function component. Hooks: useOverlayComponents, useUXLabsStore, useGlobalShortcutsStore, useShallow, useCallback. Renders: ConfirmationModal, Box, GoodTooltip, IconButton, CloseRoundedIcon, ExpandLessIcon. |
+| `src/apps/chat/execute-mode/ExecuteModeMenu::ExecuteModeMenu` | src/apps/chat/execute-mode/ExecuteModeMenu.tsx | all | component | Function component. Hooks: useUIPreferencesStore. Renders: CloseablePopup, MenuItem, Box, Radio, Typography, KeyStroke. |
+| `src/apps/diff/AppDiff::AppDiff` | src/apps/diff/AppDiff.tsx | all | component | Function component. Hooks: useState, useIsMobile, useUIContentScaling, useWordsDifference, useCallback, useMemo. Renders: div, b, AppSmallContainer, Box, FormControl, FormLabelStart, ButtonAttachFilesMemo, Textarea. |
+| `src/apps/draw/AppDraw::AppDraw` | src/apps/draw/AppDraw.tsx | all | component | Function component. Hooks: useState, useIsMobile, useProcessingQueue, useCapabilityTextToImage, useDrawSectionDropdown. Renders: OptimaToolbarIn, DrawCreate, DrawGallery. |
+| `src/apps/draw/create/ButtonPromptFromIdea::ButtonPromptFromIdea` | src/apps/draw/create/ButtonPromptFromIdea.tsx | all | component | Function component. Hooks: useCallback. Renders: ButtonGroup, Tooltip, Button, LightbulbOutlinedIcon, IconButton, ArrowForwardRoundedIcon. |
+| `src/apps/draw/create/ButtonPromptFromX::ButtonPromptFromX` | src/apps/draw/create/ButtonPromptFromX.tsx | all | component | Function component. Renders: Button, ChatOutlinedIcon, InsertPhotoOutlinedIcon. |
+| `src/apps/draw/create/DrawProviderConfigure::DrawProviderConfigure` | src/apps/draw/create/DrawProviderConfigure.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: Box, ExpanderControlledBox, Card, CardContent, T2IEngineProfileEditor, DrawProviderSelector. |
+| `src/apps/draw/create/DrawProviderSelector::DrawProviderSelector` | src/apps/draw/create/DrawProviderSelector.tsx | all | component | Function component. Hooks: useMemo. Renders: option.Icon, FormControl, FormLabel, Select, KeyboardArrowDownIcon, Option, ListItemDecorator. |
+| `src/apps/draw/create/DrawSectionHeading::DrawSectionHeading` | src/apps/draw/create/DrawSectionHeading.tsx | all | component | Function component. Renders: div, Card, CardOverflow, AspectRatio, FormatPaintTwoToneIcon, Box, Typography. |
+| `src/apps/draw/create/PromptComposer::PromptComposer` | src/apps/draw/create/PromptComposer.tsx | all | component | Function component. Hooks: useState, useDrawIdeas, useUIPreferencesStore, useCallback, useMemo. Renders: Box, Button, AutoFixHighIcon, ButtonGroup, IconButton, RemoveIcon. |
+| `src/apps/draw/create/ZeroDrawConfig::ZeroDrawConfig` | src/apps/draw/create/ZeroDrawConfig.tsx | all | component | Function component. Hooks: useCallback. Renders: strong, br, Card, CardContent, Typography, CardActions, Button. |
+| `src/apps/draw/create/ZeroGenerations::ZeroGenerations` | src/apps/draw/create/ZeroGenerations.tsx | all | component | Function component. Renders: Card, Typography. |
+| `src/apps/draw/DrawCreate::DrawCreate` | src/apps/draw/DrawCreate.tsx | all | component | Function component. Hooks: useState, useProcessingQueue, useCallback. Renders: Box, DrawSectionHeading, ScrollToBottom, ZeroGenerations, ZeroDrawConfig, ScrollToBottomButton. |
+| `src/apps/draw/DrawGallery::DrawGallery` | src/apps/draw/DrawGallery.tsx | all | component | Function component. Hooks: useDBAssetsByScopeAndType. Renders: thead, tr, th, tbody, td, picture, Box, Table, +1 more. |
+| `src/apps/draw/gallery/ZeroGallery::ZeroGallery` | src/apps/draw/gallery/ZeroGallery.tsx | all | component | Function component. Hooks: useIsMobile, useUIContentScaling. Renders: Card, ScaledTextBlockRenderer. |
+| `src/apps/draw/useDrawSectionDropdown::DrawSectionDropdown` | src/apps/draw/useDrawSectionDropdown.tsx | all | component | Function component. Hooks: useCallback. Renders: OptimaBarDropdownMemo. |
+| `src/apps/link-chat/AppLinkChat::AppLinkChat` | src/apps/link-chat/AppLinkChat.tsx | all | component | Function component. Hooks: useState, useSharedChatLinkItems, useQuery, useCallback. Renders: title, Head, OptimaDrawerIn, LinkChatDrawer, OptimaPanelIn, LinkChatAppMenuItems, ListPlaceholder. |
+| `src/apps/link-chat/AppLinkChat::Centerer` | src/apps/link-chat/AppLinkChat.tsx | all | component | Arrow function component. Renders: Box. |
+| `src/apps/link-chat/AppLinkChat::ListPlaceholder` | src/apps/link-chat/AppLinkChat.tsx | all | component | Arrow function component. Renders: Box, Card, CardContent, Typography. |
+| `src/apps/link-chat/AppLinkChat::ShowError` | src/apps/link-chat/AppLinkChat.tsx | all | component | Arrow function component. Renders: Centerer, InlineError. |
+| `src/apps/link-chat/AppLinkChat::ShowLoading` | src/apps/link-chat/AppLinkChat.tsx | all | component | Arrow function component. Renders: Centerer, LogoProgress, Typography. |
+| `src/apps/link-chat/LinkChatAppMenuItems::LinkChatAppMenuItems` | src/apps/link-chat/LinkChatAppMenuItems.tsx | all | component | Function component. Hooks: useChatShowSystemMessages, useCallback. Renders: OptimaPanelGroupedList, MenuItem, Typography, Switch, SettingUIComplexity, SettingUIContentScaling. |
+| `src/apps/link-chat/LinkChatDrawer::LinkChatDrawer` | src/apps/link-chat/LinkChatDrawer.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: OptimaDrawerHeader, OptimaDrawerList, ListItem, Typography, Box, ListItemButton. |
+| `src/apps/link-chat/LinkChatViewer::LinkChatViewer` | src/apps/link-chat/LinkChatViewer.tsx | all | component | Function component. Hooks: useState, useRef, useIsMobile, useChatShowSystemMessages, useChatStore, useCallback. Renders: Box, Card, CardContent, Typography, TelegramIcon, TimeAgo. |
+| `src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilities` | src/apps/llm-capabilities/AppLlmCapabilities.tsx | all | component | Function component. Renders: AppLlmCapabilitiesAllowed, AppLlmCapabilitiesDenied. |
+| `src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilitiesAllowed` | src/apps/llm-capabilities/AppLlmCapabilities.tsx | all | component | Function component. Hooks: useState, useRef, useModelsStore, useLlmCapabilitiesStore, useMemo, useCallback, +1 more. Renders: AppPlaceholder, Box, Typography, Sheet, RunControls, ResultsTable. |
+| `src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilitiesDenied` | src/apps/llm-capabilities/AppLlmCapabilities.tsx | all | component | Function component. Renders: AppPlaceholder, Alert, BlockIcon. |
+| `src/apps/llm-capabilities/components/ResultsTable::ResultsTable` | src/apps/llm-capabilities/components/ResultsTable.tsx | all | component | Function component. Props: props: ResultsTableProps. Hooks: useLlmCapabilitiesStore. Renders: thead, tr, th, span, tbody, td, Sheet, Table, +4 more. |
+| `src/apps/llm-capabilities/components/RunControls::RunControls` | src/apps/llm-capabilities/components/RunControls.tsx | all | component | Function component. Props: props: RunControlsProps. Renders: span, Stack, Typography, Select, Option, Button, Tooltip. |
+| `src/apps/news/AppNews::AppNews` | src/apps/news/AppNews.tsx | all | component | Function component. Hooks: useState, useIsMobile. Renders: br, Box, Typography, Button, ArrowForwardRoundedIcon, ArrowOutwardRoundedIcon, Container. |
+| `src/apps/news/AppNews::AppNewsModuleScope` | src/apps/news/AppNews.tsx | all | component | Module-scope markup (interactive elements not inside a detected component). |
+| `src/apps/news/AppNews::BuildInfoCard` | src/apps/news/AppNews.tsx | all | component | Function component. Renders: Card, Typography, BuildInfoSheet. |
+| `src/apps/news/AppNews::BuildInfoSheet` | src/apps/news/AppNews.tsx | all | component | Function component. Hooks: useMemo. Renders: strong, br, i, Sheet, TimeAgo, React.Fragment. |
+| `src/apps/news/AppNews::NewsCard` | src/apps/news/AppNews.tsx | all | component | Function component. Renders: b, ul, li, item.icon, Card, CardContent, Box, Typography, +2 more. |
+| `src/apps/news/bigAgiPro.data::BigAgiProNewsCallout` | src/apps/news/bigAgiPro.data.tsx | all | component | Function component. Renders: b, Card, CardContent, Typography, Grid, Button, RocketLaunchRounded. |
+| `src/apps/news/news.data::B` | src/apps/news/news.data.tsx | all | component | Function component. Renders: Typography, ExternalLink. |
+| `src/apps/news/news.data::NewsData` | src/apps/news/news.data.tsx | all | component | Module-scope markup (interactive elements not inside a detected component). |
+| `src/apps/personas/AppPersonas::AppPersonas` | src/apps/personas/AppPersonas.tsx | all | component | Function component. Hooks: useState. Renders: OptimaDrawerIn, CreatorDrawer, Box, Container, Typography, ListDivider. |
+| `src/apps/personas/creator/Creator::Creator` | src/apps/personas/creator/Creator.tsx | all | component | Function component. Hooks: useToggleableBoolean, useState, useUIContentScaling, useLLMSelectLocalState, useLLMSelect, useMemo, +4 more. Renders: em, Typography, Tabs, TabList, Tab, TabPanel, FromYouTube. |
+| `src/apps/personas/creator/Creator::PersonaPromptCard` | src/apps/personas/creator/Creator.tsx | all | component | Arrow function component. Renders: Card, Box, Typography, SettingsAccessibilityIcon, GoodTooltip, Button. |
+| `src/apps/personas/creator/CreatorDrawer::CreatorDrawer` | src/apps/personas/creator/CreatorDrawer.tsx | all | component | Function component. Hooks: useState, useSimplePersonas, useCallback. Renders: OptimaDrawerHeader, Tooltip, IconButton, DoneIcon, CheckBoxOutlineBlankIcon, OptimaDrawerList. |
+| `src/apps/personas/creator/CreatorDrawerItem::CreatorDrawerItem` | src/apps/personas/creator/CreatorDrawerItem.tsx | all | component | Function component. Hooks: useState. Renders: picture, img, TextFieldsIcon, YouTubeIcon, ListItemButton, ListItemDecorator, Checkbox, Box. |
+| `src/apps/personas/creator/FromText::FromText` | src/apps/personas/creator/FromText.tsx | all | component | Function component. Hooks: useState. Renders: b, form, Typography, TextFieldsIcon, Textarea, Box, Button. |
+| `src/apps/personas/creator/FromYouTube::FromYouTube` | src/apps/personas/creator/FromYouTube.tsx | all | component | Function component. Hooks: useState, useCallback, useYouTubeTranscript. Renders: form, Typography, YouTubeIcon, YouTubeDisabledCard, Input, Box, Button. |
+| `src/apps/personas/creator/FromYouTube::YouTubeDisabledCard` | src/apps/personas/creator/FromYouTube.tsx | all | component | Function component. Renders: Card, Typography. |
+| `src/apps/personas/creator/FromYouTube::YouTubeVideoTranscriptCard` | src/apps/personas/creator/FromYouTube.tsx | all | component | Function component. Renders: picture, img, Card, Box, Typography, IconButton, CloseRoundedIcon. |
+| `src/apps/personas/creator/Viewer::Viewer` | src/apps/personas/creator/Viewer.tsx | all | component | Function component. Hooks: useUIContentScaling, useSimplePersona. Renders: em, strong, Typography, TimeAgo, PersonaPromptCard, Link. |
+| `src/apps/settings-modal/AppChatSettingsAI::AppChatSettingsAI` | src/apps/settings-modal/AppChatSettingsAI.tsx | all | component | Function component. Hooks: useChatAutoAI, useAIPreferencesStore. Renders: b, ul, li, hr, div, FormControlDomainModel, CodeIcon, EditRoundedIcon, +3 more. |
+| `src/apps/settings-modal/AppChatSettingsAI::FormControlDomainModel` | src/apps/settings-modal/AppChatSettingsAI.tsx | all | component | Function component. Hooks: useModelDomain, useModelDomainAutoModelLabel, useLLMSelect. Renders: FormControl, FormLabelStart. |
+| `src/apps/settings-modal/settings-ui/AppChatSettingsUI::AppChatSettingsUI` | src/apps/settings-modal/settings-ui/AppChatSettingsUI.tsx | all | component | Function component. Hooks: useIsMobile, useModelsZeroState, useUIPreferencesStore, useShallow. Renders: FormControl, FormLabelStart, Box, ModelsRefreshIconButton, ModelsSetupButton, ModelsRefreshAlert. |
+| `src/apps/settings-modal/settings-ui/AppChatSettingsUI::ModelsSetupButton` | src/apps/settings-modal/settings-ui/AppChatSettingsUI.tsx | all | component | Function component. Renders: Button, BuildCircleIcon. |
+| `src/apps/settings-modal/settings-ui/SettingUIComplexity::SettingUIComplexity` | src/apps/settings-modal/settings-ui/SettingUIComplexity.tsx | all | component | Function component. Hooks: useUIPreferencesStore, useShallow. Renders: FormSelectControl. |
+| `src/apps/settings-modal/settings-ui/SettingUIComposerQuickButton::SettingUIComposerQuickButton` | src/apps/settings-modal/settings-ui/SettingUIComposerQuickButton.tsx | all | component | Function component. Hooks: useUIPreferencesStore, useShallow. Renders: FormSelectControl. |
+| `src/apps/settings-modal/settings-ui/SettingUIContentScaling::SettingUIContentScaling` | src/apps/settings-modal/settings-ui/SettingUIContentScaling.tsx | all | component | Function component. Hooks: useUIPreferencesStore, useShallow. Renders: FormControl, FormLabelStart, Stepper, Step, IconButton. |
+| `src/apps/settings-modal/settings-ui/SettingUIMessageTimestamps::SettingUIMessageTimestamps` | src/apps/settings-modal/settings-ui/SettingUIMessageTimestamps.tsx | all | component | Function component. Hooks: useChatMessageTimestampMode. Renders: FormSelectControl. |
+| `src/apps/settings-modal/SettingsContent::ChildNav` | src/apps/settings-modal/SettingsContent.tsx | all | component | Function component. Renders: List, ListItem, ListItemButton, ListItemDecorator, ListItemContent, Typography. |
+| `src/apps/settings-modal/SettingsContent::SectionHeader` | src/apps/settings-modal/SettingsContent.tsx | all | component | Function component. Renders: ListDivider. |
+| `src/apps/settings-modal/SettingsContent::SettingsContent` | src/apps/settings-modal/SettingsContent.tsx | all | component | Function component. Renders: Box. |
+| `src/apps/settings-modal/SettingsContent::ToolsDiagnostics` | src/apps/settings-modal/SettingsContent.tsx | all | component | Function component. Renders: SectionHeader, List, ListItem, ListItemButton, ListItemDecorator, TerminalOutlinedIcon. |
+| `src/apps/settings-modal/SettingsContent::ToolsSearchBanner` | src/apps/settings-modal/SettingsContent.tsx | all | component | Function component. Renders: Box, Button, SearchIcon, Typography. |
+| `src/apps/settings-modal/SettingsContent::VoiceInputBlock` | src/apps/settings-modal/SettingsContent.tsx | all | component | Function component. Renders: Box, VoiceInSettings, ASRxConfigureEngines. |
+| `src/apps/settings-modal/SettingsContent::VoiceOutputBlock` | src/apps/settings-modal/SettingsContent.tsx | all | component | Function component. Renders: Box, VoiceOutSettings. |
+| `src/apps/settings-modal/SettingsModal::SettingsModal` | src/apps/settings-modal/SettingsModal.tsx | all | component | Function component. Hooks: useIsMobile. Renders: b, GoodModal, AppBreadcrumbs, AppBreadcrumbs.Leaf, Box, DarkModeToggleButton, Button. |
+| `src/apps/settings-modal/SettingsNavList::SettingsNavList` | src/apps/settings-modal/SettingsNavList.tsx | all | component | Function component. Renders: List, React.Fragment, ListItem, ListItemButton, ListItemContent. |
+| `src/apps/settings-modal/SettingsNavSelect::SettingsNavSelect` | src/apps/settings-modal/SettingsNavSelect.tsx | all | component | Function component. Hooks: useCallback. Renders: Box, IconButton, KeyboardArrowLeftIcon, Select, KeyboardArrowDownIcon, Option. |
+| `src/apps/settings-modal/ShortcutsModal::ShortcutKeyCombo` | src/apps/settings-modal/ShortcutsModal.tsx | all | component | Function component. Renders: Box, Chip. |
+| `src/apps/settings-modal/ShortcutsModal::ShortcutsModal` | src/apps/settings-modal/ShortcutsModal.tsx | all | component | Function component. Hooks: useIsMobile, useMemo. Renders: GoodModal, Box, React.Fragment, Divider, Typography, ShortcutKeyCombo. |
+| `src/apps/settings-modal/UxLabsSettings::UxLabsSettings` | src/apps/settings-modal/UxLabsSettings.tsx | all | component | Function component. Hooks: useIsMobile, useUXLabsStore, useUIPreferencesStore, useShallow. Renders: hr, code, FormSelectControl, SpeedIcon, FormSwitchControl, PhImageSquare, ShortcutIcon, TextFieldsIcon. |
+| `src/apps/settings-modal/VoiceInSettings::VoiceInSettings` | src/apps/settings-modal/VoiceInSettings.tsx | all | component | Function component. Hooks: useChatMicTimeoutMs, useCallback. Renders: FormControl, FormLabelStart, LanguageSelect, FormChipControl. |
+| `src/apps/settings-modal/VoiceOutSettings::VoiceOutSettings` | src/apps/settings-modal/VoiceOutSettings.tsx | all | component | Function component. Hooks: useChatAutoAI, useSpeexTtsCharLimit, useSpeexEngines. Renders: FormChipControl, FormSwitchControl, SpeexConfigureEngines. |
+| `src/apps/tokens/AppTokens::AppTokens` | src/apps/tokens/AppTokens.tsx | all | component | Function component. Hooks: useState, useTokenizerSelect, useEffect. Renders: div, b, span, AppSmallContainer, Box, FormControl, FormLabelStart, Textarea, +1 more. |
+| `src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton::AttachmentDraftButton` | src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton.tsx | all | component | Function component. Hooks: useCallback. Renders: span, InputLoadingPlaceholder, Typography, Button, InputErrorIndicator, TooltipOutlined, CircularProgress. |
+| `src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton::InputErrorIndicator` | src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton.tsx | all | component | Function component. Renders: WarningRoundedIcon. |
+| `src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton::InputLoadingPlaceholder` | src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton.tsx | all | component | Function component. Renders: Sheet, CircularProgress, Typography. |
+| `src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu` | src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu.tsx | all | component | Function component. Hooks: useState, useUIPreferencesStore, useCallback. Renders: div, span, CloseablePopup, Box, MenuItem, KeyboardArrowLeftIcon, KeyboardArrowRightIcon, ListItem. |
+| `src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList` | src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList.tsx | all | component | Function component. Hooks: useIsMobile, useOverlayComponents, useState, useRef, useCallback. Renders: span, ConfirmationModal, Box, AttachmentDraftButtonMemo, IconButton, MoreVertIcon, ViewImageRefPartModal. |
+| `src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources` | src/common/attachment-drafts/attachment-sources/AttachmentSources.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: ButtonAttachFilesMemo, ButtonAttachWebMemo, ButtonAttachGoogleDriveMemo, ButtonAttachClipboardMemo, ButtonAttachScreenCaptureMemo, ButtonAttachCameraMemo. |
+| `src/common/attachment-drafts/attachment-sources/AttachmentSources::AutoDownloadToggle` | src/common/attachment-drafts/attachment-sources/AttachmentSources.tsx | all | component | Function component. Hooks: useBrowseStore, useCallback. Renders: ListDivider, ListItem, ListItemDecorator, Checkbox, Box. |
+| `src/common/attachment-drafts/attachment-sources/AttachmentSources::LiveFeedButton` | src/common/attachment-drafts/attachment-sources/AttachmentSources.tsx | all | component | Function component. Renders: TooltipOutlined, IconButton, FiberManualRecordIcon. |
+| `src/common/attachment-drafts/attachment-sources/ButtonAttachCamera::ButtonAttachCamera` | src/common/attachment-drafts/attachment-sources/ButtonAttachCamera.tsx | all | component | Function component. Renders: b, br, IconButton, AddAPhotoIcon, Tooltip, Box, Button, CameraAltOutlinedIcon. |
+| `src/common/attachment-drafts/attachment-sources/ButtonAttachClipboard::ButtonAttachClipboard` | src/common/attachment-drafts/attachment-sources/ButtonAttachClipboard.tsx | all | component | Function component. Renders: b, br, IconButton, ContentPasteGoIcon, Tooltip, Box, KeyStroke, Button. |
+| `src/common/attachment-drafts/attachment-sources/ButtonAttachGoogleDrive::ButtonAttachGoogleDrive` | src/common/attachment-drafts/attachment-sources/ButtonAttachGoogleDrive.tsx | all | component | Function component. Renders: b, br, IconButton, AddToDriveRoundedIcon, Button, Tooltip, Box. |
+| `src/common/attachment-drafts/attachment-sources/ButtonAttachNewDoc::ButtonAttachNew` | src/common/attachment-drafts/attachment-sources/ButtonAttachNewDoc.tsx | all | component | Function component. Renders: b, br, IconButton, AddRoundedIcon, Tooltip, Box, Button. |
+| `src/common/attachment-drafts/attachment-sources/ButtonAttachScreenCapture::ButtonAttachScreenCapture` | src/common/attachment-drafts/attachment-sources/ButtonAttachScreenCapture.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: b, br, IconButton, ScreenshotMonitorIcon, Tooltip, Box, Button. |
+| `src/common/attachment-drafts/attachment-sources/ButtonAttachWeb::ButtonAttachWeb` | src/common/attachment-drafts/attachment-sources/ButtonAttachWeb.tsx | all | component | Function component. Renders: b, br, IconButton, LanguageRoundedIcon, Button, Tooltip, Box, KeyStroke. |
+| `src/common/attachment-drafts/attachment-sources/useWebAttachmentModal::WebInputModal` | src/common/attachment-drafts/attachment-sources/useWebAttachmentModal.tsx | all | component | Function component. Hooks: useForm, useFieldArray, useRef, useEffect, useMemo, useCallback. Renders: form, GoodModal, LanguageRoundedIcon, Box, Typography, BrowserUpdatedOutlinedIcon, Chip. |
+| `src/common/components/3rdparty/GoogleAnalytics::NextGoogleAnalytics` | src/common/components/3rdparty/GoogleAnalytics.tsx | all | component | Function component. Renders: Script. |
+| `src/common/components/3rdparty/GoogleAnalytics::OptionalGoogleAnalytics` | src/common/components/3rdparty/GoogleAnalytics.tsx | all | component | Function component. Renders: NextGoogleAnalytics. |
+| `src/common/components/AlreadySet::AlreadySet` | src/common/components/AlreadySet.tsx | all | component | Function component. Renders: Typography, CheckRoundedIcon. |
+| `src/common/components/AppBreadcrumbs::AppBreadcrumbs` | src/common/components/AppBreadcrumbs.tsx | all | component | Function component. Hooks: useCallback. Renders: Breadcrumbs, KeyboardArrowRightIcon, AppBreadcrumbs.Link, Typography. |
+| `src/common/components/AvatarDomainFavicon::AvatarDomainFavicon` | src/common/components/AvatarDomainFavicon.tsx | all | component | Function component. Renders: Avatar. |
+| `src/common/components/ButtonAttachFiles::ButtonAttachFiles` | src/common/components/ButtonAttachFiles.tsx | all | component | Function component. Hooks: useCallback. Renders: b, br, IconButton, AttachFileRoundedIcon, Tooltip, Box, KeyStroke, Button. |
+| `src/common/components/ButtonServiceAdd::ButtonServiceAdd` | src/common/components/ButtonServiceAdd.tsx | all | component | Function component. Renders: IconButton, AddIcon, Tooltip, Button. |
+| `src/common/components/camera/CameraCaptureModal::CameraCaptureModal` | src/common/components/camera/CameraCaptureModal.tsx | all | component | Function component. Hooks: useState, useRef, useCameraCapture, useCallback, useMemo. Renders: video, Button, FiberManualRecordIcon, CameraEnhanceIcon, Tooltip, IconButton, AddRoundedIcon. |
+| `src/common/components/ChipExpander::ChipExpander` | src/common/components/ChipExpander.tsx | all | component | Function component. Renders: Chip, KeyboardArrowDownIcon. |
+| `src/common/components/ChipToggleButton::ChipToggleButton` | src/common/components/ChipToggleButton.tsx | all | component | Function component. Renders: Chip, KeyboardArrowDownIcon. |
+| `src/common/components/CloseablePopup::CloseablePopup` | src/common/components/CloseablePopup.tsx | all | component | Function component. Hooks: useCallback, useMemo. Renders: Portal, Box, Popup, ClickAwayListener, MenuList. |
+| `src/common/components/ConfirmIconButton::ConfirmIconButton` | src/common/components/ConfirmIconButton.tsx | all | component | Function component. Hooks: useArmedConfirm. Renders: Box, TooltipOutlined, IconButton, CloseRoundedIcon, Icon, ConfirmIcon. |
+| `src/common/components/ConfirmMenuItem::ConfirmMenuItem` | src/common/components/ConfirmMenuItem.tsx | all | component | Function component. Hooks: useArmedConfirm. Renders: MenuItem, ListItemDecorator, CloseRoundedIcon, Icon, ConfirmIcon. |
+| `src/common/components/DarkModeToggleButton::DarkModeToggleButton` | src/common/components/DarkModeToggleButton.tsx | all | component | Function component. Hooks: useColorScheme. Renders: GoodTooltip, Button, IconButton. |
+| `src/common/components/DataStreamViz::DataStreamViz` | src/common/components/DataStreamViz.tsx | all | component | Function component. Hooks: useRef, useCallback, useEffect. Renders: canvas, Box. |
+| `src/common/components/DebouncedInput::DebouncedInput` | src/common/components/DebouncedInput.tsx | all | component | Arrow function component. Props: props: DebounceInputProps. Hooks: useState, useRef, useCallback, useEffect. Renders: Input, SearchIcon, Box, IconButton, ClearIcon. |
+| `src/common/components/diff/DiffViewer::DiffViewer` | src/common/components/diff/DiffViewer.tsx | all | component | Function component. Hooks: useState, useRef, useFullscreenElement, useMemo, useScaledCodeSx, useCallback. Renders: span, div, br, strong, Dropdown, MenuButton, MoreVertIcon, Menu, +2 more. |
+| `src/common/components/dnd-dt/GlobalDragOverlay::GlobalDragOverlay` | src/common/components/dnd-dt/GlobalDragOverlay.tsx | all | component | Function component. Hooks: useGlobalDragStore, useEffect. Renders: Box. |
+| `src/common/components/dnd-window/DraggableWindowTitle::DraggableWindowTitle` | src/common/components/dnd-window/DraggableWindowTitle.tsx | all | component | Function component. Props: props: DraggableWindowTitleProps. Hooks: useMemo. Renders: Box, DragIndicatorIcon, Typography, IconButton, CloseRoundedIcon. |
+| `src/common/components/dnd-window/JoyFloatingWindow::JoyFloatingWindow` | src/common/components/dnd-window/JoyFloatingWindow.tsx | all | component | Function component. Hooks: useState, useRef, useEffect, useCallback. Renders: Portal, Box. |
+| `src/common/components/ErrorBoundary::ErrorBoundary` | src/common/components/ErrorBoundary.tsx | all | component | Class component. Renders: div, h2, p, a, details, summary. |
+| `src/common/components/ExpanderAccordion::ExpanderAccordion` | src/common/components/ExpanderAccordion.tsx | all | component | Function component. Hooks: useState. Renders: AccordionGroup, Accordion, AccordionSummary, KeyboardArrowDownIcon, AccordionDetails. |
+| `src/common/components/ExpanderControlledBox::ExpanderControlledBox` | src/common/components/ExpanderControlledBox.tsx | all | component | Function component. Props: expanded, noContain, children, ...rest. Hooks: useRef, useLayoutEffect. Renders: BoxCollapser, BoxCollapsee. |
+| `src/common/components/ExpanderSection::ExpanderSection` | src/common/components/ExpanderSection.tsx | all | component | Function component. Hooks: useState, useEffect, useCallback. Renders: Box, Typography, FormHelperText, UnfoldMoreIcon, KeyboardArrowDownIcon, ExpanderControlledBox. |
+| `src/common/components/ExplainerCarousel::AllStepsStepper` | src/common/components/ExplainerCarousel.tsx | all | component | Function component. Renders: Stepper, Step, StepIndicator, CheckRoundedIcon, KeyboardArrowDownIcon, Typography. |
+| `src/common/components/ExplainerCarousel::ExplainerCarousel` | src/common/components/ExplainerCarousel.tsx | all | component | Function component. Hooks: useState, useIsMobile, useUIContentScaling, useCallback, useEffect, useGlobalShortcuts, +1 more. Renders: Box, Typography, BigAgiSquircleIcon, ScaledTextBlockRenderer, Button, ChatBeamIcon. |
+| `src/common/components/ExternalDocsLink::ExternalDocsLink` | src/common/components/ExternalDocsLink.tsx | all | component | Function component. Renders: ExternalLink. |
+| `src/common/components/ExternalLink::ExternalLink` | src/common/components/ExternalLink.tsx | all | component | Function component. Renders: Link, PhBookOpenText, LaunchIcon. |
+| `src/common/components/FeatureBadge::FeatureBadge` | src/common/components/FeatureBadge.tsx | all | component | Function component. Hooks: useUIIsDismissed, useEffect. Renders: Badge. |
+| `src/common/components/folders/FoldersAddButton::FoldersAddButton` | src/common/components/folders/FoldersAddButton.tsx | all | component | Function component. Props: isAddingFolder, setIsAddingFolder, onFolderCreated. Hooks: useState, useCallback. Renders: ListItem, ListItemDecorator, FolderIcon, InlineTextarea, ListItemButton, AddIcon. |
+| `src/common/components/folders/FoldersSelectPopup::FoldersSelectPopup` | src/common/components/folders/FoldersSelectPopup.tsx | all | component | Function component. Props: allFolders, request, onClose. Hooks: useState, useCallback. Renders: span, CloseablePopup, ListItem, ListItemButton, ListItemDecorator, ClearIcon, FolderIcon. |
+| `src/common/components/forms/FormChipControl::FormChipControl` | src/common/components/forms/FormChipControl.tsx | all | component | Arrow function component. Hooks: useCallback. Renders: FormControl, FormLabelStart, Box, Chip. |
+| `src/common/components/forms/FormChipGroupControl::FormChipGroupControl` | src/common/components/forms/FormChipGroupControl.tsx | all | component | Arrow function component. Renders: FormControl, FormLabelStart, ButtonGroup, Button. |
+| `src/common/components/forms/FormChipModelControl::FormChipModelControl` | src/common/components/forms/FormChipModelControl.tsx | all | component | Function component. Hooks: useMemo. Renders: FormChipControl. |
+| `src/common/components/forms/FormInputKey::FormInputKey` | src/common/components/forms/FormInputKey.tsx | all | component | Function component. Hooks: useState, useMemo. Renders: input, IconButton, VisibilityOutlinedIcon, VisibilityOffOutlinedIcon, FormControl, Box, TooltipOutlined. |
+| `src/common/components/forms/FormLabelStart::FormLabelStart` | src/common/components/forms/FormLabelStart.tsx | all | component | Function component. Renders: div, FormLabel, GoodTooltip, WarningRoundedIcon, InfoOutlinedIcon, FormHelperText. |
+| `src/common/components/forms/FormNumberInput::FormNumberInput` | src/common/components/forms/FormNumberInput.tsx | all | component | Function component. Hooks: useCallback. Renders: FormControl, FormLabelStart, Box, Input, Tooltip, IconButton. |
+| `src/common/components/forms/FormRadioControl::FormRadioControl` | src/common/components/forms/FormRadioControl.tsx | all | component | Arrow function component. Renders: FormControl, FormLabelStart, RadioGroup, Radio. |
+| `src/common/components/forms/FormSelectControl::FormSelectControl` | src/common/components/forms/FormSelectControl.tsx | all | component | Arrow function component. Renders: FormControl, FormLabelStart, Select, Option. |
+| `src/common/components/forms/FormSliderControl::FormSliderControl` | src/common/components/forms/FormSliderControl.tsx | all | component | Function component. Hooks: useState, useEffect, useCallback. Renders: FormControl, FormLabelStart, Slider. |
+| `src/common/components/forms/FormSwitchControl::FormSwitchControl` | src/common/components/forms/FormSwitchControl.tsx | all | component | Function component. Renders: FormControl, FormLabelStart, Switch. |
+| `src/common/components/forms/FormTextField::FormTextField` | src/common/components/forms/FormTextField.tsx | all | component | Function component. Renders: FormControl, FormLabelStart, Input. |
+| `src/common/components/forms/SetupFormClientSideToggle::SetupFormClientSideToggle` | src/common/components/forms/SetupFormClientSideToggle.tsx | all | component | Function component. Renders: div, FormControl, FormLabelStart, Tooltip, Switch. |
+| `src/common/components/forms/SetupFormCorsHint::SetupFormCorsHint` | src/common/components/forms/SetupFormCorsHint.tsx | all | component | Function component. Renders: Alert, Typography. |
+| `src/common/components/forms/SetupFormRefetchButton::SetupFormRefetchButton` | src/common/components/forms/SetupFormRefetchButton.tsx | all | component | Function component. Renders: Box, FormLabel, Button, RefreshIcon. |
+| `src/common/components/GitHubProjectIssueCard::GitHubProjectIssueCard` | src/common/components/GitHubProjectIssueCard.tsx | all | component | Arrow function component. Renders: Card, Box, GitHubIcon, Typography, MuiLink. |
+| `src/common/components/GoodBadge::GoodBadge` | src/common/components/GoodBadge.tsx | all | component | Function component. Renders: Chip. |
+| `src/common/components/GoodTooltip::GoodTooltip` | src/common/components/GoodTooltip.tsx | all | component | Arrow function component. Renders: Tooltip. |
+| `src/common/components/icons/3rdparty/AuthGitHubIcon::AuthGitHubIcon` | src/common/components/icons/3rdparty/AuthGitHubIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/3rdparty/AuthGoogleIcon::AuthGoogleIcon` | src/common/components/icons/3rdparty/AuthGoogleIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/3rdparty/DiscordIcon::DiscordIcon` | src/common/components/icons/3rdparty/DiscordIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/big-agi/BigAgiCircleIcon::BigAgiCircleIcon` | src/common/components/icons/big-agi/BigAgiCircleIcon.tsx | all | component | Function component. Renders: circle, path, SvgIcon. |
+| `src/common/components/icons/big-agi/BigAgiCircleInnerIcon::BigAgiCircleInnerIcon` | src/common/components/icons/big-agi/BigAgiCircleInnerIcon.tsx | all | component | Function component. Renders: circle, path, SvgIcon. |
+| `src/common/components/icons/big-agi/BigAgiSquircleIcon::BigAgiSquircleIcon` | src/common/components/icons/big-agi/BigAgiSquircleIcon.tsx | all | component | Function component. Renders: g, rect, path, SvgIcon. |
+| `src/common/components/icons/CalloutTopRightIcon::CalloutTopRightIcon` | src/common/components/icons/CalloutTopRightIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/ChatBeamIcon::ChatBeamIcon` | src/common/components/icons/ChatBeamIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, rect, SvgIcon. |
+| `src/common/components/icons/ChatMulticastOffIcon::ChatMulticastOffIcon` | src/common/components/icons/ChatMulticastOffIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/ChatMulticastOnIcon::ChatMulticastOnIcon` | src/common/components/icons/ChatMulticastOnIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/CodiconSplitHorizontal::CodiconSplitHorizontal` | src/common/components/icons/CodiconSplitHorizontal.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/CodiconSplitHorizontalRemove::CodiconSplitHorizontalRemove` | src/common/components/icons/CodiconSplitHorizontalRemove.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/CodiconSplitVertical::CodiconSplitVertical` | src/common/components/icons/CodiconSplitVertical.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/CodiconSplitVerticalRemove::CodiconSplitVerticalRemove` | src/common/components/icons/CodiconSplitVerticalRemove.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/CodiconUnsplit::CodiconUnsplit` | src/common/components/icons/CodiconUnsplit.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/DeviceSymbols::DeviceFormChip` | src/common/components/icons/DeviceSymbols.tsx | all | component | Function component. Renders: Chip. |
+| `src/common/components/icons/DeviceSymbols::DeviceFormFactorIcon` | src/common/components/icons/DeviceSymbols.tsx | all | component | Function component. Renders: Icon. |
+| `src/common/components/icons/FoldersToggleOff::FoldersToggleOff` | src/common/components/icons/FoldersToggleOff.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/FoldersToggleOn::FoldersToggleOn` | src/common/components/icons/FoldersToggleOn.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/LayoutSidebarRight::LayoutSidebarRight` | src/common/components/icons/LayoutSidebarRight.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/LiveFilePatchIcon::LiveFilePatchIcon` | src/common/components/icons/LiveFilePatchIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/MarkHighlightIcon::MarkHighlightIcon` | src/common/components/icons/MarkHighlightIcon.tsx | all | component | Function component. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhBookOpenText::PhBookOpenText` | src/common/components/icons/phosphor/PhBookOpenText.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhChats::PhChats` | src/common/components/icons/phosphor/PhChats.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhChatsDuotone::PhChatsDuotone` | src/common/components/icons/phosphor/PhChatsDuotone.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhDesktop::PhDesktop` | src/common/components/icons/phosphor/PhDesktop.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhDeviceMobile::PhDeviceMobile` | src/common/components/icons/phosphor/PhDeviceMobile.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhDeviceTablet::PhDeviceTablet` | src/common/components/icons/phosphor/PhDeviceTablet.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhGearSixIcon::PhGearSixIcon` | src/common/components/icons/phosphor/PhGearSixIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhGift::PhGift` | src/common/components/icons/phosphor/PhGift.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhHouse::PhHouse` | src/common/components/icons/phosphor/PhHouse.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhImageSquare::PhImageSquare` | src/common/components/icons/phosphor/PhImageSquare.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhKey::PhKey` | src/common/components/icons/phosphor/PhKey.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhListChecks::PhListChecks` | src/common/components/icons/phosphor/PhListChecks.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhMegaphone::PhMegaphone` | src/common/components/icons/phosphor/PhMegaphone.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhPaintBrush::PhPaintBrush` | src/common/components/icons/phosphor/PhPaintBrush.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhPencilSimple::PhPencilSimple` | src/common/components/icons/phosphor/PhPencilSimple.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhRamble::PhRamble` | src/common/components/icons/phosphor/PhRamble.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhRobot::PhRobot` | src/common/components/icons/phosphor/PhRobot.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhSlidersHorizontalIcon::PhSlidersHorizontalIcon` | src/common/components/icons/phosphor/PhSlidersHorizontalIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhSlidersIcon::PhSlidersIcon` | src/common/components/icons/phosphor/PhSlidersIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhSquaresFour::PhSquaresFour` | src/common/components/icons/phosphor/PhSquaresFour.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhTerminal::PhTerminal` | src/common/components/icons/phosphor/PhTerminal.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhTreeStructure::PhTreeStructure` | src/common/components/icons/phosphor/PhTreeStructure.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhUsers::PhUsers` | src/common/components/icons/phosphor/PhUsers.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhVoice::PhVoice` | src/common/components/icons/phosphor/PhVoice.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/phosphor/PhWrench::PhWrench` | src/common/components/icons/phosphor/PhWrench.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/AlibabaCloudIcon::AlibabaCloudIcon` | src/common/components/icons/vendors/AlibabaCloudIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/AnthropicIcon::AnthropicIcon` | src/common/components/icons/vendors/AnthropicIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/ArceeAIIcon::ArceeAIIcon` | src/common/components/icons/vendors/ArceeAIIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/AzureIcon::AzureIcon` | src/common/components/icons/vendors/AzureIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/BasetenIcon::BasetenIcon` | src/common/components/icons/vendors/BasetenIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/BedrockIcon::BedrockIcon` | src/common/components/icons/vendors/BedrockIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/CerebrasIcon::CerebrasIcon` | src/common/components/icons/vendors/CerebrasIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/ChutesAIIcon::ChutesAIIcon` | src/common/components/icons/vendors/ChutesAIIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/ClaudeCrabIcon::ClaudeCrabIcon` | src/common/components/icons/vendors/ClaudeCrabIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, rect, SvgIcon. |
+| `src/common/components/icons/vendors/CloudflareIcon::CloudflareIcon` | src/common/components/icons/vendors/CloudflareIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/CohereIcon::CohereIcon` | src/common/components/icons/vendors/CohereIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/DeepseekIcon::DeepseekIcon` | src/common/components/icons/vendors/DeepseekIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/ElevenLabsIcon::ElevenLabsIcon` | src/common/components/icons/vendors/ElevenLabsIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/FireworksAIIcon::FireworksAIIcon` | src/common/components/icons/vendors/FireworksAIIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/GeminiIcon::GeminiIcon` | src/common/components/icons/vendors/GeminiIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: g, path, SvgIcon. |
+| `src/common/components/icons/vendors/GroqIcon::GroqIcon` | src/common/components/icons/vendors/GroqIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/InworldIcon::InworldIcon` | src/common/components/icons/vendors/InworldIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/LMStudioIcon::LMStudioIcon` | src/common/components/icons/vendors/LMStudioIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: rect, SvgIcon. |
+| `src/common/components/icons/vendors/LocalAIIcon::LocalAIIcon` | src/common/components/icons/vendors/LocalAIIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/MetaAIIcon::MetaAIIcon` | src/common/components/icons/vendors/MetaAIIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/MiniMaxIcon::MiniMaxIcon` | src/common/components/icons/vendors/MiniMaxIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/MistralIcon::MistralIcon` | src/common/components/icons/vendors/MistralIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/ModularIcon::ModularIcon` | src/common/components/icons/vendors/ModularIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/MoonshotIcon::MoonshotIcon` | src/common/components/icons/vendors/MoonshotIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/NousResearchIcon::NousResearchIcon` | src/common/components/icons/vendors/NousResearchIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/NovitaAIIcon::NovitaAIIcon` | src/common/components/icons/vendors/NovitaAIIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/NvidiaIcon::NvidiaIcon` | src/common/components/icons/vendors/NvidiaIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/OllamaIcon::OllamaIcon` | src/common/components/icons/vendors/OllamaIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/OpenAIIcon::OpenAIIcon` | src/common/components/icons/vendors/OpenAIIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/OpenRouterIcon::OpenRouterIcon` | src/common/components/icons/vendors/OpenRouterIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/PerplexityIcon::PerplexityIcon` | src/common/components/icons/vendors/PerplexityIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/SakanaAIIcon::SakanaAIIcon` | src/common/components/icons/vendors/SakanaAIIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/TogetherIcon::TogetherIcon` | src/common/components/icons/vendors/TogetherIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/XAIIcon::XAIIcon` | src/common/components/icons/vendors/XAIIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/vendors/ZAIIcon::ZAIIcon` | src/common/components/icons/vendors/ZAIIcon.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/icons/WindowPaneRightOpen::WindowPaneRightOpen` | src/common/components/icons/WindowPaneRightOpen.tsx | all | component | Function component. Props: props: SvgIconProps. Renders: path, SvgIcon. |
+| `src/common/components/InlineError::InlineError` | src/common/components/InlineError.tsx | all | component | Function component. Renders: Alert, Typography. |
+| `src/common/components/InlineTextarea::InlineTextarea` | src/common/components/InlineTextarea.tsx | all | component | Function component. Hooks: useState, useUIPreferencesStore, useRef, useEffect, useCallback. Renders: Textarea, Box, Button. |
+| `src/common/components/InlineTextareaEditable::InlineTextareaEditable` | src/common/components/InlineTextareaEditable.tsx | all | component | Function component. Hooks: useState, useRef, useCallback. Renders: InlineTextarea. |
+| `src/common/components/KeyStroke::KeyStroke` | src/common/components/KeyStroke.tsx | all | component | Function component. Renders: Chip. |
+| `src/common/components/LanguageSelect::LanguageSelect` | src/common/components/LanguageSelect.tsx | all | component | Function component. Hooks: useUIPreferencesStore, useMemo. Renders: Option, Select, KeyboardArrowDownIcon. |
+| `src/common/components/Link::Link` | src/common/components/Link.tsx | all | component | Wrapped component. Hooks: useRouter. Renders: ExternalAnchor, MuiLink, InternalAnchor. |
+| `src/common/components/ListItemGroupCollapser::ListItemGroupCollapser` | src/common/components/ListItemGroupCollapser.tsx | all | component | Function component. Hooks: useCallback. Renders: div, ListItem, ListItemButton, IconButton, KeyboardArrowLeftIcon, ExpandMoreIcon. |
+| `src/common/components/LiteVideoEmbed::LiteVideoEmbed` | src/common/components/LiteVideoEmbed.tsx | all | component | Function component. Props: props: LiteVideoEmbedProps. Hooks: useRef, useState, useEffect, useCallback. Renders: svg, path, Box. |
+| `src/common/components/LogoProgress::LogoProgress` | src/common/components/LogoProgress.tsx | all | component | Function component. Renders: Box, Image, CircularProgress. |
+| `src/common/components/MediaStreamPreview::MediaStreamPreview` | src/common/components/MediaStreamPreview.tsx | all | component | Function component. Hooks: useRef, useLayoutEffect. Renders: VideoPreview. |
+| `src/common/components/modals/ConfirmationModal::ConfirmationModal` | src/common/components/modals/ConfirmationModal.tsx | all | component | Function component. Renders: GoodModal, WarningRoundedIcon, Divider, Typography, Box, Button. |
+| `src/common/components/modals/GoodModal::GoodModal` | src/common/components/modals/GoodModal.tsx | all | component | Function component. Hooks: useState, useCallback, useMemo, useRef. Renders: Modal, ModalOverflow, ModalDialog, Box, Typography, IconButton. |
+| `src/common/components/modals/SherpaModal::SherpaModal` | src/common/components/modals/SherpaModal.tsx | all | component | Function component. Hooks: useMemo. Renders: Modal, ModalOverflow, ModalClose. |
+| `src/common/components/modals/ViewDocPartModal::ViewDocPartModal` | src/common/components/modals/ViewDocPartModal.tsx | all | component | Function component. Hooks: useIsMobile. Renders: div, GoodModal, Box, ScaledTextBlockRenderer. |
+| `src/common/components/modals/ViewImageRefPartModal::ViewImageRefPartModal` | src/common/components/modals/ViewImageRefPartModal.tsx | all | component | Function component. Hooks: useState, useIsMobile, useCallback. Renders: b, GoodModal, AppBreadcrumbs, AppBreadcrumbs.Leaf, Box, Button, FileDownloadOutlinedIcon. |
+| `src/common/components/RichMenu::RichMenu` | src/common/components/RichMenu.tsx | all | component | Function component. Renders: Portal, Box, Menu. |
+| `src/common/components/RichMenu::RichMenuButton` | src/common/components/RichMenu.tsx | all | component | Function component. Renders: MenuButton. |
+| `src/common/components/RichMenu::RichMenuItem` | src/common/components/RichMenu.tsx | all | component | Function component. Renders: props.Icon, MenuItem, ListItemDecorator, Box. |
+| `src/common/components/Section::Section` | src/common/components/Section.tsx | all | component | Function component. Hooks: useState. Renders: Box, Stack, FormLabel, IconButton, KeyboardArrowDownIcon, FormHelperText. |
+| `src/common/components/snackbar/SnackbarInsert::SnackbarInsert` | src/common/components/snackbar/SnackbarInsert.tsx | all | component | Function component. Hooks: useSnackbarsStore, useMemo. Renders: Snackbar, IconButton, CloseRoundedIcon. |
+| `src/common/components/StackedBarBreakdown::StackedBarBreakdown` | src/common/components/StackedBarBreakdown.tsx | all | component | Function component. Props: segments, title, showValues, valueFormatter, description. Renders: Box, Typography. |
+| `src/common/components/StarIcons::StarIconUnstyled` | src/common/components/StarIcons.tsx | all | component | Wrapped component. Props: isStarred. Renders: StarIcon, StarBorderIcon. |
+| `src/common/components/StarIcons::Starred` | src/common/components/StarIcons.tsx | all | component | Wrapped component. Renders: StarIcon. |
+| `src/common/components/StarIcons::StarredNoXL2` | src/common/components/StarIcons.tsx | all | component | Wrapped component. Renders: StarIcon. |
+| `src/common/components/StarIcons::StarredState` | src/common/components/StarIcons.tsx | all | component | Wrapped component. Props: isStarred. Renders: Starred, UnStarredNoXL2. |
+| `src/common/components/StarIcons::StarredToggle` | src/common/components/StarIcons.tsx | all | component | Wrapped component. Props: isStarred. Renders: StarIcon, StarBorderIcon. |
+| `src/common/components/StarIcons::UnStarredNoXL2` | src/common/components/StarIcons.tsx | all | component | Wrapped component. Renders: StarBorderIcon. |
+| `src/common/components/SubMenu::SubMenuHost` | src/common/components/SubMenu.tsx | all | component | Function component. Hooks: useSyncExternalStore. Renders: SubMenuHostContext.Provider, CloseablePopup, SubMenuParentIdContext.Provider. |
+| `src/common/components/SubMenu::SubMenuItem` | src/common/components/SubMenu.tsx | all | component | Function component. Hooks: useState, useContext, useRef, useCallback, useEffect. Renders: MenuItem, ListItemDecorator, KeyboardArrowRightIcon. |
+| `src/common/components/TooltipOutlined::TooltipOutlined` | src/common/components/TooltipOutlined.tsx | all | component | Function component. Renders: Tooltip. |
+| `src/common/components/VideoPlayerVimeo::VideoPlayerVimeo` | src/common/components/VideoPlayerVimeo.tsx | all | component | Function component. Renders: LiteVideoEmbed. |
+| `src/common/components/VideoPlayerYouTube::VideoPlayerYouTube` | src/common/components/VideoPlayerYouTube.tsx | all | component | Function component. Renders: LiteVideoEmbed. |
+| `src/common/from-v1/FromV1ImportBanner::FromV1ImportBanner` | src/common/from-v1/FromV1ImportBanner.tsx | all | component | Function component. Hooks: useState, useUIIsDismissed, useEffect, useCallback. Renders: strong, Sheet, Chip, Typography, Button, FileUploadOutlinedIcon, IconButton. |
+| `src/common/layout/container/ContainerLayout::ContainerLayout` | src/common/layout/container/ContainerLayout.tsx | all | component | Function component. Renders: Container, Box. |
+| `src/common/layout/optima/bar/OptimaBar::CenterItemsFallback` | src/common/layout/optima/bar/OptimaBar.tsx | all | component | Function component. Renders: Box, Link, BigAgiSquircleIcon, Typography. |
+| `src/common/layout/optima/bar/OptimaBar::CenterItemsPortal` | src/common/layout/optima/bar/OptimaBar.tsx | all | component | Function component. Hooks: useOptimaPortalOutRef, useOptimaPortalHasInputs. Renders: Box, CenterItemsFallback. |
+| `src/common/layout/optima/bar/OptimaBar::OptimaBar` | src/common/layout/optima/bar/OptimaBar.tsx | all | component | Function component. Hooks: useRef, useOptimaPortalHasInputs, useOptimaPanelOpen. Renders: InvertedBar, InvertedBarCornerItem, IconButton, MenuIcon, ArrowBackIcon, CenterItemsPortal. |
+| `src/common/layout/optima/bar/OptimaBarDropdown::OptimaBarDropdown` | src/common/layout/optima/bar/OptimaBarDropdown.tsx | all | component | Function component. Hooks: useState, useImperativeHandle, useCallback, useMemo. Renders: div, Starred, ListItemGroupCollapser, Box, Option, ListItemDecorator, Select. |
+| `src/common/layout/optima/ChromelessFloatingButtons::ChromelessFloatingButtons` | src/common/layout/optima/ChromelessFloatingButtons.tsx | all | component | Function component. Renders: IconButton, MenuIcon, FullscreenExitIcon, LayoutSidebarRight. |
+| `src/common/layout/optima/ChromelessItemButton::ChromelessItemButton` | src/common/layout/optima/ChromelessItemButton.tsx | all | component | Function component. Hooks: useOptimaChromeless. Renders: ListItemButton, ListItemDecorator, FullscreenExitIcon, FullscreenIcon. |
+| `src/common/layout/optima/drawer/DesktopDrawer::DesktopDrawer` | src/common/layout/optima/drawer/DesktopDrawer.tsx | all | component | Function component. Hooks: useOptimaPortalOutRef, useOptimaDrawerOpen, useOptimaDrawerPeeking, useEffect. Renders: DesktopDrawerFixRoot, DesktopDrawerTranslatingSheet. |
+| `src/common/layout/optima/drawer/MobileDrawer::DrawerContentPortal` | src/common/layout/optima/drawer/MobileDrawer.tsx | all | component | Function component. Hooks: useOptimaPortalOutRef. Renders: Box. |
+| `src/common/layout/optima/drawer/MobileDrawer::MobileDrawer` | src/common/layout/optima/drawer/MobileDrawer.tsx | all | component | Function component. Hooks: useOptimaDrawerOpen. Renders: Drawer, DrawerContentPortal, MobileNavItems. |
+| `src/common/layout/optima/drawer/OptimaDrawerHeader::OptimaDrawerHeader` | src/common/layout/optima/drawer/OptimaDrawerHeader.tsx | all | component | Arrow function component. Renders: Box, IconButton, Link, Typography, CloseRoundedIcon. |
+| `src/common/layout/optima/drawer/OptimaDrawerList::OptimaDrawerList` | src/common/layout/optima/drawer/OptimaDrawerList.tsx | all | component | Function component. Hooks: useMemo. Renders: List. |
+| `src/common/layout/optima/InvertedBar::InvertedBar` | src/common/layout/optima/InvertedBar.tsx | all | component | Arrow function component. Hooks: useTheme, useMemo. Renders: StyledSheet. |
+| `src/common/layout/optima/Modals::Modals` | src/common/layout/optima/Modals.tsx | all | component | Function component. Hooks: useOptimaModals, useModelsZeroState, useEffect. Renders: React.Suspense, SettingsModalLazy, ModelsModalsLazy, LogViewerDialog, NewsModals, AixDebuggerDialog. |
+| `src/common/layout/optima/nav/BringTheLove::BringTheLove` | src/common/layout/optima/nav/BringTheLove.tsx | all | component | Function component. Hooks: useState, useEffect. Renders: props.icon, Tooltip, DesktopNavIcon, Button. |
+| `src/common/layout/optima/nav/DesktopNav::DesktopNav` | src/common/layout/optima/nav/DesktopNav.tsx | all | component | Function component. Hooks: useOptimaDrawerOpen, useOptimaDrawerPeeking, useOverlayComponents, useOptimaModals, useScratchClipVisibility, useHasLLMs, +2 more. Renders: app.iconActive, app.icon, item.iconActive, item.icon, GoodModal, BuildInfoCard, Divider, Tooltip, +2 more. |
+| `src/common/layout/optima/nav/MobileNav::MobileNav` | src/common/layout/optima/nav/MobileNav.tsx | all | component | Function component. Hooks: useMemo. Renders: app.icon, MobileNavIcon, InvertedBar, MobileNavGroupBox. |
+| `src/common/layout/optima/nav/MobileNavItems::MobileNavItems` | src/common/layout/optima/nav/MobileNavItems.tsx | all | component | Function component. Hooks: useCallback. Renders: app.iconActive, app.icon, Sheet, ButtonGroup, Button, Box, BringTheLove. |
+| `src/common/layout/optima/OptimaLayout::OptimaLayout` | src/common/layout/optima/OptimaLayout.tsx | all | component | Function component. Hooks: useRouter, useIsMobile, useGlobalClipboardSaver, useBrowserTranslationWarning, usePWADesktopModeWarning, useGlobalShortcuts, +1 more. Renders: PanelGroup, DesktopNav, DesktopDrawer, PageWrapper, DesktopPanel, MobileDrawer. |
+| `src/common/layout/optima/OptimaMOTD::OptimaMOTD` | src/common/layout/optima/OptimaMOTD.tsx | all | component | Function component. Hooks: useMemo, useUIIsDismissed. Renders: TimeAgo, Sheet, Typography, IconButton, CloseRoundedIcon, Box. |
+| `src/common/layout/optima/page/OptimaAppPageHeading::OptimaAppPageHeading` | src/common/layout/optima/page/OptimaAppPageHeading.tsx | all | component | Function component. Hooks: useIsMobile. Renders: span, Box, Typography, ListDivider. |
+| `src/common/layout/optima/PageCore::PageCore` | src/common/layout/optima/PageCore.tsx | all | component | Arrow function component. Hooks: useOptimaChromeless. Renders: Box, OptimaMOTD, FromV1ImportBanner, ExpanderControlledBox, OptimaBar, ChromelessFloatingButtons. |
+| `src/common/layout/optima/PageWrapper::PageWrapper` | src/common/layout/optima/PageWrapper.tsx | all | component | Function component. Hooks: useOptimaDrawerOpen, useOptimaPanelOpen, useUIPreferencesStore. Renders: Box, Container, PageCore. |
+| `src/common/layout/optima/panel/DesktopPanel::DesktopPanel` | src/common/layout/optima/panel/DesktopPanel.tsx | all | component | Function component. Hooks: useIsMobile, useUIContentScaling, useOptimaPanelOpen, useEffect. Renders: DesktopPanelFixRoot, DesktopPanelTranslatingSheet, List, PanelContentPortal, WhatsNewPanelRow. |
+| `src/common/layout/optima/panel/items/PreferencesListItem::PreferencesListItem` | src/common/layout/optima/panel/items/PreferencesListItem.tsx | all | component | Function component. Hooks: useCallback. Renders: ListItem, DarkModeToggleButton, ListItemButton, ListItemDecorator, SettingsIcon. |
+| `src/common/layout/optima/panel/MobilePanel::MobilePanel` | src/common/layout/optima/panel/MobilePanel.tsx | all | component | Function component. Hooks: useOptimaPanelOpen. Renders: Drawer, Box, OptimaPanelGroupedList, PreferencesListItem, PanelContentPortal, WhatsNewPanelRow. |
+| `src/common/layout/optima/panel/OptimaPanelGroupedList::OptimaPanelGroupedList` | src/common/layout/optima/panel/OptimaPanelGroupedList.tsx | all | component | Function component. Hooks: useState, useIsMobile, useUIContentScaling, useUIPanelGroupCollapsed, useCallback. Renders: Box, UnfoldMoreIcon, Checkbox, ExpanderControlledBox, MenuList. |
+| `src/common/layout/optima/panel/OptimaPanelGroupedList::OptimaPanelGroupGutter` | src/common/layout/optima/panel/OptimaPanelGroupedList.tsx | all | component | Function component. Renders: Box. |
+| `src/common/layout/optima/panel/PanelContentPortal::PanelContentPortal` | src/common/layout/optima/panel/PanelContentPortal.tsx | all | component | Function component. Hooks: useOptimaPortalOutRef. Renders: Box. |
+| `src/common/layout/optima/panel/PopupPanel::PopupPanel` | src/common/layout/optima/panel/PopupPanel.tsx | all | component | Function component. Renders: CloseablePopup, PanelContentPortal. |
+| `src/common/layout/optima/portals/OptimaPortalsIn::OptimaDrawerIn` | src/common/layout/optima/portals/OptimaPortalsIn.tsx | all | component | Function component. Hooks: useOptimaPortalTargetElement. Renders: div. |
+| `src/common/layout/optima/portals/OptimaPortalsIn::OptimaPanelIn` | src/common/layout/optima/portals/OptimaPortalsIn.tsx | all | component | Function component. Hooks: useOptimaPortalTargetElement. Renders: div. |
+| `src/common/layout/optima/scratchclip/ScratchClip::ScratchClip` | src/common/layout/optima/scratchclip/ScratchClip.tsx | all | component | Function component. Hooks: useScratchClipHistory, useCallback. Renders: GoodModal, HistoryIcon, Box, Typography, Tooltip, IconButton. |
+| `src/common/layout/overlays/OverlaysInsert::OverlaysInsert` | src/common/layout/overlays/OverlaysInsert.tsx | all | component | Arrow function component. Hooks: useLayoutOverlaysStore. Renders: React.Fragment. |
+| `src/common/logger/viewer/LogEntryDetails::LogEntryDetails` | src/common/logger/viewer/LogEntryDetails.tsx | all | component | Function component. Hooks: useState. Renders: div, Card, Box, Typography, Button, CloseRoundedIcon, Divider. |
+| `src/common/logger/viewer/LoggerViewerDialog::LogViewerDialog` | src/common/logger/viewer/LoggerViewerDialog.tsx | all | component | Function component. Hooks: useState, useIsMobile, useLoggerStore, useMemo, useCallback. Renders: thead, tr, th, tbody, td, GoodModal, Box, FormControl, +3 more. |
+| `src/common/providers/ProviderBackendCapabilities::ProviderBackendCapabilities` | src/common/providers/ProviderBackendCapabilities.tsx | all | component | Function component. Hooks: useState, useKnowledgeOfBackendCaps, useQuery, useEffect. Renders: div, h2, button, br. |
+| `src/common/providers/ProviderTheming::ProviderTheming` | src/common/providers/ProviderTheming.tsx | all | component | Arrow function component. Hooks: useUIComplexityIsMinimal, useMemo. Renders: CacheProvider, CssVarsProvider, CssBaseline, VendorIconSpriteMemo. |
+| `src/common/providers/single-tab/ProviderSingleTab::ProviderSingleTab` | src/common/providers/single-tab/ProviderSingleTab.tsx | all | component | Arrow function component. Hooks: useInstanceLock, useState, useRevealEffect, useMemo. Renders: div, p, br, b, strong, span, SherpaLoading. |
+| `src/common/providers/single-tab/ProviderSingleTab::SherpaLoading` | src/common/providers/single-tab/ProviderSingleTab.tsx | all | component | Function component. Renders: div, p, span, svg, path. |
+| `src/common/render-decay/RenderDecayZone::RenderDecayZone` | src/common/render-decay/RenderDecayZone.tsx | all | component | Function component. Hooks: useLabsAdaptiveRendering, useMemo. Renders: RenderDecayContext.Provider. |
+| `src/common/scroll-to-bottom/ScrollToBottom::DebugBorderBox` | src/common/scroll-to-bottom/ScrollToBottom.tsx | all | component | Function component. Renders: Box. |
+| `src/common/scroll-to-bottom/ScrollToBottom::ScrollToBottom` | src/common/scroll-to-bottom/ScrollToBottom.tsx | all | component | Function component. Hooks: useState, useRef, useCallback, useEffect, useMemo. Renders: UseScrollToBottomProvider, Box, DebugBorderBox. |
+| `src/common/scroll-to-bottom/ScrollToBottomButton::ScrollToBottomButton` | src/common/scroll-to-bottom/ScrollToBottomButton.tsx | all | component | Function component. Hooks: useScrollToBottom, useCallback. Renders: IconButton, KeyboardDoubleArrowDownIcon. |
+| `src/common/stores/llms/components/LLMSearchFilterInput::LLMSearchFilterInput` | src/common/stores/llms/components/LLMSearchFilterInput.tsx | all | component | Wrapped component. Hooks: useEffect, useMemo. Renders: IconButton, StarredState, DebouncedInputMemo. |
+| `src/common/stores/workspace/WorkspaceIdProvider::WorkspaceIdProvider` | src/common/stores/workspace/WorkspaceIdProvider.tsx | all | component | Function component. Hooks: useMemo. Renders: WorkspaceContext.Provider. |
+| `src/common/stores/workspace/WorkspaceLiveFilePicker::WorkspaceLiveFilePicker` | src/common/stores/workspace/WorkspaceLiveFilePicker.tsx | all | component | Function component. Hooks: useState, useContextWorkspaceId, useWorkspaceContentsMetadata, useEffect, useCallback, useDragDropDataTransfer, +1 more. Renders: Box, TooltipOutlined, Button, LiveFileChooseIcon, IconButton, LiveFileIcon. |
+| `src/modules/aifn/digrams/DiagramsModal::DiagramsModal` | src/modules/aifn/digrams/DiagramsModal.tsx | all | component | Function component. Hooks: useState, useFormRadio, useIsMobile, useUIContentScaling, useModelDomain, useFormRadioLlmType, +2 more. Renders: b, GoodModal, Box, AppBreadcrumbs, AppBreadcrumbs.Leaf, ChipToggleButton, Grid. |
+| `src/modules/aifn/flatten/FlattenerModal::FlattenerModal` | src/modules/aifn/flatten/FlattenerModal.tsx | all | component | Function component. Hooks: useState, useModelDomain, useFormRadioLlmType, useStreamChatText, useCallback. Renders: GoodModal, FormControl, FormLabel, StylesList, FlatteningProgress, Box. |
+| `src/modules/aifn/flatten/FlattenerModal::FlatteningProgress` | src/modules/aifn/flatten/FlattenerModal.tsx | all | component | Function component. Renders: Box, CircularProgress, Typography. |
+| `src/modules/aifn/flatten/FlattenerModal::StylesList` | src/modules/aifn/flatten/FlattenerModal.tsx | all | component | Function component. Renders: List, React.Fragment, ListItem, ListItemButton, ListItemDecorator, ListItemContent. |
+| `src/modules/aix/client/debugger/AixDebuggerDialog::AixDebuggerDialog` | src/modules/aix/client/debugger/AixDebuggerDialog.tsx | all | component | Function component. Hooks: useIsMobile, useUIPreferencesStore, useAixClientDebuggerStore, useDebouncedAixDebuggerStore, useState, useEffect, +1 more. Renders: div, GoodModal, Switch, Box, KeyStroke, Button, KeyboardDoubleArrowDownIcon. |
+| `src/modules/aix/client/debugger/AixDebuggerFrame::AixDebuggerFrame` | src/modules/aix/client/debugger/AixDebuggerFrame.tsx | all | component | Function component. Hooks: useAixClientDebuggerStore, useShallow, useCallback. Renders: div, span, Box, Chip, Sheet, Typography, ExpanderControlledBox, Divider. |
+| `src/modules/aix/client/debugger/AixDebuggerMeasurementsTable::AixDebuggerMeasurementsTable` | src/modules/aix/client/debugger/AixDebuggerMeasurementsTable.tsx | all | component | Function component. Renders: thead, tr, th, tbody, td, Typography, Table. |
+| `src/modules/aix/client/debugger/DebugAdvancedOptions::DebugAdvancedOptions` | src/modules/aix/client/debugger/DebugAdvancedOptions.tsx | all | component | Function component. Hooks: useAixClientDebuggerStore, useUXLabsStore, useShallow. Renders: div, FormControl, Typography, FormHelperText, Switch. |
+| `src/modules/aix/client/debugger/DebugPayloadOverride::DebugPayloadOverride` | src/modules/aix/client/debugger/DebugPayloadOverride.tsx | all | component | Function component. Hooks: useIsMobile, useAixClientDebuggerStore, useState, useMemo, useEffect, useCallback. Renders: Box, Chip, Textarea, Button, Typography. |
+| `src/modules/asrx/components/ASRxConfigureEngineFull::ASRxConfigureEngineFull` | src/modules/asrx/components/ASRxConfigureEngineFull.tsx | all | component | Function component. Hooks: useToggleableBoolean. Renders: div, LinkIcon, KeyIcon, ExpanderSection, Box, DeepgramParameters, GeminiParameters. |
+| `src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters` | src/modules/asrx/components/ASRxConfigureEngineFull.tsx | all | component | Function component. Props: engine, onUpdate. Hooks: useToggleableBoolean, useCallback. Renders: FormChipModelControl, FormTextField, Link, FormSwitchControl, PersonalDictionaryRow, PanelFooter. |
+| `src/modules/asrx/components/ASRxConfigureEngineFull::DictionaryModal` | src/modules/asrx/components/ASRxConfigureEngineFull.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: GoodModal, Typography, Textarea, Box, Button. |
+| `src/modules/asrx/components/ASRxConfigureEngineFull::GeminiParameters` | src/modules/asrx/components/ASRxConfigureEngineFull.tsx | all | component | Function component. Props: engine, onUpdate, isMobile. Hooks: useToggleableBoolean, useCallback. Renders: FormChipControl, FormTextField, PersonalDictionaryRow, PanelFooter. |
+| `src/modules/asrx/components/ASRxConfigureEngineFull::ManualCredentials` | src/modules/asrx/components/ASRxConfigureEngineFull.tsx | all | component | Function component. Props: engine, credentials, onUpdate, advancedOn. Hooks: useCallback. Renders: FormSecretField, FormTextField. |
+| `src/modules/asrx/components/ASRxConfigureEngineFull::OpenAIParameters` | src/modules/asrx/components/ASRxConfigureEngineFull.tsx | all | component | Function component. Props: engine, onUpdate, isMobile. Hooks: useToggleableBoolean, useCallback. Renders: FormChipModelControl, FormTextField, FormSliderControl, FormSwitchControl, PersonalDictionaryRow, PanelFooter. |
+| `src/modules/asrx/components/ASRxConfigureEngineFull::PanelFooter` | src/modules/asrx/components/ASRxConfigureEngineFull.tsx | all | component | Function component. Props: advanced, showReset, onReset. Renders: Box, Typography, Link. |
+| `src/modules/asrx/components/ASRxConfigureEngineFull::PersonalDictionaryRow` | src/modules/asrx/components/ASRxConfigureEngineFull.tsx | all | component | Function component. Props: show, terms, description, onSave. Hooks: useState. Renders: FormControl, FormLabelStart, Button, DictionaryModal. |
+| `src/modules/asrx/components/ASRxConfigureEngines::ASRxConfigureEngines` | src/modules/asrx/components/ASRxConfigureEngines.tsx | all | component | Function component. Hooks: useState, useASRxEngines, useASRxGlobalEngine, useCallback. Renders: Box, FormLabelStart, ConfirmIconButton, Select, VendorIcon, SourceIcon. |
+| `src/modules/beam/BeamExplainer::BeamExplainer` | src/modules/beam/BeamExplainer.tsx | all | component | Function component. Renders: Box, ExplainerCarousel. |
+| `src/modules/beam/BeamUpstreamResume::BeamUpstreamResume` | src/modules/beam/BeamUpstreamResume.tsx | all | component | Function component. Hooks: useCallback. Renders: BlockOpUpstreamResume. |
+| `src/modules/beam/BeamView::BeamView` | src/modules/beam/BeamView.tsx | all | component | Function component. Hooks: useState, useUICounter, useModuleBeamStore, useShallow, useBeamStore, useCallback, +3 more. Renders: BeamExplainer, Box, Alert, BeamScatterInput, BeamScatterPane, RenderDecayZone. |
+| `src/modules/beam/components/BeamCardNotice::BeamCardNotice` | src/modules/beam/components/BeamCardNotice.tsx | all | component | Function component. Hooks: useMemo. Renders: span, Chip. |
+| `src/modules/beam/components/BeamCardNotice::BeamModelUnavailable` | src/modules/beam/components/BeamCardNotice.tsx | all | component | Function component. Renders: span, BeamCardNotice. |
+| `src/modules/beam/gather/BeamFusionGrid::BeamFusionGrid` | src/modules/beam/gather/BeamFusionGrid.tsx | all | component | Function component. Hooks: useBeamStore, useShallow, useTheme. Renders: Box, Fusion, BeamCard, FusionAddButton, Typography, Alert. |
+| `src/modules/beam/gather/BeamFusionGrid::FusionAddButton` | src/modules/beam/gather/BeamFusionGrid.tsx | all | component | Function component. Renders: props.currentFactory.Icon, Button, AddCircleOutlineRoundedIcon. |
+| `src/modules/beam/gather/BeamGatherPane::BeamGatherPane` | src/modules/beam/gather/BeamGatherPane.tsx | all | component | Function component. Hooks: useBeamStore, useShallow, useModuleBeamStore, useLLMSelect, useCallback. Renders: Box, Typography, MainLlmIcon, FormControl, ButtonGroup, Button. |
+| `src/modules/beam/gather/Fusion::Fusion` | src/modules/beam/gather/Fusion.tsx | all | component | Function component. Hooks: useState, useBeamStore, useBeamCardScrolling, useMessageAvatarLabel, useCallback, useLLMSelect, +1 more. Renders: BeamCard, FusionControlsMemo, FusionInstructionsEditor, BeamModelUnavailable, InlineError, BeamCardNotice. |
+| `src/modules/beam/gather/FusionControls::FusionControls` | src/modules/beam/gather/FusionControls.tsx | all | component | Function component. Renders: props.factory.Icon, em, Box, TooltipOutlined, IconButton, LLMVendorIconSprite, BuildCircleIcon, Sheet. |
+| `src/modules/beam/gather/FusionInputsWait::FusionInputsWait` | src/modules/beam/gather/FusionInputsWait.tsx | all | component | Function component. Hooks: useBeamStore, useShallow. Renders: Alert, Typography, Box, Button, PlayArrowRoundedIcon. |
+| `src/modules/beam/gather/FusionInstructionsEditor::EditableChatInstructionPrompt` | src/modules/beam/gather/FusionInstructionsEditor.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: Typography, InlineTextarea, Box. |
+| `src/modules/beam/gather/FusionInstructionsEditor::EditableInstruction` | src/modules/beam/gather/FusionInstructionsEditor.tsx | all | component | Function component. Hooks: useModuleBeamStore, useCallback. Renders: EditableChatInstructionPrompt, Typography. |
+| `src/modules/beam/gather/FusionInstructionsEditor::FusionInstructionsEditor` | src/modules/beam/gather/FusionInstructionsEditor.tsx | all | component | Function component. Hooks: useCallback, useMemo. Renders: Divider, EditableInstruction, Box, Typography. |
+| `src/modules/beam/gather/instructions/UserInputChecklistComponent::UserInputChecklistComponent` | src/modules/beam/gather/instructions/UserInputChecklistComponent.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: Box, Checkbox, Button. |
+| `src/modules/beam/scatter/BeamRay::BeamRay` | src/modules/beam/scatter/BeamRay.tsx | all | component | Function component. Hooks: useBeamStore, useBeamCardScrolling, useBeamScatterShowLettering, useMessageAvatarLabel, useCallback, useLLMSelect. Renders: BeamCard, RayControlsMemo, BeamModelUnavailable, InlineError, BeamCardNotice, Box. |
+| `src/modules/beam/scatter/BeamRay::RayControls` | src/modules/beam/scatter/BeamRay.tsx | all | component | Function component. Renders: div, Box, DragIndicatorIcon, TooltipOutlined, Typography, LLMVendorIconSprite, GoodTooltip. |
+| `src/modules/beam/scatter/BeamRayGrid::BeamRayGrid` | src/modules/beam/scatter/BeamRayGrid.tsx | all | component | Function component. Renders: Box, BeamRay, BeamCard, Button, AddCircleOutlineRoundedIcon. |
+| `src/modules/beam/scatter/BeamScatterInput::BeamScatterInput` | src/modules/beam/scatter/BeamScatterInput.tsx | all | component | Function component. Hooks: useTheme, useModuleBeamStore, useMemo. Renders: Typography, Box, ChatMessageMemo. |
+| `src/modules/beam/scatter/BeamScatterPane::BeamScatterPane` | src/modules/beam/scatter/BeamScatterPane.tsx | all | component | Function component. Hooks: useMemo, useCallback. Renders: BeamScatterDropdown, Box, Typography, AutoAwesomeIcon, AutoAwesomeOutlinedIcon, FormControl. |
+| `src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown` | src/modules/beam/scatter/BeamScatterPaneDropdown.tsx | all | component | Function component. Hooks: useState, useModuleBeamStore, useCallback. Renders: span, Dropdown, MenuButton, MoreVertIcon, Menu, ListItem, Typography. |
+| `src/modules/beam/scatter/BeamScatterPaneDropdown::DialogNamePreset` | src/modules/beam/scatter/BeamScatterPaneDropdown.tsx | all | component | Function component. Hooks: useState. Renders: form, Modal, ModalDialog, ModalClose, DialogTitle, DialogContent, Box. |
+| `src/modules/blocks/AutoBlocksRenderer::AutoBlocksRenderer` | src/modules/blocks/AutoBlocksRenderer.tsx | all | component | Function component. Hooks: useHeightCollapser, useAutoBlocksMemoSemiStable, useRenderDecay, useRef, useCallback, useScaledCodeSx, +3 more. Renders: BlocksContainer, RenderPlainText, RenderMarkdownMemo, EnhancedRenderCodeMemo, RenderCodeMemo, RenderDangerousHtml. |
+| `src/modules/blocks/code/code-renderers/RenderCodeChartJS::RenderCodeChartJS` | src/modules/blocks/code/code-renderers/RenderCodeChartJS.tsx | all | component | Wrapped component. Hooks: useState, useRef, useColorScheme, useDynamicChartJS, useMemo, useAgiFixupCode, +3 more. Renders: canvas, Typography, Box, Button, AutoAwesomeIcon. |
+| `src/modules/blocks/code/code-renderers/RenderCodeHtmlIFrame::RenderCodeHtmlIFrame` | src/modules/blocks/code/code-renderers/RenderCodeHtmlIFrame.tsx | all | component | Function component. Hooks: useState, useRef, useEffect. Renders: iframe. |
+| `src/modules/blocks/code/code-renderers/RenderCodeMarkdown::RenderCodeMarkdown` | src/modules/blocks/code/code-renderers/RenderCodeMarkdown.tsx | all | component | Function component. Renders: Box, RenderMarkdown. |
+| `src/modules/blocks/code/code-renderers/RenderCodeMermaid::RenderCodeMermaid` | src/modules/blocks/code/code-renderers/RenderCodeMermaid.tsx | all | component | Wrapped component. Hooks: useState, useRef, useMermaidLoader, useQuery, useFittedSvgString, useAgiFixupCode, +2 more. Renders: Box, Button, AutoAwesomeIcon, Typography. |
+| `src/modules/blocks/code/code-renderers/RenderCodePlantUML::RenderCodePlantUML` | src/modules/blocks/code/code-renderers/RenderCodePlantUML.tsx | all | component | Wrapped component. Hooks: useState, useQuery, useFittedSvgString, useAgiFixupCode, useCallback, useImperativeHandle. Renders: details, summary, Typography, Box, Button, AutoAwesomeIcon. |
+| `src/modules/blocks/code/code-renderers/RenderCodeSVG::RenderCodeSVG` | src/modules/blocks/code/code-renderers/RenderCodeSVG.tsx | all | component | Wrapped component. Hooks: useFittedSvgString, useImperativeHandle. Renders: Box. |
+| `src/modules/blocks/code/code-renderers/RenderCodeSyntax::RenderCodeSyntax` | src/modules/blocks/code/code-renderers/RenderCodeSyntax.tsx | all | component | Function component. Renders: Box. |
+| `src/modules/blocks/code/RenderCode::RCSyntaxHighlight` | src/modules/blocks/code/RenderCode.tsx | all | component | Wrapped component. Hooks: useDeferredValue, useMemo. Renders: RenderCodeSyntax. |
+| `src/modules/blocks/code/RenderCode::RenderCode` | src/modules/blocks/code/RenderCode.tsx | all | component | Function component. Props: props: RenderCodeBaseProps. Renders: React.Suspense, Box, _DynamicPrism. |
+| `src/modules/blocks/code/RenderCode::RenderCodeImpl` | src/modules/blocks/code/RenderCode.tsx | all | component | Function component. Hooks: useState, useRef, useERCDiffContext, useFullscreenElement, useStickyCodeOverlay, useUIPreferencesStore, +4 more. Renders: span, RCOverlay, Box, ButtonGroup, OverlayButton, HtmlIcon, ReplayRoundedIcon. |
+| `src/modules/blocks/code/RenderCodePanelFrame::RenderCodePanelFrame` | src/modules/blocks/code/RenderCodePanelFrame.tsx | all | component | Function component. Hooks: useColorScheme, useCallback, useMemo. Renders: Box, Sheet. |
+| `src/modules/blocks/danger-html/RenderDangerousHtml::RenderDangerousHtml` | src/modules/blocks/danger-html/RenderDangerousHtml.tsx | all | component | Function component. Hooks: useState. Renders: b, Box, RenderCodeHtmlIFrame, Typography, Button, OverlayButton, WebIcon. |
+| `src/modules/blocks/enhanced-code/EnhancedRenderCode::EnhancedRenderCode` | src/modules/blocks/enhanced-code/EnhancedRenderCode.tsx | all | component | Function component. Hooks: useState, useLiveFilePatch, useEffect, useCallback, useMemo. Renders: div, strong, small, ERCHeaderTooltip, Box, ERCHeader, TooltipOutlined, IconButton, +1 more. |
+| `src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu` | src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu.tsx | all | component | Function component. Hooks: useRef, useState, useERCDiffContext, useCallback. Renders: div, span, CloseablePopup, Box, MenuItem, ListItemDecorator, UnfoldMoreIcon, UnfoldLessIcon. |
+| `src/modules/blocks/enhanced-code/ERCDiffContext::ERCDiffContextProvider` | src/modules/blocks/enhanced-code/ERCDiffContext.tsx | all | component | Function component. Hooks: useState, useMemo. Renders: DiffDataContext.Provider, DiffActionsContext.Provider, ERCDiffModal. |
+| `src/modules/blocks/enhanced-code/ERCDiffModal::ERCDiffModal` | src/modules/blocks/enhanced-code/ERCDiffModal.tsx | all | component | Function component. Hooks: useCallback. Renders: GoodModal, CompareArrowsIcon, Box, Button, DiffViewer. |
+| `src/modules/blocks/image/RenderImageRefDBlob::RenderImageRefDBlob` | src/modules/blocks/image/RenderImageRefDBlob.tsx | all | component | Function component. Hooks: useDBAsset, useQuery, useMemo. Renders: Box, TimeAgo, RenderImageURL. |
+| `src/modules/blocks/image/RenderImageURL::RenderImageURL` | src/modules/blocks/image/RenderImageURL.tsx | all | component | Arrow function component. Hooks: useState, useEffect, useCallback. Renders: picture, img, Sheet, Box, OverlayButton, InfoOutlinedIcon, CloseRoundedIcon, DeleteOutlineIcon. |
+| `src/modules/blocks/markdown/CustomARenderer::CustomARenderer` | src/modules/blocks/markdown/CustomARenderer.tsx | all | component | Function component. Props: node, href, children, ...props. Hooks: useHostedLinkAction. Renders: a, TooltipOutlined, Link, InertLink, LinkPreview, GoogleFavicon. |
+| `src/modules/blocks/markdown/CustomARenderer::GoogleFavicon` | src/modules/blocks/markdown/CustomARenderer.tsx | all | component | Function component. Renders: Avatar. |
+| `src/modules/blocks/markdown/CustomARenderer::InertLink` | src/modules/blocks/markdown/CustomARenderer.tsx | all | component | Function component. Props: title, children. Renders: TooltipOutlined, Box. |
+| `src/modules/blocks/markdown/CustomARenderer::LinkPreview` | src/modules/blocks/markdown/CustomARenderer.tsx | all | component | Function component. Props: urlInfo. Renders: FormControl, Box, GoogleFavicon, Chip. |
+| `src/modules/blocks/markdown/CustomMarkdownRenderer::CustomMarkdownRenderer` | src/modules/blocks/markdown/CustomMarkdownRenderer.tsx | all | component | Function component. Props: content, disablePreprocessor, userTextFlavor, onParseCost, replaceContent. Hooks: useUXLabsStore, useMarkdownTaskListToggler, useMemo, useRef, useEffect. Renders: div. |
+| `src/modules/blocks/markdown/CustomMarkdownRenderer::DelRenderer` | src/modules/blocks/markdown/CustomMarkdownRenderer.tsx | all | component | Function component. Props: children. Renders: del. |
+| `src/modules/blocks/markdown/CustomMarkdownRenderer::MarkRenderer` | src/modules/blocks/markdown/CustomMarkdownRenderer.tsx | all | component | Function component. Props: children. Renders: mark. |
+| `src/modules/blocks/markdown/CustomTableRenderer::CustomTableRenderer` | src/modules/blocks/markdown/CustomTableRenderer.tsx | all | component | Function component. Props: children, node, ...props. Hooks: useRef, useCallback. Renders: table, Box, Chip. |
+| `src/modules/blocks/markdown/CustomTaskListRenderer::CustomInputRenderer` | src/modules/blocks/markdown/CustomTaskListRenderer.tsx | all | component | Function component. Props: node, children, ...props. Renders: input, Checkbox. |
+| `src/modules/blocks/markdown/HostedLinksContext::HostedLinksProvider` | src/modules/blocks/markdown/HostedLinksContext.tsx | all | component | Function component. Props: children. Hooks: useState, useCallback. Renders: HostedLinksRegisterContext.Provider, HostedLinksActionsContext.Provider. |
+| `src/modules/blocks/markdown/RenderMarkdown::RenderMarkdown` | src/modules/blocks/markdown/RenderMarkdown.tsx | all | component | Function component. Renders: div, RenderMarkdownBox, RenderMarkdownLite, React.Suspense, DynamicMarkdownRenderer. |
+| `src/modules/blocks/markdown/RenderMarkdownLite::RenderMarkdownLite` | src/modules/blocks/markdown/RenderMarkdownLite.tsx | all | component | Function component. Hooks: useRef. Renders: div. |
+| `src/modules/blocks/OverlayButton::OverlayButton` | src/modules/blocks/OverlayButton.tsx | all | component | Arrow function component. Props: tooltip, placement, tooltipProps, smShadow, color, variant, +1 more. Renders: Tooltip, StyledOverlayButton. |
+| `src/modules/blocks/plaintext/RenderPlainText::RenderPlainText` | src/modules/blocks/plaintext/RenderPlainText.tsx | all | component | Arrow function component. Hooks: useMemo. Renders: Typography, Chip. |
+| `src/modules/blocks/ScaledTextBlockRenderer::ScaledTextBlockRenderer` | src/modules/blocks/ScaledTextBlockRenderer.tsx | all | component | Function component. Hooks: useScaledTypographySx. Renders: BlocksContainer, RenderMarkdown, RenderPlainText. |
+| `src/modules/blocks/ToggleExpansionButton::ToggleExpansionButton` | src/modules/blocks/ToggleExpansionButton.tsx | all | component | Function component. Renders: div, Button, ExpandMoreIcon, ExpandLessIcon. |
+| `src/modules/blocks/wordsdiff/RenderWordsDiff::RenderWordsDiff` | src/modules/blocks/wordsdiff/RenderWordsDiff.tsx | all | component | Function component. Renders: Typography, Box. |
+| `src/modules/browse/BrowseSettings::BrowseSettings` | src/modules/browse/BrowseSettings.tsx | all | component | Function component. Hooks: useBrowseCapability, useBrowseStore, useShallow. Renders: Typography, ExternalDocsLink, FormInputKey, AlreadySet, FormControl, FormLabelStart. |
+| `src/modules/google/GoogleSearchSettings::GoogleSearchSettings` | src/modules/google/GoogleSearchSettings.tsx | all | component | Function component. Hooks: useGoogleSearchStore, useShallow. Renders: Typography, ExternalLink, FormControl, FormLabelStart, Link, Input. |
+| `src/modules/llms/components/LLMVendorIcon::LLMVendorIcon` | src/modules/llms/components/LLMVendorIcon.tsx | all | component | Function component. Props: vendorId, ...props. Renders: Icon. |
+| `src/modules/llms/components/LLMVendorIconSprite::LLMVendorIconSprite` | src/modules/llms/components/LLMVendorIconSprite.tsx | all | component | Function component. Props: vendorId. Renders: svg, use, PhRobot. |
+| `src/modules/llms/components/LLMVendorIconSprite::VendorIconSpriteMemo` | src/modules/llms/components/LLMVendorIconSprite.tsx | all | component | Wrapped component. Renders: svg, defs, symbol, g, path, rect. |
+| `src/modules/llms/components/LLMVendorSetup::LLMVendorSetup` | src/modules/llms/components/LLMVendorSetup.tsx | all | component | Function component. Renders: SetupComponent. |
+| `src/modules/llms/components/ModelsRefreshAlert::ModelsRefreshAlert` | src/modules/llms/components/ModelsRefreshAlert.tsx | all | component | Function component. Hooks: useModelsRefreshSummary, useCallback. Renders: Alert, CircularProgress, WarningRoundedIcon, CheckRoundedIcon, KeyboardArrowRightIcon. |
+| `src/modules/llms/components/ModelsRefreshAlert::ModelsRefreshIconButton` | src/modules/llms/components/ModelsRefreshAlert.tsx | all | component | Function component. Hooks: useModelsRefreshBatchStore. Renders: TooltipOutlined, IconButton, CircularProgress, RefreshIcon. |
+| `src/modules/llms/models-modal/AnthropicSkillsConfig::AnthropicSkillsConfig` | src/modules/llms/models-modal/AnthropicSkillsConfig.tsx | all | component | Function component. Props: smaller, llmVndAntSkills, onChangeParameter, onRemoveParameter. Hooks: useCallback. Renders: FormControl, FormLabelStart, Box, Chip. |
+| `src/modules/llms/models-modal/LLMOptionsClone::LLMOptionsClone` | src/modules/llms/models-modal/LLMOptionsClone.tsx | all | component | Function component. Hooks: useState, useLLM, useLLMExists, useCallback. Renders: b, GoodModal, Typography, FormControl, FormLabelStart, Input, Alert. |
+| `src/modules/llms/models-modal/LLMOptionsGlobal::LLMOptionsGlobal` | src/modules/llms/models-modal/LLMOptionsGlobal.tsx | all | component | Function component. Hooks: useCallback. Renders: InlineError, LLMParametersEditor. |
+| `src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal` | src/modules/llms/models-modal/LLMOptionsModal.tsx | all | component | Function component. Hooks: useIsMobile, useLLM, useModelsServices, useState, useModelDomains, useCallback. Renders: div, br, b, Chip, GoodModal, Box, TooltipOutlined, IconButton, +1 more. |
+| `src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor` | src/modules/llms/models-modal/LLMParametersEditor.tsx | all | component | Function component. Hooks: useMemo, useState, useCallback. Renders: span, FormSliderControl, Tooltip, IconButton, LocalFireDepartmentIcon, InlineError, Box. |
+| `src/modules/llms/models-modal/ModelsChangelogPanel::CountChips` | src/modules/llms/models-modal/ModelsChangelogPanel.tsx | all | component | Function component. Renders: Chip. |
+| `src/modules/llms/models-modal/ModelsChangelogPanel::ModelsChangelogPanel` | src/modules/llms/models-modal/ModelsChangelogPanel.tsx | all | component | Function component. Hooks: useToggleableStringSet, useState, useModelsStore, useShallow, useModelsRefreshBatchStore, useModelsRefreshSummary, +2 more. Renders: th, thead, tr, tbody, KeyboardArrowRightIcon, LinearProgress, Link, Chip, +2 more. |
+| `src/modules/llms/models-modal/ModelsChangelogPanel::ServiceChangelogRow` | src/modules/llms/models-modal/ModelsChangelogPanel.tsx | all | component | Function component. Hooks: useLlmUpdateModels, useCallback, useState. Renders: tr, td, Typography, Box, CountChips, CircularProgress, LLMVendorIconSprite, Link. |
+| `src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal` | src/modules/llms/models-modal/ModelsConfiguratorModal.tsx | all | component | Function component. Hooks: useState, useSubMenuHost, useIsMobile, useHasLLMs, useOverlayComponents, useUIPreferencesStore, +11 more. Renders: strong, b, ConfirmationModal, Button, SubMenuHost, Box, Dropdown, MenuButton. |
+| `src/modules/llms/models-modal/ModelsList::ModelItem` | src/modules/llms/models-modal/ModelsList.tsx | all | component | Wrapped component. Hooks: useCallback, useMemo. Renders: Chip, VisibilityOutlinedIcon, PsychologyOutlinedIcon, SdCardOutlinedIcon, ListItem, ListItemButton. |
+| `src/modules/llms/models-modal/ModelsList::ModelsList` | src/modules/llms/models-modal/ModelsList.tsx | all | component | Function component. Hooks: useIsMobile, useUIPreferencesStore, useModelDomains, useLLMsByService, useCallback, useMemo. Renders: br, ListItem, Typography, ModelItem, List. |
+| `src/modules/llms/models-modal/ModelsModals::ModelsModals` | src/modules/llms/models-modal/ModelsModals.tsx | all | component | Function component. Hooks: useOptimaModals, useModelsServices. Renders: ModelsConfiguratorModal, LLMOptionsModal. |
+| `src/modules/llms/models-modal/ModelsServiceSelector::ModelsServiceSelector` | src/modules/llms/models-modal/ModelsServiceSelector.tsx | all | component | Function component. Hooks: useState, useIsMobile, useCallback, useMemo. Renders: Option, Box, Typography, Select, RefreshIcon, ListDivider. |
+| `src/modules/llms/models-modal/ModelsWizard::ModelsWizard` | src/modules/llms/models-modal/ModelsWizard.tsx | all | component | Function component. Hooks: useState. Renders: Sheet, Box, Typography, Chip, WizardProviderSetup. |
+| `src/modules/llms/models-modal/ModelsWizard::WizardProviderSetup` | src/modules/llms/models-modal/ModelsWizard.tsx | all | component | Function component. Hooks: useState, useShallowStabilizer, useModelsStore, useShallow, useEffect, useCallback, +1 more. Renders: Box, Button, Typography, TooltipOutlined, Badge, Avatar. |
+| `src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig` | src/modules/llms/models-modal/OpenRouterWebToolsConfig.tsx | all | component | Function component. Hooks: useMemo. Renders: FormSelectControl, Box, _OptionalSlider. |
+| `src/modules/llms/vendors/alibaba/AlibabaServiceSetup::AlibabaServiceSetup` | src/modules/llms/vendors/alibaba/AlibabaServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useToggleableBoolean, useLlmUpdateModels. Renders: div, ApproximateCosts, Typography, ExternalLink, FormInputKey, Link, AlreadySet. |
+| `src/modules/llms/vendors/anthropic/AnthropicServiceSetup::AnthropicServiceSetup` | src/modules/llms/vendors/anthropic/AnthropicServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useChatAutoAI, useToggleableBoolean, useLlmUpdateModels. Renders: b, ApproximateCosts, Box, Link, FormInputKey, AlreadySet, FormSwitchControl. |
+| `src/modules/llms/vendors/ApproximateCosts::ApproximateCosts` | src/modules/llms/vendors/ApproximateCosts.tsx | all | component | Function component. Hooks: useState, useIsMobile, useUIComplexityMode, useCostMetricsForLLMService, useMemo. Renders: b, span, div, Box, TimeAgo, Chip. |
+| `src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup` | src/modules/llms/vendors/azure/AzureServiceSetup.tsx | all | component | Function component. Hooks: useState, useServiceSetup, useToggleableBoolean, useLlmUpdateModels. Renders: div, ApproximateCosts, Typography, ExternalLink, Chip, FormTextField, ExternalDocsLink. |
+| `src/modules/llms/vendors/bedrock/BedrockRegionAutocomplete::BedrockRegionAutocomplete` | src/modules/llms/vendors/bedrock/BedrockRegionAutocomplete.tsx | all | component | Function component. Hooks: useState, useEffect, useCallback. Renders: FormControl, Box, FormLabel, Autocomplete, AutocompleteOption, Typography. |
+| `src/modules/llms/vendors/bedrock/BedrockServiceSetup::BedrockServiceSetup` | src/modules/llms/vendors/bedrock/BedrockServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useState, useLlmUpdateModels. Renders: strong, li, code, ApproximateCosts, Box, ClaudeCrabIcon, Link, Typography, +1 more. |
+| `src/modules/llms/vendors/cerebras/CerebrasServiceSetup::CerebrasServiceSetup` | src/modules/llms/vendors/cerebras/CerebrasServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useToggleableBoolean, useLlmUpdateModels. Renders: ApproximateCosts, FormInputKey, Link, AlreadySet, SetupFormClientSideToggle, SetupFormRefetchButton. |
+| `src/modules/llms/vendors/cohere/CohereServiceSetup::CohereServiceSetup` | src/modules/llms/vendors/cohere/CohereServiceSetup.tsx | all | component | Function component. Hooks: useToggleableBoolean, useServiceSetup, useLlmUpdateModels. Renders: ApproximateCosts, FormInputKey, ExternalLink, AlreadySet, FormTextField, SetupFormClientSideToggle. |
+| `src/modules/llms/vendors/deepseek/DeepseekAIServiceSetup::DeepseekAIServiceSetup` | src/modules/llms/vendors/deepseek/DeepseekAIServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useToggleableBoolean, useLlmUpdateModels. Renders: ApproximateCosts, FormInputKey, Link, AlreadySet, FormTextField, SetupFormClientSideToggle. |
+| `src/modules/llms/vendors/gemini/GeminiServiceSetup::GeminiServiceSetup` | src/modules/llms/vendors/gemini/GeminiServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useToggleableBoolean, useLlmUpdateModels. Renders: ApproximateCosts, FormInputKey, Link, AlreadySet, FormControl, FormLabelStart. |
+| `src/modules/llms/vendors/groq/GroqServiceSetup::GroqServiceSetup` | src/modules/llms/vendors/groq/GroqServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useToggleableBoolean, useLlmUpdateModels. Renders: ApproximateCosts, FormInputKey, Link, AlreadySet, SetupFormClientSideToggle, SetupFormRefetchButton. |
+| `src/modules/llms/vendors/lmstudio/LMStudioServiceSetup::LMStudioServiceSetup` | src/modules/llms/vendors/lmstudio/LMStudioServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useLlmUpdateModels. Renders: b, ExpanderAccordion, Typography, YouTubeIcon, VideoPlayerYouTube, Link, ExternalDocsLink. |
+| `src/modules/llms/vendors/localai/LocalAIAdmin::ListItemSwitch` | src/modules/llms/vendors/localai/LocalAIAdmin.tsx | all | component | Function component. Renders: ListItem, Box, Switch. |
+| `src/modules/llms/vendors/localai/LocalAIAdmin::LocalAIAdmin` | src/modules/llms/vendors/localai/LocalAIAdmin.tsx | all | component | Function component. Hooks: useState, useQuery, useMemo, useVirtualizer, useCallback. Renders: b, thead, tr, th, tbody, td, GoodModal, Box, +4 more. |
+| `src/modules/llms/vendors/localai/LocalAIAdmin::ModelInstallPanel` | src/modules/llms/vendors/localai/LocalAIAdmin.tsx | all | component | Function component. Hooks: useState, useMutation, useEffect. Renders: strong, Card, Box, Typography, IconButton, CloseRoundedIcon, InlineError. |
+| `src/modules/llms/vendors/localai/LocalAIAdmin::ModelJobStatusChecker` | src/modules/llms/vendors/localai/LocalAIAdmin.tsx | all | component | Function component. Hooks: useState, useQuery, useEffect. Renders: InlineError, Box, Typography, Alert, LinearProgress. |
+| `src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup` | src/modules/llms/vendors/localai/LocalAIServiceSetup.tsx | all | component | Function component. Hooks: useState, useServiceSetup, useLlmUpdateModels. Renders: div, br, b, ApproximateCosts, Typography, ExternalLink, Link, Chip, +1 more. |
+| `src/modules/llms/vendors/metaai/MetaAIServiceSetup::MetaAIServiceSetup` | src/modules/llms/vendors/metaai/MetaAIServiceSetup.tsx | all | component | Function component. Hooks: useToggleableBoolean, useServiceSetup, useLlmUpdateModels. Renders: ApproximateCosts, FormInputKey, ExternalLink, AlreadySet, FormTextField, SetupFormClientSideToggle. |
+| `src/modules/llms/vendors/mistral/MistralServiceSetup::MistralServiceSetup` | src/modules/llms/vendors/mistral/MistralServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useToggleableBoolean, useLlmUpdateModels. Renders: ApproximateCosts, FormInputKey, Link, AlreadySet, SetupFormClientSideToggle, SetupFormRefetchButton. |
+| `src/modules/llms/vendors/modular/ModularServiceSetup::ModularServiceSetup` | src/modules/llms/vendors/modular/ModularServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useLlmUpdateModels. Renders: ApproximateCosts, FormChipControl, FormInputKey, Link, AlreadySet, SetupFormRefetchButton. |
+| `src/modules/llms/vendors/moonshot/MoonshotServiceSetup::MoonshotServiceSetup` | src/modules/llms/vendors/moonshot/MoonshotServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useToggleableBoolean, useLlmUpdateModels. Renders: div, strong, ApproximateCosts, Typography, ExternalLink, FormInputKey, Link, AlreadySet. |
+| `src/modules/llms/vendors/nvidianim/NvidiaNIMServiceSetup::NvidiaNIMServiceSetup` | src/modules/llms/vendors/nvidianim/NvidiaNIMServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useToggleableBoolean, useLlmUpdateModels. Renders: code, ApproximateCosts, FormInputKey, Link, AlreadySet, Typography, FormTextField. |
+| `src/modules/llms/vendors/ollama/OllamaAdministration::OllamaAdministration` | src/modules/llms/vendors/ollama/OllamaAdministration.tsx | all | component | Function component. Hooks: useState, useQuery, useMutation, useCallback, useMemo. Renders: GoodModal, Box, Typography, FormControl, FormLabelStart, Select. |
+| `src/modules/llms/vendors/ollama/OllamaServiceSetup::OllamaServiceSetup` | src/modules/llms/vendors/ollama/OllamaServiceSetup.tsx | all | component | Function component. Hooks: useState, useServiceSetup, useLlmUpdateModels. Renders: b, FormTextField, ExternalDocsLink, FormControl, FormLabelStart, Typography, SetupFormClientSideToggle. |
+| `src/modules/llms/vendors/openai/OpenAIHostAutocomplete::OpenAIHostAutocomplete` | src/modules/llms/vendors/openai/OpenAIHostAutocomplete.tsx | all | component | Function component. Hooks: useState, useEffect, useCallback. Renders: option.icon, Link, FormControl, Box, FormLabel, GoodTooltip, InfoOutlinedIcon. |
+| `src/modules/llms/vendors/openai/OpenAIServiceSetup::NvidiaNIMUpgradeNotice` | src/modules/llms/vendors/openai/OpenAIServiceSetup.tsx | all | component | Function component. Hooks: useCallback. Renders: Alert, NvidiaIcon, Box, Typography, Button. |
+| `src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup` | src/modules/llms/vendors/openai/OpenAIServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useToggleableBoolean, useEffect, useLlmUpdateModels. Renders: ApproximateCosts, NvidiaNIMUpgradeNotice, OpenAIHostAutocomplete, FormInputKey, Link, AlreadySet. |
+| `src/modules/llms/vendors/openrouter/OpenRouterServiceSetup::OpenRouterServiceSetup` | src/modules/llms/vendors/openrouter/OpenRouterServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useToggleableBoolean, useLlmUpdateModels. Renders: span, ApproximateCosts, Box, Typography, Link, ExternalDocsLink, PhGift. |
+| `src/modules/llms/vendors/perplexity/PerplexityServiceSetup::PerplexityServiceSetup` | src/modules/llms/vendors/perplexity/PerplexityServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useToggleableBoolean, useLlmUpdateModels. Renders: ApproximateCosts, FormInputKey, Link, AlreadySet, Typography, SetupFormClientSideToggle. |
+| `src/modules/llms/vendors/sakanaai/SakanaAIServiceSetup::SakanaAIServiceSetup` | src/modules/llms/vendors/sakanaai/SakanaAIServiceSetup.tsx | all | component | Function component. Hooks: useToggleableBoolean, useServiceSetup, useLlmUpdateModels. Renders: ApproximateCosts, FormInputKey, Link, AlreadySet, FormTextField, SetupFormRefetchButton. |
+| `src/modules/llms/vendors/togetherai/TogetherAIServiceSetup::TogetherAIServiceSetup` | src/modules/llms/vendors/togetherai/TogetherAIServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useToggleableBoolean, useLlmUpdateModels. Renders: ApproximateCosts, FormInputKey, Link, AlreadySet, FormSwitchControl, Alert. |
+| `src/modules/llms/vendors/xai/XAIServiceSetup::XAIServiceSetup` | src/modules/llms/vendors/xai/XAIServiceSetup.tsx | all | component | Function component. Hooks: useServiceSetup, useToggleableBoolean, useLlmUpdateModels. Renders: ApproximateCosts, FormInputKey, ExternalLink, AlreadySet, SetupFormClientSideToggle, SetupFormRefetchButton. |
+| `src/modules/llms/vendors/zai/ZAIServiceSetup::ZAIServiceSetup` | src/modules/llms/vendors/zai/ZAIServiceSetup.tsx | all | component | Function component. Hooks: useToggleableBoolean, useServiceSetup, useLlmUpdateModels. Renders: ApproximateCosts, FormInputKey, ExternalLink, AlreadySet, FormTextField, SetupFormClientSideToggle. |
+| `src/modules/news/components/DocsReaderModal::DocsFailure` | src/modules/news/components/DocsReaderModal.tsx | all | component | Function component. Renders: Box, Typography, Button. |
+| `src/modules/news/components/DocsReaderModal::DocsHomeView` | src/modules/news/components/DocsReaderModal.tsx | all | component | Function component. Renders: Box, Link, Typography, DocsNewChip. |
+| `src/modules/news/components/DocsReaderModal::DocsNavPage` | src/modules/news/components/DocsReaderModal.tsx | all | component | Function component. Renders: ListItem, ListItemButton, ListItemContent, DocsNewChip. |
+| `src/modules/news/components/DocsReaderModal::DocsNavTree` | src/modules/news/components/DocsReaderModal.tsx | all | component | Function component. Hooks: useState, useEffect, useCallback. Renders: List, ListItem, ListItemButton, ListItemDecorator, PhHouse, ListItemContent. |
+| `src/modules/news/components/DocsReaderModal::DocsNewChip` | src/modules/news/components/DocsReaderModal.tsx | all | component | Function component. Renders: Chip. |
+| `src/modules/news/components/DocsReaderModal::DocsPageView` | src/modules/news/components/DocsReaderModal.tsx | all | component | Function component. Hooks: useUIContentScaling, useScaledTypographySx. Renders: Box, BrandIcon, Typography, DocsNewChip, DocsTierChip, Divider. |
+| `src/modules/news/components/DocsReaderModal::DocsReaderModal` | src/modules/news/components/DocsReaderModal.tsx | all | component | Function component. Hooks: useState, useRef, useIsMobile, useQuery, useMemo, useEffect, +1 more. Renders: b, span, AppBreadcrumbs.Leaf, AppBreadcrumbs.Link, Box, Tooltip, IconButton, ArrowBackRoundedIcon. |
+| `src/modules/news/components/DocsReaderModal::DocsSearchResults` | src/modules/news/components/DocsReaderModal.tsx | all | component | Function component. Hooks: useCallback. Renders: Typography, List, ListItem, ListItemButton, ListItemContent, Box. |
+| `src/modules/news/components/DocsReaderModal::DocsSectionView` | src/modules/news/components/DocsReaderModal.tsx | all | component | Function component. Renders: List, ListItem, ListItemButton, ListItemContent, Typography, DocsNewChip. |
+| `src/modules/news/components/DocsReaderModal::DocsTierChip` | src/modules/news/components/DocsReaderModal.tsx | all | component | Function component. Renders: Chip. |
+| `src/modules/news/components/WhatsNewIndicators::AnnouncementsNavDot` | src/modules/news/components/WhatsNewIndicators.tsx | all | component | Function component. Hooks: useNews. Renders: Badge. |
+| `src/modules/news/components/WhatsNewIndicators::DocsMenuItem` | src/modules/news/components/WhatsNewIndicators.tsx | all | component | Function component. Hooks: useNewsAudience. Renders: MenuItem, ListItemDecorator, PhBookOpenText, LaunchIcon. |
+| `src/modules/news/components/WhatsNewIndicators::NewCount` | src/modules/news/components/WhatsNewIndicators.tsx | all | component | Function component. Renders: Chip, Typography. |
+| `src/modules/news/components/WhatsNewIndicators::NewsModals` | src/modules/news/components/WhatsNewIndicators.tsx | all | component | Function component. Hooks: useNewsModals, useNewsAudience, useEffect. Renders: WhatsNewModal, DocsReaderModal. |
+| `src/modules/news/components/WhatsNewIndicators::WhatsNewEmptyChatLine` | src/modules/news/components/WhatsNewIndicators.tsx | all | component | Function component. Hooks: useNews, useNewsAfterBuild. Renders: Typography, Link. |
+| `src/modules/news/components/WhatsNewIndicators::WhatsNewMenuItem` | src/modules/news/components/WhatsNewIndicators.tsx | all | component | Function component. Hooks: useNewsAudience. Renders: MenuItem, ListItemDecorator, ListItemContent. |
+| `src/modules/news/components/WhatsNewIndicators::WhatsNewNavDot` | src/modules/news/components/WhatsNewIndicators.tsx | all | component | Function component. Renders: AnnouncementsNavDot. |
+| `src/modules/news/components/WhatsNewIndicators::WhatsNewPanelRow` | src/modules/news/components/WhatsNewIndicators.tsx | all | component | Function component. Hooks: useIsMobile, useNews. Renders: OptimaPanelGroupedList, ListItem, ListItemButton, ListItemDecorator, ListItemContent, NewCount. |
+| `src/modules/news/components/WhatsNewModal::AnnouncementPane` | src/modules/news/components/WhatsNewModal.tsx | all | component | Function component. Renders: Box, Typography, Chip, LiteVideoEmbed, NewsBody, Link. |
+| `src/modules/news/components/WhatsNewModal::ChangelogDay` | src/modules/news/components/WhatsNewModal.tsx | all | component | Function component. Renders: div, Box, Typography, Link. |
+| `src/modules/news/components/WhatsNewModal::ChangelogLedger` | src/modules/news/components/WhatsNewModal.tsx | all | component | Function component. Renders: Box, React.Fragment, Divider, ChangelogDay. |
+| `src/modules/news/components/WhatsNewModal::ChangelogPane` | src/modules/news/components/WhatsNewModal.tsx | all | component | Function component. Hooks: useState, useMemo, useNewsAfterBuild. Renders: Typography, Alert, Button, ExpandLessIcon, ExpandMoreIcon, Box. |
+| `src/modules/news/components/WhatsNewModal::NewsBody` | src/modules/news/components/WhatsNewModal.tsx | all | component | Function component. Renders: li, Box. |
+| `src/modules/news/components/WhatsNewModal::WhatsNewModal` | src/modules/news/components/WhatsNewModal.tsx | all | component | Function component. Hooks: useIsMobile, useNews, useNewsSeenStore, useShallow, useState, useRef, +3 more. Renders: ListItem, ListItemButton, ListItemContent, Typography, ListItemDecorator, CircleIcon. |
+| `src/modules/speex/components/SpeexConfigureEngineFull::CredentialsApiKeyInputs` | src/modules/speex/components/SpeexConfigureEngineFull.tsx | all | component | Function component. Props: credentials, onUpdate, vendorType, showHost, hostRequired, hostPlaceholder, +1 more. Renders: FormSecretField, FormTextField. |
+| `src/modules/speex/components/SpeexConfigureEngineFull::ElevenLabsConfig` | src/modules/speex/components/SpeexConfigureEngineFull.tsx | all | component | Function component. Props: engine, onUpdate, isMobile. Hooks: useCallback. Renders: FormChipModelControl, FormControl, FormLabelStart, SpeexVoiceSelect. |
+| `src/modules/speex/components/SpeexConfigureEngineFull::GeminiConfig` | src/modules/speex/components/SpeexConfigureEngineFull.tsx | all | component | Function component. Props: engine, onUpdate, isMobile. Hooks: useCallback. Renders: FormChipModelControl, FormControl, FormLabelStart, SpeexVoiceAutocomplete. |
+| `src/modules/speex/components/SpeexConfigureEngineFull::InworldConfig` | src/modules/speex/components/SpeexConfigureEngineFull.tsx | all | component | Function component. Props: engine, onUpdate, isMobile. Hooks: useCallback. Renders: FormChipModelControl, FormControl, FormLabelStart, SpeexVoiceSelect, FormSliderControl. |
+| `src/modules/speex/components/SpeexConfigureEngineFull::LocalAIConfig` | src/modules/speex/components/SpeexConfigureEngineFull.tsx | all | component | Function component. Props: engine, onUpdate, isMobile. Hooks: useCallback. Renders: FormControl, FormLabelStart, SpeexVoiceAutocomplete, FormTextField. |
+| `src/modules/speex/components/SpeexConfigureEngineFull::OpenAIConfig` | src/modules/speex/components/SpeexConfigureEngineFull.tsx | all | component | Function component. Props: engine, onUpdate, isMobile. Hooks: useCallback. Renders: FormChipModelControl, FormControl, FormLabelStart, SpeexVoiceSelect, FormSliderControl, FormTextField. |
+| `src/modules/speex/components/SpeexConfigureEngineFull::PreviewButton` | src/modules/speex/components/SpeexConfigureEngineFull.tsx | all | component | Function component. Props: engineId. Hooks: useQueryClient, useQuery. Renders: div, TooltipOutlined, Button, StopRoundedIcon, PlayArrowRoundedIcon. |
+| `src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull` | src/modules/speex/components/SpeexConfigureEngineFull.tsx | all | component | Function component. Hooks: useToggleableBoolean, useCallback, useMemo. Renders: div, LinkIcon, KeyIcon, ExpanderSection, Box, ElevenLabsConfig, GeminiConfig. |
+| `src/modules/speex/components/SpeexConfigureEngineFull::WebSpeechConfig` | src/modules/speex/components/SpeexConfigureEngineFull.tsx | all | component | Function component. Props: engine, onUpdate, isMobile. Hooks: useCallback. Renders: FormControl, FormLabelStart, SpeexVoiceSelect, FormSliderControl. |
+| `src/modules/speex/components/SpeexConfigureEngines::SpeexConfigureEngines` | src/modules/speex/components/SpeexConfigureEngines.tsx | all | component | Function component. Hooks: useState, useSpeexEngines, useSpeexGlobalEngine, useCallback. Renders: Box, FormLabelStart, ConfirmIconButton, Select, VendorIcon, SourceIcon. |
+| `src/modules/speex/components/SpeexEngineSelect::SpeexEngineSelect` | src/modules/speex/components/SpeexEngineSelect.tsx | all | component | Function component. Props: props: SpeexEngineSelectProps. Hooks: useSpeexEngines, useMemo, useCallback. Renders: Select, Option, Typography. |
+| `src/modules/speex/components/SpeexSystemTest::SpeexSystemTest` | src/modules/speex/components/SpeexSystemTest.tsx | all | component | Function component. Hooks: useState, useRef, useCallback. Renders: div, Sheet, Box, Typography, Chip, Switch, Textarea. |
+| `src/modules/speex/components/SpeexVoiceAutocomplete::SpeexVoiceAutocomplete` | src/modules/speex/components/SpeexVoiceAutocomplete.tsx | all | component | Function component. Props: props: SpeexVoiceAutocompleteProps. Hooks: useSpeexVoices, useState, useEffect, useCallback. Renders: div, Box, TooltipOutlined, IconButton, RefreshIcon, CircularProgress, Autocomplete. |
+| `src/modules/speex/components/SpeexVoiceSelect::SpeexVoiceSelect` | src/modules/speex/components/SpeexVoiceSelect.tsx | all | component | Function component. Hooks: useSpeexVoices, useState, useQuery, useCallback. Renders: div, span, Box, TooltipOutlined, IconButton, RefreshIcon, CircularProgress, Select. |
+| `src/modules/t2i/components/T2IConfigureEngineFull::T2IConfigureEngineFull` | src/modules/t2i/components/T2IConfigureEngineFull.tsx | all | component | Function component. Renders: div, ExpanderSection, Box, T2IEngineProfilePanel, Typography. |
+| `src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfileEditor` | src/modules/t2i/components/T2IConfigureEngineFull.tsx | all | component | Function component. Hooks: useT2IStore. Renders: T2IEngineProfilePanel. |
+| `src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfilePanel` | src/modules/t2i/components/T2IConfigureEngineFull.tsx | all | component | Function component. Renders: DallESettings, OpenRouterT2ISettings, GeminiT2ISettings, Typography. |
+| `src/modules/t2i/components/T2IConfigureEngines::T2IConfigureEngines` | src/modules/t2i/components/T2IConfigureEngines.tsx | all | component | Function component. Hooks: useCapabilityTextToImage, useT2IStore, useCallback. Renders: Alert, Box, FormLabelStart, Select, VendorIcon, SourceIcon. |
+| `src/modules/t2i/dalle/DallESettings::DallESettings` | src/modules/t2i/dalle/DallESettings.tsx | all | component | Function component. Hooks: useToggleableBoolean, useCallback. Renders: FormSelectControl, FormControl, FormLabelStart, Select, Option, FormChipControl. |
+| `src/modules/t2i/gemini/GeminiT2ISettings::GeminiT2ISettings` | src/modules/t2i/gemini/GeminiT2ISettings.tsx | all | component | Function component. Hooks: useGeminiImageModels, useCallback. Renders: FormControl, FormLabelStart, Select, Option, Box, Link. |
+| `src/modules/t2i/openrouter/OpenRouterT2ISettings::OpenRouterT2ISettings` | src/modules/t2i/openrouter/OpenRouterT2ISettings.tsx | all | component | Function component. Renders: FormControl, FormLabelStart, Link, Select, Option. |
+| `src/modules/trade/BackupRestore::FlashBackup` | src/modules/trade/BackupRestore.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: strong, Typography, Button, DoneIcon, ErrorIcon, DownloadIcon, FormControl. |
+| `src/modules/trade/BackupRestore::FlashRestore` | src/modules/trade/BackupRestore.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: br, Typography, Button, DoneIcon, ErrorIcon, RestoreIcon, Sheet. |
+| `src/modules/trade/claude-code/ExportClaudeCode::ExportClaudeCode` | src/modules/trade/claude-code/ExportClaudeCode.tsx | all | component | Function component. Hooks: useState, useCallback. Renders: b, Button, FileDownloadOutlinedIcon, GoodModal, Typography, Sheet, _OptionCheckbox. |
+| `src/modules/trade/ExportChats::ExportChats` | src/modules/trade/ExportChats.tsx | all | component | Function component. Hooks: useState. Renders: strong, Grid, Box, Typography, GoodTooltip, KeyStroke, Button. |
+| `src/modules/trade/ImportChats::ImportChats` | src/modules/trade/ImportChats.tsx | all | component | Function component. Hooks: useState. Renders: strong, Box, Typography, GoodTooltip, KeyStroke, Button, FileUploadOutlinedIcon. |
+| `src/modules/trade/ImportOutcomeModal::ImportOutcomeModal` | src/modules/trade/ImportOutcomeModal.tsx | all | component | Function component. Renders: b, GoodModal, Divider, Alert, Typography, Box, List. |
+| `src/modules/trade/link/ChatLinkDetails::ChatLinkDetails` | src/modules/trade/link/ChatLinkDetails.tsx | all | component | Function component. Hooks: useState. Renders: b, GoodModal, InlineError, Card, Typography, Stack, Tooltip. |
+| `src/modules/trade/link/ChatLinkExport::ChatLinkExport` | src/modules/trade/link/ChatLinkExport.tsx | all | component | Function component. Hooks: useState, useLinkStorageOwnerId. Renders: br, Button, DoneIcon, ShareOutlinedIcon, ConfirmationModal, Link, ChatLinkDetails. |
+| `src/modules/trade/TradeModal::TradeModal` | src/modules/trade/TradeModal.tsx | all | component | Function component. Renders: b, GoodModal, ExternalDocsLink, ImportChats, ExportChats. |
+| `src/modules/youtube/YouTubeURLInput::YouTubeURLInput` | src/modules/youtube/YouTubeURLInput.tsx | all | component | Arrow function component. Props: onSubmit, sx. Hooks: useState, useQuery, useCallback. Renders: form, Box, Input, YouTubeIcon, Button, InlineError. |
+
+## Coverage
+
+- all: 633 identifier(s)
+
+## Design system components
+
+633 component(s) carry a stable `@uxid`. 46 declare variants (51 axis/axes, 186 value(s) in total), read from `cva()` calls, class maps, prop unions and conditional class branches.
+
+| @uxid | component | file | variants | states | uses | notes |
+| --- | --- | --- | --- | --- | --- | --- |
+| "pages/_app::Big_AGI_App" | Big_AGI_App | `pages/_app.tsx` |  |  | 0 | Next.js application root; wraps all pages with providers and global layout. |
+| "pages/_document::MyDocument" | MyDocument | `pages/_document.tsx` |  |  | 0 | Custom Next.js document defining the HTML shell. |
+| "pages/dev/debug::DebugCard" | DebugCard | `pages/dev/debug.tsx` |  |  | 0 | Card container for a single debug section on the dev debug page. |
+| "pages/dev/debug::DebugJsonCard" | DebugJsonCard | `pages/dev/debug.tsx` |  |  | 0 | Debug card variant that displays a JSON payload. |
+| "pages/dev/debug::AppDebug" | AppDebug | `pages/dev/debug.tsx` |  |  | 0 | Developer debug page composed of debug cards. |
+| "pages/link/callback_openrouter::CallbackOpenRouterPage" | CallbackOpenRouterPage | `pages/link/callback_openrouter.tsx` |  |  | 0 | OAuth/link callback page for completing OpenRouter connection. |
+| "pages/link/share_target::AppShareTarget" | AppShareTarget | `pages/link/share_target.tsx` |  |  | 0 | Page that receives content shared into the app via the Web Share Target API. |
+| "public/closed.html::ClosedPage" | ClosedPage | `public/closed.html` |  |  | 0 | Static page shown when the app is closed/unavailable. |
+| "public/dev/index.html::DevPage" | DevPage | `public/dev/index.html` |  |  | 0 | Static index for developer tooling pages. |
+| "public/dev/inspect/doctor.html::DevInspectDoctorPage" | DevInspectDoctorPage | `public/dev/inspect/doctor.html` |  |  | 0 | Static dev inspection page for health diagnostics. |
+| "public/dev/inspect/heal.html::DevInspectHealPage" | DevInspectHealPage | `public/dev/inspect/heal.html` |  |  | 0 | Static dev inspection page for repair/heal actions. |
+| "public/dev/inspect/logs.html::DevInspectLogsPage" | DevInspectLogsPage | `public/dev/inspect/logs.html` |  |  | 0 | Static dev inspection page for viewing logs. |
+| "public/dev/inspect/storage.html::DevInspectStoragePage" | DevInspectStoragePage | `public/dev/inspect/storage.html` |  |  | 0 | Static dev inspection page for browser storage. |
+| "src/apps/AppPlaceholder::AppPlaceholder" | AppPlaceholder | `src/apps/AppPlaceholder.tsx` |  |  | 4 | Placeholder screen for an app that is not yet available or loaded. |
+| "src/apps/AppSmallContainer::AppSmallContainer" | AppSmallContainer | `src/apps/AppSmallContainer.tsx` |  |  | 2 | Narrow centered container used by small single-purpose apps. |
+| "src/apps/beam/AppBeam::AppBeam" | AppBeam | `src/apps/beam/AppBeam.tsx` |  |  | 0 | Standalone app entry for the Beam multi-model feature. |
+| "src/apps/call/AppCall::AppCall" | AppCall | `src/apps/call/AppCall.tsx` | backTo (2) |  | 1 | App entry for the voice Call experience. |
+| "src/apps/call/CallWizard::StatusCard" | StatusCard | `src/apps/call/CallWizard.tsx` |  |  | 0 | Card showing one readiness check within the call setup wizard. |
+| "src/apps/call/CallWizard::CallWizard" | CallWizard | `src/apps/call/CallWizard.tsx` |  |  | 1 | Pre-call setup wizard verifying prerequisites. |
+| "src/apps/call/Contacts::ContactCardAvatar" | ContactCardAvatar | `src/apps/call/Contacts.tsx` |  |  | 0 | Avatar displayed on a call contact card. |
+| "src/apps/call/Contacts::ContactCardConversationCall" | ContactCardConversationCall | `src/apps/call/Contacts.tsx` |  |  | 0 | Contact card for calling into an existing conversation. |
+| "src/apps/call/Contacts::CallContactCard" | CallContactCard | `src/apps/call/Contacts.tsx` |  |  | 0 | Card representing a callable contact (persona). |
+| "src/apps/call/Contacts::ContactsMenuItems" | ContactsMenuItems | `src/apps/call/Contacts.tsx` |  |  | 0 | Menu items for the contacts view. |
+| "src/apps/call/Contacts::Contacts" | Contacts | `src/apps/call/Contacts.tsx` |  |  | 1 | Contacts list screen for starting a call. |
+| "src/apps/call/Telephone::CallMenu" | CallMenu | `src/apps/call/Telephone.tsx` |  |  | 0 | Options menu shown during an active call. |
+| "src/apps/call/Telephone::Telephone" | Telephone | `src/apps/call/Telephone.tsx` |  |  | 1 | Active call screen with transcript and controls. |
+| "src/apps/call/components/CallAvatar::CallAvatar" | CallAvatar | `src/apps/call/components/CallAvatar.tsx` |  |  | 1 | Large avatar for the call participant. |
+| "src/apps/call/components/CallButton::CallButton" | CallButton | `src/apps/call/components/CallButton.tsx` |  |  | 7 | Round action button used in the call UI. |
+| "src/apps/call/components/CallMessage::CallMessage" | CallMessage | `src/apps/call/components/CallMessage.tsx` |  |  | 3 | Single transcript message bubble in a call. |
+| "src/apps/call/components/CallStatus::CallStatus" | CallStatus | `src/apps/call/components/CallStatus.tsx` |  |  | 1 | Status line/indicator for the call state. |
+| "src/apps/chat/AppChat::AppChat" | AppChat | `src/apps/chat/AppChat.tsx` | direction (2) |  | 1 | Main chat application entry. |
+| "src/apps/chat/components/ChatBeamWrapper::ChatBeamWrapper" | ChatBeamWrapper | `src/apps/chat/components/ChatBeamWrapper.tsx` |  |  | 1 | Hosts the Beam view inside a chat pane. |
+| "src/apps/chat/components/ChatCleanupList::ChatCleanupControls" | ChatCleanupControls | `src/apps/chat/components/ChatCleanupList.tsx` |  |  | 1 | Controls for bulk cleanup of chat messages. |
+| "src/apps/chat/components/ChatMessageList::ChatMessageList" | ChatMessageList | `src/apps/chat/components/ChatMessageList.tsx` |  |  | 0 | Scrollable list of messages in a conversation. |
+| "src/apps/chat/components/ChatPane::ChatPane" | ChatPane | `src/apps/chat/components/ChatPane.tsx` |  | before | 0 | A single chat pane in the split-window layout. |
+| "src/apps/chat/components/Ephemerals::PrimitiveRender" | PrimitiveRender | `src/apps/chat/components/Ephemerals.tsx` |  |  | 0 | Renders a primitive value in the ephemerals state view. |
+| "src/apps/chat/components/Ephemerals::ListRenderer" | ListRenderer | `src/apps/chat/components/Ephemerals.tsx` |  |  | 0 | Renders a list value in the ephemerals state view. |
+| "src/apps/chat/components/Ephemerals::ObjectRenderer" | ObjectRenderer | `src/apps/chat/components/Ephemerals.tsx` |  |  | 0 | Renders an object value in the ephemerals state view. |
+| "src/apps/chat/components/Ephemerals::StateRenderer" | StateRenderer | `src/apps/chat/components/Ephemerals.tsx` |  |  | 0 | Dispatches a state value to the appropriate renderer. |
+| "src/apps/chat/components/Ephemerals::EphemeralItem" | EphemeralItem | `src/apps/chat/components/Ephemerals.tsx` |  |  | 0 | One ephemeral (transient) item shown in chat. |
+| "src/apps/chat/components/Ephemerals::Ephemerals" | Ephemerals | `src/apps/chat/components/Ephemerals.tsx` |  |  | 1 | Container for ephemeral items attached to a conversation. |
+| "src/apps/chat/components/PaneTitleOverlay::PaneTitleOverlay" | PaneTitleOverlay | `src/apps/chat/components/PaneTitleOverlay.tsx` |  |  | 0 | Overlay showing the title of a chat pane. |
+| "src/apps/chat/components/StatusBar::ShortcutItem" | ShortcutItem | `src/apps/chat/components/StatusBar.tsx` | symbol (3) |  | 0 | Single keyboard shortcut hint in the status bar. |
+| "src/apps/chat/components/StatusBar::StatusBar" | StatusBar | `src/apps/chat/components/StatusBar.tsx` |  |  | 0 | Bottom status bar for the chat app. |
+| "src/apps/chat/components/composer/Composer::Composer" | Composer | `src/apps/chat/components/composer/Composer.tsx` |  | disabled | 0 | Message composer with text input, attachments and send controls. |
+| "src/apps/chat/components/composer/ComposerDock::ComposerDock" | ComposerDock | `src/apps/chat/components/composer/ComposerDock.tsx` |  |  | 1 | Dock area positioning the composer. |
+| "src/apps/chat/components/composer/actile/ActilePopup::ActilePopup" | ActilePopup | `src/apps/chat/components/composer/actile/ActilePopup.tsx` |  |  | 1 | Autocomplete popup for actile (slash/command) input. |
+| "src/apps/chat/components/composer/buttons/ButtonBeam::ButtonBeam" | ButtonBeam | `src/apps/chat/components/composer/buttons/ButtonBeam.tsx` |  |  | 0 | Composer button to start Beam. |
+| "src/apps/chat/components/composer/buttons/ButtonCall::ButtonCall" | ButtonCall | `src/apps/chat/components/composer/buttons/ButtonCall.tsx` |  |  | 0 | Composer button to start a Call. |
+| "src/apps/chat/components/composer/buttons/ButtonGroupDrawRepeat::ButtonGroupDrawRepeat" | ButtonGroupDrawRepeat | `src/apps/chat/components/composer/buttons/ButtonGroupDrawRepeat.tsx` |  |  | 1 | Button group for repeat count in draw mode. |
+| "src/apps/chat/components/composer/buttons/ButtonMic::ButtonMic" | ButtonMic | `src/apps/chat/components/composer/buttons/ButtonMic.tsx` |  |  | 0 | Microphone button for voice input. |
+| "src/apps/chat/components/composer/buttons/ButtonMicContinuation::ButtonMicContinuation" | ButtonMicContinuation | `src/apps/chat/components/composer/buttons/ButtonMicContinuation.tsx` |  |  | 0 | Toggle for continuous microphone input. |
+| "src/apps/chat/components/composer/buttons/ButtonMultiChat::ButtonMultiChat" | ButtonMultiChat | `src/apps/chat/components/composer/buttons/ButtonMultiChat.tsx` |  |  | 0 | Toggle for sending to multiple chats. |
+| "src/apps/chat/components/composer/buttons/ButtonOptionsDraw::ButtonOptionsDraw" | ButtonOptionsDraw | `src/apps/chat/components/composer/buttons/ButtonOptionsDraw.tsx` |  |  | 2 | Opens draw options from the composer. |
+| "src/apps/chat/components/composer/composer.input-enhancers::VideoUrlPendingChip" | VideoUrlPendingChip | `src/apps/chat/components/composer/composer.input-enhancers.tsx` |  |  | 0 | Chip shown while a pasted video URL is pending. |
+| "src/apps/chat/components/composer/composer.input-enhancers::VideoUrlDisabledHint" | VideoUrlDisabledHint | `src/apps/chat/components/composer/composer.input-enhancers.tsx` |  |  | 0 | Hint shown when video URL handling is disabled. |
+| "src/apps/chat/components/composer/llmattachments/ComposerAttachmentDraftsList::ComposerAttachmentDraftsList" | ComposerAttachmentDraftsList | `src/apps/chat/components/composer/llmattachments/ComposerAttachmentDraftsList.tsx` |  | disabled | 1 | List of attachment drafts in the composer. |
+| "src/apps/chat/components/composer/llmattachments/LLMAttachmentsPromptsButton::LLMAttachmentsPromptsButton" | LLMAttachmentsPromptsButton | `src/apps/chat/components/composer/llmattachments/LLMAttachmentsPromptsButton.tsx` |  |  | 0 | Button offering prompts for attached content. |
+| "src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::SortableGroupRow" | SortableGroupRow | `src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl.tsx` |  |  | 0 | Draggable row in the fragment ordering control. |
+| "src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::MessageFragmentOrderControl" | MessageFragmentOrderControl | `src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl.tsx` |  |  | 1 | Control to reorder message fragments. |
+| "src/apps/chat/components/composer/textarea/ComposerTextAreaActions::ComposerTextAreaActions" | ComposerTextAreaActions | `src/apps/chat/components/composer/textarea/ComposerTextAreaActions.tsx` |  |  | 1 | Action buttons overlaid on the composer textarea. |
+| "src/apps/chat/components/composer/textarea/ComposerTextAreaDrawActions::ComposerTextAreaDrawActions" | ComposerTextAreaDrawActions | `src/apps/chat/components/composer/textarea/ComposerTextAreaDrawActions.tsx` |  |  | 1 | Textarea actions specific to draw mode. |
+| "src/apps/chat/components/composer/tokens/TokenBadge::TokenBadge" | TokenBadge | `src/apps/chat/components/composer/tokens/TokenBadge.tsx` |  |  | 0 | Badge showing token count. |
+| "src/apps/chat/components/composer/tokens/TokenProgressbar::TokenProgressbar" | TokenProgressbar | `src/apps/chat/components/composer/tokens/TokenProgressbar.tsx` |  |  | 0 | Progress bar for token usage versus context limit. |
+| "src/apps/chat/components/composer/tokens/TokenTooltip::TokenTooltip" | TokenTooltip | `src/apps/chat/components/composer/tokens/TokenTooltip.tsx` | placement (2) |  | 2 | Tooltip detailing token usage. |
+| "src/apps/chat/components/layout-bar/ChatBarAltTitle::ChatBarAltTitle" | ChatBarAltTitle | `src/apps/chat/components/layout-bar/ChatBarAltTitle.tsx` |  |  | 0 | Alternative title display in the chat top bar. |
+| "src/apps/chat/components/layout-bar/ChatBarBeam::ChatBarBeam" | ChatBarBeam | `src/apps/chat/components/layout-bar/ChatBarBeam.tsx` |  |  | 1 | Top bar contents while in Beam mode. |
+| "src/apps/chat/components/layout-bar/ChatBarBreadcrumbs::ChatBarBreadcrumbs" | ChatBarBreadcrumbs | `src/apps/chat/components/layout-bar/ChatBarBreadcrumbs.tsx` |  |  | 2 | Breadcrumb navigation in the chat bar. |
+| "src/apps/chat/components/layout-bar/ChatBarChat::ChatBarChat" | ChatBarChat | `src/apps/chat/components/layout-bar/ChatBarChat.tsx` |  |  | 1 | Top bar contents for normal chat mode. |
+| "src/apps/chat/components/layout-bar/ChatToolbar::ChatToolbar" | ChatToolbar | `src/apps/chat/components/layout-bar/ChatToolbar.tsx` |  |  | 0 | Toolbar of chat actions. |
+| "src/apps/chat/components/layout-bar/useLLMDropdown::LLMDropdown" | LLMDropdown | `src/apps/chat/components/layout-bar/useLLMDropdown.tsx` |  |  | 0 | Dropdown for selecting the active model. |
+| "src/apps/chat/components/layout-bar/usePersonaDropdown::PersonaDropdown" | PersonaDropdown | `src/apps/chat/components/layout-bar/usePersonaDropdown.tsx` |  |  | 0 | Dropdown for selecting the active persona. |
+| "src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer" | ChatDrawer | `src/apps/chat/components/layout-drawer/ChatDrawer.tsx` |  |  | 0 | Drawer listing conversations and folders. |
+| "src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem" | ChatDrawerItem | `src/apps/chat/components/layout-drawer/ChatDrawerItem.tsx` |  |  | 1 | One conversation entry in the chat drawer. |
+| "src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::ChatDrawerStorageWarning" | ChatDrawerStorageWarning | `src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning.tsx` |  |  | 1 | Warning about storage usage in the drawer. |
+| "src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::StorageWarningConfirmationModal" | StorageWarningConfirmationModal | `src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning.tsx` |  |  | 0 | Confirmation modal for storage-related actions. |
+| "src/apps/chat/components/layout-drawer/folders/ChatFolderList::ChatFolderList" | ChatFolderList | `src/apps/chat/components/layout-drawer/folders/ChatFolderList.tsx` |  |  | 1 | List of chat folders. |
+| "src/apps/chat/components/layout-drawer/folders/FolderListItem::FolderListItem" | FolderListItem | `src/apps/chat/components/layout-drawer/folders/FolderListItem.tsx` |  |  | 1 | One folder entry in the folder list. |
+| "src/apps/chat/components/layout-panel/ActionFolder::ActionFolder" | ActionFolder | `src/apps/chat/components/layout-panel/ActionFolder.tsx` |  | disabled | 1 | Panel action for folder assignment. |
+| "src/apps/chat/components/layout-panel/ChatPanel::VariformPaneFrame" | VariformPaneFrame | `src/apps/chat/components/layout-panel/ChatPanel.tsx` |  |  | 0 | Frame wrapper for the chat side panel. |
+| "src/apps/chat/components/layout-panel/ChatPanel::ChatPanel" | ChatPanel | `src/apps/chat/components/layout-panel/ChatPanel.tsx` |  |  | 0 | Right-side panel of the chat app. |
+| "src/apps/chat/components/layout-panel/WindowSplitControls::WindowSplitControls" | WindowSplitControls | `src/apps/chat/components/layout-panel/WindowSplitControls.tsx` |  |  | 1 | Controls for splitting/unsplitting chat panes. |
+| "src/apps/chat/components/live-svg/LiveSvgAnimator::Stat" | Stat | `src/apps/chat/components/live-svg/LiveSvgAnimator.tsx` |  |  | 0 | Single statistic readout in the live SVG animator. |
+| "src/apps/chat/components/live-svg/LiveSvgAnimator::TpsSparkline" | TpsSparkline | `src/apps/chat/components/live-svg/LiveSvgAnimator.tsx` |  |  | 0 | Sparkline of tokens-per-second. |
+| "src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator" | LiveSvgAnimator | `src/apps/chat/components/live-svg/LiveSvgAnimator.tsx` |  |  | 1 | Animated SVG visualization with live stats. |
+| "src/apps/chat/components/message/BlockOpContinue::BlockOpContinue" | BlockOpContinue | `src/apps/chat/components/message/BlockOpContinue.tsx` |  |  | 1 | Block operation to continue a truncated response. |
+| "src/apps/chat/components/message/BlockOpOptions::BlockOpOptions" | BlockOpOptions | `src/apps/chat/components/message/BlockOpOptions.tsx` |  |  | 1 | Options for block operations on a message. |
+| "src/apps/chat/components/message/BlockOpResolveVertexAILinks::BlockOpResolveVertexAILinks" | BlockOpResolveVertexAILinks | `src/apps/chat/components/message/BlockOpResolveVertexAILinks.tsx` |  |  | 1 | Operation to resolve Vertex AI links in a message. |
+| "src/apps/chat/components/message/BlockOpUpstreamResume::BlockOpUpstreamResume" | BlockOpUpstreamResume | `src/apps/chat/components/message/BlockOpUpstreamResume.tsx` |  |  | 2 | Operation to resume an upstream generation. |
+| "src/apps/chat/components/message/CMEditAttach::CMEditAttach" | CMEditAttach | `src/apps/chat/components/message/CMEditAttach.tsx` | variant (2) |  | 2 | Attach control while editing a chat message. |
+| "src/apps/chat/components/message/ChatMessage::CMDesktopAvatar" | CMDesktopAvatar | `src/apps/chat/components/message/ChatMessage.tsx` |  | only | 0 | Avatar column of a message on desktop. |
+| "src/apps/chat/components/message/ChatMessage::CMMobileHeader" | CMMobileHeader | `src/apps/chat/components/message/ChatMessage.tsx` |  | only | 0 | Compact message header on mobile. |
+| "src/apps/chat/components/message/ChatMessage::ChatMessage" | ChatMessage | `src/apps/chat/components/message/ChatMessage.tsx` |  | only | 3 | Full chat message with content, avatar and actions. |
+| "src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble" | ChatMessageBubble | `src/apps/chat/components/message/ChatMessageBubble.tsx` |  |  | 1 | Bubble-style message presentation. |
+| "src/apps/chat/components/message/ChatMessageInfoPopup::ChatMessageInfoPopup" | ChatMessageInfoPopup | `src/apps/chat/components/message/ChatMessageInfoPopup.tsx` |  | open | 1 | Popup with message metadata. |
+| "src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu" | ChatMessageMenu | `src/apps/chat/components/message/ChatMessageMenu.tsx` |  |  | 1 | Context menu of message actions. |
+| "src/apps/chat/components/message/ChatMessageTimestamp::ChatMessageTimestamp" | ChatMessageTimestamp | `src/apps/chat/components/message/ChatMessageTimestamp.tsx` |  |  | 1 | Timestamp display for a message. |
+| "src/apps/chat/components/message/CleanerMessage::MessagesSelectionHeader" | MessagesSelectionHeader | `src/apps/chat/components/message/CleanerMessage.tsx` |  |  | 1 | Header for the message selection/cleanup mode. |
+| "src/apps/chat/components/message/CleanerMessage::CleanerMessage" | CleanerMessage | `src/apps/chat/components/message/CleanerMessage.tsx` |  |  | 1 | Selectable message row in cleanup mode. |
+| "src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton::DocAttachmentDeleteButton" | DocAttachmentDeleteButton | `src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton.tsx` |  |  | 0 | Delete button for a document attachment. |
+| "src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton::DocAttachmentFragmentButton" | DocAttachmentFragmentButton | `src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton.tsx` |  |  | 2 | Button representing a document attachment fragment. |
+| "src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane::DocAttachmentFragmentPane" | DocAttachmentFragmentPane | `src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane.tsx` |  |  | 2 | Expanded pane for a document attachment. |
+| "src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::SortableDocAttachmentButton" | SortableDocAttachmentButton | `src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments.tsx` | renderVariant (2) |  | 1 | Draggable document attachment button. |
+| "src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::DocumentAttachmentFragments" | DocumentAttachmentFragments | `src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments.tsx` |  |  | 1 | Group of document attachments on a message. |
+| "src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/LiveFileControlButton::LiveFileControlButton" | LiveFileControlButton | `src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/LiveFileControlButton.tsx` |  | disabled | 1 | Control for live-file sync of an attachment. |
+| "src/apps/chat/components/message/fragments-attachment-edit/EditAttachmentFragments::EditAttachmentFragments" | EditAttachmentFragments | `src/apps/chat/components/message/fragments-attachment-edit/EditAttachmentFragments.tsx` |  |  | 1 | Editor for attachment fragments. |
+| "src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageTitleEditorOverlay" | ImageTitleEditorOverlay | `src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments.tsx` | renderVariant (2) |  | 0 | Overlay to edit an image attachment title. |
+| "src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentCard" | ImageAttachmentCard | `src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments.tsx` |  |  | 0 | Card for an image attachment. |
+| "src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::SortableImageAttachmentCard" | SortableImageAttachmentCard | `src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments.tsx` |  |  | 1 | Draggable image attachment card. |
+| "src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentFragments" | ImageAttachmentFragments | `src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments.tsx` |  |  | 1 | Group of image attachments on a message. |
+| "src/apps/chat/components/message/fragments-content/BlockEdit_TextFragment::BlockEdit_TextFragment" | BlockEdit_TextFragment | `src/apps/chat/components/message/fragments-content/BlockEdit_TextFragment.tsx` |  | disabled | 2 | Inline editor for a text fragment. |
+| "src/apps/chat/components/message/fragments-content/BlockOpEmpty::BlockOpEmpty" | BlockOpEmpty | `src/apps/chat/components/message/fragments-content/BlockOpEmpty.tsx` |  |  | 1 | Placeholder for an empty content block. |
+| "src/apps/chat/components/message/fragments-content/BlockPartError::BlockPartError" | BlockPartError | `src/apps/chat/components/message/fragments-content/BlockPartError.tsx` |  |  | 2 | Error display for a message part. |
+| "src/apps/chat/components/message/fragments-content/BlockPartError_NetDisconnected::BlockPartError_NetDisconnected" | BlockPartError_NetDisconnected | `src/apps/chat/components/message/fragments-content/BlockPartError_NetDisconnected.tsx` | disconnectionKind (3) |  | 1 | Error part for network disconnection. |
+| "src/apps/chat/components/message/fragments-content/BlockPartError_RequestExceeded::BlockPartError_RequestExceeded" | BlockPartError_RequestExceeded | `src/apps/chat/components/message/fragments-content/BlockPartError_RequestExceeded.tsx` |  |  | 1 | Error part for exceeded request limits. |
+| "src/apps/chat/components/message/fragments-content/BlockPartHostedResource::AnthropicFileChip" | AnthropicFileChip | `src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx` |  |  | 0 | Chip for an Anthropic-hosted file. |
+| "src/apps/chat/components/message/fragments-content/BlockPartHostedResource::OpenAIContainerFileChip" | OpenAIContainerFileChip | `src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx` |  |  | 0 | Chip for an OpenAI container file. |
+| "src/apps/chat/components/message/fragments-content/BlockPartHostedResource::GeminiFileChip" | GeminiFileChip | `src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx` |  |  | 0 | Chip for a Gemini-hosted file. |
+| "src/apps/chat/components/message/fragments-content/BlockPartHostedResource::UrlVideoChip" | UrlVideoChip | `src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx` |  |  | 0 | Chip for a video URL resource. |
+| "src/apps/chat/components/message/fragments-content/BlockPartHostedResource::NoAccessChip" | NoAccessChip | `src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx` |  |  | 0 | Chip indicating a resource is not accessible. |
+| "src/apps/chat/components/message/fragments-content/BlockPartHostedResource::BlockPartHostedResource" | BlockPartHostedResource | `src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx` |  |  | 1 | Renders a hosted resource part by type. |
+| "src/apps/chat/components/message/fragments-content/BlockPartImageRef::BlockPartImageRef" | BlockPartImageRef | `src/apps/chat/components/message/fragments-content/BlockPartImageRef.tsx` |  |  | 2 | Renders an image reference part. |
+| "src/apps/chat/components/message/fragments-content/BlockPartText_AutoBlocks::BlockPartText_AutoBlocks" | BlockPartText_AutoBlocks | `src/apps/chat/components/message/fragments-content/BlockPartText_AutoBlocks.tsx` |  |  | 0 | Renders text parts via auto block detection. |
+| "src/apps/chat/components/message/fragments-content/BlockPartToolInvocation::KeyValueGrid" | KeyValueGrid | `src/apps/chat/components/message/fragments-content/BlockPartToolInvocation.tsx` |  |  | 1 | Key/value grid for tool invocation arguments. |
+| "src/apps/chat/components/message/fragments-content/BlockPartToolInvocation::BlockPartToolInvocation" | BlockPartToolInvocation | `src/apps/chat/components/message/fragments-content/BlockPartToolInvocation.tsx` |  |  | 2 | Displays a tool/function invocation. |
+| "src/apps/chat/components/message/fragments-content/BlockPartToolResponse::BlockPartToolResponse" | BlockPartToolResponse | `src/apps/chat/components/message/fragments-content/BlockPartToolResponse.tsx` |  |  | 3 | Displays a tool response. |
+| "src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChipButton" | HostedFileChipButton | `src/apps/chat/components/message/fragments-content/HostedFileChip.tsx` |  | disabled, file | 1 | Clickable chip button for a hosted file. |
+| "src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChip" | HostedFileChip | `src/apps/chat/components/message/fragments-content/HostedFileChip.tsx` |  | disabled, file | 3 | Generic chip for a hosted file. |
+| "src/apps/chat/components/message/fragments-void/BlockPartModelAnnotations::BlockPartModelAnnotations" | BlockPartModelAnnotations | `src/apps/chat/components/message/fragments-void/BlockPartModelAnnotations.tsx` |  |  | 1 | Shows model-provided annotations. |
+| "src/apps/chat/components/message/fragments-void/BlockPartModelAux::BlockPartModelAux" | BlockPartModelAux | `src/apps/chat/components/message/fragments-void/BlockPartModelAux.tsx` |  |  | 0 | Shows auxiliary model output such as reasoning. |
+| "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipFollowUp" | RenderChipFollowUp | `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx` |  | placeholder | 0 | Chip for a follow-up suggestion. |
+| "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipNotice" | RenderChipNotice | `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx` |  | placeholder | 0 | Chip for a notice. |
+| "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderNoticeDetail" | RenderNoticeDetail | `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx` |  | placeholder | 0 | Detail text for a notice. |
+| "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderDividerNotice" | RenderDividerNotice | `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx` |  | placeholder | 0 | Divider-style notice. |
+| "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipAixControl" | RenderChipAixControl | `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx` |  | placeholder | 0 | Chip for an AIX control event. |
+| "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipListModelOps" | RenderChipListModelOps | `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx` |  | placeholder | 0 | List of model operation chips. |
+| "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::ModelOperationChip" | ModelOperationChip | `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx` |  | placeholder | 0 | Chip for a single model operation. |
+| "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::OperationsHarakiriChip" | OperationsHarakiriChip | `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx` |  | placeholder | 0 | Chip for an aborted/terminated operation. |
+| "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::BlockPartPlaceholder" | BlockPartPlaceholder | `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx` |  | placeholder | 1 | Placeholder part while content is pending. |
+| "src/apps/chat/components/message/in-reference-to/InReferenceToBubble::InReferenceToBubble" | InReferenceToBubble | `src/apps/chat/components/message/in-reference-to/InReferenceToBubble.tsx` |  |  | 2 | Bubble quoting referenced content. |
+| "src/apps/chat/components/message/in-reference-to/InReferenceToList::InReferenceToList" | InReferenceToList | `src/apps/chat/components/message/in-reference-to/InReferenceToList.tsx` |  |  | 1 | List of referenced items on a message. |
+| "src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMCitationsNode" | CMCitationsNode | `src/apps/chat/components/message/render-tree/CMRenderTreeNodes.tsx` |  | placeholder | 0 | Render-tree node for citations. |
+| "src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMReasoningNode" | CMReasoningNode | `src/apps/chat/components/message/render-tree/CMRenderTreeNodes.tsx` |  | placeholder | 0 | Render-tree node for reasoning output. |
+| "src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMTextNode" | CMTextNode | `src/apps/chat/components/message/render-tree/CMRenderTreeNodes.tsx` |  | placeholder | 0 | Render-tree node for text. |
+| "src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMSortableBlock" | CMSortableBlock | `src/apps/chat/components/message/render-tree/CMRenderTreeNodes.tsx` |  | placeholder | 0 | Draggable block in the message render tree. |
+| "src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes" | CMRenderTreeNodes | `src/apps/chat/components/message/render-tree/CMRenderTreeNodes.tsx` |  | placeholder | 1 | Renders the message content tree. |
+| "src/apps/chat/components/messages-list/CMLZeroConversation::CMLZeroConversation" | CMLZeroConversation | `src/apps/chat/components/messages-list/CMLZeroConversation.tsx` |  |  | 1 | Empty state when no conversation is selected. |
+| "src/apps/chat/components/persona-selector/PersonaSelector::Tile" | Tile | `src/apps/chat/components/persona-selector/PersonaSelector.tsx` |  |  | 0 | Persona tile in the selector. |
+| "src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector" | PersonaSelector | `src/apps/chat/components/persona-selector/PersonaSelector.tsx` |  |  | 1 | Grid for choosing a persona in a new chat. |
+| "src/apps/chat/execute-mode/ExecuteModeMenu::ExecuteModeMenu" | ExecuteModeMenu | `src/apps/chat/execute-mode/ExecuteModeMenu.tsx` |  |  | 1 | Menu for choosing the execution mode of a message. |
+| "src/apps/diff/AppDiff::AppDiff" | AppDiff | `src/apps/diff/AppDiff.tsx` |  |  | 1 | App for diffing text. |
+| "src/apps/draw/AppDraw::AppDraw" | AppDraw | `src/apps/draw/AppDraw.tsx` |  |  | 1 | Text-to-image Draw app entry. |
+| "src/apps/draw/DrawCreate::DrawCreate" | DrawCreate | `src/apps/draw/DrawCreate.tsx` |  |  | 1 | Create tab of the Draw app. |
+| "src/apps/draw/DrawGallery::DrawGallery" | DrawGallery | `src/apps/draw/DrawGallery.tsx` | domain (2) |  | 2 | Gallery tab of the Draw app. |
+| "src/apps/draw/create/ButtonPromptFromIdea::ButtonPromptFromIdea" | ButtonPromptFromIdea | `src/apps/draw/create/ButtonPromptFromIdea.tsx` |  | disabled | 2 | Button to generate a prompt from an idea. |
+| "src/apps/draw/create/ButtonPromptFromX::ButtonPromptFromX" | ButtonPromptFromX | `src/apps/draw/create/ButtonPromptFromX.tsx` |  |  | 2 | Button to derive a prompt from another source. |
+| "src/apps/draw/create/DrawProviderConfigure::DrawProviderConfigure" | DrawProviderConfigure | `src/apps/draw/create/DrawProviderConfigure.tsx` |  |  | 1 | Configuration for the selected image provider. |
+| "src/apps/draw/create/DrawProviderSelector::DrawProviderSelector" | DrawProviderSelector | `src/apps/draw/create/DrawProviderSelector.tsx` |  |  | 1 | Selector for the image generation provider. |
+| "src/apps/draw/create/DrawSectionHeading::DrawSectionHeading" | DrawSectionHeading | `src/apps/draw/create/DrawSectionHeading.tsx` |  |  | 1 | Section heading in the Draw app. |
+| "src/apps/draw/create/PromptComposer::PromptComposer" | PromptComposer | `src/apps/draw/create/PromptComposer.tsx` |  |  | 1 | Composer for image prompts. |
+| "src/apps/draw/create/ZeroDrawConfig::ZeroDrawConfig" | ZeroDrawConfig | `src/apps/draw/create/ZeroDrawConfig.tsx` |  |  | 1 | Empty state when no draw provider is configured. |
+| "src/apps/draw/create/ZeroGenerations::ZeroGenerations" | ZeroGenerations | `src/apps/draw/create/ZeroGenerations.tsx` |  |  | 1 | Empty state before any generations. |
+| "src/apps/draw/gallery/ZeroGallery::ZeroGallery" | ZeroGallery | `src/apps/draw/gallery/ZeroGallery.tsx` | domain (2) |  | 1 | Empty state for an empty gallery. |
+| "src/apps/draw/useDrawSectionDropdown::DrawSectionDropdown" | DrawSectionDropdown | `src/apps/draw/useDrawSectionDropdown.tsx` |  |  | 0 | Dropdown to switch Draw sections. |
+| "src/apps/link-chat/AppLinkChat::Centerer" | Centerer | `src/apps/link-chat/AppLinkChat.tsx` |  |  | 0 | Centering wrapper for link-chat states. |
+| "src/apps/link-chat/AppLinkChat::ListPlaceholder" | ListPlaceholder | `src/apps/link-chat/AppLinkChat.tsx` |  |  | 0 | Placeholder list for link-chat loading. |
+| "src/apps/link-chat/AppLinkChat::ShowLoading" | ShowLoading | `src/apps/link-chat/AppLinkChat.tsx` |  |  | 0 | Loading state for a shared chat link. |
+| "src/apps/link-chat/AppLinkChat::ShowError" | ShowError | `src/apps/link-chat/AppLinkChat.tsx` |  |  | 0 | Error state for a shared chat link. |
+| "src/apps/link-chat/AppLinkChat::AppLinkChat" | AppLinkChat | `src/apps/link-chat/AppLinkChat.tsx` |  |  | 1 | App for viewing a shared chat link. |
+| "src/apps/link-chat/LinkChatAppMenuItems::LinkChatAppMenuItems" | LinkChatAppMenuItems | `src/apps/link-chat/LinkChatAppMenuItems.tsx` |  |  | 1 | Menu items for the link-chat app. |
+| "src/apps/link-chat/LinkChatDrawer::LinkChatDrawer" | LinkChatDrawer | `src/apps/link-chat/LinkChatDrawer.tsx` |  |  | 1 | Drawer for the link-chat app. |
+| "src/apps/link-chat/LinkChatViewer::LinkChatViewer" | LinkChatViewer | `src/apps/link-chat/LinkChatViewer.tsx` |  |  | 1 | Read-only viewer for a shared conversation. |
+| "src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilitiesAllowed" | AppLlmCapabilitiesAllowed | `src/apps/llm-capabilities/AppLlmCapabilities.tsx` |  |  | 0 | Capabilities app content when access is allowed. |
+| "src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilitiesDenied" | AppLlmCapabilitiesDenied | `src/apps/llm-capabilities/AppLlmCapabilities.tsx` |  |  | 0 | Capabilities app content when access is denied. |
+| "src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilities" | AppLlmCapabilities | `src/apps/llm-capabilities/AppLlmCapabilities.tsx` |  |  | 1 | App for testing LLM capabilities. |
+| "src/apps/llm-capabilities/components/ResultsTable::ResultsTable" | ResultsTable | `src/apps/llm-capabilities/components/ResultsTable.tsx` |  | empty | 1 | Table of capability test results. |
+| "src/apps/llm-capabilities/components/RunControls::RunControls" | RunControls | `src/apps/llm-capabilities/components/RunControls.tsx` |  |  | 1 | Controls to run capability tests. |
+| "src/apps/news/AppNews::AppNewsModuleScope" | AppNewsModuleScope | `src/apps/news/AppNews.tsx` |  |  | 0 | Scope wrapper for the News app module. |
+| "src/apps/news/AppNews::BuildInfoCard" | BuildInfoCard | `src/apps/news/AppNews.tsx` |  |  | 1 | Card showing build information. |
+| "src/apps/news/AppNews::BuildInfoSheet" | BuildInfoSheet | `src/apps/news/AppNews.tsx` |  |  | 0 | Sheet with detailed build information. |
+| "src/apps/news/AppNews::NewsCard" | NewsCard | `src/apps/news/AppNews.tsx` |  |  | 0 | Card for a single news item. |
+| "src/apps/news/AppNews::AppNews" | AppNews | `src/apps/news/AppNews.tsx` |  |  | 1 | News/changelog app entry. |
+| "src/apps/news/bigAgiPro.data::BigAgiProNewsCallout" | BigAgiProNewsCallout | `src/apps/news/bigAgiPro.data.tsx` |  |  | 2 | Callout promoting Big-AGI Pro in news. |
+| "src/apps/news/news.data::NewsData" | NewsData | `src/apps/news/news.data.tsx` |  |  | 0 | News content data component. |
+| "src/apps/news/news.data::B" | B | `src/apps/news/news.data.tsx` |  |  | 0 | Bold text helper used in news content. |
+| "src/apps/personas/AppPersonas::AppPersonas" | AppPersonas | `src/apps/personas/AppPersonas.tsx` |  |  | 1 | Personas app entry. |
+| "src/apps/personas/creator/Creator::PersonaPromptCard" | PersonaPromptCard | `src/apps/personas/creator/Creator.tsx` |  |  | 1 | Card showing a generated persona prompt. |
+| "src/apps/personas/creator/Creator::Creator" | Creator | `src/apps/personas/creator/Creator.tsx` |  |  | 1 | Persona creator flow. |
+| "src/apps/personas/creator/CreatorDrawer::CreatorDrawer" | CreatorDrawer | `src/apps/personas/creator/CreatorDrawer.tsx` |  |  | 1 | Drawer for the persona creator. |
+| "src/apps/personas/creator/CreatorDrawerItem::CreatorDrawerItem" | CreatorDrawerItem | `src/apps/personas/creator/CreatorDrawerItem.tsx` |  |  | 1 | Item in the persona creator drawer. |
+| "src/apps/personas/creator/FromText::FromText" | FromText | `src/apps/personas/creator/FromText.tsx` |  |  | 1 | Create a persona from pasted text. |
+| "src/apps/personas/creator/FromYouTube::YouTubeDisabledCard" | YouTubeDisabledCard | `src/apps/personas/creator/FromYouTube.tsx` |  |  | 0 | Card shown when YouTube source is disabled. |
+| "src/apps/personas/creator/FromYouTube::YouTubeVideoTranscriptCard" | YouTubeVideoTranscriptCard | `src/apps/personas/creator/FromYouTube.tsx` |  |  | 0 | Card showing a fetched YouTube transcript. |
+| "src/apps/personas/creator/FromYouTube::FromYouTube" | FromYouTube | `src/apps/personas/creator/FromYouTube.tsx` |  |  | 1 | Create a persona from a YouTube video. |
+| "src/apps/personas/creator/Viewer::Viewer" | Viewer | `src/apps/personas/creator/Viewer.tsx` |  |  | 1 | Viewer for a created persona. |
+| "src/apps/settings-modal/AppChatSettingsAI::FormControlDomainModel" | FormControlDomainModel | `src/apps/settings-modal/AppChatSettingsAI.tsx` |  |  | 0 | Form control for assigning a model to a domain. |
+| "src/apps/settings-modal/AppChatSettingsAI::AppChatSettingsAI" | AppChatSettingsAI | `src/apps/settings-modal/AppChatSettingsAI.tsx` |  |  | 1 | AI-related chat settings section. |
+| "src/apps/settings-modal/SettingsContent::SectionHeader" | SectionHeader | `src/apps/settings-modal/SettingsContent.tsx` |  |  | 0 | Header for a settings section. |
+| "src/apps/settings-modal/SettingsContent::ChildNav" | ChildNav | `src/apps/settings-modal/SettingsContent.tsx` |  |  | 0 | Nested navigation inside settings. |
+| "src/apps/settings-modal/SettingsContent::VoiceInputBlock" | VoiceInputBlock | `src/apps/settings-modal/SettingsContent.tsx` |  |  | 0 | Voice input settings block. |
+| "src/apps/settings-modal/SettingsContent::VoiceOutputBlock" | VoiceOutputBlock | `src/apps/settings-modal/SettingsContent.tsx` |  |  | 0 | Voice output settings block. |
+| "src/apps/settings-modal/SettingsContent::ToolsDiagnostics" | ToolsDiagnostics | `src/apps/settings-modal/SettingsContent.tsx` |  |  | 0 | Diagnostics block in tools settings. |
+| "src/apps/settings-modal/SettingsContent::ToolsSearchBanner" | ToolsSearchBanner | `src/apps/settings-modal/SettingsContent.tsx` |  |  | 0 | Banner about search tools in settings. |
+| "src/apps/settings-modal/SettingsContent::SettingsContent" | SettingsContent | `src/apps/settings-modal/SettingsContent.tsx` |  |  | 2 | Main content area of the settings modal. |
+| "src/apps/settings-modal/SettingsModal::SettingsModal" | SettingsModal | `src/apps/settings-modal/SettingsModal.tsx` |  | open | 0 | Settings modal dialog. |
+| "src/apps/settings-modal/SettingsNavList::SettingsNavList" | SettingsNavList | `src/apps/settings-modal/SettingsNavList.tsx` |  |  | 1 | List navigation for settings sections. |
+| "src/apps/settings-modal/SettingsNavSelect::SettingsNavSelect" | SettingsNavSelect | `src/apps/settings-modal/SettingsNavSelect.tsx` |  |  | 1 | Select-based navigation for settings sections. |
+| "src/apps/settings-modal/ShortcutsModal::ShortcutKeyCombo" | ShortcutKeyCombo | `src/apps/settings-modal/ShortcutsModal.tsx` |  |  | 0 | Displays a keyboard key combination. |
+| "src/apps/settings-modal/ShortcutsModal::ShortcutsModal" | ShortcutsModal | `src/apps/settings-modal/ShortcutsModal.tsx` |  |  | 1 | Modal listing keyboard shortcuts. |
+| "src/apps/settings-modal/UxLabsSettings::UxLabsSettings" | UxLabsSettings | `src/apps/settings-modal/UxLabsSettings.tsx` |  |  | 1 | Experimental UX labs settings. |
+| "src/apps/settings-modal/VoiceInSettings::VoiceInSettings" | VoiceInSettings | `src/apps/settings-modal/VoiceInSettings.tsx` |  |  | 1 | Voice input settings. |
+| "src/apps/settings-modal/VoiceOutSettings::VoiceOutSettings" | VoiceOutSettings | `src/apps/settings-modal/VoiceOutSettings.tsx` |  |  | 1 | Voice output settings. |
+| "src/apps/settings-modal/settings-ui/AppChatSettingsUI::ModelsSetupButton" | ModelsSetupButton | `src/apps/settings-modal/settings-ui/AppChatSettingsUI.tsx` |  | after | 0 | Button opening models setup. |
+| "src/apps/settings-modal/settings-ui/AppChatSettingsUI::AppChatSettingsUI" | AppChatSettingsUI | `src/apps/settings-modal/settings-ui/AppChatSettingsUI.tsx` |  | after | 1 | UI preferences section of chat settings. |
+| "src/apps/settings-modal/settings-ui/SettingUIComplexity::SettingUIComplexity" | SettingUIComplexity | `src/apps/settings-modal/settings-ui/SettingUIComplexity.tsx` |  |  | 2 | Setting for UI complexity level. |
+| "src/apps/settings-modal/settings-ui/SettingUIComposerQuickButton::SettingUIComposerQuickButton" | SettingUIComposerQuickButton | `src/apps/settings-modal/settings-ui/SettingUIComposerQuickButton.tsx` |  |  | 1 | Setting for the composer quick button. |
+| "src/apps/settings-modal/settings-ui/SettingUIContentScaling::SettingUIContentScaling" | SettingUIContentScaling | `src/apps/settings-modal/settings-ui/SettingUIContentScaling.tsx` |  |  | 2 | Setting for content scaling. |
+| "src/apps/settings-modal/settings-ui/SettingUIMessageTimestamps::SettingUIMessageTimestamps" | SettingUIMessageTimestamps | `src/apps/settings-modal/settings-ui/SettingUIMessageTimestamps.tsx` |  |  | 1 | Setting for message timestamps display. |
+| "src/apps/tokens/AppTokens::AppTokens" | AppTokens | `src/apps/tokens/AppTokens.tsx` |  |  | 1 | App for token counting. |
+| "src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton::InputLoadingPlaceholder" | InputLoadingPlaceholder | `src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton.tsx` |  |  | 0 | Loading placeholder for an attachment input. |
+| "src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton::InputErrorIndicator" | InputErrorIndicator | `src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton.tsx` |  |  | 0 | Error indicator for an attachment input. |
+| "src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton::AttachmentDraftButton" | AttachmentDraftButton | `src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton.tsx` |  |  | 0 | Button representing an attachment draft. |
+| "src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu" | AttachmentDraftMenu | `src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu.tsx` |  |  | 1 | Menu of actions for an attachment draft. |
+| "src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList" | AttachmentDraftsList | `src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList.tsx` |  |  | 2 | List of attachment drafts. |
+| "src/common/attachment-drafts/attachment-sources/AttachmentSources::LiveFeedButton" | LiveFeedButton | `src/common/attachment-drafts/attachment-sources/AttachmentSources.tsx` | mode (4) |  | 0 | Button for a live feed attachment source. |
+| "src/common/attachment-drafts/attachment-sources/AttachmentSources::AutoDownloadToggle" | AutoDownloadToggle | `src/common/attachment-drafts/attachment-sources/AttachmentSources.tsx` |  |  | 0 | Toggle for automatic download of attachments. |
+| "src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources" | AttachmentSources | `src/common/attachment-drafts/attachment-sources/AttachmentSources.tsx` |  |  | 0 | Set of attachment source buttons. |
+| "src/common/attachment-drafts/attachment-sources/ButtonAttachCamera::ButtonAttachCamera" | ButtonAttachCamera | `src/common/attachment-drafts/attachment-sources/ButtonAttachCamera.tsx` |  |  | 0 | Attach from camera. |
+| "src/common/attachment-drafts/attachment-sources/ButtonAttachClipboard::ButtonAttachClipboard" | ButtonAttachClipboard | `src/common/attachment-drafts/attachment-sources/ButtonAttachClipboard.tsx` |  |  | 0 | Attach from clipboard. |
+| "src/common/attachment-drafts/attachment-sources/ButtonAttachGoogleDrive::ButtonAttachGoogleDrive" | ButtonAttachGoogleDrive | `src/common/attachment-drafts/attachment-sources/ButtonAttachGoogleDrive.tsx` |  |  | 0 | Attach from Google Drive. |
+| "src/common/attachment-drafts/attachment-sources/ButtonAttachNewDoc::ButtonAttachNew" | ButtonAttachNew | `src/common/attachment-drafts/attachment-sources/ButtonAttachNewDoc.tsx` |  |  | 0 | Attach a new blank document. |
+| "src/common/attachment-drafts/attachment-sources/ButtonAttachScreenCapture::ButtonAttachScreenCapture" | ButtonAttachScreenCapture | `src/common/attachment-drafts/attachment-sources/ButtonAttachScreenCapture.tsx` |  |  | 0 | Attach a screen capture. |
+| "src/common/attachment-drafts/attachment-sources/ButtonAttachWeb::ButtonAttachWeb" | ButtonAttachWeb | `src/common/attachment-drafts/attachment-sources/ButtonAttachWeb.tsx` |  |  | 0 | Attach a web page. |
+| "src/common/attachment-drafts/attachment-sources/useWebAttachmentModal::WebInputModal" | WebInputModal | `src/common/attachment-drafts/attachment-sources/useWebAttachmentModal.tsx` |  | required | 0 | Modal for entering a web URL to attach. |
+| "src/common/components/3rdparty/GoogleAnalytics::NextGoogleAnalytics" | NextGoogleAnalytics | `src/common/components/3rdparty/GoogleAnalytics.tsx` |  |  | 0 | Google Analytics script integration. |
+| "src/common/components/3rdparty/GoogleAnalytics::OptionalGoogleAnalytics" | OptionalGoogleAnalytics | `src/common/components/3rdparty/GoogleAnalytics.tsx` |  |  | 1 | Conditionally mounts Google Analytics. |
+| "src/common/components/AlreadySet::AlreadySet" | AlreadySet | `src/common/components/AlreadySet.tsx` |  |  | 24 | Indicator that a value is already configured. |
+| "src/common/components/AppBreadcrumbs::AppBreadcrumbs" | AppBreadcrumbs | `src/common/components/AppBreadcrumbs.tsx` | size (3) |  | 9 | Breadcrumb trail for app navigation. |
+| "src/common/components/AvatarDomainFavicon::AvatarDomainFavicon" | AvatarDomainFavicon | `src/common/components/AvatarDomainFavicon.tsx` |  |  | 2 | Avatar showing a domain's favicon. |
+| "src/common/components/ButtonAttachFiles::ButtonAttachFiles" | ButtonAttachFiles | `src/common/components/ButtonAttachFiles.tsx` |  |  | 0 | Button to attach files. |
+| "src/common/components/ButtonServiceAdd::ButtonServiceAdd" | ButtonServiceAdd | `src/common/components/ButtonServiceAdd.tsx` |  |  | 3 | Button to add a service. |
+| "src/common/components/ChipExpander::ChipExpander" | ChipExpander | `src/common/components/ChipExpander.tsx` | size (3) |  | 1 | Chip that expands hidden content. |
+| "src/common/components/ChipToggleButton::ChipToggleButton" | ChipToggleButton | `src/common/components/ChipToggleButton.tsx` | size (3) |  | 1 | Toggleable chip button. |
+| "src/common/components/CloseablePopup::CloseablePopup" | CloseablePopup | `src/common/components/CloseablePopup.tsx` | size (3) |  | 16 | Popup with a close affordance. |
+| "src/common/components/ConfirmIconButton::ConfirmIconButton" | ConfirmIconButton | `src/common/components/ConfirmIconButton.tsx` | side (2) |  | 4 | Icon button requiring confirmation. |
+| "src/common/components/ConfirmMenuItem::ConfirmMenuItem" | ConfirmMenuItem | `src/common/components/ConfirmMenuItem.tsx` |  |  | 4 | Menu item requiring confirmation. |
+| "src/common/components/DarkModeToggleButton::DarkModeToggleButton" | DarkModeToggleButton | `src/common/components/DarkModeToggleButton.tsx` |  | dark | 2 | Toggle between light and dark mode. |
+| "src/common/components/DataStreamViz::DataStreamViz" | DataStreamViz | `src/common/components/DataStreamViz.tsx` |  |  | 1 | Visualization of a data stream. |
+| "src/common/components/DebouncedInput::DebouncedInput" | DebouncedInput | `src/common/components/DebouncedInput.tsx` |  |  | 0 | Text input with debounced change events. |
+| "src/common/components/ErrorBoundary::ErrorBoundary" | ErrorBoundary | `src/common/components/ErrorBoundary.tsx` |  |  | 0 | Catches render errors and shows a fallback. |
+| "src/common/components/ExpanderAccordion::ExpanderAccordion" | ExpanderAccordion | `src/common/components/ExpanderAccordion.tsx` |  |  | 2 | Accordion-style expandable section. |
+| "src/common/components/ExpanderControlledBox::ExpanderControlledBox" | ExpanderControlledBox | `src/common/components/ExpanderControlledBox.tsx` |  |  | 13 | Box whose expansion is externally controlled. |
+| "src/common/components/ExpanderSection::ExpanderSection" | ExpanderSection | `src/common/components/ExpanderSection.tsx` |  |  | 5 | Expandable section with header. |
+| "src/common/components/ExplainerCarousel::AllStepsStepper" | AllStepsStepper | `src/common/components/ExplainerCarousel.tsx` |  |  | 0 | Stepper showing all carousel steps. |
+| "src/common/components/ExplainerCarousel::ExplainerCarousel" | ExplainerCarousel | `src/common/components/ExplainerCarousel.tsx` |  |  | 1 | Carousel for multi-step explanations. |
+| "src/common/components/ExternalDocsLink::ExternalDocsLink" | ExternalDocsLink | `src/common/components/ExternalDocsLink.tsx` |  |  | 12 | Link to external documentation. |
+| "src/common/components/ExternalLink::ExternalLink" | ExternalLink | `src/common/components/ExternalLink.tsx` | icon (2) |  | 19 | Link opening an external URL. |
+| "src/common/components/FeatureBadge::FeatureBadge" | FeatureBadge | `src/common/components/FeatureBadge.tsx` | size (3) | active | 0 | Badge labelling a feature. |
+| "src/common/components/GitHubProjectIssueCard::GitHubProjectIssueCard" | GitHubProjectIssueCard | `src/common/components/GitHubProjectIssueCard.tsx` |  |  | 1 | Card linking to a GitHub issue. |
+| "src/common/components/GoodBadge::GoodBadge" | GoodBadge | `src/common/components/GoodBadge.tsx` |  |  | 0 | General-purpose badge. |
+| "src/common/components/GoodTooltip::GoodTooltip" | GoodTooltip | `src/common/components/GoodTooltip.tsx` | placement (3) |  | 38 | General-purpose tooltip. |
+| "src/common/components/InlineError::InlineError" | InlineError | `src/common/components/InlineError.tsx` | _style (2), severity (3) |  | 45 | Inline error message. |
+| "src/common/components/InlineTextarea::InlineTextarea" | InlineTextarea | `src/common/components/InlineTextarea.tsx` |  |  | 11 | Inline multi-line text editor. |
+| "src/common/components/InlineTextareaEditable::InlineTextareaEditable" | InlineTextareaEditable | `src/common/components/InlineTextareaEditable.tsx` |  |  | 0 | Inline textarea with editable toggling. |
+| "src/common/components/KeyStroke::KeyStroke" | KeyStroke | `src/common/components/KeyStroke.tsx` | size (3) |  | 18 | Displays a keyboard key. |
+| "src/common/components/LanguageSelect::LanguageSelect" | LanguageSelect | `src/common/components/LanguageSelect.tsx` |  |  | 1 | Language selector. |
+| "src/common/components/Link::Link" | Link | `src/common/components/Link.tsx` |  |  | 90 | Router-aware link. |
+| "src/common/components/ListItemGroupCollapser::ListItemGroupCollapser" | ListItemGroupCollapser | `src/common/components/ListItemGroupCollapser.tsx` |  |  | 2 | Collapses a group of list items. |
+| "src/common/components/LiteVideoEmbed::LiteVideoEmbed" | LiteVideoEmbed | `src/common/components/LiteVideoEmbed.tsx` | play (3) |  | 3 | Lightweight video embed. |
+| "src/common/components/LogoProgress::LogoProgress" | LogoProgress | `src/common/components/LogoProgress.tsx` |  |  | 2 | Logo-based progress indicator. |
+| "src/common/components/MediaStreamPreview::MediaStreamPreview" | MediaStreamPreview | `src/common/components/MediaStreamPreview.tsx` |  |  | 0 | Preview of a media stream. |
+| "src/common/components/RichMenu::RichMenuButton" | RichMenuButton | `src/common/components/RichMenu.tsx` | placement (6) | disabled, only, open | 2 | Button that opens a rich menu. |
+| "src/common/components/RichMenu::RichMenu" | RichMenu | `src/common/components/RichMenu.tsx` |  | disabled, only, open | 2 | Menu with rich item content. |
+| "src/common/components/RichMenu::RichMenuItem" | RichMenuItem | `src/common/components/RichMenu.tsx` |  | disabled, only, open | 12 | Item within a rich menu. |
+| "src/common/components/Section::Section" | Section | `src/common/components/Section.tsx` |  |  | 2 | Titled content section. |
+| "src/common/components/StackedBarBreakdown::StackedBarBreakdown" | StackedBarBreakdown | `src/common/components/StackedBarBreakdown.tsx` |  |  | 0 | Stacked bar showing a breakdown. |
+| "src/common/components/StarIcons::Starred" | Starred | `src/common/components/StarIcons.tsx` |  |  | 1 | Filled star icon. |
+| "src/common/components/StarIcons::StarredNoXL2" | StarredNoXL2 | `src/common/components/StarIcons.tsx` |  |  | 1 | Starred icon variant. |
+| "src/common/components/StarIcons::UnStarredNoXL2" | UnStarredNoXL2 | `src/common/components/StarIcons.tsx` |  |  | 0 | Unstarred icon variant. |
+| "src/common/components/StarIcons::StarredState" | StarredState | `src/common/components/StarIcons.tsx` |  |  | 4 | Star icon reflecting a starred state. |
+| "src/common/components/StarIcons::StarIconUnstyled" | StarIconUnstyled | `src/common/components/StarIcons.tsx` |  |  | 2 | Base unstyled star icon. |
+| "src/common/components/StarIcons::StarredToggle" | StarredToggle | `src/common/components/StarIcons.tsx` |  |  | 1 | Toggle button for starring. |
+| "src/common/components/SubMenu::SubMenuHost" | SubMenuHost | `src/common/components/SubMenu.tsx` |  | required | 2 | Host for a nested submenu. |
+| "src/common/components/SubMenu::SubMenuItem" | SubMenuItem | `src/common/components/SubMenu.tsx` |  | required | 4 | Menu item that opens a submenu. |
+| "src/common/components/TooltipOutlined::TooltipOutlined" | TooltipOutlined | `src/common/components/TooltipOutlined.tsx` |  |  | 53 | Tooltip with outlined styling. |
+| "src/common/components/VideoPlayerVimeo::VideoPlayerVimeo" | VideoPlayerVimeo | `src/common/components/VideoPlayerVimeo.tsx` | play (3) |  | 0 | Vimeo video player. |
+| "src/common/components/VideoPlayerYouTube::VideoPlayerYouTube" | VideoPlayerYouTube | `src/common/components/VideoPlayerYouTube.tsx` | play (3) |  | 1 | YouTube video player. |
+| "src/common/components/camera/CameraCaptureModal::CameraCaptureModal" | CameraCaptureModal | `src/common/components/camera/CameraCaptureModal.tsx` |  |  | 1 | Modal for capturing from the camera. |
+| "src/common/components/diff/DiffViewer::DiffViewer" | DiffViewer | `src/common/components/diff/DiffViewer.tsx` | oldType (6), newType (6), initialViewType (2) |  | 1 | Side-by-side or inline diff viewer. |
+| "src/common/components/dnd-dt/GlobalDragOverlay::GlobalDragOverlay" | GlobalDragOverlay | `src/common/components/dnd-dt/GlobalDragOverlay.tsx` |  |  | 1 | Overlay shown during global drag-and-drop. |
+| "src/common/components/dnd-window/DraggableWindowTitle::DraggableWindowTitle" | DraggableWindowTitle | `src/common/components/dnd-window/DraggableWindowTitle.tsx` |  | active | 0 | Draggable title bar for floating windows. |
+| "src/common/components/dnd-window/JoyFloatingWindow::JoyFloatingWindow" | JoyFloatingWindow | `src/common/components/dnd-window/JoyFloatingWindow.tsx` |  |  | 0 | Floating, movable window. |
+| "src/common/components/folders/FoldersAddButton::FoldersAddButton" | FoldersAddButton | `src/common/components/folders/FoldersAddButton.tsx` |  |  | 2 | Button to add a folder. |
+| "src/common/components/folders/FoldersSelectPopup::FoldersSelectPopup" | FoldersSelectPopup | `src/common/components/folders/FoldersSelectPopup.tsx` |  |  | 2 | Popup to select a folder. |
+| "src/common/components/forms/FormChipControl::FormChipControl" | FormChipControl | `src/common/components/forms/FormChipControl.tsx` |  |  | 0 | Form control rendered as chips. |
+| "src/common/components/forms/FormChipGroupControl::FormChipGroupControl" | FormChipGroupControl | `src/common/components/forms/FormChipGroupControl.tsx` |  |  | 0 | Form control with a group of chips. |
+| "src/common/components/forms/FormChipModelControl::FormChipModelControl" | FormChipModelControl | `src/common/components/forms/FormChipModelControl.tsx` |  |  | 6 | Chip control for selecting a model. |
+| "src/common/components/forms/FormInputKey::FormInputKey" | FormInputKey | `src/common/components/forms/FormInputKey.tsx` | size (3) | required | 29 | Input for API keys. |
+| "src/common/components/forms/FormLabelStart::FormLabelStart" | FormLabelStart | `src/common/components/forms/FormLabelStart.tsx` |  |  | 73 | Leading label for form rows. |
+| "src/common/components/forms/FormNumberInput::FormNumberInput" | FormNumberInput | `src/common/components/forms/FormNumberInput.tsx` | size (3) |  | 0 | Numeric form input. |
+| "src/common/components/forms/FormRadioControl::FormRadioControl" | FormRadioControl | `src/common/components/forms/FormRadioControl.tsx` |  |  | 0 | Radio group form control. |
+| "src/common/components/forms/FormSelectControl::FormSelectControl" | FormSelectControl | `src/common/components/forms/FormSelectControl.tsx` |  |  | 0 | Select form control. |
+| "src/common/components/forms/FormSliderControl::FormSliderControl" | FormSliderControl | `src/common/components/forms/FormSliderControl.tsx` | size (3), valueLabelDisplay (3) |  | 12 | Slider form control. |
+| "src/common/components/forms/FormSwitchControl::FormSwitchControl" | FormSwitchControl | `src/common/components/forms/FormSwitchControl.tsx` | size (3) | checked | 26 | Switch form control. |
+| "src/common/components/forms/FormTextField::FormTextField" | FormTextField | `src/common/components/forms/FormTextField.tsx` |  |  | 23 | Text field form control. |
+| "src/common/components/forms/SetupFormClientSideToggle::SetupFormClientSideToggle" | SetupFormClientSideToggle | `src/common/components/forms/SetupFormClientSideToggle.tsx` |  | checked | 21 | Toggle for client-side mode in service setup. |
+| "src/common/components/forms/SetupFormCorsHint::SetupFormCorsHint" | SetupFormCorsHint | `src/common/components/forms/SetupFormCorsHint.tsx` |  |  | 3 | Hint about CORS in service setup. |
+| "src/common/components/forms/SetupFormRefetchButton::SetupFormRefetchButton" | SetupFormRefetchButton | `src/common/components/forms/SetupFormRefetchButton.tsx` |  | disabled | 24 | Button to refetch models in service setup. |
+| "src/common/components/icons/3rdparty/AuthGitHubIcon::AuthGitHubIcon" | AuthGitHubIcon | `src/common/components/icons/3rdparty/AuthGitHubIcon.tsx` |  |  | 0 | GitHub auth icon. |
+| "src/common/components/icons/3rdparty/AuthGoogleIcon::AuthGoogleIcon" | AuthGoogleIcon | `src/common/components/icons/3rdparty/AuthGoogleIcon.tsx` |  |  | 0 | Google auth icon. |
+| "src/common/components/icons/3rdparty/DiscordIcon::DiscordIcon" | DiscordIcon | `src/common/components/icons/3rdparty/DiscordIcon.tsx` |  |  | 0 | Discord icon. |
+| "src/common/components/icons/CalloutTopRightIcon::CalloutTopRightIcon" | CalloutTopRightIcon | `src/common/components/icons/CalloutTopRightIcon.tsx` |  |  | 1 | Callout arrow icon. |
+| "src/common/components/icons/ChatBeamIcon::ChatBeamIcon" | ChatBeamIcon | `src/common/components/icons/ChatBeamIcon.tsx` |  |  | 7 | Beam feature icon. |
+| "src/common/components/icons/ChatMulticastOffIcon::ChatMulticastOffIcon" | ChatMulticastOffIcon | `src/common/components/icons/ChatMulticastOffIcon.tsx` |  |  | 1 | Multicast off icon. |
+| "src/common/components/icons/ChatMulticastOnIcon::ChatMulticastOnIcon" | ChatMulticastOnIcon | `src/common/components/icons/ChatMulticastOnIcon.tsx` |  |  | 3 | Multicast on icon. |
+| "src/common/components/icons/CodiconSplitHorizontal::CodiconSplitHorizontal" | CodiconSplitHorizontal | `src/common/components/icons/CodiconSplitHorizontal.tsx` |  |  | 1 | Split horizontal icon. |
+| "src/common/components/icons/CodiconSplitHorizontalRemove::CodiconSplitHorizontalRemove" | CodiconSplitHorizontalRemove | `src/common/components/icons/CodiconSplitHorizontalRemove.tsx` |  |  | 1 | Remove horizontal split icon. |
+| "src/common/components/icons/CodiconSplitVertical::CodiconSplitVertical" | CodiconSplitVertical | `src/common/components/icons/CodiconSplitVertical.tsx` |  |  | 1 | Split vertical icon. |
+| "src/common/components/icons/CodiconSplitVerticalRemove::CodiconSplitVerticalRemove" | CodiconSplitVerticalRemove | `src/common/components/icons/CodiconSplitVerticalRemove.tsx` |  |  | 1 | Remove vertical split icon. |
+| "src/common/components/icons/CodiconUnsplit::CodiconUnsplit" | CodiconUnsplit | `src/common/components/icons/CodiconUnsplit.tsx` |  |  | 0 | Unsplit icon. |
+| "src/common/components/icons/DeviceSymbols::DeviceFormFactorIcon" | DeviceFormFactorIcon | `src/common/components/icons/DeviceSymbols.tsx` |  |  | 0 | Icon for a device form factor. |
+| "src/common/components/icons/DeviceSymbols::DeviceFormChip" | DeviceFormChip | `src/common/components/icons/DeviceSymbols.tsx` |  |  | 0 | Chip labelling a device form factor. |
+| "src/common/components/icons/FoldersToggleOff::FoldersToggleOff" | FoldersToggleOff | `src/common/components/icons/FoldersToggleOff.tsx` |  |  | 1 | Folders hidden icon. |
+| "src/common/components/icons/FoldersToggleOn::FoldersToggleOn" | FoldersToggleOn | `src/common/components/icons/FoldersToggleOn.tsx` |  |  | 1 | Folders shown icon. |
+| "src/common/components/icons/LayoutSidebarRight::LayoutSidebarRight" | LayoutSidebarRight | `src/common/components/icons/LayoutSidebarRight.tsx` |  |  | 2 | Right sidebar layout icon. |
+| "src/common/components/icons/LiveFilePatchIcon::LiveFilePatchIcon" | LiveFilePatchIcon | `src/common/components/icons/LiveFilePatchIcon.tsx` |  |  | 2 | Live file patch icon. |
+| "src/common/components/icons/MarkHighlightIcon::MarkHighlightIcon" | MarkHighlightIcon | `src/common/components/icons/MarkHighlightIcon.tsx` |  |  | 1 | Highlight marker icon. |
+| "src/common/components/icons/WindowPaneRightOpen::WindowPaneRightOpen" | WindowPaneRightOpen | `src/common/components/icons/WindowPaneRightOpen.tsx` |  |  | 0 | Open right pane icon. |
+| "src/common/components/icons/big-agi/BigAgiCircleIcon::BigAgiCircleIcon" | BigAgiCircleIcon | `src/common/components/icons/big-agi/BigAgiCircleIcon.tsx` |  |  | 0 | Big-AGI circle logo icon. |
+| "src/common/components/icons/big-agi/BigAgiCircleInnerIcon::BigAgiCircleInnerIcon" | BigAgiCircleInnerIcon | `src/common/components/icons/big-agi/BigAgiCircleInnerIcon.tsx` |  |  | 0 | Inner part of the Big-AGI circle logo. |
+| "src/common/components/icons/big-agi/BigAgiSquircleIcon::BigAgiSquircleIcon" | BigAgiSquircleIcon | `src/common/components/icons/big-agi/BigAgiSquircleIcon.tsx` |  |  | 5 | Big-AGI squircle logo icon. |
+| "src/common/components/icons/phosphor/PhBookOpenText::PhBookOpenText" | PhBookOpenText | `src/common/components/icons/phosphor/PhBookOpenText.tsx` |  |  | 7 | Phosphor open-book icon. |
+| "src/common/components/icons/phosphor/PhChats::PhChats" | PhChats | `src/common/components/icons/phosphor/PhChats.tsx` |  |  | 0 | Phosphor chats icon. |
+| "src/common/components/icons/phosphor/PhChatsDuotone::PhChatsDuotone" | PhChatsDuotone | `src/common/components/icons/phosphor/PhChatsDuotone.tsx` |  |  | 0 | Phosphor chats icon, duotone. |
+| "src/common/components/icons/phosphor/PhDesktop::PhDesktop" | PhDesktop | `src/common/components/icons/phosphor/PhDesktop.tsx` |  |  | 0 | Phosphor desktop icon. |
+| "src/common/components/icons/phosphor/PhDeviceMobile::PhDeviceMobile" | PhDeviceMobile | `src/common/components/icons/phosphor/PhDeviceMobile.tsx` |  |  | 0 | Phosphor mobile device icon. |
+| "src/common/components/icons/phosphor/PhDeviceTablet::PhDeviceTablet" | PhDeviceTablet | `src/common/components/icons/phosphor/PhDeviceTablet.tsx` |  |  | 0 | Phosphor tablet icon. |
+| "src/common/components/icons/phosphor/PhGearSixIcon::PhGearSixIcon" | PhGearSixIcon | `src/common/components/icons/phosphor/PhGearSixIcon.tsx` |  |  | 5 | Phosphor gear icon. |
+| "src/common/components/icons/phosphor/PhGift::PhGift" | PhGift | `src/common/components/icons/phosphor/PhGift.tsx` |  |  | 5 | Phosphor gift icon. |
+| "src/common/components/icons/phosphor/PhHouse::PhHouse" | PhHouse | `src/common/components/icons/phosphor/PhHouse.tsx` |  |  | 2 | Phosphor house icon. |
+| "src/common/components/icons/phosphor/PhImageSquare::PhImageSquare" | PhImageSquare | `src/common/components/icons/phosphor/PhImageSquare.tsx` |  |  | 2 | Phosphor image icon. |
+| "src/common/components/icons/phosphor/PhKey::PhKey" | PhKey | `src/common/components/icons/phosphor/PhKey.tsx` |  |  | 2 | Phosphor key icon. |
+| "src/common/components/icons/phosphor/PhListChecks::PhListChecks" | PhListChecks | `src/common/components/icons/phosphor/PhListChecks.tsx` |  |  | 0 | Phosphor checklist icon. |
+| "src/common/components/icons/phosphor/PhMegaphone::PhMegaphone" | PhMegaphone | `src/common/components/icons/phosphor/PhMegaphone.tsx` |  |  | 0 | Phosphor megaphone icon. |
+| "src/common/components/icons/phosphor/PhPaintBrush::PhPaintBrush" | PhPaintBrush | `src/common/components/icons/phosphor/PhPaintBrush.tsx` |  |  | 3 | Phosphor paint brush icon. |
+| "src/common/components/icons/phosphor/PhPencilSimple::PhPencilSimple" | PhPencilSimple | `src/common/components/icons/phosphor/PhPencilSimple.tsx` |  |  | 0 | Phosphor pencil icon. |
+| "src/common/components/icons/phosphor/PhRamble::PhRamble" | PhRamble | `src/common/components/icons/phosphor/PhRamble.tsx` |  |  | 0 | Phosphor-style ramble icon. |
+| "src/common/components/icons/phosphor/PhRobot::PhRobot" | PhRobot | `src/common/components/icons/phosphor/PhRobot.tsx` |  |  | 2 | Phosphor robot icon. |
+| "src/common/components/icons/phosphor/PhSlidersHorizontalIcon::PhSlidersHorizontalIcon" | PhSlidersHorizontalIcon | `src/common/components/icons/phosphor/PhSlidersHorizontalIcon.tsx` |  |  | 1 | Phosphor horizontal sliders icon. |
+| "src/common/components/icons/phosphor/PhSlidersIcon::PhSlidersIcon" | PhSlidersIcon | `src/common/components/icons/phosphor/PhSlidersIcon.tsx` |  |  | 0 | Phosphor sliders icon. |
+| "src/common/components/icons/phosphor/PhSquaresFour::PhSquaresFour" | PhSquaresFour | `src/common/components/icons/phosphor/PhSquaresFour.tsx` |  |  | 1 | Phosphor four-squares icon. |
+| "src/common/components/icons/phosphor/PhTerminal::PhTerminal" | PhTerminal | `src/common/components/icons/phosphor/PhTerminal.tsx` |  |  | 0 | Phosphor terminal icon. |
+| "src/common/components/icons/phosphor/PhTreeStructure::PhTreeStructure" | PhTreeStructure | `src/common/components/icons/phosphor/PhTreeStructure.tsx` |  |  | 4 | Phosphor tree structure icon. |
+| "src/common/components/icons/phosphor/PhUsers::PhUsers" | PhUsers | `src/common/components/icons/phosphor/PhUsers.tsx` |  |  | 0 | Phosphor users icon. |
+| "src/common/components/icons/phosphor/PhVoice::PhVoice" | PhVoice | `src/common/components/icons/phosphor/PhVoice.tsx` |  |  | 6 | Phosphor voice icon. |
+| "src/common/components/icons/phosphor/PhWrench::PhWrench" | PhWrench | `src/common/components/icons/phosphor/PhWrench.tsx` |  |  | 0 | Phosphor wrench icon. |
+| "src/common/components/icons/vendors/AlibabaCloudIcon::AlibabaCloudIcon" | AlibabaCloudIcon | `src/common/components/icons/vendors/AlibabaCloudIcon.tsx` |  |  | 0 | Alibaba Cloud vendor icon. |
+| "src/common/components/icons/vendors/AnthropicIcon::AnthropicIcon" | AnthropicIcon | `src/common/components/icons/vendors/AnthropicIcon.tsx` |  |  | 1 | Anthropic vendor icon. |
+| "src/common/components/icons/vendors/ArceeAIIcon::ArceeAIIcon" | ArceeAIIcon | `src/common/components/icons/vendors/ArceeAIIcon.tsx` |  |  | 0 | Arcee AI vendor icon. |
+| "src/common/components/icons/vendors/AzureIcon::AzureIcon" | AzureIcon | `src/common/components/icons/vendors/AzureIcon.tsx` |  |  | 0 | Azure vendor icon. |
+| "src/common/components/icons/vendors/BasetenIcon::BasetenIcon" | BasetenIcon | `src/common/components/icons/vendors/BasetenIcon.tsx` |  |  | 0 | Baseten vendor icon. |
+| "src/common/components/icons/vendors/BedrockIcon::BedrockIcon" | BedrockIcon | `src/common/components/icons/vendors/BedrockIcon.tsx` |  |  | 0 | AWS Bedrock vendor icon. |
+| "src/common/components/icons/vendors/CerebrasIcon::CerebrasIcon" | CerebrasIcon | `src/common/components/icons/vendors/CerebrasIcon.tsx` |  |  | 0 | Cerebras vendor icon. |
+| "src/common/components/icons/vendors/ChutesAIIcon::ChutesAIIcon" | ChutesAIIcon | `src/common/components/icons/vendors/ChutesAIIcon.tsx` |  |  | 0 | Chutes AI vendor icon. |
+| "src/common/components/icons/vendors/ClaudeCrabIcon::ClaudeCrabIcon" | ClaudeCrabIcon | `src/common/components/icons/vendors/ClaudeCrabIcon.tsx` |  |  | 1 | Claude crab icon. |
+| "src/common/components/icons/vendors/CloudflareIcon::CloudflareIcon" | CloudflareIcon | `src/common/components/icons/vendors/CloudflareIcon.tsx` |  |  | 0 | Cloudflare vendor icon. |
+| "src/common/components/icons/vendors/CohereIcon::CohereIcon" | CohereIcon | `src/common/components/icons/vendors/CohereIcon.tsx` |  |  | 0 | Cohere vendor icon. |
+| "src/common/components/icons/vendors/DeepseekIcon::DeepseekIcon" | DeepseekIcon | `src/common/components/icons/vendors/DeepseekIcon.tsx` |  |  | 0 | Deepseek vendor icon. |
+| "src/common/components/icons/vendors/ElevenLabsIcon::ElevenLabsIcon" | ElevenLabsIcon | `src/common/components/icons/vendors/ElevenLabsIcon.tsx` |  |  | 0 | ElevenLabs vendor icon. |
+| "src/common/components/icons/vendors/FireworksAIIcon::FireworksAIIcon" | FireworksAIIcon | `src/common/components/icons/vendors/FireworksAIIcon.tsx` |  |  | 0 | Fireworks AI vendor icon. |
+| "src/common/components/icons/vendors/GeminiIcon::GeminiIcon" | GeminiIcon | `src/common/components/icons/vendors/GeminiIcon.tsx` |  |  | 0 | Gemini vendor icon. |
+| "src/common/components/icons/vendors/GroqIcon::GroqIcon" | GroqIcon | `src/common/components/icons/vendors/GroqIcon.tsx` |  |  | 0 | Groq vendor icon. |
+| "src/common/components/icons/vendors/InworldIcon::InworldIcon" | InworldIcon | `src/common/components/icons/vendors/InworldIcon.tsx` |  |  | 0 | Inworld vendor icon. |
+| "src/common/components/icons/vendors/LMStudioIcon::LMStudioIcon" | LMStudioIcon | `src/common/components/icons/vendors/LMStudioIcon.tsx` |  |  | 0 | LM Studio vendor icon. |
+| "src/common/components/icons/vendors/LocalAIIcon::LocalAIIcon" | LocalAIIcon | `src/common/components/icons/vendors/LocalAIIcon.tsx` |  |  | 1 | LocalAI vendor icon. |
+| "src/common/components/icons/vendors/MetaAIIcon::MetaAIIcon" | MetaAIIcon | `src/common/components/icons/vendors/MetaAIIcon.tsx` |  |  | 0 | Meta AI vendor icon. |
+| "src/common/components/icons/vendors/MiniMaxIcon::MiniMaxIcon" | MiniMaxIcon | `src/common/components/icons/vendors/MiniMaxIcon.tsx` |  |  | 0 | MiniMax vendor icon. |
+| "src/common/components/icons/vendors/MistralIcon::MistralIcon" | MistralIcon | `src/common/components/icons/vendors/MistralIcon.tsx` |  |  | 0 | Mistral vendor icon. |
+| "src/common/components/icons/vendors/ModularIcon::ModularIcon" | ModularIcon | `src/common/components/icons/vendors/ModularIcon.tsx` |  |  | 0 | Modular vendor icon. |
+| "src/common/components/icons/vendors/MoonshotIcon::MoonshotIcon" | MoonshotIcon | `src/common/components/icons/vendors/MoonshotIcon.tsx` |  |  | 0 | Moonshot vendor icon. |
+| "src/common/components/icons/vendors/NousResearchIcon::NousResearchIcon" | NousResearchIcon | `src/common/components/icons/vendors/NousResearchIcon.tsx` |  |  | 0 | Nous Research vendor icon. |
+| "src/common/components/icons/vendors/NovitaAIIcon::NovitaAIIcon" | NovitaAIIcon | `src/common/components/icons/vendors/NovitaAIIcon.tsx` |  |  | 0 | Novita AI vendor icon. |
+| "src/common/components/icons/vendors/NvidiaIcon::NvidiaIcon" | NvidiaIcon | `src/common/components/icons/vendors/NvidiaIcon.tsx` |  |  | 1 | NVIDIA vendor icon. |
+| "src/common/components/icons/vendors/OllamaIcon::OllamaIcon" | OllamaIcon | `src/common/components/icons/vendors/OllamaIcon.tsx` |  |  | 1 | Ollama vendor icon. |
+| "src/common/components/icons/vendors/OpenAIIcon::OpenAIIcon" | OpenAIIcon | `src/common/components/icons/vendors/OpenAIIcon.tsx` |  |  | 1 | OpenAI vendor icon. |
+| "src/common/components/icons/vendors/OpenRouterIcon::OpenRouterIcon" | OpenRouterIcon | `src/common/components/icons/vendors/OpenRouterIcon.tsx` |  |  | 0 | OpenRouter vendor icon. |
+| "src/common/components/icons/vendors/PerplexityIcon::PerplexityIcon" | PerplexityIcon | `src/common/components/icons/vendors/PerplexityIcon.tsx` |  |  | 0 | Perplexity vendor icon. |
+| "src/common/components/icons/vendors/SakanaAIIcon::SakanaAIIcon" | SakanaAIIcon | `src/common/components/icons/vendors/SakanaAIIcon.tsx` |  |  | 0 | Sakana AI vendor icon. |
+| "src/common/components/icons/vendors/TogetherIcon::TogetherIcon" | TogetherIcon | `src/common/components/icons/vendors/TogetherIcon.tsx` |  |  | 0 | Together AI vendor icon. |
+| "src/common/components/icons/vendors/XAIIcon::XAIIcon" | XAIIcon | `src/common/components/icons/vendors/XAIIcon.tsx` |  |  | 0 | xAI vendor icon. |
+| "src/common/components/icons/vendors/ZAIIcon::ZAIIcon" | ZAIIcon | `src/common/components/icons/vendors/ZAIIcon.tsx` |  |  | 0 | Z.AI vendor icon. |
+| "src/common/components/modals/ConfirmationModal::ConfirmationModal" | ConfirmationModal | `src/common/components/modals/ConfirmationModal.tsx` |  |  | 26 | Confirm/cancel dialog. |
+| "src/common/components/modals/GoodModal::GoodModal" | GoodModal | `src/common/components/modals/GoodModal.tsx` | reason (3) | open | 33 | Base modal dialog. |
+| "src/common/components/modals/SherpaModal::SherpaModal" | SherpaModal | `src/common/components/modals/SherpaModal.tsx` |  |  | 0 | Guided (sherpa) modal. |
+| "src/common/components/modals/ViewDocPartModal::ViewDocPartModal" | ViewDocPartModal | `src/common/components/modals/ViewDocPartModal.tsx` |  |  | 1 | Modal to view a document part. |
+| "src/common/components/modals/ViewImageRefPartModal::ViewImageRefPartModal" | ViewImageRefPartModal | `src/common/components/modals/ViewImageRefPartModal.tsx` |  |  | 4 | Modal to view an image reference. |
+| "src/common/components/snackbar/SnackbarInsert::SnackbarInsert" | SnackbarInsert | `src/common/components/snackbar/SnackbarInsert.tsx` |  |  | 1 | Mounts the snackbar notification system. |
+| "src/common/from-v1/FromV1ImportBanner::FromV1ImportBanner" | FromV1ImportBanner | `src/common/from-v1/FromV1ImportBanner.tsx` |  |  | 1 | Banner offering import of v1 data. |
+| "src/common/layout/container/ContainerLayout::ContainerLayout" | ContainerLayout | `src/common/layout/container/ContainerLayout.tsx` |  |  | 1 | Simple container page layout. |
+| "src/common/layout/optima/ChromelessFloatingButtons::ChromelessFloatingButtons" | ChromelessFloatingButtons | `src/common/layout/optima/ChromelessFloatingButtons.tsx` |  |  | 1 | Floating buttons for chromeless layout. |
+| "src/common/layout/optima/ChromelessItemButton::ChromelessItemButton" | ChromelessItemButton | `src/common/layout/optima/ChromelessItemButton.tsx` |  |  | 1 | Button used in chromeless mode. |
+| "src/common/layout/optima/InvertedBar::InvertedBar" | InvertedBar | `src/common/layout/optima/InvertedBar.tsx` | direction (2) |  | 3 | Inverted-colour bar used by the Optima layout. |
+| "src/common/layout/optima/Modals::Modals" | Modals | `src/common/layout/optima/Modals.tsx` |  |  | 2 | Mounts global modals. |
+| "src/common/layout/optima/OptimaLayout::OptimaLayout" | OptimaLayout | `src/common/layout/optima/OptimaLayout.tsx` |  |  | 2 | Main app shell with nav, drawer, panel and bar. |
+| "src/common/layout/optima/OptimaMOTD::OptimaMOTD" | OptimaMOTD | `src/common/layout/optima/OptimaMOTD.tsx` |  |  | 1 | Message-of-the-day banner. |
+| "src/common/layout/optima/PageCore::PageCore" | PageCore | `src/common/layout/optima/PageCore.tsx` |  |  | 2 | Core page region within the shell. |
+| "src/common/layout/optima/PageWrapper::PageWrapper" | PageWrapper | `src/common/layout/optima/PageWrapper.tsx` |  |  | 1 | Wrapper around page content. |
+| "src/common/layout/optima/bar/OptimaBar::CenterItemsPortal" | CenterItemsPortal | `src/common/layout/optima/bar/OptimaBar.tsx` |  |  | 0 | Portal target for center bar items. |
+| "src/common/layout/optima/bar/OptimaBar::CenterItemsFallback" | CenterItemsFallback | `src/common/layout/optima/bar/OptimaBar.tsx` |  |  | 0 | Fallback center bar content. |
+| "src/common/layout/optima/bar/OptimaBar::OptimaBar" | OptimaBar | `src/common/layout/optima/bar/OptimaBar.tsx` |  |  | 1 | Top application bar. |
+| "src/common/layout/optima/bar/OptimaBarDropdown::OptimaBarDropdown" | OptimaBarDropdown | `src/common/layout/optima/bar/OptimaBarDropdown.tsx` |  |  | 0 | Dropdown styled for the top bar. |
+| "src/common/layout/optima/drawer/DesktopDrawer::DesktopDrawer" | DesktopDrawer | `src/common/layout/optima/drawer/DesktopDrawer.tsx` |  |  | 1 | Persistent drawer on desktop (width t46). |
+| "src/common/layout/optima/drawer/MobileDrawer::DrawerContentPortal" | DrawerContentPortal | `src/common/layout/optima/drawer/MobileDrawer.tsx` |  |  | 0 | Portal target for mobile drawer content. |
+| "src/common/layout/optima/drawer/MobileDrawer::MobileDrawer" | MobileDrawer | `src/common/layout/optima/drawer/MobileDrawer.tsx` |  |  | 1 | Slide-in drawer on mobile (width t47). |
+| "src/common/layout/optima/drawer/OptimaDrawerHeader::OptimaDrawerHeader" | OptimaDrawerHeader | `src/common/layout/optima/drawer/OptimaDrawerHeader.tsx` |  |  | 3 | Header of the drawer. |
+| "src/common/layout/optima/drawer/OptimaDrawerList::OptimaDrawerList" | OptimaDrawerList | `src/common/layout/optima/drawer/OptimaDrawerList.tsx` |  |  | 3 | List container for drawer items. |
+| "src/common/layout/optima/nav/BringTheLove::BringTheLove" | BringTheLove | `src/common/layout/optima/nav/BringTheLove.tsx` |  |  | 2 |  |
+| "src/common/layout/optima/nav/DesktopNav::DesktopNav" | DesktopNav | `src/common/layout/optima/nav/DesktopNav.tsx` |  |  | 1 | Vertical app navigation on desktop (width t48). |
+| "src/common/layout/optima/nav/MobileNav::MobileNav" | MobileNav | `src/common/layout/optima/nav/MobileNav.tsx` |  |  | 0 | App navigation on mobile. |
+| "src/common/layout/optima/nav/MobileNavItems::MobileNavItems" | MobileNavItems | `src/common/layout/optima/nav/MobileNavItems.tsx` |  |  | 1 | Nav items for mobile. |
+| "src/common/layout/optima/page/OptimaAppPageHeading::OptimaAppPageHeading" | OptimaAppPageHeading | `src/common/layout/optima/page/OptimaAppPageHeading.tsx` |  |  | 0 | Page heading for apps. |
+| "src/common/layout/optima/panel/DesktopPanel::DesktopPanel" | DesktopPanel | `src/common/layout/optima/panel/DesktopPanel.tsx` |  |  | 1 | Right panel on desktop (width t9). |
+| "src/common/layout/optima/panel/MobilePanel::MobilePanel" | MobilePanel | `src/common/layout/optima/panel/MobilePanel.tsx` |  |  | 1 | Right panel on mobile (width t10). |
+| "src/common/layout/optima/panel/OptimaPanelGroupedList::OptimaPanelGroupGutter" | OptimaPanelGroupGutter | `src/common/layout/optima/panel/OptimaPanelGroupedList.tsx` |  |  | 1 | Gutter between panel groups. |
+| "src/common/layout/optima/panel/OptimaPanelGroupedList::OptimaPanelGroupedList" | OptimaPanelGroupedList | `src/common/layout/optima/panel/OptimaPanelGroupedList.tsx` |  |  | 10 | Grouped list in the panel. |
+| "src/common/layout/optima/panel/PanelContentPortal::PanelContentPortal" | PanelContentPortal | `src/common/layout/optima/panel/PanelContentPortal.tsx` |  |  | 3 | Portal target for panel content. |
+| "src/common/layout/optima/panel/PopupPanel::PopupPanel" | PopupPanel | `src/common/layout/optima/panel/PopupPanel.tsx` |  |  | 1 | Panel shown as a popup. |
+| "src/common/layout/optima/panel/items/PreferencesListItem::PreferencesListItem" | PreferencesListItem | `src/common/layout/optima/panel/items/PreferencesListItem.tsx` |  |  | 2 | Panel item opening preferences. |
+| "src/common/layout/optima/portals/OptimaPortalsIn::OptimaDrawerIn" | OptimaDrawerIn | `src/common/layout/optima/portals/OptimaPortalsIn.tsx` |  |  | 3 | Injects content into the drawer portal. |
+| "src/common/layout/optima/portals/OptimaPortalsIn::OptimaPanelIn" | OptimaPanelIn | `src/common/layout/optima/portals/OptimaPortalsIn.tsx` |  |  | 4 | Injects content into the panel portal. |
+| "src/common/layout/optima/scratchclip/ScratchClip::ScratchClip" | ScratchClip | `src/common/layout/optima/scratchclip/ScratchClip.tsx` |  |  | 1 | Scratch clipboard area. |
+| "src/common/layout/overlays/OverlaysInsert::OverlaysInsert" | OverlaysInsert | `src/common/layout/overlays/OverlaysInsert.tsx` |  |  | 1 | Mounts global overlays. |
+| "src/common/logger/viewer/LogEntryDetails::LogEntryDetails" | LogEntryDetails | `src/common/logger/viewer/LogEntryDetails.tsx` |  |  | 1 | Details of a single log entry. |
+| "src/common/logger/viewer/LoggerViewerDialog::LogViewerDialog" | LogViewerDialog | `src/common/logger/viewer/LoggerViewerDialog.tsx` |  |  | 1 | Dialog for browsing app logs. |
+| "src/common/providers/ProviderBackendCapabilities::ProviderBackendCapabilities" | ProviderBackendCapabilities | `src/common/providers/ProviderBackendCapabilities.tsx` |  |  | 1 | Provides backend capability info. |
+| "src/common/providers/ProviderTheming::ProviderTheming" | ProviderTheming | `src/common/providers/ProviderTheming.tsx` |  |  | 1 | Provides the theme. |
+| "src/common/providers/single-tab/ProviderSingleTab::SherpaLoading" | SherpaLoading | `src/common/providers/single-tab/ProviderSingleTab.tsx` |  |  | 0 | Loading state for single-tab enforcement. |
+| "src/common/providers/single-tab/ProviderSingleTab::ProviderSingleTab" | ProviderSingleTab | `src/common/providers/single-tab/ProviderSingleTab.tsx` |  |  | 1 | Ensures the app runs in a single tab. |
+| "src/common/render-decay/RenderDecayZone::RenderDecayZone" | RenderDecayZone | `src/common/render-decay/RenderDecayZone.tsx` |  | active | 3 | Zone that reduces rendering for off-screen content. |
+| "src/common/scroll-to-bottom/ScrollToBottom::DebugBorderBox" | DebugBorderBox | `src/common/scroll-to-bottom/ScrollToBottom.tsx` |  |  | 0 | Debug border for the scroll container. |
+| "src/common/scroll-to-bottom/ScrollToBottom::ScrollToBottom" | ScrollToBottom | `src/common/scroll-to-bottom/ScrollToBottom.tsx` |  |  | 5 | Scroll container that follows new content. |
+| "src/common/scroll-to-bottom/ScrollToBottomButton::ScrollToBottomButton" | ScrollToBottomButton | `src/common/scroll-to-bottom/ScrollToBottomButton.tsx` |  |  | 5 | Button to jump to the bottom. |
+| "src/common/stores/llms/components/LLMSearchFilterInput::LLMSearchFilterInput" | LLMSearchFilterInput | `src/common/stores/llms/components/LLMSearchFilterInput.tsx` | size (3) |  | 0 | Search input for filtering models. |
+| "src/common/stores/workspace/WorkspaceIdProvider::WorkspaceIdProvider" | WorkspaceIdProvider | `src/common/stores/workspace/WorkspaceIdProvider.tsx` |  |  | 2 | Provides the current workspace id. |
+| "src/common/stores/workspace/WorkspaceLiveFilePicker::WorkspaceLiveFilePicker" | WorkspaceLiveFilePicker | `src/common/stores/workspace/WorkspaceLiveFilePicker.tsx` |  |  | 1 | Picker for live files in a workspace. |
+| "src/modules/aifn/digrams/DiagramsModal::DiagramsModal" | DiagramsModal | `src/modules/aifn/digrams/DiagramsModal.tsx` |  |  | 0 | Modal to generate diagrams from a message. |
+| "src/modules/aifn/flatten/FlattenerModal::StylesList" | StylesList | `src/modules/aifn/flatten/FlattenerModal.tsx` |  |  | 0 | List of flattening styles. |
+| "src/modules/aifn/flatten/FlattenerModal::FlatteningProgress" | FlatteningProgress | `src/modules/aifn/flatten/FlattenerModal.tsx` |  |  | 0 | Progress while flattening a conversation. |
+| "src/modules/aifn/flatten/FlattenerModal::FlattenerModal" | FlattenerModal | `src/modules/aifn/flatten/FlattenerModal.tsx` |  |  | 0 | Modal to flatten a conversation. |
+| "src/modules/aix/client/debugger/AixDebuggerDialog::AixDebuggerDialog" | AixDebuggerDialog | `src/modules/aix/client/debugger/AixDebuggerDialog.tsx` |  |  | 1 | Dialog for debugging AIX requests. |
+| "src/modules/aix/client/debugger/AixDebuggerFrame::AixDebuggerFrame" | AixDebuggerFrame | `src/modules/aix/client/debugger/AixDebuggerFrame.tsx` |  |  | 1 | Displays a single AIX debug frame. |
+| "src/modules/aix/client/debugger/AixDebuggerMeasurementsTable::AixDebuggerMeasurementsTable" | AixDebuggerMeasurementsTable | `src/modules/aix/client/debugger/AixDebuggerMeasurementsTable.tsx` |  |  | 1 | Table of AIX timing measurements. |
+| "src/modules/aix/client/debugger/DebugAdvancedOptions::DebugAdvancedOptions" | DebugAdvancedOptions | `src/modules/aix/client/debugger/DebugAdvancedOptions.tsx` |  |  | 1 | Advanced debugger options. |
+| "src/modules/aix/client/debugger/DebugPayloadOverride::DebugPayloadOverride" | DebugPayloadOverride | `src/modules/aix/client/debugger/DebugPayloadOverride.tsx` |  |  | 1 | Override of request payload for debugging. |
+| "src/modules/asrx/components/ASRxConfigureEngineFull::ASRxConfigureEngineFull" | ASRxConfigureEngineFull | `src/modules/asrx/components/ASRxConfigureEngineFull.tsx` |  |  | 1 | Full configuration of a speech recognition engine. |
+| "src/modules/asrx/components/ASRxConfigureEngineFull::ManualCredentials" | ManualCredentials | `src/modules/asrx/components/ASRxConfigureEngineFull.tsx` |  |  | 0 | Manual credentials entry for ASR. |
+| "src/modules/asrx/components/ASRxConfigureEngineFull::PanelFooter" | PanelFooter | `src/modules/asrx/components/ASRxConfigureEngineFull.tsx` |  |  | 0 | Footer of the ASR configuration panel. |
+| "src/modules/asrx/components/ASRxConfigureEngineFull::PersonalDictionaryRow" | PersonalDictionaryRow | `src/modules/asrx/components/ASRxConfigureEngineFull.tsx` |  |  | 0 | Row in the personal dictionary. |
+| "src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters" | DeepgramParameters | `src/modules/asrx/components/ASRxConfigureEngineFull.tsx` |  |  | 0 | Deepgram ASR parameters. |
+| "src/modules/asrx/components/ASRxConfigureEngineFull::DictionaryModal" | DictionaryModal | `src/modules/asrx/components/ASRxConfigureEngineFull.tsx` |  |  | 0 | Modal for editing the personal dictionary. |
+| "src/modules/asrx/components/ASRxConfigureEngineFull::GeminiParameters" | GeminiParameters | `src/modules/asrx/components/ASRxConfigureEngineFull.tsx` |  |  | 0 | Gemini ASR parameters. |
+| "src/modules/asrx/components/ASRxConfigureEngineFull::OpenAIParameters" | OpenAIParameters | `src/modules/asrx/components/ASRxConfigureEngineFull.tsx` |  |  | 0 | OpenAI ASR parameters. |
+| "src/modules/asrx/components/ASRxConfigureEngines::ASRxConfigureEngines" | ASRxConfigureEngines | `src/modules/asrx/components/ASRxConfigureEngines.tsx` |  |  | 1 | List of speech recognition engines to configure. |
+| "src/modules/beam/BeamExplainer::BeamExplainer" | BeamExplainer | `src/modules/beam/BeamExplainer.tsx` |  |  | 1 | Explainer for the Beam feature. |
+| "src/modules/beam/BeamUpstreamResume::BeamUpstreamResume" | BeamUpstreamResume | `src/modules/beam/BeamUpstreamResume.tsx` |  |  | 2 | Resume control for upstream Beam generation. |
+| "src/modules/beam/BeamView::BeamView" | BeamView | `src/modules/beam/BeamView.tsx` | operation (2) | disabled | 2 | Main Beam view with scatter and gather. |
+| "src/modules/beam/components/BeamCardNotice::BeamCardNotice" | BeamCardNotice | `src/modules/beam/components/BeamCardNotice.tsx` |  |  | 2 | Notice shown on a Beam card. |
+| "src/modules/beam/components/BeamCardNotice::BeamModelUnavailable" | BeamModelUnavailable | `src/modules/beam/components/BeamCardNotice.tsx` |  |  | 3 | Notice that a model is unavailable. |
+| "src/modules/beam/gather/BeamFusionGrid::FusionAddButton" | FusionAddButton | `src/modules/beam/gather/BeamFusionGrid.tsx` |  |  | 0 | Button to add a fusion. |
+| "src/modules/beam/gather/BeamFusionGrid::BeamFusionGrid" | BeamFusionGrid | `src/modules/beam/gather/BeamFusionGrid.tsx` |  |  | 1 | Grid of fusions. |
+| "src/modules/beam/gather/BeamGatherPane::BeamGatherPane" | BeamGatherPane | `src/modules/beam/gather/BeamGatherPane.tsx` |  | disabled | 1 | Gather (merge) pane of Beam. |
+| "src/modules/beam/gather/Fusion::Fusion" | Fusion | `src/modules/beam/gather/Fusion.tsx` |  | disabled | 1 | Single fusion result. |
+| "src/modules/beam/gather/FusionControls::FusionControls" | FusionControls | `src/modules/beam/gather/FusionControls.tsx` |  |  | 0 | Controls for a fusion. |
+| "src/modules/beam/gather/FusionInputsWait::FusionInputsWait" | FusionInputsWait | `src/modules/beam/gather/FusionInputsWait.tsx` |  |  | 1 | Waiting state for fusion inputs. |
+| "src/modules/beam/gather/FusionInstructionsEditor::EditableChatInstructionPrompt" | EditableChatInstructionPrompt | `src/modules/beam/gather/FusionInstructionsEditor.tsx` |  |  | 0 | Editable chat instruction prompt. |
+| "src/modules/beam/gather/FusionInstructionsEditor::EditableInstruction" | EditableInstruction | `src/modules/beam/gather/FusionInstructionsEditor.tsx` |  |  | 0 | Editable fusion instruction. |
+| "src/modules/beam/gather/FusionInstructionsEditor::FusionInstructionsEditor" | FusionInstructionsEditor | `src/modules/beam/gather/FusionInstructionsEditor.tsx` |  |  | 1 | Editor for fusion instructions. |
+| "src/modules/beam/gather/instructions/UserInputChecklistComponent::UserInputChecklistComponent" | UserInputChecklistComponent | `src/modules/beam/gather/instructions/UserInputChecklistComponent.tsx` |  |  | 1 | Checklist for user input in a fusion. |
+| "src/modules/beam/scatter/BeamRay::RayControls" | RayControls | `src/modules/beam/scatter/BeamRay.tsx` |  | disabled | 0 | Controls for a ray. |
+| "src/modules/beam/scatter/BeamRay::BeamRay" | BeamRay | `src/modules/beam/scatter/BeamRay.tsx` |  | disabled | 1 | Single ray (model response) in Beam. |
+| "src/modules/beam/scatter/BeamRayGrid::BeamRayGrid" | BeamRayGrid | `src/modules/beam/scatter/BeamRayGrid.tsx` |  |  | 1 | Grid of rays. |
+| "src/modules/beam/scatter/BeamScatterInput::BeamScatterInput" | BeamScatterInput | `src/modules/beam/scatter/BeamScatterInput.tsx` |  | disabled | 1 | Input shown at the top of scatter. |
+| "src/modules/beam/scatter/BeamScatterPane::BeamScatterPane" | BeamScatterPane | `src/modules/beam/scatter/BeamScatterPane.tsx` |  |  | 1 | Scatter (fan-out) pane of Beam. |
+| "src/modules/beam/scatter/BeamScatterPaneDropdown::DialogNamePreset" | DialogNamePreset | `src/modules/beam/scatter/BeamScatterPaneDropdown.tsx` |  | open | 0 | Dialog to name a preset. |
+| "src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown" | BeamScatterDropdown | `src/modules/beam/scatter/BeamScatterPaneDropdown.tsx` |  | open | 1 | Dropdown for scatter presets. |
+| "src/modules/blocks/AutoBlocksRenderer::AutoBlocksRenderer" | AutoBlocksRenderer | `src/modules/blocks/AutoBlocksRenderer.tsx` | textRenderVariant (3) | active | 4 | Splits text into blocks and renders each. |
+| "src/modules/blocks/OverlayButton::OverlayButton" | OverlayButton | `src/modules/blocks/OverlayButton.tsx` |  |  | 22 | Button overlaid on a block. |
+| "src/modules/blocks/ScaledTextBlockRenderer::ScaledTextBlockRenderer" | ScaledTextBlockRenderer | `src/modules/blocks/ScaledTextBlockRenderer.tsx` | textRenderVariant (2) |  | 11 | Text block with content scaling. |
+| "src/modules/blocks/ToggleExpansionButton::ToggleExpansionButton" | ToggleExpansionButton | `src/modules/blocks/ToggleExpansionButton.tsx` |  |  | 1 | Toggles block expansion. |
+| "src/modules/blocks/code/RenderCode::RenderCode" | RenderCode | `src/modules/blocks/code/RenderCode.tsx` |  | disabled | 0 | Code block renderer (uses t50 for line-number padding). |
+| "src/modules/blocks/code/RenderCode::RCSyntaxHighlight" | RCSyntaxHighlight | `src/modules/blocks/code/RenderCode.tsx` |  | disabled | 0 | Syntax highlight sub-renderer. |
+| "src/modules/blocks/code/RenderCode::RenderCodeImpl" | RenderCodeImpl | `src/modules/blocks/code/RenderCode.tsx` |  | disabled | 0 | Implementation of the code renderer. |
+| "src/modules/blocks/code/RenderCodePanelFrame::RenderCodePanelFrame" | RenderCodePanelFrame | `src/modules/blocks/code/RenderCodePanelFrame.tsx` |  |  | 2 | Frame around rendered code. |
+| "src/modules/blocks/code/code-renderers/RenderCodeChartJS::RenderCodeChartJS" | RenderCodeChartJS | `src/modules/blocks/code/code-renderers/RenderCodeChartJS.tsx` |  |  | 1 | Renders Chart.js charts from code. |
+| "src/modules/blocks/code/code-renderers/RenderCodeHtmlIFrame::RenderCodeHtmlIFrame" | RenderCodeHtmlIFrame | `src/modules/blocks/code/code-renderers/RenderCodeHtmlIFrame.tsx` |  |  | 2 | Renders HTML in an iframe. |
+| "src/modules/blocks/code/code-renderers/RenderCodeMarkdown::RenderCodeMarkdown" | RenderCodeMarkdown | `src/modules/blocks/code/code-renderers/RenderCodeMarkdown.tsx` |  |  | 1 | Renders markdown code as markdown. |
+| "src/modules/blocks/code/code-renderers/RenderCodeMermaid::RenderCodeMermaid" | RenderCodeMermaid | `src/modules/blocks/code/code-renderers/RenderCodeMermaid.tsx` |  |  | 1 | Renders Mermaid diagrams. |
+| "src/modules/blocks/code/code-renderers/RenderCodePlantUML::RenderCodePlantUML" | RenderCodePlantUML | `src/modules/blocks/code/code-renderers/RenderCodePlantUML.tsx` |  |  | 1 | Renders PlantUML diagrams. |
+| "src/modules/blocks/code/code-renderers/RenderCodeSVG::RenderCodeSVG" | RenderCodeSVG | `src/modules/blocks/code/code-renderers/RenderCodeSVG.tsx` |  |  | 1 | Renders SVG code. |
+| "src/modules/blocks/code/code-renderers/RenderCodeSyntax::RenderCodeSyntax" | RenderCodeSyntax | `src/modules/blocks/code/code-renderers/RenderCodeSyntax.tsx` |  |  | 1 | Syntax-highlighted code. |
+| "src/modules/blocks/danger-html/RenderDangerousHtml::RenderDangerousHtml" | RenderDangerousHtml | `src/modules/blocks/danger-html/RenderDangerousHtml.tsx` |  |  | 1 | Renders raw HTML with warnings. |
+| "src/modules/blocks/enhanced-code/ERCDiffContext::ERCDiffContextProvider" | ERCDiffContextProvider | `src/modules/blocks/enhanced-code/ERCDiffContext.tsx` |  |  | 1 | Context for enhanced code diffs. |
+| "src/modules/blocks/enhanced-code/ERCDiffModal::ERCDiffModal" | ERCDiffModal | `src/modules/blocks/enhanced-code/ERCDiffModal.tsx` |  |  | 1 | Modal showing a code diff. |
+| "src/modules/blocks/enhanced-code/EnhancedRenderCode::EnhancedRenderCode" | EnhancedRenderCode | `src/modules/blocks/enhanced-code/EnhancedRenderCode.tsx` |  |  | 0 | Code block with extra tooling. |
+| "src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu" | EnhancedRenderCodeMenu | `src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu.tsx` |  |  | 1 | Menu for the enhanced code block. |
+| "src/modules/blocks/image/RenderImageRefDBlob::RenderImageRefDBlob" | RenderImageRefDBlob | `src/modules/blocks/image/RenderImageRefDBlob.tsx` |  |  | 5 | Renders an image from a stored blob. |
+| "src/modules/blocks/image/RenderImageURL::RenderImageURL" | RenderImageURL | `src/modules/blocks/image/RenderImageURL.tsx` |  |  | 5 | Renders an image from a URL. |
+| "src/modules/blocks/markdown/CustomARenderer::GoogleFavicon" | GoogleFavicon | `src/modules/blocks/markdown/CustomARenderer.tsx` | type (4) |  | 0 | Favicon for a link. |
+| "src/modules/blocks/markdown/CustomARenderer::LinkPreview" | LinkPreview | `src/modules/blocks/markdown/CustomARenderer.tsx` |  |  | 0 | Hover preview for a link. |
+| "src/modules/blocks/markdown/CustomARenderer::InertLink" | InertLink | `src/modules/blocks/markdown/CustomARenderer.tsx` |  |  | 0 | Non-navigating link. |
+| "src/modules/blocks/markdown/CustomARenderer::CustomARenderer" | CustomARenderer | `src/modules/blocks/markdown/CustomARenderer.tsx` |  |  | 0 | Custom anchor renderer for markdown. |
+| "src/modules/blocks/markdown/CustomMarkdownRenderer::DelRenderer" | DelRenderer | `src/modules/blocks/markdown/CustomMarkdownRenderer.tsx` |  |  | 0 | Renders deleted/strikethrough text. |
+| "src/modules/blocks/markdown/CustomMarkdownRenderer::MarkRenderer" | MarkRenderer | `src/modules/blocks/markdown/CustomMarkdownRenderer.tsx` |  |  | 0 | Renders highlighted text (t51). |
+| "src/modules/blocks/markdown/CustomMarkdownRenderer::CustomMarkdownRenderer" | CustomMarkdownRenderer | `src/modules/blocks/markdown/CustomMarkdownRenderer.tsx` |  |  | 0 | Markdown renderer with custom elements. |
+| "src/modules/blocks/markdown/CustomTableRenderer::CustomTableRenderer" | CustomTableRenderer | `src/modules/blocks/markdown/CustomTableRenderer.tsx` |  |  | 0 | Custom table renderer for markdown. |
+| "src/modules/blocks/markdown/CustomTaskListRenderer::CustomInputRenderer" | CustomInputRenderer | `src/modules/blocks/markdown/CustomTaskListRenderer.tsx` |  |  | 0 | Checkbox renderer for task lists. |
+| "src/modules/blocks/markdown/HostedLinksContext::HostedLinksProvider" | HostedLinksProvider | `src/modules/blocks/markdown/HostedLinksContext.tsx` |  |  | 1 | Context for hosted link resolution. |
+| "src/modules/blocks/markdown/RenderMarkdown::RenderMarkdown" | RenderMarkdown | `src/modules/blocks/markdown/RenderMarkdown.tsx` |  |  | 2 | Full markdown renderer (GitHub-markdown tokens). |
+| "src/modules/blocks/markdown/RenderMarkdownLite::RenderMarkdownLite" | RenderMarkdownLite | `src/modules/blocks/markdown/RenderMarkdownLite.tsx` |  |  | 1 | Lightweight markdown renderer. |
+| "src/modules/blocks/plaintext/RenderPlainText::RenderPlainText" | RenderPlainText | `src/modules/blocks/plaintext/RenderPlainText.tsx` |  |  | 2 | Plain text renderer. |
+| "src/modules/blocks/wordsdiff/RenderWordsDiff::RenderWordsDiff" | RenderWordsDiff | `src/modules/blocks/wordsdiff/RenderWordsDiff.tsx` |  |  | 2 | Word-level diff renderer. |
+| "src/modules/browse/BrowseSettings::BrowseSettings" | BrowseSettings | `src/modules/browse/BrowseSettings.tsx` |  |  | 1 | Settings for web browsing. |
+| "src/modules/google/GoogleSearchSettings::GoogleSearchSettings" | GoogleSearchSettings | `src/modules/google/GoogleSearchSettings.tsx` |  |  | 1 | Settings for Google Search. |
+| "src/modules/llms/components/LLMVendorIcon::LLMVendorIcon" | LLMVendorIcon | `src/modules/llms/components/LLMVendorIcon.tsx` |  |  | 0 | Icon for an LLM vendor. |
+| "src/modules/llms/components/LLMVendorIconSprite::VendorIconSpriteMemo" | VendorIconSpriteMemo | `src/modules/llms/components/LLMVendorIconSprite.tsx` |  |  | 0 | Memoized vendor icon sprite. |
+| "src/modules/llms/components/LLMVendorIconSprite::LLMVendorIconSprite" | LLMVendorIconSprite | `src/modules/llms/components/LLMVendorIconSprite.tsx` |  |  | 8 | Sprite sheet of vendor icons. |
+| "src/modules/llms/components/LLMVendorSetup::LLMVendorSetup" | LLMVendorSetup | `src/modules/llms/components/LLMVendorSetup.tsx` | vENDOR_DOCS (24) |  | 1 | Dispatches to a vendor's setup form. |
+| "src/modules/llms/components/ModelsRefreshAlert::ModelsRefreshIconButton" | ModelsRefreshIconButton | `src/modules/llms/components/ModelsRefreshAlert.tsx` |  |  | 1 | Icon button to refresh models. |
+| "src/modules/llms/components/ModelsRefreshAlert::ModelsRefreshAlert" | ModelsRefreshAlert | `src/modules/llms/components/ModelsRefreshAlert.tsx` |  |  | 1 | Alert prompting a models refresh. |
+| "src/modules/llms/models-modal/AnthropicSkillsConfig::AnthropicSkillsConfig" | AnthropicSkillsConfig | `src/modules/llms/models-modal/AnthropicSkillsConfig.tsx` |  |  | 1 | Configuration for Anthropic skills. |
+| "src/modules/llms/models-modal/LLMOptionsClone::LLMOptionsClone" | LLMOptionsClone | `src/modules/llms/models-modal/LLMOptionsClone.tsx` |  |  | 1 | Clone a model's options. |
+| "src/modules/llms/models-modal/LLMOptionsGlobal::LLMOptionsGlobal" | LLMOptionsGlobal | `src/modules/llms/models-modal/LLMOptionsGlobal.tsx` |  |  | 1 | Global model options. |
+| "src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal" | LLMOptionsModal | `src/modules/llms/models-modal/LLMOptionsModal.tsx` |  |  | 1 | Modal for a model's options. |
+| "src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor" | LLMParametersEditor | `src/modules/llms/models-modal/LLMParametersEditor.tsx` |  |  | 1 | Editor for model parameters. |
+| "src/modules/llms/models-modal/ModelsChangelogPanel::CountChips" | CountChips | `src/modules/llms/models-modal/ModelsChangelogPanel.tsx` | key (2) |  | 0 | Chips with change counts. |
+| "src/modules/llms/models-modal/ModelsChangelogPanel::ModelsChangelogPanel" | ModelsChangelogPanel | `src/modules/llms/models-modal/ModelsChangelogPanel.tsx` |  |  | 1 | Panel of model list changes. |
+| "src/modules/llms/models-modal/ModelsChangelogPanel::ServiceChangelogRow" | ServiceChangelogRow | `src/modules/llms/models-modal/ModelsChangelogPanel.tsx` |  |  | 0 | Row for one service's changes. |
+| "src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal" | ModelsConfiguratorModal | `src/modules/llms/models-modal/ModelsConfiguratorModal.tsx` | reason (3) |  | 1 | Modal for configuring services and models. |
+| "src/modules/llms/models-modal/ModelsList::ModelItem" | ModelItem | `src/modules/llms/models-modal/ModelsList.tsx` |  |  | 0 | One model in the models list. |
+| "src/modules/llms/models-modal/ModelsList::ModelsList" | ModelsList | `src/modules/llms/models-modal/ModelsList.tsx` |  |  | 1 | List of available models. |
+| "src/modules/llms/models-modal/ModelsModals::ModelsModals" | ModelsModals | `src/modules/llms/models-modal/ModelsModals.tsx` |  |  | 1 | Mounts model-related modals. |
+| "src/modules/llms/models-modal/ModelsServiceSelector::ModelsServiceSelector" | ModelsServiceSelector | `src/modules/llms/models-modal/ModelsServiceSelector.tsx` |  |  | 1 | Selector for the model service. |
+| "src/modules/llms/models-modal/ModelsWizard::WizardProviderSetup" | WizardProviderSetup | `src/modules/llms/models-modal/ModelsWizard.tsx` |  |  | 0 | Provider setup step in the wizard. |
+| "src/modules/llms/models-modal/ModelsWizard::ModelsWizard" | ModelsWizard | `src/modules/llms/models-modal/ModelsWizard.tsx` |  |  | 1 | Wizard for first-time model setup. |
+| "src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig" | OpenRouterWebToolsConfig | `src/modules/llms/models-modal/OpenRouterWebToolsConfig.tsx` | searchOverride (2) | disabled | 1 | Configuration for OpenRouter web tools. |
+| "src/modules/llms/vendors/ApproximateCosts::ApproximateCosts" | ApproximateCosts | `src/modules/llms/vendors/ApproximateCosts.tsx` |  |  | 22 | Displays approximate usage costs. |
+| "src/modules/llms/vendors/alibaba/AlibabaServiceSetup::AlibabaServiceSetup" | AlibabaServiceSetup | `src/modules/llms/vendors/alibaba/AlibabaServiceSetup.tsx` |  |  | 0 | Alibaba service setup form. |
+| "src/modules/llms/vendors/anthropic/AnthropicServiceSetup::AnthropicServiceSetup" | AnthropicServiceSetup | `src/modules/llms/vendors/anthropic/AnthropicServiceSetup.tsx` |  |  | 0 | Anthropic service setup form. |
+| "src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup" | AzureServiceSetup | `src/modules/llms/vendors/azure/AzureServiceSetup.tsx` |  |  | 0 | Azure service setup form. |
+| "src/modules/llms/vendors/bedrock/BedrockRegionAutocomplete::BedrockRegionAutocomplete" | BedrockRegionAutocomplete | `src/modules/llms/vendors/bedrock/BedrockRegionAutocomplete.tsx` |  |  | 1 | Autocomplete for Bedrock regions. |
+| "src/modules/llms/vendors/bedrock/BedrockServiceSetup::BedrockServiceSetup" | BedrockServiceSetup | `src/modules/llms/vendors/bedrock/BedrockServiceSetup.tsx` |  |  | 0 | Bedrock service setup form. |
+| "src/modules/llms/vendors/cerebras/CerebrasServiceSetup::CerebrasServiceSetup" | CerebrasServiceSetup | `src/modules/llms/vendors/cerebras/CerebrasServiceSetup.tsx` |  |  | 0 | Cerebras service setup form. |
+| "src/modules/llms/vendors/cohere/CohereServiceSetup::CohereServiceSetup" | CohereServiceSetup | `src/modules/llms/vendors/cohere/CohereServiceSetup.tsx` |  |  | 0 | Cohere service setup form. |
+| "src/modules/llms/vendors/deepseek/DeepseekAIServiceSetup::DeepseekAIServiceSetup" | DeepseekAIServiceSetup | `src/modules/llms/vendors/deepseek/DeepseekAIServiceSetup.tsx` |  |  | 0 | Deepseek service setup form. |
+| "src/modules/llms/vendors/gemini/GeminiServiceSetup::GeminiServiceSetup" | GeminiServiceSetup | `src/modules/llms/vendors/gemini/GeminiServiceSetup.tsx` |  |  | 0 | Gemini service setup form. |
+| "src/modules/llms/vendors/groq/GroqServiceSetup::GroqServiceSetup" | GroqServiceSetup | `src/modules/llms/vendors/groq/GroqServiceSetup.tsx` |  |  | 0 | Groq service setup form. |
+| "src/modules/llms/vendors/lmstudio/LMStudioServiceSetup::LMStudioServiceSetup" | LMStudioServiceSetup | `src/modules/llms/vendors/lmstudio/LMStudioServiceSetup.tsx` |  |  | 0 | LM Studio service setup form. |
+| "src/modules/llms/vendors/localai/LocalAIAdmin::ListItemSwitch" | ListItemSwitch | `src/modules/llms/vendors/localai/LocalAIAdmin.tsx` |  | checked | 0 | Switch list item in LocalAI admin. |
+| "src/modules/llms/vendors/localai/LocalAIAdmin::ModelJobStatusChecker" | ModelJobStatusChecker | `src/modules/llms/vendors/localai/LocalAIAdmin.tsx` |  | checked | 0 | Checks LocalAI model install job status. |
+| "src/modules/llms/vendors/localai/LocalAIAdmin::ModelInstallPanel" | ModelInstallPanel | `src/modules/llms/vendors/localai/LocalAIAdmin.tsx` |  | checked | 0 | Panel for installing LocalAI models. |
+| "src/modules/llms/vendors/localai/LocalAIAdmin::LocalAIAdmin" | LocalAIAdmin | `src/modules/llms/vendors/localai/LocalAIAdmin.tsx` |  | checked | 1 | LocalAI administration view. |
+| "src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup" | LocalAIServiceSetup | `src/modules/llms/vendors/localai/LocalAIServiceSetup.tsx` |  |  | 0 | LocalAI service setup form. |
+| "src/modules/llms/vendors/metaai/MetaAIServiceSetup::MetaAIServiceSetup" | MetaAIServiceSetup | `src/modules/llms/vendors/metaai/MetaAIServiceSetup.tsx` |  |  | 0 | Meta AI service setup form. |
+| "src/modules/llms/vendors/mistral/MistralServiceSetup::MistralServiceSetup" | MistralServiceSetup | `src/modules/llms/vendors/mistral/MistralServiceSetup.tsx` |  |  | 0 | Mistral service setup form. |
+| "src/modules/llms/vendors/modular/ModularServiceSetup::ModularServiceSetup" | ModularServiceSetup | `src/modules/llms/vendors/modular/ModularServiceSetup.tsx` |  |  | 0 | Modular service setup form. |
+| "src/modules/llms/vendors/moonshot/MoonshotServiceSetup::MoonshotServiceSetup" | MoonshotServiceSetup | `src/modules/llms/vendors/moonshot/MoonshotServiceSetup.tsx` |  |  | 0 | Moonshot service setup form. |
+| "src/modules/llms/vendors/nvidianim/NvidiaNIMServiceSetup::NvidiaNIMServiceSetup" | NvidiaNIMServiceSetup | `src/modules/llms/vendors/nvidianim/NvidiaNIMServiceSetup.tsx` |  |  | 0 | NVIDIA NIM service setup form. |
+| "src/modules/llms/vendors/ollama/OllamaAdministration::OllamaAdministration" | OllamaAdministration | `src/modules/llms/vendors/ollama/OllamaAdministration.tsx` |  |  | 1 | Ollama administration view. |
+| "src/modules/llms/vendors/ollama/OllamaServiceSetup::OllamaServiceSetup" | OllamaServiceSetup | `src/modules/llms/vendors/ollama/OllamaServiceSetup.tsx` |  |  | 0 | Ollama service setup form. |
+| "src/modules/llms/vendors/openai/OpenAIHostAutocomplete::OpenAIHostAutocomplete" | OpenAIHostAutocomplete | `src/modules/llms/vendors/openai/OpenAIHostAutocomplete.tsx` | category (2) |  | 1 | Autocomplete for OpenAI-compatible hosts. |
+| "src/modules/llms/vendors/openai/OpenAIServiceSetup::NvidiaNIMUpgradeNotice" | NvidiaNIMUpgradeNotice | `src/modules/llms/vendors/openai/OpenAIServiceSetup.tsx` |  |  | 0 | Notice to migrate to the NVIDIA NIM vendor. |
+| "src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup" | OpenAIServiceSetup | `src/modules/llms/vendors/openai/OpenAIServiceSetup.tsx` |  |  | 0 | OpenAI service setup form. |
+| "src/modules/llms/vendors/openrouter/OpenRouterServiceSetup::OpenRouterServiceSetup" | OpenRouterServiceSetup | `src/modules/llms/vendors/openrouter/OpenRouterServiceSetup.tsx` |  |  | 0 | OpenRouter service setup form. |
+| "src/modules/llms/vendors/perplexity/PerplexityServiceSetup::PerplexityServiceSetup" | PerplexityServiceSetup | `src/modules/llms/vendors/perplexity/PerplexityServiceSetup.tsx` |  |  | 0 | Perplexity service setup form. |
+| "src/modules/llms/vendors/sakanaai/SakanaAIServiceSetup::SakanaAIServiceSetup" | SakanaAIServiceSetup | `src/modules/llms/vendors/sakanaai/SakanaAIServiceSetup.tsx` |  |  | 0 | Sakana AI service setup form. |
+| "src/modules/llms/vendors/togetherai/TogetherAIServiceSetup::TogetherAIServiceSetup" | TogetherAIServiceSetup | `src/modules/llms/vendors/togetherai/TogetherAIServiceSetup.tsx` |  |  | 0 | Together AI service setup form. |
+| "src/modules/llms/vendors/xai/XAIServiceSetup::XAIServiceSetup" | XAIServiceSetup | `src/modules/llms/vendors/xai/XAIServiceSetup.tsx` |  |  | 0 | xAI service setup form. |
+| "src/modules/llms/vendors/zai/ZAIServiceSetup::ZAIServiceSetup" | ZAIServiceSetup | `src/modules/llms/vendors/zai/ZAIServiceSetup.tsx` |  |  | 0 | Z.AI service setup form. |
+| "src/modules/news/components/DocsReaderModal::DocsTierChip" | DocsTierChip | `src/modules/news/components/DocsReaderModal.tsx` | color (2) | first, focus, only, open | 0 | Chip indicating a docs tier. |
+| "src/modules/news/components/DocsReaderModal::DocsNewChip" | DocsNewChip | `src/modules/news/components/DocsReaderModal.tsx` |  | first, focus, only, open | 0 | Chip marking new docs. |
+| "src/modules/news/components/DocsReaderModal::DocsHomeView" | DocsHomeView | `src/modules/news/components/DocsReaderModal.tsx` |  | first, focus, only, open | 0 | Home view of the docs reader. |
+| "src/modules/news/components/DocsReaderModal::DocsSectionView" | DocsSectionView | `src/modules/news/components/DocsReaderModal.tsx` |  | first, focus, only, open | 0 | Section view of the docs reader. |
+| "src/modules/news/components/DocsReaderModal::DocsNavPage" | DocsNavPage | `src/modules/news/components/DocsReaderModal.tsx` |  | first, focus, only, open | 0 | Page entry in the docs navigation. |
+| "src/modules/news/components/DocsReaderModal::DocsNavTree" | DocsNavTree | `src/modules/news/components/DocsReaderModal.tsx` |  | first, focus, only, open | 0 | Navigation tree of docs. |
+| "src/modules/news/components/DocsReaderModal::DocsSearchResults" | DocsSearchResults | `src/modules/news/components/DocsReaderModal.tsx` |  | first, focus, only, open | 0 | Search results within docs. |
+| "src/modules/news/components/DocsReaderModal::DocsFailure" | DocsFailure | `src/modules/news/components/DocsReaderModal.tsx` |  | first, focus, only, open | 0 | Failure state of the docs reader. |
+| "src/modules/news/components/DocsReaderModal::DocsPageView" | DocsPageView | `src/modules/news/components/DocsReaderModal.tsx` |  | first, focus, only, open | 0 | Renders a single docs page. |
+| "src/modules/news/components/DocsReaderModal::DocsReaderModal" | DocsReaderModal | `src/modules/news/components/DocsReaderModal.tsx` |  | first, focus, only, open | 1 | Modal for reading documentation. |
+| "src/modules/news/components/WhatsNewIndicators::NewsModals" | NewsModals | `src/modules/news/components/WhatsNewIndicators.tsx` |  |  | 1 | Mounts news-related modals. |
+| "src/modules/news/components/WhatsNewIndicators::NewCount" | NewCount | `src/modules/news/components/WhatsNewIndicators.tsx` |  |  | 0 | Count of unread news. |
+| "src/modules/news/components/WhatsNewIndicators::WhatsNewNavDot" | WhatsNewNavDot | `src/modules/news/components/WhatsNewIndicators.tsx` |  |  | 1 | Nav dot indicating new changelog. |
+| "src/modules/news/components/WhatsNewIndicators::AnnouncementsNavDot" | AnnouncementsNavDot | `src/modules/news/components/WhatsNewIndicators.tsx` |  |  | 0 | Nav dot indicating announcements. |
+| "src/modules/news/components/WhatsNewIndicators::WhatsNewMenuItem" | WhatsNewMenuItem | `src/modules/news/components/WhatsNewIndicators.tsx` |  |  | 1 | Menu item opening What's New. |
+| "src/modules/news/components/WhatsNewIndicators::DocsMenuItem" | DocsMenuItem | `src/modules/news/components/WhatsNewIndicators.tsx` |  |  | 1 | Menu item opening docs. |
+| "src/modules/news/components/WhatsNewIndicators::WhatsNewPanelRow" | WhatsNewPanelRow | `src/modules/news/components/WhatsNewIndicators.tsx` |  |  | 2 | Panel row for What's New. |
+| "src/modules/news/components/WhatsNewIndicators::WhatsNewEmptyChatLine" | WhatsNewEmptyChatLine | `src/modules/news/components/WhatsNewIndicators.tsx` |  |  | 1 | What's New line in the empty chat. |
+| "src/modules/news/components/WhatsNewModal::NewsBody" | NewsBody | `src/modules/news/components/WhatsNewModal.tsx` |  | only | 0 | Body content of the news modal. |
+| "src/modules/news/components/WhatsNewModal::ChangelogDay" | ChangelogDay | `src/modules/news/components/WhatsNewModal.tsx` |  | only | 0 | One day's changelog entries. |
+| "src/modules/news/components/WhatsNewModal::ChangelogLedger" | ChangelogLedger | `src/modules/news/components/WhatsNewModal.tsx` |  | only | 0 | Ledger of changelog days. |
+| "src/modules/news/components/WhatsNewModal::ChangelogPane" | ChangelogPane | `src/modules/news/components/WhatsNewModal.tsx` |  | only | 0 | Changelog pane of the modal. |
+| "src/modules/news/components/WhatsNewModal::AnnouncementPane" | AnnouncementPane | `src/modules/news/components/WhatsNewModal.tsx` |  | only | 0 | Announcement pane of the modal. |
+| "src/modules/news/components/WhatsNewModal::WhatsNewModal" | WhatsNewModal | `src/modules/news/components/WhatsNewModal.tsx` |  | only | 1 | What's New modal. |
+| "src/modules/speex/components/SpeexConfigureEngineFull::CredentialsApiKeyInputs" | CredentialsApiKeyInputs | `src/modules/speex/components/SpeexConfigureEngineFull.tsx` |  |  | 0 | API key inputs for a TTS engine. |
+| "src/modules/speex/components/SpeexConfigureEngineFull::PreviewButton" | PreviewButton | `src/modules/speex/components/SpeexConfigureEngineFull.tsx` |  |  | 0 | Button to preview a voice. |
+| "src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull" | SpeexConfigureEngineFull | `src/modules/speex/components/SpeexConfigureEngineFull.tsx` |  |  | 1 | Full configuration of a text-to-speech engine. |
+| "src/modules/speex/components/SpeexConfigureEngineFull::ElevenLabsConfig" | ElevenLabsConfig | `src/modules/speex/components/SpeexConfigureEngineFull.tsx` |  |  | 0 | ElevenLabs TTS configuration. |
+| "src/modules/speex/components/SpeexConfigureEngineFull::GeminiConfig" | GeminiConfig | `src/modules/speex/components/SpeexConfigureEngineFull.tsx` |  |  | 0 | Gemini TTS configuration. |
+| "src/modules/speex/components/SpeexConfigureEngineFull::InworldConfig" | InworldConfig | `src/modules/speex/components/SpeexConfigureEngineFull.tsx` |  |  | 0 | Inworld TTS configuration. |
+| "src/modules/speex/components/SpeexConfigureEngineFull::LocalAIConfig" | LocalAIConfig | `src/modules/speex/components/SpeexConfigureEngineFull.tsx` |  |  | 0 | LocalAI TTS configuration. |
+| "src/modules/speex/components/SpeexConfigureEngineFull::OpenAIConfig" | OpenAIConfig | `src/modules/speex/components/SpeexConfigureEngineFull.tsx` |  |  | 0 | OpenAI TTS configuration. |
+| "src/modules/speex/components/SpeexConfigureEngineFull::WebSpeechConfig" | WebSpeechConfig | `src/modules/speex/components/SpeexConfigureEngineFull.tsx` |  |  | 0 | Web Speech API TTS configuration. |
+| "src/modules/speex/components/SpeexConfigureEngines::SpeexConfigureEngines" | SpeexConfigureEngines | `src/modules/speex/components/SpeexConfigureEngines.tsx` |  |  | 1 | List of TTS engines to configure. |
+| "src/modules/speex/components/SpeexEngineSelect::SpeexEngineSelect" | SpeexEngineSelect | `src/modules/speex/components/SpeexEngineSelect.tsx` |  |  | 0 | Select a TTS engine. |
+| "src/modules/speex/components/SpeexSystemTest::SpeexSystemTest" | SpeexSystemTest | `src/modules/speex/components/SpeexSystemTest.tsx` |  |  | 1 | Test the TTS system. |
+| "src/modules/speex/components/SpeexVoiceAutocomplete::SpeexVoiceAutocomplete" | SpeexVoiceAutocomplete | `src/modules/speex/components/SpeexVoiceAutocomplete.tsx` |  |  | 2 | Autocomplete for voices. |
+| "src/modules/speex/components/SpeexVoiceSelect::SpeexVoiceSelect" | SpeexVoiceSelect | `src/modules/speex/components/SpeexVoiceSelect.tsx` |  |  | 4 | Select a voice. |
+| "src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfilePanel" | T2IEngineProfilePanel | `src/modules/t2i/components/T2IConfigureEngineFull.tsx` |  |  | 0 | Panel showing a text-to-image engine profile. |
+| "src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfileEditor" | T2IEngineProfileEditor | `src/modules/t2i/components/T2IConfigureEngineFull.tsx` |  |  | 1 | Editor for a text-to-image engine profile. |
+| "src/modules/t2i/components/T2IConfigureEngineFull::T2IConfigureEngineFull" | T2IConfigureEngineFull | `src/modules/t2i/components/T2IConfigureEngineFull.tsx` |  |  | 1 | Full configuration of a text-to-image engine. |
+| "src/modules/t2i/components/T2IConfigureEngines::T2IConfigureEngines" | T2IConfigureEngines | `src/modules/t2i/components/T2IConfigureEngines.tsx` |  |  | 1 | List of text-to-image engines to configure. |
+| "src/modules/t2i/dalle/DallESettings::DallESettings" | DallESettings | `src/modules/t2i/dalle/DallESettings.tsx` |  |  | 1 | DALL·E settings. |
+| "src/modules/t2i/gemini/GeminiT2ISettings::GeminiT2ISettings" | GeminiT2ISettings | `src/modules/t2i/gemini/GeminiT2ISettings.tsx` |  |  | 1 | Gemini image generation settings. |
+| "src/modules/t2i/openrouter/OpenRouterT2ISettings::OpenRouterT2ISettings" | OpenRouterT2ISettings | `src/modules/t2i/openrouter/OpenRouterT2ISettings.tsx` |  |  | 1 | OpenRouter image generation settings. |
+| "src/modules/trade/BackupRestore::FlashRestore" | FlashRestore | `src/modules/trade/BackupRestore.tsx` | backupType (3) | disabled, file | 1 | Quick restore from backup. |
+| "src/modules/trade/BackupRestore::FlashBackup" | FlashBackup | `src/modules/trade/BackupRestore.tsx` |  | disabled, file | 1 | Quick backup of data. |
+| "src/modules/trade/ExportChats::ExportChats" | ExportChats | `src/modules/trade/ExportChats.tsx` |  |  | 1 | Export conversations. |
+| "src/modules/trade/ImportChats::ImportChats" | ImportChats | `src/modules/trade/ImportChats.tsx` |  |  | 1 | Import conversations. |
+| "src/modules/trade/ImportOutcomeModal::ImportOutcomeModal" | ImportOutcomeModal | `src/modules/trade/ImportOutcomeModal.tsx` |  |  | 1 | Modal reporting import results. |
+| "src/modules/trade/TradeModal::TradeModal" | TradeModal | `src/modules/trade/TradeModal.tsx` |  |  | 0 | Import/export modal. |
+| "src/modules/trade/claude-code/ExportClaudeCode::ExportClaudeCode" | ExportClaudeCode | `src/modules/trade/claude-code/ExportClaudeCode.tsx` |  | checked | 1 | Export in Claude Code format. |
+| "src/modules/trade/link/ChatLinkDetails::ChatLinkDetails" | ChatLinkDetails | `src/modules/trade/link/ChatLinkDetails.tsx` |  | open | 1 | Details of a shared chat link. |
+| "src/modules/trade/link/ChatLinkExport::ChatLinkExport" | ChatLinkExport | `src/modules/trade/link/ChatLinkExport.tsx` |  |  | 1 | Export a chat as a shareable link. |
+| "src/modules/youtube/YouTubeURLInput::YouTubeURLInput" | YouTubeURLInput | `src/modules/youtube/YouTubeURLInput.tsx` |  |  | 1 | Input for a YouTube URL. |
+
+### Variants, in full
+
+#### InlineError (`src/common/components/InlineError.tsx`:12)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `_style` | `whiteSpace` | `pre-wrap` | 0 |
+| `_style` | `wordBreak` | `break-word` | 0 |
+| `severity` | `warning` | _declared by the prop type only_ | 1 |
+| `severity` | `danger` | _declared by the prop type only_ | 2 |
+| `severity` | `info` | _declared by the prop type only_ | 0 |
+
+Rendered 45 time(s) in 39 other file(s).
+
+#### GoodTooltip (`src/common/components/GoodTooltip.tsx`:16)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `placement` | `top` | _declared by the prop type only_ | 6 |
+| `placement` | `bottom` | _declared by the prop type only_ | 0 |
+| `placement` | `top-start` | _declared by the prop type only_ | 0 |
+
+Rendered 38 time(s) in 23 other file(s).
+
+#### GoodModal (`src/common/components/modals/GoodModal.tsx`:32)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `reason` | `backdropClick` | _declared by the prop type only_ | 0 |
+| `reason` | `escapeKeyDown` | _declared by the prop type only_ | 0 |
+| `reason` | `closeClick` | _declared by the prop type only_ | 0 |
+
+States targeted in this file: `open`
+
+2 conditional class branch(es) in this file are not a named variant.
+
+Rendered 33 time(s) in 31 other file(s).
+
+#### FormInputKey (`src/common/components/forms/FormInputKey.tsx`:22)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `size` | `sm` | _declared by the prop type only_ | 0 |
+| `size` | `md` | _declared by the prop type only_ | 0 |
+| `size` | `lg` | _declared by the prop type only_ | 0 |
+
+States targeted in this file: `required`
+
+1 conditional class branch(es) in this file are not a named variant.
+
+Rendered 29 time(s) in 25 other file(s).
+
+#### FormSwitchControl (`src/common/components/forms/FormSwitchControl.tsx`:12)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `size` | `sm` | _declared by the prop type only_ | 0 |
+| `size` | `md` | _declared by the prop type only_ | 0 |
+| `size` | `lg` | _declared by the prop type only_ | 0 |
+
+States targeted in this file: `checked`
+
+Rendered 26 time(s) in 7 other file(s).
+
+#### ExternalLink (`src/common/components/ExternalLink.tsx`:21)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `icon` | `issue` | _declared by the prop type only_ | 1 |
+| `icon` | `public-docs` | _declared by the prop type only_ | 1 |
+
+Rendered 19 time(s) in 12 other file(s).
+
+#### KeyStroke (`src/common/components/KeyStroke.tsx`:25)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `size` | `sm` | _declared by the prop type only_ | 4 |
+| `size` | `md` | _declared by the prop type only_ | 0 |
+| `size` | `lg` | _declared by the prop type only_ | 0 |
+
+Rendered 18 time(s) in 15 other file(s).
+
+#### CloseablePopup (`src/common/components/CloseablePopup.tsx`:68)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `size` | `sm` | _declared by the prop type only_ | 0 |
+| `size` | `md` | _declared by the prop type only_ | 0 |
+| `size` | `lg` | _declared by the prop type only_ | 0 |
+
+Rendered 16 time(s) in 14 other file(s).
+
+#### FormSliderControl (`src/common/components/forms/FormSliderControl.tsx`:17)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `size` | `sm` | _declared by the prop type only_ | 2 |
+| `size` | `md` | _declared by the prop type only_ | 0 |
+| `size` | `lg` | _declared by the prop type only_ | 0 |
+| `valueLabelDisplay` | `on` | _declared by the prop type only_ | 0 |
+| `valueLabelDisplay` | `auto` | _declared by the prop type only_ | 0 |
+| `valueLabelDisplay` | `off` | _declared by the prop type only_ | 0 |
+
+Rendered 12 time(s) in 4 other file(s).
+
+#### ScaledTextBlockRenderer (`src/modules/blocks/ScaledTextBlockRenderer.tsx`:15)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `textRenderVariant` | `text` | _declared by the prop type only_ | 4 |
+| `textRenderVariant` | `markdown` | _declared by the prop type only_ | 5 |
+
+Rendered 11 time(s) in 10 other file(s).
+
+#### VendorIcon (`src/common/util/dMessageUtils.tsx`:264)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `userCommand` | `draw` | _declared by the prop type only_ | 0 |
+| `userCommand` | `react` | _declared by the prop type only_ | 0 |
+| `assistantColor` | `danger` | _declared by the prop type only_ | 0 |
+| `assistantColor` | `warning` | _declared by the prop type only_ | 0 |
+| `assistantColor` | `neutral` | _declared by the prop type only_ | 0 |
+
+Rendered 10 time(s) in 5 other file(s).
+
+#### AppBreadcrumbs (`src/common/components/AppBreadcrumbs.tsx`:27)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `size` | `sm` | _declared by the prop type only_ | 0 |
+| `size` | `md` | _declared by the prop type only_ | 9 |
+| `size` | `lg` | _declared by the prop type only_ | 0 |
+
+Rendered 9 time(s) in 6 other file(s).
+
+#### AutoBlocksRenderer (`src/modules/blocks/AutoBlocksRenderer.tsx`:39)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `textRenderVariant` | `markdown` | _declared by the prop type only_ | 1 |
+| `textRenderVariant` | `markdown-user` | _declared by the prop type only_ | 0 |
+| `textRenderVariant` | `text` | _declared by the prop type only_ | 0 |
+
+States targeted in this file: `active`
+
+Rendered 4 time(s) in 4 other file(s).
+
+#### ConfirmIconButton (`src/common/components/ConfirmIconButton.tsx`:41)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `side` | `start` | _declared by the prop type only_ | 2 |
+| `side` | `end` | _declared by the prop type only_ | 0 |
+
+Rendered 4 time(s) in 4 other file(s).
+
+#### InvertedBar (`src/common/layout/optima/InvertedBar.tsx`:29)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `direction` | `horizontal` | _declared by the prop type only_ | 2 |
+| `direction` | `vertical` | _declared by the prop type only_ | 1 |
+
+Rendered 3 time(s) in 3 other file(s).
+
+#### LiteVideoEmbed (`src/common/components/LiteVideoEmbed.tsx`:80)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `play` | `click` | _declared by the prop type only_ | 0 |
+| `play` | `auto` | _declared by the prop type only_ | 0 |
+| `play` | `ambient` | _declared by the prop type only_ | 0 |
+
+Rendered 3 time(s) in 3 other file(s).
+
+#### BeamView (`src/modules/beam/BeamView.tsx`:26)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `operation` | `copy` | _declared by the prop type only_ | 0 |
+| `operation` | `use` | _declared by the prop type only_ | 0 |
+
+States targeted in this file: `disabled`
+
+Rendered 2 time(s) in 2 other file(s).
+
+#### CMEditAttach (`src/apps/chat/components/message/CMEditAttach.tsx`:74)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `variant` | `bar` | _declared by the prop type only_ | 1 |
+| `variant` | `group` | _declared by the prop type only_ | 1 |
+
+Rendered 2 time(s) in 2 other file(s).
+
+#### DrawGallery (`src/apps/draw/DrawGallery.tsx`:10)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `domain` | `draw` | _declared by the prop type only_ | 1 |
+| `domain` | `app` | _declared by the prop type only_ | 1 |
+
+1 conditional class branch(es) in this file are not a named variant.
+
+Rendered 2 time(s) in 1 other file(s).
+
+#### RichMenuButton (`src/common/components/RichMenu.tsx`:84)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `placement` | `top-start` | _declared by the prop type only_ | 0 |
+| `placement` | `top` | _declared by the prop type only_ | 0 |
+| `placement` | `top-end` | _declared by the prop type only_ | 0 |
+| `placement` | `bottom-start` | _declared by the prop type only_ | 0 |
+| `placement` | `bottom` | _declared by the prop type only_ | 0 |
+| `placement` | `bottom-end` | _declared by the prop type only_ | 0 |
+
+States targeted in this file: `disabled`, `only`, `open`
+
+Rendered 2 time(s) in 1 other file(s).
+
+#### TokenTooltip (`src/apps/chat/components/composer/tokens/TokenTooltip.tsx`:142)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `placement` | `top` | _declared by the prop type only_ | 0 |
+| `placement` | `top-end` | _declared by the prop type only_ | 1 |
+
+Rendered 2 time(s) in 2 other file(s).
+
+#### AppCall (`src/apps/call/AppCall.tsx`:26)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `backTo` | `app-chat` | _declared by the prop type only_ | 0 |
+| `backTo` | `app-call-contacts` | _declared by the prop type only_ | 0 |
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### AppChat (`src/apps/chat/AppChat.tsx`:98)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `direction` | `back` | _declared by the prop type only_ | 0 |
+| `direction` | `forward` | _declared by the prop type only_ | 0 |
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### BlockPartError_NetDisconnected (`src/apps/chat/components/message/fragments-content/BlockPartError_NetDisconnected.tsx`:15)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `disconnectionKind` | `net-client-closed` | _declared by the prop type only_ | 0 |
+| `disconnectionKind` | `net-server-closed` | _declared by the prop type only_ | 0 |
+| `disconnectionKind` | `net-unknown-closed` | _declared by the prop type only_ | 0 |
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### ChipExpander (`src/common/components/ChipExpander.tsx`:19)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `size` | `sm` | _declared by the prop type only_ | 0 |
+| `size` | `md` | _declared by the prop type only_ | 0 |
+| `size` | `lg` | _declared by the prop type only_ | 0 |
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### ChipToggleButton (`src/common/components/ChipToggleButton.tsx`:17)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `size` | `sm` | _declared by the prop type only_ | 0 |
+| `size` | `md` | _declared by the prop type only_ | 0 |
+| `size` | `lg` | _declared by the prop type only_ | 0 |
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### DiffViewer (`src/common/components/diff/DiffViewer.tsx`:46)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `oldType` | `added` | _declared by the prop type only_ | 0 |
+| `oldType` | `removed` | _declared by the prop type only_ | 0 |
+| `oldType` | `modifiedLeft` | _declared by the prop type only_ | 0 |
+| `oldType` | `unchanged` | _declared by the prop type only_ | 0 |
+| `oldType` | `empty` | _declared by the prop type only_ | 0 |
+| `oldType` | `expander` | _declared by the prop type only_ | 0 |
+| `newType` | `added` | _declared by the prop type only_ | 0 |
+| `newType` | `removed` | _declared by the prop type only_ | 0 |
+| `newType` | `modifiedRight` | _declared by the prop type only_ | 0 |
+| `newType` | `unchanged` | _declared by the prop type only_ | 0 |
+| `newType` | `empty` | _declared by the prop type only_ | 0 |
+| `newType` | `expander` | _declared by the prop type only_ | 0 |
+| `initialViewType` | `split` | _declared by the prop type only_ | 0 |
+| `initialViewType` | `unified` | _declared by the prop type only_ | 0 |
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### FlashRestore (`src/modules/trade/BackupRestore.tsx`:660)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `backupType` | `full` | _declared by the prop type only_ | 0 |
+| `backupType` | `partial` | _declared by the prop type only_ | 0 |
+| `backupType` | `auto-before-restore` | _declared by the prop type only_ | 0 |
+
+States targeted in this file: `disabled`, `file`
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### LLMVendorSetup (`src/modules/llms/components/LLMVendorSetup.tsx`:101)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `vENDOR_DOCS` | `alibaba` | `connect-alibaba` | 0 |
+| `vENDOR_DOCS` | `anthropic` | `connect-anthropic` | 0 |
+| `vENDOR_DOCS` | `azure` | `connect-azure` | 0 |
+| `vENDOR_DOCS` | `bedrock` | `connect-bedrock` | 0 |
+| `vENDOR_DOCS` | `cerebras` | `connect-cerebras` | 0 |
+| `vENDOR_DOCS` | `cohere` | `connect-cohere` | 0 |
+| `vENDOR_DOCS` | `deepseek` | `connect-deepseek` | 0 |
+| `vENDOR_DOCS` | `googleai` | `connect-gemini` | 0 |
+| `vENDOR_DOCS` | `groq` | `connect-groq` | 0 |
+| `vENDOR_DOCS` | `lmstudio` | `connect-lmstudio` | 0 |
+| `vENDOR_DOCS` | `localai` | `connect-localai` | 0 |
+| `vENDOR_DOCS` | `metaai` | `connect-meta` | 0 |
+| `vENDOR_DOCS` | `mistral` | `connect-mistral` | 0 |
+| `vENDOR_DOCS` | `modular` | `connect-modular` | 0 |
+| `vENDOR_DOCS` | `moonshot` | `connect-moonshot-ai` | 0 |
+| `vENDOR_DOCS` | `nvidianim` | `connect-nvidia-nim` | 0 |
+| `vENDOR_DOCS` | `ollama` | `connect-ollama` | 0 |
+| `vENDOR_DOCS` | `openai` | `connect-openai` | 0 |
+| `vENDOR_DOCS` | `openrouter` | `connect-openrouter` | 0 |
+| `vENDOR_DOCS` | `perplexity` | `connect-perplexity` | 0 |
+| `vENDOR_DOCS` | `sakanaai` | `connect-sakana` | 0 |
+| `vENDOR_DOCS` | `togetherai` | `connect-together` | 0 |
+| `vENDOR_DOCS` | `xai` | `connect-xai` | 0 |
+| `vENDOR_DOCS` | `zai` | `connect-zai` | 0 |
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### ModelsConfiguratorModal (`src/modules/llms/models-modal/ModelsConfiguratorModal.tsx`:53)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `reason` | `backdropClick` | _declared by the prop type only_ | 0 |
+| `reason` | `escapeKeyDown` | _declared by the prop type only_ | 0 |
+| `reason` | `closeClick` | _declared by the prop type only_ | 0 |
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### OpenAIHostAutocomplete (`src/modules/llms/vendors/openai/OpenAIHostAutocomplete.tsx`:72)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `category` | `Example Proxies` | _declared by the prop type only_ | 0 |
+| `category` | `Example Providers` | _declared by the prop type only_ | 0 |
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### OpenRouterWebToolsConfig (`src/modules/llms/models-modal/OpenRouterWebToolsConfig.tsx`:51)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `searchOverride` | `force_on` | _declared by the prop type only_ | 0 |
+| `searchOverride` | `force_off` | _declared by the prop type only_ | 0 |
+
+States targeted in this file: `disabled`
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### SortableDocAttachmentButton (`src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments.tsx`:26)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `renderVariant` | `chat-message` | _declared by the prop type only_ | 0 |
+| `renderVariant` | `data-editor` | _declared by the prop type only_ | 0 |
+
+1 conditional class branch(es) in this file are not a named variant.
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### VideoPlayerYouTube (`src/common/components/VideoPlayerYouTube.tsx`:5)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `play` | `click` | _declared by the prop type only_ | 0 |
+| `play` | `auto` | _declared by the prop type only_ | 1 |
+| `play` | `ambient` | _declared by the prop type only_ | 0 |
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### ZeroGallery (`src/apps/draw/gallery/ZeroGallery.tsx`:26)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `domain` | `draw` | _declared by the prop type only_ | 0 |
+| `domain` | `app` | _declared by the prop type only_ | 0 |
+
+Rendered 1 time(s) in 1 other file(s).
+
+#### CountChips (`src/modules/llms/models-modal/ModelsChangelogPanel.tsx`:121)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `key` | `label` | _declared by the prop type only_ | 0 |
+| `key` | `change` | _declared by the prop type only_ | 0 |
+
+Rendered 0 time(s) in 0 other file(s).
+
+#### DocsTierChip (`src/modules/news/components/DocsReaderModal.tsx`:557)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `color` | `primary` | _declared by the prop type only_ | 0 |
+| `color` | `accent` | _declared by the prop type only_ | 0 |
+
+States targeted in this file: `first`, `focus`, `only`, `open`
+
+1 conditional class branch(es) in this file are not a named variant.
+
+Rendered 0 time(s) in 0 other file(s).
+
+#### FeatureBadge (`src/common/components/FeatureBadge.tsx`:14)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `size` | `sm` | _declared by the prop type only_ | 0 |
+| `size` | `md` | _declared by the prop type only_ | 0 |
+| `size` | `lg` | _declared by the prop type only_ | 0 |
+
+States targeted in this file: `active`
+
+Rendered 0 time(s) in 0 other file(s).
+
+#### FormNumberInput (`src/common/components/forms/FormNumberInput.tsx`:31)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `size` | `sm` | _declared by the prop type only_ | 0 |
+| `size` | `md` | _declared by the prop type only_ | 0 |
+| `size` | `lg` | _declared by the prop type only_ | 0 |
+
+Rendered 0 time(s) in 0 other file(s).
+
+#### GoogleFavicon (`src/modules/blocks/markdown/CustomARenderer.tsx`:59)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `type` | `social` | _declared by the prop type only_ | 0 |
+| `type` | `academic` | _declared by the prop type only_ | 0 |
+| `type` | `news` | _declared by the prop type only_ | 0 |
+| `type` | `default` | _declared by the prop type only_ | 0 |
+
+Rendered 0 time(s) in 0 other file(s).
+
+#### ImageTitleEditorOverlay (`src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments.tsx`:148)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `renderVariant` | `chat-message` | _declared by the prop type only_ | 0 |
+| `renderVariant` | `data-editor` | _declared by the prop type only_ | 0 |
+
+5 conditional class branch(es) in this file are not a named variant.
+
+Rendered 0 time(s) in 0 other file(s).
+
+#### LiveFeedButton (`src/common/attachment-drafts/attachment-sources/AttachmentSources.tsx`:44)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `mode` | `menu-compact` | _declared by the prop type only_ | 0 |
+| `mode` | `menu-rich` | _declared by the prop type only_ | 0 |
+| `mode` | `inline-buttons` | _declared by the prop type only_ | 0 |
+| `mode` | `menu-message` | _declared by the prop type only_ | 0 |
+
+Rendered 0 time(s) in 0 other file(s).
+
+#### LLMSearchFilterInput (`src/common/stores/llms/components/LLMSearchFilterInput.tsx`:24)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `size` | `sm` | _declared by the prop type only_ | 0 |
+| `size` | `md` | _declared by the prop type only_ | 0 |
+| `size` | `lg` | _declared by the prop type only_ | 0 |
+
+Rendered 0 time(s) in 0 other file(s).
+
+#### ShortcutItem (`src/apps/chat/components/StatusBar.tsx`:145)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `symbol` | `Ctrl` | _declared by the prop type only_ | 0 |
+| `symbol` | `Alt` | _declared by the prop type only_ | 0 |
+| `symbol` | `Shift` | _declared by the prop type only_ | 0 |
+
+Rendered 0 time(s) in 0 other file(s).
+
+#### VendorIconSprite (`src/modules/llms/components/LLMVendorIconSprite.tsx`:50)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `vI` | `alibaba` | `vi-alibaba` | 0 |
+| `vI` | `anthropic` | `vi-anthropic` | 0 |
+| `vI` | `azure` | `vi-azure` | 0 |
+| `vI` | `bedrock` | `vi-bedrock` | 0 |
+| `vI` | `cerebras` | `vi-cerebras` | 0 |
+| `vI` | `cohere` | `vi-cohere` | 0 |
+| `vI` | `deepseek` | `vi-deepseek` | 0 |
+| `vI` | `googleai` | `vi-googleai` | 0 |
+| `vI` | `groq` | `vi-groq` | 0 |
+| `vI` | `lmstudio` | `vi-lmstudio` | 0 |
+| `vI` | `localai` | `vi-localai` | 0 |
+| `vI` | `metaai` | `vi-metaai` | 0 |
+| `vI` | `mistral` | `vi-mistral` | 0 |
+| `vI` | `modular` | `vi-modular` | 0 |
+| `vI` | `moonshot` | `vi-moonshot` | 0 |
+| `vI` | `nvidianim` | `vi-nvidianim` | 0 |
+| `vI` | `ollama` | `vi-ollama` | 0 |
+| `vI` | `openai` | `vi-openai` | 0 |
+| `vI` | `openrouter` | `vi-openrouter` | 0 |
+| `vI` | `perplexity` | `vi-perplexity` | 0 |
+| `vI` | `sakanaai` | `vi-sakanaai` | 0 |
+| `vI` | `togetherai` | `vi-togetherai` | 0 |
+| `vI` | `xai` | `vi-xai` | 0 |
+| `vI` | `zai` | `vi-zai` | 0 |
+
+Rendered 0 time(s) in 0 other file(s).
+
+#### VideoPlayerVimeo (`src/common/components/VideoPlayerVimeo.tsx`:5)
+
+| axis | value | classes | call sites |
+| --- | --- | --- | --- |
+| `play` | `click` | _declared by the prop type only_ | 0 |
+| `play` | `auto` | _declared by the prop type only_ | 0 |
+| `play` | `ambient` | _declared by the prop type only_ | 0 |
+
+Rendered 0 time(s) in 0 other file(s).

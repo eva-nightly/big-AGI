@@ -1,0 +1,597 @@
+# Module: src/common [AI]
+
+(part 1 of 14) Manages attachment drafting, intake, conversion, storage, and LLM-compatibility validation across chat input and editing surfaces. Supports importing from files, camera, clipboard, screen capture, Google Drive, and URLs, converting complex document formats into LLM-digestible text or image DBlob fragments, and checking token limits and vision model capability constraints. (part 2 of 14) Provides core shared client state management, attachment processing pipelines, chat overlay session handlers (composer, ephemerals, variform, attachments), and third-party analytics utilities. (part 3 of 14) Provides reusable UI primitives, form controls, overlay dialogs, drag-and-drop systems, camera capture tools, diffing viewers, and window management utilities across the big-AGI application. (part 4 of 14) Provides shared client-side UI building blocks, modal wrappers, vendor and system SVG icons, global shortcut handling, snackbar toast management, and speech recognition engines (WebSpeech API and Deepgram audio recording) across the application. (part 5 of 14) Provides reusable common UI components, layout helpers, media/video wrappers, and responsive/lifecycle React hooks used across the big-AGI application. (part 6 of 14) Provides shared core utilities and infrastructure across the application, including a typed domain-specific event bus system (EventBus), V1 to V2 migration tracking and banner components, and generated site documentation route/slug type definitions. (part 7 of 14) Provides the core responsive UI layouts (Optima shell, container layouts, pluggable portals, modals, and promised overlays) and the LiveFile local file-system synchronization system for big-AGI applications. (part 8 of 14) Provides foundational application infrastructure, shared client-side utilities, cross-cutting providers, theming, single-instance tab coordination, client logging, boot logic, render adaptation, and core application configuration for big-AGI. (part 9 of 14) Manages client-side persistent state for UI preferences, experimental UX features (labs), and provides re-exported interfaces for database blob asset storage. (part 10 of 14) Manages browser-persisted chat conversations, folders, message structures, fragment hierarchies, vendor continuity states, and token/asset lifecycle operations. (part 11 of 14) Manages the client-side store, hooks, domain assignments, parameters, pricing, and curation heuristics for LLMs and model vendor services across big-AGI. (part 12 of 14) Provides shared application-level infrastructure, utilities, Zustand stores, token calculators, font configurations, and workspace/metrics management across client and server layers. (part 13 of 14) Provides cross-cutting utilities and infrastructure helpers for the big-AGI application, covering client-side tRPC integration, IndexedDB and persistent storage management, media transformation and rendering (images, video, screen capture, OCR, PDF parsing), browser state/network tracking, prompt templating, and Zustand state tracing. (part 14 of 14) Provides reusable client-side utilities and React hooks for audio streaming/playback (streaming and full buffer), procedural UI sound generation, ephemeral media display for model-generated content, React reference stabilization, focus management, and async state tracking.
+
+_This module does not fit in one model call, so it was read in 14 parts and their summaries were combined without a further model call._
+
+## Key files
+- `src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList.tsx`: Renders attachment draft item buttons, management menus, and doc/image viewers across composer and edit surfaces.
+- `src/common/attachment-drafts/attachment-sources/AttachmentSources.tsx`: Modular attachment source selector providing triggers for file picking, camera, clipboard, screen capture, Google Drive, and web/YouTube links.
+- `src/common/attachment-drafts/llm-enrichment/useAttachmentDraftsEnrichment.ts`: Calculates attachment draft compatibility with active LLM features (e.g. vision/image support) and estimates token usage.
+- `src/common/attachment-drafts/llm-enrichment/useLLMImageInputPolicy.tsx`: Provides pre-send verification and user confirmation dialogs when attached files or images exceed target model capabilities.
+- `src/common/attachment-drafts/attachment.dblobs.ts`: Transforms and stores attachment images into local database blobs (DBlobs) and creates chat fragment references.
+- `src/common/attachment-drafts/attachment.mimetypes.ts`: Detects MIME types and extension mappings to select appropriate conversion pipelines for attached media and code files.
+- `src/common/attachment-drafts/attachment-sources/useGoogleDrivePicker.tsx`: Integrates Google Workspace Drive Picker, handling OAuth tokens, file size limits, and cloud file selection.
+- `src/common/attachment-drafts/attachment.pipeline.ts`: Implements attachment loading, URL/web fetching, OCR, and format conversions into message fragments.
+- `src/common/attachment-drafts/attachment.types.ts`: Defines TypeScript types for attachment draft sources, converters, and input/output pipelines.
+- `src/common/attachment-drafts/store-attachment-drafts_slice.ts`: Zustand slice for managing draft attachments per conversation.
+- `src/common/attachment-drafts/useAttachmentDrafts.tsx`: React hook and helpers for file, link, and clipboard intake into attachment drafts.
+- `src/common/chat-overlay/ConversationHandler.ts`: Per-conversation overlay state orchestrator managing system persona prompt mixing, prompt caching breakpoints, and transient message state.
+- `src/common/chat-overlay/ConversationsManager.ts`: Singleton registry that manages ConversationHandler instances and GC asset tracking for beam stores.
+- `src/common/chat-overlay/store-perchat_vanilla.ts`: Combines composer, attachments, ephemerals, and variform slices into a vanilla Zustand store per conversation.
+- `src/common/chat-overlay/store-perchat-composer_slice.ts`: Zustand slice tracking references and pending content parts (e.g. video URLs) before sending.
+- `src/common/chat-overlay/store-perchat-ephemerals_slice.ts`: Zustand slice managing ephemeral ReAct sidebars and transient status panes.
+- `src/common/chat-overlay/store-perchat-variform_slice.ts`: Zustand slice managing dynamic form field values for chat prompts.
+- `src/common/components/3rdparty/GoogleAnalytics.tsx`: Client component and helpers for Google Analytics 4 tracking.
+- `src/common/components/3rdparty/PostHogAnalytics.tsx`: Client component and event/exception capture helpers for PostHog analytics.
+- `src/common/components/3rdparty/UrlTrackingCleaner.tsx`: Client component that sanitizes marketing and tracking query parameters from window URLs.
+- `src/common/components/forms/useLLMSelect.tsx`: Hook and dropdown component for selecting active LLMs, managing auto-selection, star filtering, and linking to model configuration.
+- `src/common/components/dnd-window/joyWindowManager.ts`: Custom ModalManager subclass coordinating z-indexes, focus, and aria attributes between standard Joy UI modals and floating modeless windows.
+- `src/common/components/dnd-window/useWindowControls.ts`: Hook managing position, sizing, bounding constraints, and drag/resize event lifecycles for floating window dialogs.
+- `src/common/components/camera/useCameraCapture.tsx`: Headless camera lifecycle and stream manager that handles device enumeration, permissions, zooming, and stream detachment.
+- `src/common/components/diff/DiffViewer.tsx`: Side-by-side and unified text diff visualization component with syntax scaling, line collapse, and fullscreen support.
+- `src/common/components/dnd-dt/useDragDropDataTransfer.tsx`: Hook providing standardized file and text drag-over indicators and data transfer drop handling for composers and containers.
+- `src/common/components/folders/FoldersSelectPopup.tsx`: Popup menu for organizing conversations into colored folders or clearing folder assignments.
+- `src/common/components/modals/GoodModal.tsx`: Standard base modal component providing responsive full-screen toggling, themed backdrops, custom title headers, and scroll management for application dialogs.
+- `src/common/components/modals/ViewImageRefPartModal.tsx`: Modal for previewing, downloading, and managing image message attachments (dblobs or remote URLs).
+- `src/common/components/modals/ViewDocPartModal.tsx`: Modal for inspecting and rendering text/markdown document attachments.
+- `src/common/components/shortcuts/useGlobalShortcuts.ts`: React hook and interfaces for registering keyboard shortcuts per component lifecycle.
+- `src/common/components/shortcuts/store-global-shortcuts.ts`: Zustand store handling shortcut group registration, input focus checks, precedence resolution, and deduplication.
+- `src/common/components/shortcuts/globalShortcutsHandler.ts`: DOM event listener manager executing matched global keyboard shortcuts.
+- `src/common/components/shortcuts/shortcutsCatalog.ts`: Central catalog listing shortcut definitions across editing, chat navigation, settings, and layout.
+- `src/common/components/snackbar/useSnackbarsStore.ts`: Zustand store managing snackbar notification queues, auto-dismiss timers, and toast state.
+- `src/common/components/snackbar/SnackbarInsert.tsx`: UI renderer displaying active snackbar notifications and animations.
+- `src/common/components/speechrecognition/useSpeechRecognition.ts`: Unified speech recognition React hook supporting engine switching between browser WebSpeech API and audio recording.
+- `src/common/components/speechrecognition/WebSpeechApiEngine.ts`: Speech recognition engine implementing the browser's native WebSpeech API with continuous listening and punctuation formatting.
+- `src/common/components/speechrecognition/AudioRecorderEngine.ts`: Speech recognition engine recording audio chunks via MediaRecorder and sending them to Deepgram for transcription.
+- `src/common/components/CloseablePopup.tsx`: Custom popup and backdrop overlay component working around Joy UI Menu bugs with backdrop darkening and click-away management
+- `src/common/components/SubMenu.tsx`: Host context, state controller, and submenu item components enabling multi-level nested menus
+- `src/common/components/RichMenu.tsx`: Desktop/mobile adaptable dropdown menu family with animations, staggered items, and pill/icon triggers
+- `src/common/components/ErrorBoundary.tsx`: React error boundary with chunk reload recovery, Sherpa UI fallback, and PostHog exception capture
+- `src/common/components/LiteVideoEmbed.tsx`: Privacy-first lightweight embed for YouTube and Vimeo videos with poster facades and visibility-based mounting
+- `src/common/components/useCapabilities.ts`: Capability types and re-exports for speech recognition, text-to-image, and browsing capabilities
+- `src/common/components/SyncExternalStorable.ts`: Base class and hook (useManagedSyncStorable) for useSyncExternalStore compatible stores with lifecycle management
+- `src/common/events/events.bus.ts`: Implements the typed, domain-driven EventBus class and DomainEventHelper using eventemitter3, alongside singleton appEvents export.
+- `src/common/events/events.types.ts`: Defines core type contracts for event payloads, listeners, unsubscribes, and the extensible EventDomains interface.
+- `src/common/events/index.ts`: Public entry point for the events system, re-exporting classes/types and providing the appEmitEvent helper function.
+- `src/common/from-v1/from-v1.ts`: Manages browser localStorage detection and expiration windows for users arriving from Big-AGI V1.
+- `src/common/from-v1/FromV1ImportBanner.tsx`: UI component banner for V1 arrivals offering one-click migration/import of V1 backup files (chats, folders, API keys).
+- `src/common/gen/com.site.pages.slug.ts`: Generated type definition listing website page slugs for type-safe website navigation links.
+- `src/common/layout/optima/OptimaLayout.tsx`: Primary application shell managing responsive desktop/mobile panes, shortcuts, MOTD, clipboard history, and global modals.
+- `src/common/layout/optima/store-layout-optima.ts`: Zustand store managing layout state, peeking animations, drawer/panel openness, chromeless focus mode, and modal visibility.
+- `src/common/layout/optima/portals/OptimaPortalsIn.tsx`: React portal entry points (OptimaDrawerIn, OptimaPanelIn, OptimaToolbarIn) allowing child apps to inject custom navigation, panels, and toolbar items into the outer shell.
+- `src/common/layout/optima/Modals.tsx`: Global modal coordinator loading settings, model configuration modals, AIX debugger, logger, and keyboard shortcuts.
+- `src/common/layout/overlays/useOverlayComponents.tsx`: Hook providing promise-based transient modal overlays with deduplication and unmount rejection handling.
+- `src/common/layout/withLayout.tsx`: Next.js page-level layout utility for wrapping pages with OptimaLayout, ContainerLayout, or no-op layouts.
+- `src/common/livefile/store-live-file.ts`: Zustand store integrating the File System Access API to pair, read, reload, and write local files.
+- `src/common/livefile/useLiveFileContent.tsx`: React hook providing reactive access and write/reload operations for individual LiveFiles.
+- `src/common/logger/logger.client.ts`: Centralized client-side logging implementation with action dispatching and error monitoring forwarding.
+- `src/common/logger/store-logger.ts`: Zustand store managing in-memory and persisted client logs, action tracking, and deduplication.
+- `src/common/logic/llmsRefreshStaleServicesOnBoot.ts`: Boot-time synchronization logic for model vendor services, model definitions version checking, and auto-assignment of domain models.
+- `src/common/logic/ProcessingQueue.ts`: Rate-limited and concurrency-controlled asynchronous queue with cancellation and progress reporting.
+- `src/common/providers/ProviderBackendCapabilities.tsx`: Provider ensuring client and server build version alignment and backend feature capability hydration.
+- `src/common/providers/ProviderBootstrapLogic.tsx`: Bootstraps core lifecycle routines: preloading tokenizers, syncing models, storage garbage collection, and global error interceptors.
+- `src/common/providers/single-tab/instanceLock.ts`: Coordinates single-instance application locking across browser tabs using Web Locks API and BroadcastChannel.
+- `src/common/providers/single-tab/ProviderSingleTab.tsx`: UI gate preventing duplicate instances from conflicting, displaying active background work and transfer controls.
+- `src/common/render-decay/RenderDecayZone.tsx`: Adaptive rendering performance manager that sheds markdown rendering load during heavy streaming or multi-model Beams.
+- `src/common/stores/store-ai.ts`: Zustand store persisting global AI vendor policies for Anthropic, Gemini, and OpenAI Beam sandbox reuse.
+- `src/common/app.theme.ts`: Joy UI theme configuration defining typography, palettes (including brand lime accent), and complexity modes.
+- `src/common/stores/store-ui.ts`: Zustand store with persistence and version migrations managing UI preferences such as layout mode, scaling, code rendering, language, and composer quick actions.
+- `src/common/stores/store-ux-labs.ts`: Zustand store with persistence managing experimental features like adaptive rendering, screen wake lock, and markdown/LaTeX preferences.
+- `src/common/stores/blob/dblobs-portability.ts`: Bridge module re-exporting image operations, generic database blob operations, hooks, and types from ~/modules/dblobs.
+- `src/common/stores/chat/store-chats.ts`: Zustand persisted store providing CRUD operations for chat conversations, branching, message updates, and history manipulation.
+- `src/common/stores/chat/chat.conversation.ts`: Defines conversation data models and helpers for conversation duplication, title generation, and system prompt partitioning.
+- `src/common/stores/chat/chat.message.ts`: Defines message structures, persona metadata, AIX model generator records, upstream container/session handles, and user flags.
+- `src/common/stores/chat/chat.fragments.ts`: Specifies content, attachment, and void message fragments and parts, including vendor-specific reasoning and continuity state.
+- `src/common/stores/chat/chat.tokens.ts`: Calculates and estimates LLM token counts across message text, media, documents, and reference fragments.
+- `src/common/stores/chat/chat.msg.measure.ts`: Calculates normalized character-equivalent size metrics across generated LLM text and vendor reasoning/thinking signals.
+- `src/common/stores/chat/chat.gc.ts`: Performs garbage collection on unreferenced DBlob image assets across conversations and registered external systems like Beam.
+- `src/common/stores/chat/chats.converters.ts`: Sanitizes and converts conversation and message structures across storage schema versions.
+- `src/common/stores/folders/store-chat-folders.ts`: Zustand persisted store for organizing chat conversations into customizable, color-coded folders.
+- `src/common/stores/llms/store-llms.ts`: Central Zustand store managing configured LLM instances, vendor service sources, user parameter overrides, and changelog history.
+- `src/common/stores/llms/store-llms-domains_slice.ts`: Store slice and heuristics for assigning and dynamically resolving models across functional domains based on ELO, pricing, and editorial preferences.
+- `src/common/stores/llms/llms.parameters.ts`: Defines parameter registries and validation for LLM hyperparameters including temperature, response tokens, reasoning effort, and vendor-specific features.
+- `src/common/stores/llms/llms.pricing.ts`: Handles token pricing calculations, cost estimations, parameter-based price multipliers, and free model tier detection.
+- `src/common/stores/llms/llms.types.ts`: Core TypeScript interfaces and utility functions for DLLM models, visibility, token limits, and publication metadata.
+- `src/common/stores/llms/model.domains.registry.ts`: Registry and fallback rules defining operational model domains such as primaryChat, codeApply, fastUtil, and imageCaption.
+- `src/common/stores/llms/model.domains.editorial.ts`: Curated cross-vendor model ranking tables for automated domain model selection.
+- `src/common/stores/llms/llms.hooks.ts`: React hooks querying LLM state, visible models, free models, and service configurations from the store.
+- `src/common/stores/metrics/store-metrics.ts`: Zustand store tracking and aggregating LLM usage metrics, costs, and token statistics across services.
+- `src/common/stores/metrics/metrics.chatgenerate.ts`: Calculates chat generation token counts, token velocities, and cost breakdowns from model execution outputs.
+- `src/common/stores/workspace/store-client-workspace.ts`: Zustand store managing live file assignments and attachments within conversations/workspaces.
+- `src/common/tokens/tokens.text.ts`: Dynamic loader and cached wrapper for Tiktoken token counting and encoding inspections.
+- `src/common/tokens/tokens.approximate.ts`: Fast, dependency-free text token estimation heuristic across various LLM model families and languages.
+- `src/common/tokens/tokens.image.ts`: Vendor-specific image token cost calculation rules (OpenAI, Anthropic, Google AI).
+- `src/common/util/abortUtils.ts`: Cross-environment primitives for cancellation, racing promises against AbortSignals, and identifying AbortErrors.
+- `src/common/util/errorUtils.ts`: Error serialization, human-readable error formatting, and detection of benign DOM/chunk errors.
+- `src/common/util/idUtils.ts`: Application-wide scoped ID generation (nanoid, UUID v4, deterministic hash conversions).
+- `src/common/util/trpc.client.ts`: Client-side entry point for tRPC configuration, instantiating typed async, query (Next.js/React Query), and batch-streaming client links for both Edge and Cloud (Node) runtimes with custom transport error trapping.
+- `src/common/util/idbUtils.ts`: Provides an IndexedDB write scheduler with write aggregation windows and deadlines, implementing a custom Zustand persist storage adapter.
+- `src/common/util/imageUtils.ts`: Utilities for frontend image manipulation, SVG-to-PNG blob rendering, canvas conversion, and image resizing/formatting targeted for LLM multimodal inputs (OpenAI, Anthropic, Google).
+- `src/common/util/ocrUtils.ts`: Optical character recognition utilities wrapping Tesseract.js for single images and multi-page PDF image extractions with progress reporting.
+- `src/common/util/pdfUtils.ts`: Dynamic loading wrapper around pdfjs-dist to extract text and render PDF pages to image data URLs.
+- `src/common/util/netstate.ts`: Centralized browser connectivity tracker integrating with TanStack Query's onlineManager to handle online/offline transitions, wake nudges, and reachability reporting.
+- `src/common/util/promptUtils.ts`: Prompt template variable substitution and ternary expression parser.
+- `src/common/util/screenWakeLock.ts`: Ref-counted screen wake lock manager to prevent mobile devices from sleeping during active LLM generation streams.
+- `src/common/util/zustandUtils.ts`: Zustand entry point exporting wrapped store creators with optional performance and subscription tracing capabilities.
+- `src/common/util/audio/AudioAutoPlayer.ts`: Unified audio playback manager switching between chunked MediaSource streaming (AudioLivePlayer) and full-buffer accumulation (AudioPlayer)
+- `src/common/util/audio/AudioLivePlayer.ts`: Low-latency streaming audio player utilizing MediaSource and SourceBuffer for chunked audio playback
+- `src/common/util/audio/AudioPlayer.ts`: Static utility for playing full audio buffers via Web Audio API AudioContext or playing audio from URLs
+- `src/common/util/audio/AudioGenerator.ts`: Procedural Web Audio API sound effect generator for UI actions (clicks, typewriter keystrokes, fireworks, notes)
+- `src/common/util/video/videoPlayManaged.ts`: Lightweight fullscreen DOM overlay for playing ephemeral model-generated video blobs
+- `src/common/util/hooks/useShallowObject.ts`: React hooks and comparator utilities for shallow reference stabilization across renders
+- `src/common/util/hooks/useDeep.ts`: Deep equality checking utility for arrays and plain objects
+- `src/common/util/hooks/useArrowKeyListFocus.ts`: Hook for keyboard Arrow Up/Down navigation across dynamic list items without per-row state
+- `src/common/util/hooks/useAsyncCallBusy.ts`: Custom React hook standardizing async function execution, loading states, and error handling
+- `src/common/util/hooks/useToggleableBoolean.ts`: Hook managing toggleable boolean state with optional in-memory persistence
+- `src/common/util/hooks/useToggleableStringSet.ts`: Hook managing a toggleable Set of strings with optional cross-remount in-memory persistence
+
+## Public interface
+- AttachmentDraftsList
+- AttachmentDraftButtonMemo
+- AttachmentDraftMenu
+- AttachmentSourcesMemo
+- useAttachHandler_CameraOpen
+- useAttachHandler_Files
+- useAttachHandler_PasteIntercept
+- useAttachHandler_ScreenCapture
+- useAttachHandler_UrlWebLinks
+- useGoogleDrivePicker
+- hasGoogleDriveCapability
+- useAttachmentDraftsEnrichment
+- useLLMImageInputPolicy
+- imageDataToImageAttachmentFragmentViaDBlob
+- removeAttachmentOwnedDBAsset
+- transferAttachmentOwnedDBAsset
+- gcAttachmentDBlobs
+- attachmentCloudFetchFile
+- attachmentCloudGoogleWorkspaceExportMIME
+- attachmentSourceSupportsLiveFile
+- attachmentGetLiveFileId
+- attachmentEnhancersInterceptText
+- attachmentEnhancersPlaceholderHints
+- guessMimeTypeFromFilename
+- mimeTypeIsPlainText
+- convertDocxToHTML
+- convertHtmlToMarkdown
+- convertXlsxToText
+- loadXlsx
+- attachmentCreate(source)
+- attachmentLoadInputAsync(source, edit)
+- useAttachmentDrafts(attachmentsStoreApi, enableLoadURLsOnPaste, hintAddImages, onFilterAGIFile, filterOnlyImages, enhancersOptions)
+- ConversationHandler
+- ConversationsManager.getHandler(conversationId)
+- createPerChatVanillaStore()
+- useChatOverlayStore(vanillaStore, selector)
+- useChatAttachmentsStore(vanillaStore, selector)
+- useChatComposerOverlayStore(vanillaStore, selector)
+- posthogCaptureEvent(eventName, properties, options)
+- posthogCaptureException(error, additionalProperties)
+- OptionalPostHogAnalytics()
+- OptionalGoogleAnalytics()
+- OptionalUrlTrackingCleaner()
+- useLLMSelect(llmId, setLlmId, options)
+- useCameraCaptureDialog()
+- useCameraCapture()
+- DiffViewer(props)
+- useWindowControls(isVisible, initialPosition, onPositionChange, initialSize, onSizeChange, options)
+- JoyFloatingWindow(props)
+- joyFloatingWindowManager
+- useDragDropDataTransfer(enabled, dropText, DropIcon, dropVariant, acceptOnlyFiles, onDropCallback)
+- GlobalDragOverlay()
+- FoldersSelectPopup(props)
+- FoldersAddButton(props)
+- FormChipControl(props)
+- FormChipGroupControl(props)
+- FormChipModelControl(props)
+- FormInputKey(props)
+- FormNumberInput(props)
+- FormRadioControl(props)
+- FormSelectControl(props)
+- FormSliderControl(props)
+- FormSwitchControl(props)
+- FormTextField(props)
+- SetupFormClientSideToggle(props)
+- SetupFormCorsHint(props)
+- SetupFormRefetchButton(props)
+- useFormRadioLlmType(label, runModelId, initialModelType)
+- GoodModal(props)
+- ConfirmationModal(props)
+- SherpaModal(props)
+- ViewDocPartModal(props)
+- ViewImageRefPartModal(props)
+- AppBreadcrumbs(props)
+- AvatarDomainFavicon(props)
+- AlreadySet(props)
+- DeviceFormFactorIcon(props)
+- DeviceFormChip(props)
+- useGlobalShortcuts(groupName, shortcuts)
+- useGlobalShortcutsStore
+- ensureGlobalShortcutHandler()
+- shortcutsCatalog
+- useSnackbarsStore
+- addSnackbar(snackbar)
+- addSnackUnexpected(userMessage)
+- removeSnackbar(key)
+- SnackbarInsert()
+- useSpeechRecognition(engineType, onResultCallback, softStopTimeout)
+- browserSpeechRecognitionCapability()
+- ButtonAttachFilesMemo, ButtonAttachFiles, openFileForAttaching
+- ButtonServiceAdd
+- ChipExpander, chipExpanderSx, ChipToggleButton
+- CloseablePopup, joyKeepPopup, popupBackdropSx
+- ConfirmIconButton, ConfirmMenuItem, useArmedConfirm
+- DarkModeToggleButton, darkModeToggleButtonSx
+- DataStreamViz
+- DebouncedInput, DebouncedInputMemo
+- ErrorBoundary, ErrorBoundaryProps
+- ExpanderAccordion, ExpanderControlledBox, ExpanderSection
+- ExplainerCarousel, ExplainerPage
+- ExternalDocsLink, ExternalLink
+- FeatureBadge, GoodBadge, GoodTooltip, TooltipOutlined
+- GitHubProjectIssueCard, InlineError
+- InlineTextarea, InlineTextareaEditable, InlineTextareaDraft
+- KeyStroke, platformAwareKeystrokes
+- LanguageSelect
+- Link
+- ListItemGroupCollapser
+- LiteVideoEmbed, VideoPlayerVimeo, VideoPlayerYouTube
+- LogoProgress, MediaStreamPreview, PanelResizeInset
+- RichMenu, RichMenuButton, RichMenuItem, richMenuSx, richMenuCompactSx, richMenuItemSx
+- Section, StackedBarBreakdown, Starred, StarredToggle, StarredState
+- SubMenuHost, SubMenuItem, useSubMenuHost, SubMenuHostController
+- SyncExternalStorable, SyncExternalDisposableStorable, useManagedSyncStorable
+- dontBlurTextareaOnMouseDown
+- useCapabilityBrowserSpeechRecognition, useCapabilityTextToImage, CapabilityTextToImage, CapabilityBrowserSpeechRecognition, CapabilityBrowsing
+- useChipBoolean, useDebugHook, useDebugHookChanges, useFullscreenElement, useHistoryBFCallback, usePWADesktopModeWarning, useIsBrowserTranslating, useBrowserTranslationWarning, getIsMobile, useIsMobile, useIsTallScreen, useNextLoadProgress
+- EventBus
+- DomainEventHelper
+- appEvents
+- appEmitEvent(domain, name, data, options)
+- fromV1DetectArrival()
+- fromV1ArrivedRecently()
+- FROM_V1_DISMISS_KEY
+- FromV1ImportBanner()
+- SitePageSlug
+- OptimaLayout
+- ContainerLayout
+- withNextJSPerPageLayout
+- OptimaDrawerIn
+- OptimaPanelIn
+- OptimaToolbarIn
+- useOptimaDrawerOpen
+- useOptimaPanelOpen
+- useOptimaModals
+- optimaActions
+- optimaOpenModels
+- optimaOpenPreferences
+- useOverlayComponents
+- useLiveFileStore
+- useLiveFileContent
+- useLiveFileMetadata
+- logger
+- createModuleLogger(source, prefix)
+- useClientLoggerInterception(captureUnhandledErrors, captureFetchErrors)
+- setupClientFetchErrorsLogging()
+- setupClientUncaughtErrorsLogging()
+- useLoggerStore
+- LogViewerDialog
+- llmsRefreshStaleServicesOnBoot(remoteServices, existingServices)
+- ProcessingQueue<TItem>
+- useProcessingQueue(myItemQueue)
+- useLogicSherpaStore
+- sherpaStorageMaintenanceNoChats_delayed()
+- shallRedirectToNews()
+- markNewsAsSeen()
+- ProviderBackendCapabilities
+- ProviderBootstrapLogic
+- ProviderTheming
+- ProviderSingleTab
+- useInstanceLock()
+- instanceLockRequestTransfer()
+- localActiveWorkAddSource(source)
+- localActiveWorkGet()
+- RenderDecayZone
+- useRenderDecay(inFlux)
+- ScrollToBottom
+- ScrollToBottomButton
+- useScrollToBottom()
+- Brand
+- BaseProduct
+- Release
+- navItems
+- reactQueryClientSingleton()
+- ROUTE_INDEX
+- ROUTE_APP_CHAT
+- ROUTE_APP_CALL
+- ROUTE_APP_LINK_CHAT
+- ROUTE_APP_NEWS
+- ROUTE_APP_PERSONAS
+- launchAppChat(conversationId)
+- launchAppCall(conversationId, personaId)
+- getServerConf()
+- hasServerConf(flag)
+- useAIPreferencesStore
+- getVndAntInlineFiles()
+- getVndOaiBeamSandbox()
+- getVndGeminiVertexLinks()
+- deviceGetGlobalDeviceId()
+- deviceCreateRegistrationPayload()
+- useUIPreferencesStore
+- useUIComplexityMode
+- useUIComplexityIsMinimal
+- useUIContentScaling
+- useUXLabsStore
+- getLabsHighPerformance
+- getLabsLosslessImages
+- getLabsScreenWakeLock
+- useLabsAdaptiveRendering
+- addDBImageAsset
+- getImageAsset
+- gcDBImageAssets
+- deleteDBAsset
+- transferDBAssetContextScope
+- gcDBAssetsByScope
+- getDBAsset
+- useDBAsset
+- useDBAssetsByScopeAndType
+- DBlobAssetType
+- DBlobMimeType
+- DBlobAssetId
+- DBlobDBAsset
+- DBlobDBContextId
+- DBlobDBScopeId
+- DBlobImageAsset
+- useChatStore
+- createDConversation
+- duplicateDConversation
+- conversationTitle
+- splitSystemMessageFromHistory
+- orderedUserFragments
+- messageOutcome
+- messageTerminalOutcome
+- messageOutcomePolicy
+- messageOutcomeColor
+- messageOutcomeLabel
+- messagePatchPresentation
+- resolveMessagePresentation
+- messageMeasureSizes
+- estimateTokensForFragments
+- estimateTextTokens
+- gcRegisterAssetCollector
+- gcChatImageAssets
+- useConversationIsEmpty
+- useConversationLastMessageRole
+- useChatsCount
+- useConversationTitle
+- useFolderStore
+- useChatFolderActive
+- useChatFoldersForConversation
+- useChatFoldersIfEnabled
+- chatFoldersActions
+- getChatActiveFolderId
+- V4ToHeadConverters
+- V3StoreDataToHead
+- useModelsStore
+- useLLM
+- useLLMs
+- useAllLLMs
+- useVisibleLLMs
+- useHasLLMs
+- useHasFreeLLMs
+- useModelsServices
+- useModelDomain
+- useModelDomains
+- useLlmServiceAccess
+- useAllServicesDCStatus
+- useModelServiceClientSideFetch
+- useModelsZeroState
+- getLLMLabel
+- isLLMVisible
+- isLLMHidden
+- getLLMContextTokens
+- getLLMMaxOutputTokens
+- isLLMChatFree_cached
+- getLlmCostForTokens
+- llmChatPricing_adjusted
+- filterLLMsForDropdown
+- groupLLMsByService
+- sortLLMsByServiceLabel
+- LLMSearchFilterInput
+- setPrimaryChatModelId
+- getDomainModelConfiguration
+- createDModelConfiguration
+- duplicateDModelConfiguration
+- DModelParameterRegistry
+- EditorialDefaults
+- ModelDomainsRegistry
+- metricsStoreAddChatGenerate(costs, inputTokens, outputTokens, llm, debugCostSource)
+- useCostMetricsForLLMService(serviceId)
+- metricsComputeChatGenerateCostsMd(metrics, pricing, logLlmRefId)
+- metricsFinishChatGenerateLg(metrics, isAborted)
+- useClientWorkspaceStore
+- workspaceActions()
+- useWorkspaceContentsMetadata(workspaceId)
+- WorkspaceIdProvider
+- useContextWorkspaceId()
+- WorkspaceLiveFilePicker
+- approximateTextTokens(text, llm, debugFrom)
+- imageTokensForLLM(width, height, debugTitle, llm)
+- textTokensForLLM(text, llm, debugFrom)
+- preloadTiktokenLibrary()
+- delayOrAbort(ms, signal)
+- resultOrAbort(promise, signal)
+- presentErrorToHumans(error, mdBold, devWarnError)
+- serializeError(value)
+- agiUuid(scope)
+- agiUuidV4(scope)
+- isTRPCNetworkError(error)
+- isTRPCStreamClosedEarly(error)
+- apiAsync, apiQuery, apiStream, apiAsyncNode, apiStreamNode
+- createIDBPersistStorage<S>(), backupIdbV3(keyFrom, keyTo)
+- renderSVGToPNGBlob(svgCode, transparentBackground, renderScale, fixedOutputSize)
+- imageBlobTransform(inputImage, options)
+- ocrImageWithProgress(imageData, onProgress)
+- ocrPdfPagesWithProgress(imageDataURLs, onProgress)
+- pdfToText(pdfBuffer, onProgress)
+- pdfToImageDataURLs(pdfBuffer, imageMimeType, imageQuality, scale, onProgress)
+- processPromptTemplate(template, variables, templateName)
+- wakeLockHold(label)
+- netStateInstall(), netStateIsBrowserOffline(), netStateOnlineHint(), netStateSubscribeOnlineHint(callback), netStateReportReachable(), netStateSubscribeWake(callback)
+- modelPickOrAuto<TModel>(pick, catalog)
+- createZipBlob(entries, modified)
+- class AudioAutoPlayer
+- class AudioLivePlayer
+- AudioPlayer.playUrl(url: string, signal?: AbortSignal): Promise<void>
+- AudioPlayer.playFullBuffer(audioBuffer: ArrayBuffer, signal?: AbortSignal): Promise<void>
+- AudioGenerator.mouseClick(): void
+- AudioGenerator.typewriterKeystroke(options?: SoundOptions): void
+- AudioGenerator.smallFirework(options?: SoundOptions): void
+- AudioGenerator.basicNote(note?: string, duration?: number, options?: SoundOptions): void
+- AudioGenerator.basicRandomSound(options?: SoundOptions): void
+- videoPlayObjectUrl(objectUrl: string, label?: string): void
+- useArrowKeyListFocus(containerRef: React.RefObject<HTMLElement>, options?: { itemSelector?: string, wrap?: boolean, onFocusedRow?: (rowElement: HTMLElement) => void }): (event: React.KeyboardEvent) => void
+- useAsyncCallBusy<TArgs, TResult>(asyncFunction: (...args: TArgs) => Promise<TResult>): [isLoading: boolean, execute: (...args: TArgs) => Promise<TResult>, error: Error | null, data: TResult | null]
+- isDeepEqual<T>(a: T, b: T): boolean
+- shallowEquals<T>(objA: T, objB: T): boolean
+- useShallowStable<T>(value: T): T
+- useMemoShallowStable<T>(factory: () => T, deps: React.DependencyList): T
+- useShallowStabilizer<T>(): (value: T) => T
+- useToggleableBoolean(initialValue?: boolean, key?: string): { on: boolean, toggle: () => void }
+- useToggleableStringSet<TValue extends string>(inMemKey?: string): { set: Set<TValue>, toggle: (value: TValue) => void }
+
+## Dependencies
+- @googleworkspace/drive-picker-react
+- @googleworkspace/drive-picker-element
+- @mui/joy
+- @mui/icons-material
+- browser-fs-access
+- mammoth
+- react
+- react-dom
+- react-hook-form
+- react-timeago
+- zustand
+- posthog-js
+- next/script
+- @mui/base
+- @dnd-kit/core
+- @dnd-kit/sortable
+- @dnd-kit/modifiers
+- @dnd-kit/utilities
+- diff
+- ~/common/stores/llms/store-llms
+- ~/common/stores/folders/store-chat-folders
+- ~/common/stores/store-ui
+- ~/common/layout/overlays/useOverlayComponents
+- ~/common/layout/optima/useOptima
+- @emotion/react
+- next/image
+- next/link
+- next/router
+- nprogress
+- ~/common/app.config
+- ~/common/app.release
+- ~/common/app.theme
+- ~/common/components/3rdparty/GoogleAnalytics
+- ~/common/components/3rdparty/PostHogAnalytics
+- ~/common/components/icons/*
+- ~/common/logger
+- ~/common/stores/llms/llms.service.types
+- ~/common/util/animUtils
+- ~/common/util/errorUtils
+- ~/common/util/pwaUtils
+- ~/modules/blocks/ScaledTextBlockRenderer
+- ~/modules/llms/vendors/vendors.registry
+- ~/modules/t2i/t2i.client
+- eventemitter3
+- ~/common/util/idUtils
+- ~/common/components/snackbar/useSnackbarsStore
+- ~/common/app.routes
+- ~/modules/trade/trade.client
+- react-resizable-panels
+- @emotion/cache
+- @tanstack/react-query
+- zustand/middleware
+- ~/modules/dblobs/dblobs.images
+- ~/modules/dblobs/dblobs.db
+- ~/modules/dblobs/dblobs.hooks
+- ~/modules/dblobs/dblobs.types
+- zustand/react/shallow
+- tiktoken
+- nanoid
+- next/font/local
+- @trpc/client
+- @trpc/next
+- idb-keyval
+- pdfjs-dist
+- tesseract.js
+- zod/v4
+- ~/common/util/blobUtils
+
+## AI touchpoints [AI]
+- `src/common/app.release.ts`
+- `src/common/attachment-drafts/attachment.mimetypes.ts`
+- `src/common/attachment-drafts/attachment.pipeline.ts`
+- `src/common/chat-overlay/ConversationHandler.ts`
+- `src/common/components/camera/useCameraCapture.tsx`
+- `src/common/components/useCapabilities.ts`
+- `src/common/gen/com.site.pages.slug.ts`
+- `src/common/providers/single-tab/instanceLock.ts`
+- `src/common/stores/chat/chat.fragment-order.ts`
+- `src/common/stores/chat/chat.fragments.ts`
+- `src/common/stores/chat/chat.message.ts`
+- `src/common/stores/chat/chat.msg.measure.ts`
+- `src/common/stores/chat/chat.tokens.ts`
+- `src/common/stores/llms/llms.parameters.ts`
+- `src/common/stores/llms/llms.pricing.ts`
+- `src/common/stores/llms/llms.types.ts`
+- `src/common/stores/llms/model.domains.editorial.ts`
+- `src/common/stores/llms/store-llms.ts`
+- `src/common/stores/metrics/metrics.chatgenerate.ts`
+- `src/common/stores/store-ai.ts`
+- `src/common/tokens/tokens.approximate.ts`
+- `src/common/tokens/tokens.image.ts`
+- `src/common/tokens/useTokenizerSelect.tsx`
+- `src/common/util/dMessageUtils.tsx`
+- `src/common/util/idUtils.ts`
+- `src/common/util/imageUtils.ts`
+- `src/common/util/textUtils.ts`
+- `src/common/util/webGeolocationUtils.ts`
+- `src/common/attachment-drafts/llm-enrichment/useAttachmentDraftsEnrichment.ts`
+- `src/common/attachment-drafts/llm-enrichment/useLLMImageInputPolicy.tsx`
+- `src/common/attachment-drafts/attachment.enhancers.ts`
+- `src/common/components/forms/useLLMSelect.tsx`
+- `src/common/components/forms/FormChipModelControl.tsx`
+- `src/common/components/forms/useFormRadioLlmType.tsx`
+- `src/common/components/forms/FormInputKey.tsx`
+- `src/common/components/forms/SetupFormClientSideToggle.tsx`
+- `src/common/components/forms/SetupFormCorsHint.tsx`
+- `src/common/components/forms/SetupFormRefetchButton.tsx`
+- `src/common/components/speechrecognition/AudioRecorderEngine.ts`
+- `src/common/layout/optima/Modals.tsx`
+- `src/common/layout/optima/store-layout-optima.ts`
+- `src/common/layout/optima/nav/DesktopNav.tsx`
+- `src/common/logic/llmsRefreshStaleServicesOnBoot.ts`
+- `src/common/render-decay/RenderDecayZone.tsx`
+- `src/common/providers/single-tab/localActiveWork.ts`
+- `src/common/stores/chat/chat.message.outcome.ts`
+- `src/common/stores/llms/store-llms-domains_slice.ts`
+- `src/common/tokens/tokens.text.ts`
+- `src/common/util/ocrUtils.ts`
+- `src/common/util/pdfUtils.ts`
+- `src/common/util/promptUtils.ts`
+- `src/common/util/modelPickUtils.ts`
+- `src/common/util/screenWakeLock.ts`
+- `src/common/util/video/videoPlayManaged.ts`
+- `src/common/util/audio/AudioAutoPlayer.ts`
+
+## Open questions
+- Are non-Google cloud storage providers (OneDrive, Dropbox) intended to be handled purely on the client or via backend tRPC proxy routes?
+- Will PDF binary and audio input fragments be integrated into the LLMAttachmentEnrichment validation class alongside image and doc fragments?
+- src/common/components/speechrecognition/AudioRecorderEngine.ts contains a placeholder token string ('YOUR_API_KEY_FROM_FRONTEND') in the fetch Authorization header, indicating it is unfinished or requires backend proxying/configuration.
+- How does LiveFile handle FileSystemFileHandle persistence across browser reloads given non-serializability in standard localStorage?
+- Are all application routes expected to gate behind SingleTab checks given the dev-only server-mock OptimaLayout throw behavior?
+- src/common/stores/store-ui.ts was truncated at the end of the provided snippet; remaining exported helper hooks are omitted.
+- MediaSessionManager and useMediaSessionCallbacks in src/common/util/mediasession/ are currently fully commented out; should they be integrated with AudioLivePlayer or removed?
+- videoPlayManaged is marked experimental with plans to migrate to a real fragment/renderer if generated video support is formalized.

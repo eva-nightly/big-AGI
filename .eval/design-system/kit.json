@@ -1,0 +1,183 @@
+{
+  "dir": null,
+  "evidence": null,
+  "components": [],
+  "outside": [
+    {
+      "name": "Link",
+      "id": "Link",
+      "file": "src/common/components/Link.tsx",
+      "line": 26,
+      "axes": [],
+      "states": [],
+      "uses": 90,
+      "usedInFiles": 46
+    },
+    {
+      "name": "FormLabelStart",
+      "id": "FormLabelStart",
+      "file": "src/common/components/forms/FormLabelStart.tsx",
+      "line": 30,
+      "axes": [],
+      "states": [],
+      "uses": 73,
+      "usedInFiles": 40
+    },
+    {
+      "name": "InlineError",
+      "id": "InlineError",
+      "file": "src/common/components/InlineError.tsx",
+      "line": 12,
+      "axes": [
+        {
+          "name": "_style",
+          "values": [
+            "whiteSpace",
+            "wordBreak"
+          ],
+          "defaultValue": null
+        },
+        {
+          "name": "severity",
+          "values": [
+            "warning",
+            "danger",
+            "info"
+          ],
+          "defaultValue": null
+        }
+      ],
+      "states": [],
+      "uses": 45,
+      "usedInFiles": 39
+    },
+    {
+      "name": "TooltipOutlined",
+      "id": "TooltipOutlined",
+      "file": "src/common/components/TooltipOutlined.tsx",
+      "line": 14,
+      "axes": [],
+      "states": [],
+      "uses": 53,
+      "usedInFiles": 35
+    },
+    {
+      "name": "GoodModal",
+      "id": "GoodModal",
+      "file": "src/common/components/modals/GoodModal.tsx",
+      "line": 32,
+      "axes": [
+        {
+          "name": "reason",
+          "values": [
+            "backdropClick",
+            "escapeKeyDown",
+            "closeClick"
+          ],
+          "defaultValue": null
+        }
+      ],
+      "states": [
+        "open"
+      ],
+      "uses": 33,
+      "usedInFiles": 31
+    },
+    {
+      "name": "FormInputKey",
+      "id": "FormInputKey",
+      "file": "src/common/components/forms/FormInputKey.tsx",
+      "line": 22,
+      "axes": [
+        {
+          "name": "size",
+          "values": [
+            "sm",
+            "md",
+            "lg"
+          ],
+          "defaultValue": null
+        }
+      ],
+      "states": [
+        "required"
+      ],
+      "uses": 29,
+      "usedInFiles": 25
+    },
+    {
+      "name": "SetupFormRefetchButton",
+      "id": "SetupFormRefetchButton",
+      "file": "src/common/components/forms/SetupFormRefetchButton.tsx",
+      "line": 13,
+      "axes": [],
+      "states": [
+        "disabled"
+      ],
+      "uses": 24,
+      "usedInFiles": 24
+    },
+    {
+      "name": "AlreadySet",
+      "id": "AlreadySet",
+      "file": "src/common/components/AlreadySet.tsx",
+      "line": 9,
+      "axes": [],
+      "states": [],
+      "uses": 24,
+      "usedInFiles": 23
+    },
+    {
+      "name": "GoodTooltip",
+      "id": "GoodTooltip",
+      "file": "src/common/components/GoodTooltip.tsx",
+      "line": 16,
+      "axes": [
+        {
+          "name": "placement",
+          "values": [
+            "top",
+            "bottom",
+            "top-start"
+          ],
+          "defaultValue": null
+        }
+      ],
+      "states": [],
+      "uses": 38,
+      "usedInFiles": 23
+    },
+    {
+      "name": "ApproximateCosts",
+      "id": "ApproximateCosts",
+      "file": "src/modules/llms/vendors/ApproximateCosts.tsx",
+      "line": 52,
+      "axes": [],
+      "states": [],
+      "uses": 22,
+      "usedInFiles": 22
+    },
+    {
+      "name": "SetupFormClientSideToggle",
+      "id": "SetupFormClientSideToggle",
+      "file": "src/common/components/forms/SetupFormClientSideToggle.tsx",
+      "line": 14,
+      "axes": [],
+      "states": [
+        "checked"
+      ],
+      "uses": 21,
+      "usedInFiles": 21
+    },
+    {
+      "name": "ConfirmationModal",
+      "id": "ConfirmationModal",
+      "file": "src/common/components/modals/ConfirmationModal.tsx",
+      "line": 14,
+      "axes": [],
+      "states": [],
+      "uses": 26,
+      "usedInFiles": 20
+    }
+  ]
+}

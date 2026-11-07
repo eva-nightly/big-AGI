@@ -1,0 +1,1714 @@
+{
+  "sections": [
+    {
+      "key": "configure-ai-models",
+      "label": "Configure AI models"
+    }
+  ],
+  "sectionsFrom": "navigation",
+  "navigation": "src/common/app.nav.ts",
+  "pages": [
+    {
+      "id": "/",
+      "label": "Chat",
+      "section": "configure-ai-models",
+      "file": "pages/index.tsx",
+      "groups": [
+        "src/common/util"
+      ],
+      "tables": {},
+      "components": []
+    },
+    {
+      "id": "/call",
+      "label": "Call",
+      "section": "configure-ai-models",
+      "file": "pages/call.tsx",
+      "groups": [
+        "src/common/util"
+      ],
+      "tables": {},
+      "components": []
+    },
+    {
+      "id": "/draw",
+      "label": "Draw",
+      "section": "configure-ai-models",
+      "file": "pages/draw.tsx",
+      "groups": [
+        "src/common/util"
+      ],
+      "tables": {},
+      "components": []
+    },
+    {
+      "id": "/workspace",
+      "label": "Workspace",
+      "section": "configure-ai-models",
+      "file": "pages/workspace.tsx",
+      "groups": [
+        "src/common/util"
+      ],
+      "tables": {},
+      "components": []
+    },
+    {
+      "id": "/personas",
+      "label": "Create personas",
+      "section": "configure-ai-models",
+      "file": "pages/personas.tsx",
+      "groups": [
+        "src/common/util"
+      ],
+      "tables": {},
+      "components": []
+    },
+    {
+      "id": "/diff",
+      "label": "Compare text",
+      "section": "configure-ai-models",
+      "file": "pages/diff.tsx",
+      "groups": [
+        "src/common/util"
+      ],
+      "tables": {},
+      "components": []
+    },
+    {
+      "id": "/tokens",
+      "label": "Tokenize text",
+      "section": "configure-ai-models",
+      "file": "pages/tokens.tsx",
+      "groups": [],
+      "tables": {},
+      "components": []
+    },
+    {
+      "id": "/link/chat/[chatLinkId]",
+      "label": "Shared chats",
+      "section": "configure-ai-models",
+      "file": "pages/link/chat/[chatLinkId].tsx",
+      "groups": [
+        "src/common/util"
+      ],
+      "tables": {},
+      "components": []
+    },
+    {
+      "id": "/news",
+      "label": "News",
+      "section": "configure-ai-models",
+      "file": "pages/news.tsx",
+      "groups": [
+        "src/common/util"
+      ],
+      "tables": {},
+      "components": []
+    }
+  ],
+  "actions": [
+    {
+      "id": "ANY /api/cloud/[trpc]",
+      "method": "ANY",
+      "path": "/api/cloud/[trpc]",
+      "file": "app/api/cloud/[trpc]/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [],
+      "group": "app/api/cloud",
+      "section": null
+    },
+    {
+      "id": "ANY /api/edge/[trpc]",
+      "method": "ANY",
+      "path": "/api/edge/[trpc]",
+      "file": "app/api/edge/[trpc]/route.ts",
+      "doc": [],
+      "tables": {},
+      "pages": [],
+      "group": "app/api/edge",
+      "section": null
+    }
+  ],
+  "groups": [
+    {
+      "id": "app/api/cloud",
+      "label": "cloud",
+      "section": null,
+      "files": 1,
+      "tables": {},
+      "pages": [],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "app/api/edge",
+      "label": "edge",
+      "section": null,
+      "files": 1,
+      "tables": {},
+      "pages": [],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/common/util",
+      "label": "util",
+      "section": "configure-ai-models",
+      "files": 54,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/diff",
+        "/draw",
+        "/link/chat/[chatLinkId]",
+        "/news",
+        "/personas",
+        "/workspace"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/modules/llms",
+      "label": "llms",
+      "section": "configure-ai-models",
+      "files": 144,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/draw",
+        "/personas"
+      ],
+      "calls": [],
+      "components": [
+        "src/modules/llms/components/LLMVendorIcon::LLMVendorIcon",
+        "src/modules/llms/components/LLMVendorIconSprite::LLMVendorIconSprite",
+        "src/modules/llms/components/LLMVendorIconSprite::VendorIconSpriteMemo",
+        "src/modules/llms/components/LLMVendorSetup::LLMVendorSetup",
+        "src/modules/llms/components/ModelsRefreshAlert::ModelsRefreshAlert",
+        "src/modules/llms/components/ModelsRefreshAlert::ModelsRefreshIconButton",
+        "src/modules/llms/models-modal/AnthropicSkillsConfig::AnthropicSkillsConfig",
+        "src/modules/llms/models-modal/LLMOptionsClone::LLMOptionsClone",
+        "src/modules/llms/models-modal/LLMOptionsGlobal::LLMOptionsGlobal",
+        "src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal",
+        "src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor",
+        "src/modules/llms/models-modal/ModelsChangelogPanel::CountChips",
+        "src/modules/llms/models-modal/ModelsChangelogPanel::ModelsChangelogPanel",
+        "src/modules/llms/models-modal/ModelsChangelogPanel::ServiceChangelogRow",
+        "src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal",
+        "src/modules/llms/models-modal/ModelsList::ModelItem",
+        "src/modules/llms/models-modal/ModelsList::ModelsList",
+        "src/modules/llms/models-modal/ModelsModals::ModelsModals",
+        "src/modules/llms/models-modal/ModelsServiceSelector::ModelsServiceSelector",
+        "src/modules/llms/models-modal/ModelsWizard::ModelsWizard",
+        "src/modules/llms/models-modal/ModelsWizard::WizardProviderSetup",
+        "src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig",
+        "src/modules/llms/vendors/ApproximateCosts::ApproximateCosts",
+        "src/modules/llms/vendors/alibaba/AlibabaServiceSetup::AlibabaServiceSetup",
+        "src/modules/llms/vendors/anthropic/AnthropicServiceSetup::AnthropicServiceSetup",
+        "src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup",
+        "src/modules/llms/vendors/bedrock/BedrockRegionAutocomplete::BedrockRegionAutocomplete",
+        "src/modules/llms/vendors/bedrock/BedrockServiceSetup::BedrockServiceSetup",
+        "src/modules/llms/vendors/cerebras/CerebrasServiceSetup::CerebrasServiceSetup",
+        "src/modules/llms/vendors/cohere/CohereServiceSetup::CohereServiceSetup",
+        "src/modules/llms/vendors/deepseek/DeepseekAIServiceSetup::DeepseekAIServiceSetup",
+        "src/modules/llms/vendors/gemini/GeminiServiceSetup::GeminiServiceSetup",
+        "src/modules/llms/vendors/groq/GroqServiceSetup::GroqServiceSetup",
+        "src/modules/llms/vendors/lmstudio/LMStudioServiceSetup::LMStudioServiceSetup",
+        "src/modules/llms/vendors/localai/LocalAIAdmin::ListItemSwitch",
+        "src/modules/llms/vendors/localai/LocalAIAdmin::LocalAIAdmin",
+        "src/modules/llms/vendors/localai/LocalAIAdmin::ModelInstallPanel",
+        "src/modules/llms/vendors/localai/LocalAIAdmin::ModelJobStatusChecker",
+        "src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup",
+        "src/modules/llms/vendors/metaai/MetaAIServiceSetup::MetaAIServiceSetup",
+        "src/modules/llms/vendors/mistral/MistralServiceSetup::MistralServiceSetup",
+        "src/modules/llms/vendors/modular/ModularServiceSetup::ModularServiceSetup",
+        "src/modules/llms/vendors/moonshot/MoonshotServiceSetup::MoonshotServiceSetup",
+        "src/modules/llms/vendors/nvidianim/NvidiaNIMServiceSetup::NvidiaNIMServiceSetup",
+        "src/modules/llms/vendors/ollama/OllamaAdministration::OllamaAdministration",
+        "src/modules/llms/vendors/ollama/OllamaServiceSetup::OllamaServiceSetup",
+        "src/modules/llms/vendors/openai/OpenAIHostAutocomplete::OpenAIHostAutocomplete",
+        "src/modules/llms/vendors/openai/OpenAIServiceSetup::NvidiaNIMUpgradeNotice",
+        "src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup",
+        "src/modules/llms/vendors/openrouter/OpenRouterServiceSetup::OpenRouterServiceSetup",
+        "src/modules/llms/vendors/perplexity/PerplexityServiceSetup::PerplexityServiceSetup",
+        "src/modules/llms/vendors/sakanaai/SakanaAIServiceSetup::SakanaAIServiceSetup",
+        "src/modules/llms/vendors/togetherai/TogetherAIServiceSetup::TogetherAIServiceSetup",
+        "src/modules/llms/vendors/xai/XAIServiceSetup::XAIServiceSetup",
+        "src/modules/llms/vendors/zai/ZAIServiceSetup::ZAIServiceSetup"
+      ]
+    },
+    {
+      "id": "src/modules/news",
+      "label": "news",
+      "section": "configure-ai-models",
+      "files": 8,
+      "tables": {},
+      "pages": [
+        "/"
+      ],
+      "calls": [],
+      "components": [
+        "src/modules/news/components/DocsReaderModal::DocsFailure",
+        "src/modules/news/components/DocsReaderModal::DocsHomeView",
+        "src/modules/news/components/DocsReaderModal::DocsNavPage",
+        "src/modules/news/components/DocsReaderModal::DocsNavTree",
+        "src/modules/news/components/DocsReaderModal::DocsNewChip",
+        "src/modules/news/components/DocsReaderModal::DocsPageView",
+        "src/modules/news/components/DocsReaderModal::DocsReaderModal",
+        "src/modules/news/components/DocsReaderModal::DocsSearchResults",
+        "src/modules/news/components/DocsReaderModal::DocsSectionView",
+        "src/modules/news/components/DocsReaderModal::DocsTierChip",
+        "src/modules/news/components/WhatsNewIndicators::AnnouncementsNavDot",
+        "src/modules/news/components/WhatsNewIndicators::DocsMenuItem",
+        "src/modules/news/components/WhatsNewIndicators::NewCount",
+        "src/modules/news/components/WhatsNewIndicators::NewsModals",
+        "src/modules/news/components/WhatsNewIndicators::WhatsNewEmptyChatLine",
+        "src/modules/news/components/WhatsNewIndicators::WhatsNewMenuItem",
+        "src/modules/news/components/WhatsNewIndicators::WhatsNewNavDot",
+        "src/modules/news/components/WhatsNewIndicators::WhatsNewPanelRow",
+        "src/modules/news/components/WhatsNewModal::AnnouncementPane",
+        "src/modules/news/components/WhatsNewModal::ChangelogDay",
+        "src/modules/news/components/WhatsNewModal::ChangelogLedger",
+        "src/modules/news/components/WhatsNewModal::ChangelogPane",
+        "src/modules/news/components/WhatsNewModal::NewsBody",
+        "src/modules/news/components/WhatsNewModal::WhatsNewModal"
+      ]
+    },
+    {
+      "id": "src/modules/youtube",
+      "label": "youtube",
+      "section": "configure-ai-models",
+      "files": 6,
+      "tables": {},
+      "pages": [
+        "/",
+        "/personas"
+      ],
+      "calls": [],
+      "components": [
+        "src/modules/youtube/YouTubeURLInput::YouTubeURLInput"
+      ]
+    },
+    {
+      "id": "tools/data",
+      "label": "data",
+      "section": null,
+      "files": 1,
+      "tables": {
+        "models": "write",
+        "sync_history": "write"
+      },
+      "pages": [],
+      "calls": [],
+      "components": []
+    }
+  ],
+  "quiet": [
+    {
+      "id": "pages/link/chat",
+      "label": "chat",
+      "section": "configure-ai-models",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/link/chat/[chatLinkId]"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/apps/AppPlaceholder",
+      "label": "AppPlaceholder",
+      "section": "configure-ai-models",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/workspace"
+      ],
+      "calls": [],
+      "components": [
+        "src/apps/AppPlaceholder::AppPlaceholder"
+      ]
+    },
+    {
+      "id": "src/apps/AppSmallContainer",
+      "label": "AppSmallContainer",
+      "section": "configure-ai-models",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/diff",
+        "/tokens"
+      ],
+      "calls": [],
+      "components": [
+        "src/apps/AppSmallContainer::AppSmallContainer"
+      ]
+    },
+    {
+      "id": "src/apps/call",
+      "label": "call",
+      "section": "configure-ai-models",
+      "files": 11,
+      "tables": {},
+      "pages": [
+        "/call"
+      ],
+      "calls": [],
+      "components": [
+        "src/apps/call/AppCall::AppCall",
+        "src/apps/call/CallWizard::CallWizard",
+        "src/apps/call/CallWizard::StatusCard",
+        "src/apps/call/Contacts::CallContactCard",
+        "src/apps/call/Contacts::ContactCardAvatar",
+        "src/apps/call/Contacts::ContactCardConversationCall",
+        "src/apps/call/Contacts::Contacts",
+        "src/apps/call/Contacts::ContactsMenuItems",
+        "src/apps/call/Telephone::CallMenu",
+        "src/apps/call/Telephone::Telephone",
+        "src/apps/call/components/CallAvatar::CallAvatar",
+        "src/apps/call/components/CallButton::CallButton",
+        "src/apps/call/components/CallMessage::CallMessage",
+        "src/apps/call/components/CallStatus::CallStatus"
+      ]
+    },
+    {
+      "id": "src/apps/chat",
+      "label": "chat",
+      "section": "configure-ai-models",
+      "files": 131,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/draw",
+        "/link/chat/[chatLinkId]",
+        "/personas"
+      ],
+      "calls": [],
+      "components": [
+        "src/apps/chat/AppChat::AppChat",
+        "src/apps/chat/components/ChatBeamWrapper::ChatBeamWrapper",
+        "src/apps/chat/components/ChatCleanupList::ChatCleanupControls",
+        "src/apps/chat/components/ChatMessageList::ChatMessageList",
+        "src/apps/chat/components/ChatPane::ChatPane",
+        "src/apps/chat/components/Ephemerals::EphemeralItem",
+        "src/apps/chat/components/Ephemerals::Ephemerals",
+        "src/apps/chat/components/Ephemerals::ListRenderer",
+        "src/apps/chat/components/Ephemerals::ObjectRenderer",
+        "src/apps/chat/components/Ephemerals::PrimitiveRender",
+        "src/apps/chat/components/Ephemerals::StateRenderer",
+        "src/apps/chat/components/PaneTitleOverlay::PaneTitleOverlay",
+        "src/apps/chat/components/StatusBar::ShortcutItem",
+        "src/apps/chat/components/StatusBar::StatusBar",
+        "src/apps/chat/components/composer/Composer::Composer",
+        "src/apps/chat/components/composer/ComposerDock::ComposerDock",
+        "src/apps/chat/components/composer/actile/ActilePopup::ActilePopup",
+        "src/apps/chat/components/composer/buttons/ButtonBeam::ButtonBeam",
+        "src/apps/chat/components/composer/buttons/ButtonCall::ButtonCall",
+        "src/apps/chat/components/composer/buttons/ButtonGroupDrawRepeat::ButtonGroupDrawRepeat",
+        "src/apps/chat/components/composer/buttons/ButtonMic::ButtonMic",
+        "src/apps/chat/components/composer/buttons/ButtonMicContinuation::ButtonMicContinuation",
+        "src/apps/chat/components/composer/buttons/ButtonMultiChat::ButtonMultiChat",
+        "src/apps/chat/components/composer/buttons/ButtonOptionsDraw::ButtonOptionsDraw",
+        "src/apps/chat/components/composer/composer.input-enhancers::VideoUrlDisabledHint",
+        "src/apps/chat/components/composer/composer.input-enhancers::VideoUrlPendingChip",
+        "src/apps/chat/components/composer/llmattachments/ComposerAttachmentDraftsList::ComposerAttachmentDraftsList",
+        "src/apps/chat/components/composer/llmattachments/LLMAttachmentsPromptsButton::LLMAttachmentsPromptsButton",
+        "src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::MessageFragmentOrderControl",
+        "src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::SortableGroupRow",
+        "src/apps/chat/components/composer/textarea/ComposerTextAreaActions::ComposerTextAreaActions",
+        "src/apps/chat/components/composer/textarea/ComposerTextAreaDrawActions::ComposerTextAreaDrawActions",
+        "src/apps/chat/components/composer/tokens/TokenBadge::TokenBadge",
+        "src/apps/chat/components/composer/tokens/TokenProgressbar::TokenProgressbar",
+        "src/apps/chat/components/composer/tokens/TokenTooltip::TokenTooltip",
+        "src/apps/chat/components/layout-bar/ChatBarAltTitle::ChatBarAltTitle",
+        "src/apps/chat/components/layout-bar/ChatBarBeam::ChatBarBeam",
+        "src/apps/chat/components/layout-bar/ChatBarBreadcrumbs::ChatBarBreadcrumbs",
+        "src/apps/chat/components/layout-bar/ChatBarChat::ChatBarChat",
+        "src/apps/chat/components/layout-bar/ChatToolbar::ChatToolbar",
+        "src/apps/chat/components/layout-bar/useLLMDropdown::LLMDropdown",
+        "src/apps/chat/components/layout-bar/usePersonaDropdown::PersonaDropdown",
+        "src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer",
+        "src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem",
+        "src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::ChatDrawerStorageWarning",
+        "src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::StorageWarningConfirmationModal",
+        "src/apps/chat/components/layout-drawer/folders/ChatFolderList::ChatFolderList",
+        "src/apps/chat/components/layout-drawer/folders/FolderListItem::FolderListItem",
+        "src/apps/chat/components/layout-panel/ActionFolder::ActionFolder",
+        "src/apps/chat/components/layout-panel/ChatPanel::ChatPanel",
+        "src/apps/chat/components/layout-panel/ChatPanel::VariformPaneFrame",
+        "src/apps/chat/components/layout-panel/WindowSplitControls::WindowSplitControls",
+        "src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator",
+        "src/apps/chat/components/live-svg/LiveSvgAnimator::Stat",
+        "src/apps/chat/components/live-svg/LiveSvgAnimator::TpsSparkline",
+        "src/apps/chat/components/message/BlockOpContinue::BlockOpContinue",
+        "src/apps/chat/components/message/BlockOpOptions::BlockOpOptions",
+        "src/apps/chat/components/message/BlockOpResolveVertexAILinks::BlockOpResolveVertexAILinks",
+        "src/apps/chat/components/message/BlockOpUpstreamResume::BlockOpUpstreamResume",
+        "src/apps/chat/components/message/CMEditAttach::CMEditAttach",
+        "src/apps/chat/components/message/ChatMessage::CMDesktopAvatar",
+        "src/apps/chat/components/message/ChatMessage::CMMobileHeader",
+        "src/apps/chat/components/message/ChatMessage::ChatMessage",
+        "src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble",
+        "src/apps/chat/components/message/ChatMessageInfoPopup::ChatMessageInfoPopup",
+        "src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu",
+        "src/apps/chat/components/message/ChatMessageTimestamp::ChatMessageTimestamp",
+        "src/apps/chat/components/message/CleanerMessage::CleanerMessage",
+        "src/apps/chat/components/message/CleanerMessage::MessagesSelectionHeader",
+        "src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton::DocAttachmentDeleteButton",
+        "src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton::DocAttachmentFragmentButton",
+        "src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane::DocAttachmentFragmentPane",
+        "src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::DocumentAttachmentFragments",
+        "src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::SortableDocAttachmentButton",
+        "src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/LiveFileControlButton::LiveFileControlButton",
+        "src/apps/chat/components/message/fragments-attachment-edit/EditAttachmentFragments::EditAttachmentFragments",
+        "src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentCard",
+        "src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentFragments",
+        "src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageTitleEditorOverlay",
+        "src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::SortableImageAttachmentCard",
+        "src/apps/chat/components/message/fragments-content/BlockEdit_TextFragment::BlockEdit_TextFragment",
+        "src/apps/chat/components/message/fragments-content/BlockOpEmpty::BlockOpEmpty",
+        "src/apps/chat/components/message/fragments-content/BlockPartError::BlockPartError",
+        "src/apps/chat/components/message/fragments-content/BlockPartError_NetDisconnected::BlockPartError_NetDisconnected",
+        "src/apps/chat/components/message/fragments-content/BlockPartError_RequestExceeded::BlockPartError_RequestExceeded",
+        "src/apps/chat/components/message/fragments-content/BlockPartHostedResource::AnthropicFileChip",
+        "src/apps/chat/components/message/fragments-content/BlockPartHostedResource::BlockPartHostedResource",
+        "src/apps/chat/components/message/fragments-content/BlockPartHostedResource::GeminiFileChip",
+        "src/apps/chat/components/message/fragments-content/BlockPartHostedResource::NoAccessChip",
+        "src/apps/chat/components/message/fragments-content/BlockPartHostedResource::OpenAIContainerFileChip",
+        "src/apps/chat/components/message/fragments-content/BlockPartHostedResource::UrlVideoChip",
+        "src/apps/chat/components/message/fragments-content/BlockPartImageRef::BlockPartImageRef",
+        "src/apps/chat/components/message/fragments-content/BlockPartText_AutoBlocks::BlockPartText_AutoBlocks",
+        "src/apps/chat/components/message/fragments-content/BlockPartToolInvocation::BlockPartToolInvocation",
+        "src/apps/chat/components/message/fragments-content/BlockPartToolInvocation::KeyValueGrid",
+        "src/apps/chat/components/message/fragments-content/BlockPartToolResponse::BlockPartToolResponse",
+        "src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChip",
+        "src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChipButton",
+        "src/apps/chat/components/message/fragments-void/BlockPartModelAnnotations::BlockPartModelAnnotations",
+        "src/apps/chat/components/message/fragments-void/BlockPartModelAux::BlockPartModelAux",
+        "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::BlockPartPlaceholder",
+        "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::ModelOperationChip",
+        "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::OperationsHarakiriChip",
+        "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipAixControl",
+        "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipFollowUp",
+        "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipListModelOps",
+        "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipNotice",
+        "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderDividerNotice",
+        "src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderNoticeDetail",
+        "src/apps/chat/components/message/in-reference-to/InReferenceToBubble::InReferenceToBubble",
+        "src/apps/chat/components/message/in-reference-to/InReferenceToList::InReferenceToList",
+        "src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMCitationsNode",
+        "src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMReasoningNode",
+        "src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes",
+        "src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMSortableBlock",
+        "src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMTextNode",
+        "src/apps/chat/components/messages-list/CMLZeroConversation::CMLZeroConversation",
+        "src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector",
+        "src/apps/chat/components/persona-selector/PersonaSelector::Tile",
+        "src/apps/chat/execute-mode/ExecuteModeMenu::ExecuteModeMenu"
+      ]
+    },
+    {
+      "id": "src/apps/diff",
+      "label": "diff",
+      "section": "configure-ai-models",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/diff"
+      ],
+      "calls": [],
+      "components": [
+        "src/apps/diff/AppDiff::AppDiff"
+      ]
+    },
+    {
+      "id": "src/apps/draw",
+      "label": "draw",
+      "section": "configure-ai-models",
+      "files": 16,
+      "tables": {},
+      "pages": [
+        "/draw"
+      ],
+      "calls": [],
+      "components": [
+        "src/apps/draw/AppDraw::AppDraw",
+        "src/apps/draw/DrawCreate::DrawCreate",
+        "src/apps/draw/DrawGallery::DrawGallery",
+        "src/apps/draw/create/ButtonPromptFromIdea::ButtonPromptFromIdea",
+        "src/apps/draw/create/ButtonPromptFromX::ButtonPromptFromX",
+        "src/apps/draw/create/DrawProviderConfigure::DrawProviderConfigure",
+        "src/apps/draw/create/DrawProviderSelector::DrawProviderSelector",
+        "src/apps/draw/create/DrawSectionHeading::DrawSectionHeading",
+        "src/apps/draw/create/PromptComposer::PromptComposer",
+        "src/apps/draw/create/ZeroDrawConfig::ZeroDrawConfig",
+        "src/apps/draw/create/ZeroGenerations::ZeroGenerations",
+        "src/apps/draw/gallery/ZeroGallery::ZeroGallery",
+        "src/apps/draw/useDrawSectionDropdown::DrawSectionDropdown"
+      ]
+    },
+    {
+      "id": "src/apps/link-chat",
+      "label": "link-chat",
+      "section": "configure-ai-models",
+      "files": 4,
+      "tables": {},
+      "pages": [
+        "/link/chat/[chatLinkId]"
+      ],
+      "calls": [],
+      "components": [
+        "src/apps/link-chat/AppLinkChat::AppLinkChat",
+        "src/apps/link-chat/AppLinkChat::Centerer",
+        "src/apps/link-chat/AppLinkChat::ListPlaceholder",
+        "src/apps/link-chat/AppLinkChat::ShowError",
+        "src/apps/link-chat/AppLinkChat::ShowLoading",
+        "src/apps/link-chat/LinkChatAppMenuItems::LinkChatAppMenuItems",
+        "src/apps/link-chat/LinkChatDrawer::LinkChatDrawer",
+        "src/apps/link-chat/LinkChatViewer::LinkChatViewer"
+      ]
+    },
+    {
+      "id": "src/apps/news",
+      "label": "news",
+      "section": "configure-ai-models",
+      "files": 3,
+      "tables": {},
+      "pages": [
+        "/news"
+      ],
+      "calls": [],
+      "components": [
+        "src/apps/news/AppNews::AppNews",
+        "src/apps/news/AppNews::AppNewsModuleScope",
+        "src/apps/news/AppNews::BuildInfoCard",
+        "src/apps/news/AppNews::BuildInfoSheet",
+        "src/apps/news/AppNews::NewsCard",
+        "src/apps/news/bigAgiPro.data::BigAgiProNewsCallout",
+        "src/apps/news/news.data::B",
+        "src/apps/news/news.data::NewsData"
+      ]
+    },
+    {
+      "id": "src/apps/personas",
+      "label": "personas",
+      "section": "configure-ai-models",
+      "files": 8,
+      "tables": {},
+      "pages": [
+        "/personas"
+      ],
+      "calls": [],
+      "components": [
+        "src/apps/personas/AppPersonas::AppPersonas",
+        "src/apps/personas/creator/Creator::Creator",
+        "src/apps/personas/creator/Creator::PersonaPromptCard",
+        "src/apps/personas/creator/CreatorDrawer::CreatorDrawer",
+        "src/apps/personas/creator/CreatorDrawerItem::CreatorDrawerItem",
+        "src/apps/personas/creator/FromText::FromText",
+        "src/apps/personas/creator/FromYouTube::FromYouTube",
+        "src/apps/personas/creator/FromYouTube::YouTubeDisabledCard",
+        "src/apps/personas/creator/FromYouTube::YouTubeVideoTranscriptCard",
+        "src/apps/personas/creator/Viewer::Viewer"
+      ]
+    },
+    {
+      "id": "src/apps/settings-modal",
+      "label": "settings-modal",
+      "section": "configure-ai-models",
+      "files": 15,
+      "tables": {},
+      "pages": [
+        "/link/chat/[chatLinkId]"
+      ],
+      "calls": [],
+      "components": [
+        "src/apps/settings-modal/AppChatSettingsAI::AppChatSettingsAI",
+        "src/apps/settings-modal/AppChatSettingsAI::FormControlDomainModel",
+        "src/apps/settings-modal/SettingsContent::ChildNav",
+        "src/apps/settings-modal/SettingsContent::SectionHeader",
+        "src/apps/settings-modal/SettingsContent::SettingsContent",
+        "src/apps/settings-modal/SettingsContent::ToolsDiagnostics",
+        "src/apps/settings-modal/SettingsContent::ToolsSearchBanner",
+        "src/apps/settings-modal/SettingsContent::VoiceInputBlock",
+        "src/apps/settings-modal/SettingsContent::VoiceOutputBlock",
+        "src/apps/settings-modal/SettingsModal::SettingsModal",
+        "src/apps/settings-modal/SettingsNavList::SettingsNavList",
+        "src/apps/settings-modal/SettingsNavSelect::SettingsNavSelect",
+        "src/apps/settings-modal/ShortcutsModal::ShortcutKeyCombo",
+        "src/apps/settings-modal/ShortcutsModal::ShortcutsModal",
+        "src/apps/settings-modal/UxLabsSettings::UxLabsSettings",
+        "src/apps/settings-modal/VoiceInSettings::VoiceInSettings",
+        "src/apps/settings-modal/VoiceOutSettings::VoiceOutSettings",
+        "src/apps/settings-modal/settings-ui/AppChatSettingsUI::AppChatSettingsUI",
+        "src/apps/settings-modal/settings-ui/AppChatSettingsUI::ModelsSetupButton",
+        "src/apps/settings-modal/settings-ui/SettingUIComplexity::SettingUIComplexity",
+        "src/apps/settings-modal/settings-ui/SettingUIComposerQuickButton::SettingUIComposerQuickButton",
+        "src/apps/settings-modal/settings-ui/SettingUIContentScaling::SettingUIContentScaling",
+        "src/apps/settings-modal/settings-ui/SettingUIMessageTimestamps::SettingUIMessageTimestamps"
+      ]
+    },
+    {
+      "id": "src/apps/tokens",
+      "label": "tokens",
+      "section": "configure-ai-models",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/tokens"
+      ],
+      "calls": [],
+      "components": [
+        "src/apps/tokens/AppTokens::AppTokens"
+      ]
+    },
+    {
+      "id": "src/common/app.config",
+      "label": "app.config",
+      "section": "configure-ai-models",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/link/chat/[chatLinkId]",
+        "/news"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/common/app.queryclient",
+      "label": "app.queryclient",
+      "section": "configure-ai-models",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/draw",
+        "/link/chat/[chatLinkId]",
+        "/personas"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/common/app.release",
+      "label": "app.release",
+      "section": "configure-ai-models",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/news"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/common/app.routes",
+      "label": "app.routes",
+      "section": "configure-ai-models",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/draw",
+        "/link/chat/[chatLinkId]",
+        "/news",
+        "/workspace"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/common/app.serverconf",
+      "label": "app.serverconf",
+      "section": "configure-ai-models",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/draw"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/common/app.theme",
+      "label": "app.theme",
+      "section": "configure-ai-models",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/diff",
+        "/draw",
+        "/link/chat/[chatLinkId]",
+        "/news",
+        "/personas",
+        "/tokens"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/common/attachment-drafts",
+      "label": "attachment-drafts",
+      "section": "configure-ai-models",
+      "files": 30,
+      "tables": {},
+      "pages": [
+        "/"
+      ],
+      "calls": [],
+      "components": [
+        "src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton::AttachmentDraftButton",
+        "src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton::InputErrorIndicator",
+        "src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton::InputLoadingPlaceholder",
+        "src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu",
+        "src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList",
+        "src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources",
+        "src/common/attachment-drafts/attachment-sources/AttachmentSources::AutoDownloadToggle",
+        "src/common/attachment-drafts/attachment-sources/AttachmentSources::LiveFeedButton",
+        "src/common/attachment-drafts/attachment-sources/ButtonAttachCamera::ButtonAttachCamera",
+        "src/common/attachment-drafts/attachment-sources/ButtonAttachClipboard::ButtonAttachClipboard",
+        "src/common/attachment-drafts/attachment-sources/ButtonAttachGoogleDrive::ButtonAttachGoogleDrive",
+        "src/common/attachment-drafts/attachment-sources/ButtonAttachNewDoc::ButtonAttachNew",
+        "src/common/attachment-drafts/attachment-sources/ButtonAttachScreenCapture::ButtonAttachScreenCapture",
+        "src/common/attachment-drafts/attachment-sources/ButtonAttachWeb::ButtonAttachWeb",
+        "src/common/attachment-drafts/attachment-sources/useWebAttachmentModal::WebInputModal"
+      ]
+    },
+    {
+      "id": "src/common/chat-overlay",
+      "label": "chat-overlay",
+      "section": "configure-ai-models",
+      "files": 6,
+      "tables": {},
+      "pages": [
+        "/"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/common/livefile",
+      "label": "livefile",
+      "section": "configure-ai-models",
+      "files": 6,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/link/chat/[chatLinkId]"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/common/logger",
+      "label": "logger",
+      "section": "configure-ai-models",
+      "files": 10,
+      "tables": {},
+      "pages": [
+        "/"
+      ],
+      "calls": [],
+      "components": [
+        "src/common/logger/viewer/LogEntryDetails::LogEntryDetails",
+        "src/common/logger/viewer/LoggerViewerDialog::LogViewerDialog"
+      ]
+    },
+    {
+      "id": "src/common/logic",
+      "label": "logic",
+      "section": "configure-ai-models",
+      "files": 3,
+      "tables": {},
+      "pages": [
+        "/",
+        "/draw",
+        "/news"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/common/render-decay",
+      "label": "render-decay",
+      "section": "configure-ai-models",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/"
+      ],
+      "calls": [],
+      "components": [
+        "src/common/render-decay/RenderDecayZone::RenderDecayZone"
+      ]
+    },
+    {
+      "id": "src/common/scroll-to-bottom",
+      "label": "scroll-to-bottom",
+      "section": "configure-ai-models",
+      "files": 3,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/draw",
+        "/link/chat/[chatLinkId]"
+      ],
+      "calls": [],
+      "components": [
+        "src/common/scroll-to-bottom/ScrollToBottom::DebugBorderBox",
+        "src/common/scroll-to-bottom/ScrollToBottom::ScrollToBottom",
+        "src/common/scroll-to-bottom/ScrollToBottomButton::ScrollToBottomButton"
+      ]
+    },
+    {
+      "id": "src/common/stores",
+      "label": "stores",
+      "section": "configure-ai-models",
+      "files": 51,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/diff",
+        "/draw",
+        "/link/chat/[chatLinkId]",
+        "/personas",
+        "/tokens"
+      ],
+      "calls": [],
+      "components": [
+        "src/common/stores/llms/components/LLMSearchFilterInput::LLMSearchFilterInput",
+        "src/common/stores/workspace/WorkspaceIdProvider::WorkspaceIdProvider",
+        "src/common/stores/workspace/WorkspaceLiveFilePicker::WorkspaceLiveFilePicker"
+      ]
+    },
+    {
+      "id": "src/common/tokens",
+      "label": "tokens",
+      "section": "configure-ai-models",
+      "files": 4,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/link/chat/[chatLinkId]",
+        "/tokens"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/data",
+      "label": "data",
+      "section": "configure-ai-models",
+      "files": 1,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/modules/aifn",
+      "label": "aifn",
+      "section": "configure-ai-models",
+      "files": 17,
+      "tables": {},
+      "pages": [
+        "/",
+        "/draw",
+        "/personas"
+      ],
+      "calls": [],
+      "components": [
+        "src/modules/aifn/digrams/DiagramsModal::DiagramsModal",
+        "src/modules/aifn/flatten/FlattenerModal::FlattenerModal",
+        "src/modules/aifn/flatten/FlattenerModal::FlatteningProgress",
+        "src/modules/aifn/flatten/FlattenerModal::StylesList"
+      ]
+    },
+    {
+      "id": "src/modules/aix",
+      "label": "aix",
+      "section": "configure-ai-models",
+      "files": 60,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/draw",
+        "/personas"
+      ],
+      "calls": [],
+      "components": [
+        "src/modules/aix/client/debugger/AixDebuggerDialog::AixDebuggerDialog",
+        "src/modules/aix/client/debugger/AixDebuggerFrame::AixDebuggerFrame",
+        "src/modules/aix/client/debugger/AixDebuggerMeasurementsTable::AixDebuggerMeasurementsTable",
+        "src/modules/aix/client/debugger/DebugAdvancedOptions::DebugAdvancedOptions",
+        "src/modules/aix/client/debugger/DebugPayloadOverride::DebugPayloadOverride"
+      ]
+    },
+    {
+      "id": "src/modules/backend",
+      "label": "backend",
+      "section": "configure-ai-models",
+      "files": 2,
+      "tables": {},
+      "pages": [
+        "/",
+        "/draw",
+        "/news"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/modules/beam",
+      "label": "beam",
+      "section": "configure-ai-models",
+      "files": 30,
+      "tables": {},
+      "pages": [
+        "/"
+      ],
+      "calls": [],
+      "components": [
+        "src/modules/beam/BeamExplainer::BeamExplainer",
+        "src/modules/beam/BeamUpstreamResume::BeamUpstreamResume",
+        "src/modules/beam/BeamView::BeamView",
+        "src/modules/beam/components/BeamCardNotice::BeamCardNotice",
+        "src/modules/beam/components/BeamCardNotice::BeamModelUnavailable",
+        "src/modules/beam/gather/BeamFusionGrid::BeamFusionGrid",
+        "src/modules/beam/gather/BeamFusionGrid::FusionAddButton",
+        "src/modules/beam/gather/BeamGatherPane::BeamGatherPane",
+        "src/modules/beam/gather/Fusion::Fusion",
+        "src/modules/beam/gather/FusionControls::FusionControls",
+        "src/modules/beam/gather/FusionInputsWait::FusionInputsWait",
+        "src/modules/beam/gather/FusionInstructionsEditor::EditableChatInstructionPrompt",
+        "src/modules/beam/gather/FusionInstructionsEditor::EditableInstruction",
+        "src/modules/beam/gather/FusionInstructionsEditor::FusionInstructionsEditor",
+        "src/modules/beam/gather/instructions/UserInputChecklistComponent::UserInputChecklistComponent",
+        "src/modules/beam/scatter/BeamRay::BeamRay",
+        "src/modules/beam/scatter/BeamRay::RayControls",
+        "src/modules/beam/scatter/BeamRayGrid::BeamRayGrid",
+        "src/modules/beam/scatter/BeamScatterInput::BeamScatterInput",
+        "src/modules/beam/scatter/BeamScatterPane::BeamScatterPane",
+        "src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown",
+        "src/modules/beam/scatter/BeamScatterPaneDropdown::DialogNamePreset"
+      ]
+    },
+    {
+      "id": "src/modules/blocks",
+      "label": "blocks",
+      "section": "configure-ai-models",
+      "files": 45,
+      "tables": {},
+      "pages": [
+        "/",
+        "/diff",
+        "/draw",
+        "/personas"
+      ],
+      "calls": [],
+      "components": [
+        "src/modules/blocks/AutoBlocksRenderer::AutoBlocksRenderer",
+        "src/modules/blocks/OverlayButton::OverlayButton",
+        "src/modules/blocks/ScaledTextBlockRenderer::ScaledTextBlockRenderer",
+        "src/modules/blocks/ToggleExpansionButton::ToggleExpansionButton",
+        "src/modules/blocks/code/RenderCode::RCSyntaxHighlight",
+        "src/modules/blocks/code/RenderCode::RenderCode",
+        "src/modules/blocks/code/RenderCode::RenderCodeImpl",
+        "src/modules/blocks/code/RenderCodePanelFrame::RenderCodePanelFrame",
+        "src/modules/blocks/code/code-renderers/RenderCodeChartJS::RenderCodeChartJS",
+        "src/modules/blocks/code/code-renderers/RenderCodeHtmlIFrame::RenderCodeHtmlIFrame",
+        "src/modules/blocks/code/code-renderers/RenderCodeMarkdown::RenderCodeMarkdown",
+        "src/modules/blocks/code/code-renderers/RenderCodeMermaid::RenderCodeMermaid",
+        "src/modules/blocks/code/code-renderers/RenderCodePlantUML::RenderCodePlantUML",
+        "src/modules/blocks/code/code-renderers/RenderCodeSVG::RenderCodeSVG",
+        "src/modules/blocks/code/code-renderers/RenderCodeSyntax::RenderCodeSyntax",
+        "src/modules/blocks/danger-html/RenderDangerousHtml::RenderDangerousHtml",
+        "src/modules/blocks/enhanced-code/ERCDiffContext::ERCDiffContextProvider",
+        "src/modules/blocks/enhanced-code/ERCDiffModal::ERCDiffModal",
+        "src/modules/blocks/enhanced-code/EnhancedRenderCode::EnhancedRenderCode",
+        "src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu",
+        "src/modules/blocks/image/RenderImageRefDBlob::RenderImageRefDBlob",
+        "src/modules/blocks/image/RenderImageURL::RenderImageURL",
+        "src/modules/blocks/markdown/CustomARenderer::CustomARenderer",
+        "src/modules/blocks/markdown/CustomARenderer::GoogleFavicon",
+        "src/modules/blocks/markdown/CustomARenderer::InertLink",
+        "src/modules/blocks/markdown/CustomARenderer::LinkPreview",
+        "src/modules/blocks/markdown/CustomMarkdownRenderer::CustomMarkdownRenderer",
+        "src/modules/blocks/markdown/CustomMarkdownRenderer::DelRenderer",
+        "src/modules/blocks/markdown/CustomMarkdownRenderer::MarkRenderer",
+        "src/modules/blocks/markdown/CustomTableRenderer::CustomTableRenderer",
+        "src/modules/blocks/markdown/CustomTaskListRenderer::CustomInputRenderer",
+        "src/modules/blocks/markdown/HostedLinksContext::HostedLinksProvider",
+        "src/modules/blocks/markdown/RenderMarkdown::RenderMarkdown",
+        "src/modules/blocks/markdown/RenderMarkdownLite::RenderMarkdownLite",
+        "src/modules/blocks/plaintext/RenderPlainText::RenderPlainText",
+        "src/modules/blocks/wordsdiff/RenderWordsDiff::RenderWordsDiff"
+      ]
+    },
+    {
+      "id": "src/modules/browse",
+      "label": "browse",
+      "section": "configure-ai-models",
+      "files": 6,
+      "tables": {},
+      "pages": [
+        "/"
+      ],
+      "calls": [],
+      "components": [
+        "src/modules/browse/BrowseSettings::BrowseSettings"
+      ]
+    },
+    {
+      "id": "src/modules/dblobs",
+      "label": "dblobs",
+      "section": "configure-ai-models",
+      "files": 4,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/draw",
+        "/link/chat/[chatLinkId]"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/modules/google",
+      "label": "google",
+      "section": "configure-ai-models",
+      "files": 8,
+      "tables": {},
+      "pages": [
+        "/"
+      ],
+      "calls": [],
+      "components": [
+        "src/modules/google/GoogleSearchSettings::GoogleSearchSettings"
+      ]
+    },
+    {
+      "id": "src/modules/persona",
+      "label": "persona",
+      "section": "configure-ai-models",
+      "files": 2,
+      "tables": {},
+      "pages": [
+        "/"
+      ],
+      "calls": [],
+      "components": []
+    },
+    {
+      "id": "src/modules/speex",
+      "label": "speex",
+      "section": "configure-ai-models",
+      "files": 30,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call"
+      ],
+      "calls": [],
+      "components": [
+        "src/modules/speex/components/SpeexConfigureEngineFull::CredentialsApiKeyInputs",
+        "src/modules/speex/components/SpeexConfigureEngineFull::ElevenLabsConfig",
+        "src/modules/speex/components/SpeexConfigureEngineFull::GeminiConfig",
+        "src/modules/speex/components/SpeexConfigureEngineFull::InworldConfig",
+        "src/modules/speex/components/SpeexConfigureEngineFull::LocalAIConfig",
+        "src/modules/speex/components/SpeexConfigureEngineFull::OpenAIConfig",
+        "src/modules/speex/components/SpeexConfigureEngineFull::PreviewButton",
+        "src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull",
+        "src/modules/speex/components/SpeexConfigureEngineFull::WebSpeechConfig",
+        "src/modules/speex/components/SpeexConfigureEngines::SpeexConfigureEngines",
+        "src/modules/speex/components/SpeexEngineSelect::SpeexEngineSelect",
+        "src/modules/speex/components/SpeexSystemTest::SpeexSystemTest",
+        "src/modules/speex/components/SpeexVoiceAutocomplete::SpeexVoiceAutocomplete",
+        "src/modules/speex/components/SpeexVoiceSelect::SpeexVoiceSelect"
+      ]
+    },
+    {
+      "id": "src/modules/t2i",
+      "label": "t2i",
+      "section": "configure-ai-models",
+      "files": 21,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/draw"
+      ],
+      "calls": [],
+      "components": [
+        "src/modules/t2i/components/T2IConfigureEngineFull::T2IConfigureEngineFull",
+        "src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfileEditor",
+        "src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfilePanel",
+        "src/modules/t2i/components/T2IConfigureEngines::T2IConfigureEngines",
+        "src/modules/t2i/dalle/DallESettings::DallESettings",
+        "src/modules/t2i/gemini/GeminiT2ISettings::GeminiT2ISettings",
+        "src/modules/t2i/openrouter/OpenRouterT2ISettings::OpenRouterT2ISettings"
+      ]
+    },
+    {
+      "id": "src/modules/trade",
+      "label": "trade",
+      "section": "configure-ai-models",
+      "files": 13,
+      "tables": {},
+      "pages": [
+        "/",
+        "/link/chat/[chatLinkId]"
+      ],
+      "calls": [],
+      "components": [
+        "src/modules/trade/BackupRestore::FlashBackup",
+        "src/modules/trade/BackupRestore::FlashRestore",
+        "src/modules/trade/ExportChats::ExportChats",
+        "src/modules/trade/ImportChats::ImportChats",
+        "src/modules/trade/ImportOutcomeModal::ImportOutcomeModal",
+        "src/modules/trade/TradeModal::TradeModal",
+        "src/modules/trade/claude-code/ExportClaudeCode::ExportClaudeCode",
+        "src/modules/trade/link/ChatLinkDetails::ChatLinkDetails",
+        "src/modules/trade/link/ChatLinkExport::ChatLinkExport"
+      ]
+    },
+    {
+      "id": "src/server/trpc",
+      "label": "trpc",
+      "section": "configure-ai-models",
+      "files": 7,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/draw",
+        "/link/chat/[chatLinkId]",
+        "/personas"
+      ],
+      "calls": [],
+      "components": []
+    }
+  ],
+  "offMap": [
+    {
+      "id": "pages",
+      "label": "pages",
+      "section": "configure-ai-models",
+      "files": 10,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/diff",
+        "/draw",
+        "/news",
+        "/personas",
+        "/tokens",
+        "/workspace"
+      ],
+      "calls": [],
+      "components": [
+        "pages/_app::Big_AGI_App",
+        "pages/_document::MyDocument"
+      ]
+    },
+    {
+      "id": "pages/dev",
+      "label": "dev",
+      "section": null,
+      "files": 2,
+      "tables": {},
+      "pages": [],
+      "calls": [],
+      "components": [
+        "pages/dev/debug::AppDebug",
+        "pages/dev/debug::DebugCard",
+        "pages/dev/debug::DebugJsonCard"
+      ]
+    },
+    {
+      "id": "pages/link",
+      "label": "link",
+      "section": null,
+      "files": 2,
+      "tables": {},
+      "pages": [],
+      "calls": [],
+      "components": [
+        "pages/link/callback_openrouter::CallbackOpenRouterPage",
+        "pages/link/share_target::AppShareTarget"
+      ]
+    },
+    {
+      "id": "public/closed",
+      "label": "closed",
+      "section": null,
+      "files": 1,
+      "tables": {},
+      "pages": [],
+      "calls": [],
+      "components": [
+        "public/closed.html::ClosedPage"
+      ]
+    },
+    {
+      "id": "public/dev",
+      "label": "dev",
+      "section": null,
+      "files": 6,
+      "tables": {},
+      "pages": [],
+      "calls": [],
+      "components": [
+        "public/dev/index.html::DevPage",
+        "public/dev/inspect/doctor.html::DevInspectDoctorPage",
+        "public/dev/inspect/heal.html::DevInspectHealPage",
+        "public/dev/inspect/logs.html::DevInspectLogsPage",
+        "public/dev/inspect/storage.html::DevInspectStoragePage"
+      ]
+    },
+    {
+      "id": "src/apps/beam",
+      "label": "beam",
+      "section": null,
+      "files": 1,
+      "tables": {},
+      "pages": [],
+      "calls": [],
+      "components": [
+        "src/apps/beam/AppBeam::AppBeam"
+      ]
+    },
+    {
+      "id": "src/apps/llm-capabilities",
+      "label": "llm-capabilities",
+      "section": null,
+      "files": 8,
+      "tables": {},
+      "pages": [],
+      "calls": [],
+      "components": [
+        "src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilities",
+        "src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilitiesAllowed",
+        "src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilitiesDenied",
+        "src/apps/llm-capabilities/components/ResultsTable::ResultsTable",
+        "src/apps/llm-capabilities/components/RunControls::RunControls"
+      ]
+    },
+    {
+      "id": "src/common/components",
+      "label": "components",
+      "section": "configure-ai-models",
+      "files": 194,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/diff",
+        "/draw",
+        "/link/chat/[chatLinkId]",
+        "/news",
+        "/personas",
+        "/tokens"
+      ],
+      "calls": [],
+      "components": [
+        "src/common/components/3rdparty/GoogleAnalytics::NextGoogleAnalytics",
+        "src/common/components/3rdparty/GoogleAnalytics::OptionalGoogleAnalytics",
+        "src/common/components/AlreadySet::AlreadySet",
+        "src/common/components/AppBreadcrumbs::AppBreadcrumbs",
+        "src/common/components/AvatarDomainFavicon::AvatarDomainFavicon",
+        "src/common/components/ButtonAttachFiles::ButtonAttachFiles",
+        "src/common/components/ButtonServiceAdd::ButtonServiceAdd",
+        "src/common/components/ChipExpander::ChipExpander",
+        "src/common/components/ChipToggleButton::ChipToggleButton",
+        "src/common/components/CloseablePopup::CloseablePopup",
+        "src/common/components/ConfirmIconButton::ConfirmIconButton",
+        "src/common/components/ConfirmMenuItem::ConfirmMenuItem",
+        "src/common/components/DarkModeToggleButton::DarkModeToggleButton",
+        "src/common/components/DataStreamViz::DataStreamViz",
+        "src/common/components/DebouncedInput::DebouncedInput",
+        "src/common/components/ErrorBoundary::ErrorBoundary",
+        "src/common/components/ExpanderAccordion::ExpanderAccordion",
+        "src/common/components/ExpanderControlledBox::ExpanderControlledBox",
+        "src/common/components/ExpanderSection::ExpanderSection",
+        "src/common/components/ExplainerCarousel::AllStepsStepper",
+        "src/common/components/ExplainerCarousel::ExplainerCarousel",
+        "src/common/components/ExternalDocsLink::ExternalDocsLink",
+        "src/common/components/ExternalLink::ExternalLink",
+        "src/common/components/FeatureBadge::FeatureBadge",
+        "src/common/components/GitHubProjectIssueCard::GitHubProjectIssueCard",
+        "src/common/components/GoodBadge::GoodBadge",
+        "src/common/components/GoodTooltip::GoodTooltip",
+        "src/common/components/InlineError::InlineError",
+        "src/common/components/InlineTextarea::InlineTextarea",
+        "src/common/components/InlineTextareaEditable::InlineTextareaEditable",
+        "src/common/components/KeyStroke::KeyStroke",
+        "src/common/components/LanguageSelect::LanguageSelect",
+        "src/common/components/Link::Link",
+        "src/common/components/ListItemGroupCollapser::ListItemGroupCollapser",
+        "src/common/components/LiteVideoEmbed::LiteVideoEmbed",
+        "src/common/components/LogoProgress::LogoProgress",
+        "src/common/components/MediaStreamPreview::MediaStreamPreview",
+        "src/common/components/RichMenu::RichMenu",
+        "src/common/components/RichMenu::RichMenuButton",
+        "src/common/components/RichMenu::RichMenuItem",
+        "src/common/components/Section::Section",
+        "src/common/components/StackedBarBreakdown::StackedBarBreakdown",
+        "src/common/components/StarIcons::StarIconUnstyled",
+        "src/common/components/StarIcons::Starred",
+        "src/common/components/StarIcons::StarredNoXL2",
+        "src/common/components/StarIcons::StarredState",
+        "src/common/components/StarIcons::StarredToggle",
+        "src/common/components/StarIcons::UnStarredNoXL2",
+        "src/common/components/SubMenu::SubMenuHost",
+        "src/common/components/SubMenu::SubMenuItem",
+        "src/common/components/TooltipOutlined::TooltipOutlined",
+        "src/common/components/VideoPlayerVimeo::VideoPlayerVimeo",
+        "src/common/components/VideoPlayerYouTube::VideoPlayerYouTube",
+        "src/common/components/camera/CameraCaptureModal::CameraCaptureModal",
+        "src/common/components/diff/DiffViewer::DiffViewer",
+        "src/common/components/dnd-dt/GlobalDragOverlay::GlobalDragOverlay",
+        "src/common/components/dnd-window/DraggableWindowTitle::DraggableWindowTitle",
+        "src/common/components/dnd-window/JoyFloatingWindow::JoyFloatingWindow",
+        "src/common/components/folders/FoldersAddButton::FoldersAddButton",
+        "src/common/components/folders/FoldersSelectPopup::FoldersSelectPopup",
+        "src/common/components/forms/FormChipControl::FormChipControl",
+        "src/common/components/forms/FormChipGroupControl::FormChipGroupControl",
+        "src/common/components/forms/FormChipModelControl::FormChipModelControl",
+        "src/common/components/forms/FormInputKey::FormInputKey",
+        "src/common/components/forms/FormLabelStart::FormLabelStart",
+        "src/common/components/forms/FormNumberInput::FormNumberInput",
+        "src/common/components/forms/FormRadioControl::FormRadioControl",
+        "src/common/components/forms/FormSelectControl::FormSelectControl",
+        "src/common/components/forms/FormSliderControl::FormSliderControl",
+        "src/common/components/forms/FormSwitchControl::FormSwitchControl",
+        "src/common/components/forms/FormTextField::FormTextField",
+        "src/common/components/forms/SetupFormClientSideToggle::SetupFormClientSideToggle",
+        "src/common/components/forms/SetupFormCorsHint::SetupFormCorsHint",
+        "src/common/components/forms/SetupFormRefetchButton::SetupFormRefetchButton",
+        "src/common/components/icons/3rdparty/AuthGitHubIcon::AuthGitHubIcon",
+        "src/common/components/icons/3rdparty/AuthGoogleIcon::AuthGoogleIcon",
+        "src/common/components/icons/3rdparty/DiscordIcon::DiscordIcon",
+        "src/common/components/icons/CalloutTopRightIcon::CalloutTopRightIcon",
+        "src/common/components/icons/ChatBeamIcon::ChatBeamIcon",
+        "src/common/components/icons/ChatMulticastOffIcon::ChatMulticastOffIcon",
+        "src/common/components/icons/ChatMulticastOnIcon::ChatMulticastOnIcon",
+        "src/common/components/icons/CodiconSplitHorizontal::CodiconSplitHorizontal",
+        "src/common/components/icons/CodiconSplitHorizontalRemove::CodiconSplitHorizontalRemove",
+        "src/common/components/icons/CodiconSplitVertical::CodiconSplitVertical",
+        "src/common/components/icons/CodiconSplitVerticalRemove::CodiconSplitVerticalRemove",
+        "src/common/components/icons/CodiconUnsplit::CodiconUnsplit",
+        "src/common/components/icons/DeviceSymbols::DeviceFormChip",
+        "src/common/components/icons/DeviceSymbols::DeviceFormFactorIcon",
+        "src/common/components/icons/FoldersToggleOff::FoldersToggleOff",
+        "src/common/components/icons/FoldersToggleOn::FoldersToggleOn",
+        "src/common/components/icons/LayoutSidebarRight::LayoutSidebarRight",
+        "src/common/components/icons/LiveFilePatchIcon::LiveFilePatchIcon",
+        "src/common/components/icons/MarkHighlightIcon::MarkHighlightIcon",
+        "src/common/components/icons/WindowPaneRightOpen::WindowPaneRightOpen",
+        "src/common/components/icons/big-agi/BigAgiCircleIcon::BigAgiCircleIcon",
+        "src/common/components/icons/big-agi/BigAgiCircleInnerIcon::BigAgiCircleInnerIcon",
+        "src/common/components/icons/big-agi/BigAgiSquircleIcon::BigAgiSquircleIcon",
+        "src/common/components/icons/phosphor/PhBookOpenText::PhBookOpenText",
+        "src/common/components/icons/phosphor/PhChats::PhChats",
+        "src/common/components/icons/phosphor/PhChatsDuotone::PhChatsDuotone",
+        "src/common/components/icons/phosphor/PhDesktop::PhDesktop",
+        "src/common/components/icons/phosphor/PhDeviceMobile::PhDeviceMobile",
+        "src/common/components/icons/phosphor/PhDeviceTablet::PhDeviceTablet",
+        "src/common/components/icons/phosphor/PhGearSixIcon::PhGearSixIcon",
+        "src/common/components/icons/phosphor/PhGift::PhGift",
+        "src/common/components/icons/phosphor/PhHouse::PhHouse",
+        "src/common/components/icons/phosphor/PhImageSquare::PhImageSquare",
+        "src/common/components/icons/phosphor/PhKey::PhKey",
+        "src/common/components/icons/phosphor/PhListChecks::PhListChecks",
+        "src/common/components/icons/phosphor/PhMegaphone::PhMegaphone",
+        "src/common/components/icons/phosphor/PhPaintBrush::PhPaintBrush",
+        "src/common/components/icons/phosphor/PhPencilSimple::PhPencilSimple",
+        "src/common/components/icons/phosphor/PhRamble::PhRamble",
+        "src/common/components/icons/phosphor/PhRobot::PhRobot",
+        "src/common/components/icons/phosphor/PhSlidersHorizontalIcon::PhSlidersHorizontalIcon",
+        "src/common/components/icons/phosphor/PhSlidersIcon::PhSlidersIcon",
+        "src/common/components/icons/phosphor/PhSquaresFour::PhSquaresFour",
+        "src/common/components/icons/phosphor/PhTerminal::PhTerminal",
+        "src/common/components/icons/phosphor/PhTreeStructure::PhTreeStructure",
+        "src/common/components/icons/phosphor/PhUsers::PhUsers",
+        "src/common/components/icons/phosphor/PhVoice::PhVoice",
+        "src/common/components/icons/phosphor/PhWrench::PhWrench",
+        "src/common/components/icons/vendors/AlibabaCloudIcon::AlibabaCloudIcon",
+        "src/common/components/icons/vendors/AnthropicIcon::AnthropicIcon",
+        "src/common/components/icons/vendors/ArceeAIIcon::ArceeAIIcon",
+        "src/common/components/icons/vendors/AzureIcon::AzureIcon",
+        "src/common/components/icons/vendors/BasetenIcon::BasetenIcon",
+        "src/common/components/icons/vendors/BedrockIcon::BedrockIcon",
+        "src/common/components/icons/vendors/CerebrasIcon::CerebrasIcon",
+        "src/common/components/icons/vendors/ChutesAIIcon::ChutesAIIcon",
+        "src/common/components/icons/vendors/ClaudeCrabIcon::ClaudeCrabIcon",
+        "src/common/components/icons/vendors/CloudflareIcon::CloudflareIcon",
+        "src/common/components/icons/vendors/CohereIcon::CohereIcon",
+        "src/common/components/icons/vendors/DeepseekIcon::DeepseekIcon",
+        "src/common/components/icons/vendors/ElevenLabsIcon::ElevenLabsIcon",
+        "src/common/components/icons/vendors/FireworksAIIcon::FireworksAIIcon",
+        "src/common/components/icons/vendors/GeminiIcon::GeminiIcon",
+        "src/common/components/icons/vendors/GroqIcon::GroqIcon",
+        "src/common/components/icons/vendors/InworldIcon::InworldIcon",
+        "src/common/components/icons/vendors/LMStudioIcon::LMStudioIcon",
+        "src/common/components/icons/vendors/LocalAIIcon::LocalAIIcon",
+        "src/common/components/icons/vendors/MetaAIIcon::MetaAIIcon",
+        "src/common/components/icons/vendors/MiniMaxIcon::MiniMaxIcon",
+        "src/common/components/icons/vendors/MistralIcon::MistralIcon",
+        "src/common/components/icons/vendors/ModularIcon::ModularIcon",
+        "src/common/components/icons/vendors/MoonshotIcon::MoonshotIcon",
+        "src/common/components/icons/vendors/NousResearchIcon::NousResearchIcon",
+        "src/common/components/icons/vendors/NovitaAIIcon::NovitaAIIcon",
+        "src/common/components/icons/vendors/NvidiaIcon::NvidiaIcon",
+        "src/common/components/icons/vendors/OllamaIcon::OllamaIcon",
+        "src/common/components/icons/vendors/OpenAIIcon::OpenAIIcon",
+        "src/common/components/icons/vendors/OpenRouterIcon::OpenRouterIcon",
+        "src/common/components/icons/vendors/PerplexityIcon::PerplexityIcon",
+        "src/common/components/icons/vendors/SakanaAIIcon::SakanaAIIcon",
+        "src/common/components/icons/vendors/TogetherIcon::TogetherIcon",
+        "src/common/components/icons/vendors/XAIIcon::XAIIcon",
+        "src/common/components/icons/vendors/ZAIIcon::ZAIIcon",
+        "src/common/components/modals/ConfirmationModal::ConfirmationModal",
+        "src/common/components/modals/GoodModal::GoodModal",
+        "src/common/components/modals/SherpaModal::SherpaModal",
+        "src/common/components/modals/ViewDocPartModal::ViewDocPartModal",
+        "src/common/components/modals/ViewImageRefPartModal::ViewImageRefPartModal",
+        "src/common/components/snackbar/SnackbarInsert::SnackbarInsert"
+      ]
+    },
+    {
+      "id": "src/common/from-v1",
+      "label": "from-v1",
+      "section": null,
+      "files": 2,
+      "tables": {},
+      "pages": [],
+      "calls": [],
+      "components": [
+        "src/common/from-v1/FromV1ImportBanner::FromV1ImportBanner"
+      ]
+    },
+    {
+      "id": "src/common/layout",
+      "label": "layout",
+      "section": "configure-ai-models",
+      "files": 43,
+      "tables": {},
+      "pages": [
+        "/",
+        "/call",
+        "/diff",
+        "/draw",
+        "/link/chat/[chatLinkId]",
+        "/news",
+        "/personas",
+        "/tokens",
+        "/workspace"
+      ],
+      "calls": [],
+      "components": [
+        "src/common/layout/container/ContainerLayout::ContainerLayout",
+        "src/common/layout/optima/ChromelessFloatingButtons::ChromelessFloatingButtons",
+        "src/common/layout/optima/ChromelessItemButton::ChromelessItemButton",
+        "src/common/layout/optima/InvertedBar::InvertedBar",
+        "src/common/layout/optima/Modals::Modals",
+        "src/common/layout/optima/OptimaLayout::OptimaLayout",
+        "src/common/layout/optima/OptimaMOTD::OptimaMOTD",
+        "src/common/layout/optima/PageCore::PageCore",
+        "src/common/layout/optima/PageWrapper::PageWrapper",
+        "src/common/layout/optima/bar/OptimaBar::CenterItemsFallback",
+        "src/common/layout/optima/bar/OptimaBar::CenterItemsPortal",
+        "src/common/layout/optima/bar/OptimaBar::OptimaBar",
+        "src/common/layout/optima/bar/OptimaBarDropdown::OptimaBarDropdown",
+        "src/common/layout/optima/drawer/DesktopDrawer::DesktopDrawer",
+        "src/common/layout/optima/drawer/MobileDrawer::DrawerContentPortal",
+        "src/common/layout/optima/drawer/MobileDrawer::MobileDrawer",
+        "src/common/layout/optima/drawer/OptimaDrawerHeader::OptimaDrawerHeader",
+        "src/common/layout/optima/drawer/OptimaDrawerList::OptimaDrawerList",
+        "src/common/layout/optima/nav/BringTheLove::BringTheLove",
+        "src/common/layout/optima/nav/DesktopNav::DesktopNav",
+        "src/common/layout/optima/nav/MobileNav::MobileNav",
+        "src/common/layout/optima/nav/MobileNavItems::MobileNavItems",
+        "src/common/layout/optima/page/OptimaAppPageHeading::OptimaAppPageHeading",
+        "src/common/layout/optima/panel/DesktopPanel::DesktopPanel",
+        "src/common/layout/optima/panel/MobilePanel::MobilePanel",
+        "src/common/layout/optima/panel/OptimaPanelGroupedList::OptimaPanelGroupGutter",
+        "src/common/layout/optima/panel/OptimaPanelGroupedList::OptimaPanelGroupedList",
+        "src/common/layout/optima/panel/PanelContentPortal::PanelContentPortal",
+        "src/common/layout/optima/panel/PopupPanel::PopupPanel",
+        "src/common/layout/optima/panel/items/PreferencesListItem::PreferencesListItem",
+        "src/common/layout/optima/portals/OptimaPortalsIn::OptimaDrawerIn",
+        "src/common/layout/optima/portals/OptimaPortalsIn::OptimaPanelIn",
+        "src/common/layout/optima/scratchclip/ScratchClip::ScratchClip",
+        "src/common/layout/overlays/OverlaysInsert::OverlaysInsert"
+      ]
+    },
+    {
+      "id": "src/common/providers",
+      "label": "providers",
+      "section": null,
+      "files": 6,
+      "tables": {},
+      "pages": [],
+      "calls": [],
+      "components": [
+        "src/common/providers/ProviderBackendCapabilities::ProviderBackendCapabilities",
+        "src/common/providers/ProviderTheming::ProviderTheming",
+        "src/common/providers/single-tab/ProviderSingleTab::ProviderSingleTab",
+        "src/common/providers/single-tab/ProviderSingleTab::SherpaLoading"
+      ]
+    },
+    {
+      "id": "src/modules/asrx",
+      "label": "asrx",
+      "section": null,
+      "files": 16,
+      "tables": {},
+      "pages": [],
+      "calls": [],
+      "components": [
+        "src/modules/asrx/components/ASRxConfigureEngineFull::ASRxConfigureEngineFull",
+        "src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters",
+        "src/modules/asrx/components/ASRxConfigureEngineFull::DictionaryModal",
+        "src/modules/asrx/components/ASRxConfigureEngineFull::GeminiParameters",
+        "src/modules/asrx/components/ASRxConfigureEngineFull::ManualCredentials",
+        "src/modules/asrx/components/ASRxConfigureEngineFull::OpenAIParameters",
+        "src/modules/asrx/components/ASRxConfigureEngineFull::PanelFooter",
+        "src/modules/asrx/components/ASRxConfigureEngineFull::PersonalDictionaryRow",
+        "src/modules/asrx/components/ASRxConfigureEngines::ASRxConfigureEngines"
+      ]
+    }
+  ],
+  "tables": [
+    {
+      "id": "models",
+      "section": null,
+      "sections": []
+    },
+    {
+      "id": "sync_history",
+      "section": null,
+      "sections": []
+    }
+  ],
+  "ai": [
+    {
+      "id": "tools/develop",
+      "label": "Develop",
+      "file": "tools/develop/aix-anthropic-eviscerate/bserial2.mjs",
+      "section": null,
+      "reads": []
+    }
+  ],
+  "services": [
+    {
+      "id": "http:api.deepgram.com",
+      "label": "api.deepgram.com",
+      "kind": "http",
+      "groups": [
+        "src/common/components"
+      ],
+      "files": 1,
+      "section": null
+    },
+    {
+      "id": "http:app.posthog.com",
+      "label": "app.posthog.com",
+      "kind": "http",
+      "groups": [
+        "tools/data"
+      ],
+      "files": 1,
+      "section": null
+    },
+    {
+      "id": "http:vimeo.com",
+      "label": "vimeo.com",
+      "kind": "http",
+      "groups": [
+        "src/common/components"
+      ],
+      "files": 1,
+      "section": null
+    },
+    {
+      "id": "route:own-backend",
+      "label": "Own backend",
+      "kind": "function",
+      "groups": [
+        "app/api/cloud",
+        "app/api/edge",
+        "src/common/util",
+        "src/modules/llms",
+        "src/modules/news",
+        "src/modules/youtube"
+      ],
+      "files": 9,
+      "section": "configure-ai-models"
+    }
+  ],
+  "shared": [
+    "pages",
+    "src/common/components",
+    "src/common/layout"
+  ],
+  "gaps": [
+    {
+      "kind": "good-to-know",
+      "text": "A few of the pages reach no code that reads data or calls an API: static screens, or data loaded in a way the map cannot follow.",
+      "detail": "1 of 9 pages: Tokenize text"
+    },
+    {
+      "kind": "good-to-know",
+      "text": "About half of the code groups and API actions are used by no page this map can follow (background jobs, webhooks, other apps, or calls built at runtime), so they belong to no section.",
+      "detail": "3 of 7 groups · 2 of 2 actions"
+    },
+    {
+      "kind": "needs-you",
+      "text": "Part of the product's own backend is in another repository.",
+      "detail": "Routes of its backend are called from here and answered by no repository of this project, so what they do is not on the map: /api/app/v1, /api/cloud, /api/delete, and 7 more.",
+      "action": "add-repository"
+    },
+    {
+      "kind": "good-to-know",
+      "text": "Dexie (IndexedDB) is a data library this map cannot read yet, so the data kept through it is missing from the Data floor.",
+      "detail": "1 file · dexie"
+    },
+    {
+      "kind": "good-to-know",
+      "text": "All of the components with an id are rendered by no page this map can follow (a page outside the menu, a screen opened at runtime, or unused), so they are listed under their code only.",
+      "detail": "633 of 633 components"
+    },
+    {
+      "kind": "good-to-know",
+      "text": "Some links in the code are missing: imports of the product's own code that resolve to no file, and calls to /api/… that match no route handler here.",
+      "detail": "20 imports · 19 calls"
+    }
+  ]
+}

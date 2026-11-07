@@ -1,0 +1,435 @@
+# Module: src/apps [AI]
+
+(part 1 of 10) Contains top-level interactive application views for beam multi-model chat orchestration, voice call interfaces with personas, and chat command registry systems. (part 2 of 10) Provides the chat composer UI, autocompletion popup system (actile), media/attachment handling, prompt enhancement, token calculation, and action execution buttons for chat interactions in the big-AGI web interface. (part 3 of 10) Layout navigation and auxiliary UI components for the Chat app (top toolbar, breadcrumbs, model/persona/folder dropdowns, beam controls, sidebar drawer, and side action panel). (part 4 of 10) Provides interactive chat UI subcomponents for the big-AGI application, including the Live SVG real-time multimodal animation loop with voice steering, and document/image message attachment fragment viewers, editors, drag-and-drop reordering, and LiveFile filesystem synchronization. (part 5 of 10) Provides UI rendering, editing, and error-recovery components for chat message fragments, including text, image references, LLM tool invocations/responses, hosted provider files, web citations, model reasoning/auxiliary thinking blocks, and message reference bubbles. (part 6 of 10) Manages message rendering and editing within the chat application, transforming message fragments into structured, recycled render trees, handling interactive operations (continue, resume upstream generation, resolve grounding links), and editing message attachments and contents. (part 7 of 10) Provides the chat workspace UI layer in big-AGI, handling multi-pane layouts, message rendering and editing, rich selection bubbles, message cleanup/filtering, persona selection, Beam multi-model integration, and keyboard shortcuts. (part 8 of 10) Provides application view interfaces for big-AGI, focusing on the multi-pane Chat app (orchestrating AI content generation, Beam multi-model invocations, ReAct reasoning agents, text-to-image synthesis, and speech feedback) and standalone utility apps such as Text Diff. (part 9 of 10) Implements standalone multi-model applications including AppDraw (text-to-image creation and gallery browser), AppLinkChat (viewer and manager for exported/shared chat conversations), and AppLlmCapabilities (automated test probes and benchmarking of LLM function-calling capabilities across vendors). (part 10 of 10) Provides user-facing secondary app screens and preferences modals for big-AGI, including release news and build information, the AI persona creator/viewer interface with persistence, developer tokenization visualization, and application-wide settings (AI model domains, UI preferences, voice, tools, and experimental labs features).
+
+_This module does not fit in one model call, so it was read in 10 parts and their summaries were combined without a further model call._
+
+## Key files
+- `src/apps/beam/AppBeam.tsx`: Implements the test and standalone container for the multi-model Beam view and its store integration.
+- `src/apps/call/AppCall.tsx`: Root container managing routing, intent handling, and persona contact selection for voice calling.
+- `src/apps/call/CallWizard.tsx`: Voice call initialization wizard verifying speech recognition, synthesis capability, and conversation state.
+- `src/apps/call/Contacts.tsx`: Persona contact card grid allowing users to initiate a voice call with specific personas and past conversation contexts.
+- `src/apps/call/Telephone.tsx`: Active voice call view managing speech recognition, LLM generation, text-to-speech playback, and push-to-talk settings.
+- `src/apps/call/state/store-app-call.ts`: Zustand store persisting call-specific settings like silence timeouts, push-to-talk defaults, and UI visibility.
+- `src/apps/call/state/useMockPersonas.tsx`: Hook mapping configured system personas to contact representations.
+- `src/apps/chat/commands/commands.registry.ts`: Registry and parser for chat slash commands (/draw, /assistant, /system, /clear, /react, /help).
+- `src/apps/chat/components/composer/Composer.tsx`: Primary chat composer component managing user message creation, attachment drafting, voice input, beam actions, and sending workflows.
+- `src/apps/chat/components/composer/ComposerDock.tsx`: Host container for the Composer managing auto-hide behavior and layout visibility conditions (e.g., active Beam or live SVG).
+- `src/apps/chat/components/composer/useComposerAutoHide.tsx`: Hook controlling collapse/expand animations and hover detection for auto-hiding the composer.
+- `src/apps/chat/components/composer/composer.input-enhancers.tsx`: Defines input enhancers for pasted content such as normalizing video and YouTube URLs into structured attachments with model capability checks.
+- `src/apps/chat/components/composer/useComposerEnhancerHint.ts`: Hook managing enhancer hints when pasted input targets models lacking required capabilities (e.g., video URL on non-video models).
+- `src/apps/chat/components/composer/actile/useActileManager.tsx`: Hook orchestrating trigger detection, search filtering, and keyboard navigation for actile popups (/ commands, @ attachments, @ starred messages).
+- `src/apps/chat/components/composer/actile/ActilePopup.tsx`: Popup UI component rendering grouped autocomplete suggestions for commands, attachment labels, and starred messages.
+- `src/apps/chat/components/composer/tokens/useTextTokenCounter.tsx`: Debounced token estimation hook for live input text based on the selected LLM.
+- `src/apps/chat/components/composer/tokens/TokenTooltip.tsx`: Calculates remaining token limits and estimated inference costs, generating detailed breakdown tooltips.
+- `src/apps/chat/components/composer/llmattachments/ComposerAttachmentDraftsList.tsx`: Wraps attachment draft UI with AI prompt suggestion triggers and fragment reordering controls.
+- `src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl.tsx`: Drag-and-drop ordering interface for message parts (prompt text, images, and documents).
+- `src/apps/chat/components/composer/textarea/ComposerTextAreaDrawActions.tsx`: UI actions for image generation mode, providing prompt enhancement using AI.
+- `src/apps/chat/components/layout-bar/ChatToolbar.tsx`: Top toolbar entry point for chat sessions; switches between standard chat controls and Beam mode top bar.
+- `src/apps/chat/components/layout-bar/ChatBarChat.tsx`: Toolbar composition rendering breadcrumbs, persona dropdown, LLM model selector, and folder dropdown.
+- `src/apps/chat/components/layout-bar/ChatBarBeam.tsx`: Toolbar rendering active Beam status (scattering, gathering, edit mode) and close/maximize actions.
+- `src/apps/chat/components/layout-bar/ChatBarBreadcrumbs.tsx`: Contextual navigation breadcrumb handling chat title display, inline title renaming, and ancestor navigation.
+- `src/apps/chat/components/layout-bar/useLLMDropdown.tsx`: Dropdown control and search filter for choosing active LLM models and accessing model configuration.
+- `src/apps/chat/components/layout-bar/usePersonaDropdown.tsx`: Dropdown control for selecting system persona presets for the active conversation.
+- `src/apps/chat/components/layout-drawer/ChatDrawer.tsx`: Side drawer list displaying conversations, folders, search/filters, and conversation lifecycle actions.
+- `src/apps/chat/components/layout-drawer/ChatDrawerItem.tsx`: Individual conversation item in the drawer with options for auto-titling, branching, archiving, and deletion.
+- `src/apps/chat/components/layout-panel/ChatPanel.tsx`: Auxiliary right panel providing actions for window splitting, branching, compaction, message cleanup, and instruction toggles.
+- `src/apps/chat/components/live-svg/livesvg.loop.ts`: Implements the execution loop for generating continuous real-time SVG animation frames via multimodal LLM inference with automated repair and voice steering integration.
+- `src/apps/chat/components/live-svg/LiveSvgAnimator.tsx`: React UI component for the Live SVG Animator takeover mode, handling speech recognition, loop controls, prompt templates, and generation metrics display.
+- `src/apps/chat/components/live-svg/store-livesvg.ts`: Zustand in-memory store tracking Live SVG animation timeline frames, steer mailbox, generation statistics, and configuration.
+- `src/apps/chat/components/live-svg/livesvg.svgutils.ts`: Utilities for extracting, sanitizing, enforcing 512x512 dimensions on SVG text, and auto-selecting vision-capable LLMs (e.g., Cerebras Gemma).
+- `src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments.tsx`: Renders sortable lists of document attachment buttons with expand/collapse preview panes and drag-and-drop reordering.
+- `src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane.tsx`: Displays and allows editing of document fragment text, code block previews, and LiveFile local filesystem sync status.
+- `src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/useLiveFileSync.tsx`: React hook for syncing message document attachments with local disk files using the File System Access API and computing diffs.
+- `src/apps/chat/components/message/fragments-attachment-edit/EditAttachmentFragments.tsx`: Unified sortable drag-and-drop editor interface for managing both image and document attachments in message edit mode.
+- `src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments.tsx`: Renders image attachment thumbnails with inline title editing, sortable drag handles, and image preview modal triggers.
+- `src/apps/chat/components/message/fragments-content/BlockEdit_TextFragment.tsx`: Textarea editor component for editing message text fragments with keyboard shortcut handling
+- `src/apps/chat/components/message/fragments-content/BlockPartError.tsx`: Dispatcher for error message fragments, rendering generic errors or delegating to network disconnection / request size error components
+- `src/apps/chat/components/message/fragments-content/BlockPartError_NetDisconnected.tsx`: Error presentation and recovery toggle for network disconnection errors with option to enable direct client-side fetching
+- `src/apps/chat/components/message/fragments-content/BlockPartError_RequestExceeded.tsx`: Error presentation for request size limit exceeded with suggestions and direct client-side connection toggle
+- `src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx`: Component for managing and embedding provider-hosted files (Anthropic, Gemini, OpenAI)
+- `src/apps/chat/components/message/fragments-content/BlockPartImageRef.tsx`: Renderer for database blob or URL image references in messages with viewer modal support
+- `src/apps/chat/components/message/fragments-content/BlockPartText_AutoBlocks.tsx`: Renderer for text fragments using AutoBlocksRenderer to render markdown, code blocks, and diffs
+- `src/apps/chat/components/message/fragments-content/BlockPartToolInvocation.tsx`: Expandable UI component displaying tool and function call parameters generated by models
+- `src/apps/chat/components/message/fragments-content/BlockPartToolInvocation.utils.ts`: Utility functions for translating raw tool/function call names and environments to human-readable labels
+- `src/apps/chat/components/message/fragments-content/BlockPartToolResponse.tsx`: Expandable UI component displaying tool execution results, errors, and execution environments
+- `src/apps/chat/components/message/fragments-content/HostedFileChip.tsx`: Shared chip frame and dropdown action menu for hosted files
+- `src/apps/chat/components/message/fragments-void/BlockPartModelAnnotations.tsx`: Displays web grounding citations and domain favicons from model responses with copy options
+- `src/apps/chat/components/message/fragments-void/BlockPartModelAux.tsx`: Expandable renderer for model reasoning, chain-of-thought, and auxiliary thinking output
+- `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx`: Visual placeholders and progress chips for ongoing model operations like web search or code execution
+- `src/apps/chat/components/message/in-reference-to/InReferenceToBubble.tsx`: Bubble UI showing quoted/referenced message snippets
+- `src/apps/chat/components/message/in-reference-to/InReferenceToList.tsx`: Container list for multiple in-reference-to bubbles
+- `src/apps/chat/components/message/ChatMessage.tsx`: Primary chat message component rendering headers, avatars, menus, action operations, and delegating fragment layout to the render tree.
+- `src/apps/chat/components/message/ChatMessage.styles.ts`: MUI Joy styled layouts and positioning rules for chat message avatars, headers, and beam controls.
+- `src/apps/chat/components/message/render-tree/cmRenderTree.build.ts`: Pure grouping engine compiling raw chat message fragments into structured render nodes according to view/edit modes and visibility rules.
+- `src/apps/chat/components/message/render-tree/cmRenderTree.recycle.ts`: Diffing and recycling engine preserving object references and keys across re-renders to optimize streaming updates.
+- `src/apps/chat/components/message/render-tree/cmRenderTree.types.ts`: Type definitions for render trees, nodes, tool calls, and trailing option continuations.
+- `src/apps/chat/components/message/render-tree/CMRenderTreeNodes.tsx`: React component rendering and drag-and-drop sortable management of render nodes (citations, reasoning, content blocks, tool invocations, attachments).
+- `src/apps/chat/components/message/render-tree/useCMRenderTree.ts`: React hook providing memoized and recycled render trees for chat messages.
+- `src/apps/chat/components/message/render-tree/parseTrailingOptions.ts`: Parser extracting trailing numbered or bulleted options from text messages into interactive continuation actions.
+- `src/apps/chat/components/message/CMEditAttach.tsx`: Controls and draft store integration for attaching files, camera captures, screen captures, URLs, and Google Drive files during message editing.
+- `src/apps/chat/components/message/BlockOpUpstreamResume.tsx`: UI controls for resuming, snapshotting, detaching, or canceling long-running upstream LLM runs (e.g., Gemini Interactions, SSE replays).
+- `src/apps/chat/components/message/BlockOpResolveVertexAILinks.tsx`: Mutation button resolving Google Vertex AI grounding redirect links in place within message fragments.
+- `src/apps/chat/components/message/BlockOpContinue.tsx`: Continuation action chip shown when generation outcome is truncated.
+- `src/apps/chat/components/message/BlockOpOptions.tsx`: Button group displaying trailing continuation prompt options parsed from model text output.
+- `src/apps/chat/components/ChatMessageList.tsx`: Renders the message stream for a conversation, handling ephemeral notifications, attachment conversions, message continuing, and selection mode.
+- `src/apps/chat/components/ChatPane.tsx`: Renders an individual resizable chat panel with header overlay, scroll-to-bottom mechanics, Beam wrapper, or message list.
+- `src/apps/chat/components/panes/store-panes-manager.ts`: Zustand store managing multi-pane split layouts, active pane focus, and per-pane conversation navigation history.
+- `src/apps/chat/components/ChatBeamWrapper.tsx`: Hosts the multi-model Beam view inside chat panes with maximize/modal controls.
+- `src/apps/chat/components/persona-selector/PersonaSelector.tsx`: Renders system persona selection tiles, prompt inspection, and persona customization controls.
+- `src/apps/chat/components/message/ChatMessageBubble.tsx`: Floating popup toolbar over selected text offering markdown formatting, copying, drawing, TTS speaking, and diagram generation.
+- `src/apps/chat/components/message/useCMEditSession.tsx`: Manages in-place message editing sessions, attachment draft lifecycle, and conflict resolution during background updates.
+- `src/apps/chat/components/ChatCleanupList.tsx`: Renders message batch selection and visibility/deletion controls for chat history management.
+- `src/apps/chat/AppChat.tsx`: Top-level chat application layout and controller managing panes, modals, multicast, toolbars, and composer state.
+- `src/apps/chat/editors/_handleExecute.ts`: Execution dispatcher for user prompt submissions across chat, beam, text-to-image, and ReAct agent workflows.
+- `src/apps/chat/editors/chat-persona.ts`: Core AI persona conversation runner streaming assistant messages with support for auto-speech, auto-titling, and thinking policies.
+- `src/apps/chat/editors/react-tangent.ts`: Orchestrates multi-step ReAct agent reasoning loops with real-time ephemeral UI logs and state panes.
+- `src/apps/chat/editors/image-generate.ts`: Coordinates text-to-image and image-to-image workflows using configured generation providers.
+- `src/apps/chat/store-app-chat.ts`: Zustand persistent store managing chat AI behavior preferences, UI filters, auto-speech, and token counting methods.
+- `src/apps/diff/AppDiff.tsx`: Standalone comparison application showing visual word-level differences between two text inputs.
+- `src/apps/draw/AppDraw.tsx`: Root component for the text-to-image application, managing creation queues, capabilities, and gallery views.
+- `src/apps/draw/DrawCreate.tsx`: Workspace and prompt composition UI for queuing image generation jobs with configured AI image providers.
+- `src/apps/draw/queue-draw-create.tsx`: Asynchronous background processing queue managing image generation requests via text-to-image clients.
+- `src/apps/draw/DrawGallery.tsx`: Gallery browser displaying stored image assets and metadata from database blob storage.
+- `src/apps/link-chat/AppLinkChat.tsx`: Shared chat link consumer and manager that retrieves, displays, clones, or deletes remote stored conversations via tRPC.
+- `src/apps/link-chat/LinkChatViewer.tsx`: Read-only viewer for shared chat conversations with message inspection and local re-import capabilities.
+- `src/apps/llm-capabilities/AppLlmCapabilities.tsx`: Benchmarking dashboard for filtering models, executing probe plans across vendors, and inspecting LLM function-calling abilities.
+- `src/apps/llm-capabilities/probes/probe.runner.ts`: Execution runner orchestrating single-turn and multi-turn tool calling probe requests to LLMs using the AIX client.
+- `src/apps/llm-capabilities/probes/probe.scenarios.ts`: Standardized test scenarios (auto, required, roundtrip) for evaluating tool-use and function calling across models.
+- `src/apps/personas/AppPersonas.tsx`: Main screen for creating, viewing, and managing custom AI personas via a drawer and workspace view.
+- `src/apps/personas/creator/Creator.tsx`: Implements the multi-step LLM chain for extracting and structuring persona system prompts from text or transcripts.
+- `src/apps/personas/store-app-personas.ts`: Zustand persist store maintaining saved simple personas in local storage.
+- `src/apps/settings-modal/SettingsModal.tsx`: Master-detail preferences dialog organizing navigation across AI, UI, Voice, Tools, and Labs settings.
+- `src/apps/settings-modal/AppChatSettingsAI.tsx`: Configuration screen for domain-specific models (coding, utility, vision) and AI operational policies (reasoning traces, token counting, Anthropic file handling).
+- `src/apps/settings-modal/settings-ui/AppChatSettingsUI.tsx`: Settings pane for chat UI preferences, page sizing, markdown toggling, content scaling, and timestamps.
+- `src/apps/tokens/AppTokens.tsx`: Developer tool interface visualising Tiktoken tokenization, byte breakdowns, and token counts.
+- `src/apps/news/AppNews.tsx`: News and release notes screen displaying changelogs, build info, and Big-AGI Pro upgrade banners.
+
+## Public interface
+- AppBeam()
+- AppCall()
+- CallWizard(props: { strict?: boolean, conversationId: string | null, children: React.ReactNode })
+- Telephone(props: { callIntent: AppCallIntent, backToContacts: () => void })
+- useAppCallStore()
+- useMockPersonas()
+- findAllChatCommands(): ChatCommand[]
+- extractChatCommand(input: string): TextCommandPiece[]
+- helpPrettyChatCommands(): string
+- ComposerMemo: React.NamedExoticComponent - Main memoized composer component
+- ComposerDock: (props: { conversationId: DConversationId | null, isMobile: boolean, children: (setComposerHasContent: (hasContent: boolean) => void) => React.ReactNode }) => React.JSX.Element
+- useActileManager: (enable: boolean, providers: ActileProvider[], anchorRef: React.RefObject<HTMLElement | null>) => { actileComponent: React.ReactNode, actileInterceptKeydown: (event: React.KeyboardEvent<HTMLTextAreaElement>) => boolean, actileInterceptTextChange: (trailingText: string) => boolean }
+- providerCommands: (onCommandSelect: (item: ActileItem, searchPrefix: string) => void) => ActileProvider
+- providerAttachmentLabels: (attachmentsStoreApi: AttachmentDraftsStoreApi | null, onLabelSelect: (item: ActileItem, searchPrefix: string) => void) => ActileProvider<AttachmentLabelItem>
+- providerStarredMessages: (onMessageSelect: (item: StarredMessageItem) => void) => ActileProvider<StarredMessageItem>
+- useComposerAutoHide: (forceHide: boolean, isContentful: boolean) => { isHidden: boolean, compressorProps: object, compressibleStyle: object, detectorProps: object, forceShow: (durationMs?: number) => void }
+- useComposerEnhancerHint: (conversationOverlayStore: Readonly<StoreApi<PerChatOverlayStore>> | null, setComposeText: React.Dispatch<React.SetStateAction<string>>, targetConversationId: DConversationId | null) => { enhancerHintItem: AttachmentEnhancerHintItem | null, onEnhancerDisabledMatch: (part: DComposerPendingPart, sourceText: string) => void, clearEnhancerHint: () => void }
+- useTextTokenCount: (text: string, llm: DLLM | null, debounceMs?: number, deadlineMs?: number) => number | undefined
+- tokenCountsMathAndMessage: (tokenLimit: number, directTokens: number, historyTokens?: number, responseMaxTokens?: number, chatPricing?: DPricingChatGenerate) => { color: ColorPaletteProp, message: string, remainingTokens: number, costMax?: number, costMin?: number }
+- COMPOSER_INPUT_ENHANCERS: readonly AttachmentInputEnhancer[]
+- ChatToolbarMemo
+- ChatBarChat
+- ChatBarBeam
+- ChatBarBreadcrumbs
+- ChatBarAltTitle
+- useEditableConversationTitle
+- useLLMDropdown
+- usePersonaIdDropdown
+- useFolderDropdown
+- ChatDrawerMemo
+- ChatDrawerItemMemo
+- ChatFolderList
+- ChatPanelMemo
+- WindowSplitControls
+- ActionFolder
+- runLiveSvgLoop(llmId: DLLMId, abortSignal: AbortSignal): Promise<void>
+- LiveSvgAnimator(props: { isMobile: boolean }): JSX.Element
+- useLiveSvgStore: Zustand store hook for Live SVG state
+- liveSvgActions: Imperative accessors for Live SVG store manipulation
+- extractSvg(text: string): string | null
+- extractAllSvgs(text: string): string[]
+- sanitizeSvg(svg: string): string
+- enforceSvg512(svg: string): string
+- findLiveSvgLLM(): DLLM | null
+- DocAttachmentFragmentButton(props): JSX.Element
+- DocAttachmentFragmentPane: React.memo component for document attachment viewing/editing
+- DocumentAttachmentFragments: React.memo component for rendering lists of document attachments
+- SortableDocAttachmentButton(props): JSX.Element
+- LiveFileControlButton(props): JSX.Element
+- useLiveFileSync(_liveFileId, workspaceId, isMobile, bufferText, onReplaceLiveFileId, onSetBufferText)
+- EditAttachmentFragments(props): JSX.Element
+- imageAttachmentCardSx(scaling, isCompact, isSmall): SxProps
+- BlockEdit_TextFragment
+- BlockOpEmpty
+- BlockPartError
+- BlockPartError_NetDisconnected
+- BlockPartError_RequestExceeded
+- BlockPartImageRef
+- BlockPartText_AutoBlocksMemo
+- BlockPartToolInvocation
+- KeyValueGrid
+- humanReadableFunctionName
+- functionNameAppearance
+- BlockPartToolResponse
+- HostedFileChip
+- HostedFileChipButton
+- BlockPartModelAnnotations
+- BlockPartModelAuxMemo
+- InReferenceToBubble
+- inlineMessageBubbleSx
+- InReferenceToList
+- ChatMessage
+- ChatMessageFunctionsHandle
+- ChatMessageTextPartEditState
+- buildCMRenderTree
+- recycleCMRenderTree
+- useCMRenderTree
+- parseTrailingOptions
+- CMRenderTreeNodes
+- cmNodeFragments
+- BlockOpContinue
+- BlockOpOptions
+- BlockOpResolveVertexAILinks
+- BlockOpUpstreamResume
+- CMEditAttach
+- ChatMessageBubble
+- ChatMessageInfoPopup
+- ChatMessageMenu
+- ChatMessageTimestamp
+- MessagesSelectionHeader
+- CleanerMessage
+- CMEditDrafts
+- getMessageTimestamp
+- formatMessageTimestampDate
+- useCMEditSession
+- useSelHighlighterMemo
+- CMLZeroConversation
+- useAppChatPanesStore
+- PersonaSelector
+- usePurposeStore
+- ChatBeamWrapper
+- ChatCleanupControls
+- ChatMessageList
+- ChatPaneMemo
+- ChatShortcutsMemo
+- AppChat()
+- CHAT_NOVEL_TITLE
+- AppDiff()
+- useChatExecuteMode(capabilityHasT2I, isMobile)
+- chatExecuteModeCanAttach(chatExecuteMode, capabilityHasT2IEdit)
+- runPersonaOnConversationHead(assistantLlmId, conversationId)
+- runImageGenerationUpdatingState(cHandler, imageText, imageFragments)
+- runReActUpdatingState(cHandler, question, assistantLlmId, contextRef)
+- ExecuteModeItems
+- ExecuteModeMenu
+- Ephemerals
+- PaneTitleOverlay
+- StatusBar
+- AppDraw()
+- drawCreateQueue
+- AppLinkChat(props: { chatLinkId: string | null })
+- LinkChatViewer(props: { conversation: DConversation, storedAt: Date, expiresAt: Date | null })
+- runProbe(llmId: DLLMId, scenario: ProbeScenario, timeoutMs: number, outerSignal?: AbortSignal): Promise<ProbeResult>
+- PROBE_SCENARIOS
+- useLlmCapabilitiesStore
+- AppNews
+- BuildInfoCard
+- AppPersonas
+- useSimplePersonas
+- useSimplePersona
+- prependSimplePersona
+- deleteSimplePersona
+- deleteSimplePersonas
+- SettingsModal
+- ShortcutsModal
+- AppChatSettingsAI
+- AppChatSettingsUI
+- AppTokens
+- AppPlaceholder
+- AppSmallContainer
+
+## Dependencies
+- react
+- zustand
+- @mui/joy
+- @mui/icons-material
+- ~/modules/beam/BeamView
+- ~/modules/beam/store-beam.hooks
+- ~/modules/beam/store-beam_vanilla
+- ~/modules/aix/client/aix.client
+- ~/modules/speex/speex.client
+- ~/modules/speex/store-module-speex
+- ~/common/stores/chat/store-chats
+- ~/common/stores/chat/chat.conversation
+- ~/common/stores/chat/chat.message
+- ~/common/components/speechrecognition/useSpeechRecognition
+- @dnd-kit/core
+- @dnd-kit/sortable
+- @dnd-kit/utilities
+- diff
+- browser-fs-access
+- ~/modules/blocks/AutoBlocksRenderer
+- ~/modules/blocks/code/RenderCodePanelFrame
+- ~/modules/blocks/image/RenderImageRefDBlob
+- ~/common/stores/llms/store-llms
+- ~/common/stores/chat/chat.fragments
+- ~/common/livefile/useLiveFileContent
+- ~/common/livefile/store-live-file
+- @tanstack/react-query
+- react-timeago
+- ~/modules/blocks/BlocksContainers
+- ~/modules/blocks/ScaledTextBlockRenderer
+- ~/modules/blocks/blocks.styles
+- ~/modules/blocks/image/RenderImageURL
+- ~/modules/blocks/code/RenderCode
+- ~/modules/blocks/markdown/HostedLinksContext
+- ~/modules/llms/vendors/gemini/geminiFiles.client
+- ~/modules/youtube/youtube.utils
+- ~/modules/google/useVertexLinksForDisplay
+- ~/common/app.theme
+- ~/common/stores/store-ui
+- ~/common/stores/store-ai
+- ~/common/stores/llms/llms.hooks
+- ~/common/stores/llms/hooks/useModelServiceClientSideFetch
+- ~/common/stores/llms/hooks/useLlmServiceAccess
+- ~/common/components/shortcuts/useGlobalShortcuts
+- ~/common/components/modals/ConfirmationModal
+- ~/common/components/modals/ViewImageRefPartModal
+- ~/common/components/GoodTooltip
+- ~/common/components/TooltipOutlined
+- ~/common/components/ConfirmMenuItem
+- ~/common/components/ExpanderControlledBox
+- ~/common/components/AvatarDomainFavicon
+- ~/common/components/DataStreamViz
+- ~/common/layout/overlays/useOverlayComponents
+- ~/common/util/pwaUtils
+- ~/common/util/trpc.client
+- ~/common/util/blobUtils
+- ~/common/util/clipboardUtils
+- ~/common/util/downloadUtils
+- ~/common/util/video/videoPlayManaged
+- ~/common/util/textUtils
+- ~/common/util/urlUtils
+- ~/common/util/animUtils
+- ~/common/util/timeUtils
+- ~/common/attachment-drafts/attachment.mimetypes
+- zustand/middleware
+- zustand/react/shallow
+- @mui/base
+- react-resizable-panels
+- ~/modules/beam/store-module-beam
+- ~/modules/llms/components/LLMVendorIcon
+- ~/modules/llms/vendors/anthropic/anthropic.vendor
+- ~/modules/blocks/markdown/markdown.wrapper
+- ~/modules/blocks/enhanced-code/ERCDiffContext
+- ~/modules/persona/pmix/pmix
+- ~/modules/youtube/YouTubeURLInput
+- ~/common/stores/llms/llms.types
+- ~/common/chat-overlay/ConversationsManager
+- ~/common/chat-overlay/ConversationHandler
+- ~/modules/aifn/auto-chat-follow-ups/autoChatFollowUps
+- ~/modules/aifn/autotitle/autoTitle
+- ~/modules/aifn/react/react
+- ~/modules/t2i/t2i.client
+- ~/modules/blocks/wordsdiff/RenderWordsDiff
+- next/head
+- zod/v4
+- ~/modules/t2i/components/T2IConfigureEngineFull
+- ~/modules/aifn/imagine/imaginePromptFromText
+- ~/modules/aix/client/aix.client.chatGenerateRequest
+- ~/modules/aix/client/aix.client.fromSimpleFunction
+- ~/modules/trade/link/store-share-link
+- ~/common/stores/blob/dblobs-portability
+- ~/common/logic/ProcessingQueue
+- ~/common/layout/optima/*
+- next/image
+- ~/modules/aifn/useLLMChain
+- ~/modules/backend/store-backend-capabilities
+- ~/modules/llms/components/ModelsRefreshAlert
+- ~/modules/youtube/useYouTubeTranscript
+- ~/modules/asrx/components/ASRxConfigureEngines
+- ~/modules/browse/BrowseSettings
+- ~/modules/google/GoogleSearchSettings
+- ~/modules/speex/components/SpeexConfigureEngines
+- ~/modules/t2i/components/T2IConfigureEngines
+- ~/common/stores/store-ux-labs
+- ~/common/stores/llms/hooks/useModelDomain
+- ~/common/stores/llms/hooks/useModelsZeroState
+- ~/common/tokens/tokens.text
+- ~/common/tokens/useTokenizerSelect
+- ~/common/components/*
+- ~/common/util/*
+- ../chat/store-app-chat
+
+## AI touchpoints [AI]
+- `src/apps/call/Telephone.tsx`
+- `src/apps/chat/AppChat.tsx`
+- `src/apps/chat/commands/CommandsDraw.tsx`
+- `src/apps/chat/commands/CommandsReact.tsx`
+- `src/apps/chat/components/ChatMessageList.tsx`
+- `src/apps/chat/components/composer/Composer.tsx`
+- `src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl.tsx`
+- `src/apps/chat/components/composer/textarea/ComposerTextAreaDrawActions.tsx`
+- `src/apps/chat/components/composer/tokens/TokenTooltip.tsx`
+- `src/apps/chat/components/live-svg/LiveSvgAnimator.tsx`
+- `src/apps/chat/components/live-svg/livesvg.loop.ts`
+- `src/apps/chat/components/live-svg/store-livesvg.ts`
+- `src/apps/chat/components/message/ChatMessage.tsx`
+- `src/apps/chat/components/message/ChatMessageMenu.tsx`
+- `src/apps/chat/components/message/fragments-content/BlockPartHostedResource.tsx`
+- `src/apps/chat/components/message/fragments-content/BlockPartToolInvocation.utils.ts`
+- `src/apps/chat/components/message/fragments-content/HostedFileChip.tsx`
+- `src/apps/chat/components/message/fragments-void/BlockPartModelAux.tsx`
+- `src/apps/chat/components/message/fragments-void/BlockPartPlaceholder.tsx`
+- `src/apps/chat/components/message/render-tree/parseTrailingOptions.test.ts`
+- `src/apps/chat/components/persona-selector/PersonaSelector.tsx`
+- `src/apps/chat/editors/_handleExecute.ts`
+- `src/apps/chat/editors/image-generate.ts`
+- `src/apps/chat/store-app-chat.ts`
+- `src/apps/draw/DrawCreate.tsx`
+- `src/apps/draw/create/DrawProviderSelector.tsx`
+- `src/apps/draw/create/PromptComposer.tsx`
+- `src/apps/draw/create/ZeroDrawConfig.tsx`
+- `src/apps/draw/create/ZeroGenerations.tsx`
+- `src/apps/draw/create/useDrawIdeas.tsx`
+- `src/apps/draw/promptfx/PromptFX.tsx`
+- `src/apps/draw/queue-draw-create.tsx`
+- `src/apps/llm-capabilities/probes/probe.scenarios.ts`
+- `src/apps/news/news.data.tsx`
+- `src/apps/personas/creator/Creator.tsx`
+- `src/apps/personas/creator/CreatorDrawerItem.tsx`
+- `src/apps/personas/creator/Viewer.tsx`
+- `src/apps/personas/store-app-personas.ts`
+- `src/apps/settings-modal/AppChatSettingsAI.tsx`
+- `src/apps/call/state/useMockPersonas.tsx`
+- `src/apps/chat/components/composer/llmattachments/LLMAttachmentsPromptsButton.tsx`
+- `src/apps/chat/components/composer/composer.input-enhancers.tsx`
+- `src/apps/chat/components/composer/tokens/useTextTokenCounter.tsx`
+- `src/apps/chat/components/layout-bar/ChatBarAltTitle.tsx`
+- `src/apps/chat/components/layout-bar/ChatBarBeam.tsx`
+- `src/apps/chat/components/layout-bar/useLLMDropdown.tsx`
+- `src/apps/chat/components/layout-bar/usePersonaDropdown.tsx`
+- `src/apps/chat/components/layout-drawer/ChatDrawerItem.tsx`
+- `src/apps/chat/components/live-svg/livesvg.svgutils.ts`
+- `src/apps/chat/components/message/fragments-content/BlockPartToolInvocation.tsx`
+- `src/apps/chat/components/message/fragments-content/BlockPartToolResponse.tsx`
+- `src/apps/chat/components/message/fragments-void/BlockPartModelAnnotations.tsx`
+- `src/apps/chat/components/message/fragments-content/BlockPartError_NetDisconnected.tsx`
+- `src/apps/chat/components/message/fragments-content/BlockPartError_RequestExceeded.tsx`
+- `src/apps/chat/components/message/BlockOpUpstreamResume.tsx`
+- `src/apps/chat/components/message/BlockOpResolveVertexAILinks.tsx`
+- `src/apps/chat/components/message/render-tree/cmRenderTree.build.ts`
+- `src/apps/chat/components/message/render-tree/CMRenderTreeNodes.tsx`
+- `src/apps/chat/components/ChatBeamWrapper.tsx`
+- `src/apps/chat/components/message/ChatMessageBubble.tsx`
+- `src/apps/chat/editors/chat-persona.ts`
+- `src/apps/chat/editors/react-tangent.ts`
+- `src/apps/chat/editors/_handleExecuteSlashCommand.ts`
+- `src/apps/llm-capabilities/probes/probe.runner.ts`
+
+## Open questions
+- src/apps/chat/commands/commands.dmessage.ts is currently empty; what role is intended for it?
+- How are race conditions around clearing abort controllers in chat-persona.ts and react-tangent.ts handled during rapid successive user prompts?
+- DrawCreate contains placeholder UI and marked development warnings indicating parts of the prompt/gallery workflow remain incomplete.
+- DrawGallery notes a FIXME regarding migration from legacy DBlob system to DAsset online references.
+- PromptFX.tsx is completely commented out as a placeholder.
+- YouTube transcript extraction in FromYouTube.tsx is currently hardcoded to disabled via TEMP_DISABLE_YOUTUBE_TRANSCRIPT due to API changes.

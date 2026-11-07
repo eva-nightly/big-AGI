@@ -1,0 +1,114 @@
+{
+  "fontFaces": [
+    {
+      "family": "Inter Fallback",
+      "rule": "@font-face {\n  font-family: 'Inter Fallback';\n  src: local(\"Arial\");\n  ascent-override: 90.44%;\n  descent-override: 22.52%;\n  line-gap-override: 0.00%;\n  size-adjust: 107.12%;\n}",
+      "source": "src/common/styles/fonts/app.fonts.css",
+      "line": 6
+    },
+    {
+      "family": "JetBrains Mono Fallback",
+      "rule": "@font-face {\n  font-family: 'JetBrains Mono Fallback';\n  src: local(\"Arial\");\n  ascent-override: 75.79%;\n  descent-override: 22.29%;\n  line-gap-override: 0.00%;\n  size-adjust: 134.59%;\n}",
+      "source": "src/common/styles/fonts/app.fonts.css",
+      "line": 15
+    }
+  ],
+  "families": [
+    {
+      "stack": "inherit",
+      "source": "src/common/logic/sherpa.css",
+      "line": 103
+    },
+    {
+      "stack": "Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace",
+      "source": "src/common/styles/CodePrism.css",
+      "line": 12
+    },
+    {
+      "stack": "-apple-system,BlinkMacSystemFont,\"Segoe UI\",\"Noto Sans\",Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"",
+      "source": "src/common/styles/GithubMarkdown.css",
+      "line": 122
+    },
+    {
+      "stack": "monospace",
+      "source": "src/common/styles/GithubMarkdown.css",
+      "line": 228
+    },
+    {
+      "stack": "ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace",
+      "source": "src/common/styles/GithubMarkdown.css",
+      "line": 462
+    },
+    {
+      "stack": "\"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", serif",
+      "source": "src/common/styles/GithubMarkdown.css",
+      "line": 1099
+    }
+  ],
+  "scale": [
+    {
+      "label": "Heading 1",
+      "sizePx": 32,
+      "sizeRaw": "2em",
+      "weight": 600,
+      "source": "src/common/styles/GithubMarkdown.css",
+      "line": 182
+    },
+    {
+      "label": "Heading 2",
+      "sizePx": 24,
+      "sizeRaw": "1.5em",
+      "weight": 600,
+      "source": "src/common/styles/GithubMarkdown.css",
+      "line": 394
+    },
+    {
+      "label": "Heading 3",
+      "sizePx": 20,
+      "sizeRaw": "1.25em",
+      "weight": 600,
+      "source": "src/common/styles/GithubMarkdown.css",
+      "line": 401
+    },
+    {
+      "label": "Heading 4",
+      "sizePx": 16,
+      "sizeRaw": "1em",
+      "weight": 600,
+      "source": "src/common/styles/GithubMarkdown.css",
+      "line": 406
+    },
+    {
+      "label": "Heading 2",
+      "sizePx": 14.5,
+      "sizeRaw": "14.5px",
+      "weight": 700,
+      "source": "public/dev/inspect/_inspect.css",
+      "line": 64
+    },
+    {
+      "label": "Heading 5",
+      "sizePx": 14,
+      "sizeRaw": ".875em",
+      "weight": 600,
+      "source": "src/common/styles/GithubMarkdown.css",
+      "line": 411
+    },
+    {
+      "label": "Heading 6",
+      "sizePx": 13.6,
+      "sizeRaw": ".85em",
+      "weight": 600,
+      "source": "src/common/styles/GithubMarkdown.css",
+      "line": 416
+    },
+    {
+      "label": "Heading 3",
+      "sizePx": 12,
+      "sizeRaw": "12px",
+      "weight": 700,
+      "source": "public/dev/inspect/_inspect.css",
+      "line": 195
+    }
+  ]
+}
