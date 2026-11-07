@@ -20,6 +20,7 @@ const _styles = {
 /**
  * Model Selection Dropdowns: Shared search input with starred filter toggle
  */
+// @uxid src/common/stores/llms/components/LLMSearchFilterInput::LLMSearchFilterInput
 export const LLMSearchFilterInput = React.memo(function LLMSearchFilterInput(props: {
   size?: 'sm' | 'md' | 'lg',
   llmsCount: number,

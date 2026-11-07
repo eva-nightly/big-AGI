@@ -84,6 +84,7 @@ const _styles = {
 } as const satisfies Record<string, SxProps>;
 
 
+// @uxid src/modules/aix/client/debugger/AixDebuggerFrame::AixDebuggerFrame
 export function AixDebuggerFrame(props: {
   frame: AixClientDebugger.Frame;
 }) {

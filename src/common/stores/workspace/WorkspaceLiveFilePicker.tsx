@@ -23,6 +23,7 @@ const ENABLE_AUTO_WORKSPACE_PICK = false;
 /**
  * Allows selection of LiveFiles in the current Workspace
  */
+// @uxid src/common/stores/workspace/WorkspaceLiveFilePicker::WorkspaceLiveFilePicker
 export function WorkspaceLiveFilePicker(props: {
   allowRemove?: boolean;
   autoSelectName: string | null;

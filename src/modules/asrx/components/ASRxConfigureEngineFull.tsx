@@ -26,6 +26,7 @@ import { asrxAreCredentialsValid } from '../store-module-asrx';
 
 // --- Public component ---
 
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::ASRxConfigureEngineFull
 export function ASRxConfigureEngineFull(props: {
   engine: DASRxEngineAny;
   isMobile: boolean;
@@ -160,6 +161,7 @@ const _styles = {
 
 // --- Manual credentials (api-key + optional host) ---
 
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::ManualCredentials
 function ManualCredentials({ engine, credentials, onUpdate, advancedOn }: {
   engine: DASRxEngineAny;
   credentials: DCredentialsApiKey;
@@ -211,6 +213,7 @@ function ManualCredentials({ engine, credentials, onUpdate, advancedOn }: {
 // --- Shared panel chrome ---
 
 /** Bottom row shared by every vendor panel: 'Advanced...' toggle left, 'Reset to defaults' right when off-default. */
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::PanelFooter
 function PanelFooter({ advanced, showReset, onReset }: {
   advanced: { on: boolean; toggle: () => void };
   showReset: boolean;
@@ -243,6 +246,7 @@ function PanelFooter({ advanced, showReset, onReset }: {
  * 'Personal Dictionary' row + editor modal, shared by every vendor panel.
  * Terms are data, not a parameter: each panel's reset handler preserves them.
  */
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::PersonalDictionaryRow
 function PersonalDictionaryRow({ show, terms, description, onSave }: {
   show: boolean;
   terms: string[];
@@ -282,6 +286,7 @@ const _DEEPGRAM_MODEL_LABELS: FormChipModelLabels<typeof ASRX_MODELS.deepgram[nu
   'nova-2': { label: 'Nova 2', description: 'Stable' },
 };
 
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters
 function DeepgramParameters({ engine, onUpdate }: {
   engine: DASRxEngine<'deepgram'>;
   onUpdate: (updates: Partial<DASRxEngine<'deepgram'>>) => void;
@@ -384,6 +389,7 @@ function DeepgramParameters({ engine, onUpdate }: {
 
 
 /** Minimal one-term-per-line editor for the user dictionary (Deepgram keyterms; OpenAI/Gemini keywords). */
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DictionaryModal
 function DictionaryModal(props: {
   terms: string[];
   onSave: (terms: string[]) => void;
@@ -439,6 +445,7 @@ function DictionaryModal(props: {
 
 // --- Gemini parameters ---
 
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::GeminiParameters
 function GeminiParameters({ engine, onUpdate, isMobile }: {
   engine: DASRxEngine<'gemini'>;
   onUpdate: (updates: Partial<DASRxEngineAny>) => void;
@@ -511,6 +518,7 @@ const _OPENAI_MODEL_LABELS: FormChipModelLabels<typeof ASRX_MODELS.openai[number
   'whisper-1': { label: 'Whisper', description: 'Legacy', tooltip: '$0.36 per hour' },
 };
 
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::OpenAIParameters
 function OpenAIParameters({ engine, onUpdate, isMobile }: {
   engine: DASRxEngine<'openai'>;
   onUpdate: (updates: Partial<DASRxEngineAny>) => void;
