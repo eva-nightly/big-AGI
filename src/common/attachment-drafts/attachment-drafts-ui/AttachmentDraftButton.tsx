@@ -61,6 +61,7 @@ const ellipsizeLabel = (label?: string) => {
 /**
  * Displayed while a source is loading
  */
+// @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton::InputLoadingPlaceholder
 function InputLoadingPlaceholder(props: { label: string }) {
   return <Sheet
     color='success' variant='soft'
@@ -84,6 +85,7 @@ function InputLoadingPlaceholder(props: { label: string }) {
 /**
  * Displayed when there is an error loading the input (e.g. file does not exist)
  */
+// @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton::InputErrorIndicator
 function InputErrorIndicator() {
   return <WarningRoundedIcon sx={{ color: 'danger.solidBg' }} />;
 }
@@ -227,6 +229,7 @@ function attachmentLabelText(attachmentDraft: AttachmentDraft): string {
 
 export const AttachmentDraftButtonMemo = React.memo(AttachmentDraftButton);
 
+// @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftButton::AttachmentDraftButton
 function AttachmentDraftButton(props: {
   draft: AttachmentDraft,
   enrichment?: IAttachmentEnrichment,

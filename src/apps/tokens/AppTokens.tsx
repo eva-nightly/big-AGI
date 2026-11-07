@@ -16,6 +16,7 @@ function generateColor(index: number) {
 }
 
 
+// @uxid src/apps/tokens/AppTokens::AppTokens
 export function AppTokens() {
 
   // Local state

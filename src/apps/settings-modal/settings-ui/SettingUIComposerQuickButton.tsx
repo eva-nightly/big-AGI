@@ -11,6 +11,7 @@ const QuickOptions: FormSelectOption<'off' | 'call' | 'beam'>[] = [
   { value: 'off', label: 'Off', description: 'Hide' },
 ];
 
+// @uxid src/apps/settings-modal/settings-ui/SettingUIComposerQuickButton::SettingUIComposerQuickButton
 export function SettingUIComposerQuickButton(props: { noLabel?: boolean }) {
 
   // external state

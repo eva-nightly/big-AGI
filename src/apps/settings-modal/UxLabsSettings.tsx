@@ -29,6 +29,7 @@ const _adaptiveRenderingOptions: FormSelectOption<'auto' | 'on' | 'off' | 'debug
 ];
 
 
+// @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings
 export function UxLabsSettings() {
 
   // external state

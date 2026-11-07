@@ -18,6 +18,7 @@ const _autoSpeakOptions: FormRadioOption<ChatAutoSpeakType>[] = [
 /**
  * Voice output settings - Auto-speak mode and TTS engine configuration
  */
+// @uxid src/apps/settings-modal/VoiceOutSettings::VoiceOutSettings
 export function VoiceOutSettings(props: { isMobile: boolean }) {
 
   // external state

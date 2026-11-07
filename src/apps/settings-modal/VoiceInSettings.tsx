@@ -18,6 +18,7 @@ const _minTimeouts: ReadonlyArray<FormRadioOption<string>> = [
 ] as const;
 
 
+// @uxid src/apps/settings-modal/VoiceInSettings::VoiceInSettings
 export function VoiceInSettings(props: { isMobile: boolean }) {
 
   // external state
