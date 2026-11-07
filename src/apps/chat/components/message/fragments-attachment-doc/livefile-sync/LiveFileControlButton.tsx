@@ -26,6 +26,7 @@ const refreshButtonSx: SxProps = {
 };
 
 
+// @uxid src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/LiveFileControlButton::LiveFileControlButton
 export function LiveFileControlButton(props: {
   disabled: boolean;
   hasContent: boolean;

@@ -54,6 +54,7 @@ function _inferInitialViewAsCode(attachmentFragment: DMessageAttachmentFragment)
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane::DocAttachmentFragmentPane
 export const DocAttachmentFragmentPane = React.memo(function DocAttachmentFragmentPane(props: {
   fragment: DMessageAttachmentFragment,
   controlledEditor: boolean,

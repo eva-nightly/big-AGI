@@ -144,6 +144,7 @@ const _titleOverlayCompactSx: SxProps = { ..._styles.titleOverlay, ..._styles.ti
 /**
  * Title overlay component with inline editing functionality
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageTitleEditorOverlay
 function ImageTitleEditorOverlay(props: {
   title?: string,
   fragment: DMessageAttachmentFragment,
@@ -227,6 +228,7 @@ function ImageTitleEditorOverlay(props: {
 /**
  * Renders a single image attachment based on its part type
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentCard
 function ImageAttachmentCard(props: {
   fragment: DMessageAttachmentFragment,
   isEditing?: boolean,
@@ -360,6 +362,7 @@ export function imageAttachmentCardSx(contentScaling: ContentScaling, renderVari
 /**
  * Wrapper for a RenderImageRefDBlob that adds DnD support with a grab handle. Also an item of `EditAttachmentFragments`.
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::SortableImageAttachmentCard
 export function SortableImageAttachmentCard(props: {
   fragment: DMessageAttachmentFragment,
   isEditing?: boolean,
@@ -399,6 +402,7 @@ export function SortableImageAttachmentCard(props: {
  * Shows image attachments in a flexbox that wraps the images (overflowing by rows)
  * Also see `TextAttachmentFragments` for the text version, and 'CMRenderTreeNodes'.
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentFragments
 export function ImageAttachmentFragments(props: {
   imageAttachments: readonly DMessageAttachmentFragment[],
   contentScaling: ContentScaling,

@@ -11,6 +11,7 @@ import { ContentScaling, themeScalingMap } from '~/common/app.theme';
 import { ViewImageRefPartModal } from '~/common/components/modals/ViewImageRefPartModal';
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartImageRef::BlockPartImageRef
 export function BlockPartImageRef(props: {
   imageRefPart: DMessageImageRefPart,
   fragmentId?: DMessageFragmentId,

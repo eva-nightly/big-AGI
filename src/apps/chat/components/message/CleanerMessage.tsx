@@ -132,6 +132,7 @@ const styles = {
 /**
  * Header bar for controlling the operations during the Selection mode
  */
+// @uxid src/apps/chat/components/message/CleanerMessage::MessagesSelectionHeader
 export const MessagesSelectionHeader = (props: {
   hasSelected: boolean,
   sumTokens: number,
@@ -179,6 +180,7 @@ export const MessagesSelectionHeader = (props: {
  *
  * Shall look similarly to the main ChatMessage, for consistency, but just allow a simple checkbox selection
  */
+// @uxid src/apps/chat/components/message/CleanerMessage::CleanerMessage
 export function CleanerMessage(props: {
   message: DMessage,
   selected: boolean,

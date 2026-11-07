@@ -11,6 +11,7 @@ import { useModelServiceClientSideFetch } from '~/common/stores/llms/hooks/useMo
 /**
  * Error recovery component for "Connection terminated" errors.
  */
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartError_NetDisconnected::BlockPartError_NetDisconnected
 export function BlockPartError_NetDisconnected(props: {
   disconnectionKind: 'net-client-closed' | 'net-server-closed' | 'net-unknown-closed';
   messageGeneratorLlmId?: string | null;

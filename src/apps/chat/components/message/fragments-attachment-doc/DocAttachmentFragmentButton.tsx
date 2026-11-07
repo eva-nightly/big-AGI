@@ -106,6 +106,7 @@ export function buttonIconForFragment(part: DMessageAttachmentFragment['part']):
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton::DocAttachmentDeleteButton
 function DocAttachmentDeleteButton(props: { fragmentId: DMessageFragmentId, color: ColorPaletteProp, onFragmentDelete: (fragmentId: DMessageFragmentId) => void }) {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', px: 0.5, borderLeft: '1px solid', borderColor: `${props.color}.outlinedDisabledBorder`, '& svg': { fontSize: '1.25rem' } }}>
@@ -116,6 +117,7 @@ function DocAttachmentDeleteButton(props: { fragmentId: DMessageFragmentId, colo
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton::DocAttachmentFragmentButton
 export function DocAttachmentFragmentButton(props: {
   fragment: DMessageAttachmentFragment,
   contentScaling: ContentScaling,

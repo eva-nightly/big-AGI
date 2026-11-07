@@ -17,6 +17,7 @@ export const BlockPartText_AutoBlocksMemo = React.memo(BlockPartText_AutoBlocks)
  * The OG part, comprised of text, which can be markdown, have code blocks, etc.
  * Uses BlocksRenderer to render the markdown/code/html/text, etc.
  */
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartText_AutoBlocks::BlockPartText_AutoBlocks
 function BlockPartText_AutoBlocks(props: {
   // current value
   textPartText: string,
