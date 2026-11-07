@@ -10,6 +10,7 @@ import { FormLabelStart } from './FormLabelStart';
  * Appears with animation when client key is present.
  * Shows a tooltip recommendation when local host is detected but CSF is off.
  */
+// @uxid src/common/components/forms/SetupFormClientSideToggle::SetupFormClientSideToggle
 export function SetupFormClientSideToggle(props: {
   visible: boolean;
   checked: boolean;

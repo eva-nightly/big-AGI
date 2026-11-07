@@ -8,6 +8,7 @@ import { FormLabelStart } from '~/common/components/forms/FormLabelStart';
 import { useUIPreferencesStore } from '~/common/stores/store-ui';
 
 
+// @uxid src/apps/settings-modal/settings-ui/SettingUIContentScaling::SettingUIContentScaling
 export function SettingUIContentScaling(props: { noLabel?: boolean }) {
 
   // external state

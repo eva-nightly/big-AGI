@@ -30,6 +30,7 @@ export interface ImportedOutcome {
 /**
  * Displays the result of an import operation as a modal dialog.
  */
+// @uxid src/modules/trade/ImportOutcomeModal::ImportOutcomeModal
 export function ImportOutcomeModal(props: { outcome: ImportedOutcome, onClose: () => void }) {
   const { conversations } = props.outcome;
 

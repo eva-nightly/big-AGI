@@ -51,6 +51,7 @@ const _styles = {
 
 
 /** Icon button in the chip's action row, with the busy spinner - for vendor actions such as Copy or Play */
+// @uxid src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChipButton
 export function HostedFileChipButton(props: { title: string; icon: React.ReactNode; busy: boolean; disabled: boolean; onClick: () => void }) {
   return (
     <GoodTooltip title={props.title}>
@@ -67,6 +68,7 @@ export function HostedFileChipButton(props: { title: string; icon: React.ReactNo
  * The vendor chips own the data and the handlers; this owns the layout, the busy and error rendering, and the
  * two-step delete confirmed inside the menu.
  */
+// @uxid src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChip
 export function HostedFileChip(props: {
   title: React.ReactNode;
   subtitle?: React.ReactNode;

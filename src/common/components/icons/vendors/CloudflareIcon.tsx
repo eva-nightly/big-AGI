@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/vendors/CloudflareIcon::CloudflareIcon
 export function CloudflareIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 -17.5 75 75' width='24' height='24' fill='currentColor' stroke='none' {...props}>
     <path d='M51 36.4L51.4 35.1C51.9 33.5 51.7 32.1 50.9 31C50.2 30 49.1 29.4 47.6 29.4L20.7 29C20.5 29 20.4 28.9 20.3 28.8C20.2 28.7 20.2 28.5 20.3 28.3C20.3 28 20.6 27.8 20.9 27.8L48 27.5C51.2 27.3 54.7 24.7 56 21.5L57.5 17.4C57.5 17.3 57.6 17.2 57.6 17.1V16.9C55.8 9 48.7 3 40.3 3C32.5 3 25.9 8.1 23.6 15.1C22 13.9 20.1 13.3 18 13.5C14.2 13.9 11.2 16.9 10.9 20.7C10.8 21.6 10.8 22.6 11.1 23.4C5 23.6 0.1 28.6 0.1 34.8C0.1 35.4 0.1 35.9 0.2 36.5C0.2 36.7 0.5 36.9 0.7 36.9H50.4C50.7 36.9 50.9 36.7 51 36.4Z' />

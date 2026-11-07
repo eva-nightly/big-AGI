@@ -35,6 +35,7 @@ import { useBeamCardScrolling } from '../store-module-beam';
 import { useMessageAvatarLabel } from '~/common/util/dMessageUtils';
 
 
+// @uxid src/modules/beam/gather/Fusion::Fusion
 export function Fusion(props: {
   beamStore: BeamStoreApi,
   fusionId: string,

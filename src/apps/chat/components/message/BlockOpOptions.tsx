@@ -62,6 +62,7 @@ function _stripMarkdownBold(text: string): { text: string; isBold: boolean } {
 
 
 /** Continuation buttons for the options the render tree cut off the last text block (see `parseTrailingOptions`). */
+// @uxid src/apps/chat/components/message/BlockOpOptions::BlockOpOptions
 export function BlockOpOptions(props: {
   contentScaling: ContentScaling,
   options: readonly string[],

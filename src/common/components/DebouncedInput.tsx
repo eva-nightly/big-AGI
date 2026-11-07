@@ -26,6 +26,7 @@ type DebounceInputProps = Omit<InputProps, 'onChange'> & {
   onDebounce: (value: string) => void;
 };
 
+// @uxid src/common/components/DebouncedInput::DebouncedInput
 const DebouncedInput: React.FC<DebounceInputProps> = (props: DebounceInputProps) => {
 
   // state

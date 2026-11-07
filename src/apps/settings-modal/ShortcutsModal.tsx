@@ -94,6 +94,7 @@ function _isActive(def: ShortcutDefinition, fingerprints: Set<string>): boolean 
 }
 
 
+// @uxid src/apps/settings-modal/ShortcutsModal::ShortcutKeyCombo
 function ShortcutKeyCombo(props: { def: ShortcutDefinition }) {
   const { ctrl, shift, alt, key } = props.def;
   const parts: string[] = [];
@@ -111,6 +112,7 @@ function ShortcutKeyCombo(props: { def: ShortcutDefinition }) {
 }
 
 
+// @uxid src/apps/settings-modal/ShortcutsModal::ShortcutsModal
 export function ShortcutsModal(props: { onClose: () => void }) {
 
   // external state

@@ -35,6 +35,7 @@ const chartContainerSx: SxProps = {
 };
 
 
+// @uxid src/modules/blocks/code/code-renderers/RenderCodeChartJS::RenderCodeChartJS
 export const RenderCodeChartJS = React.forwardRef(function RenderCodeChartJS(props: {
   chartJSCode: string;
   onReplaceInCode?: (search: string, replace: string) => boolean;

@@ -49,6 +49,7 @@ const AGE_FILTER_OPTIONS: { days: number | null, label: string, shortLabel: stri
 
 export const ChatDrawerMemo = React.memo(ChatDrawer);
 
+// @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer
 function ChatDrawer(props: {
   isMobile: boolean,
   activeConversationId: DConversationId | null,

@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/vendors/AzureIcon::AzureIcon
 export function AzureIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 0 24 24' width='24' height='24' stroke='currentColor' strokeWidth={1.5} fill='none' strokeLinecap='round' strokeLinejoin='round' {...props}>
     {/*<path stroke='none' d='M0 0h24v24H0z' fill='none'></path>*/}

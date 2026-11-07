@@ -15,6 +15,7 @@ import { functionNameAppearance, humanReadableFunctionName } from './BlockPartTo
 import { KeyValueData, KeyValueGrid } from './BlockPartToolInvocation';
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartToolResponse::BlockPartToolResponse
 export function BlockPartToolResponse(props: {
   toolResponsePart: DMessageToolResponsePart,
   contentScaling: ContentScaling,

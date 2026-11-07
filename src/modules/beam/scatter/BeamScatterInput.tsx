@@ -55,6 +55,7 @@ const userChatMessageSx: SxProps = {
 } as const;
 
 
+// @uxid src/modules/beam/scatter/BeamScatterInput::BeamScatterInput
 export function BeamScatterInput(props: {
   isMobile: boolean,
   history: DMessage[] | null,

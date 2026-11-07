@@ -34,6 +34,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/modules/llms/vendors/bedrock/BedrockServiceSetup::BedrockServiceSetup
 export function BedrockServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

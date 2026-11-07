@@ -13,6 +13,7 @@ export const PageDrawerTallItemSx: SxProps = {
 /**
  * Used by pluggable layouts to have a standardized list appearance
  */
+// @uxid src/common/layout/optima/drawer/OptimaDrawerList::OptimaDrawerList
 export function OptimaDrawerList(props: {
   variant?: VariantProp,
   color?: ColorPaletteProp,

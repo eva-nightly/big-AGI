@@ -38,6 +38,7 @@ const imageViewerContainerSx: SxProps = {
 };
 
 
+// @uxid src/common/components/modals/ViewImageRefPartModal::ViewImageRefPartModal
 export function ViewImageRefPartModal(props: {
   imageRefPart: DMessageImageRefPart,
   onClose: () => void,

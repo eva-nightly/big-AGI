@@ -76,6 +76,7 @@ function _errorIsNotFound(error: unknown): boolean {
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::AnthropicFileChip
 function AnthropicFileChip(props: {
   access: AnthropicAccessSchema,
   fileId: string,
@@ -277,6 +278,7 @@ function AnthropicFileChip(props: {
   );
 }
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::OpenAIContainerFileChip
 function OpenAIContainerFileChip(props: {
   access: OpenAIAccessSchema,
   containerId: string,
@@ -416,6 +418,7 @@ function OpenAIContainerFileChip(props: {
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::GeminiFileChip
 function GeminiFileChip(props: {
   access: GeminiAccessSchema,
   fileName: string,
@@ -516,6 +519,7 @@ function GeminiFileChip(props: {
 
 
 /** URL-referenced video (user-added, e.g. YouTube): provider-fetched, so no credentials or download - a link-out card. */
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::UrlVideoChip
 function UrlVideoChip(props: {
   url: string,
   muted: boolean,
@@ -562,6 +566,7 @@ function UrlVideoChip(props: {
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::NoAccessChip
 function NoAccessChip(props: { fileId: string }) {
   return (
     <Sheet variant='outlined' sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, px: 1.5, py: 0.5, borderRadius: 'sm' }}>
@@ -574,6 +579,7 @@ function NoAccessChip(props: { fileId: string }) {
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::BlockPartHostedResource
 export function BlockPartHostedResource(props: {
   hostedResourcePart: DMessageHostedResourcePart,
   fragmentId: DMessageFragmentId,

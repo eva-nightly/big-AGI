@@ -14,6 +14,7 @@ const DEFAULT_SKILLS = [
 ] as const;
 
 
+// @uxid src/modules/llms/models-modal/AnthropicSkillsConfig::AnthropicSkillsConfig
 export function AnthropicSkillsConfig({ smaller, llmVndAntSkills, onChangeParameter, onRemoveParameter }: {
   smaller?: boolean;
   llmVndAntSkills: string | undefined;

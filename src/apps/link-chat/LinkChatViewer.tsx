@@ -23,6 +23,7 @@ import { useIsMobile } from '~/common/components/useMatchMedia';
 /**
  * Renders a chat link view with conversation details and messages.
  */
+// @uxid src/apps/link-chat/LinkChatViewer::LinkChatViewer
 export function LinkChatViewer(props: { conversation: DConversation, storedAt: Date, expiresAt: Date | null }) {
 
   // state

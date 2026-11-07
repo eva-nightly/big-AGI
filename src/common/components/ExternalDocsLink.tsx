@@ -7,6 +7,7 @@ import { Brand } from '~/common/app.config';
 import { ExternalLink } from '~/common/components/ExternalLink';
 
 
+// @uxid src/common/components/ExternalDocsLink::ExternalDocsLink
 export function ExternalDocsLink(props: {
   docPage: SiteDocSlug;
   color?: ColorPaletteProp,

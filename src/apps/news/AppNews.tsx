@@ -22,6 +22,7 @@ import { DevNewsItem, newsFrontendTimestamp, NewsItems } from './news.data';
 
 
 // number of news items to show by default, before the expander
+// @uxid src/apps/news/AppNews::AppNewsModuleScope
 const NEWS_INITIAL_COUNT = 3;
 const NEWS_LOAD_STEP = 2;
 
@@ -57,6 +58,7 @@ export const newsRoadmapCallout =
     </CardContent>
   </Card>;
 
+// @uxid src/apps/news/AppNews::BuildInfoCard
 export function BuildInfoCard(props: { noMargin?: boolean }) {
   return (
     <Card variant='solid' color='neutral' invertedColors sx={props.noMargin ? undefined : { mb: 3 }}>
@@ -68,6 +70,7 @@ export function BuildInfoCard(props: { noMargin?: boolean }) {
   );
 }
 
+// @uxid src/apps/news/AppNews::BuildInfoSheet
 function BuildInfoSheet() {
   const backendBuild = React.useMemo(() => getBackendCapabilities().build, []);
   const frontendBuild = React.useMemo(() => Release.buildInfo('frontend'), []);
@@ -95,6 +98,7 @@ function BuildInfoSheet() {
 }
 
 
+// @uxid src/apps/news/AppNews::NewsCard
 function NewsCard(props: {
   newsItem: typeof NewsItems[number];
   idx: number;
@@ -171,6 +175,7 @@ function NewsCard(props: {
 }
 
 
+// @uxid src/apps/news/AppNews::AppNews
 export function AppNews() {
   // state
   const [lastNewsIdx, setLastNewsIdx] = React.useState<number>(NEWS_INITIAL_COUNT - 1);

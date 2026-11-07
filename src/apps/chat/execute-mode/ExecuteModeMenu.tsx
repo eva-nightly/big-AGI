@@ -10,6 +10,7 @@ import type { ChatExecuteMode } from './execute-mode.types';
 import { ExecuteModeItems } from './execute-mode.items';
 
 
+// @uxid src/apps/chat/execute-mode/ExecuteModeMenu::ExecuteModeMenu
 export function ExecuteModeMenu(props: {
   isMobile: boolean,
   hasCapabilityT2I: boolean,

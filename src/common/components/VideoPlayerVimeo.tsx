@@ -1,6 +1,7 @@
 import { LiteVideoEmbed } from './LiteVideoEmbed';
 
 
+// @uxid src/common/components/VideoPlayerVimeo::VideoPlayerVimeo
 export function VideoPlayerVimeo(props: {
   vimeoVideoId: string;
   title?: string;                       // a11y label + poster overlay; defaults to the oEmbed title

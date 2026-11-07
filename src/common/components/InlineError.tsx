@@ -8,6 +8,7 @@ const _style = {
   wordBreak: 'break-word', // for long-word errors to not overflow-x on mobil
 } satisfies SxProps;
 
+// @uxid src/common/components/InlineError::InlineError
 export function InlineError(props: { error: Error | React.JSX.Element | null | any, severity?: 'warning' | 'danger' | 'info', sx?: SxProps }) {
   const color = props.severity === 'info' ? 'primary' : props.severity || 'warning';
   return (

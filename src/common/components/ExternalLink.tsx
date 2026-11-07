@@ -17,6 +17,7 @@ const wowStyle: SxProps = {
 };
 
 
+// @uxid src/common/components/ExternalLink::ExternalLink
 export function ExternalLink(props: {
   href: string,
   color?: ColorPaletteProp,

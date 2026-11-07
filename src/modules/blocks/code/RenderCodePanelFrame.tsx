@@ -30,6 +30,7 @@ export const enhancedCodePanelTitleTooltipSx: SxProps = {
 };
 
 
+// @uxid src/modules/blocks/code/RenderCodePanelFrame::RenderCodePanelFrame
 export function RenderCodePanelFrame(props: {
   color: ColorPaletteProp;
   toolbarColor?: ColorPaletteProp;

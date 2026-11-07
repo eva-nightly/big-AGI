@@ -91,6 +91,7 @@ function isPhraseMatch(input: string): boolean {
  * Note: the cloud/sync build (`dev`, Pro offering) backs chats up to a server and survives cache
  * clears; there this banner is hidden for backed-up users and gains Upgrade-to-Pro paths.
  */
+// @uxid src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::ChatDrawerStorageWarning
 export function ChatDrawerStorageWarning() {
 
   // state
@@ -151,6 +152,7 @@ export function ChatDrawerStorageWarning() {
 }
 
 
+// @uxid src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::StorageWarningConfirmationModal
 function StorageWarningConfirmationModal(props: {
   onClose: () => void;
   onConfirm: () => void;

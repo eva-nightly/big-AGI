@@ -11,6 +11,7 @@ import { SxProps } from '@mui/joy/styles/types';
  *  | Mute |
  *  --------
  */
+// @uxid src/apps/call/components/CallButton::CallButton
 export function CallButton(props: {
   Icon: React.FC, text: string,
   variant?: VariantProp, color?: ColorPaletteProp, disabled?: boolean,

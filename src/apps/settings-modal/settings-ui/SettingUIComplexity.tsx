@@ -12,6 +12,7 @@ const AppearanceOptions: FormSelectOption<UIComplexityMode>[] = [
   { value: 'extra', label: 'Extra', description: 'GIFs & more.' },
 ];
 
+// @uxid src/apps/settings-modal/settings-ui/SettingUIComplexity::SettingUIComplexity
 export function SettingUIComplexity(props: { noLabel?: boolean }) {
 
   // external state

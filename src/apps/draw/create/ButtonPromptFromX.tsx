@@ -4,6 +4,7 @@ import { Button } from '@mui/joy';
 import InsertPhotoOutlinedIcon from '@mui/icons-material/InsertPhotoOutlined';
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined';
 
+// @uxid src/apps/draw/create/ButtonPromptFromX::ButtonPromptFromX
 export function ButtonPromptFromX(props: { isMobile?: boolean, name: string, disabled?: boolean }) {
   return props.isMobile ? null : (
     <Button

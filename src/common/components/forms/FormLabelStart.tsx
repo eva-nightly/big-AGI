@@ -26,6 +26,7 @@ const _styles = {
  * Shared label part (left side)
  * Not memoized: callers pass element literals (description, tooltip) by design, so a memo could never hold.
  */
+// @uxid src/common/components/forms/FormLabelStart::FormLabelStart
 export function FormLabelStart(props: {
   title: React.ReactNode,
   description?: React.ReactNode,

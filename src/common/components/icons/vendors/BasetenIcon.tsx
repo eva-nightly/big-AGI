@@ -6,6 +6,7 @@ import { SvgIcon, SvgIconProps } from '@mui/joy';
  * Baseten mark, extracted from the baseten.co logo (the wordmark's leading glyph),
  * recentered from its native 22.75x28 box into the 24x24 viewBox.
  */
+// @uxid src/common/components/icons/vendors/BasetenIcon::BasetenIcon
 export function BasetenIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 0 24 24' width='24' height='24' fill='currentColor' stroke='none' {...props}>
     <path

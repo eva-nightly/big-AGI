@@ -52,6 +52,7 @@ function _prepareSrcDoc(htmlString: string): string {
   return modifiedHtml.slice(0, doctypeLength) + frameBootstrapScript + modifiedHtml.slice(doctypeLength);
 }
 
+// @uxid src/modules/blocks/code/code-renderers/RenderCodeHtmlIFrame::RenderCodeHtmlIFrame
 export function RenderCodeHtmlIFrame(props: { htmlCode: string, isFullscreen?: boolean }) {
 
   // state

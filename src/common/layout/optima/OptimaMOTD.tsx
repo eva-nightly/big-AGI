@@ -23,6 +23,7 @@ export const optimaHasMOTD = !!process.env.NEXT_PUBLIC_MOTD;
  * Message of the day. If set, displays a message on this deployment.
  * The message can be permanently dismissed.
  */
+// @uxid src/common/layout/optima/OptimaMOTD::OptimaMOTD
 export function OptimaMOTD() {
 
   // expand special variables in the MOTD

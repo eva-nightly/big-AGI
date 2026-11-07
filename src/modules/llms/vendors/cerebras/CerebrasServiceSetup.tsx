@@ -18,6 +18,7 @@ import { useServiceSetup } from '../useServiceSetup';
 const CEREBRAS_REG_LINK = 'https://cloud.cerebras.ai/';
 
 
+// @uxid src/modules/llms/vendors/cerebras/CerebrasServiceSetup::CerebrasServiceSetup
 export function CerebrasServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

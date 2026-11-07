@@ -21,6 +21,7 @@ import { ModelVendorMistral } from './mistral.vendor';
 const MISTRAL_REG_LINK = 'https://console.mistral.ai/';
 
 
+// @uxid src/modules/llms/vendors/mistral/MistralServiceSetup::MistralServiceSetup
 export function MistralServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

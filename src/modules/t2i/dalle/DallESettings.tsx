@@ -53,6 +53,7 @@ const CONF = {
 } as const;
 
 
+// @uxid src/modules/t2i/dalle/DallESettings::DallESettings
 export function DallESettings(props: {
   profile: DProfileDalle;
   onUpdateProfile: (update: Partial<DProfileDalle>) => void;

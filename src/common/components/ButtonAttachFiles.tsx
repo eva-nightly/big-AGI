@@ -39,6 +39,7 @@ export async function openFileForAttaching(
 
 export const ButtonAttachFilesMemo = React.memo(ButtonAttachFiles);
 
+// @uxid src/common/components/ButtonAttachFiles::ButtonAttachFiles
 function ButtonAttachFiles(props: {
   color?: ColorPaletteProp,
   multiple?: boolean,

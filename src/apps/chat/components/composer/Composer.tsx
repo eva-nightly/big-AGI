@@ -112,6 +112,7 @@ export const ComposerMemo = React.memo(Composer);
 /**
  * A React component for composing messages, with attachments and different modes.
  */
+// @uxid src/apps/chat/components/composer/Composer::Composer
 function Composer(props: {
   isMobile: boolean;
   composerTextAreaRef: React.RefObject<HTMLTextAreaElement>;

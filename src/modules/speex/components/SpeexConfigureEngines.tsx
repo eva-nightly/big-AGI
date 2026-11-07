@@ -111,6 +111,7 @@ function _sourceIcon(engine: DSpeexEngineAny): React.ElementType | null {
 }
 
 
+// @uxid src/modules/speex/components/SpeexConfigureEngines::SpeexConfigureEngines
 export function SpeexConfigureEngines(props: { isMobile: boolean }) {
 
   // state

@@ -26,6 +26,7 @@ function initTestBeamStore(messages: DMessage[], beamStore: BeamStoreApi): BeamS
 }
 
 
+// @uxid src/apps/beam/AppBeam::AppBeam
 export function AppBeam() {
 
   // state

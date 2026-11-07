@@ -49,6 +49,7 @@ const svgSx: SxProps = {
 };
 
 
+// @uxid src/modules/blocks/code/code-renderers/RenderCodeSVG::RenderCodeSVG
 export const RenderCodeSVG = React.forwardRef(function RenderCodeSVG(props: {
   svgCode: string;
   fitScreen: boolean;

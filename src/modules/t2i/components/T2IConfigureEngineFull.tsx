@@ -20,6 +20,7 @@ import { useT2IStore } from '../store-module-t2i';
  * The openai, azure and localai vendors generate through the OpenAI/DALL·E
  * path and share a profile shape, so they share the DALL·E panel.
  */
+// @uxid src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfilePanel
 function T2IEngineProfilePanel(props: {
   engine: DT2IEngineAny;
   onUpdate: (updates: Partial<DT2IEngineAny>) => void;
@@ -60,6 +61,7 @@ function T2IEngineProfilePanel(props: {
  * Store-connected profile panel for a given engine id - used by the Draw app's
  * inline Options expander, which knows the active engine id but not the instance.
  */
+// @uxid src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfileEditor
 export function T2IEngineProfileEditor(props: { engineId: DT2IEngineId | null }) {
   const { engineId } = props;
   const engine = useT2IStore(state => engineId ? state.engines[engineId] ?? null : null);
@@ -75,6 +77,7 @@ export function T2IEngineProfileEditor(props: { engineId: DT2IEngineId | null })
 
 // --- Public component ---
 
+// @uxid src/modules/t2i/components/T2IConfigureEngineFull::T2IConfigureEngineFull
 export function T2IConfigureEngineFull(props: {
   engine: DT2IEngineAny;
   isMobile: boolean;

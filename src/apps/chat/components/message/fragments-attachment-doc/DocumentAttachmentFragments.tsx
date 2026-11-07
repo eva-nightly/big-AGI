@@ -22,6 +22,7 @@ import { DocAttachmentFragmentPane } from './DocAttachmentFragmentPane';
 /**
  * Wrapper for a DocAttachmentFragmentButton that adds DnD support. Also an item of `EditAttachmentFragments`.
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::SortableDocAttachmentButton
 export function SortableDocAttachmentButton(props: {
   fragment: DMessageAttachmentFragment,
   contentScaling: ContentScaling,
@@ -66,6 +67,7 @@ const _rootSx: SxProps = {
  * When one is active, there is a content part just right under (with the collapse mechanism in case it's a user role).
  * If one is clicked the content part (use ContentPartText) is displayed.
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::DocumentAttachmentFragments
 export const DocumentAttachmentFragments = React.memo(function DocumentAttachmentFragments(props: {
   attachmentFragments: readonly DMessageAttachmentFragment[],
   messageRole: DMessageRole,

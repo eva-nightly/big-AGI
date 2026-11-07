@@ -169,6 +169,7 @@ type MermaidResult =
   | { success: true; svg: string }
   | { success: false; error: string };
 
+// @uxid src/modules/blocks/code/code-renderers/RenderCodeMermaid::RenderCodeMermaid
 export const RenderCodeMermaid = React.forwardRef(function RenderCodeMermaid(props: {
   mermaidCode: string;
   fitScreen: boolean;

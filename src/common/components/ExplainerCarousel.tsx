@@ -60,6 +60,7 @@ const buttonNextSx: SxProps = {
 };
 
 
+// @uxid src/common/components/ExplainerCarousel::AllStepsStepper
 function AllStepsStepper(props: {
   steps: ExplainerStep[],
   activeIndex: number,
@@ -113,6 +114,7 @@ export interface ExplainerPage extends ExplainerStep {
   mdContent: string
 }
 
+// @uxid src/common/components/ExplainerCarousel::ExplainerCarousel
 export function ExplainerCarousel(props: {
   explainerId: string,
   steps: ExplainerPage[],

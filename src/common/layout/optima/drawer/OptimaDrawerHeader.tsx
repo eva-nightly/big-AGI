@@ -7,6 +7,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { Link } from '~/common/components/Link';
 
 
+// @uxid src/common/layout/optima/drawer/OptimaDrawerHeader::OptimaDrawerHeader
 export const OptimaDrawerHeader = (props: {
   title: string,
   onClose: () => void,

@@ -90,6 +90,7 @@ const _thumbSx: SxProps = {
   flexShrink: 0,
 } as const;
 
+// @uxid src/apps/chat/components/composer/composer.input-enhancers::VideoUrlPendingChip
 function VideoUrlPendingChip(props: { part: Parameters<AttachmentInputEnhancer['ownsPart']>[0], onRemove: () => void }) {
 
   const resource = props.part.resource;
@@ -126,6 +127,7 @@ function VideoUrlPendingChip(props: { part: Parameters<AttachmentInputEnhancer['
 
 
 /** Capability hint: a video URL was pasted on a non-video model - offer the editorial pick, or Models setup. */
+// @uxid src/apps/chat/components/composer/composer.input-enhancers::VideoUrlDisabledHint
 function VideoUrlDisabledHint(props: AttachmentEnhancerHintItem) {
 
   // reactive: upgrades in-place from the setup pointer when the user adds a capable model (e.g. via the Models button)

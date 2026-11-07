@@ -23,6 +23,7 @@ import { useServiceSetup } from '../useServiceSetup';
 import { isValidAzureApiKey, ModelVendorAzure } from './azure.vendor';
 
 
+// @uxid src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup
 export function AzureServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state

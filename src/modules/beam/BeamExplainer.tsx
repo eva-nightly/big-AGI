@@ -97,6 +97,7 @@ const beamExplainerSx: SxProps = {
 };
 
 
+// @uxid src/modules/beam/BeamExplainer::BeamExplainer
 export function BeamExplainer(props: {
   onWizardComplete: () => any,
 }) {

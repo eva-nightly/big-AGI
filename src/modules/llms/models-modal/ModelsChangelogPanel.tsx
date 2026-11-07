@@ -117,6 +117,7 @@ function _dateText(at: number, withTime: boolean): string {
 }
 
 /** '+3' / '~2' / '-1' count chips of a meaningful entry */
+// @uxid src/modules/llms/models-modal/ModelsChangelogPanel::CountChips
 function CountChips(props: { entry: DModelsChangelogEntry }) {
   const { add, rem, mod } = props.entry;
   const modCount = mod ? Object.keys(mod).length : 0;
@@ -133,6 +134,7 @@ function CountChips(props: { entry: DModelsChangelogEntry }) {
  * Updates screen of the AI Models dialog: a status header, one row per service (when it was last
  * listed, what changed last), and per-service history on expansion.
  */
+// @uxid src/modules/llms/models-modal/ModelsChangelogPanel::ModelsChangelogPanel
 export function ModelsChangelogPanel(props: {
   modelsServices: DModelsService[],
   isMobile: boolean,
@@ -265,6 +267,7 @@ export function ModelsChangelogPanel(props: {
 }
 
 
+// @uxid src/modules/llms/models-modal/ModelsChangelogPanel::ServiceChangelogRow
 function ServiceChangelogRow(props: {
   service: DModelsService,
   isMobile: boolean,

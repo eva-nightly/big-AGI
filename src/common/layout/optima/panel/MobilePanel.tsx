@@ -12,6 +12,7 @@ import { PreferencesListItem } from './items/PreferencesListItem';
 import { optimaClosePanel, useOptimaPanelOpen } from '../useOptima';
 
 
+// @uxid src/common/layout/optima/panel/MobilePanel::MobilePanel
 export function MobilePanel(props: { component: React.ElementType, currentApp?: NavItemApp }) {
 
   // external state

@@ -11,6 +11,7 @@ export interface InlineTextareaDraft {
   replaceText: (text: string) => boolean;
 }
 
+// @uxid src/common/components/InlineTextarea::InlineTextarea
 export function InlineTextarea(props: {
   initialText: string,
   disableAutoSaveOnBlur?: boolean // NOTE: this will disable the enter=newline as well

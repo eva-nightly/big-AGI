@@ -22,6 +22,7 @@ import { ActionFolder } from './ActionFolder';
 import { WindowSplitControls } from './WindowSplitControls';
 
 
+// @uxid src/apps/chat/components/layout-panel/ChatPanel::VariformPaneFrame
 function VariformPaneFrame() {
   return (
     <OptimaPanelGroupGutter>
@@ -35,6 +36,7 @@ function VariformPaneFrame() {
 
 export const ChatPanelMemo = React.memo(ChatPanel);
 
+// @uxid src/apps/chat/components/layout-panel/ChatPanel::ChatPanel
 function ChatPanel(props: {
   isMobile: boolean,
   conversationId: DConversationId | null,

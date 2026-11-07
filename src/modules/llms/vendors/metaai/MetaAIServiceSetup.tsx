@@ -20,6 +20,7 @@ import { ModelVendorMetaAI } from './metaai.vendor';
 const METAAI_REG_LINK = 'https://dev.meta.ai/api-keys';
 
 
+// @uxid src/modules/llms/vendors/metaai/MetaAIServiceSetup::MetaAIServiceSetup
 export function MetaAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state

@@ -8,6 +8,7 @@ import FormatPaintTwoToneIcon from '@mui/icons-material/FormatPaintTwoTone';
 import { animationShadowRingLimey } from '~/common/util/animUtils';
 
 
+// @uxid src/apps/draw/create/DrawSectionHeading::DrawSectionHeading
 export function DrawSectionHeading(props: {
   title: React.ReactNode;
   isBeta?: boolean,

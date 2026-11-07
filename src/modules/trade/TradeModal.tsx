@@ -9,6 +9,7 @@ import { ImportChats, ImportConfig } from './ImportChats';
 
 export type TradeConfig = ImportConfig | ExportConfig;
 
+// @uxid src/modules/trade/TradeModal::TradeModal
 export function TradeModal(props: { config: TradeConfig, onConversationActivate: (conversationId: DConversationId) => void, onClose: () => void }) {
   return (
     <GoodModal

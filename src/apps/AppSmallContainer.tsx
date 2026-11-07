@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Box, Container, Typography } from '@mui/joy';
 
 
+// @uxid src/apps/AppSmallContainer::AppSmallContainer
 export function AppSmallContainer({ title, description, children }: {
   title: string;
   description: React.ReactNode;

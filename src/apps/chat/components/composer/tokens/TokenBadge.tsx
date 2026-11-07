@@ -13,6 +13,7 @@ import { tokenCountsMathAndMessage, TokenTooltip } from './TokenTooltip';
  */
 export const TokenBadgeMemo = React.memo(TokenBadge);
 
+// @uxid src/apps/chat/components/composer/tokens/TokenBadge::TokenBadge
 function TokenBadge(props: {
   chatPricing?: DPricingChatGenerate,
 

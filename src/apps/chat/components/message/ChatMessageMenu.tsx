@@ -51,6 +51,7 @@ const antCachePromptOnSx: SxProps = {
 };
 
 
+// @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu
 export function ChatMessageMenu(props: {
   anchor: HTMLElement,
   onClose: () => void

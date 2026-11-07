@@ -64,6 +64,7 @@ const promptButtonSx: SxProps = {
  * Textarea end-decorator actions: the pre-send items row (passed as children, e.g. UserInputItemsRow)
  * and the AI-suggested attachment prompts. Knows nothing about the items themselves.
  */
+// @uxid src/apps/chat/components/composer/textarea/ComposerTextAreaActions::ComposerTextAreaActions
 export function ComposerTextAreaActions(props: {
   agiAttachmentPrompts: AgiAttachmentPromptsData,
   onAppendAndSend: (appendText: string) => Promise<void>,

@@ -68,6 +68,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/PaneTitleOverlay::PaneTitleOverlay
 export function PaneTitleOverlay(props: {
   paneIdx: number,
   conversationId: DConversationId | null,

@@ -38,6 +38,7 @@ function isNvidiaNIMConfig(host?: string, key?: string) {
  * Community upgrade notice: shown on custom-host services pointing at NVIDIA's endpoint, which now
  * has a dedicated vendor (curated models, correct context windows, retired models filtered out).
  */
+// @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::NvidiaNIMUpgradeNotice
 function NvidiaNIMUpgradeNotice(props: { oaiServiceId: DModelsServiceId, nvapiKey: string }) {
 
   const handleMigrateService = React.useCallback(() => {
@@ -68,6 +69,7 @@ function NvidiaNIMUpgradeNotice(props: { oaiServiceId: DModelsServiceId, nvapiKe
 }
 
 
+// @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup
 export function OpenAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

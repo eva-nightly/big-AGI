@@ -45,6 +45,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/common/attachment-drafts/attachment-sources/useWebAttachmentModal::WebInputModal
 function WebInputModal(props: {
   composerText?: string,
   onClose: () => void,

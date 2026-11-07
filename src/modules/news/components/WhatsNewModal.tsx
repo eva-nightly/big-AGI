@@ -203,6 +203,7 @@ function _renderInline(text: string): React.ReactNode {
 }
 
 /** A body: `\n\n`-separated paragraphs; a paragraph whose lines are all list lines renders as a list */
+// @uxid src/modules/news/components/WhatsNewModal::NewsBody
 function NewsBody(props: { body: string }) {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, ..._styles.marked }}>
@@ -223,6 +224,7 @@ function NewsBody(props: { body: string }) {
 
 /// Changelog
 
+// @uxid src/modules/news/components/WhatsNewModal::ChangelogDay
 function ChangelogDay(props: { day: NewsChangelogGroup }) {
   const { day } = props;
   return (
@@ -252,6 +254,7 @@ function ChangelogDay(props: { day: NewsChangelogGroup }) {
 
 
 /** Days, newest first, with a year header for past years; `seenFrom` is the first already-seen day */
+// @uxid src/modules/news/components/WhatsNewModal::ChangelogLedger
 function ChangelogLedger(props: { days: NewsChangelogGroup[], seenFrom?: number }) {
   const { days, seenFrom = -1 } = props;
   const thisYear = String(new Date().getFullYear());
@@ -276,6 +279,7 @@ function ChangelogLedger(props: { days: NewsChangelogGroup[], seenFrom?: number 
  * The changelog pane. On top, folded: days this build does not have yet. Then the days it has: new
  * since the watermark first, seen days folded behind one button, then older pages on request.
  */
+// @uxid src/modules/news/components/WhatsNewModal::ChangelogPane
 function ChangelogPane(props: {
   split: ReturnType<typeof newsChangelogSplit>, // against the watermark at open
   loaded: boolean,
@@ -355,6 +359,7 @@ function ChangelogPane(props: {
 /// Announcements
 
 /** One announcement: media, body, learn-more link */
+// @uxid src/modules/news/components/WhatsNewModal::AnnouncementPane
 function AnnouncementPane(props: { announcement: NewsAnnouncement }) {
   const { announcement } = props;
   return (
@@ -392,6 +397,7 @@ function AnnouncementPane(props: { announcement: NewsAnnouncement }) {
  * list, in the Preferences two-pane shape. What is new is measured against the watermark at open;
  * the changelog counts as seen as soon as it loads, so the indicators clear on open.
  */
+// @uxid src/modules/news/components/WhatsNewModal::WhatsNewModal
 export function WhatsNewModal() {
 
   // external state

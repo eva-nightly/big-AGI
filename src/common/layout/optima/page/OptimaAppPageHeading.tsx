@@ -42,6 +42,7 @@ const _textSlotProps = {
 } as const;
 
 
+// @uxid src/common/layout/optima/page/OptimaAppPageHeading::OptimaAppPageHeading
 export function OptimaAppPageHeading(props: {
   title: React.ReactNode;
   tagline?: React.ReactNode;

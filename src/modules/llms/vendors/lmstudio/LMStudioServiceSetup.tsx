@@ -22,6 +22,7 @@ import { useServiceSetup } from '../useServiceSetup';
 import { ModelVendorLMStudio } from './lmstudio.vendor';
 
 
+// @uxid src/modules/llms/vendors/lmstudio/LMStudioServiceSetup::LMStudioServiceSetup
 export function LMStudioServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

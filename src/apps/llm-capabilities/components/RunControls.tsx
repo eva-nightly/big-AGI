@@ -48,6 +48,7 @@ export interface RunControlsProps {
 }
 
 
+// @uxid src/apps/llm-capabilities/components/RunControls::RunControls
 export function RunControls(props: RunControlsProps) {
   const {
     vendors, selectedVendor, onSelectedVendorChange,

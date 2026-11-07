@@ -17,6 +17,7 @@ const _floatingWindowSx: SxProps = {
 } as const;
 
 
+// @uxid src/common/components/dnd-window/JoyFloatingWindow::JoyFloatingWindow
 export function JoyFloatingWindow(props: {
   id: string;
   label: string;

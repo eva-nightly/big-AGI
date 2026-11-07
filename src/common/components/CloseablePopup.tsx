@@ -64,6 +64,7 @@ export function joyKeepPopup<TEvent extends React.MouseEvent>(fn: (event: TEvent
  *  - dynamic menus unsupported
  *  - ...
  */
+// @uxid src/common/components/CloseablePopup::CloseablePopup
 export function CloseablePopup(props: {
   menu?: true, // whether to render as a MenuList (or as a Box otherwise)
   anchorEl: HTMLElement | null,

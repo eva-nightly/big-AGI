@@ -10,6 +10,7 @@ import type { DProfileOpenRouterImages } from '../t2i.types';
 import { OPENROUTER_IMAGE_MODEL_IDS, OPENROUTER_IMAGE_MODELS } from '../t2i.config';
 
 
+// @uxid src/modules/t2i/openrouter/OpenRouterT2ISettings::OpenRouterT2ISettings
 export function OpenRouterT2ISettings(props: {
   profile: DProfileOpenRouterImages;
   onUpdateProfile: (update: Partial<DProfileOpenRouterImages>) => void;

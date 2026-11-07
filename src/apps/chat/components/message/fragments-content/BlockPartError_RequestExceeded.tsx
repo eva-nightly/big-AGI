@@ -12,6 +12,7 @@ import { useModelServiceClientSideFetch } from '~/common/stores/llms/hooks/useMo
 /**
  * Error recovery component for "Request too large" errors.
  */
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartError_RequestExceeded::BlockPartError_RequestExceeded
 export function BlockPartError_RequestExceeded(props: {
   messageGeneratorLlmId?: string | null;
   contentScaling: ContentScaling;

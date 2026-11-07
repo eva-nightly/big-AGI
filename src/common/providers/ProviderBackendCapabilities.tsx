@@ -71,6 +71,7 @@ const styles: Record<string, React.CSSProperties> = {
  * Note: we used to have a NoSSR wrapper inside the AppLayout component (which was delaying rendering 1 cycle),
  * however this wrapper is now providing the same function, given the network roundtrip.
  */
+// @uxid src/common/providers/ProviderBackendCapabilities::ProviderBackendCapabilities
 export function ProviderBackendCapabilities(props: { children: React.ReactNode }) {
 
   // state

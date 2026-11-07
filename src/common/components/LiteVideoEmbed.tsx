@@ -76,6 +76,7 @@ export interface LiteVideoEmbedProps {
   height?: number | string;
 }
 
+// @uxid src/common/components/LiteVideoEmbed::LiteVideoEmbed
 export function LiteVideoEmbed(props: LiteVideoEmbedProps) {
 
   const { platform, videoId, play = 'click', loop, rounded, responsive, width, height } = props;

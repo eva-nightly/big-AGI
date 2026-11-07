@@ -5,6 +5,7 @@ import { SvgIcon, SvgIconProps } from '@mui/joy';
 /*
  * Source: the MultipleStopIcon from '@mui/icons-material/Podcasts';
  */
+// @uxid src/common/components/icons/LiveFilePatchIcon::LiveFilePatchIcon
 export function LiveFilePatchIcon(props: SvgIconProps) {
   return (
     <SvgIcon viewBox='0 0 24 24' width='24' height='24' {...props}>

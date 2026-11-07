@@ -12,6 +12,7 @@ interface MyDocumentProps extends DocumentProps {
   emotionStyleTags: React.JSX.Element[];
 }
 
+// @uxid pages/_document::MyDocument
 export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
   return (
     <Html lang='en'>

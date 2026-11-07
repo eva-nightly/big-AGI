@@ -40,6 +40,7 @@ function ERCHeader(props: { children: React.ReactNode }) {
 }
 
 
+// @uxid src/modules/blocks/enhanced-code/EnhancedRenderCode::EnhancedRenderCode
 export function EnhancedRenderCode(props: {
   // same as RenderCode
   semiStableId: string | undefined,

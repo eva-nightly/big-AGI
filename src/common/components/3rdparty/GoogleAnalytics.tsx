@@ -44,6 +44,7 @@ declare global {
  * - removal of custom dataLayer name
  * - add user_properties: https://developers.google.com/analytics/devguides/collection/ga4/reference/config#user_properties
  */
+// @uxid src/common/components/3rdparty/GoogleAnalytics::NextGoogleAnalytics
 function NextGoogleAnalytics(props: {
   gaId: string
   debugMode?: boolean
@@ -95,6 +96,7 @@ function NextGoogleAnalytics(props: {
  *
  * Note: this causes a 2.8kb increase in the bundle size.
  */
+// @uxid src/common/components/3rdparty/GoogleAnalytics::OptionalGoogleAnalytics
 export function OptionalGoogleAnalytics() {
   const gaId = getGA4MeasurementId();
   return gaId ? <NextGoogleAnalytics gaId={gaId} /> : null;

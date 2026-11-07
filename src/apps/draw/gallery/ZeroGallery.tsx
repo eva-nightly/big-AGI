@@ -22,6 +22,7 @@ Your past creations will appear here once you start drawing.
 `.trim();
 
 
+// @uxid src/apps/draw/gallery/ZeroGallery::ZeroGallery
 export function ZeroGallery(props: { domain: 'draw' | 'app' }) {
 
   // external state

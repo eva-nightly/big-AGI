@@ -97,6 +97,7 @@ const _styles = {
  * The external `tab` (PreferencesTabId, incl. legacy aliases) is resolved to a nav node here, so
  * callers keep using `optimaOpenPreferences('voice'|'draw'|...)` unchanged.
  */
+// @uxid src/apps/settings-modal/SettingsModal::SettingsModal
 export function SettingsModal(props: {
   open: boolean,
   tab: PreferencesTabId,

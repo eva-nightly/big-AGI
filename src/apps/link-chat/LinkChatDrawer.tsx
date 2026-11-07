@@ -17,6 +17,7 @@ import { optimaCloseDrawer } from '~/common/layout/optima/useOptima';
  * Drawer Items are all the links already shared, for quick access.
  * This is stores in the Trade Store (local storage).
  */
+// @uxid src/apps/link-chat/LinkChatDrawer::LinkChatDrawer
 export function LinkChatDrawer(props: {
   activeLinkId: string | null,
   sharedChatLinkItems: SharedChatLinkItem[]

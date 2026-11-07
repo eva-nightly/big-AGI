@@ -19,6 +19,7 @@ import { useComposerAutoHide } from './useComposerAutoHide';
  *
  * `children` is a render function: it receives the has-content setter to wire into the Composer's `onComposerHasContent`.
  */
+// @uxid src/apps/chat/components/composer/ComposerDock::ComposerDock
 export function ComposerDock(props: {
   conversationId: DConversationId | null; // the focused chat: a Beam open in it hides the composer
   isMobile: boolean;

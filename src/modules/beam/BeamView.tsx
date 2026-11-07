@@ -22,6 +22,7 @@ import { BeamStoreApi, useBeamStore } from './store-beam.hooks';
 import { useModuleBeamStore } from './store-module-beam';
 
 
+// @uxid src/modules/beam/BeamView::BeamView
 export function BeamView(props: {
   beamStore: BeamStoreApi,
   isFocused: boolean,

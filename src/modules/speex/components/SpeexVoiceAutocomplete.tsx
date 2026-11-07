@@ -31,6 +31,7 @@ interface SpeexVoiceAutocompleteProps {
 }
 
 
+// @uxid src/modules/speex/components/SpeexVoiceAutocomplete::SpeexVoiceAutocomplete
 export function SpeexVoiceAutocomplete(props: SpeexVoiceAutocompleteProps) {
   const { engine, value /* e.g. ttsModel */, onValueChange, placeholder = 'Select or type...', disabled } = props;
 

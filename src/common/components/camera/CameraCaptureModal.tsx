@@ -138,6 +138,7 @@ const _styles = {
 } as const satisfies Record<string, SxProps>;
 
 
+// @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal
 export function CameraCaptureModal(props: {
   allowMultiCapture?: boolean;
   allowLiveFeed?: boolean;

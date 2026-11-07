@@ -29,6 +29,7 @@ import { ModelVendorLocalAI } from './localai.vendor';
 const localAIHostSchema = z.url().startsWith('http');
 
 
+// @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup
 export function LocalAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state

@@ -48,6 +48,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/layout-drawer/folders/FolderListItem::FolderListItem
 export function FolderListItem(props: {
   folder: DFolder;
   chatCount?: number;

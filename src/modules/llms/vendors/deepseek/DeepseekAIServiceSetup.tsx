@@ -20,6 +20,7 @@ import { ModelVendorDeepseek } from './deepseekai.vendor';
 const DEEPSEEK_REG_LINK = 'https://platform.deepseek.com/api_keys';
 
 
+// @uxid src/modules/llms/vendors/deepseek/DeepseekAIServiceSetup::DeepseekAIServiceSetup
 export function DeepseekAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

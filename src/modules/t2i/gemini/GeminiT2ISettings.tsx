@@ -15,6 +15,7 @@ const _selectSx = { minWidth: '10rem' } as const;
 const _selectSlotProps = { button: { sx: { whiteSpace: 'inherit' } } } as const;
 
 
+// @uxid src/modules/t2i/gemini/GeminiT2ISettings::GeminiT2ISettings
 export function GeminiT2ISettings(props: {
   profile: DProfileGeminiImages;
   serviceId: DModelsServiceId | null;

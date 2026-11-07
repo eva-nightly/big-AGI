@@ -17,6 +17,7 @@ import { useUIContentScaling } from '~/common/stores/store-ui';
 import { AppSmallContainer } from '../AppSmallContainer';
 
 
+// @uxid src/apps/diff/AppDiff::AppDiff
 export function AppDiff() {
 
   // state

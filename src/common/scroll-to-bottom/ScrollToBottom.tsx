@@ -38,6 +38,7 @@ const USER_STICKY_MARGIN = 60;
 const BOOTING_TIMEOUT = 400;
 
 
+// @uxid src/common/scroll-to-bottom/ScrollToBottom::DebugBorderBox
 function DebugBorderBox(props: { heightPx: number, color: string }) {
   return (
     <Box sx={{
@@ -64,6 +65,7 @@ const scrollableBoxSx: SxProps = {
  *
  * NOTE: the first (possibly only) child shall have { minHeight: '100%' } to auto-fill
  */
+// @uxid src/common/scroll-to-bottom/ScrollToBottom::ScrollToBottom
 export function ScrollToBottom(props: {
   bootToBottom?: boolean,
   bootSmoothly?: boolean,

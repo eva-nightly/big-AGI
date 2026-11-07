@@ -51,6 +51,7 @@ const _style = {
 } as const;
 
 
+// @uxid src/modules/blocks/enhanced-code/ERCDiffModal::ERCDiffModal
 export function ERCDiffModal(props: {
   title?: React.ReactNode;
   isMobile: boolean;

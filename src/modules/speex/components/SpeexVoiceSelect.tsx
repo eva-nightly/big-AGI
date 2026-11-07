@@ -43,6 +43,7 @@ const _selectSlotProps: SelectSlotsAndSlotProps<false>['slotProps'] = {
 } as const;
 
 
+// @uxid src/modules/speex/components/SpeexVoiceSelect::SpeexVoiceSelect
 export function SpeexVoiceSelect(props: {
   engine: DSpeexEngineAny;
   voiceId: string | null;

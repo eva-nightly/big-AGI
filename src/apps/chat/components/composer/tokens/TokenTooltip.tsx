@@ -138,6 +138,7 @@ const tooltipMessageSx: SxProps = {
   },
 };
 
+// @uxid src/apps/chat/components/composer/tokens/TokenTooltip::TokenTooltip
 export function TokenTooltip(props: { message: string | null, color: ColorPaletteProp, placement?: 'top' | 'top-end', children: React.ReactElement }) {
 
   // external state

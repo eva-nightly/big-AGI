@@ -19,6 +19,7 @@ import { FLATTEN_PROFILES, FlattenStyleType } from './flatten.data';
 import { useModelDomain } from '~/common/stores/llms/hooks/useModelDomain';
 
 
+// @uxid src/modules/aifn/flatten/FlattenerModal::StylesList
 function StylesList(props: { selectedStyle: FlattenStyleType | null, onSelectedStyle: (type: FlattenStyleType) => void }) {
   const readonly = !!props.selectedStyle;
   const items = FLATTEN_PROFILES.filter(style => !readonly || style.type === props.selectedStyle);
@@ -48,6 +49,7 @@ function StylesList(props: { selectedStyle: FlattenStyleType | null, onSelectedS
   );
 }
 
+// @uxid src/modules/aifn/flatten/FlattenerModal::FlatteningProgress
 function FlatteningProgress(props: { llmLabel: string, partialText: string | null }) {
   return (
     <Box sx={{ mx: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
@@ -81,6 +83,7 @@ function encodeConversationAsUserMessage(userPrompt: string, messages: Readonly<
 }
 
 
+// @uxid src/modules/aifn/flatten/FlattenerModal::FlattenerModal
 export function FlattenerModal(props: {
   conversationId: string | null,
   onConversationBranch: (conversationId: DConversationId, messageId: string | null, addSplitPane: boolean) => DConversationId | null,

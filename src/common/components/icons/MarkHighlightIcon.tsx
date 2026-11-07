@@ -5,6 +5,7 @@ import { SvgIcon, SvgIconProps } from '@mui/joy';
 /*
  * Source: '@mui/icons-material/DriveFileRenameOutline';
  */
+// @uxid src/common/components/icons/MarkHighlightIcon::MarkHighlightIcon
 export function MarkHighlightIcon(props: SvgIconProps & { hcolor?: string }) {
   return (
     <SvgIcon viewBox='0 0 24 24' width='24' height='24' {...props}>

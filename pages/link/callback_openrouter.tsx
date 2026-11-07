@@ -10,6 +10,7 @@ import { navigateToIndex, useRouterQuery } from '~/common/app.routes';
 import { withNextJSPerPageLayout } from '~/common/layout/withLayout';
 
 
+// @uxid pages/link/callback_openrouter::CallbackOpenRouterPage
 function CallbackOpenRouterPage(props: { openRouterCode: string | undefined }) {
 
   // external state

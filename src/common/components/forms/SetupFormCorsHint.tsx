@@ -14,6 +14,7 @@ import { Alert, Typography } from '@mui/joy';
  * Text is per-vendor (`children`): each enables CORS differently - a UI toggle, a container env var, a daemon
  * env var - and naming the wrong knob is worse than naming none.
  */
+// @uxid src/common/components/forms/SetupFormCorsHint::SetupFormCorsHint
 export function SetupFormCorsHint(props: { visible: boolean, children: React.ReactNode }) {
   if (!props.visible)
     return null;

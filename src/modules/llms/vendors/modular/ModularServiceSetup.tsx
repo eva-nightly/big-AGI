@@ -24,6 +24,7 @@ const _modularModes: ReadonlyArray<FormRadioOption<'cloud' | 'selfhosted'>> = [
 ] as const;
 
 
+// @uxid src/modules/llms/vendors/modular/ModularServiceSetup::ModularServiceSetup
 export function ModularServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

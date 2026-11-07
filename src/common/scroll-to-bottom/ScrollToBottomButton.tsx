@@ -44,6 +44,7 @@ const absoluteButtonSx: SxProps = {
 } as const;
 
 
+// @uxid src/common/scroll-to-bottom/ScrollToBottomButton::ScrollToBottomButton
 export function ScrollToBottomButton(props: { inline?: boolean }) {
 
   // state

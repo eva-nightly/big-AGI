@@ -23,6 +23,7 @@ import { useServiceSetup } from '../useServiceSetup';
 import { isValidAnthropicApiKey, ModelVendorAnthropic } from './anthropic.vendor';
 
 
+// @uxid src/modules/llms/vendors/anthropic/AnthropicServiceSetup::AnthropicServiceSetup
 export function AnthropicServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

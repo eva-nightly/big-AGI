@@ -8,6 +8,7 @@ import { FormLabelStart } from './FormLabelStart';
 /**
  * Switch control
  */
+// @uxid src/common/components/forms/FormSwitchControl::FormSwitchControl
 export function FormSwitchControl(props: {
   title: string | React.JSX.Element, description?: string | React.JSX.Element,
   on?: React.ReactNode, off?: string, fullWidth?: boolean,

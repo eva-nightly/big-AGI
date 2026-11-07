@@ -50,6 +50,7 @@ export type AutoBlocksHtmlRenderVariant = 'show-code' | 'render-at-end' | 'rende
  * - DocAttachmentFragmentPane - when not editing and with a switch to show text/fenced (which could be rendered)
  * - DiagramsModal - for the diagram blocks
  */
+// @uxid src/modules/blocks/AutoBlocksRenderer::AutoBlocksRenderer
 export function AutoBlocksRenderer(props: {
   // required
   text: string;

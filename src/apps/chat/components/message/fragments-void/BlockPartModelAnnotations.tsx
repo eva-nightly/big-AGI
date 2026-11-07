@@ -95,6 +95,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/message/fragments-void/BlockPartModelAnnotations::BlockPartModelAnnotations
 export function BlockPartModelAnnotations(props: {
   itemsName?: string;
   annotations: Immutable<DVoidWebCitation[]>;

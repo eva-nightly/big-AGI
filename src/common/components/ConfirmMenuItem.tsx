@@ -13,6 +13,7 @@ import { useArmedConfirm } from './useArmedConfirm';
  * Menu item behind a two-step confirm. Armed, the item becomes Cancel and the confirm item appears
  * below it - a double-click slip cancels. The menu stays open while arming; its closing unmounts and disarms.
  */
+// @uxid src/common/components/ConfirmMenuItem::ConfirmMenuItem
 export function ConfirmMenuItem(props: {
   icon?: React.ComponentType, // defaults to DeleteOutline
   confirmIcon?: React.ComponentType, // defaults to `icon`, or DeleteForever when `icon` is the default

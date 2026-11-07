@@ -48,6 +48,7 @@ const _roleOptions: FormRadioOption<Exclude<DMessageRole, 'system'>>[] = [
 ];
 
 
+// @uxid src/apps/chat/components/message/ChatMessageInfoPopup::ChatMessageInfoPopup
 export function ChatMessageInfoPopup(props: {
   open: boolean,
   onClose: () => void,

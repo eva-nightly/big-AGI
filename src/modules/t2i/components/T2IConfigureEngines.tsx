@@ -71,6 +71,7 @@ function _sourceIcon(provider: TextToImageProvider): React.ElementType | null {
 }
 
 
+// @uxid src/modules/t2i/components/T2IConfigureEngines::T2IConfigureEngines
 export function T2IConfigureEngines(props: { isMobile: boolean }) {
 
   // external state

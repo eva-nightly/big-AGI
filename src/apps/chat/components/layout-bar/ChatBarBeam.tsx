@@ -38,6 +38,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/layout-bar/ChatBarBeam::ChatBarBeam
 export function ChatBarBeam(props: {
   beamStore: BeamStoreApi,
   conversationTitle: string,

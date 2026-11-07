@@ -52,6 +52,7 @@ function _getLogLevelColor(level: LogLevel): ColorPaletteProp {
 // }
 
 
+// @uxid src/common/logger/viewer/LoggerViewerDialog::LogViewerDialog
 export function LogViewerDialog(props: {
   onClose: () => void;
 }) {

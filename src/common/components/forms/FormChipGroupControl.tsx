@@ -59,6 +59,7 @@ const _styles = {
 /**
  * Exact drop-in replacement for FormRadioControl, but with a ButtonGroup.
  */
+// @uxid src/common/components/forms/FormChipGroupControl::FormChipGroupControl
 export const FormChipGroupControl = <TValue extends string>(props: {
   // specific
   size?: 'sm' | 'md' | 'lg',

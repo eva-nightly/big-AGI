@@ -14,6 +14,7 @@ function _formatTime(timestamp: number) {
 }
 
 
+// @uxid src/common/logger/viewer/LogEntryDetails::LogEntryDetails
 export function LogEntryDetails(props: {
   entry: LogEntry;
   onCloseDetails: () => void;

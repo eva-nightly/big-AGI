@@ -16,6 +16,7 @@ const inReferenceToGroupSx: SxProps = {
 };
 
 
+// @uxid src/apps/chat/components/message/in-reference-to/InReferenceToList::InReferenceToList
 export function InReferenceToList(props: { items: Immutable<DMetaReferenceItem[]> }) {
   return (
     <Box sx={inReferenceToGroupSx}>

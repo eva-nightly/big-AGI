@@ -23,6 +23,7 @@ import { setPrimaryChatModelId, useModelDomain } from '~/common/stores/llms/hook
 import { useUIComplexityMode } from '~/common/stores/store-ui';
 
 
+// @uxid src/apps/chat/components/layout-bar/useLLMDropdown::LLMDropdown
 function LLMDropdown(props: {
   dropdownRef: React.Ref<OptimaBarControlMethods>,
   llms: ReadonlyArray<DLLM>,
