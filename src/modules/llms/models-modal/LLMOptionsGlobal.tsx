@@ -8,6 +8,7 @@ import { llmsStoreActions } from '~/common/stores/llms/store-llms';
 import { LLMParametersEditor } from './LLMParametersEditor';
 
 
+// @uxid src/modules/llms/models-modal/LLMOptionsGlobal::LLMOptionsGlobal
 export function LLMOptionsGlobal(props: { llm: DLLM }) {
 
   // derived input

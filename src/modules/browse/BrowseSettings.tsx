@@ -17,6 +17,7 @@ const _styleHelperText = {
 } as const;
 
 
+// @uxid src/modules/browse/BrowseSettings::BrowseSettings
 export function BrowseSettings() {
 
   // external state

@@ -49,6 +49,7 @@ type TabValue = 'wizard' | 'setup' | 'changelog';
 /**
  * Note: the reason for this component separation from the parent state, is delayed state initialization.
  */
+// @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal
 export function ModelsConfiguratorModal(props: {
   modelsServices: DModelsService[],
   confServiceId: string | null,

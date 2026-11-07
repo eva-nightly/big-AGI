@@ -88,6 +88,7 @@ function prettyPricingComponent(pricingChatGenerate: DPricingChatGenerate): Reac
 }
 
 
+// @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal
 export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsContext, onClose: () => void }) {
 
   // external state

@@ -46,6 +46,7 @@ const VI: Record<ModelVendorId, string> = {
  * Joy's SvgIcon sets CSS `fill: currentColor` which overrides `fill='none'` props. To match,
  * all `<g>` wrappers use `fill='currentColor'`. Paths with explicit `fill='none'` still override.
  */
+// @uxid src/modules/llms/components/LLMVendorIconSprite::VendorIconSpriteMemo
 export const VendorIconSpriteMemo = React.memo(function VendorIconSprite() {
   return (
     <svg xmlns='http://www.w3.org/2000/svg' style={_spriteContainerSx}>
@@ -249,6 +250,7 @@ const _spriteContainerSx: React.CSSProperties = { position: 'absolute', width: 0
  * so parent components (ListItemDecorator, etc.) control sizing automatically.
  * Accepts optional `sx` with `fontSize` override for explicit sizing.
  */
+// @uxid src/modules/llms/components/LLMVendorIconSprite::LLMVendorIconSprite
 export function LLMVendorIconSprite({ vendorId /*, sx, className*/ }: {
   vendorId: ModelVendorId | undefined;
   // sx?: { fontSize?: number | string; ml?: number | string; color?: string };

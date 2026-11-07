@@ -97,6 +97,7 @@ export const VENDOR_DOCS: Record<ModelVendorId, SiteDocSlug> = {
   zai: 'connect-zai',
 } as const;
 
+// @uxid src/modules/llms/components/LLMVendorSetup::LLMVendorSetup
 export function LLMVendorSetup(props: { service: DModelsService }) {
   const vendor = findModelVendor(props.service.vId);
   if (!vendor)

@@ -89,6 +89,7 @@ const styles = {
 } as const;
 
 
+// @uxid src/modules/llms/models-modal/ModelsList::ModelItem
 export const ModelItem = React.memo(function ModelItem(props: {
   llm: DLLM,
   serviceLabel: string,
@@ -294,6 +295,7 @@ export const ModelItem = React.memo(function ModelItem(props: {
   );
 });
 
+// @uxid src/modules/llms/models-modal/ModelsList::ModelsList
 export function ModelsList(props: {
   filterServiceId: DModelsServiceId | null,
   showHiddenModels: boolean,

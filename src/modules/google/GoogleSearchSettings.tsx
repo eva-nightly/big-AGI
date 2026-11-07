@@ -15,6 +15,7 @@ import { isValidGoogleCloudApiKey, isValidGoogleCseId } from './search.client';
 import { useGoogleSearchStore } from './store-module-google';
 
 
+// @uxid src/modules/google/GoogleSearchSettings::GoogleSearchSettings
 export function GoogleSearchSettings() {
 
   // external state
