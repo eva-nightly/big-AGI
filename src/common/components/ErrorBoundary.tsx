@@ -32,6 +32,7 @@ interface ErrorBoundaryState {
  * Catches JavaScript errors anywhere in its child component tree,
  * logs those errors using the provided logger, and displays a fallback UI.
  */
+// @uxid src/common/components/ErrorBoundary::ErrorBoundary
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   constructor(props: ErrorBoundaryProps) {

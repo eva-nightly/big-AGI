@@ -5,6 +5,7 @@ import { Accordion, AccordionDetails, AccordionGroup, AccordionSummary, accordio
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 
+// @uxid src/common/components/ExpanderAccordion::ExpanderAccordion
 export function ExpanderAccordion(props: {
   title?: React.ReactNode,
   icon?: React.ReactNode,
