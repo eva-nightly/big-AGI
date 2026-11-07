@@ -47,6 +47,7 @@ const _advancedSxSmaller = { ml: 1.5, display: 'flex', flexDirection: 'column', 
  * the codec in openrouter.webtools.ts. Search and fetch run on OpenRouter itself, not on the model provider.
  * The values arrive as they will be sent (the panel applies the exec overrides before mounting).
  */
+// @uxid src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig
 export function OpenRouterWebToolsConfig(props: {
   smaller?: boolean; // chat side panel density
   searchOverride?: 'force_on' | 'force_off'; // conversation exec override: forced on keeps the controls live and only removes 'Off'; forced off locks them

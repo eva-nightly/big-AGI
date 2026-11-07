@@ -34,6 +34,7 @@ const SAFETY_OPTIONS: { value: GeminiWire_Safety.HarmBlockThreshold, label: stri
 ];
 
 
+// @uxid src/modules/llms/vendors/gemini/GeminiServiceSetup::GeminiServiceSetup
 export function GeminiServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

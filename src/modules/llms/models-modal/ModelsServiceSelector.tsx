@@ -281,6 +281,7 @@ function _renderVendorItem({ vendor, canAdd, vendorInstancesCount }: VendorItemD
 }
 
 
+// @uxid src/modules/llms/models-modal/ModelsServiceSelector::ModelsServiceSelector
 export function ModelsServiceSelector(props: {
   modelsServices: DModelsService[],
   selectedServiceId: DModelsServiceId | null,

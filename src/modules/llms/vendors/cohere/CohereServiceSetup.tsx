@@ -20,6 +20,7 @@ import { ModelVendorCohere } from './cohere.vendor';
 const COHERE_REG_LINK = 'https://dashboard.cohere.com/api-keys';
 
 
+// @uxid src/modules/llms/vendors/cohere/CohereServiceSetup::CohereServiceSetup
 export function CohereServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state

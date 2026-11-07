@@ -18,6 +18,7 @@ import { useServiceSetup } from '../useServiceSetup';
 const GROQ_REG_LINK = 'https://console.groq.com/keys';
 
 
+// @uxid src/modules/llms/vendors/groq/GroqServiceSetup::GroqServiceSetup
 export function GroqServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
