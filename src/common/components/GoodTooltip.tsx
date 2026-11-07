@@ -12,6 +12,7 @@ const defaultSx: SxProps = {
 /**
  * Tooltip with text that wraps to multiple lines (doesn't go too long)
  */
+// @uxid src/common/components/GoodTooltip::GoodTooltip
 export const GoodTooltip = (props: {
   title: React.ReactNode,
   placement?: 'top' | 'bottom' | 'top-start',

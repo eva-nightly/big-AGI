@@ -24,6 +24,7 @@ const VideoPreview = styled('video', { name: 'VideoPreview' })({
  * Renders a live video preview from a MediaStream.
  * Shared between LiveFeedThumbnail (Composer) and PanelLiveOperationItem (NB panel).
  */
+// @uxid src/common/components/MediaStreamPreview::MediaStreamPreview
 export function MediaStreamPreview(props: {
   stream: MediaStream;
   width: number;

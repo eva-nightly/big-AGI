@@ -21,6 +21,7 @@ export function platformAwareKeystrokes(text: string) {
 /**
  * Shows a shortcut combo in a nicely presented dark box.
  */
+// @uxid src/common/components/KeyStroke::KeyStroke
 export function KeyStroke(props: {
   combo: string,
   size?: 'sm' | 'md' | 'lg',
