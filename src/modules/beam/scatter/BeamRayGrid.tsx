@@ -25,6 +25,7 @@ const rayGridMobileSx: SxProps = {
 } as const;
 
 
+// @uxid src/modules/beam/scatter/BeamRayGrid::BeamRayGrid
 export function BeamRayGrid(props: {
   beamStore: BeamStoreApi,
   hadImportedRays: boolean,

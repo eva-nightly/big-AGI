@@ -56,6 +56,7 @@ const desktopGatherPaneSx: SxProps = {
 };
 
 
+// @uxid src/modules/beam/gather/BeamGatherPane::BeamGatherPane
 export function BeamGatherPane(props: {
   beamStore: BeamStoreApi,
   canGather: boolean,

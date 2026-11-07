@@ -72,6 +72,7 @@ export const rayControlsMobileSx: SxProps = {
 
 const RayControlsMemo = React.memo(RayControls);
 
+// @uxid src/modules/beam/scatter/BeamRay::RayControls
 function RayControls(props: {
   isEmpty: boolean,
   isMobile: boolean,
@@ -153,6 +154,7 @@ function RayControls(props: {
 }
 
 
+// @uxid src/modules/beam/scatter/BeamRay::BeamRay
 export function BeamRay(props: {
   beamStore: BeamStoreApi,
   hadImportedRays: boolean,

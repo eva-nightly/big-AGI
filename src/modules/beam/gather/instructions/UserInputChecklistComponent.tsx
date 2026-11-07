@@ -55,6 +55,7 @@ function parseMarkdownBold(text: string | undefined) {
 }
 
 
+// @uxid src/modules/beam/gather/instructions/UserInputChecklistComponent::UserInputChecklistComponent
 export function UserInputChecklistComponent(props: {
   options: UserChecklistOption[];
   onConfirm: (selectedOptions: UserChecklistOption[]) => void;

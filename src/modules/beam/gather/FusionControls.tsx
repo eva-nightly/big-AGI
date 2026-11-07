@@ -21,6 +21,7 @@ import type { FusionFactorySpec } from './instructions/beam.gather.factories';
 
 export const FusionControlsMemo = React.memo(FusionControls);
 
+// @uxid src/modules/beam/gather/FusionControls::FusionControls
 function FusionControls(props: {
   fusion: BFusion,
   factory: FusionFactorySpec,

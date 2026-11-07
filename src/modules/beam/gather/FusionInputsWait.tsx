@@ -13,6 +13,7 @@ import { GatherInputsWait, gatherInputsFromRays } from './beam.gather.inputs';
  * Shown while a merge waits for the replies still generating, and gone by itself once they are in.
  * Not waiting is 'Merge now' here; giving up is the Stop in the card header.
  */
+// @uxid src/modules/beam/gather/FusionInputsWait::FusionInputsWait
 export function FusionInputsWait(props: {
   beamStore: BeamStoreApi,
   inputsWait: GatherInputsWait,

@@ -10,6 +10,7 @@ import type { DLLMId } from '~/common/stores/llms/llms.types';
  * One-line notice on a Beam card (ray, merge) or pane: a soft bordered chip, sized to its text
  * unless fullWidth. For multi-line error text use InlineError instead.
  */
+// @uxid src/modules/beam/components/BeamCardNotice::BeamCardNotice
 export function BeamCardNotice(props: { color: ColorPaletteProp, variant?: VariantProp, fullWidth?: boolean, children: React.ReactNode }) {
 
   const { color, variant = 'soft', fullWidth } = props;
@@ -39,6 +40,7 @@ export function BeamCardNotice(props: { color: ColorPaletteProp, variant?: Varia
  * Notice for a ray/merge whose selected model id no longer resolves (e.g. loaded from a saved
  * team after the model was removed). Renders nothing when the id is unset or resolves.
  */
+// @uxid src/modules/beam/components/BeamCardNotice::BeamModelUnavailable
 export function BeamModelUnavailable(props: { llmId: DLLMId | null, resolved: boolean }) {
   if (!props.llmId || props.resolved)
     return null;

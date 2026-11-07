@@ -21,6 +21,7 @@ import { beamDeleteUpstreamOrThrow } from './beam.reattach';
  * route through the card's scatter/gather lifecycle (so the header Stop aborts them); Cancel deletes
  * the upstream resource then strips the handle. See kb/modules/LLM-gemini-interactions.md.
  */
+// @uxid src/modules/beam/BeamUpstreamResume::BeamUpstreamResume
 export function BeamUpstreamResume(props: {
   llmId: DLLMId | null,
   generator: DMessageGenerator | undefined,
