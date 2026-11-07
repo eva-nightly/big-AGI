@@ -9,6 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 /**
  * Simple button to 'Show more' or 'Show less' content
  */
+// @uxid src/modules/blocks/ToggleExpansionButton::ToggleExpansionButton
 export function ToggleExpansionButton(props: {
   color?: ColorPaletteProp;
   isCollapsed: boolean;

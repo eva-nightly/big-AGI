@@ -80,6 +80,7 @@ interface RenderCodeBaseProps {
   sx?: SxProps,
 }
 
+// @uxid src/modules/blocks/code/RenderCode::RenderCode
 function RenderCode(props: RenderCodeBaseProps) {
   return (
     <React.Suspense
@@ -170,6 +171,7 @@ function RCOverlay(props: { children: React.ReactNode }) {
 
 
 // Keep deferred catch-up renders inside the syntax subtree. Prism itself remains synchronous.
+// @uxid src/modules/blocks/code/RenderCode::RCSyntaxHighlight
 const RCSyntaxHighlight = React.memo(function RCSyntaxHighlight(props: {
   code: string,
   inferredCodeLanguage: string | null,
@@ -213,6 +215,7 @@ const RCSyntaxHighlight = React.memo(function RCSyntaxHighlight(props: {
 });
 
 
+// @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl
 function RenderCodeImpl(props: RenderCodeBaseProps & {
   highlightCode: (inferredCodeLanguage: string | null, code: string, addLineNumbers: boolean) => string,
   inferCodeLanguage: (blockTitle: string, code: string) => string | null,
