@@ -98,6 +98,7 @@ function _maybeMarkdownReasoning(text: string): boolean {
 
 export const BlockPartModelAuxMemo = React.memo(BlockPartModelAux);
 
+// @uxid src/apps/chat/components/message/fragments-void/BlockPartModelAux::BlockPartModelAux
 function BlockPartModelAux(props: {
   fragmentId: DMessageFragmentId,
   auxType: 'reasoning' | string,

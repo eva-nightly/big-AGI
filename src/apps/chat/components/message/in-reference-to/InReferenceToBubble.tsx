@@ -55,6 +55,7 @@ export const inlineMessageBubbleSx: SxProps = {
 };
 
 
+// @uxid src/apps/chat/components/message/in-reference-to/InReferenceToBubble::InReferenceToBubble
 export function InReferenceToBubble(props: {
   item: DMetaReferenceItem,
   onRemove?: (item: DMetaReferenceItem) => void,
