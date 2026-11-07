@@ -45,6 +45,7 @@ interface TableRendererProps {
  *
  * Optimized: table data extraction happens only on button click, not on every render.
  */
+// @uxid src/modules/blocks/markdown/CustomTableRenderer::CustomTableRenderer
 export function CustomTableRenderer({ children, node, ...props }: TableRendererProps) {
 
   const tableRef = React.useRef<HTMLTableElement>(null);

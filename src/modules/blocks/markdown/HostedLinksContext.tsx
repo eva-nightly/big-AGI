@@ -36,6 +36,7 @@ export function hostedLinkHandleFromHref(href: string): string | null {
 
 
 /** Mount around one message's blocks, and only when it has blocks that may register - it costs nothing otherwise */
+// @uxid src/modules/blocks/markdown/HostedLinksContext::HostedLinksProvider
 export function HostedLinksProvider({ children }: { children: React.ReactNode }) {
 
   const [actions, setActions] = React.useState<ReadonlyMap<string, HostedLinkAction[]>>(() => new Map());

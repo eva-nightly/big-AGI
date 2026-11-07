@@ -17,6 +17,7 @@ export function heuristicIsBlockPureHTML(text: string): boolean {
 }
 
 
+// @uxid src/modules/blocks/danger-html/RenderDangerousHtml::RenderDangerousHtml
 export function RenderDangerousHtml(props: { html: string, sx?: SxProps }) {
 
   // state

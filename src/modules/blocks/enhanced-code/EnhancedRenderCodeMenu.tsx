@@ -24,6 +24,7 @@ import { useERCDiffContext } from './ERCDiffContext';
 /**
  * Small hidden context menu to toggle the code enhancer, globally.
  */
+// @uxid src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu
 export function EnhancedRenderCodeMenu(props: {
   anchor: HTMLElement,
   title: string,
