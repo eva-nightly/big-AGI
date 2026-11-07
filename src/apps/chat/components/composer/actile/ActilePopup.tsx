@@ -6,6 +6,7 @@ import { CloseablePopup } from '~/common/components/CloseablePopup';
 
 import type { ActileItem, ActileProvider } from './ActileProvider';
 
+// @uxid src/apps/chat/components/composer/actile/ActilePopup::ActilePopup
 export function ActilePopup(props: {
   anchorEl: HTMLElement | null,
   onClose: () => void,

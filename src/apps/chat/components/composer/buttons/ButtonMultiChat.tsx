@@ -8,6 +8,7 @@ import { ChatMulticastOffIcon } from '~/common/components/icons/ChatMulticastOff
 
 export const ButtonMultiChatMemo = React.memo(ButtonMultiChat);
 
+// @uxid src/apps/chat/components/composer/buttons/ButtonMultiChat::ButtonMultiChat
 export function ButtonMultiChat(props: { isMobile?: boolean, multiChat: boolean, onSetMultiChat: (multiChat: boolean) => void }) {
   const { multiChat } = props;
   return props.isMobile ? (

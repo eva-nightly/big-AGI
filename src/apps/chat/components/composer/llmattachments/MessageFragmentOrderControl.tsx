@@ -83,6 +83,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::SortableGroupRow
 function SortableGroupRow(props: { group: UserMessageFragmentGroup, inner: boolean }) {
 
   // external state
@@ -103,6 +104,7 @@ function SortableGroupRow(props: { group: UserMessageFragmentGroup, inner: boole
 
 
 /** Shared by composer attachment menus, including live-image-only inputs. */
+// @uxid src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::MessageFragmentOrderControl
 export function MessageFragmentOrderControl() {
 
   // external state

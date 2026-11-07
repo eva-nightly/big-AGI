@@ -13,6 +13,7 @@ const micContinuationLegend =
 
 export const ButtonMicContinuationMemo = React.memo(ButtonMicContinuation);
 
+// @uxid src/apps/chat/components/composer/buttons/ButtonMicContinuation::ButtonMicContinuation
 function ButtonMicContinuation(props: { isActive: boolean, variant: VariantProp, color: ColorPaletteProp, onClick: () => void }) {
   return <Tooltip placement='bottom' title={micContinuationLegend}>
     <IconButton variant={props.variant} color={props.color} onClick={props.onClick} sx={props.isActive ? undefined : { background: 'none' }}>

@@ -35,6 +35,7 @@ const desktopSx: SxProps = {
 
 export const ButtonBeamMemo = React.memo(ButtonBeam);
 
+// @uxid src/apps/chat/components/composer/buttons/ButtonBeam::ButtonBeam
 function ButtonBeam(props: {
   isMobile?: boolean,
   color?: ColorPaletteProp,

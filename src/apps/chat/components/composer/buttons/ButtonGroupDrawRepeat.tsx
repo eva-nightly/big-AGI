@@ -44,6 +44,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/composer/buttons/ButtonGroupDrawRepeat::ButtonGroupDrawRepeat
 export function ButtonGroupDrawRepeat(props: {
   drawRepeat: number,
   setDrawRepeat: (n: number) => void,
