@@ -20,6 +20,7 @@ import { useChatStore } from '~/common/stores/chat/store-chats';
 import { useUICounter } from '~/common/stores/store-ui';
 
 
+// @uxid src/apps/call/CallWizard::StatusCard
 function StatusCard(props: { icon: React.JSX.Element, hasIssue: boolean, text: string, button?: React.JSX.Element }) {
   return (
     <Card sx={{ width: '100%' }}>
@@ -40,6 +41,7 @@ function StatusCard(props: { icon: React.JSX.Element, hasIssue: boolean, text: s
 }
 
 
+// @uxid src/apps/call/CallWizard::CallWizard
 export function CallWizard(props: { strict?: boolean, conversationId: string | null, children: React.ReactNode }) {
 
   // state

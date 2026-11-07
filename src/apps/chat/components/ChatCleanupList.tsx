@@ -11,6 +11,7 @@ import { CleanerMessage, MessagesSelectionHeader } from './message/CleanerMessag
 /**
  * Cleanup controls and message selection. The parent retains selection across cleanup sessions.
  */
+// @uxid src/apps/chat/components/ChatCleanupList::ChatCleanupControls
 export function ChatCleanupControls(props: {
   isMobile: boolean,
   conversationHandler: Pick<ConversationHandler, 'messagesDelete' | 'messageSetUserFlag'> | null,

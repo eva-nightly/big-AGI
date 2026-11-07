@@ -33,6 +33,7 @@ function isPrimitive(value: any): boolean {
   return t === 'string' || t === 'number' || t === 'boolean' || t === 'symbol' || value === null || value === undefined;
 }
 
+// @uxid src/apps/chat/components/Ephemerals::PrimitiveRender
 function PrimitiveRender({ name, value }: { name: string, value: string | number | boolean | symbol | null | undefined }) {
   if (value === null || value === undefined)
     return <StateLine><b>{name}</b>: <i>{value === null ? 'null' : 'undefined'}</i></StateLine>;
@@ -46,14 +47,17 @@ function PrimitiveRender({ name, value }: { name: string, value: string | number
     return <StateLine><b>{name}</b>: unknown?</StateLine>;
 }
 
+// @uxid src/apps/chat/components/Ephemerals::ListRenderer
 function ListRenderer({ name, list }: { name: string, list: any[] }) {
   return <StateLine><b>{name}</b>[{list.length ? list.length : ''}]: {list.length ? '(not displayed)' : 'empty'}</StateLine>;
 }
 
+// @uxid src/apps/chat/components/Ephemerals::ObjectRenderer
 function ObjectRenderer({ name }: { name: string }) {
   return <StateLine><b>{name}</b>: <i>object not displayed</i></StateLine>;
 }
 
+// @uxid src/apps/chat/components/Ephemerals::StateRenderer
 function StateRenderer(props: { state: object, contentScaling: ContentScaling }) {
   if (typeof props.state !== 'object')
     return <pre>Developer Warning: state is not an object: {JSON.stringify(props.state, null, 2)}</pre>;
@@ -104,6 +108,7 @@ const rightPaneSx = {
 };
 
 
+// @uxid src/apps/chat/components/Ephemerals::EphemeralItem
 function EphemeralItem(props: {
   ephemeral: DEphemeral,
   conversationHandler: ConversationHandler,
@@ -221,6 +226,7 @@ function EphemeralItem(props: {
 }
 
 
+// @uxid src/apps/chat/components/Ephemerals::Ephemerals
 export function Ephemerals(props: {
   ephemerals: DEphemeral[],
   conversationHandler: ConversationHandler,

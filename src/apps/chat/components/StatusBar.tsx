@@ -141,6 +141,7 @@ function _platformAwareModifier(symbol: 'Ctrl' | 'Alt' | 'Shift') {
 
 const ShortcutItemMemo = React.memo(ShortcutItem);
 
+// @uxid src/apps/chat/components/StatusBar::ShortcutItem
 function ShortcutItem(props: { shortcut: ShortcutObject }) {
 
   const handleClicked = React.useCallback(() => {
@@ -171,6 +172,7 @@ function ShortcutItem(props: { shortcut: ShortcutObject }) {
 
 export const StatusBarMemo = React.memo(StatusBar);
 
+// @uxid src/apps/chat/components/StatusBar::StatusBar
 export function StatusBar(props: { toggleMinimized?: () => void, isMinimized?: boolean }) {
 
   // state (modifiers pressed/not)

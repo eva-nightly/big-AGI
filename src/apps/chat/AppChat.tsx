@@ -94,6 +94,7 @@ const FlattenerModalLazy = React.lazy(() => import('~/modules/aifn/flatten/Flatt
 const TradeModalLazy = React.lazy(() => import('~/modules/trade/TradeModal').then(module => ({ default: module.TradeModal })));
 
 
+// @uxid src/apps/chat/AppChat::AppChat
 export function AppChat() {
 
   // state

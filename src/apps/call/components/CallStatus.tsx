@@ -12,6 +12,7 @@ import { InlineError } from '~/common/components/InlineError';
  *  "Connecting..." or "Call ended",
  *         re: $Regarding
  */
+// @uxid src/apps/call/components/CallStatus::CallStatus
 export function CallStatus(props: {
   callerName?: string,
   statusText: string,

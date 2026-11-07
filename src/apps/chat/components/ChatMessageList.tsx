@@ -47,6 +47,7 @@ const stableNoMessages: DMessage[] = [];
 /**
  * A list of ChatMessages
  */
+// @uxid src/apps/chat/components/ChatMessageList::ChatMessageList
 export function ChatMessageList(props: {
   conversationId: DConversationId | null,
   conversationHandler: ConversationHandler | null,

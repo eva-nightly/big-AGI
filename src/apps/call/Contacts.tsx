@@ -20,6 +20,7 @@ import { useAppCallStore } from './state/store-app-call';
 const COLLAPSED_COUNT = 2;
 
 
+// @uxid src/apps/call/Contacts::ContactCardAvatar
 const ContactCardAvatar = (props: { size: string, symbol?: string, imageUrl?: string, onClick?: () => void, sx?: SxProps }) =>
   <Avatar
     // variant='outlined'
@@ -38,6 +39,7 @@ const ContactCardAvatar = (props: { size: string, symbol?: string, imageUrl?: st
   </Avatar>;
 
 
+// @uxid src/apps/call/Contacts::ContactCardConversationCall
 const ContactCardConversationCall = (props: { conversation: DConversation, onConversationClicked: (conversationId: DConversationId) => void, }) =>
   <Chip
     variant='plain' color='primary' size='sm'
@@ -58,6 +60,7 @@ const ContactCardConversationCall = (props: { conversation: DConversation, onCon
   </Chip>;
 
 
+// @uxid src/apps/call/Contacts::CallContactCard
 function CallContactCard(props: {
   persona: MockPersona,
   callGrayUI: boolean,
@@ -210,6 +213,7 @@ function useConversationsByPersona() {
 }
 
 
+// @uxid src/apps/call/Contacts::ContactsMenuItems
 function ContactsMenuItems() {
 
   // external state
@@ -242,6 +246,7 @@ function ContactsMenuItems() {
 }
 
 
+// @uxid src/apps/call/Contacts::Contacts
 export function Contacts(props: { setCallIntent: (intent: AppCallIntent) => void }) {
 
   // external state
