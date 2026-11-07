@@ -165,6 +165,7 @@ export interface ChatMessageFunctionsHandle {
 export type ChatMessageTextPartEditState = { [fragmentId: DMessageFragmentId]: string };
 
 // CSS owns hover/focus; this named boundary makes the memo visible in React Profiler.
+// @uxid src/apps/chat/components/message/ChatMessage::CMDesktopAvatar
 const CMDesktopAvatar = React.memo(function CMDesktopAvatar(props: {
   icon: React.ReactNode,
   label: React.ReactNode,
@@ -221,6 +222,7 @@ const CMDesktopAvatar = React.memo(function CMDesktopAvatar(props: {
 });
 
 
+// @uxid src/apps/chat/components/message/ChatMessage::CMMobileHeader
 const CMMobileHeader = React.memo(function CMMobileHeader(props: {
   icon: React.ReactNode,
   label: React.ReactNode,
@@ -311,6 +313,7 @@ export const ChatMessageStreamingMemo = React.memo(ChatMessage, (prev, next) =>
  * or collapsing long user messages.
  *
  */
+// @uxid src/apps/chat/components/message/ChatMessage::ChatMessage
 export function ChatMessage(props: {
   actionsRef?: React.Ref<ChatMessageFunctionsHandle>,
   message: DMessage,

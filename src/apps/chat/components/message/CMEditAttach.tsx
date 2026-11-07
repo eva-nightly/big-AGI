@@ -70,6 +70,7 @@ const _styles = {
  * session's `CMEditDrafts` under its anchor; Insert takes the drafts into the copy now, else Done takes them.
  * Without `drafts`, text only.
  */
+// @uxid src/apps/chat/components/message/CMEditAttach::CMEditAttach
 export function CMEditAttach(props: {
   variant: 'bar' | 'group',
   drafts?: CMEditDrafts,

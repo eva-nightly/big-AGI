@@ -22,6 +22,7 @@ const containerSx: SxProps = {
 
 
 /** Bottom-of-message action: resolves the message's Vertex AI grounding redirect links in place. */
+// @uxid src/apps/chat/components/message/BlockOpResolveVertexAILinks::BlockOpResolveVertexAILinks
 export function BlockOpResolveVertexAILinks(props: {
   contentScaling: ContentScaling,
   fragments: readonly DMessageFragment[],
