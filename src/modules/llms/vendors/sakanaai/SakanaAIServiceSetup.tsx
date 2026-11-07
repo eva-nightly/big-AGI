@@ -19,6 +19,7 @@ import { ModelVendorSakanaAI } from './sakanaai.vendor';
 const SAKANA_REG_LINK = 'https://console.sakana.ai/get-started';
 
 
+// @uxid src/modules/llms/vendors/sakanaai/SakanaAIServiceSetup::SakanaAIServiceSetup
 export function SakanaAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state

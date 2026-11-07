@@ -23,6 +23,7 @@ import { useServiceSetup } from '../useServiceSetup';
 import { isValidOpenRouterKey, ModelVendorOpenRouter } from './openrouter.vendor';
 
 
+// @uxid src/modules/llms/vendors/openrouter/OpenRouterServiceSetup::OpenRouterServiceSetup
 export function OpenRouterServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
