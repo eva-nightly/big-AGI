@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Card, Typography } from '@mui/joy';
 
 
+// @uxid src/apps/draw/create/ZeroGenerations::ZeroGenerations
 export function ZeroGenerations() {
   return (
     <Card variant='soft' sx={{

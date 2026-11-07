@@ -39,6 +39,7 @@ export interface DesignerPrompt {
 }
 
 
+// @uxid src/apps/draw/create/PromptComposer::PromptComposer
 export function PromptComposer(props: {
   isMobile: boolean,
   queueLength: number,

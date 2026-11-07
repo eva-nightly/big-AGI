@@ -29,6 +29,7 @@ import { LinkChatViewer } from './LinkChatViewer';
 const SPECIAL_LIST_PAGE_ID = 'list';
 
 
+// @uxid src/apps/link-chat/AppLinkChat::Centerer
 const Centerer = (props: { backgroundColor: string, children?: React.ReactNode }) =>
   <Box sx={{
     backgroundColor: props.backgroundColor,
@@ -38,6 +39,7 @@ const Centerer = (props: { backgroundColor: string, children?: React.ReactNode }
     {props.children}
   </Box>;
 
+// @uxid src/apps/link-chat/AppLinkChat::ListPlaceholder
 const ListPlaceholder = (props: { hasLinks: boolean }) =>
   <Box sx={{ p: { xs: 3, md: 6 } }}>
     <Card>
@@ -55,6 +57,7 @@ const ListPlaceholder = (props: { hasLinks: boolean }) =>
   </Box>;
 
 
+// @uxid src/apps/link-chat/AppLinkChat::ShowLoading
 const ShowLoading = () =>
   <Centerer backgroundColor={themeBgAppDarker}>
     <LogoProgress showProgress={true} />
@@ -63,6 +66,7 @@ const ShowLoading = () =>
     </Typography>
   </Centerer>;
 
+// @uxid src/apps/link-chat/AppLinkChat::ShowError
 const ShowError = (props: { error: any }) =>
   <Centerer backgroundColor={themeBgAppDarker}>
     <InlineError error={props.error} severity='warning' />
@@ -97,6 +101,7 @@ async function fetchStoredChatV1(objectId: string | null) {
 }
 
 
+// @uxid src/apps/link-chat/AppLinkChat::AppLinkChat
 export function AppLinkChat(props: { chatLinkId: string | null }) {
 
   // state

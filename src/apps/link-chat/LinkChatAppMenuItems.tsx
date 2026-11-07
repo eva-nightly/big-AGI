@@ -14,6 +14,7 @@ import { useChatShowSystemMessages } from '../chat/store-app-chat';
 /**
  * Menu Items are the settings for the chat.
  */
+// @uxid src/apps/link-chat/LinkChatAppMenuItems::LinkChatAppMenuItems
 export function LinkChatAppMenuItems(props: {
   activeLinkId: string | null,
   onDeleteLink: (linkId: string) => void,
