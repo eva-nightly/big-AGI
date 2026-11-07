@@ -27,6 +27,7 @@ import { speexFindVendor } from '../speex.vendors-registry';
 import { speexVendorTypeLabel } from './SpeexEngineSelect';
 
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::CredentialsApiKeyInputs
 function CredentialsApiKeyInputs({ credentials, onUpdate, vendorType, showHost, hostRequired, hostPlaceholder, keyPlaceholder }: {
   credentials: DCredentialsApiKey;
   onUpdate: (credentials: DCredentialsApiKey) => void;
@@ -67,6 +68,7 @@ function CredentialsApiKeyInputs({ credentials, onUpdate, vendorType, showHost, 
 }
 
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::PreviewButton
 function PreviewButton({ engineId }: { engineId: DSpeexEngineAny['engineId'] }) {
 
   // async + cache
@@ -130,6 +132,7 @@ const _styles = {
 // the Auto model by vendor - undefined for vendors without a model catalog (LocalAI, Web Speech)
 const _SPEEX_AUTO_MODEL_BY_VENDOR: Partial<Record<DSpeexVendorType, string>> = SPEEX_AUTO_MODELS;
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull
 export function SpeexConfigureEngineFull(props: {
   engine: DSpeexEngineAny;
   isMobile: boolean;
@@ -303,6 +306,7 @@ const _ELEVENLABS_LABELS: FormChipModelLabels<typeof SPEEX_MODELS.elevenlabs[num
   'eleven_v3': { label: 'v3', description: 'Newest' },
 };
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::ElevenLabsConfig
 function ElevenLabsConfig({ engine, onUpdate, isMobile }: {
   engine: DSpeexEngine<'elevenlabs'>,
   onUpdate: (updates: Partial<DSpeexEngine<'elevenlabs'>>) => void;
@@ -350,6 +354,7 @@ const _GEMINI_TTS_LABELS: FormChipModelLabels<typeof SPEEX_MODELS.gemini[number]
   'gemini-3.8-flash-lite-tts': { label: '3.8 Flash-Lite', description: 'Fast' },
 };
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::GeminiConfig
 function GeminiConfig({ engine, onUpdate, isMobile }: {
   engine: DSpeexEngine<'gemini'>,
   onUpdate: (updates: Partial<DSpeexEngine<'gemini'>>) => void;
@@ -398,6 +403,7 @@ const _INWORLD_LABELS: FormChipModelLabels<typeof SPEEX_MODELS.inworld[number]> 
   'inworld-tts-1.5-mini': { label: 'TTS 1.5 Mini', description: 'Fast' },
 };
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::InworldConfig
 function InworldConfig({ engine, onUpdate, isMobile }: {
   engine: DSpeexEngine<'inworld'>,
   onUpdate: (updates: Partial<DSpeexEngine<'inworld'>>) => void;
@@ -456,6 +462,7 @@ function InworldConfig({ engine, onUpdate, isMobile }: {
 }
 
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::LocalAIConfig
 function LocalAIConfig({ engine, onUpdate, isMobile }: {
   engine: DSpeexEngine<'localai'>,
   onUpdate: (updates: Partial<DSpeexEngine<'localai'>>) => void;
@@ -506,6 +513,7 @@ const _OPENAI_TTS_LABELS: FormChipModelLabels<typeof SPEEX_MODELS.openai[number]
   'tts-1-hd': { label: 'TTS-1-HD', description: 'Quality' },
 };
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::OpenAIConfig
 function OpenAIConfig({ engine, onUpdate, isMobile }: {
   engine: DSpeexEngine<'openai'>,
   onUpdate: (updates: Partial<DSpeexEngineAny>) => void;
@@ -579,6 +587,7 @@ function OpenAIConfig({ engine, onUpdate, isMobile }: {
 }
 
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::WebSpeechConfig
 function WebSpeechConfig({ engine, onUpdate, isMobile }: {
   engine: DSpeexEngine<'webspeech'>
   onUpdate: (updates: Partial<DSpeexEngine<'webspeech'>>) => void;

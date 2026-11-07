@@ -22,6 +22,7 @@ import { ModelVendorTogetherAI } from './togetherai.vendor';
 const TOGETHERAI_REG_LINK = 'https://api.together.xyz/settings/api-keys';
 
 
+// @uxid src/modules/llms/vendors/togetherai/TogetherAIServiceSetup::TogetherAIServiceSetup
 export function TogetherAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

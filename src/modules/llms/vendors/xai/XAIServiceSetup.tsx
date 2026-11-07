@@ -20,6 +20,7 @@ import { ModelVendorXAI } from './xai.vendor';
 const EXTERNAL_LINK_XAI_API_KEYS = 'https://console.x.ai/';
 
 
+// @uxid src/modules/llms/vendors/xai/XAIServiceSetup::XAIServiceSetup
 export function XAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state

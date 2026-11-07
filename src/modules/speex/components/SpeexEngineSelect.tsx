@@ -39,6 +39,7 @@ interface SpeexEngineSelectProps {
   placeholder?: string;
 }
 
+// @uxid src/modules/speex/components/SpeexEngineSelect::SpeexEngineSelect
 export function SpeexEngineSelect(props: SpeexEngineSelectProps) {
   const { engineId, onEngineChange, disabled, placeholder = 'Select engine...' } = props;
 

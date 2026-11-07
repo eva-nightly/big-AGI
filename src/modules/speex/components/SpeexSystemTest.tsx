@@ -26,6 +26,7 @@ Finally, we conclude with a shorter paragraph to verify varying lengths are hand
 };
 
 
+// @uxid src/modules/speex/components/SpeexSystemTest::SpeexSystemTest
 export function SpeexSystemTest() {
 
   // state
