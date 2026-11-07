@@ -33,6 +33,7 @@ import { hasPostHogAnalytics, OptionalPostHogAnalytics } from '~/common/componen
 import { OptionalUrlTrackingCleaner } from '~/common/components/3rdparty/UrlTrackingCleaner';
 
 
+// @uxid pages/_app::Big_AGI_App
 const Big_AGI_App = ({ Component, emotionCache, pageProps }: MyAppProps) => {
 
   // We are using a nextjs per-page layout pattern to bring the (Optima) layout creation to a shared place

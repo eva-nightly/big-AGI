@@ -35,6 +35,7 @@ import { supportsClipboardRead } from '~/common/util/clipboardUtils';
 import { supportsScreenCapture } from '~/common/util/screenCaptureUtils';
 
 
+// @uxid pages/dev/debug::DebugCard
 function DebugCard(props: { title: string, children: React.ReactNode }) {
   return (
     <Box>
@@ -58,6 +59,7 @@ function prettifyJsonString(jsonString: string, deleteChars: number, removeDoubl
   }).join('\n').trim();
 }
 
+// @uxid pages/dev/debug::DebugJsonCard
 function DebugJsonCard(props: { title: string, data: any }) {
   return (
     <DebugCard title={props.title}>
@@ -71,6 +73,7 @@ function DebugJsonCard(props: { title: string, data: any }) {
 
 const frontendBuild = Release.buildInfo('frontend');
 
+// @uxid pages/dev/debug::AppDebug
 function AppDebug() {
 
   // state
