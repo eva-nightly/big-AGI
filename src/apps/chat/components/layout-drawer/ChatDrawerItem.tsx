@@ -90,6 +90,7 @@ export interface ChatNavigationItemData {
   searchFrequency: number;
 }
 
+// @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem
 function ChatDrawerItem(props: {
   // NOTE: always update the Memo comparison if you add or remove props
   item: ChatNavigationItemData,

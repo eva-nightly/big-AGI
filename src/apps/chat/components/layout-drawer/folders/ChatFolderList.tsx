@@ -60,6 +60,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/layout-drawer/folders/ChatFolderList::ChatFolderList
 export function ChatFolderList(props: {
   isMobile: boolean;
   folders: DFolder[];

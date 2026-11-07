@@ -74,6 +74,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/layout-bar/ChatBarBreadcrumbs::ChatBarBreadcrumbs
 export function ChatBarBreadcrumbs(props: {
   conversationId: DConversationId | null,
   conversationTitle: string,
