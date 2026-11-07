@@ -9,6 +9,7 @@ import { buttonAttachSx } from '~/common/components/ButtonAttachFiles';
 
 export const ButtonAttachCameraMemo = React.memo(ButtonAttachCamera);
 
+// @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachCamera::ButtonAttachCamera
 function ButtonAttachCamera(props: {
   color?: ColorPaletteProp,
   isMobile?: boolean,

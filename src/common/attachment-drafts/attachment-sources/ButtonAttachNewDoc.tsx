@@ -8,6 +8,7 @@ import { buttonAttachSx } from '~/common/components/ButtonAttachFiles';
 
 export const ButtonAttachNewMemo = React.memo(ButtonAttachNew);
 
+// @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachNewDoc::ButtonAttachNew
 function ButtonAttachNew(props: {
   color?: ColorPaletteProp,
   isMobile?: boolean,

@@ -9,6 +9,7 @@ import { KeyStroke } from '~/common/components/KeyStroke';
 
 export const ButtonAttachWebMemo = React.memo(ButtonAttachWeb);
 
+// @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachWeb::ButtonAttachWeb
 function ButtonAttachWeb(props: {
   color?: ColorPaletteProp,
   isMobile?: boolean,

@@ -9,6 +9,7 @@ import { KeyStroke } from '~/common/components/KeyStroke';
 
 export const ButtonAttachGoogleDriveMemo = React.memo(ButtonAttachGoogleDrive);
 
+// @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachGoogleDrive::ButtonAttachGoogleDrive
 function ButtonAttachGoogleDrive(props: {
   color?: ColorPaletteProp,
   isMobile?: boolean,
