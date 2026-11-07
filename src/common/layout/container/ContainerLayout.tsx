@@ -5,6 +5,7 @@ import { Box, Container } from '@mui/joy';
 import { themeBgApp } from '~/common/app.theme';
 
 
+// @uxid src/common/layout/container/ContainerLayout::ContainerLayout
 export function ContainerLayout(props: { children?: React.ReactNode }) {
   return <>
 

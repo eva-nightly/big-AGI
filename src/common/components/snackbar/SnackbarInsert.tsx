@@ -69,6 +69,7 @@ const typeTitleSx: SxProps = {
 /**
  * Simple cycler through the snackbars.
  */
+// @uxid src/common/components/snackbar/SnackbarInsert::SnackbarInsert
 export function SnackbarInsert() {
 
   // external state

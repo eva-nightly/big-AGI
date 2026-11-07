@@ -21,6 +21,7 @@ const buttonSx: SxProps = {
 } as const;
 
 
+// @uxid src/common/layout/optima/ChromelessFloatingButtons::ChromelessFloatingButtons
 export function ChromelessFloatingButtons() {
   return <>
 
