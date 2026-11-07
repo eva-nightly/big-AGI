@@ -656,6 +656,7 @@ async function createFlashObject(backupType: 'full' | 'partial' | 'auto-before-r
  * Backup and Restore (Flashing) functionality for Big-AGI client-side data.
  * Saves and fully restores localStorage and IndexedDB data.
  */
+// @uxid src/modules/trade/BackupRestore::FlashRestore
 export function FlashRestore(props: { unlockRestore?: boolean }) {
 
   // state
@@ -967,6 +968,7 @@ export function FlashRestore(props: { unlockRestore?: boolean }) {
 }
 
 
+// @uxid src/modules/trade/BackupRestore::FlashBackup
 export function FlashBackup(props: {
   onStartedBackup?: () => void;
 }) {

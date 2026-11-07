@@ -38,6 +38,7 @@ function _OptionCheckbox(props: { label: string, detail: string, checked: boolea
 /**
  * Button + dialog: export the chat as a Claude Code session, or as a folder for Claude Code to work on.
  */
+// @uxid src/modules/trade/claude-code/ExportClaudeCode::ExportClaudeCode
 export function ExportClaudeCode(props: {
   conversationId: DConversationId | null,
   getConversation: (conversationId: DConversationId) => Immutable<DConversation> | null,

@@ -17,6 +17,7 @@ interface YouTubeURLInputProps {
   sx?: SxProps;
 }
 
+// @uxid src/modules/youtube/YouTubeURLInput::YouTubeURLInput
 export const YouTubeURLInput: React.FC<YouTubeURLInputProps> = ({ onSubmit, sx }) => {
 
   // state
