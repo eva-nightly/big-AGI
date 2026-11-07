@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/vendors/ArceeAIIcon::ArceeAIIcon
 export function ArceeAIIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='-0.64 -2.13 24 24' width='24' height='24' fill='currentColor' stroke='none' {...props}>
     <path d='M11.3728 0L0 19.7457H2.63715L12.6896 2.29149L11.3728 0Z' />
