@@ -5,6 +5,7 @@ import { SxProps } from '@mui/joy/styles/types';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 
+// @uxid src/common/components/Section::Section
 export function Section(props: { title?: string; collapsible?: boolean, collapsed?: boolean, disclaimer?: string, asLink?: boolean, sx?: SxProps, children: React.ReactNode }) {
   const [collapsed, setCollapsed] = React.useState(props.collapsed ?? false);
 

@@ -25,6 +25,7 @@ export interface StackedBarBreakdownProps {
 }
 
 
+// @uxid src/common/components/StackedBarBreakdown::StackedBarBreakdown
 export function StackedBarBreakdown({ segments, title, showValues = false, valueFormatter = (v) => v.toString(), description }: StackedBarBreakdownProps) {
   // Calculate total for percentages
   const total = segments.reduce((sum, seg) => sum + seg.value, 0) || 1;

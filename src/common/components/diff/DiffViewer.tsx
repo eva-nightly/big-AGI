@@ -42,6 +42,7 @@ interface LineDiff {
 /**
  * A simple diff viewer that compares two strings and highlights the differences.
  */
+// @uxid src/common/components/diff/DiffViewer::DiffViewer
 export function DiffViewer(props: {
   oldTitle?: string;
   oldText: string;

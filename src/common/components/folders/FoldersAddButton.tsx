@@ -18,6 +18,7 @@ interface AddFolderButtonProps {
 /**
  * Controlled in 'isAddingFolder' state from the parent component
  */
+// @uxid src/common/components/folders/FoldersAddButton::FoldersAddButton
 export function FoldersAddButton({ isAddingFolder, setIsAddingFolder, onFolderCreated }: AddFolderButtonProps) {
 
   // state

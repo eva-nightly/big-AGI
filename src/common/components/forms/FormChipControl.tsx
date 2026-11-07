@@ -42,6 +42,7 @@ const _hintSlotProps = { action: { sx: { backgroundColor: 'neutral.softBg' } } }
 /**
  * Exact drop-in replacement for FormRadioControl, but with Chips.
  */
+// @uxid src/common/components/forms/FormChipControl::FormChipControl
 export const FormChipControl = <TValue extends string>(props: {
   // specific
   size?: 'sm' | 'md' | 'lg',
