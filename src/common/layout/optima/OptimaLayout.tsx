@@ -50,6 +50,7 @@ const undoPanelGroupSx: React.CSSProperties = {
  *  - overlays and displays various modals
  *  - flicker free
  */
+// @uxid src/common/layout/optima/OptimaLayout::OptimaLayout
 export function OptimaLayout(props: { suspendAutoModelsSetup?: boolean, children: React.ReactNode }) {
 
   // external state
