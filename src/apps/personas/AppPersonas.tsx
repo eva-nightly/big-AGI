@@ -9,6 +9,7 @@ import { CreatorDrawer } from './creator/CreatorDrawer';
 import { Viewer } from './creator/Viewer';
 
 
+// @uxid src/apps/personas/AppPersonas::AppPersonas
 export function AppPersonas() {
 
   // state

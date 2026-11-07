@@ -15,6 +15,7 @@ import { CreatorDrawerItem } from './CreatorDrawerItem';
 import { deleteSimplePersona, deleteSimplePersonas, useSimplePersonas } from '../store-app-personas';
 
 
+// @uxid src/apps/personas/creator/CreatorDrawer::CreatorDrawer
 export function CreatorDrawer(props: {
   selectedSimplePersonaId: string | null,
   setSelectedSimplePersonaId: (simplePersonaId: string | null) => void,

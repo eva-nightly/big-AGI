@@ -10,6 +10,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import type { SimplePersona } from '../store-app-personas';
 
 
+// @uxid src/apps/personas/creator/CreatorDrawerItem::CreatorDrawerItem
 export function CreatorDrawerItem(props: {
   item: SimplePersona,
   isActive: boolean,

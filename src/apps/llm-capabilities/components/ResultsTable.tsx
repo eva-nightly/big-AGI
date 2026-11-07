@@ -84,6 +84,7 @@ export interface ResultsTableProps {
   onToggleAll: (ids: string[], selected: boolean) => void;
 }
 
+// @uxid src/apps/llm-capabilities/components/ResultsTable::ResultsTable
 export function ResultsTable(props: ResultsTableProps) {
 
   const results = useLlmCapabilitiesStore(s => s.results);

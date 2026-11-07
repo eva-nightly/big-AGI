@@ -18,6 +18,7 @@ import type { SimplePersonaProvenance } from '../store-app-personas';
 const TEMP_DISABLE_YOUTUBE_TRANSCRIPT = true;
 
 
+// @uxid src/apps/personas/creator/FromYouTube::YouTubeDisabledCard
 function YouTubeDisabledCard() {
   return (
     <Card
@@ -45,6 +46,7 @@ function YouTubeDisabledCard() {
 }
 
 
+// @uxid src/apps/personas/creator/FromYouTube::YouTubeVideoTranscriptCard
 function YouTubeVideoTranscriptCard(props: { transcript: YTVideoTranscript, onClose: () => void, sx?: SxProps }) {
   const { transcript } = props;
   return (
@@ -93,6 +95,7 @@ function YouTubeVideoTranscriptCard(props: { transcript: YTVideoTranscript, onCl
 }
 
 
+// @uxid src/apps/personas/creator/FromYouTube::FromYouTube
 export function FromYouTube(props: {
   isTransforming: boolean;
   onCreate: (text: string, provenance: SimplePersonaProvenance) => void;

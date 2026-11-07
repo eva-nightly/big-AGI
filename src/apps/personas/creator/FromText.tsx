@@ -12,6 +12,7 @@ import type { SimplePersonaProvenance } from '../store-app-personas';
 const MIN_CHARS = 100;
 
 
+// @uxid src/apps/personas/creator/FromText::FromText
 export function FromText(props: {
   isCreating: boolean;
   onCreate: (text: string, provenance: SimplePersonaProvenance) => void;

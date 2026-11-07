@@ -67,6 +67,7 @@ function createChain(instructions: string[], titles: string[]): LLMChainStep[] {
 }
 
 
+// @uxid src/apps/personas/creator/Creator::PersonaPromptCard
 export const PersonaPromptCard = (props: {
   content: string,
   contentScaling: ContentScaling,
@@ -97,6 +98,7 @@ export const PersonaPromptCard = (props: {
   </Card>;
 
 
+// @uxid src/apps/personas/creator/Creator::Creator
 export function Creator(props: { display: boolean }) {
 
   // state

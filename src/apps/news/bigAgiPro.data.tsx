@@ -10,6 +10,7 @@ import { clientUtmSource } from '~/common/util/pwaUtils';
 
 export const bigAgiProUrl = 'https://big-agi.com' + clientUtmSource('upgrade');
 
+// @uxid src/apps/news/bigAgiPro.data::BigAgiProNewsCallout
 export function BigAgiProNewsCallout() {
 
   const bigAgiSupportUrl = 'https://form.typeform.com/to/nLf8gFmx?utm_source=big-agi-1&utm_medium=app&utm_campaign=support';

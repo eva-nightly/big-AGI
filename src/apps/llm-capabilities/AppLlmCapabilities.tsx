@@ -31,6 +31,7 @@ function _csvEscape(v: unknown): string {
 }
 
 
+// @uxid src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilitiesAllowed
 function AppLlmCapabilitiesAllowed() {
 
   // state
@@ -314,6 +315,7 @@ function AppLlmCapabilitiesAllowed() {
 }
 
 
+// @uxid src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilitiesDenied
 function AppLlmCapabilitiesDenied() {
   return (
     <AppPlaceholder title='LLM Capabilities'>
@@ -325,6 +327,7 @@ function AppLlmCapabilitiesDenied() {
 }
 
 
+// @uxid src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilities
 export function AppLlmCapabilities() {
   const allow = Release.IsNodeDevBuild;
   return allow ? <AppLlmCapabilitiesAllowed /> : <AppLlmCapabilitiesDenied />;

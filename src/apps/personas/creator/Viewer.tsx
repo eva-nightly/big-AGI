@@ -10,6 +10,7 @@ import { PersonaPromptCard } from './Creator';
 import { useSimplePersona } from '../store-app-personas';
 
 
+// @uxid src/apps/personas/creator/Viewer::Viewer
 export function Viewer(props: { selectedSimplePersonaId: string }) {
 
   // external state
