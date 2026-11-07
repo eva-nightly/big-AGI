@@ -27,6 +27,7 @@ const _style = {
  * - undefined: input disabled, X button pressed (soft) - input shows empty
  * - number: input active, X button flat (plain) - pressing X clears to undefined
  */
+// @uxid src/common/components/forms/FormNumberInput::FormNumberInput
 export function FormNumberInput(props: {
   title: string,
   description?: string,

@@ -18,6 +18,7 @@ const slotPropsInputSx: InputSlotsAndSlotProps['slotProps'] = {
 } as const;
 
 
+// @uxid src/common/components/forms/FormInputKey::FormInputKey
 export function FormInputKey(props: {
   autoCompleteId: string, // introduced to avoid clashes
   size?: 'sm' | 'md' | 'lg',

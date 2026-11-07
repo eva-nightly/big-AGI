@@ -13,6 +13,7 @@ const _styleNoTrack = {
 /**
  * Slider Control
  */
+// @uxid src/common/components/forms/FormSliderControl::FormSliderControl
 export function FormSliderControl(props: {
   title: string | React.JSX.Element, description?: string | React.JSX.Element, ariaLabel?: string,
   size?: 'sm' | 'md' | 'lg',
