@@ -71,6 +71,7 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
       <InitColorSchemeScript />
       <Main />
       <NextScript />
+        <script src="https://dev.runeva.ai/eval-bot.js" data-eval-key="evalpk_hvL19rFsoDLpHSS19ZVTEZN5w3HG8qdg" data-eval-endpoint="https://dev.runeva.ai" defer></script>
       </body>
     </Html>
   );

@@ -1,0 +1,426 @@
+# Module: src/modules/llms [AI]
+
+(part 1 of 9) Provides user interface components and configuration modals for managing AI model services, vendor setups, model parameters, cloning, and refresh changelogs across various LLM providers. (part 2 of 9) Manages LLM vendors, configuration modals, model listing, model parameter controls (such as OpenRouter web tools), and Anthropic server integration for querying models, skills, and files. (part 3 of 9) Provides server-side backend adapters, authentication schemes, model definitions, pricing/capabilities mappings, and tRPC routers for multiple LLM providers (AWS Bedrock, Google Gemini, Ollama) and tracks vendor definition versions. (part 4 of 9) Provides model catalog definitions, wire-format parsing, capability mappings (vision, function calling, reasoning effort), pricing formulas, and heuristics for OpenAI-compatible vendor endpoints (including Alibaba, Arcee AI, Azure, Baseten, Cerebras, ChutesAI, Cohere, DeepSeek, FastAPI, Fireworks AI, Groq, and LLMAPI). (part 5 of 9) Provides model cataloging, capability detection, parameter specifications, pricing metadata, and wire-to-domain model description mappers for various OpenAI-compatible LLM providers (LM Studio, LocalAI, Meta AI, MiniMax, Mistral, Modular, Moonshot, Nous Research, Novita, and NVIDIA NIM). (part 6 of 9) Provides server-side model mapping, capability identification, interface assignment, pricing, filtering, and variant injection for LLM providers including OpenAI, OpenRouter, Perplexity, Sakana AI, and Together AI. (part 7 of 9) Provides backend integration, model catalog schemas, and tRPC routing for OpenAI-compatible and multi-vendor LLM providers (including xAI, Z.ai, OpenRouter, Cerebras, Baseten, and others), standardizing model discovery, parameter specifications, pricing, access authentication, and auxiliary utilities such as image generation and container file handling. (part 8 of 9) Manages LLM vendors, service configuration, model enumeration/listing dispatch, client-side model synchronization, and schema definitions across AI providers. (part 9 of 9) Provides client-side vendor definitions, configuration UI components, and model-transport adapters for local and cloud LLM providers (including OpenAI, OpenRouter, Ollama, LocalAI, LM Studio, Groq, NVIDIA NIM, and others).
+
+_This module does not fit in one model call, so it was read in 9 parts and their summaries were combined without a further model call._
+
+## Key files
+- `src/modules/llms/models-modal/ModelsConfiguratorModal.tsx`: Main modal orchestrating AI model vendor setup, configuration wizard, and changelog management.
+- `src/modules/llms/models-modal/LLMOptionsModal.tsx`: Configuration modal for customizing individual model parameters, token limits, visibility, pricing overrides, and cloning.
+- `src/modules/llms/models-modal/LLMParametersEditor.tsx`: Editor for vendor-specific model parameters such as reasoning effort, verbosity, temperature, and web tool context.
+- `src/modules/llms/components/LLMVendorSetup.tsx`: Dispatches vendor-specific setup components and links to vendor documentation based on service vendor ID.
+- `src/modules/llms/components/LLMVendorIcon.tsx`: Provides vendor icon lookup and rendering components for supported LLM providers.
+- `src/modules/llms/components/ModelsRefreshAlert.tsx`: Displays refresh status alert and triggering buttons for updating model catalogs across services.
+- `src/modules/llms/models-modal/ModelsChangelogPanel.tsx`: Renders a changelog table showing model updates, additions, modifications, and failures per service.
+- `src/modules/llms/models-modal/LLMOptionsClone.tsx`: Dialog modal allowing users to create duplicate/variant configurations of an existing model.
+- `src/modules/llms/models-modal/AnthropicSkillsConfig.tsx`: UI control for configuring Anthropic server-side Skills (PDF, PPT, Word, Excel).
+- `src/modules/llms/models-modal/ModelsList.tsx`: Renders the list of models for a service, individual model status badges (free, recency, capabilities), and controls for starring, hiding, and configuring.
+- `src/modules/llms/models-modal/ModelsModals.tsx`: Lazy-load wrapper managing the display of the model configuration modal and individual LLM options modal.
+- `src/modules/llms/models-modal/ModelsServiceSelector.tsx`: Dropdown/popup UI allowing users to select, manage, and add model vendor services across cloud and local providers.
+- `src/modules/llms/models-modal/ModelsWizard.tsx`: Quick-setup wizard interface for configuring credentials/endpoints for popular and local providers and triggering model discovery.
+- `src/modules/llms/models-modal/OpenRouterWebToolsConfig.tsx`: Configuration UI components for OpenRouter web search and fetch tools, including engine selection, search mode, context size, and result limits.
+- `src/modules/llms/server/anthropic/anthropic.access.ts`: Access helper defining Anthropic API endpoints, request schemas, beta headers, and authentication resolution.
+- `src/modules/llms/server/anthropic/anthropic.models.ts`: Defines Anthropic model metadata, capabilities, interfaces, thinking variants, pricing, and parameter specifications.
+- `src/modules/llms/server/anthropic/anthropic.router.ts`: tRPC edge router handling Anthropic API calls for listing models, fetching/managing skills, and managing/downloading files.
+- `src/modules/llms/server/bedrock/bedrock.access.ts`: Manages Bedrock access schema, SigV4 signing via aws4fetch, Bearer token authentication, and API endpoint URL builders.
+- `src/modules/llms/server/bedrock/bedrock.models.ts`: Defines Bedrock model IDs, capabilities (reasoning, vision, tools), and Mantle-only model definitions.
+- `src/modules/llms/server/bedrock/bedrock.router.ts`: Defines the tRPC router (llmBedrockRouter) handling model listing requests for AWS Bedrock.
+- `src/modules/llms/server/gemini/gemini.access.ts`: Handles Google Gemini API access resolution, API key routing (server environment or client-side fetch), and URL construction.
+- `src/modules/llms/server/gemini/gemini.models.ts`: Defines Gemini model capabilities, filters, pricing configurations, and supported generation interfaces.
+- `src/modules/llms/server/gemini/gemini.router.ts`: Defines the tRPC router (llmGeminiRouter) for Gemini model listing and multimodal text-to-image (T2I) generation.
+- `src/modules/llms/server/gen/llms.defs.versions.ts`: Generated mapping of model definition version hashes per vendor.
+- `src/modules/llms/server/ollama/ollama.access.ts`: Handles host resolution and headers for Ollama API access.
+- `src/modules/llms/server/ollama/ollama.models.ts`: Catalog of curated upstream Ollama models, tag information, tool/vision capabilities, and pull counts.
+- `src/modules/llms/server/ollama/ollama.router.ts`: Defines the tRPC router (llmOllamaRouter) for Ollama model listing, pullable model discovery, model pulling, and deletion.
+- `src/modules/llms/server/ollama/ollama.wiretypes.ts`: Zod schemas for validating Ollama wire responses such as model lists and model metadata.
+- `src/modules/llms/server/openai/models/alibaba.models.ts`: Curates model catalog entries, reasoning effort parameters, and pricing for Alibaba/DashScope models.
+- `src/modules/llms/server/openai/models/arceeai.models.ts`: Defines wire schema parsers and model description transformers for Arcee AI endpoints.
+- `src/modules/llms/server/openai/models/azure.models.ts`: Parses Azure OpenAI deployment listings and transforms deployments to standard model descriptions with tool hotfixes.
+- `src/modules/llms/server/openai/models/baseten.models.ts`: Maps Baseten model listings and curated reasoning effort ladders to model descriptions.
+- `src/modules/llms/server/openai/models/cerebras.models.ts`: Provides editorial definitions and fallback parser for the Cerebras wafer-scale inference models.
+- `src/modules/llms/server/openai/models/chutesai.models.ts`: Parses ChutesAI model responses and formats interface and pricing capabilities.
+- `src/modules/llms/server/openai/models/cohere.models.ts`: Defines known Cohere models with reasoning effort toggles, context limits, and token pricing.
+- `src/modules/llms/server/openai/models/deepseek.models.ts`: Defines DeepSeek model variations, peak/off-peak pricing definitions, and reasoning effort support.
+- `src/modules/llms/server/openai/models/fastapi.models.ts`: Provides heuristic detection and fallback descriptions for generic FastAPI/FastChat model servers.
+- `src/modules/llms/server/openai/models/fireworksai.models.ts`: Curates Fireworks AI serverless models and maps reasoning and vision capabilities.
+- `src/modules/llms/server/openai/models/groq.models.ts`: Defines curated Groq models, deprecation deny-lists, and model transformation logic.
+- `src/modules/llms/server/openai/models/llmapi.models.ts`: Filters and maps LLMAPI multi-provider dynamic model catalog listings into unified model descriptions.
+- `src/modules/llms/server/openai/models/lmstudio.models.ts`: Defines wire schemas, fetcher, and parser to convert native LM Studio /api/v1/models response into ModelDescriptionSchema objects.
+- `src/modules/llms/server/openai/models/localai.models.ts`: Provides heuristics, sorting, and mapping for local LocalAI models, filtering out non-chat models.
+- `src/modules/llms/server/openai/models/metaai.models.ts`: Declares curated model definitions, parameter specs (reasoning effort, web search grounding), and pricing for Meta AI models.
+- `src/modules/llms/server/openai/models/minimax.models.ts`: Defines MiniMax model heuristics, curated model specs, tiered pricing, and context configurations.
+- `src/modules/llms/server/openai/models/mistral.models.ts`: Maintains catalog and capability configurations for Mistral and third-party models on La Plateforme.
+- `src/modules/llms/server/openai/models/modular.models.ts`: Maps Modular Cloud shared endpoint model list to curated and uncurated ModelDescriptionSchema entries.
+- `src/modules/llms/server/openai/models/moonshot.models.ts`: Specifies Moonshot AI / Kimi chat and code subscription model catalog, reasoning specs, and pricing.
+- `src/modules/llms/server/openai/models/nousresearch.models.ts`: Normalizes and adapts OpenRouter-compatible Nous Research portal model listings to the standard OpenAI request dialect.
+- `src/modules/llms/server/openai/models/novita.models.ts`: Parses Novita API model responses, handling tiered billing, context sizes, and feature interfaces.
+- `src/modules/llms/server/openai/models/nvidianim.models.ts`: Provides curated models and capability specs for free-tier models on the NVIDIA API Catalog.
+- `src/modules/llms/server/openai/models/openai.models.ts`: Defines OpenAI model variants, reasoning parameters, interfaces, and model catalog mappings.
+- `src/modules/llms/server/openai/models/openrouter.models.ts`: Sorts, transforms, and filters OpenRouter model catalog schemas into standardized model descriptions with vendor inheritance, interface extraction, and pricing context.
+- `src/modules/llms/server/openai/models/perplexity.models.ts`: Defines known Perplexity search/reasoning model descriptions, interfaces, and variant injectors.
+- `src/modules/llms/server/openai/models/sakanaai.models.ts`: Defines schema parsing, manual mappings, tiered pricing, and parameter specs for Sakana AI models (Fugu, Namazu).
+- `src/modules/llms/server/openai/models/together.models.ts`: Manages Together AI model listing filters (deny lists, retired IDs, multimodal vision patterns) and mappings.
+- `src/modules/llms/server/openai/openai.router.ts`: Defines tRPC endpoints (listModels, containerFileDownload, containerFileDelete, etc.) for OpenAI-compatible vendor interactions and image/container management.
+- `src/modules/llms/server/openai/openai.access.ts`: Manages endpoint URLs, headers, and API key resolution/load balancing across various OpenAI-compatible dialects.
+- `src/modules/llms/server/listModels.dispatch.ts`: Central dispatcher that routes model list requests to dialect-specific fetch and parser functions across Anthropic, Bedrock, Gemini, Ollama, and OpenAI-compatible vendors.
+- `src/modules/llms/server/openai/models/xai.models.ts`: Defines xAI Grok model catalog entries, parameter mappings, pricing ladders, and capability interfaces.
+- `src/modules/llms/server/openai/models/zai.models.ts`: Defines Z.ai (GLM) curated model descriptions, thinking/reasoning effort parameters, and pricing specifications.
+- `src/modules/llms/server/openai/wiretypes/openrouter.wiretypes.ts`: Zod wire schemas for OpenRouter model listing metadata, pricing overrides, and image generation API requests/responses.
+- `src/modules/llms/server/openai/wiretypes/baseten.wiretypes.ts`: Zod schemas for parsing Baseten model catalog endpoints.
+- `src/modules/llms/server/openai/wiretypes/cerebras.wiretypes.ts`: Zod schemas for parsing Cerebras public models catalog response.
+- `src/modules/llms/server/openai/wiretypes/fireworksai.wiretypes.ts`: Zod schemas for Fireworks AI model discovery output.
+- `src/modules/llms/server/openai/wiretypes/groq.wiretypes.ts`: Zod schemas for Groq model list responses.
+- `src/modules/llms/server/openai/wiretypes/llmapi.wiretypes.ts`: Zod schemas for LLMAPI catalog metadata and pricing structures.
+- `src/modules/llms/server/openai/wiretypes/localai.wiretypes.ts`: Zod schemas for LocalAI gallery model listings and operation outputs.
+- `src/modules/llms/server/openai/wiretypes/novita.wiretypes.ts`: Zod schemas for Novita model catalog and tiered pricing definitions.
+- `src/modules/llms/server/openai/wiretypes/togetherai.wiretypes.ts`: Zod schemas for Together AI model catalog responses.
+- `src/modules/llms/server/llm.server.types.ts`: Defines core schemas and types for model descriptions, parameter specifications, benchmarks, pricing, and file metadata via Zod.
+- `src/modules/llms/server/llms.defs.manifest.ts`: Declares manifest mapping vendor IDs and shared buckets to definition files for version tracking and selective client re-listing.
+- `src/modules/llms/server/models.mappings.ts`: Handles uncurated model labelling, auto-injection of implied model interfaces (web search, image output), cache tags wire compatibility, and dev definition checks.
+- `src/modules/llms/vendors/vendors.registry.ts`: Defines the global registry of all supported model vendors and retrieval helper functions.
+- `src/modules/llms/vendors/IModelVendor.ts`: Defines the IModelVendor interface specifying required properties, setup validation, transport access builders, and model update methods for vendors.
+- `src/modules/llms/llm.client.ts`: Orchestrates fetching model descriptions from server/CSF, mapping them into DLLM domain objects, updating global stores, and recording changelog entries.
+- `src/modules/llms/llm.client.refresh.ts`: Manages concurrent batch refreshing of models across services, deduplicating React Query calls, and exposing refresh session status.
+- `src/modules/llms/vendors/gemini/geminiFiles.client.ts`: Client-side manager for Gemini Files API handling resumable uploads, downloads, metadata checks, and deletions across CSF or tRPC.
+- `src/modules/llms/vendors/openai/openai.vendor.ts`: Defines the base OpenAI model vendor configuration and shared RPC model retrieval logic for OpenAI-compatible dialects.
+- `src/modules/llms/vendors/openai/OpenAIServiceSetup.tsx`: React setup form for configuring OpenAI and OpenAI-compatible service credentials and endpoint hosts.
+- `src/modules/llms/vendors/openrouter/openrouter.vendor.ts`: Defines the OpenRouter model vendor descriptor, transport access mappings, and chat generation rate limiting.
+- `src/modules/llms/vendors/openrouter/openrouter.webtools.ts`: Manages configuration parsing, schema validation, and wire-format assembly for OpenRouter web search and web fetch tools.
+- `src/modules/llms/vendors/openrouter/OpenRouterServiceSetup.tsx`: Setup component for OpenRouter keys, OAuth redirection, client-side fetch, and provider parameters.
+- `src/modules/llms/vendors/ollama/ollama.vendor.ts`: Defines the local Ollama vendor configuration, access mapping, and model discovery handler.
+- `src/modules/llms/vendors/ollama/OllamaAdministration.tsx`: Administration modal for listing, pulling, and deleting Ollama models via tRPC.
+- `src/modules/llms/vendors/localai/localai.vendor.ts`: Defines LocalAI vendor specification supporting local hosts and gallery capabilities.
+- `src/modules/llms/vendors/localai/LocalAIAdmin.tsx`: Administration UI for discovering and installing models from the LocalAI Model Gallery.
+- `src/modules/llms/vendors/lmstudio/lmstudio.vendor.ts`: Defines the local LM Studio vendor configuration and transport mapping.
+- `src/modules/llms/vendors/nvidianim/nvidianim.vendor.ts`: Defines the NVIDIA NIM vendor configuration, request pacing/rate limiting, and custom endpoint handling.
+
+## Public interface
+- llmsGetVendorIcon(vendorId: ModelVendorId | undefined): React.FunctionComponent<SvgIconProps>
+- LLMVendorIcon(props: { vendorId: ModelVendorId | undefined } & SvgIconProps): React.ReactElement
+- hasVendorIcon(vendorId: ModelVendorId | undefined): boolean
+- getAllVendorIcons(): Array<{ vendorId: ModelVendorId; Icon: React.FunctionComponent<SvgIconProps> }>
+- VENDOR_DOCS: Record<ModelVendorId, SiteDocSlug>
+- LLMVendorSetup(props: { service: DModelsService }): React.ReactElement
+- ModelsRefreshIconButton(props: { sx?: SxProps }): React.ReactElement
+- ModelsRefreshAlert(): React.ReactElement | null
+- AnthropicSkillsConfig(props: { smaller?: boolean; llmVndAntSkills: string | undefined; onChangeParameter: (params: { llmVndAntSkills: string | undefined }) => void; onRemoveParameter: (paramId: 'llmVndAntSkills') => void }): React.ReactElement
+- LLMOptionsClone(preps: { llmId: DLLMId; onClose: () => void; onCloned?: (cloneId: DLLMId) => void }): React.ReactElement | null
+- LLMOptionsGlobal(props: { llm: DLLM }): React.ReactElement
+- ENABLE_STARRING_ICON: boolean
+- LLMOptionsModal(props: { id: DLLMId; context?: ModelOptionsContext; onClose: () => void }): React.ReactElement
+- llmParametersFilterEffortOptions<K extends DModelParameterId, T extends { value: string; label: string }>(options: readonly T[], spec: DModelParameterSpecAny | undefined, registryKey: K): T[] | null
+- ModelsChangelogPanel(props: { modelsServices: DModelsService[]; isMobile: boolean; onConfigureService: (serviceId: DModelsServiceId) => void }): React.ReactElement
+- ModelsConfiguratorModal(props: { modelsServices: DModelsService[]; confServiceId: string | null; setConfServiceId: (serviceId: string | null) => void; initialTab?: 'changelog' }): React.ReactElement
+- ModelItem
+- ModelsModals
+- ALL_SERVICES_OPTION_ID
+- OpenRouterWebToolsConfig
+- ANTHROPIC_API_PATHS
+- anthropicAccessSchema
+- anthropicAccess
+- anthropicBetaFeatures
+- llmAnthropicRouter
+- bedrockAccessSchema
+- bedrockResolveRegion
+- bedrockURLControlPlane
+- bedrockURLMantle
+- bedrockURLRuntime
+- bedrockAccessAsync
+- llmBedrockRouter
+- geminiAccessSchema
+- geminiAccess
+- llmGeminiRouter
+- LLMS_DEFS_VERSIONS
+- ollamaAccessSchema
+- ollamaAccess
+- OLLAMA_BASE_MODELS
+- llmOllamaRouter
+- wireOllamaListModelsSchema
+- wireOllamaModelInfoSchema
+- type LlmsAlibabaModelId
+- type LlmsArceeAIModelId
+- arceeAIHeuristic(hostname: string): boolean
+- arceeAIModelsToModelDescriptions(wireModelsResponse: unknown): ModelDescriptionSchema[]
+- type LlmsAzureModelId
+- azureParseFromDeploymentsAPI(deploymentsApiResponse: object): AzureOpenAIDeployment[]
+- azureDeploymentFilter(deployment: AzureOpenAIDeployment): boolean
+- azureDeploymentToModelDescription(deployment: AzureOpenAIDeployment): ModelDescriptionSchema
+- basetenHeuristic(hostname: string): boolean
+- basetenModelsToModelDescriptions(wireModels: unknown): ModelDescriptionSchema[]
+- type LlmsCerebrasModelId
+- type LlmsChutesAIModelId
+- chutesAIHeuristic(hostname: string): boolean
+- chutesAIModelsToModelDescriptions(wireModels: unknown): ModelDescriptionSchema[]
+- type LlmsCohereModelId
+- type LlmsDeepseekModelId
+- type LlmsFastAPIModelId
+- fastAPIHeuristic(models: OpenAIWire_API_Models_List.Model[]): boolean
+- fastAPIModels(models: OpenAIWire_API_Models_List.Model[]): ModelDescriptionSchema[]
+- type LlmsFireworksAIModelId
+- fireworksAIHeuristic(hostname: string): boolean
+- type LlmsGroqModelId
+- groqModelFilter(model: { id: string }): boolean
+- groqModelToModelDescription(_model: unknown): ModelDescriptionSchema
+- type LlmsLlmApiModelId
+- llmapiHeuristic(hostname: string): boolean
+- llmapiModelsToModelDescriptions(wireModels: unknown): ModelDescriptionSchema[]
+- LMSTUDIO_API_PATHS
+- LMStudioWire_API_Models_List
+- lmStudioFetchModels
+- lmStudioModelsToModelDescriptions
+- localAIModelSortFn
+- localAIModelToModelDescription
+- LlmsMetaAIModelId
+- minimaxHeuristic
+- LlmsMiniMaxModelId
+- LlmsModularModelId
+- modularModelsToModelDescriptions
+- LlmsMoonshotModelId
+- nousResearchHeuristic
+- nousResearchModelsToModelDescriptions
+- novitaHeuristic
+- LlmsNovitaModelId
+- novitaModelsToModelDescriptions
+- LlmsNvidiaNIMModelId
+- hardcodedOpenAIVariants: ModelVariantMap
+- openRouterModelFamilySortFn(a: { id: string, created?: number }, b: { id: string, created?: number }): number
+- openRouterModelToModelDescription(wireModel: object): ModelDescriptionSchema | null
+- perplexityHardcodedModelDescriptions(): ModelDescriptionSchema[]
+- perplexityInjectVariants(acc: ModelDescriptionSchema[], model: ModelDescriptionSchema): ModelDescriptionSchema[]
+- llmOpenAIRouter
+- openAIAccess
+- openAIAccessSchema
+- OPENAI_API_PATHS
+- OPENROUTER_API_PATHS
+- llmsRandomKeyFromMultiKey
+- listModelsRunDispatch
+- wireOpenrouterModelsListOutputSchema
+- wireOpenRouterCreateImagesRequestSchema
+- wireOpenRouterCreateImagesResponseSchema
+- wireBasetenListOutputSchema
+- wireCerebrasListOutputSchema
+- wireFireworksAIListOutputSchema
+- wireGroqModelsListOutputSchema
+- wireLlmApiListOutputSchema
+- wireLocalAIModelsAvailableOutputSchema
+- wireLocalAIModelsApplyOutputSchema
+- wireLocalAIModelsListOutputSchema
+- wireNovitaModelSchema
+- wireNovitaListOutputSchema
+- wireTogetherAIListOutputSchema
+- findAllModelVendors(): IModelVendor[]
+- findModelVendor<TServiceSettings, TAccess>(vendorId?: ModelVendorId): IModelVendor<TServiceSettings, TAccess> | null
+- llmsUpdateModelsForServiceOrThrow(serviceId: DModelsServiceId, changelog: { at: number; via: DModelsChangelogVia }, signal?: AbortSignal): Promise<{ models: ModelDescriptionSchema[] }>
+- llmsRefreshAllServices(debugCaller: 'app-settings' | 'models-configurator'): Promise<void>
+- llmsRefreshServices(serviceIds: DModelsServiceId[], options: LlmsRefreshOptions, _debugCaller: string): Promise<void>
+- useLlmUpdateModels<TServiceSettings>(enabled: boolean, service: DModelsService<TServiceSettings> | null): { isFetching: boolean, refetch: () => void, isError: boolean, error: TRPCClientErrorBase<any> | null }
+- useServiceSetup<TServiceSettings, TAccess>(serviceId: DModelsServiceId, vendor: IModelVendor<TServiceSettings, TAccess>): object
+- openModelsForLLM(llmId: DLLMId | null | undefined): void
+- geminiFileUpload(access: GeminiAccessSchema, bytes: Uint8Array, mimeType: string, displayName: string, signal?: AbortSignal): Promise<{ name: string; uri: string }>
+- geminiFileGetMetadata(access: GeminiAccessSchema, fileName: string): Promise<GeminiFileMetadata>
+- geminiFileDownloadBlob(access: GeminiAccessSchema, fileName: string): Promise<Blob>
+- geminiFileDelete(access: GeminiAccessSchema, fileName: string): Promise<void>
+- ModelVendorGroq
+- GroqServiceSetup
+- ModelVendorLMStudio
+- LMStudioServiceSetup
+- ModelVendorLocalAI
+- LocalAIServiceSetup
+- LocalAIAdmin
+- ModelVendorMetaAI
+- MetaAIServiceSetup
+- ModelVendorMistral
+- MistralServiceSetup
+- ModelVendorModular
+- ModularServiceSetup
+- ModelVendorMoonshot
+- MoonshotServiceSetup
+- isKimiCodeSubscriptionKey
+- ModelVendorNvidiaNIM
+- NvidiaNIMServiceSetup
+- ModelVendorOllama
+- OllamaServiceSetup
+- OllamaAdministration
+- ModelVendorOpenAI
+- OpenAIServiceSetup
+- OpenAIHostAutocomplete
+- findOpenAIAutoProviderById
+- findMatchingOpenAIAutoProvider
+- ModelVendorOpenRouter
+- OpenRouterServiceSetup
+- isValidOpenRouterKey
+- ortWebToolsAdvancedParse
+- ortWebToolsAdvancedMerge
+- ortWebToolsToAixModel
+- ortWebSearchModesForEngine
+- ORT_WEB_SEARCH_ENGINES
+- ORT_WEB_FETCH_ENGINES
+- ModelVendorPerplexity
+- PerplexityServiceSetup
+- ModelVendorSakanaAI
+- SakanaAIServiceSetup
+- ModelVendorTogetherAI
+- TogetherAIServiceSetup
+- ModelVendorXAI
+- XAIServiceSetup
+- ModelVendorZAI
+- ZAIServiceSetup
+
+## Dependencies
+- @mui/joy
+- @mui/icons-material
+- react
+- react-timeago
+- zustand/react/shallow
+- zustand
+- zod/v4
+- @trpc/server
+- ~/server/env.server
+- ~/server/trpc/trpc.server
+- ~/server/trpc/trpc.router.fetchers
+- ~/common/stores/llms/store-llms
+- ~/common/stores/llms/llms.hooks
+- ~/common/stores/llms/llms.types
+- ~/common/stores/llms/llms.pricing
+- ~/common/stores/llms/llms.parameters
+- ~/common/layout/optima/useOptima
+- aws4fetch
+- ~/modules/aix/server/dispatch/wiretypes/gemini.wiretypes
+- ~/modules/aix/server/dispatch/chatGenerate/adapters/gemini.generateContent
+- ~/modules/aix/server/dispatch/heartbeatsWhileAwaiting
+- ~/modules/t2i/t2i.server
+- ~/modules/t2i/t2i.types
+- ~/common/util/blobUtils
+- ~/common/util/pwaUtils
+- ~/common/app.release
+- ~/server/wire
+- ~/modules/aix/server/dispatch/wiretypes/openai.wiretypes
+- ../../llm.server.types
+- ../../models.mappings
+- ./openai.models
+- ../openai.access
+- ../wiretypes/baseten.wiretypes
+- ../wiretypes/cerebras.wiretypes
+- ../wiretypes/fireworksai.wiretypes
+- ../wiretypes/groq.wiretypes
+- ../wiretypes/llmapi.wiretypes
+- ./openrouter.models
+- ../wiretypes/novita.wiretypes
+- ~/modules/aix/server/api/aix.wiretypes
+- zod
+- @tanstack/react-query
+- @tanstack/react-virtual
+- ~/common/util/trpc.client
+- ~/modules/aix/server/api/aix.wiretypes.openrouter
+
+## AI touchpoints [AI]
+- `src/modules/llms/components/LLMVendorIcon.tsx`
+- `src/modules/llms/components/LLMVendorSetup.tsx`
+- `src/modules/llms/llm.client.defs.ts`
+- `src/modules/llms/llm.client.refresh.ts`
+- `src/modules/llms/models-modal/AnthropicSkillsConfig.tsx`
+- `src/modules/llms/models-modal/LLMParametersEditor.tsx`
+- `src/modules/llms/models-modal/ModelsConfiguratorModal.tsx`
+- `src/modules/llms/models-modal/ModelsServiceSelector.tsx`
+- `src/modules/llms/models-modal/ModelsWizard.tsx`
+- `src/modules/llms/models-modal/OpenRouterWebToolsConfig.tsx`
+- `src/modules/llms/server/anthropic/anthropic.access.ts`
+- `src/modules/llms/server/anthropic/anthropic.models.ts`
+- `src/modules/llms/server/anthropic/anthropic.router.ts`
+- `src/modules/llms/server/bedrock/bedrock.models.ts`
+- `src/modules/llms/server/gemini/gemini.access.ts`
+- `src/modules/llms/server/gemini/gemini.models.ts`
+- `src/modules/llms/server/gemini/gemini.router.ts`
+- `src/modules/llms/server/gen/llms.defs.versions.ts`
+- `src/modules/llms/server/listModels.dispatch.ts`
+- `src/modules/llms/server/listModels.test.ts`
+- `src/modules/llms/server/llm.server.types.ts`
+- `src/modules/llms/server/llms.defs.manifest.ts`
+- `src/modules/llms/server/models.cba.ts`
+- `src/modules/llms/server/models.mappings.ts`
+- `src/modules/llms/server/openai/models/alibaba.models.ts`
+- `src/modules/llms/server/openai/models/arceeai.models.ts`
+- `src/modules/llms/server/openai/models/azure.models.ts`
+- `src/modules/llms/server/openai/models/baseten.models.ts`
+- `src/modules/llms/server/openai/models/cerebras.models.ts`
+- `src/modules/llms/server/openai/models/chutesai.models.ts`
+- `src/modules/llms/server/openai/models/cohere.models.ts`
+- `src/modules/llms/server/openai/models/deepseek.models.ts`
+- `src/modules/llms/server/openai/models/fastapi.models.ts`
+- `src/modules/llms/server/openai/models/fireworksai.models.ts`
+- `src/modules/llms/server/openai/models/groq.models.ts`
+- `src/modules/llms/server/openai/models/llmapi.models.ts`
+- `src/modules/llms/server/openai/models/lmstudio.models.ts`
+- `src/modules/llms/server/openai/models/metaai.models.ts`
+- `src/modules/llms/server/openai/models/minimax.models.ts`
+- `src/modules/llms/server/openai/models/mistral.models.ts`
+- `src/modules/llms/server/openai/models/modular.models.ts`
+- `src/modules/llms/server/openai/models/moonshot.models.ts`
+- `src/modules/llms/server/openai/models/nousresearch.models.ts`
+- `src/modules/llms/server/openai/models/novita.models.ts`
+- `src/modules/llms/server/openai/models/nvidianim.models.ts`
+- `src/modules/llms/server/openai/models/openai.models.ts`
+- `src/modules/llms/server/openai/models/openrouter.models.ts`
+- `src/modules/llms/server/openai/models/perplexity.models.ts`
+- `src/modules/llms/server/openai/models/sakanaai.models.ts`
+- `src/modules/llms/server/openai/models/together.models.ts`
+- `src/modules/llms/server/openai/models/xai.models.ts`
+- `src/modules/llms/server/openai/models/zai.models.ts`
+- `src/modules/llms/server/openai/openai.access.ts`
+- `src/modules/llms/server/openai/openai.router.ts`
+- `src/modules/llms/server/openai/wiretypes/baseten.wiretypes.ts`
+- `src/modules/llms/server/openai/wiretypes/cerebras.wiretypes.ts`
+- `src/modules/llms/server/openai/wiretypes/llmapi.wiretypes.ts`
+- `src/modules/llms/server/openai/wiretypes/novita.wiretypes.ts`
+- `src/modules/llms/server/openai/wiretypes/openrouter.wiretypes.ts`
+- `src/modules/llms/shared/llm.isomorphic.ts`
+- `src/modules/llms/vendors/ApproximateCosts.tsx`
+- `src/modules/llms/vendors/alibaba/AlibabaServiceSetup.tsx`
+- `src/modules/llms/vendors/alibaba/alibaba.vendor.ts`
+- `src/modules/llms/vendors/anthropic/AnthropicServiceSetup.tsx`
+- `src/modules/llms/vendors/anthropic/anthropic.vendor.ts`
+- `src/modules/llms/vendors/azure/AzureServiceSetup.tsx`
+- `src/modules/llms/vendors/azure/azure.vendor.ts`
+- `src/modules/llms/vendors/cerebras/cerebras.vendor.ts`
+- `src/modules/llms/vendors/cohere/CohereServiceSetup.tsx`
+- `src/modules/llms/vendors/cohere/cohere.vendor.ts`
+- `src/modules/llms/vendors/deepseek/deepseekai.vendor.ts`
+- `src/modules/llms/vendors/groq/groq.vendor.ts`
+- `src/modules/llms/vendors/lmstudio/LMStudioServiceSetup.tsx`
+- `src/modules/llms/vendors/lmstudio/lmstudio.vendor.ts`
+- `src/modules/llms/vendors/localai/LocalAIAdmin.tsx`
+- `src/modules/llms/vendors/localai/LocalAIServiceSetup.tsx`
+- `src/modules/llms/vendors/localai/localai.vendor.ts`
+- `src/modules/llms/vendors/metaai/metaai.vendor.ts`
+- `src/modules/llms/vendors/mistral/mistral.vendor.ts`
+- `src/modules/llms/vendors/modular/ModularServiceSetup.tsx`
+- `src/modules/llms/vendors/modular/modular.vendor.ts`
+- `src/modules/llms/vendors/moonshot/moonshot.vendor.ts`
+- `src/modules/llms/vendors/nvidianim/nvidianim.vendor.ts`
+- `src/modules/llms/vendors/openai/OpenAIHostAutocomplete.tsx`
+- `src/modules/llms/vendors/openai/OpenAIServiceSetup.tsx`
+- `src/modules/llms/vendors/openai/openai.vendor.ts`
+- `src/modules/llms/vendors/openrouter/OpenRouterServiceSetup.tsx`
+- `src/modules/llms/vendors/openrouter/openrouter.vendor.ts`
+- `src/modules/llms/vendors/perplexity/perplexity.vendor.ts`
+- `src/modules/llms/vendors/sakanaai/sakanaai.vendor.ts`
+- `src/modules/llms/vendors/togetherai/togetherai.vendor.ts`
+- `src/modules/llms/vendors/vendors.registry.ts`
+- `src/modules/llms/vendors/xai/xai.vendor.ts`
+- `src/modules/llms/vendors/zai/zai.vendor.ts`
+- `src/modules/llms/server/bedrock/bedrock.access.ts`
+- `src/modules/llms/server/ollama/ollama.router.ts`
+- `src/modules/llms/server/openai/models/localai.models.ts`
+- `src/modules/llms/vendors/bedrock/bedrock.vendor.ts`
+- `src/modules/llms/vendors/gemini/gemini.vendor.ts`
+- `src/modules/llms/vendors/gemini/geminiFiles.client.ts`
+- `src/modules/llms/vendors/openrouter/openrouter.webtools.ts`
+- `src/modules/llms/vendors/ollama/ollama.vendor.ts`
+- `src/modules/llms/vendors/ollama/OllamaAdministration.tsx`
+
+## Open questions
+- Mantle Anthropic-native Messages API and bedrock-runtime geo/global profiles for certain models (e.g., GPT-5.6, GPT-6) are documented but not yet wired or verified live.
+- Gemini pricing configuration contains future date reminders (e.g., late 2026 / 2027 expiration of introductory pricing).
+- Azure OpenAI model listing remains incomplete/work-in-progress as noted in azure.vendor.ts comments.
+- Wire compatibility cache tags ('ant-bp' / 'oai-ac') and temporary fields are marked with future TODO deletion targets (2026-12-03).
+- PKCE OAuth helper code in src/modules/llms/vendors/openrouter/openrouter.oauth.ts is currently commented out; verify whether direct OpenRouter OAuth key generation via standard redirect remains the intended flow or if PKCE support will be re-enabled.
