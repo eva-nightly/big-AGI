@@ -6,6 +6,7 @@ const load = id => JSON.parse(fs.readFileSync(path.join(OUT, `${id}.json`), 'utf
 const clone = o => JSON.parse(JSON.stringify(o));
 
 // non-streaming POST -> {status, body}
+// @uxid tools/develop/aix-anthropic-eviscerate/retention::callJson
 async function callJson(body) {
   const res = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',

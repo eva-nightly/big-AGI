@@ -159,7 +159,7 @@ export function useGoogleDrivePicker(
     {/* Top-level close button - portaled to body, above the Google Drive picker */}
     {createPortal(
       <TooltipOutlined title='Close and Switch Google Drive Account' placement='bottom'>
-        <IconButton
+        <IconButton /* @uxid src/common/attachment-drafts/attachment-sources/useGoogleDrivePicker::useGoogleDrivePicker.iconbutton */
           onClick={handleDeauthClick}
           sx={{
             '--IconButton-size': '2.75rem',
@@ -182,7 +182,7 @@ export function useGoogleDrivePicker(
     )}
 
 
-    <DrivePicker
+    <DrivePicker /* @uxid src/common/attachment-drafts/attachment-sources/useGoogleDrivePicker::useGoogleDrivePicker.drivepicker */
       app-id={GOOGLE_DRIVE_CLIENT_ID.split('-')[0] || ''}
       client-id={GOOGLE_DRIVE_CLIENT_ID}
       title='Attach files from Google Drive'

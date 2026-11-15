@@ -1,0 +1,154 @@
+# Module: tools/develop [AI]
+
+(part 1 of 6) Provides internal developer test harnesses, protocol probes, and token-accounting/retention experimentation tools to validate and diagnose AI model provider APIs (Anthropic, Google Gemini Interactions, OpenAI, MetaAI), streaming SSE parsers, multi-turn programmatic tool calls, and container state fidelity. (part 2 of 6) Developer tooling for debugging, protocol verification, and stream tracing of AIX backend dispatch pipelines and LLM provider wire formats (aix-protocol-lab), alongside local workspace analysis utilities (alx-claude-code-eviscerate). (part 3 of 6) A developer tool script that generates visual and statistical reports (session tree layout SVG, turn/tool taxonomies, and record distributions) analyzing Claude Code session tape records and histories. (part 4 of 6) Developer tooling and build-time scripts for workspace setup, vendor icon sprite generation, semantic LLM definition versioning, and deep session analysis / census scripts for Claude Code session tape corpora. (part 5 of 6) Internal developer tooling for empirical LLM vendor testing, including parameter acceptance sweeping across various AI provider dialects and model fingerprinting against reference flagships. (part 6 of 6) Developer utilities for NVIDIA NIM model catalog harvesting and validation of Next.js SWC minification correctness.
+
+_This module does not fit in one model call, so it was read in 6 parts and their summaries were combined without a further model call._
+
+## Key files
+- `tools/develop/aix-anthropic-eviscerate/lib.mjs`: Shared helper harness for direct Anthropic Messages API calls, streaming SSE capture and reassembly, client tool execution, and multi-turn agent loops.
+- `tools/develop/aix-anthropic-eviscerate/run.mjs`: Driver script executing predefined Anthropic test scenarios covering direct custom tools, hosted search/fetch, programmatic tool calls (PTC), and mixed tool execution.
+- `tools/develop/aix-anthropic-eviscerate/tokacct.mjs`: Token-accounting and history-ablation harness testing Anthropic token counts, HTTP validity, and answer retention after pruning blocks.
+- `tools/develop/aix-anthropic-eviscerate/probes2.mjs`: Probes Anthropic API constraints, serial PTC loops, tool choice enforcement, and robustness on omitted/malformed tool results.
+- `tools/develop/aix-anthropic-eviscerate/retention.mjs`: Verifies referential integrity and continuation behavior of Anthropic conversations when modifying tool use, results, and container IDs.
+- `tools/develop/aix-anthropic-eviscerate/report.mjs`: Generates an HTML diagnostic report visualising blocks, turn flows, token usage, and test outcomes across Anthropic eviscerate runs.
+- `tools/develop/aix-gemini-antigravity-probe/probe.ts`: Captures Gemini Interactions SSE streams and replays them through the production Gemini interactions parsers to verify particle generation.
+- `tools/develop/aix-protocol-lab/access.ts`: Constructs AIX API access credentials and configuration objects for supported model provider dialects from environment and local env files.
+- `tools/develop/aix-protocol-lab/chain.ts`: Evaluates multi-turn chain fidelity by reassembling turn 1 fragments using ContentReassembler and generating turn 2 dispatch requests across providers.
+- `tools/develop/aix-protocol-lab/lab.ts`: CLI entry point providing commands to capture live API streams, replay captures offline, compare differential projections, and generate HTML/terminal reports.
+- `tools/develop/aix-protocol-lab/engine.ts`: Execution engine running the production AIX dispatch, continuation, parser, and demuxer pipeline with trace recording and offline replay synthesis.
+- `tools/develop/aix-protocol-lab/trace.ts`: Trace data models and recorder implementation that instruments dispatches, response streams, wire events, transmitter calls, and particle outputs.
+- `tools/develop/aix-protocol-lab/checks.ts`: Differential verification and grammar checks across wire events, sequence contiguousness, and translation loss between wire chunks and emitted particles.
+- `tools/develop/aix-protocol-lab/scenarios.ts`: Catalog of protocol testing scenarios, test prompts, and capability mappings (reasoning, web search, code execution, function calling) per model vendor flavor.
+- `tools/develop/aix-protocol-lab/render-html.ts`: Standalone paired-ledger HTML renderer displaying wire payloads on the left and parser reactions/particles on the right.
+- `tools/develop/aix-protocol-lab/render-terminal.ts`: Colored ANSI terminal output formatter for live/replayed run summaries, findings, and diagnostic reports.
+- `tools/develop/aix-protocol-lab/stub-preload.cjs`: Node module preload hook stubbing browser-only imports and Next.js assets when executing CLI commands involving client reassembly.
+- `tools/develop/alx-claude-code-eviscerate/lib.mjs`: Helper utilities for reading, walking, truncating, and parsing local Claude Code project files.
+- `tools/develop/alx-claude-code-eviscerate/report.mjs`: CLI reporting script that loads session census/exemplar JSON datasets, builds graph layouts of message tree branches, and formats HTML/SVG diagnostic reports.
+- `tools/develop/gen-llms-defs/generate-llms-defs.mjs`: Generates semantic version hashes for LLM vendor definitions in src/modules/llms/server based on the AST/transpiled content and manifest configuration.
+- `tools/develop/gen-icon-sprites/generate-llm-sprites.ts`: Extracts SVG icons from LLM vendor component files and compiles them into a consolidated VendorIconSprite SVG sprite sheet.
+- `tools/develop/gen-devtools-workspace/generate-devtools-workspace.mjs`: Generates the Chrome DevTools automatic workspace folder descriptor file for the local git worktree.
+- `tools/develop/alx-claude-code-eviscerate/scan.mjs`: Conducts local census, topology mapping, and statistical analysis across Claude Code session logs and sidecar directories.
+- `tools/develop/alx-claude-code-eviscerate/toolsx.mjs`: Maps tool interfaces, argument schemas, fill rates, error rates, and subagent invocation parameters across session records.
+- `tools/develop/alx-claude-code-eviscerate/verify.mjs`: Verifies structural invariants, parent UUID message chains, and tool call/result pairings across session tapes.
+- `tools/develop/llm-parameter-sweep/sweep.ts`: CLI tool that validates supported LLM parameters (temperature, reasoning effort, thinking budgets, verbosity) across provider dialects using Aix dispatch handlers
+- `tools/develop/model-fingerprint/fingerprint.mjs`: CLI instrument that executes behavioral, tokenizer, choice, and reveal probe batteries against OpenRouter to fingerprint unknown models against reference lab flagships
+- `tools/develop/nvidianim-catalog-sync/harvest.ts`: CLI orchestrator merging NVIDIA live model IDs, build.nvidia.com cards, NGC metadata, and live completion probes into a unified JSON facts ledger.
+- `tools/develop/nvidianim-catalog-sync/probes.ts`: Authenticated live chat completions probing engine that tests model liveness and parses context window limits from error responses under strict pacing.
+- `tools/develop/nvidianim-catalog-sync/sources.ts`: Unauthenticated fetchers for live model listings, build.nvidia.com markdown/HTML catalog entries, and NGC endpoint metadata.
+- `tools/develop/nvidianim-catalog-sync/access.ts`: Local environment file parser and key lookup for NVIDIANIM_API_KEY with provenance auditing.
+- `tools/develop/nvidianim-catalog-sync/types.ts`: TypeScript type definitions for harvested model metadata, liveness status, and catalog index structures.
+- `tools/develop/swc-minify-check/cases.mjs`: Test runner comparing unminified module function outputs against Next.js SWC minified outputs across defined test cases.
+- `tools/develop/swc-minify-check/dropped.mjs`: AST-instrumented scanner checking for reachable TypeScript/TSX code dropped by Next.js SWC compared to Terser.
+- `tools/develop/swc-minify-check/nextswc.mjs`: Shared transformation, SWC minification, Terser minification, and VM execution harness matching Next.js compilation settings.
+- `tools/develop/swc-minify-check/cases/messageTerminalOutcome.mjs`: Minification test specification for chat message terminal outcome resolution.
+
+## Public interface
+- apiKey()
+- callStream(body, options)
+- pendingClientToolUses(content)
+- unresolvedServerToolUses(content)
+- runLoop(options)
+- lookupKey(varName, repoRoot)
+- flavorKeyVar(flavor)
+- accessForFlavor(flavor)
+- reassembleRun(run)
+- buildNextTurn(access, compiled, turn1, followupText, streaming, options)
+- syntheticToolResponses(fragments)
+- emissionSummary(fragments, replayed)
+- cmdCapture(flavor, scenarioId, flags)
+- cmdReplay(runFile, flags)
+- captureRun(opts: CaptureOptions): Promise<{ run: LabRun; keySource: string; unsupportedCaps: string[] }>
+- captureRequest(opts): Promise<LabRun>
+- replayRun(sourceRun, replayOfName, echoConsole)
+- oracleRun(sourceRun, timeoutMs, echoConsole)
+- checkWireGrammar(run: LabRun): LabFinding[]
+- renderTerminal(run: LabRun, opts?): string
+- renderReportTerminal(report: LabReport): string
+- renderHtml(run: LabRun, report: LabReport): string
+- TraceRecorder
+- node tools/develop/gen-devtools-workspace/generate-devtools-workspace.mjs [--clean]
+- node tools/develop/gen-icon-sprites/generate-llm-sprites.ts [--check]
+- node tools/develop/gen-llms-defs/generate-llms-defs.mjs [--check]
+- CLI execution: tools/develop/llm-parameter-sweep/sweep.ts (flags: --dialect, --key, --model-filter, --max-models, --config)
+- CLI execution: tools/develop/model-fingerprint/fingerprint.mjs
+- CLI: npx tsx tools/develop/nvidianim-catalog-sync/harvest.ts [--skip-probes] [--only <substring>] [--extra <id,id>]
+- CLI: node tools/develop/swc-minify-check/cases.mjs [case-file...] [--source <path>]
+- CLI: node tools/develop/swc-minify-check/dropped.mjs [path...]
+- lookupKey(varName: string, repoRoot?: string): { value: string; source: string } | null
+- lookupNvidiaKey(): { value: string; source: string } | null
+- probeLiveness(apiKey: string, modelId: string): Promise<LivenessResult>
+- parseCtxFromErrorBody(body: string): number | null
+- fetchLiveModelIds(): Promise<LiveModelId[]>
+- fetchCatalogIndex(): Promise<{ entries: CatalogIndexEntry[]; pagesRead: number; notes: string[] }>
+- transformTs(source: string, filename: string): Promise<string>
+- minifySwc(cjs: string): Promise<string>
+- minifyTerser(cjs: string): Promise<string>
+
+## Dependencies
+- node:fs
+- node:path
+- ~/modules/aix/server/dispatch/chatGenerate/parsers/gemini.interactions.parser
+- ~/modules/aix/server/dispatch/chatGenerate/parsers/IParticleTransmitter
+- ~/modules/aix/server/api/aix.wiretypes
+- ~/modules/aix/client/ContentReassembler
+- ~/modules/aix/client/aix.client.chatGenerateRequest
+- ~/common/stores/chat/chat.message
+- ~/common/stores/chat/chat.fragments
+- ~/modules/aix/server/dispatch/chatGenerate/chatGenerate.dispatch
+- ~/server/trpc/trpc.router.fetchers
+- ~/modules/aix/server/dispatch/chatGenerate/chatGenerate.continuation
+- ~/modules/aix/server/dispatch/chatGenerate/parsers/anthropic.parser
+- ~/modules/aix/server/dispatch/chatGenerate/parsers/gemini.parser
+- ~/modules/aix/server/dispatch/chatGenerate/parsers/openai.parser
+- ~/modules/aix/server/dispatch/chatGenerate/parsers/openai.responses.parser
+- ~/modules/aix/server/dispatch/stream.demuxers
+- ./lib.mjs
+- node:crypto
+- node:url
+- node:child_process
+- typescript
+- ~/modules/llms/server/llm.server.types
+- ~/modules/llms/server/listModels.dispatch
+- node:module
+- node:vm
+- next/dist/build/swc
+- next/dist/compiled/terser/bundle.min.js
+
+## AI touchpoints [AI]
+- `tools/develop/aix-anthropic-eviscerate/bserial2.mjs`
+- `tools/develop/aix-anthropic-eviscerate/lib.mjs`
+- `tools/develop/aix-anthropic-eviscerate/pcheck.mjs`
+- `tools/develop/aix-anthropic-eviscerate/probes2.mjs`
+- `tools/develop/aix-anthropic-eviscerate/r3clean.mjs`
+- `tools/develop/aix-anthropic-eviscerate/report.mjs`
+- `tools/develop/aix-anthropic-eviscerate/retention.mjs`
+- `tools/develop/aix-anthropic-eviscerate/run.mjs`
+- `tools/develop/aix-anthropic-eviscerate/tokacct.mjs`
+- `tools/develop/aix-gemini-antigravity-probe/probe.ts`
+- `tools/develop/aix-protocol-lab/access.ts`
+- `tools/develop/aix-protocol-lab/chain.ts`
+- `tools/develop/aix-protocol-lab/checks.ts`
+- `tools/develop/aix-protocol-lab/engine.ts`
+- `tools/develop/aix-protocol-lab/lab.ts`
+- `tools/develop/aix-protocol-lab/render-html.ts`
+- `tools/develop/aix-protocol-lab/render-terminal.ts`
+- `tools/develop/aix-protocol-lab/scenarios.ts`
+- `tools/develop/aix-protocol-lab/trace.ts`
+- `tools/develop/alx-claude-code-eviscerate/report.mjs`
+- `tools/develop/alx-claude-code-eviscerate/scan.mjs`
+- `tools/develop/alx-claude-code-eviscerate/slice.mjs`
+- `tools/develop/alx-claude-code-eviscerate/slice2.mjs`
+- `tools/develop/alx-claude-code-eviscerate/toolsx.mjs`
+- `tools/develop/alx-claude-code-eviscerate/trees.mjs`
+- `tools/develop/alx-claude-code-eviscerate/turn.mjs`
+- `tools/develop/alx-claude-code-eviscerate/verify.mjs`
+- `tools/develop/gen-llms-defs/generate-llms-defs.mjs`
+- `tools/develop/llm-parameter-sweep/sweep.ts`
+- `tools/develop/model-fingerprint/fingerprint.mjs`
+- `tools/develop/nvidianim-catalog-sync/probes.ts`
+- `tools/develop/gen-icon-sprites/generate-llm-sprites.ts`
+- `tools/develop/nvidianim-catalog-sync/sources.ts`
+
+## Open questions
+- What build or execution task invokes report.mjs in the developer workflow, and what output file does it write to once finished?
+- What is the intended downstream usage in the main big-AGI app for the analysis outputs produced by alx-claude-code-eviscerate?

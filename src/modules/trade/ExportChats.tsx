@@ -28,6 +28,7 @@ export type ExportConfig = {
 /**
  * Export Buttons and functionality
  */
+// @uxid src/modules/trade/ExportChats::ExportChats
 export function ExportChats(props: { config: ExportConfig, onClose: () => void }) {
 
   // state
@@ -103,7 +104,7 @@ export function ExportChats(props: { config: ExportConfig, onClose: () => void }
           )}
 
           <GoodTooltip title={<KeyStroke variant='solid' combo='Ctrl + S' />}>
-            <Button
+            <Button /* @uxid src/modules/trade/ExportChats::ExportChats.button */
               variant='soft' disabled={!hasConversation || downloadedJSONState === 'busy'} loading={downloadedJSONState === 'busy'}
               color={downloadedJSONState === 'ok' ? 'success' : downloadedJSONState === 'fail' ? 'warning' : 'primary'}
               endDecorator={downloadedJSONState === 'ok' ? <DoneIcon /> : downloadedJSONState === 'fail' ? '✘' : <FileDownloadOutlinedIcon />}
@@ -114,7 +115,7 @@ export function ExportChats(props: { config: ExportConfig, onClose: () => void }
             </Button>
           </GoodTooltip>
 
-          <Button
+          <Button /* @uxid src/modules/trade/ExportChats::ExportChats.button-2 */
             variant='soft' disabled={!hasConversation || downloadedMarkdownState === 'busy'} loading={downloadedMarkdownState === 'busy'}
             color={downloadedMarkdownState === 'ok' ? 'success' : downloadedMarkdownState === 'fail' ? 'warning' : 'primary'}
             endDecorator={downloadedMarkdownState === 'ok' ? <DoneIcon /> : downloadedMarkdownState === 'fail' ? '✘' : <FileDownloadOutlinedIcon />}
@@ -125,7 +126,7 @@ export function ExportChats(props: { config: ExportConfig, onClose: () => void }
           </Button>
 
           {enableSharing && (
-            <ChatLinkExport
+            <ChatLinkExport /* @uxid src/modules/trade/ExportChats::ExportChats.chatlinkexport */
               conversationId={props.config.conversationId}
               enableSharing={enableSharing}
               onClose={props.onClose}
@@ -155,7 +156,7 @@ export function ExportChats(props: { config: ExportConfig, onClose: () => void }
               Backup or transfer <strong>all chats</strong>:
             </Typography>
 
-            <Button
+            <Button /* @uxid src/modules/trade/ExportChats::ExportChats.button-3 */
               variant='soft' disabled={downloadedAllState === 'busy'} loading={downloadedAllState === 'busy'}
               color={downloadedAllState === 'ok' ? 'success' : downloadedAllState === 'fail' ? 'warning' : 'primary'}
               endDecorator={downloadedAllState === 'ok' ? <DoneIcon /> : downloadedAllState === 'fail' ? '✘' : <FileDownloadOutlinedIcon />}

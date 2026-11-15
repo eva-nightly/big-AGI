@@ -18,6 +18,7 @@ const _autoSpeakOptions: FormRadioOption<ChatAutoSpeakType>[] = [
 /**
  * Voice output settings - Auto-speak mode and TTS engine configuration
  */
+// @uxid src/apps/settings-modal/VoiceOutSettings::VoiceOutSettings
 export function VoiceOutSettings(props: { isMobile: boolean }) {
 
   // external state
@@ -30,7 +31,7 @@ export function VoiceOutSettings(props: { isMobile: boolean }) {
   return <>
 
     {/* Auto-speak setting */}
-    <FormChipControl
+    <FormChipControl /* @uxid src/apps/settings-modal/VoiceOutSettings::VoiceOutSettings.formchipcontrol */
       title='Speak Chats'
       size='md'
       // color='primary'
@@ -42,7 +43,7 @@ export function VoiceOutSettings(props: { isMobile: boolean }) {
     />
 
     {/* TTS character limit toggle */}
-    <FormSwitchControl
+    <FormSwitchControl /* @uxid src/apps/settings-modal/VoiceOutSettings::VoiceOutSettings.formswitchcontrol */
       title='Speak Cost Guard'
       description={ttsCharLimit !== null ? 'Max ~3 min' : 'Unlimited'}
       tooltip='Limits text sent to TTS providers, helping prevent unexpected costs with cloud services. By default the limit is 4096 characters (~3 minutes of speech).'

@@ -656,6 +656,7 @@ async function createFlashObject(backupType: 'full' | 'partial' | 'auto-before-r
  * Backup and Restore (Flashing) functionality for Big-AGI client-side data.
  * Saves and fully restores localStorage and IndexedDB data.
  */
+// @uxid src/modules/trade/BackupRestore::FlashRestore
 export function FlashRestore(props: { unlockRestore?: boolean }) {
 
   // state
@@ -832,7 +833,7 @@ export function FlashRestore(props: { unlockRestore?: boolean }) {
     <Typography level='body-sm' mt={2}>
       Restore from a backup file:
     </Typography>
-    <Button
+    <Button /* @uxid src/modules/trade/BackupRestore::FlashRestore.button */
       variant='soft'
       aria-label='Restore from backup file'
       color={restoreState === 'success' ? 'success' : restoreState === 'error' ? 'danger' : 'primary'}
@@ -858,14 +859,14 @@ export function FlashRestore(props: { unlockRestore?: boolean }) {
         <Typography color='danger' level='body-sm'>
           {errorMessage}
         </Typography>
-        <Button variant='soft' color='danger' size='sm' onClick={() => setErrorMessage(null)}>
+        <Button /* @uxid src/modules/trade/BackupRestore::FlashRestore.button-2 */ variant='soft' color='danger' size='sm' onClick={() => setErrorMessage(null)}>
           Dismiss
         </Button>
       </Sheet>
     )}
 
     {/* Confirmation Dialog */}
-    <GoodModal
+    <GoodModal /* @uxid src/modules/trade/BackupRestore::FlashRestore.goodmodal */
       title={`Confirm Restore`}
       strongerTitle
       dividers
@@ -916,7 +917,7 @@ export function FlashRestore(props: { unlockRestore?: boolean }) {
         </Typography>
         <Sheet variant='soft' sx={{ p: 2, borderRadius: 'md', border: '1px solid', borderColor: 'neutral.outlinedBorder', display: 'flex', flexDirection: { xs: 'column', sm: 'row' }, gap: 2 }}>
           <FormControl orientation='horizontal' sx={{ gap: 1, flex: 1 }}>
-            <Checkbox
+            <Checkbox /* @uxid src/modules/trade/BackupRestore::FlashRestore.checkbox */
               size='md'
               color='neutral'
               checked={restoreLocalStorageEnabled}
@@ -931,7 +932,7 @@ export function FlashRestore(props: { unlockRestore?: boolean }) {
             </FormLabel>
           </FormControl>
           <FormControl orientation='horizontal' sx={{ gap: 1, flex: 1 }}>
-            <Checkbox
+            <Checkbox /* @uxid src/modules/trade/BackupRestore::FlashRestore.checkbox-2 */
               size='md'
               color='neutral'
               checked={restoreIndexedDBEnabled}
@@ -948,10 +949,10 @@ export function FlashRestore(props: { unlockRestore?: boolean }) {
         </Sheet>
       </Box>
       <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end', pt: 2 }}>
-        <Button variant='plain' color='neutral' onClick={handleCancelRestore}>
+        <Button /* @uxid src/modules/trade/BackupRestore::FlashRestore.button-3 */ variant='plain' color='neutral' onClick={handleCancelRestore}>
           Cancel
         </Button>
-        <Button
+        <Button /* @uxid src/modules/trade/BackupRestore::FlashRestore.button-4 */
           variant='solid'
           color='danger'
           onClick={handleRestoreFlashConfirmed}
@@ -967,6 +968,7 @@ export function FlashRestore(props: { unlockRestore?: boolean }) {
 }
 
 
+// @uxid src/modules/trade/BackupRestore::FlashBackup
 export function FlashBackup(props: {
   onStartedBackup?: () => void;
 }) {
@@ -1020,7 +1022,7 @@ export function FlashBackup(props: {
     <Typography level='body-sm' mt={3}>
       Save <strong>all settings and chats</strong>:
     </Typography>
-    <Button
+    <Button /* @uxid src/modules/trade/BackupRestore::FlashBackup.button */
       variant='soft'
       aria-label='Download full backup file'
       color={backupState === 'success' ? 'success' : backupState === 'error' ? 'warning' : 'primary'}
@@ -1045,11 +1047,11 @@ export function FlashBackup(props: {
     {!errorMessage && <>
       <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center', ml: 2, mr: 1.25, mt: 0.25 }}>
         <FormLabel sx={{ fontWeight: 'md' }}>Include Models & Settings</FormLabel>
-        <Switch size='sm' checked={includeSettings} onChange={(event) => setIncludeSettings(event.target.checked)} />
+        <Switch /* @uxid src/modules/trade/BackupRestore::FlashBackup.switch */ size='sm' checked={includeSettings} onChange={(event) => setIncludeSettings(event.target.checked)} />
       </FormControl>
       <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center', ml: 2, mr: 1.25, mt: 0.25 }}>
         <FormLabel sx={{ fontWeight: 'md' }}>Include Binary Images</FormLabel>
-        <Switch size='sm' color={includeImages ? 'danger' : undefined} checked={includeImages} onChange={(event) => setIncludeImages(event.target.checked)} />
+        <Switch /* @uxid src/modules/trade/BackupRestore::FlashBackup.switch-2 */ size='sm' color={includeImages ? 'danger' : undefined} checked={includeImages} onChange={(event) => setIncludeImages(event.target.checked)} />
       </FormControl>
       {includeImages && <Typography level='body-xs' color='danger' ml={2} endDecorator={<WarningRoundedIcon />}>
         Files too large may get corrupted.
@@ -1061,7 +1063,7 @@ export function FlashBackup(props: {
         <Typography color='danger' level='body-sm'>
           {errorMessage}
         </Typography>
-        <Button variant='soft' color='danger' size='sm' onClick={() => setErrorMessage(null)}>
+        <Button /* @uxid src/modules/trade/BackupRestore::FlashBackup.button-2 */ variant='soft' color='danger' size='sm' onClick={() => setErrorMessage(null)}>
           Dismiss
         </Button>
       </Sheet>

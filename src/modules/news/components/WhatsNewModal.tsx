@@ -197,12 +197,13 @@ function _renderInline(text: string): React.ReactNode {
       return <strong key={i}>{part.slice(2, -2)}</strong>;
     const linkMatch = part.match(_LINK_PATTERN);
     if (linkMatch)
-      return <Link key={i} href={linkMatch[2]} target='_blank' rel='noopener'>{linkMatch[1]}</Link>;
+      return <Link /* @uxid src/modules/news/components/WhatsNewModal::_renderInline.link */ key={i} href={linkMatch[2]} target='_blank' rel='noopener'>{linkMatch[1]}</Link>;
     return part;
   });
 }
 
 /** A body: `\n\n`-separated paragraphs; a paragraph whose lines are all list lines renders as a list */
+// @uxid src/modules/news/components/WhatsNewModal::NewsBody
 function NewsBody(props: { body: string }) {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.25, ..._styles.marked }}>
@@ -223,6 +224,7 @@ function NewsBody(props: { body: string }) {
 
 /// Changelog
 
+// @uxid src/modules/news/components/WhatsNewModal::ChangelogDay
 function ChangelogDay(props: { day: NewsChangelogGroup }) {
   const { day } = props;
   return (
@@ -238,7 +240,7 @@ function ChangelogDay(props: { day: NewsChangelogGroup }) {
               {_renderInline(item.text)}
               {!!docsSlug && (
                 // the feed lists the website's slugs: the same set SiteDocSlug is generated from
-                <Link component='button' level='body-sm' underline='hover' onClick={() => newsOpenDocs(docsSlug as SiteDocSlug)} sx={{ ml: 1 }}>
+                <Link /* @uxid src/modules/news/components/WhatsNewModal::ChangelogDay.link */ component='button' level='body-sm' underline='hover' onClick={() => newsOpenDocs(docsSlug as SiteDocSlug)} sx={{ ml: 1 }}>
                   Docs
                 </Link>
               )}
@@ -252,6 +254,7 @@ function ChangelogDay(props: { day: NewsChangelogGroup }) {
 
 
 /** Days, newest first, with a year header for past years; `seenFrom` is the first already-seen day */
+// @uxid src/modules/news/components/WhatsNewModal::ChangelogLedger
 function ChangelogLedger(props: { days: NewsChangelogGroup[], seenFrom?: number }) {
   const { days, seenFrom = -1 } = props;
   const thisYear = String(new Date().getFullYear());
@@ -276,6 +279,7 @@ function ChangelogLedger(props: { days: NewsChangelogGroup[], seenFrom?: number 
  * The changelog pane. On top, folded: days this build does not have yet. Then the days it has: new
  * since the watermark first, seen days folded behind one button, then older pages on request.
  */
+// @uxid src/modules/news/components/WhatsNewModal::ChangelogPane
 function ChangelogPane(props: {
   split: ReturnType<typeof newsChangelogSplit>, // against the watermark at open
   loaded: boolean,
@@ -315,7 +319,7 @@ function ChangelogPane(props: {
         variant='soft'
         color='neutral'
         endDecorator={
-          <Button size='sm' variant='plain' color='neutral' endDecorator={showAfterBuild ? <ExpandLessIcon /> : <ExpandMoreIcon />} onClick={() => setShowAfterBuild(on => !on)}>
+          <Button /* @uxid src/modules/news/components/WhatsNewModal::ChangelogPane.button */ size='sm' variant='plain' color='neutral' endDecorator={showAfterBuild ? <ExpandLessIcon /> : <ExpandMoreIcon />} onClick={() => setShowAfterBuild(on => !on)}>
             {showAfterBuild ? 'Hide' : 'Show'}
           </Button>
         }
@@ -326,7 +330,7 @@ function ChangelogPane(props: {
             {newsFormatChanges(afterBuildCount)} since this build{buildDay && ` (${newsFormatDay(buildDay)})`}
           </Typography>
           {!!afterBuild.hint && <Typography level='body-xs'>{afterBuild.hint}</Typography>}
-          {!!afterBuild.action && <Button size='sm' variant='soft' color='neutral' onClick={afterBuild.action.onClick} sx={{ mt: 1 }}>{afterBuild.action.label}</Button>}
+          {!!afterBuild.action && <Button /* @uxid src/modules/news/components/WhatsNewModal::ChangelogPane.button-2 */ size='sm' variant='soft' color='neutral' onClick={afterBuild.action.onClick} sx={{ mt: 1 }}>{afterBuild.action.label}</Button>}
           {showAfterBuild && <ChangelogLedger days={props.afterBuild} />}
         </Box>
       </Alert>
@@ -336,13 +340,13 @@ function ChangelogPane(props: {
 
     {collapsed && seen.length > 0 ? (
       <Box sx={_styles.buttons}>
-        <Button variant='plain' color='neutral' endDecorator={<ExpandMoreIcon />} onClick={() => setShowSeen(true)}>
+        <Button /* @uxid src/modules/news/components/WhatsNewModal::ChangelogPane.button-3 */ variant='plain' color='neutral' endDecorator={<ExpandMoreIcon />} onClick={() => setShowSeen(true)}>
           Show {seen.length} earlier {seen.length === 1 ? 'day' : 'days'}
         </Button>
       </Box>
     ) : props.hasOlder && (
       <Box sx={_styles.buttons}>
-        <Button variant='plain' color='neutral' loading={props.loadingOlder} onClick={() => props.onLoadOlder()}>
+        <Button /* @uxid src/modules/news/components/WhatsNewModal::ChangelogPane.button-4 */ variant='plain' color='neutral' loading={props.loadingOlder} onClick={() => props.onLoadOlder()}>
           Show earlier days
         </Button>
       </Box>
@@ -355,6 +359,7 @@ function ChangelogPane(props: {
 /// Announcements
 
 /** One announcement: media, body, learn-more link */
+// @uxid src/modules/news/components/WhatsNewModal::AnnouncementPane
 function AnnouncementPane(props: { announcement: NewsAnnouncement }) {
   const { announcement } = props;
   return (
@@ -377,7 +382,7 @@ function AnnouncementPane(props: { announcement: NewsAnnouncement }) {
       <NewsBody body={announcement.text} />
 
       {!!announcement.url && (
-        <Link href={announcement.url} target='_blank' rel='noopener' level='body-sm' sx={{ alignSelf: 'flex-start' }}>
+        <Link /* @uxid src/modules/news/components/WhatsNewModal::AnnouncementPane.link */ href={announcement.url} target='_blank' rel='noopener' level='body-sm' sx={{ alignSelf: 'flex-start' }}>
           Learn more
         </Link>
       )}
@@ -392,6 +397,7 @@ function AnnouncementPane(props: { announcement: NewsAnnouncement }) {
  * list, in the Preferences two-pane shape. What is new is measured against the watermark at open;
  * the changelog counts as seen as soon as it loads, so the indicators clear on open.
  */
+// @uxid src/modules/news/components/WhatsNewModal::WhatsNewModal
 export function WhatsNewModal() {
 
   // external state
@@ -451,7 +457,7 @@ export function WhatsNewModal() {
 
   const navButton = (id: string | null, label: string, unseen: boolean, newCount: number, newMore: boolean) => (
     <ListItem key={id ?? _SELECT_CHANGELOG}>
-      <ListItemButton
+      <ListItemButton /* @uxid src/modules/news/components/WhatsNewModal::WhatsNewModal.listitembutton */
         selected={id === selectedId}
         color={id === selectedId ? 'primary' : undefined}
         variant={id === selectedId ? undefined : 'soft'}
@@ -470,7 +476,7 @@ export function WhatsNewModal() {
   const paneContent = selectedAnnouncement ? (
     <AnnouncementPane key={selectedAnnouncement.id} announcement={selectedAnnouncement} />
   ) : (
-    <ChangelogPane
+    <ChangelogPane /* @uxid src/modules/news/components/WhatsNewModal::WhatsNewModal.changelogpane */
       split={changelogSplit}
       loaded={!!changelogGroups}
       error={changelogError}
@@ -482,7 +488,7 @@ export function WhatsNewModal() {
   );
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/modules/news/components/WhatsNewModal::WhatsNewModal.goodmodal */
       open
       onClose={newsCloseWhatsNew}
       title={<>
@@ -497,7 +503,7 @@ export function WhatsNewModal() {
       titleEndDecorator={Release.IsNodeDevBuild && (
         <Box sx={{ display: 'flex', gap: 0.5 }}>
           {_DEV_REWIND_DAYS.map(days => (
-            <Chip key={days} size='sm' variant='outlined' color='neutral' onClick={() => handleRewind(days)}>
+            <Chip /* @uxid src/modules/news/components/WhatsNewModal::WhatsNewModal.chip */ key={days} size='sm' variant='outlined' color='neutral' onClick={() => handleRewind(days)}>
               -{days}d
             </Chip>
           ))}
@@ -507,11 +513,11 @@ export function WhatsNewModal() {
       unfilterBackdrop
       startButton={
         <Box sx={_styles.footer}>
-          <Button variant='soft' color='neutral' startDecorator={<PhBookOpenText />} onClick={handleOpenDocs}>
+          <Button /* @uxid src/modules/news/components/WhatsNewModal::WhatsNewModal.button */ variant='soft' color='neutral' startDecorator={<PhBookOpenText />} onClick={handleOpenDocs}>
             Documentation
           </Button>
           {!isMobile && (
-            <Button variant='soft' color='neutral' endDecorator={<LaunchIcon />} component='a' href={BaseProduct.NewsSite} target='_blank' rel='noopener'>
+            <Button /* @uxid src/modules/news/components/WhatsNewModal::WhatsNewModal.button-2 */ variant='soft' color='neutral' endDecorator={<LaunchIcon />} component='a' href={BaseProduct.NewsSite} target='_blank' rel='noopener'>
               Full changelog
             </Button>
           )}
@@ -522,14 +528,14 @@ export function WhatsNewModal() {
 
       {isMobile ? <>
         {hasNav && (
-          <Select value={selectedId ?? _SELECT_CHANGELOG} onChange={(_event, value) => value && setSelectedId(value === _SELECT_CHANGELOG ? null : value)}>
+          <Select /* @uxid src/modules/news/components/WhatsNewModal::WhatsNewModal.select */ value={selectedId ?? _SELECT_CHANGELOG} onChange={(_event, value) => value && setSelectedId(value === _SELECT_CHANGELOG ? null : value)}>
             {announcements.map(announcement => <Option key={announcement.id} value={announcement.id}>{announcement.title}</Option>)}
             <Option value={_SELECT_CHANGELOG}>Changelog</Option>
           </Select>
         )}
-        <Box ref={paneRef} tabIndex={-1} sx={_styles.paneMobile}>{paneContent}</Box>
+        <Box /* @uxid src/modules/news/components/WhatsNewModal::WhatsNewModal.box */ ref={paneRef} tabIndex={-1} sx={_styles.paneMobile}>{paneContent}</Box>
       </> : !hasNav ? (
-        <Box ref={paneRef} tabIndex={-1} sx={_styles.pane}>{paneContent}</Box>
+        <Box /* @uxid src/modules/news/components/WhatsNewModal::WhatsNewModal.box-2 */ ref={paneRef} tabIndex={-1} sx={_styles.pane}>{paneContent}</Box>
       ) : (
         <Box sx={_styles.twoPane}>
           <List size='sm' sx={_styles.navList}>
@@ -544,7 +550,7 @@ export function WhatsNewModal() {
             <ListDivider />
             {navButton(null, 'Changelog', false, changelogSplit.count, changelogSplit.more)}
           </List>
-          <Box ref={paneRef} tabIndex={-1} sx={_styles.paneCard}>{paneContent}</Box>
+          <Box /* @uxid src/modules/news/components/WhatsNewModal::WhatsNewModal.box-3 */ ref={paneRef} tabIndex={-1} sx={_styles.paneCard}>{paneContent}</Box>
         </Box>
       )}
 

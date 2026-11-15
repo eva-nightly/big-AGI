@@ -6,6 +6,7 @@ import { CloseablePopup } from '~/common/components/CloseablePopup';
 
 import type { ActileItem, ActileProvider } from './ActileProvider';
 
+// @uxid src/apps/chat/components/composer/actile/ActilePopup::ActilePopup
 export function ActilePopup(props: {
   anchorEl: HTMLElement | null,
   onClose: () => void,
@@ -33,7 +34,7 @@ export function ActilePopup(props: {
   }, [props.itemsByProvider, props.activeItemIndex]);
 
   return (
-    <CloseablePopup
+    <CloseablePopup /* @uxid src/apps/chat/components/composer/actile/ActilePopup::ActilePopup.closeablepopup */
       menu anchorEl={props.anchorEl} onClose={props.onClose}
       maxHeightGapPx={320}
       minWidth={320}
@@ -69,7 +70,7 @@ export function ActilePopup(props: {
             const labelNormal = item.label.slice(props.activePrefixLength);
 
             return (
-              <ListItem
+              <ListItem /* @uxid src/apps/chat/components/composer/actile/ActilePopup::ActilePopup.listitem */
                 key={`${provider.key}-${item.key}`}
                 variant={isActive ? 'soft' : undefined}
                 color={isActive ? 'primary' : undefined}

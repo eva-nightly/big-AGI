@@ -22,6 +22,7 @@ import { BeamStoreApi, useBeamStore } from './store-beam.hooks';
 import { useModuleBeamStore } from './store-module-beam';
 
 
+// @uxid src/modules/beam/BeamView::BeamView
 export function BeamView(props: {
   beamStore: BeamStoreApi,
   isFocused: boolean,
@@ -135,11 +136,11 @@ export function BeamView(props: {
 
   // Explainer, if unseen
   if (props.showExplainer && explainerUnseen)
-    return <BeamExplainer onWizardComplete={explainerCompleted} />;
+    return <BeamExplainer /* @uxid src/modules/beam/BeamView::BeamView.beamexplainer */ onWizardComplete={explainerCompleted} />;
 
   return <>
 
-    <Box role='beam-list' sx={{
+    <Box /* @uxid src/modules/beam/BeamView::BeamView.box */ role='beam-list' sx={{
       // scroller fill
       minHeight: '100%',
       // ...props.sx,
@@ -163,14 +164,14 @@ export function BeamView(props: {
 
 
       {/* User Message */}
-      <BeamScatterInput
+      <BeamScatterInput /* @uxid src/modules/beam/BeamView::BeamView.beamscatterinput */
         isMobile={props.isMobile}
         history={inputHistory}
         onMessageFragmentsReplace={inputHistoryReplaceMessageFragments}
       />
 
       {/* Scatter Controls */}
-      <BeamScatterPane
+      <BeamScatterPane /* @uxid src/modules/beam/BeamView::BeamView.beamscatterpane */
         beamStore={props.beamStore}
         isMobile={props.isMobile}
         rayCount={raysCount}
@@ -186,7 +187,7 @@ export function BeamView(props: {
 
 
       {/* Rays Grid - BeamRay[] > <ChatMessage /> - one render decay zone */}
-      <RenderDecayZone><BeamRayGrid
+      <RenderDecayZone><BeamRayGrid /* @uxid src/modules/beam/BeamView::BeamView.beamraygrid */
         beamStore={props.beamStore}
         isMobile={props.isMobile}
         rayIds={rayIds}
@@ -199,13 +200,13 @@ export function BeamView(props: {
       {/* Rays Action Bar (2+ ready beams) - sibling of the grid (NOT a grid child); an in-grid spanning element with gridColumn:'1/-1' pins all auto-fit tracks open and leaves dead whitespace when raysCount < tracksCount. Fixes #1073. */}
       {(!isScattering && raysReady >= 2) && (
         <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mx: 'var(--Pad)' }}>
-          <Button size='sm' variant='outlined' color='neutral' onClick={() => handleRaysOperation('copy')} endDecorator={<ContentCopyIcon sx={{ fontSize: 'md' }} />} sx={{
+          <Button /* @uxid src/modules/beam/BeamView::BeamView.button */ size='sm' variant='outlined' color='neutral' onClick={() => handleRaysOperation('copy')} endDecorator={<ContentCopyIcon sx={{ fontSize: 'md' }} />} sx={{
             backgroundColor: 'background.surface',
             '&:hover': { backgroundColor: 'background.popup' },
           }}>
             Copy {raysReady}
           </Button>
-          <Button size='sm' variant='outlined' color='success' onClick={() => handleRaysOperation('use')} endDecorator={<TelegramIcon sx={{ fontSize: 'xl' }} />} sx={{
+          <Button /* @uxid src/modules/beam/BeamView::BeamView.button-2 */ size='sm' variant='outlined' color='success' onClick={() => handleRaysOperation('use')} endDecorator={<TelegramIcon sx={{ fontSize: 'xl' }} />} sx={{
             justifyContent: 'space-between',
             backgroundColor: 'background.surface',
             '&:hover': { backgroundColor: 'background.popup' },
@@ -230,7 +231,7 @@ export function BeamView(props: {
       />
 
       {/* Fusion Grid - Fusion[] > <ChatMessage /> - one render decay zone for the merges */}
-      <RenderDecayZone><BeamFusionGrid
+      <RenderDecayZone><BeamFusionGrid /* @uxid src/modules/beam/BeamView::BeamView.beamfusiongrid */
         beamStore={props.beamStore}
         canGather={canGather}
         fusionIds={fusionIds}

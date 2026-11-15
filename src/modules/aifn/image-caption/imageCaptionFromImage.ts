@@ -10,6 +10,7 @@ import { messageFragmentsReduceText } from '~/common/stores/chat/chat.message';
 /**
  * System prompt for image captioning - designed to minimize information loss
  */
+// @uxid src/modules/aifn/image-caption/imageCaptionFromImage::IMAGE_CAPTIONING_SYSTEM_PROMPT
 const IMAGE_CAPTIONING_SYSTEM_PROMPT = `You are an expert at describing images in comprehensive detail. Your goal is to create a text description that captures as much visual information as possible, minimizing information loss for downstream AI models that will only see your text description.
 
 Provide a detailed description covering:

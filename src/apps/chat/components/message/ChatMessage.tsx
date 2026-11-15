@@ -165,6 +165,7 @@ export interface ChatMessageFunctionsHandle {
 export type ChatMessageTextPartEditState = { [fragmentId: DMessageFragmentId]: string };
 
 // CSS owns hover/focus; this named boundary makes the memo visible in React Profiler.
+// @uxid src/apps/chat/components/message/ChatMessage::CMDesktopAvatar
 const CMDesktopAvatar = React.memo(function CMDesktopAvatar(props: {
   icon: React.ReactNode,
   label: React.ReactNode,
@@ -183,7 +184,7 @@ const CMDesktopAvatar = React.memo(function CMDesktopAvatar(props: {
       <Box sx={_styles.iconContainer}>
         {/* Avatar Icon - shown by default */}
         {props.icon != null && (
-          <Box
+          <Box /* @uxid src/apps/chat/components/message/ChatMessage::CMDesktopAvatar.box */
             className='avatar-icon'
             onClick={props.onClick}
             onContextMenu={props.onContextMenu}
@@ -194,7 +195,7 @@ const CMDesktopAvatar = React.memo(function CMDesktopAvatar(props: {
         )}
 
         {/* Menu Button - hidden by default, shown on hover/focus */}
-        <IconButton
+        <IconButton /* @uxid src/apps/chat/components/message/ChatMessage::CMDesktopAvatar.iconbutton */
           className='menu-button'
           size='sm'
           variant={props.menuOpen ? 'solid' : props.zenMode ? 'plain' : 'soft'}
@@ -221,6 +222,7 @@ const CMDesktopAvatar = React.memo(function CMDesktopAvatar(props: {
 });
 
 
+// @uxid src/apps/chat/components/message/ChatMessage::CMMobileHeader
 const CMMobileHeader = React.memo(function CMMobileHeader(props: {
   icon: React.ReactNode,
   label: React.ReactNode,
@@ -238,7 +240,7 @@ const CMMobileHeader = React.memo(function CMMobileHeader(props: {
   onEditCancel: () => void,
 }) {
   return (
-    <Box bgcolor={props.backgroundColor} onClick={props.onHeaderClick} sx={messageMobileHeaderSx}>
+    <Box /* @uxid src/apps/chat/components/message/ChatMessage::CMMobileHeader.box */ bgcolor={props.backgroundColor} onClick={props.onHeaderClick} sx={messageMobileHeaderSx}>
 
       {/* Avatar (assistant/system) */}
       {props.icon != null && (
@@ -266,17 +268,17 @@ const CMMobileHeader = React.memo(function CMMobileHeader(props: {
 
       {/* Edit buttons (when editing) */}
       {props.onEditApply && <>
-        <Button size='sm' color='neutral' variant='plain' onClick={props.onEditCancel} startDecorator={<CloseRoundedIcon />} sx={_styles.mtButton}>
+        <Button /* @uxid src/apps/chat/components/message/ChatMessage::CMMobileHeader.button */ size='sm' color='neutral' variant='plain' onClick={props.onEditCancel} startDecorator={<CloseRoundedIcon />} sx={_styles.mtButton}>
           Cancel
         </Button>
-        <Button size='sm' color='warning' disabled={props.editApplyDisabled} onClick={props.onEditApply} startDecorator={<CheckRoundedIcon />} sx={_styles.mtButton} style={{ minWidth: 100 }}>
+        <Button /* @uxid src/apps/chat/components/message/ChatMessage::CMMobileHeader.button-2 */ size='sm' color='warning' disabled={props.editApplyDisabled} onClick={props.onEditApply} startDecorator={<CheckRoundedIcon />} sx={_styles.mtButton} style={{ minWidth: 100 }}>
           Done
         </Button>
       </>}
 
       {/* Menu button (always visible on mobile) */}
       {!props.onEditApply && (
-        <IconButton
+        <IconButton /* @uxid src/apps/chat/components/message/ChatMessage::CMMobileHeader.iconbutton */
           // size='sm'
           variant={props.menuVariant}
           color={props.menuColor}
@@ -311,6 +313,7 @@ export const ChatMessageStreamingMemo = React.memo(ChatMessage, (prev, next) =>
  * or collapsing long user messages.
  *
  */
+// @uxid src/apps/chat/components/message/ChatMessage::ChatMessage
 export function ChatMessage(props: {
   actionsRef?: React.Ref<ChatMessageFunctionsHandle>,
   message: DMessage,
@@ -878,7 +881,7 @@ export function ChatMessage(props: {
   const avatarMenuColor = (fromAssistant || fromSystem || zenMode) ? 'neutral' : userCommandApprox === 'draw' ? 'warning' : userCommandApprox === 'react' ? 'success' : 'primary';
 
   return (
-    <Box
+    <Box /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.box */
       component='li'
       role='chat-message'
       tabIndex={-1 /* for shortcuts navigation */}
@@ -894,7 +897,7 @@ export function ChatMessage(props: {
 
       {/* Mobile: Compact sticky header (tap avatar/label area to scroll message into view) */}
       {props.isMobile && !props.hideAvatar && (
-        <CMMobileHeader
+        <CMMobileHeader /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.cmmobileheader */
           icon={fromUser ? null : messageAvatarIcon}
           label={fromAssistant && !zenMode ? messageAvatarLabel : null}
           timestamp={fromUser ? messageUpdated || messageCreated : null}
@@ -915,24 +918,24 @@ export function ChatMessage(props: {
       {/* Mobile: Edit controls when header is hidden (e.g., Beam mode) */}
       {props.isMobile && !!props.hideAvatar && isEditingText && (
         <Box bgcolor={backgroundColor} sx={messageEditBeamControlsTopSx}>
-          <Button size='sm' color='neutral' variant='plain' onClick={handleEditsCancel} startDecorator={<CloseRoundedIcon />} sx={_styles.mtButton}>
+          <Button /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.button */ size='sm' color='neutral' variant='plain' onClick={handleEditsCancel} startDecorator={<CloseRoundedIcon />} sx={_styles.mtButton}>
             Cancel
           </Button>
-          <Button size='sm' color='warning' disabled={draftsBusy} onClick={handleEditsApplyClicked} startDecorator={<CheckRoundedIcon />} sx={_styles.mtButton} style={{ minWidth: 100 }}>
+          <Button /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.button-2 */ size='sm' color='warning' disabled={draftsBusy} onClick={handleEditsApplyClicked} startDecorator={<CheckRoundedIcon />} sx={_styles.mtButton} style={{ minWidth: 100 }}>
             Done
           </Button>
         </Box>
       )}
 
       {/* Message Row: Aside, Fragment[][], Aside2 (Desktop) or Full-width (Mobile) */}
-      <Box
+      <Box /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.box-2 */
         role={undefined /* aside | message | ops */}
         sx={props.isMobile ? _styles.msgBodyMobile : ((fromAssistant && !isEditingText) ? _styles.msgBody : _styles.msgBodyReverse)}
       >
 
         {/* [start-Avatar] Avatar (Persona) - Desktop only */}
         {!props.isMobile && !props.hideAvatar && !isEditingText && (
-          <CMDesktopAvatar
+          <CMDesktopAvatar /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.cmdesktopavatar */
             icon={messageAvatarIcon}
             label={fromAssistant && !zenMode ? messageAvatarLabel : null}
             tooltip={messageAvatarTooltip}
@@ -949,7 +952,7 @@ export function ChatMessage(props: {
         {!props.isMobile && isEditingText && (
           <Box sx={messageAsideColumnSx} className='msg-edit-button'>
             <Tooltip arrow disableInteractive placement='top-end' title='Apply Text Edits'>
-              <IconButton size='sm' variant='solid' color='warning' disabled={draftsBusy} onClick={handleEditsApplyClicked}>
+              <IconButton /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.iconbutton */ size='sm' variant='solid' color='warning' disabled={draftsBusy} onClick={handleEditsApplyClicked}>
                 <CheckRoundedIcon />
               </IconButton>
             </Tooltip>
@@ -983,7 +986,7 @@ export function ChatMessage(props: {
           )}
 
           {/* Render tree: citations first, then content and attachments in message order */}
-          <CMRenderTreeNodes
+          <CMRenderTreeNodes /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.cmrendertreenodes */
             tree={renderTree}
             inFluxFragmentId={inFluxFragmentId}
             showEmptyNotice={!messageFragments.length && !messagePendingIncomplete}
@@ -1019,7 +1022,7 @@ export function ChatMessage(props: {
 
           {/* [#1114] Resolve the Vertex AI grounding redirect links in place */}
           {vertexLinksCount > 0 && !isEditingText && !!onMessageFragmentsReplace && (
-            <BlockOpResolveVertexAILinks
+            <BlockOpResolveVertexAILinks /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.blockopresolvevertexailinks */
               contentScaling={adjContentScaling}
               fragments={messageFragments}
               linksCount={vertexLinksCount}
@@ -1029,7 +1032,7 @@ export function ChatMessage(props: {
 
           {/* Continue... */}
           {props.isBottom && fromAssistant && msgGenOutOfTokens && !!onMessageContinue && (
-            <BlockOpContinue
+            <BlockOpContinue /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.blockopcontinue */
               contentScaling={adjContentScaling}
               messageRole={messageRole}
               onContinue={handleMessageContinue}
@@ -1038,7 +1041,7 @@ export function ChatMessage(props: {
 
           {/* Upstream Resume - shows whenever there's a stored handle (incl. post-reload, and while streaming so Stop can cancel the upstream run) */}
           {props.isBottom && fromAssistant && messageGenerator?.upstreamHandle && (!!onMessageUpstreamResume || !!onMessageUpstreamDelete) && (
-            <BlockOpUpstreamResume
+            <BlockOpUpstreamResume /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.blockopupstreamresume */
               upstreamHandle={messageGenerator.upstreamHandle}
               pending={messagePendingIncomplete}
               inFlightMode={props.upstreamResumeMode}
@@ -1050,7 +1053,7 @@ export function ChatMessage(props: {
 
           {/* Continue Options... */}
           {!!trailingOptions && !!onMessageContinue && (
-            <BlockOpOptions
+            <BlockOpOptions /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.blockopoptions */
               contentScaling={adjContentScaling}
               options={trailingOptions.options}
               onContinue={handleMessageContinue}
@@ -1058,7 +1061,7 @@ export function ChatMessage(props: {
           )}
 
           {props.showTimestamp && !zenMode && !isEditingText && (
-            <ChatMessageTimestamp message={props.message} onShowInfo={handleOpsShowInfo} />
+            <ChatMessageTimestamp /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.chatmessagetimestamp */ message={props.message} onShowInfo={handleOpsShowInfo} />
           )}
 
           {/* Char & Word count */}
@@ -1075,7 +1078,7 @@ export function ChatMessage(props: {
         {!props.isMobile && isEditingText && (
           <Box sx={messageAsideColumnSx} className='msg-edit-button'>
             <Tooltip arrow disableInteractive placement='top-start' title='Discard Edits'>
-              <IconButton size='sm' variant='solid' onClick={handleEditsCancel}>
+              <IconButton /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.iconbutton-2 */ size='sm' variant='solid' onClick={handleEditsCancel}>
                 <CloseRoundedIcon />
               </IconButton>
             </Tooltip>
@@ -1105,7 +1108,7 @@ export function ChatMessage(props: {
 
       {/* Message Operations Menu (3 dots) */}
       {!!opsMenuAnchor && (
-        <ChatMessageMenu
+        <ChatMessageMenu /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.chatmessagemenu */
           anchor={opsMenuAnchor}
           onClose={handleOpsMenuClose}
 
@@ -1148,7 +1151,7 @@ export function ChatMessage(props: {
 
       {/* Bubble Over Toolbar */}
       {ENABLE_BUBBLE && !!bubbleAnchor && (
-        <ChatMessageBubble
+        <ChatMessageBubble /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.chatmessagebubble */
           anchorEl={bubbleAnchor}
           onClose={handleBubbleClickAway}
           selText={selText}
@@ -1171,7 +1174,7 @@ export function ChatMessage(props: {
 
       {/* Message Info Modal */}
       {showInfoModal && (
-        <ChatMessageInfoPopup
+        <ChatMessageInfoPopup /* @uxid src/apps/chat/components/message/ChatMessage::ChatMessage.chatmessageinfopopup */
           open
           onClose={handleInfoClose}
           message={props.message}

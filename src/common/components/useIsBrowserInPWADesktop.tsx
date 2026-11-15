@@ -51,7 +51,7 @@ export function usePWADesktopModeWarning() {
       startDecorator={<WarningRoundedIcon />}
       endDecorator={
         <IconButton color='warning'>
-          <CloseRoundedIcon onClick={() => {
+          <CloseRoundedIcon /* @uxid src/common/components/useIsBrowserInPWADesktop::usePWADesktopModeWarning.closeroundedicon */ onClick={() => {
             setHideWarning(true);
             touch();
           }} />

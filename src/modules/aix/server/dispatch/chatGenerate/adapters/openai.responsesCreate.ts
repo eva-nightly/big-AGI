@@ -822,6 +822,7 @@ function _toOpenAIResponsesToolChoice(itp: AixTools_ToolsPolicy, onlyAuto: boole
  * - GPT-5 prompting guide markdown section
  */
 export function vndOaiRestoreMarkdown(payload: TRequest) {
+  // @uxid src/modules/aix/server/dispatch/chatGenerate/adapters/openai.responsesCreate::MARKDOWN_INSTRUCTION
   const MARKDOWN_INSTRUCTION = 'Formatting re-enabled. Use Markdown **only where semantically correct** (e.g., `inline code`, ```code fences```, lists, tables). When using markdown, use backticks to format file, directory, function, and class names. Use \\( and \\) for inline math, \\[ and \\] for block math.';
   const MARKDOWN_CHECK = 'Use Markdown **only where semantically correct**';
 

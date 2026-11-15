@@ -76,6 +76,7 @@ export interface LiteVideoEmbedProps {
   height?: number | string;
 }
 
+// @uxid src/common/components/LiteVideoEmbed::LiteVideoEmbed
 export function LiteVideoEmbed(props: LiteVideoEmbedProps) {
 
   const { platform, videoId, play = 'click', loop, rounded, responsive, width, height } = props;
@@ -151,7 +152,7 @@ export function LiteVideoEmbed(props: LiteVideoEmbedProps) {
   const showFacade = !activated;
 
   return (
-    <Box
+    <Box /* @uxid src/common/components/LiteVideoEmbed::LiteVideoEmbed.box */
       ref={rootRef}
       component={showFacade ? 'button' : 'div'}
       type={showFacade ? 'button' : undefined}
@@ -192,7 +193,7 @@ export function LiteVideoEmbed(props: LiteVideoEmbedProps) {
 
       {/* poster: stays mounted under the iframe so activation never flashes black */}
       {!!posterUrl && (
-        <Box
+        <Box /* @uxid src/common/components/LiteVideoEmbed::LiteVideoEmbed.box-2 */
           component='img'
           src={posterUrl}
           alt=''

@@ -36,6 +36,7 @@ const fusionGridMobileSx: SxProps = {
 } as const;
 
 
+// @uxid src/modules/beam/gather/BeamFusionGrid::FusionAddButton
 export function FusionAddButton(props: {
   canGather: boolean,
   currentFactory: FusionFactorySpec | null,
@@ -47,7 +48,7 @@ export function FusionAddButton(props: {
 }) {
   if (props.currentFactory === null) return null;
   return (
-    <Button
+    <Button /* @uxid src/modules/beam/gather/BeamFusionGrid::FusionAddButton.button */
       size={props.small ? 'sm' : undefined}
       color={GATHER_COLOR}
       variant={props.variant}
@@ -66,6 +67,7 @@ export function FusionAddButton(props: {
 }
 
 
+// @uxid src/modules/beam/gather/BeamFusionGrid::BeamFusionGrid
 export function BeamFusionGrid(props: {
   beamStore: BeamStoreApi,
   canGather: boolean,
@@ -128,7 +130,7 @@ export function BeamFusionGrid(props: {
         >
           {isNoFactorySelected ? null : props.canGather ? <Box sx={{ display: 'flex', flexDirection: props.isMobile ? 'column-reverse' : undefined, alignItems: props.isMobile ? undefined : 'center', gap: 1 }}>
 
-            <FusionAddButton
+            <FusionAddButton /* @uxid src/modules/beam/gather/BeamFusionGrid::BeamFusionGrid.fusionaddbutton */
               // small
               // variant='soft'
               canGather={props.canGather}

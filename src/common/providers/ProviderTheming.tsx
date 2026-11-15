@@ -51,6 +51,7 @@ const _GlobalSVGFiltersMemo = React.memo(function GlobalSVGFilters() {
 });
 
 
+// @uxid src/common/providers/ProviderTheming::ProviderTheming
 export const ProviderTheming = (props: { emotionCache?: EmotionCache, children: React.ReactNode }) => {
 
   // external state

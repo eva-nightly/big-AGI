@@ -13,6 +13,7 @@ import { useArmedConfirm } from './useArmedConfirm';
  * Menu item behind a two-step confirm. Armed, the item becomes Cancel and the confirm item appears
  * below it - a double-click slip cancels. The menu stays open while arming; its closing unmounts and disarms.
  */
+// @uxid src/common/components/ConfirmMenuItem::ConfirmMenuItem
 export function ConfirmMenuItem(props: {
   icon?: React.ComponentType, // defaults to DeleteOutline
   confirmIcon?: React.ComponentType, // defaults to `icon`, or DeleteForever when `icon` is the default
@@ -33,12 +34,12 @@ export function ConfirmMenuItem(props: {
     armed || !event.shiftKey ? joyKeepPopup(toggle)(event) : toggle(event);
 
   return <>
-    <MenuItem color={armed ? 'neutral' : 'danger'} disabled={!armed && props.disabled} onClick={handleToggle}>
+    <MenuItem /* @uxid src/common/components/ConfirmMenuItem::ConfirmMenuItem.menuitem */ color={armed ? 'neutral' : 'danger'} disabled={!armed && props.disabled} onClick={handleToggle}>
       <ListItemDecorator>{armed ? <CloseRoundedIcon /> : <Icon />}</ListItemDecorator>
       {armed ? 'Cancel' : props.label}
     </MenuItem>
     {armed && (
-      <MenuItem color='danger' disabled={props.disabled} onClick={confirm}>
+      <MenuItem /* @uxid src/common/components/ConfirmMenuItem::ConfirmMenuItem.menuitem-2 */ color='danger' disabled={props.disabled} onClick={confirm}>
         <ListItemDecorator><ConfirmIcon /></ListItemDecorator>
         {props.confirmLabel}
       </MenuItem>

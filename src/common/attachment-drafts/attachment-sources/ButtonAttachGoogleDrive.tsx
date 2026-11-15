@@ -9,6 +9,7 @@ import { KeyStroke } from '~/common/components/KeyStroke';
 
 export const ButtonAttachGoogleDriveMemo = React.memo(ButtonAttachGoogleDrive);
 
+// @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachGoogleDrive::ButtonAttachGoogleDrive
 function ButtonAttachGoogleDrive(props: {
   color?: ColorPaletteProp,
   isMobile?: boolean,
@@ -19,11 +20,11 @@ function ButtonAttachGoogleDrive(props: {
 }) {
 
   const button = props.isMobile ? (
-    <IconButton color={props.color} disabled={props.disabled} onClick={props.onOpenGoogleDrivePicker}>
+    <IconButton /* @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachGoogleDrive::ButtonAttachGoogleDrive.iconbutton */ color={props.color} disabled={props.disabled} onClick={props.onOpenGoogleDrivePicker}>
       <AddToDriveRoundedIcon />
     </IconButton>
   ) : (
-    <Button
+    <Button /* @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachGoogleDrive::ButtonAttachGoogleDrive.button */
       variant={props.color ? 'soft' : 'plain'}
       color={props.color || 'neutral'}
       disabled={props.disabled}

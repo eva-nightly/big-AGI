@@ -38,6 +38,7 @@ const centerItemsContainerSx: SxProps = {
   '& > *': { WebkitAppRegion: 'no-drag' },
 };
 
+// @uxid src/common/layout/optima/bar/OptimaBar::CenterItemsPortal
 function CenterItemsPortal(props: { currentApp?: NavItemApp }) {
 
   // external state
@@ -54,6 +55,7 @@ function CenterItemsPortal(props: { currentApp?: NavItemApp }) {
   );
 }
 
+// @uxid src/common/layout/optima/bar/OptimaBar::CenterItemsFallback
 function CenterItemsFallback(props: { currentApp?: NavItemApp }) {
   return <Box sx={{
     display: 'flex',
@@ -62,7 +64,7 @@ function CenterItemsFallback(props: { currentApp?: NavItemApp }) {
   }}>
 
     {/* Squircle */}
-    <Link href={ROUTE_INDEX}>
+    <Link /* @uxid src/common/layout/optima/bar/OptimaBar::CenterItemsFallback.link */ href={ROUTE_INDEX}>
       <BigAgiSquircleIcon inverted sx={{ width: 32, height: 32, color: 'white' }} />
     </Link>
 
@@ -78,6 +80,7 @@ function CenterItemsFallback(props: { currentApp?: NavItemApp }) {
 /**
  * Top bar displayed on the Optima Layout
  */
+// @uxid src/common/layout/optima/bar/OptimaBar::OptimaBar
 export function OptimaBar(props: { component: React.ElementType, currentApp?: NavItemApp, isMobile: boolean, sx?: SxProps }) {
 
   // state
@@ -104,12 +107,12 @@ export function OptimaBar(props: { component: React.ElementType, currentApp?: Na
         <InvertedBarCornerItem>
           {(hasDrawerContent && navIsShown) ? (
             // show the drawer button
-            <IconButton disabled={!hasDrawerContent} onPointerDown={optimaOpenDrawer}>
+            <IconButton /* @uxid src/common/layout/optima/bar/OptimaBar::OptimaBar.iconbutton */ disabled={!hasDrawerContent} onPointerDown={optimaOpenDrawer}>
               <MenuIcon />
             </IconButton>
           ) : (
             // back button
-            <IconButton onClick={() => navigateToIndex()}>
+            <IconButton /* @uxid src/common/layout/optima/bar/OptimaBar::OptimaBar.iconbutton-2 */ onClick={() => navigateToIndex()}>
               <ArrowBackIcon />
             </IconButton>
           )}
@@ -123,12 +126,12 @@ export function OptimaBar(props: { component: React.ElementType, currentApp?: Na
 
       {/* Panel Open: has content always on Mobile (the app menu) */}
       {panelHasContent && (
-        <InvertedBarCornerItem
+        <InvertedBarCornerItem /* @uxid src/common/layout/optima/bar/OptimaBar::OptimaBar.invertedbarcorneritem */
            onMouseEnter={(props.isMobile || panelAsPopup || panelShownAsPanel) ? undefined : optimaActions().peekPanelEnter}
            onMouseLeave={(props.isMobile || panelShownAsPeeking) ? undefined : optimaActions().peekPanelLeave}
         >
           {/*<Tooltip disableInteractive title={contentToPopup ? (panelIsOpen ? 'Close' : 'Open') + ' Menu' : (panelIsOpen ? 'Close' : 'Open')}>*/}
-          <IconButton
+          <IconButton /* @uxid src/common/layout/optima/bar/OptimaBar::OptimaBar.iconbutton-3 */
             ref={appMenuAnchor}
             // disabled={contentToPopup ? !appMenuAnchor : false}
             onClick={optimaTogglePanel /* onPointerDown doesn't work well with a menu (the 'up' event would close it), so we're still with onClick */}

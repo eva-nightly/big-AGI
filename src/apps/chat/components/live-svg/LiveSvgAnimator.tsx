@@ -205,6 +205,7 @@ const LIVESVG_TEMPLATES: { label: string; prompt: string; steers: string[] }[] =
 ];
 
 
+// @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::Stat
 function Stat(props: { label: string; value: React.ReactNode }) {
   return (
     <Box sx={{ textAlign: 'right', minWidth: 52 }}>
@@ -214,6 +215,7 @@ function Stat(props: { label: string; value: React.ReactNode }) {
   );
 }
 
+// @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::TpsSparkline
 function TpsSparkline(props: { values: number[] }) {
   const max = Math.max(1, ...props.values);
   if (!props.values.length)
@@ -227,6 +229,7 @@ function TpsSparkline(props: { values: number[] }) {
   );
 }
 
+// @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator
 export function LiveSvgAnimator(props: { isMobile: boolean }) {
 
   // store state
@@ -414,7 +417,7 @@ export function LiveSvgAnimator(props: { isMobile: boolean }) {
             <Typography level='body-sm' textColor='text.tertiary'>
               Describe something that moves. The model redraws the whole scene every frame, so it keeps animating - and you can steer it out loud while it plays.
             </Typography>
-            <Textarea
+            <Textarea /* @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator.textarea */
               autoFocus={!props.isMobile}
               minRows={3}
               maxRows={8}
@@ -443,7 +446,7 @@ export function LiveSvgAnimator(props: { isMobile: boolean }) {
                       </Box>
                     }
                   >
-                    <Chip variant='soft' color='primary' onClick={() => handlePreset(t.prompt)}>
+                    <Chip /* @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator.chip */ variant='soft' color='primary' onClick={() => handlePreset(t.prompt)}>
                       {t.label}
                     </Chip>
                   </Tooltip>
@@ -453,7 +456,7 @@ export function LiveSvgAnimator(props: { isMobile: boolean }) {
 
             {!!error && <Typography level='body-sm' color='danger'>{error}</Typography>}
             <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-              <Button color='primary' startDecorator={<PlayArrowRoundedIcon />} disabled={!prompt.trim()} onClick={handleStart}>
+              <Button /* @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator.button */ color='primary' startDecorator={<PlayArrowRoundedIcon />} disabled={!prompt.trim()} onClick={handleStart}>
                 Start
               </Button>
             </Box>
@@ -467,13 +470,13 @@ export function LiveSvgAnimator(props: { isMobile: boolean }) {
           {/* controls + telemetry */}
           <Box sx={_styles.controls}>
             {status === 'running' ? (
-              <Button color='danger' startDecorator={<StopIcon />} onClick={handleStop}>Stop</Button>
+              <Button /* @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator.button-2 */ color='danger' startDecorator={<StopIcon />} onClick={handleStop}>Stop</Button>
             ) : status === 'stopping' ? (
               <Button color='danger' variant='soft' startDecorator={<CircularProgress size='sm' />} disabled>Stopping…</Button>
             ) : (
               <>
-                <Button color='primary' startDecorator={<PlayArrowRoundedIcon />} disabled={!prompt.trim()} onClick={handleStart}>Start again</Button>
-                <Button color='neutral' variant='soft' startDecorator={<RestartAltIcon />} onClick={handleNew}>New</Button>
+                <Button /* @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator.button-3 */ color='primary' startDecorator={<PlayArrowRoundedIcon />} disabled={!prompt.trim()} onClick={handleStart}>Start again</Button>
+                <Button /* @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator.button-4 */ color='neutral' variant='soft' startDecorator={<RestartAltIcon />} onClick={handleNew}>New</Button>
               </>
             )}
 
@@ -484,7 +487,7 @@ export function LiveSvgAnimator(props: { isMobile: boolean }) {
 
             {/* frames generated per inference call (1..4) - fewer calls => fewer rate-limit hits */}
             <Tooltip title='SVG frames generated per request (more = fewer calls, but blind intra-call continuity)'>
-              <Input
+              <Input /* @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator.input */
                 size='sm'
                 type='number'
                 value={framesPerCall}
@@ -497,7 +500,7 @@ export function LiveSvgAnimator(props: { isMobile: boolean }) {
 
             {/* user-adjustable pause between generations (live; takes effect on the next frame) */}
             <Tooltip title='Pause between generations (helps avoid rate-limit errors)'>
-              <Input
+              <Input /* @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator.input-2 */
                 size='sm'
                 type='number'
                 value={frameDelayMs}
@@ -526,7 +529,7 @@ export function LiveSvgAnimator(props: { isMobile: boolean }) {
             {/* centered recording mechanism: mic toggle + live transcript */}
             <Box sx={_styles.micHud}>
               <Tooltip title={!micAvailable ? 'Speech recognition unavailable in this browser' : micEnabled ? 'Stop & send' : 'Speak to steer'}>
-                <IconButton
+                <IconButton /* @uxid src/apps/chat/components/live-svg/LiveSvgAnimator::LiveSvgAnimator.iconbutton */
                   size='sm'
                   variant={micEnabled && status === 'running' ? 'solid' : 'soft'}
                   color={!micAvailable ? 'neutral' : micEnabled ? 'danger' : 'neutral'}

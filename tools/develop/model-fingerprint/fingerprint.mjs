@@ -57,6 +57,7 @@ const TOK_CORPORA = {
 };
 
 // completion-side tokenizer: exact echo makes usage.completion_tokens a pure output-count measurement
+// @uxid tools/develop/model-fingerprint/fingerprint::ECHO_TEXT
 const ECHO_TEXT = 'The committee 委员会 approved 3 proposals: naïve café schemes, quantum 量子 protocols, and straightforward implementations.';
 
 // ---- choice battery: forced one-word picks; argmax choices are family DNA (siblings agree, strangers mostly don't)
@@ -111,6 +112,7 @@ const LIGHT_PROBES = ['id_direct', 'special_tokens', 'style_explain', 'chinese_s
 
 // ---- OpenRouter call: temperature-strip retry, one transient retry, timeouts never retried
 const API = 'https://openrouter.ai/api/v1/chat/completions';
+// @uxid tools/develop/model-fingerprint/fingerprint::callModel
 async function callModel(model, probe, { maxTokens, timeoutMs, noReasoning }) {
   let body = { model, messages: probe.messages, max_tokens: maxTokens, temperature: 0, ...(noReasoning && { reasoning: { enabled: false } }) };
   for (let attempt = 0; attempt < 3; attempt++) {
@@ -259,6 +261,7 @@ async function runAll(tasks, limit) {
 const args = process.argv.slice(2);
 function argVal(name, dflt) { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : dflt; }
 
+// @uxid tools/develop/model-fingerprint/fingerprint::USAGE
 const USAGE = `model fingerprint - evidence instrument for identifying unknown OpenRouter models
 Designed to be driven by an AI assistant: the script gathers, the assistant judges.
 

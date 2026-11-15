@@ -50,6 +50,7 @@ export type AutoBlocksHtmlRenderVariant = 'show-code' | 'render-at-end' | 'rende
  * - DocAttachmentFragmentPane - when not editing and with a switch to show text/fenced (which could be rendered)
  * - DiagramsModal - for the diagram blocks
  */
+// @uxid src/modules/blocks/AutoBlocksRenderer::AutoBlocksRenderer
 export function AutoBlocksRenderer(props: {
   // required
   text: string;
@@ -154,7 +155,7 @@ export function AutoBlocksRenderer(props: {
 
 
   const blocksContainer = (
-    <BlocksContainer
+    <BlocksContainer /* @uxid src/modules/blocks/AutoBlocksRenderer::AutoBlocksRenderer.blockscontainer */
       ref={contentRef /* measured by the height collapser, when enabled */}
       // data-edit-intent={props.onDoubleClick ? true : undefined /* Future: Mac Force Touch */}
       onDoubleClick={props.onDoubleClick}
@@ -181,7 +182,7 @@ export function AutoBlocksRenderer(props: {
               />
             ) : (
               // Keep in sync with ScaledMarkdownRenderer
-              <RenderMarkdownMemo
+              <RenderMarkdownMemo /* @uxid src/modules/blocks/AutoBlocksRenderer::AutoBlocksRenderer.rendermarkdownmemo */
                 key={'md-bk-' + index}
                 content={bkInput.content}
                 disablePreprocessor={deferPreprocessor}
@@ -204,7 +205,7 @@ export function AutoBlocksRenderer(props: {
             const startCollapsed = (isDiagram && bkInput.isPartial) || fixUserHtmlPaste || (collapseUserText && bkInput.lines > USER_CODE_COLLAPSED_LINES);
 
             return props.codeRenderVariant === 'enhanced' ? (
-              <EnhancedRenderCodeMemo
+              <EnhancedRenderCodeMemo /* @uxid src/modules/blocks/AutoBlocksRenderer::AutoBlocksRenderer.enhancedrendercodememo */
                 // EnhancedRenderCode props
                 frameless={frameless}
                 contentScaling={props.contentScaling}
@@ -225,7 +226,7 @@ export function AutoBlocksRenderer(props: {
                 codeSx={scaledCodeSx}
               />
             ) : (
-              <RenderCodeMemo
+              <RenderCodeMemo /* @uxid src/modules/blocks/AutoBlocksRenderer::AutoBlocksRenderer.rendercodememo */
                 key={'code-bk-' + index}
                 semiStableId={bkInput.bkId}
                 code={bkInput.code} title={bkInput.title} isPartial={bkInput.isPartial}
@@ -250,7 +251,7 @@ export function AutoBlocksRenderer(props: {
 
           case 'img-url-bk':
             return (
-              <RenderImageURL
+              <RenderImageURL /* @uxid src/modules/blocks/AutoBlocksRenderer::AutoBlocksRenderer.renderimageurl */
                 key={'img-url-bk-' + index}
                 imageURL={bkInput.url}
                 expandableText={bkInput.alt}
@@ -284,7 +285,7 @@ export function AutoBlocksRenderer(props: {
         {blocksContainer}
       </Box>
       {showToggle && (
-        <ToggleExpansionButton
+        <ToggleExpansionButton /* @uxid src/modules/blocks/AutoBlocksRenderer::AutoBlocksRenderer.toggleexpansionbutton */
           color={props.codeRenderVariant === 'embedded-plain' ? 'neutral' : undefined}
           isCollapsed={isCollapsed}
           onToggle={handleToggleExpansion}

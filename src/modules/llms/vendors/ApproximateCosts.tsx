@@ -48,6 +48,7 @@ const _styles = {
 
 } as const;
 
+// @uxid src/modules/llms/vendors/ApproximateCosts::ApproximateCosts
 export function ApproximateCosts(props: {
   serviceId?: DModelsServiceId,
   whoSaved?: string,
@@ -81,7 +82,7 @@ export function ApproximateCosts(props: {
             {(partialMessageUsages > usageCount / 10) ? ` (${partialMessageUsages} of which were partial)` : ''}
             {' '}and {(totalInputTokens + totalOutputTokens).toLocaleString()} tokens.</span>
             {/*<ExternalLink href='https://console.anthropic.com/settings/usage'>Anthropic usage</ExternalLink>*/}
-            <Chip
+            <Chip /* @uxid src/modules/llms/vendors/ApproximateCosts::ApproximateCosts.chip */
               size='sm'
               color={hasSaved ? 'success' : 'neutral'}
               variant='outlined'
@@ -103,7 +104,7 @@ export function ApproximateCosts(props: {
               {(hasSaved && isMobile) ? 'Spend' : 'Approximate costs'}: <b>{formatModelsCost(totalCosts)}</b>
               {!!hasSaved && <> · saved <Box component='span' sx={{ color: 'success.plainColor' }}><b>{formatModelsCost(totalSavings)}</b></Box></>}
             </div>
-            {' '}<Chip
+            {' '}<Chip /* @uxid src/modules/llms/vendors/ApproximateCosts::ApproximateCosts.chip-2 */
             size='sm'
             color={hasSaved ? 'success' : 'neutral'}
             variant='outlined'

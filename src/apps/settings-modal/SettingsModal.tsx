@@ -97,6 +97,7 @@ const _styles = {
  * The external `tab` (PreferencesTabId, incl. legacy aliases) is resolved to a nav node here, so
  * callers keep using `optimaOpenPreferences('voice'|'draw'|...)` unchanged.
  */
+// @uxid src/apps/settings-modal/SettingsModal::SettingsModal
 export function SettingsModal(props: {
   open: boolean,
   tab: PreferencesTabId,
@@ -113,7 +114,7 @@ export function SettingsModal(props: {
   const nodeId = resolveSettingsNavId(props.tab);
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/apps/settings-modal/SettingsModal::SettingsModal.goodmodal */
       // title='Preferences' strongerTitle
       title={
         <AppBreadcrumbs size='md' rootTitle={isMobile ? 'App' : 'Application'}>
@@ -125,7 +126,7 @@ export function SettingsModal(props: {
       startButton={
         <Box sx={_styles.startButton}>
           <DarkModeToggleButton hasText />
-          {!isMobile && <Button variant='soft' color='neutral' onClick={props.onOpenShortcuts} startDecorator={<KeyboardCommandKeyOutlinedIcon color='primary' />} sx={darkModeToggleButtonSx}>
+          {!isMobile && <Button /* @uxid src/apps/settings-modal/SettingsModal::SettingsModal.button */ variant='soft' color='neutral' onClick={props.onOpenShortcuts} startDecorator={<KeyboardCommandKeyOutlinedIcon color='primary' />} sx={darkModeToggleButtonSx}>
             Shortcuts
           </Button>}
         </Box>
@@ -136,16 +137,16 @@ export function SettingsModal(props: {
 
       {isMobile ? (
         <Box sx={_styles.mobileBody}>
-          <SettingsNavSelect value={nodeId} onSelect={setTab} />
+          <SettingsNavSelect /* @uxid src/apps/settings-modal/SettingsModal::SettingsModal.settingsnavselect */ value={nodeId} onSelect={setTab} />
           <Box sx={_styles.mobileContent}>
-            <SettingsContent nodeId={nodeId} isMobile onSelect={setTab} />
+            <SettingsContent /* @uxid src/apps/settings-modal/SettingsModal::SettingsModal.settingscontent */ nodeId={nodeId} isMobile onSelect={setTab} />
           </Box>
         </Box>
       ) : (
         <Box sx={_styles.body}>
-          <SettingsNavList value={nodeId} onSelect={setTab} />
+          <SettingsNavList /* @uxid src/apps/settings-modal/SettingsModal::SettingsModal.settingsnavlist */ value={nodeId} onSelect={setTab} />
           <Box sx={_styles.content}>
-            <SettingsContent nodeId={nodeId} onSelect={setTab} />
+            <SettingsContent /* @uxid src/apps/settings-modal/SettingsModal::SettingsModal.settingscontent-2 */ nodeId={nodeId} onSelect={setTab} />
           </Box>
         </Box>
       )}

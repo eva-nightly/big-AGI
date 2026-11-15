@@ -11,6 +11,7 @@ import { useScaledTypographySx } from './blocks.styles';
 /**
  * Smaller and lighter-weight version of AutoBlocksRenderer for rendering just some text
  */
+// @uxid src/modules/blocks/ScaledTextBlockRenderer::ScaledTextBlockRenderer
 export function ScaledTextBlockRenderer(props: {
   text: string,
   contentScaling: ContentScaling,

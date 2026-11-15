@@ -26,6 +26,7 @@ Finally, we conclude with a shorter paragraph to verify varying lengths are hand
 };
 
 
+// @uxid src/modules/speex/components/SpeexSystemTest::SpeexSystemTest
 export function SpeexSystemTest() {
 
   // state
@@ -121,7 +122,7 @@ export function SpeexSystemTest() {
       <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 1, alignItems: 'center' }}>
         <Typography level='body-xs' sx={{ mr: 0.5 }}>Text:</Typography>
         {Object.keys(TEST_TEXTS).map((key) => (
-          <Chip
+          <Chip /* @uxid src/modules/speex/components/SpeexSystemTest::SpeexSystemTest.chip */
             key={key}
             size='sm'
             variant={customText === TEST_TEXTS[key as keyof typeof TEST_TEXTS] ? 'solid' : 'outlined'}
@@ -134,7 +135,7 @@ export function SpeexSystemTest() {
         <Box sx={{ flex: 1 }} />
         <Typography level='body-xs' sx={{ mr: 0.5 }}>Chunk:</Typography>
         {([false, 50, 200, 400] as const).map((len) => (
-          <Chip key={String(len)} size='sm' variant={maxChunkLength === len ? 'solid' : 'outlined'} onClick={() => setMaxChunkLength(len)} sx={{ cursor: 'pointer' }}>
+          <Chip /* @uxid src/modules/speex/components/SpeexSystemTest::SpeexSystemTest.chip-2 */ key={String(len)} size='sm' variant={maxChunkLength === len ? 'solid' : 'outlined'} onClick={() => setMaxChunkLength(len)} sx={{ cursor: 'pointer' }}>
             {len === false ? 'off' : len}
           </Chip>
         ))}
@@ -142,13 +143,13 @@ export function SpeexSystemTest() {
 
       {/* Switches */}
       <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap', mb: 1, alignItems: 'center' }}>
-        <Typography level='body-xs' endDecorator={<Switch size='sm' checked={!noCleanup} onChange={(e) => setNoCleanup(!e.target.checked)} />}>Cleanup</Typography>
-        <Typography level='body-xs' endDecorator={<Switch size='sm' checked={!noStreaming} onChange={(e) => setNoStreaming(!e.target.checked)} />}>Stream</Typography>
-        <Typography level='body-xs' endDecorator={<Switch size='sm' checked={!noLivePlay} onChange={(e) => setNoLivePlay(!e.target.checked)} />}>Live</Typography>
+        <Typography level='body-xs' endDecorator={<Switch /* @uxid src/modules/speex/components/SpeexSystemTest::SpeexSystemTest.switch */ size='sm' checked={!noCleanup} onChange={(e) => setNoCleanup(!e.target.checked)} />}>Cleanup</Typography>
+        <Typography level='body-xs' endDecorator={<Switch /* @uxid src/modules/speex/components/SpeexSystemTest::SpeexSystemTest.switch-2 */ size='sm' checked={!noStreaming} onChange={(e) => setNoStreaming(!e.target.checked)} />}>Stream</Typography>
+        <Typography level='body-xs' endDecorator={<Switch /* @uxid src/modules/speex/components/SpeexSystemTest::SpeexSystemTest.switch-3 */ size='sm' checked={!noLivePlay} onChange={(e) => setNoLivePlay(!e.target.checked)} />}>Live</Typography>
       </Box>
 
       {/* Text input */}
-      <Textarea
+      <Textarea /* @uxid src/modules/speex/components/SpeexSystemTest::SpeexSystemTest.textarea */
         size='sm'
         minRows={2}
         maxRows={4}
@@ -160,17 +161,17 @@ export function SpeexSystemTest() {
 
       {/* Action buttons */}
       <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap', mb: 1.5 }}>
-        <Button color='success' disabled={isPlaying || !customText.trim()} startDecorator={<PlayArrowRoundedIcon />} onClick={handleTestSequential}>
+        <Button /* @uxid src/modules/speex/components/SpeexSystemTest::SpeexSystemTest.button */ color='success' disabled={isPlaying || !customText.trim()} startDecorator={<PlayArrowRoundedIcon />} onClick={handleTestSequential}>
           Play
         </Button>
-        <Button color='danger' disabled={!isPlaying} startDecorator={<StopRoundedIcon />} onClick={handleStop}>
+        <Button /* @uxid src/modules/speex/components/SpeexSystemTest::SpeexSystemTest.button-2 */ color='danger' disabled={!isPlaying} startDecorator={<StopRoundedIcon />} onClick={handleStop}>
           Stop
         </Button>
-        <Button color='neutral' onClick={handleTestChunking} disabled={isPlaying || !customText.trim()}>
+        <Button /* @uxid src/modules/speex/components/SpeexSystemTest::SpeexSystemTest.button-3 */ color='neutral' onClick={handleTestChunking} disabled={isPlaying || !customText.trim()}>
           Chunking
         </Button>
         {log.length > 0 && (
-          <Button size='sm' variant='plain' color='neutral' onClick={clearLog} sx={{ ml: 'auto' }}>
+          <Button /* @uxid src/modules/speex/components/SpeexSystemTest::SpeexSystemTest.button-4 */ size='sm' variant='plain' color='neutral' onClick={clearLog} sx={{ ml: 'auto' }}>
             Clear
           </Button>
         )}

@@ -390,7 +390,7 @@ export function useCameraCapture() {
     return (
       <Box sx={sliderContainerSx}>
         <span>Zoom:</span>
-        <Slider
+        <Slider /* @uxid src/common/components/camera/useCameraCapture::useCameraCapture.slider */
           variant='solid'
           color='neutral'
           size='lg'

@@ -24,6 +24,7 @@ import { useERCDiffContext } from './ERCDiffContext';
 /**
  * Small hidden context menu to toggle the code enhancer, globally.
  */
+// @uxid src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu
 export function EnhancedRenderCodeMenu(props: {
   anchor: HTMLElement,
   title: string,
@@ -153,7 +154,7 @@ export function EnhancedRenderCodeMenu(props: {
 
 
   return (
-    <CloseablePopup
+    <CloseablePopup /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu.closeablepopup */
       menu anchorEl={props.anchor} onClose={props.onClose}
       dense
       minWidth={250}
@@ -161,11 +162,11 @@ export function EnhancedRenderCodeMenu(props: {
     >
 
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
-        <MenuItem onClick={props.onToggleCollapse} sx={{ flex: 0.6 }}>
+        <MenuItem /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu.menuitem */ onClick={props.onToggleCollapse} sx={{ flex: 0.6 }}>
           <ListItemDecorator>{props.isCollapsed ? <UnfoldMoreIcon /> : <UnfoldLessIcon />}</ListItemDecorator>
           {props.isCollapsed ? 'Expand' : 'Collapse'}
         </MenuItem>
-        <MenuItem onClick={props.isCollapsed ? handleExpandAllCodeBlocks : handleCollapseAllCodeBlocks} sx={{ justifyContent: 'center', flex: 0.4 }}>
+        <MenuItem /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu.menuitem-2 */ onClick={props.isCollapsed ? handleExpandAllCodeBlocks : handleCollapseAllCodeBlocks} sx={{ justifyContent: 'center', flex: 0.4 }}>
           <ListItemDecorator>{props.isCollapsed ? <UnfoldMoreIcon /> : <UnfoldLessIcon />}</ListItemDecorator>
           All
         </MenuItem>
@@ -173,7 +174,7 @@ export function EnhancedRenderCodeMenu(props: {
 
       <ListDivider />
 
-      <MenuItem onClick={handleCopyToClipboard}>
+      <MenuItem /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu.menuitem-3 */ onClick={handleCopyToClipboard}>
         <ListItemDecorator><ContentCopyIcon /></ListItemDecorator>
         Copy
       </MenuItem>
@@ -182,20 +183,20 @@ export function EnhancedRenderCodeMenu(props: {
       {!!onDeleteContainingCodeBlock && (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           {deleteArmed && (
-            <MenuItem onClick={handleCancelDelete} sx={{ flex: 1 }}>
+            <MenuItem /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu.menuitem-4 */ onClick={handleCancelDelete} sx={{ flex: 1 }}>
               <ListItemDecorator><CloseRoundedIcon /></ListItemDecorator>
               Cancel
             </MenuItem>
           )}
           {/* Ask / Confirm */}
-          <MenuItem ref={deleteActionRef} onClick={handleDelete} sx={{ flex: 1 }}>
+          <MenuItem /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu.menuitem-5 */ ref={deleteActionRef} onClick={handleDelete} sx={{ flex: 1 }}>
             <ListItemDecorator>{deleteArmed ? <DeleteForeverIcon sx={{ color: 'danger.solidBg' }} /> : <DeleteOutlineIcon />}</ListItemDecorator>
             {deleteArmed ? 'Confirm delete' : 'Delete'}
           </MenuItem>
         </Box>
       )}
 
-      <MenuItem onClick={handleSaveAs}>
+      <MenuItem /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu.menuitem-6 */ onClick={handleSaveAs}>
         <ListItemDecorator><SaveAsOutlinedIcon /></ListItemDecorator>
         Save As ...
       </MenuItem>
@@ -211,21 +212,21 @@ export function EnhancedRenderCodeMenu(props: {
         {/*)}*/}
 
         {!diffContext.baseCode && (
-          <MenuItem onClick={handleSetAsDiffBase}>
+          <MenuItem /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu.menuitem-7 */ onClick={handleSetAsDiffBase}>
             <ListItemDecorator><CompareArrowsIcon /></ListItemDecorator>
             <div>Compare <span style={{ opacity: 0.5 }}>From ...</span></div>
           </MenuItem>
         )}
 
         {!!diffContext.baseCode && (
-          <MenuItem onClick={handleCompareWithBase} disabled={!canCompare} color={!canCompare ? undefined : 'success'}>
+          <MenuItem /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu.menuitem-8 */ onClick={handleCompareWithBase} disabled={!canCompare} color={!canCompare ? undefined : 'success'}>
             <ListItemDecorator><CompareArrowsIcon sx={!canCompare ? undefined : { animation: `${animationSpinHalfPause} 2s ease-out` }} /></ListItemDecorator>
             <Box fontWeight='lg'>Compare <span style={{ opacity: 0.5 }}>To ...</span></Box>
           </MenuItem>
         )}
 
         {!!diffContext.baseCode && (
-          <MenuItem onClick={handleClearDiffBase}>
+          <MenuItem /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCodeMenu::EnhancedRenderCodeMenu.menuitem-9 */ onClick={handleClearDiffBase}>
             <ListItemDecorator><DisabledByDefaultIcon /></ListItemDecorator>
             Cancel <span style={{ opacity: 0.5 }}>Comparison</span>
           </MenuItem>

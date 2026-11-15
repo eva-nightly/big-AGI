@@ -5,6 +5,7 @@ import { Table, Typography } from '@mui/joy';
 import type { AixClientDebugger } from './memstore-aix-client-debugger';
 
 
+// @uxid src/modules/aix/client/debugger/AixDebuggerMeasurementsTable::AixDebuggerMeasurementsTable
 export function AixDebuggerMeasurementsTable(props: {
   measurements: AixClientDebugger.Measurements
 }) {

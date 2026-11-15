@@ -10,6 +10,7 @@ import { optimaCloseDrawer, useOptimaDrawerOpen } from '../useOptima';
 import { useOptimaPortalOutRef } from '../portals/useOptimaPortalOutRef';
 
 
+// @uxid src/common/layout/optima/drawer/MobileDrawer::DrawerContentPortal
 function DrawerContentPortal() {
   const drawerPortalRef = useOptimaPortalOutRef('optima-portal-drawer', 'MobileDrawer');
   return (
@@ -31,6 +32,7 @@ function DrawerContentPortal() {
   );
 }
 
+// @uxid src/common/layout/optima/drawer/MobileDrawer::MobileDrawer
 export function MobileDrawer(props: { component: React.ElementType, currentApp?: NavItemApp }) {
 
   // external state
@@ -51,7 +53,7 @@ export function MobileDrawer(props: { component: React.ElementType, currentApp?:
    * See also `windowUtils.useDocumentFocusDebugger` for debugging focus issues.
    */
   return (
-    <Drawer
+    <Drawer /* @uxid src/common/layout/optima/drawer/MobileDrawer::MobileDrawer.drawer */
       id='mobile-drawer'
       component={props.component}
       disableEnforceFocus

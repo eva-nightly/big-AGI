@@ -13,6 +13,7 @@ import { instanceLockRequestTransfer, useInstanceLock } from './instanceLock';
  * (single-instance, cloud fabric): the pre-hydration HTML and the first post-hydration frames are
  * the same markup - no flash, no mismatch. Styles in sherpa.css, imported above.
  */
+// @uxid src/common/providers/single-tab/ProviderSingleTab::SherpaLoading
 export function SherpaLoading(props: { stage: string }) {
   return (
     <div className='sherpa' data-stage={props.stage}>
@@ -29,6 +30,7 @@ export function SherpaLoading(props: { stage: string }) {
 const useRevealEffect = typeof window !== 'undefined' ? React.useLayoutEffect : React.useEffect;
 
 
+// @uxid src/common/providers/single-tab/ProviderSingleTab::ProviderSingleTab
 export const ProviderSingleTab = (props: { children: React.ReactNode }) => {
 
   // state
@@ -122,7 +124,7 @@ export const ProviderSingleTab = (props: { children: React.ReactNode }) => {
         </div>
         {/* no button while wiping: this realm is about to be destroyed and must not be re-promoted */}
         {!wiping && (
-          <button className='button mt2' onClick={instanceLockRequestTransfer}>
+          <button /* @uxid src/common/providers/single-tab/ProviderSingleTab::ProviderSingleTab.button */ className='button mt2' onClick={instanceLockRequestTransfer}>
             Transfer Here
           </button>
         )}

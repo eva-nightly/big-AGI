@@ -11,11 +11,12 @@ const timestampOptions: FormSelectOption<ChatMessageTimestampMode>[] = [
   { value: 'all', label: 'All', description: 'Every message' },
 ];
 
+// @uxid src/apps/settings-modal/settings-ui/SettingUIMessageTimestamps::SettingUIMessageTimestamps
 export function SettingUIMessageTimestamps() {
   const [mode, setMode] = useChatMessageTimestampMode();
 
   return (
-    <FormSelectControl
+    <FormSelectControl /* @uxid src/apps/settings-modal/settings-ui/SettingUIMessageTimestamps::SettingUIMessageTimestamps.formselectcontrol */
       title='Timestamps'
       options={timestampOptions}
       value={mode}

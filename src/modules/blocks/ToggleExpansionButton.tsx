@@ -9,6 +9,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 /**
  * Simple button to 'Show more' or 'Show less' content
  */
+// @uxid src/modules/blocks/ToggleExpansionButton::ToggleExpansionButton
 export function ToggleExpansionButton(props: {
   color?: ColorPaletteProp;
   isCollapsed: boolean;
@@ -17,7 +18,7 @@ export function ToggleExpansionButton(props: {
 }) {
   return (
     <div data-agi-no-copy style={{ lineHeight: 1 /* Absorbs some weird height issue since the parent has an extended line height (lineHeightChatTextMd) */ }}>
-      <Button
+      <Button /* @uxid src/modules/blocks/ToggleExpansionButton::ToggleExpansionButton.button */
         variant='soft'
         color={props.color}
         size='sm'

@@ -38,6 +38,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/layout-bar/ChatBarBeam::ChatBarBeam
 export function ChatBarBeam(props: {
   beamStore: BeamStoreApi,
   conversationTitle: string,
@@ -96,14 +97,14 @@ export function ChatBarBeam(props: {
       {/* [desktop] maximize button, or a disabled spacer  */}
       {!props.isMobile && (
         <GoodTooltip variantOutlined title={<Box sx={{ p: 1 }}>Maximize Beam</Box>}>
-          <IconButton size='sm' onClick={handleMaximizeBeam}>
+          <IconButton /* @uxid src/apps/chat/components/layout-bar/ChatBarBeam::ChatBarBeam.iconbutton */ size='sm' onClick={handleMaximizeBeam}>
             {/*<OpenInFullIcon sx={{ fontSize: 'md' }} />*/}
           </IconButton>
         </GoodTooltip>
       )}
 
       {/* Unified context breadcrumbs: the chat title is now a clickable *ancestor* (back to chat), Beam is the leaf */}
-      <ChatBarBreadcrumbs
+      <ChatBarBreadcrumbs /* @uxid src/apps/chat/components/layout-bar/ChatBarBeam::ChatBarBeam.chatbarbreadcrumbs */
         conversationId={null /* sub-context: the crumb navigates, it is not the editable leaf */}
         conversationTitle={props.conversationTitle}
         isMobile={props.isMobile}
@@ -128,7 +129,7 @@ export function ChatBarBeam(props: {
 
       {/* Right Close Icon */}
       <GoodTooltip variantOutlined title={<Box sx={{ p: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>Back to Chat <KeyStroke variant='outlined' combo='Esc' /></Box>}>
-        <IconButton aria-label='Close' size='sm' onClick={handleCloseBeam}>
+        <IconButton /* @uxid src/apps/chat/components/layout-bar/ChatBarBeam::ChatBarBeam.iconbutton-2 */ aria-label='Close' size='sm' onClick={handleCloseBeam}>
           <CloseRoundedIcon />
         </IconButton>
       </GoodTooltip>
@@ -136,7 +137,7 @@ export function ChatBarBeam(props: {
 
       {/* Confirmation Modal */}
       {showCloseConfirmation && (
-        <ConfirmationModal
+        <ConfirmationModal /* @uxid src/apps/chat/components/layout-bar/ChatBarBeam::ChatBarBeam.confirmationmodal */
           open
           onClose={handleCloseDenial}
           onPositive={handleCloseConfirmation}

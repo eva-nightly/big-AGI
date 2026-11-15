@@ -12,6 +12,7 @@ import { useLLM, useLLMExists } from '~/common/stores/llms/llms.hooks';
 import { getDLLMCloneId } from '../llm.client';
 
 
+// @uxid src/modules/llms/models-modal/LLMOptionsClone::LLMOptionsClone
 export function LLMOptionsClone(preps: {
   llmId: DLLMId;
   onClose: () => void;
@@ -62,7 +63,7 @@ export function LLMOptionsClone(preps: {
   if (!llm) return null;
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/modules/llms/models-modal/LLMOptionsClone::LLMOptionsClone.goodmodal */
       open
       onClose={onClose}
       title='Duplicate Model'
@@ -74,7 +75,7 @@ export function LLMOptionsClone(preps: {
 
       <FormControl sx={{ mb: 2 }}>
         <FormLabelStart title='Display Name' />
-        <Input
+        <Input /* @uxid src/modules/llms/models-modal/LLMOptionsClone::LLMOptionsClone.input */
           autoFocus
           variant='outlined'
           placeholder={`${llmLabel} (Copy)`}
@@ -86,7 +87,7 @@ export function LLMOptionsClone(preps: {
 
       <FormControl sx={{ mb: 2 }}>
         <FormLabelStart title='Variant ID' description='lowercase, no spaces' />
-        <Input
+        <Input /* @uxid src/modules/llms/models-modal/LLMOptionsClone::LLMOptionsClone.input-2 */
           variant='outlined'
           placeholder='my-variant'
           value={cloneVariant}
@@ -116,10 +117,10 @@ export function LLMOptionsClone(preps: {
       </Alert>
 
       <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end' }}>
-        <Button color='neutral' onClick={onClose}>
+        <Button /* @uxid src/modules/llms/models-modal/LLMOptionsClone::LLMOptionsClone.button */ color='neutral' onClick={onClose}>
           Cancel
         </Button>
-        <Button
+        <Button /* @uxid src/modules/llms/models-modal/LLMOptionsClone::LLMOptionsClone.button-2 */
           disabled={!canCreate}
           onClick={handleCreate}
         >

@@ -98,6 +98,7 @@ function _maybeMarkdownReasoning(text: string): boolean {
 
 export const BlockPartModelAuxMemo = React.memo(BlockPartModelAux);
 
+// @uxid src/apps/chat/components/message/fragments-void/BlockPartModelAux::BlockPartModelAux
 function BlockPartModelAux(props: {
   fragmentId: DMessageFragmentId,
   auxType: 'reasoning' | string,
@@ -175,7 +176,7 @@ function BlockPartModelAux(props: {
   const handleDelete = React.useCallback(() => {
     if (!onFragmentDelete) return;
     showPromisedOverlay('chat-message-delete-aux', {}, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/apps/chat/components/message/fragments-void/BlockPartModelAux::BlockPartModelAux.confirmationmodal */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         confirmationText={<>
           Delete this {typeText.toLowerCase()} completely?
@@ -192,7 +193,7 @@ function BlockPartModelAux(props: {
   const handleInline = React.useCallback(() => {
     if (!onFragmentReplace) return;
     showPromisedOverlay('chat-message-inline-aux', {}, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/apps/chat/components/message/fragments-void/BlockPartModelAux::BlockPartModelAux.confirmationmodal-2 */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         confirmationText={<>
           Convert this {typeText.toLowerCase()} into regular message text?
@@ -214,7 +215,7 @@ function BlockPartModelAux(props: {
 
     {/* Chip to expand/collapse */}
     <Box data-agi-no-copy /* do not copy these buttons */ sx={{ display: 'flex', flexWrap: 'wrap', gap: 1, alignItems: 'center', justifyContent: 'space-between' }}>
-      <Chip
+      <Chip /* @uxid src/apps/chat/components/message/fragments-void/BlockPartModelAux::BlockPartModelAux.chip */
         size='sm'
         color={inFlux || expanded ? REASONING_COLOR : 'neutral'}
         variant={expanded ? 'solid' : 'soft'}
@@ -236,7 +237,7 @@ function BlockPartModelAux(props: {
         <Box sx={{ display: 'flex', gap: 1 }}>
 
           {/* Make inline */}
-          {showInline && <Chip
+          {showInline && <Chip /* @uxid src/apps/chat/components/message/fragments-void/BlockPartModelAux::BlockPartModelAux.chip-2 */
             color={REASONING_COLOR}
             variant='soft'
             size='sm'
@@ -249,7 +250,7 @@ function BlockPartModelAux(props: {
           </Chip>}
 
           {/* Delete */}
-          {showDelete && <Chip
+          {showDelete && <Chip /* @uxid src/apps/chat/components/message/fragments-void/BlockPartModelAux::BlockPartModelAux.chip-3 */
             color={REASONING_COLOR}
             variant='soft'
             size='sm'

@@ -22,6 +22,7 @@ import { DocAttachmentFragmentPane } from './DocAttachmentFragmentPane';
 /**
  * Wrapper for a DocAttachmentFragmentButton that adds DnD support. Also an item of `EditAttachmentFragments`.
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::SortableDocAttachmentButton
 export function SortableDocAttachmentButton(props: {
   fragment: DMessageAttachmentFragment,
   contentScaling: ContentScaling,
@@ -38,7 +39,7 @@ export function SortableDocAttachmentButton(props: {
 
   return (
     <Box ref={dragContainerSetRef} style={dragContainerStyle} sx={{ display: 'inline-block' }}>
-      <DocAttachmentFragmentButton
+      <DocAttachmentFragmentButton /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::SortableDocAttachmentButton.docattachmentfragmentbutton */
         fragment={fragment}
         contentScaling={contentScaling}
         isSelected={isSelected}
@@ -66,6 +67,7 @@ const _rootSx: SxProps = {
  * When one is active, there is a content part just right under (with the collapse mechanism in case it's a user role).
  * If one is clicked the content part (use ContentPartText) is displayed.
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::DocumentAttachmentFragments
 export const DocumentAttachmentFragments = React.memo(function DocumentAttachmentFragments(props: {
   attachmentFragments: readonly DMessageAttachmentFragment[],
   messageRole: DMessageRole,
@@ -194,7 +196,7 @@ export const DocumentAttachmentFragments = React.memo(function DocumentAttachmen
 
           {/* Show more/less button */}
           {hasMoreThanLimit && (
-            <Button
+            <Button /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::DocumentAttachmentFragments.button */
               size={props.contentScaling === 'md' ? 'md' : 'sm'}
               variant='soft'
               onClick={handleToggleShowAll}
@@ -209,7 +211,7 @@ export const DocumentAttachmentFragments = React.memo(function DocumentAttachmen
           )}
         </Box>
       ) : (
-        <DndContext sensors={sensors} modifiers={dndModifiers} onDragEnd={handleDragEnd}>
+        <DndContext /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::DocumentAttachmentFragments.dndcontext */ sensors={sensors} modifiers={dndModifiers} onDragEnd={handleDragEnd}>
           <SortableContext items={fragmentIds}>
             <Box sx={wrappingButtonsSx}>
               {props.attachmentFragments.map((attachmentFragment) =>
@@ -228,7 +230,7 @@ export const DocumentAttachmentFragments = React.memo(function DocumentAttachmen
 
       {/* Document Viewer & Editor */}
       {!!selectedFragment && isDocPart(selectedFragment.part) && (
-        <DocAttachmentFragmentPane
+        <DocAttachmentFragmentPane /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocumentAttachmentFragments::DocumentAttachmentFragments.docattachmentfragmentpane */
           key={selectedFragment.fId /* this is here for the useLiveFile hook which otherwise would migrate state across fragments */}
           fragment={selectedFragment}
           controlledEditor={controlledEditor}

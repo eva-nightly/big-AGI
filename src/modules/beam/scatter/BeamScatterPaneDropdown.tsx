@@ -17,6 +17,7 @@ import { useModuleBeamStore } from '../store-module-beam';
 
 /// Naming Dialog ///
 
+// @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::DialogNamePreset
 function DialogNamePreset(props: {
   open: boolean,
   onClose: () => void,
@@ -32,12 +33,12 @@ function DialogNamePreset(props: {
   };
 
   return (
-    <Modal open={props.open} onClose={handleClose}>
+    <Modal /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::DialogNamePreset.modal */ open={props.open} onClose={handleClose}>
       <ModalDialog>
         <ModalClose />
         <DialogTitle>Save Preset</DialogTitle>
         <DialogContent>Store the Models configuration.</DialogContent>
-        <form onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
+        <form /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::DialogNamePreset.form */ onSubmit={(event: React.FormEvent<HTMLFormElement>) => {
           event.preventDefault();
           if (name.trim())
             props.onStore(name);
@@ -46,7 +47,7 @@ function DialogNamePreset(props: {
           <Box sx={{ display: 'grid', gap: 2 }}>
             <FormControl>
               <FormLabel>Name</FormLabel>
-              <Input autoFocus required value={name} onChange={event => setName(event.target.value)} />
+              <Input /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::DialogNamePreset.input */ autoFocus required value={name} onChange={event => setName(event.target.value)} />
             </FormControl>
             <Button type='submit'>Save</Button>
           </Box>
@@ -57,6 +58,7 @@ function DialogNamePreset(props: {
 }
 
 
+// @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown
 export function BeamScatterDropdown(props: {
   beamStore: BeamStoreApi,
   onExplainerShow: () => any,
@@ -118,7 +120,7 @@ export function BeamScatterDropdown(props: {
         </ListItem>
 
         {/* Save New */}
-        <MenuItem onClick={() => setNamingOpened(true)}>
+        <MenuItem /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown.menuitem */ onClick={() => setNamingOpened(true)}>
           <ListItemDecorator>
             <DriveFileRenameOutlineRoundedIcon />
           </ListItemDecorator>
@@ -127,12 +129,12 @@ export function BeamScatterDropdown(props: {
 
         {/* Load any preset */}
         {presets.map(preset =>
-          <MenuItem key={preset.id} onClick={() => handlePresetLoad(preset.id)}>
+          <MenuItem /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown.menuitem-2 */ key={preset.id} onClick={() => handlePresetLoad(preset.id)}>
             <ListItemDecorator />
             <Typography>
               Load &quot;{preset.name}&quot; &nbsp;<span style={{ opacity: 0.5, marginRight: '2rem' }}>x{preset.rayLlmIds?.length}</span>
             </Typography>
-            <IconButton
+            <IconButton /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown.iconbutton */
               size='sm'
               variant='outlined'
               onClick={(event) => {
@@ -152,22 +154,22 @@ export function BeamScatterDropdown(props: {
           <Typography level='body-sm'>View</Typography>
         </ListItem>
 
-        <MenuItem onClick={toggleScatterShowPrevMessages}>
+        <MenuItem /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown.menuitem-3 */ onClick={toggleScatterShowPrevMessages}>
           <ListItemDecorator>{scatterShowPrevMessages && <CheckRoundedIcon />}</ListItemDecorator>
           History
         </MenuItem>
 
-        <MenuItem onClick={toggleCardAdd}>
+        <MenuItem /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown.menuitem-4 */ onClick={toggleCardAdd}>
           <ListItemDecorator>{cardAdd && <CheckRoundedIcon />}</ListItemDecorator>
           Add Button
         </MenuItem>
 
-        <MenuItem onClick={toggleCardScrolling}>
+        <MenuItem /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown.menuitem-5 */ onClick={toggleCardScrolling}>
           <ListItemDecorator>{cardScrolling && <CheckRoundedIcon />}</ListItemDecorator>
           Resize Beams
         </MenuItem>
 
-        <MenuItem onClick={toggleScatterShowLettering}>
+        <MenuItem /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown.menuitem-6 */ onClick={toggleScatterShowLettering}>
           <ListItemDecorator>{scatterShowLettering && <CheckRoundedIcon />}</ListItemDecorator>
           Response Numbers
         </MenuItem>
@@ -176,19 +178,19 @@ export function BeamScatterDropdown(props: {
           <Typography level='body-sm'>Advanced</Typography>
         </ListItem>
 
-        <MenuItem onClick={toggleGatherAutoStartAfterScatter}>
+        <MenuItem /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown.menuitem-7 */ onClick={toggleGatherAutoStartAfterScatter}>
           <ListItemDecorator>{gatherAutoStartAfterScatter && <CheckRoundedIcon />}</ListItemDecorator>
           Auto-Merge
         </MenuItem>
 
-        <MenuItem onClick={toggleGatherShowAllPrompts}>
+        <MenuItem /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown.menuitem-8 */ onClick={toggleGatherShowAllPrompts}>
           <ListItemDecorator>{gatherShowAllPrompts && <CheckRoundedIcon />}</ListItemDecorator>
           Detailed Custom Merge
         </MenuItem>
 
         <ListDivider inset='gutter' />
 
-        <MenuItem onClick={props.onExplainerShow}>
+        <MenuItem /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown.menuitem-9 */ onClick={props.onExplainerShow}>
           <ListItemDecorator>
             <SchoolRoundedIcon />
           </ListItemDecorator>
@@ -199,7 +201,7 @@ export function BeamScatterDropdown(props: {
     </Dropdown>
 
     {/* Options dialog */}
-    <DialogNamePreset open={namingOpened} onClose={handleClosePresetNaming} onStore={handlePresetSave} />
+    <DialogNamePreset /* @uxid src/modules/beam/scatter/BeamScatterPaneDropdown::BeamScatterDropdown.dialognamepreset */ open={namingOpened} onClose={handleClosePresetNaming} onStore={handlePresetSave} />
 
   </>;
 }

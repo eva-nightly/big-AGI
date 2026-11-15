@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/vendors/ChutesAIIcon::ChutesAIIcon
 export function ChutesAIIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 -10.5 62 62' width='24' height='24' fill='currentColor' stroke='none' {...props}>
     <path d='M38 39.7C37.1 41.1 35.3 41.4 34 40.3L28.7 35.2C27.5 34 27.5 32 28.7 30.9L34.1 26C40.1 20.5 48.1 18.4 55.6 20.2L59.7 21.2C59.8 21.2 60 21.3 60.1 21.4C60.7 22 60.3 23 59.6 23.1L59.5 23.1C52 23.6 45.2 28 41 34.9L38 39.7Z' />

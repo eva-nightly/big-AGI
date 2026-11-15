@@ -124,6 +124,7 @@ export function useMarkdownTaskListToggler(content: string, replaceContent?: (cu
  * If we intercepted the outer node (li), we could have a richer presentation for input (e.g. clickable text), but also
  * we may lose markdown rendering of text therein.
  */
+// @uxid src/modules/blocks/markdown/CustomTaskListRenderer::CustomInputRenderer
 export function CustomInputRenderer({ node, children, ...props }: {
   node?: any; // rehype node
   children: React.JSX.Element; // expected: undefined
@@ -131,7 +132,7 @@ export function CustomInputRenderer({ node, children, ...props }: {
 
   // default rendering for non-checkboxes
   if (!('type' in props) || props.type !== 'checkbox')
-    return <input {...props} />;
+    return <input /* @uxid src/modules/blocks/markdown/CustomTaskListRenderer::CustomInputRenderer.input */ {...props} />;
 
   // this is set by our rehype plugin, which renumbers at render time
   const taskIndex = 'data-task-index' in props ? props['data-task-index'] ?? -1 : -1;

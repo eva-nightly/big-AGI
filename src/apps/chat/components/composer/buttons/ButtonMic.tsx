@@ -27,6 +27,7 @@ const micLegend = (errorMessage: string | null) =>
 
 export const ButtonMicMemo = React.memo(ButtonMic);
 
+// @uxid src/apps/chat/components/composer/buttons/ButtonMic::ButtonMic
 function ButtonMic(props: {
   variant: VariantProp,
   color: ColorPaletteProp,
@@ -37,7 +38,7 @@ function ButtonMic(props: {
 
   return (
     <GoodTooltip placement='top' arrow enableInteractive title={micLegend(props.errorMessage)}>
-      <IconButton variant={props.variant} color={props.color} onMouseDown={handleDontBlurTextArea} onClick={props.onClick} sx={props.noBackground ? { background: 'none' } : {}}>
+      <IconButton /* @uxid src/apps/chat/components/composer/buttons/ButtonMic::ButtonMic.iconbutton */ variant={props.variant} color={props.color} onMouseDown={handleDontBlurTextArea} onClick={props.onClick} sx={props.noBackground ? { background: 'none' } : {}}>
         <MicIcon />
       </IconButton>
     </GoodTooltip>

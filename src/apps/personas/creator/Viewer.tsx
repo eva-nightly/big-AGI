@@ -10,6 +10,7 @@ import { PersonaPromptCard } from './Creator';
 import { useSimplePersona } from '../store-app-personas';
 
 
+// @uxid src/apps/personas/creator/Viewer::Viewer
 export function Viewer(props: { selectedSimplePersonaId: string }) {
 
   // external state
@@ -33,7 +34,7 @@ export function Viewer(props: { selectedSimplePersonaId: string }) {
 
     {/* tell about the Provenances */}
     <Typography level='body-sm' sx={{ mt: 3 }}>
-      {simplePersona.inputProvenance?.type === 'youtube' && <>The source was this YouTube video: <Link href={simplePersona.inputProvenance.url} target='_blank'>{simplePersona.inputProvenance.title}</Link>.</>}
+      {simplePersona.inputProvenance?.type === 'youtube' && <>The source was this YouTube video: <Link /* @uxid src/apps/personas/creator/Viewer::Viewer.link */ href={simplePersona.inputProvenance.url} target='_blank'>{simplePersona.inputProvenance.title}</Link>.</>}
       {simplePersona.inputProvenance?.type === 'text' && <>The source was a text snippet of {simplePersona.inputText?.length.toLocaleString()} characters.</>}
     </Typography>
 

@@ -39,6 +39,7 @@ export async function openFileForAttaching(
 
 export const ButtonAttachFilesMemo = React.memo(ButtonAttachFiles);
 
+// @uxid src/common/components/ButtonAttachFiles::ButtonAttachFiles
 function ButtonAttachFiles(props: {
   color?: ColorPaletteProp,
   multiple?: boolean,
@@ -56,7 +57,7 @@ function ButtonAttachFiles(props: {
   }, [onAttachFiles, props.multiple]);
 
   return props.isMobile ? (
-    <IconButton color={props.color} disabled={props.disabled} onClick={handleAttachFilePicker}>
+    <IconButton /* @uxid src/common/components/ButtonAttachFiles::ButtonAttachFiles.iconbutton */ color={props.color} disabled={props.disabled} onClick={handleAttachFilePicker}>
       <AttachFileRoundedIcon />
     </IconButton>
   ) : (
@@ -67,7 +68,7 @@ function ButtonAttachFiles(props: {
         <KeyStroke combo='Ctrl + Shift + F' sx={{ mt: 1, mb: 0.5 }} />
       </Box>
     )}>
-      <Button
+      <Button /* @uxid src/common/components/ButtonAttachFiles::ButtonAttachFiles.button */
         variant={props.color ? 'soft' : 'plain'}
         color={props.color || 'neutral'}
         disabled={props.disabled}

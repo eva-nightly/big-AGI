@@ -73,6 +73,7 @@ const DesktopDrawerTranslatingSheet = styled(Sheet, { name: 'DesktopDrawerTransl
 })) as typeof Sheet;
 
 
+// @uxid src/common/layout/optima/drawer/DesktopDrawer::DesktopDrawer
 export function DesktopDrawer(props: { component: React.ElementType, currentApp?: NavItemApp }) {
 
   // state

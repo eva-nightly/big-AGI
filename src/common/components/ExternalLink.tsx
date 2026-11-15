@@ -17,6 +17,7 @@ const wowStyle: SxProps = {
 };
 
 
+// @uxid src/common/components/ExternalLink::ExternalLink
 export function ExternalLink(props: {
   href: string,
   color?: ColorPaletteProp,
@@ -26,7 +27,7 @@ export function ExternalLink(props: {
   children: React.ReactNode,
 }) {
   return (
-    <Link level={props.level} color={props.color} href={props.href} target='_blank' sx={props.highlight ? wowStyle : undefined}>
+    <Link /* @uxid src/common/components/ExternalLink::ExternalLink.link */ level={props.level} color={props.color} href={props.href} target='_blank' sx={props.highlight ? wowStyle : undefined}>
       {props.children} {(props.icon === 'issue' || props.icon === 'public-docs')
       ? <PhBookOpenText sx={{ mx: 0.5, fontSize: 16 }} />
       : <LaunchIcon sx={{ mx: 0.5, fontSize: 16 }} />

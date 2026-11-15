@@ -14,6 +14,7 @@ import { tokenCountsMathAndMessage, TokenTooltip } from './TokenTooltip';
  */
 export const TokenProgressbarMemo = React.memo(TokenProgressbar);
 
+// @uxid src/apps/chat/components/composer/tokens/TokenProgressbar::TokenProgressbar
 function TokenProgressbar(props: {
   chatPricing?: DPricingChatGenerate,
 

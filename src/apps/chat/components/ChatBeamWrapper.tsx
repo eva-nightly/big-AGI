@@ -38,6 +38,7 @@ const beamWrapperStyles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/ChatBeamWrapper::ChatBeamWrapper
 export function ChatBeamWrapper(props: {
   beamStore: BeamStoreApi,
   isFocused: boolean,
@@ -63,7 +64,7 @@ export function ChatBeamWrapper(props: {
   ), [props.beamStore, props.isFocused, props.isMobile]);
 
   return isMaximized ? (
-    <Modal open onClose={handleUnMaximize}>
+    <Modal /* @uxid src/apps/chat/components/ChatBeamWrapper::ChatBeamWrapper.modal */ open onClose={handleUnMaximize}>
       <Box sx={beamWrapperStyles.wrapper}>
 
         <ScrollToBottom disableAutoStick>
@@ -73,7 +74,7 @@ export function ChatBeamWrapper(props: {
         {/* Modal-Close-alike */}
         <Box sx={beamWrapperStyles.closeContainer}>
           <GoodTooltip title='Exit maximized mode'>
-            <IconButton variant='solid' onClick={handleUnMaximize} sx={beamWrapperStyles.closeButton}>
+            <IconButton /* @uxid src/apps/chat/components/ChatBeamWrapper::ChatBeamWrapper.iconbutton */ variant='solid' onClick={handleUnMaximize} sx={beamWrapperStyles.closeButton}>
               <CloseFullscreenIcon />
               {/*<CloseRoundedIcon />*/}
             </IconButton>

@@ -35,6 +35,7 @@ const desktopSx: SxProps = {
 
 export const ButtonBeamMemo = React.memo(ButtonBeam);
 
+// @uxid src/apps/chat/components/composer/buttons/ButtonBeam::ButtonBeam
 function ButtonBeam(props: {
   isMobile?: boolean,
   color?: ColorPaletteProp,
@@ -43,12 +44,12 @@ function ButtonBeam(props: {
   onClick: () => void,
 }) {
   return props.isMobile ? (
-    <IconButton variant='outlined' color={props.color ?? 'primary'} disabled={props.disabled} onClick={props.onClick} sx={mobileSx}>
+    <IconButton /* @uxid src/apps/chat/components/composer/buttons/ButtonBeam::ButtonBeam.iconbutton */ variant='outlined' color={props.color ?? 'primary'} disabled={props.disabled} onClick={props.onClick} sx={mobileSx}>
       <ChatBeamIcon />
     </IconButton>
   ) : (
     <Tooltip disableInteractive variant='solid' arrow placement='right' title={props.hasContent ? desktopLegend : desktopLegendNoContent}>
-      <Button variant='soft' color={props.color ?? 'primary'} disabled={props.disabled} onClick={props.onClick} endDecorator={<ChatBeamIcon />} sx={desktopSx}>
+      <Button /* @uxid src/apps/chat/components/composer/buttons/ButtonBeam::ButtonBeam.button */ variant='soft' color={props.color ?? 'primary'} disabled={props.disabled} onClick={props.onClick} endDecorator={<ChatBeamIcon />} sx={desktopSx}>
         Beam
       </Button>
     </Tooltip>

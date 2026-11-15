@@ -52,6 +52,7 @@ function _getLogLevelColor(level: LogLevel): ColorPaletteProp {
 // }
 
 
+// @uxid src/common/logger/viewer/LoggerViewerDialog::LogViewerDialog
 export function LogViewerDialog(props: {
   onClose: () => void;
 }) {
@@ -95,7 +96,7 @@ export function LogViewerDialog(props: {
 
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/common/logger/viewer/LoggerViewerDialog::LogViewerDialog.goodmodal */
       open
       onClose={props.onClose}
       title='Client Logs'
@@ -110,7 +111,7 @@ export function LogViewerDialog(props: {
         {/* Level Filter */}
         <FormControl sx={{ flex: 1 }}>
           <FormLabel>Level</FormLabel>
-          <Select
+          <Select /* @uxid src/common/logger/viewer/LoggerViewerDialog::LogViewerDialog.select */
             size='sm'
             value={filterLevel}
             onChange={(_, value) => value !== null && setFilterLevel(value)}
@@ -128,7 +129,7 @@ export function LogViewerDialog(props: {
         {/* Source Filter */}
         <FormControl sx={{ flex: 1 }}>
           <FormLabel>Source</FormLabel>
-          <Select
+          <Select /* @uxid src/common/logger/viewer/LoggerViewerDialog::LogViewerDialog.select-2 */
             size='sm'
             value={filterSource}
             onChange={(_, value) => value !== null && setFilterSource(value)}
@@ -143,7 +144,7 @@ export function LogViewerDialog(props: {
 
         {/* Clear Button */}
         <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-          <Button
+          <Button /* @uxid src/common/logger/viewer/LoggerViewerDialog::LogViewerDialog.button */
             size='sm'
             color='danger'
             onClick={handleClearAll}
@@ -188,7 +189,7 @@ export function LogViewerDialog(props: {
             </thead>
             <tbody>
             {filteredEntries.map((entry) => (
-              <tr
+              <tr /* @uxid src/common/logger/viewer/LoggerViewerDialog::LogViewerDialog.tr */
                 key={entry.id}
                 onClick={() => setSelectedLogId(entry.id)}
                 className={selectedLogId === entry.id ? 'selected' : undefined}
@@ -244,7 +245,7 @@ export function LogViewerDialog(props: {
         <Divider />
 
         <Box sx={{ mt: 1 }}>
-          <LogEntryDetails
+          <LogEntryDetails /* @uxid src/common/logger/viewer/LoggerViewerDialog::LogViewerDialog.logentrydetails */
             entry={entry}
             onCloseDetails={() => setSelectedLogId(null)}
           />

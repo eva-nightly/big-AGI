@@ -15,6 +15,7 @@ import { isValidGoogleCloudApiKey, isValidGoogleCseId } from './search.client';
 import { useGoogleSearchStore } from './store-module-google';
 
 
+// @uxid src/modules/google/GoogleSearchSettings::GoogleSearchSettings
 export function GoogleSearchSettings() {
 
   // external state
@@ -41,14 +42,14 @@ export function GoogleSearchSettings() {
   return <>
 
     <Typography level='body-sm'>
-      For custom search engines or domain-specific searches. Most models have native search capabilities. Uses the Google <ExternalLink href='https://developers.google.com/custom-search/v1/overview'>Programmable Search Engine</ExternalLink> API.
+      For custom search engines or domain-specific searches. Most models have native search capabilities. Uses the Google <ExternalLink /* @uxid src/modules/google/GoogleSearchSettings::GoogleSearchSettings.externallink */ href='https://developers.google.com/custom-search/v1/overview'>Programmable Search Engine</ExternalLink> API.
     </Typography>
 
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
       <FormLabelStart title='GCP API Key'
-                      description={<>Create one <Link href='https://console.cloud.google.com/apis/credentials' noLinkStyle target='_blank'>here</Link></>}
+                      description={<>Create one <Link /* @uxid src/modules/google/GoogleSearchSettings::GoogleSearchSettings.link */ href='https://console.cloud.google.com/apis/credentials' noLinkStyle target='_blank'>here</Link></>}
                       tooltip='Create your Google Cloud "API Key Credential" and enter it here' />
-      <Input
+      <Input /* @uxid src/modules/google/GoogleSearchSettings::GoogleSearchSettings.input */
         variant='outlined' placeholder={backendHasGoogle ? '...' : 'missing'} error={!isValidKey}
         value={googleCloudApiKey} onChange={handleGoogleApiKeyChange}
         startDecorator={<KeyIcon />}
@@ -59,9 +60,9 @@ export function GoogleSearchSettings() {
 
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
       <FormLabelStart title='Search Engine ID'
-                      description={<>Get it <Link href='https://programmablesearchengine.google.com/' noLinkStyle target='_blank'>here</Link></>}
+                      description={<>Get it <Link /* @uxid src/modules/google/GoogleSearchSettings::GoogleSearchSettings.link-2 */ href='https://programmablesearchengine.google.com/' noLinkStyle target='_blank'>here</Link></>}
                       tooltip='Create your Google "Programmable Search Engine" and enter its ID here' />
-      <Input
+      <Input /* @uxid src/modules/google/GoogleSearchSettings::GoogleSearchSettings.input-2 */
         variant='outlined' placeholder={backendHasGoogle ? '...' : 'missing'} error={!isValidId}
         value={googleCSEId} onChange={handleCseIdChange}
         startDecorator={<SearchIcon />}
@@ -74,7 +75,7 @@ export function GoogleSearchSettings() {
       <FormLabelStart title='Restrict to Domain'
                       description='Optional'
                       tooltip='Limit searches to a specific domain (e.g., "wikipedia.org")' />
-      <Input
+      <Input /* @uxid src/modules/google/GoogleSearchSettings::GoogleSearchSettings.input-3 */
         variant='outlined' placeholder='example.com'
         value={restrictToDomain} onChange={handleDomainChange}
         // startDecorator={<LanguageIcon />}

@@ -32,6 +32,7 @@ interface ErrorBoundaryState {
  * Catches JavaScript errors anywhere in its child component tree,
  * logs those errors using the provided logger, and displays a fallback UI.
  */
+// @uxid src/common/components/ErrorBoundary::ErrorBoundary
 export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
   constructor(props: ErrorBoundaryProps) {
@@ -163,7 +164,7 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
                 {outer && (
                   <p style={{ fontWeight: 500 }}>
                     {' '}If the issue persists, please{' '}
-                    <a href={BaseProduct.SupportForm()} target='_blank' rel='noopener noreferrer' style={{ color: 'inherit', textDecoration: 'underline' }}>
+                    <a /* @uxid src/common/components/ErrorBoundary::ErrorBoundary.link */ href={BaseProduct.SupportForm()} target='_blank' rel='noopener noreferrer' style={{ color: 'inherit', textDecoration: 'underline' }}>
                       Contact Support
                     </a>.
                   </p>
@@ -174,8 +175,8 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
                 {/*    {error?.message}*/}
                 {/*  </div>*/}
                 {/*) : (*/}
-                <details>
-                  <summary style={{ cursor: 'pointer' }}>Error Details (Dev)</summary>
+                <details /* @uxid src/common/components/ErrorBoundary::ErrorBoundary.details */>
+                  <summary /* @uxid src/common/components/ErrorBoundary::ErrorBoundary.summary */ style={{ cursor: 'pointer' }}>Error Details (Dev)</summary>
                   <div style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>{`---\n${error?.toString()}\n---\nStack:\n${error?.stack}`}</div>
                 </details>
                 {/*)}*/}
@@ -183,11 +184,11 @@ export class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoun
             </div>
             <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1rem' }}>
               {outer || isChunkLoad ? (
-                <button className='button' onClick={() => window.location.reload()}>
+                <button /* @uxid src/common/components/ErrorBoundary::ErrorBoundary.button */ className='button' onClick={() => window.location.reload()}>
                   Reload Big-AGI
                 </button>
               ) : (
-                <button className='button' onClick={() => this.resetErrorBoundary()}>
+                <button /* @uxid src/common/components/ErrorBoundary::ErrorBoundary.button-2 */ className='button' onClick={() => this.resetErrorBoundary()}>
                   Clear Error
                 </button>
               )}

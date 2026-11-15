@@ -6,6 +6,7 @@ import { DBlobAssetType, DBlobImageAsset, useDBAssetsByScopeAndType } from '~/co
 import { ZeroGallery } from './gallery/ZeroGallery';
 
 
+// @uxid src/apps/draw/DrawGallery::DrawGallery
 export function DrawGallery(props: { domain: 'draw' | 'app' }) {
 
   // FIXME: [ASSET] convert to use thumbnails in the DAsset (online reference) rather than downloading - but disable for now

@@ -17,6 +17,7 @@ const _styleHelperText = {
 } as const;
 
 
+// @uxid src/modules/browse/BrowseSettings::BrowseSettings
 export function BrowseSettings() {
 
   // external state
@@ -44,7 +45,7 @@ export function BrowseSettings() {
       Download and process web pages for analysis. <ExternalDocsLink docPage='self-host-optional-services'>Learn more</ExternalDocsLink>.
     </Typography>
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/browse/BrowseSettings::BrowseSettings.forminputkey */
       autoCompleteId='browse-wss' label='Puppeteer Wss' noKey
       value={wssEndpoint} onChange={setWssEndpoint}
       rightLabel={<AlreadySet required={!isServerConfig} />}
@@ -55,7 +56,7 @@ export function BrowseSettings() {
 
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
       <FormLabelStart title='Web page to LLM' description={pageTransform === 'text' ? 'Converts to text' : pageTransform === 'markdown' ? 'Converts to markdown' : 'Preserves HTML (heavy)'} />
-      <Select
+      <Select /* @uxid src/modules/browse/BrowseSettings::BrowseSettings.select */
         variant='outlined'
         value={pageTransform} onChange={handlePageTransformChange}
         slotProps={{
@@ -74,17 +75,17 @@ export function BrowseSettings() {
     <FormLabel>Enable page loading for:</FormLabel>
 
     <FormControl disabled={!mayWork}>
-      <Checkbox size='sm' label='Attachments' checked={inComposer} onChange={(event) => setEnableComposerAttach(event.target.checked)} />
+      <Checkbox /* @uxid src/modules/browse/BrowseSettings::BrowseSettings.checkbox */ size='sm' label='Attachments' checked={inComposer} onChange={(event) => setEnableComposerAttach(event.target.checked)} />
       <FormHelperText sx={_styleHelperText}>{platformAwareKeystrokes('Load and attach when pasting a URL')}</FormHelperText>
     </FormControl>
 
     <FormControl disabled={!mayWork}>
-      <Checkbox size='sm' label='ReAct' checked={inReact} onChange={(event) => setEnableReactTool(event.target.checked)} />
+      <Checkbox /* @uxid src/modules/browse/BrowseSettings::BrowseSettings.checkbox-2 */ size='sm' label='ReAct' checked={inReact} onChange={(event) => setEnableReactTool(event.target.checked)} />
       <FormHelperText sx={_styleHelperText}>Enables loadURL() in ReAct</FormHelperText>
     </FormControl>
 
     <FormControl disabled>
-      <Checkbox size='sm' label='Personas browsing tool' checked={false} onChange={(event) => setEnablePersonaTool(event.target.checked)} />
+      <Checkbox /* @uxid src/modules/browse/BrowseSettings::BrowseSettings.checkbox-3 */ size='sm' label='Personas browsing tool' checked={false} onChange={(event) => setEnablePersonaTool(event.target.checked)} />
       <FormHelperText sx={_styleHelperText}>Available in a future release</FormHelperText>
       {/*<FormHelperText sx={_styleHelperText}>Enable loading URLs by Personas</FormHelperText>*/}
     </FormControl>

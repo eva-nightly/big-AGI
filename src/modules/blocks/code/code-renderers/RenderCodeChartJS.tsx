@@ -35,6 +35,7 @@ const chartContainerSx: SxProps = {
 };
 
 
+// @uxid src/modules/blocks/code/code-renderers/RenderCodeChartJS::RenderCodeChartJS
 export const RenderCodeChartJS = React.forwardRef(function RenderCodeChartJS(props: {
   chartJSCode: string;
   onReplaceInCode?: (search: string, replace: string) => boolean;
@@ -183,7 +184,7 @@ export const RenderCodeChartJS = React.forwardRef(function RenderCodeChartJS(pro
         <Box sx={{ display: 'grid', gap: 1, justifyItems: 'start' }}>
           {/* Here we play like if we won't get the callback, but we will */}
           {/*{props.onReplaceInCode && (*/}
-          <Button
+          <Button /* @uxid src/modules/blocks/code/code-renderers/RenderCodeChartJS::RenderCodeChartJS.button */
             size='sm'
             variant='outlined'
             color='success'
