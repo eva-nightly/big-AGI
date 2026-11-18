@@ -11,6 +11,7 @@ import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
 //   </Box>;
 
 
+// @uxid src/apps/draw/create/ButtonPromptFromIdea::ButtonPromptFromIdea
 export function ButtonPromptFromIdea(props: {
   isMobile?: boolean,
   disabled: boolean,
@@ -36,7 +37,7 @@ export function ButtonPromptFromIdea(props: {
       }}
     >
       <Tooltip disableInteractive title='New Idea'>
-        <Button
+        <Button /* @uxid src/apps/draw/create/ButtonPromptFromIdea::ButtonPromptFromIdea.button */
           fullWidth onClick={handleIdeaNext}
           startDecorator={<LightbulbOutlinedIcon />}
           sx={{
@@ -49,7 +50,7 @@ export function ButtonPromptFromIdea(props: {
         </Button>
       </Tooltip>
       <Tooltip disableInteractive title='Use Idea'>
-        <IconButton size='sm' onClick={onIdeaUse}>
+        <IconButton /* @uxid src/apps/draw/create/ButtonPromptFromIdea::ButtonPromptFromIdea.iconbutton */ size='sm' onClick={onIdeaUse}>
           <ArrowForwardRoundedIcon />
         </IconButton>
       </Tooltip>

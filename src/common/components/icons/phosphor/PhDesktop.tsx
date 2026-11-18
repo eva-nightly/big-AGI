@@ -5,6 +5,7 @@ import { SvgIcon, SvgIconProps } from '@mui/joy';
 /*
  * Source: 'https://phosphoricons.com/' - desktop
  */
+// @uxid src/common/components/icons/phosphor/PhDesktop::PhDesktop
 export function PhDesktop(props: SvgIconProps) {
   return (
     <SvgIcon viewBox='0 0 256 256' stroke='none' fill='currentColor' width='24' height='24' {...props}>

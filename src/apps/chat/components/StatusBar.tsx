@@ -141,6 +141,7 @@ function _platformAwareModifier(symbol: 'Ctrl' | 'Alt' | 'Shift') {
 
 const ShortcutItemMemo = React.memo(ShortcutItem);
 
+// @uxid src/apps/chat/components/StatusBar::ShortcutItem
 function ShortcutItem(props: { shortcut: ShortcutObject }) {
 
   const handleClicked = React.useCallback(() => {
@@ -149,7 +150,7 @@ function ShortcutItem(props: { shortcut: ShortcutObject }) {
   }, [props.shortcut]);
 
   return (
-    <Box
+    <Box /* @uxid src/apps/chat/components/StatusBar::ShortcutItem.box */
       onMouseDown={dontBlurTextareaOnMouseDown}
       onClick={!props.shortcut.disabled ? handleClicked : undefined}
       aria-disabled={props.shortcut.disabled}
@@ -171,6 +172,7 @@ function ShortcutItem(props: { shortcut: ShortcutObject }) {
 
 export const StatusBarMemo = React.memo(StatusBar);
 
+// @uxid src/apps/chat/components/StatusBar::StatusBar
 export function StatusBar(props: { toggleMinimized?: () => void, isMinimized?: boolean }) {
 
   // state (modifiers pressed/not)
@@ -222,7 +224,7 @@ export function StatusBar(props: { toggleMinimized?: () => void, isMinimized?: b
       return;
     }
     showPromisedOverlay('shortcuts-confirm-close', {}, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/apps/chat/components/StatusBar::StatusBar.confirmationmodal */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         confirmationText='Remove productivity tips and shortcuts? You can add it back in Settings > Labs.'
         positiveActionText='Remove'
@@ -260,13 +262,13 @@ export function StatusBar(props: { toggleMinimized?: () => void, isMinimized?: b
       {(!props.toggleMinimized || !COMPOSER_ENABLE_MINIMIZE) && !props.isMinimized ? (
         // Close Button
         <GoodTooltip variantOutlined arrow placement='top' title={hideButtonTooltip}>
-          <IconButton size='sm' onClick={handleHideShortcuts} sx={_styles.hideButton}>
+          <IconButton /* @uxid src/apps/chat/components/StatusBar::StatusBar.iconbutton */ size='sm' onClick={handleHideShortcuts} sx={_styles.hideButton}>
             <CloseRoundedIcon />
           </IconButton>
         </GoodTooltip>
       ) : (
         // Minimize / Maximize Button - note the Maximize icon would be more correct, but also less discoverable
-        <IconButton size='sm' onClick={props.toggleMinimized} sx={_styles.hideButton}>
+        <IconButton /* @uxid src/apps/chat/components/StatusBar::StatusBar.iconbutton-2 */ size='sm' onClick={props.toggleMinimized} sx={_styles.hideButton}>
           {props.isMinimized ? <ExpandLessIcon /> : <MinimizeIcon />}
         </IconButton>
       )}

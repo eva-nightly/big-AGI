@@ -31,6 +31,7 @@ type ChatMessage = AixAPIChatGenerate_Request['chatSequence'][number];
 
 function buildSystemPrompt(framesPerCall: number): string {
   const single = framesPerCall <= 1;
+  // @uxid src/apps/chat/components/live-svg/livesvg.loop::buildSystemPrompt.prompt
   return `You are a real-time SVG animation engine. Each turn, you emit the NEXT ${single ? 'frame' : `${framesPerCall} frames`} of an ongoing animation.
 
 Hard rules:

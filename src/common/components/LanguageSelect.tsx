@@ -24,6 +24,7 @@ const _selectSlotProps: SelectSlotsAndSlotProps<false>['slotProps'] = {
 } as const;
 
 
+// @uxid src/common/components/LanguageSelect::LanguageSelect
 export function LanguageSelect() {
   // external state
 
@@ -53,7 +54,7 @@ export function LanguageSelect() {
       )), []);
 
   return (
-    <Select
+    <Select /* @uxid src/common/components/LanguageSelect::LanguageSelect.select */
       value={preferredLanguage}
       onChange={handleLanguageChanged}
       indicator={<KeyboardArrowDownIcon />}

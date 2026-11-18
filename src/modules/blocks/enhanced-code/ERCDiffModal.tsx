@@ -51,6 +51,7 @@ const _style = {
 } as const;
 
 
+// @uxid src/modules/blocks/enhanced-code/ERCDiffModal::ERCDiffModal
 export function ERCDiffModal(props: {
   title?: React.ReactNode;
   isMobile: boolean;
@@ -81,7 +82,7 @@ export function ERCDiffModal(props: {
   }, [compareCode]);
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/modules/blocks/enhanced-code/ERCDiffModal::ERCDiffModal.goodmodal */
       open={true}
       onClose={handleClose}
       title={props.title || 'Compare Code'}
@@ -92,10 +93,10 @@ export function ERCDiffModal(props: {
       fullscreen={props.isMobile || 'button'}
       startButton={
         <Box sx={_style.buttonsGroup}>
-          <Button size='sm' variant='soft' color='neutral' sx={_style.button} onClick={handleCopyBase}>
+          <Button /* @uxid src/modules/blocks/enhanced-code/ERCDiffModal::ERCDiffModal.button */ size='sm' variant='soft' color='neutral' sx={_style.button} onClick={handleCopyBase}>
             Copy 1
           </Button>
-          <Button size='sm' variant='soft' color='neutral' sx={_style.button} onClick={handleCopyCompare}>
+          <Button /* @uxid src/modules/blocks/enhanced-code/ERCDiffModal::ERCDiffModal.button-2 */ size='sm' variant='soft' color='neutral' sx={_style.button} onClick={handleCopyCompare}>
             Copy 2
           </Button>
         </Box>

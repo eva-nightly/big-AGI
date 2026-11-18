@@ -20,6 +20,7 @@ import { useServiceSetup } from '../useServiceSetup';
 const PERPLEXITY_REG_LINK = 'https://www.perplexity.ai/settings/api';
 
 
+// @uxid src/modules/llms/vendors/perplexity/PerplexityServiceSetup::PerplexityServiceSetup
 export function PerplexityServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -49,10 +50,10 @@ export function PerplexityServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/perplexity/PerplexityServiceSetup::PerplexityServiceSetup.forminputkey */
       autoCompleteId='perplexity-key' label='Perplexity API Key'
       rightLabel={<>{needsUserKey
-        ? !perplexityKey && <Link level='body-sm' href={PERPLEXITY_REG_LINK} target='_blank'>API keys</Link>
+        ? !perplexityKey && <Link /* @uxid src/modules/llms/vendors/perplexity/PerplexityServiceSetup::PerplexityServiceSetup.link */ level='body-sm' href={PERPLEXITY_REG_LINK} target='_blank'>API keys</Link>
         : <AlreadySet overridden={!!perplexityKey} />}
       </>}
       value={perplexityKey} onChange={value => updateSettings({ perplexityKey: value })}
@@ -61,11 +62,11 @@ export function PerplexityServiceSetup(props: { serviceId: DModelsServiceId }) {
     />
 
     <Typography level='body-sm'>
-      The <Link href='https://docs.perplexity.ai/docs/getting-started'>Perplexity API</Link> offers inference
-      as a service for a variety of models. See the <Link href='https://www.perplexity.ai/' target='_blank'>Perplexity AI</Link> website for more information.
+      The <Link /* @uxid src/modules/llms/vendors/perplexity/PerplexityServiceSetup::PerplexityServiceSetup.link-2 */ href='https://docs.perplexity.ai/docs/getting-started'>Perplexity API</Link> offers inference
+      as a service for a variety of models. See the <Link /* @uxid src/modules/llms/vendors/perplexity/PerplexityServiceSetup::PerplexityServiceSetup.link-3 */ href='https://www.perplexity.ai/' target='_blank'>Perplexity AI</Link> website for more information.
     </Typography>
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/perplexity/PerplexityServiceSetup::PerplexityServiceSetup.setupformclientsidetoggle */
       visible={!!perplexityKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

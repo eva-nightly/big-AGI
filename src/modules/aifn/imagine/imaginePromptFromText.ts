@@ -3,6 +3,7 @@ import { aixChatGenerateText_Simple } from '~/modules/aix/client/aix.client';
 import { getDomainModelIdOrThrow } from '~/common/stores/llms/store-llms';
 
 
+// @uxid src/modules/aifn/imagine/imaginePromptFromText::simpleImagineSystemPrompt
 const simpleImagineSystemPrompt =
   `As an AI image generation prompt writer, create precise, clear and simple prompts using adjectives, nouns, and artistic references.
 Craft creative, coherent and descriptive captions to guide the text-to-image AI in generating articulate and surprising artwork.

@@ -18,6 +18,7 @@ const slotPropsInputSx: InputSlotsAndSlotProps['slotProps'] = {
 } as const;
 
 
+// @uxid src/common/components/forms/FormInputKey::FormInputKey
 export function FormInputKey(props: {
   autoCompleteId: string, // introduced to avoid clashes
   size?: 'sm' | 'md' | 'lg',
@@ -40,7 +41,7 @@ export function FormInputKey(props: {
   const handleChange = (e: React.ChangeEvent) => props.onChange((e.target as HTMLInputElement).value);
 
   const endDecorator = React.useMemo(() => !!props.value && !props.noKey && (
-    <IconButton onClick={() => setIsVisible(!isVisible)}>
+    <IconButton /* @uxid src/common/components/forms/FormInputKey::FormInputKey.iconbutton */ onClick={() => setIsVisible(!isVisible)}>
       {isVisible ? <VisibilityOutlinedIcon sx={{ fontSize: 'lg' }} /> : <VisibilityOffOutlinedIcon sx={{ fontSize: 'md' }} />}
     </IconButton>
   ), [props.value, props.noKey, isVisible]);
@@ -67,9 +68,9 @@ export function FormInputKey(props: {
       <>
         {/* Hidden username field to help password managers distinguish between services */}
         {!!ghostUsername && (
-          <input type='text' autoComplete='username' value={ghostUsername} readOnly tabIndex={-1} style={{ display: 'none' }} />
+          <input /* @uxid src/common/components/forms/FormInputKey::FormInputKey.input */ type='text' autoComplete='username' value={ghostUsername} readOnly tabIndex={-1} style={{ display: 'none' }} />
         )}
-        <Input
+        <Input /* @uxid src/common/components/forms/FormInputKey::FormInputKey.input-2 */
           key={acId}
           name={acId}
           autoComplete={props.noKey ? 'on' /* e.g. host names */ : 'new-password' /* tells password managers this is a 'new password' entry */}

@@ -83,6 +83,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::SortableGroupRow
 function SortableGroupRow(props: { group: UserMessageFragmentGroup, inner: boolean }) {
 
   // external state
@@ -103,6 +104,7 @@ function SortableGroupRow(props: { group: UserMessageFragmentGroup, inner: boole
 
 
 /** Shared by composer attachment menus, including live-image-only inputs. */
+// @uxid src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::MessageFragmentOrderControl
 export function MessageFragmentOrderControl() {
 
   // external state
@@ -126,7 +128,7 @@ export function MessageFragmentOrderControl() {
 
 
   return <>
-    <Box
+    <Box /* @uxid src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::MessageFragmentOrderControl.box */
       role='group'
       onKeyDown={(event: React.KeyboardEvent & MuiCancellableEvent) => {
         // Keyboard drag (dnd-kit marks the handle pressed): its keys must reach dnd-kit's document listener, so only opt the menu out
@@ -141,14 +143,14 @@ export function MessageFragmentOrderControl() {
       <Box sx={_styles.header}>
         <Typography level='title-sm' flex={1}>Attachment order</Typography>
         {(!!userMessageFragmentOrder || splitAtMarker) && (
-          <Button size='sm' variant='plain' color='neutral' onClick={handleReset} sx={_styles.reset}>
+          <Button /* @uxid src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::MessageFragmentOrderControl.button */ size='sm' variant='plain' color='neutral' onClick={handleReset} sx={_styles.reset}>
             Reset
           </Button>
         )}
       </Box>
 
       <Box sx={_styles.list}>
-        <DndContext sensors={sensors} collisionDetection={closestCenter} modifiers={dndModifiersParentVertical} onDragEnd={handleDragEnd}>
+        <DndContext /* @uxid src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::MessageFragmentOrderControl.dndcontext */ sensors={sensors} collisionDetection={closestCenter} modifiers={dndModifiersParentVertical} onDragEnd={handleDragEnd}>
           <SortableContext items={order} strategy={verticalListSortingStrategy}>
             {order.map(group => <SortableGroupRow key={group} group={group} inner={splitAtMarker && group !== 'text'} />)}
           </SortableContext>
@@ -161,7 +163,7 @@ export function MessageFragmentOrderControl() {
     {/*<ListDivider />*/}
 
     {/* The marker overrides the order: the prompt splits around the attachments. Checkbox in the decorator, as AttachmentDraftMenu */}
-    <MenuItem onClick={() => setUserMessageAttachmentsMarker(!splitAtMarker)} sx={{ mx: 0.375, mt: 1 }}>
+    <MenuItem /* @uxid src/apps/chat/components/composer/llmattachments/MessageFragmentOrderControl::MessageFragmentOrderControl.menuitem */ onClick={() => setUserMessageAttachmentsMarker(!splitAtMarker)} sx={{ mx: 0.375, mt: 1 }}>
       <ListItemDecorator><Checkbox color='neutral' variant={splitAtMarker ? 'plain' : 'outlined'} checked={splitAtMarker} /></ListItemDecorator>
       <Box sx={{ fontSize: 'sm' }}>Place at <Box component='span' sx={_styles.markerSymbol}>{USER_MESSAGE_ATTACHMENTS_MARKER}</Box> in prompt</Box>
     </MenuItem>

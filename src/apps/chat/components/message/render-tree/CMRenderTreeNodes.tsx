@@ -150,6 +150,7 @@ type FragmentsReorderHandler = (reorderedIds: DMessageFragmentId[]) => void;
 
 // fused nodes: memoized on the node object, which the recycler keeps while the members are unchanged
 
+// @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMCitationsNode
 const CMCitationsNode = React.memo(function CMCitationsNode(props: {
   node: CMNodeCitations,
   contentScaling: ContentScaling,
@@ -158,6 +159,7 @@ const CMCitationsNode = React.memo(function CMCitationsNode(props: {
   return <BlockPartModelAnnotations annotations={annotations} contentScaling={props.contentScaling} />;
 });
 
+// @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMReasoningNode
 const CMReasoningNode = React.memo(function CMReasoningNode(props: {
   node: CMNodeReasoning,
   inFluxFragmentId?: DMessageFragmentId,
@@ -201,7 +203,7 @@ const CMReasoningNode = React.memo(function CMReasoningNode(props: {
     return null;
 
   return (
-    <BlockPartModelAuxMemo
+    <BlockPartModelAuxMemo /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMReasoningNode.blockpartmodelauxmemo */
       fragmentId={leader.fId}
       auxType={leader.part.aType}
       auxText={auxText}
@@ -223,6 +225,7 @@ const CMReasoningNode = React.memo(function CMReasoningNode(props: {
  * code block actions) and the stream cursor stay per fragment. Joining members into one flow is a per-node decision
  * left to a producer that splits one paragraph (citation-split text).
  */
+// @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMTextNode
 const CMTextNode = React.memo(function CMTextNode(props: {
   node: CMNodeText,
   inFluxFragmentId?: DMessageFragmentId,
@@ -244,7 +247,7 @@ const CMTextNode = React.memo(function CMTextNode(props: {
       const { text } = fragment.part;
       const displayText = index === lastIndex && node.trailingOptions ? text.slice(0, text.length - node.trailingOptions.suffix.length) : text;
       return (
-        <BlockPartText_AutoBlocksMemo
+        <BlockPartText_AutoBlocksMemo /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMTextNode.blockparttext-autoblocksmemo */
           key={fragment.fId}
           textPartText={displayText}
           messageRole={props.messageRole}
@@ -267,6 +270,7 @@ const CMTextNode = React.memo(function CMTextNode(props: {
 
 
 /** Edit mode: a node as one block, movable by its gutter handle and deletable from the right gutter (on mobile, under the handle). */
+// @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMSortableBlock
 function CMSortableBlock(props: { id: string, isMobile: boolean, deleteConfirm: string | null, onDelete?: () => void, children: React.ReactNode }) {
   const { dragContainerSetRef, dragContainerStyle, dragHandle } = useDndDragHandleSortable(props.id, false, 'warning');
   const { showPromisedOverlay } = useOverlayComponents();
@@ -274,11 +278,11 @@ function CMSortableBlock(props: { id: string, isMobile: boolean, deleteConfirm: 
 
   // the dialog only when there is something to lose (null: an empty text block, which Done would drop anyway)
   const deleteButton = !onDelete ? null : (
-    <IconButton
+    <IconButton /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMSortableBlock.iconbutton */
       size='sm' variant='plain' color='warning' aria-label='Delete block' title='Delete this block'
       onClick={async () => {
         if (deleteConfirm && !await showPromisedOverlay('chat-message-delete-block', { rejectWithValue: false }, ({ onResolve, onUserReject }) =>
-          <ConfirmationModal
+          <ConfirmationModal /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMSortableBlock.confirmationmodal */
             open onClose={onUserReject} onPositive={() => onResolve(true)}
             title='Delete Block'
             confirmationText={deleteConfirm}
@@ -318,6 +322,7 @@ function _blockDeleteConfirm(node: CMRenderNode): string | null {
 /**
  * Renders a CMRenderTree: the citations row, then the body grid.
  */
+// @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes
 export function CMRenderTreeNodes(props: {
 
   tree: CMRenderTree,
@@ -394,7 +399,7 @@ export function CMRenderTreeNodes(props: {
 
   // the add bar: a new text block, and attachments at the end (the registry decides); none when the host is read-only
   const editBar = !isEditing || (!props.editDrafts && !props.onFragmentAddText) ? null : (
-    <CMEditAttach variant='bar' drafts={props.editDrafts} isMobile={props.isMobile} onAddText={props.onFragmentAddText} />
+    <CMEditAttach /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.cmeditattach */ variant='bar' drafts={props.editDrafts} isMobile={props.isMobile} onAddText={props.onFragmentAddText} />
   );
 
   if (!body.length && !showEmptyNotice && !citations && !editBar)
@@ -413,7 +418,7 @@ export function CMRenderTreeNodes(props: {
             // TODO: [ASSET] future: implement rendering for the real Reference to Zync Asset
             if (part._legacyImageRefPart?.pt === 'image_ref')
               return (
-                <BlockPartImageRef
+                <BlockPartImageRef /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.blockpartimageref */
                   key={node.key}
                   imageRefPart={part._legacyImageRefPart}
                   fragmentId={node.fragment.fId}
@@ -457,7 +462,7 @@ export function CMRenderTreeNodes(props: {
 
       case 'images':
         return (
-          <ImageAttachmentFragments
+          <ImageAttachmentFragments /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.imageattachmentfragments */
             key={node.key}
             imageAttachments={node.fragments}
             contentScaling={props.contentScaling}
@@ -468,7 +473,7 @@ export function CMRenderTreeNodes(props: {
 
       case 'documents':
         return (
-          <DocumentAttachmentFragments
+          <DocumentAttachmentFragments /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.documentattachmentfragments */
             key={node.key}
             attachmentFragments={node.fragments}
             messageRole={props.messageRole}
@@ -483,7 +488,7 @@ export function CMRenderTreeNodes(props: {
 
       case 'edit-attachments':
         return (
-          <EditAttachmentFragments
+          <EditAttachmentFragments /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.editattachmentfragments */
             key={node.key}
             fragments={node.fragments}
             contentScaling={props.contentScaling}
@@ -499,7 +504,7 @@ export function CMRenderTreeNodes(props: {
 
       case 'reasoning':
         return (
-          <CMReasoningNode
+          <CMReasoningNode /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.cmreasoningnode */
             key={node.key}
             node={node}
             inFluxFragmentId={props.inFluxFragmentId}
@@ -514,7 +519,7 @@ export function CMRenderTreeNodes(props: {
 
       case 'text':
         return (
-          <CMTextNode
+          <CMTextNode /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.cmtextnode */
             key={node.key}
             node={node}
             inFluxFragmentId={props.inFluxFragmentId}
@@ -535,8 +540,8 @@ export function CMRenderTreeNodes(props: {
           <React.Fragment key={node.key}>
             {node.calls.map(call => (
               <React.Fragment key={call.invocation.fId}>
-                <BlockPartToolInvocation toolInvocationPart={call.invocation.part} contentScaling={props.contentScaling} onDoubleClick={props.onDoubleClick} />
-                {call.response && <BlockPartToolResponse toolResponsePart={call.response.part} contentScaling={props.contentScaling} onDoubleClick={props.onDoubleClick} />}
+                <BlockPartToolInvocation /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.blockparttoolinvocation */ toolInvocationPart={call.invocation.part} contentScaling={props.contentScaling} onDoubleClick={props.onDoubleClick} />
+                {call.response && <BlockPartToolResponse /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.blockparttoolresponse */ toolResponsePart={call.response.part} contentScaling={props.contentScaling} onDoubleClick={props.onDoubleClick} />}
               </React.Fragment>
             ))}
           </React.Fragment>
@@ -546,14 +551,14 @@ export function CMRenderTreeNodes(props: {
         // no proposal renderers on this branch: shown as its invocation and response
         return (
           <React.Fragment key={node.key}>
-            <BlockPartToolInvocation toolInvocationPart={node.fragment.part} contentScaling={props.contentScaling} onDoubleClick={props.onDoubleClick} />
-            {node.response && <BlockPartToolResponse toolResponsePart={node.response.part} contentScaling={props.contentScaling} onDoubleClick={props.onDoubleClick} />}
+            <BlockPartToolInvocation /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.blockparttoolinvocation-2 */ toolInvocationPart={node.fragment.part} contentScaling={props.contentScaling} onDoubleClick={props.onDoubleClick} />
+            {node.response && <BlockPartToolResponse /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.blockparttoolresponse-2 */ toolResponsePart={node.response.part} contentScaling={props.contentScaling} onDoubleClick={props.onDoubleClick} />}
           </React.Fragment>
         );
 
       case 'tool-response':
         return (
-          <BlockPartToolResponse
+          <BlockPartToolResponse /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.blockparttoolresponse-3 */
             key={node.key}
             toolResponsePart={node.fragment.part}
             contentScaling={props.contentScaling}
@@ -571,7 +576,7 @@ export function CMRenderTreeNodes(props: {
       case 'placeholder': {
         const { part } = node.fragment;
         return (
-          <BlockPartPlaceholder
+          <BlockPartPlaceholder /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.blockpartplaceholder */
             key={node.key}
             fragmentId={node.fragment.fId}
             placeholderPart={part}
@@ -599,7 +604,7 @@ export function CMRenderTreeNodes(props: {
 
       case 'image-ref':
         return (
-          <BlockPartImageRef
+          <BlockPartImageRef /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.blockpartimageref-2 */
             key={node.key}
             imageRefPart={node.fragment.part}
             fragmentId={node.fragment.fId}
@@ -614,7 +619,7 @@ export function CMRenderTreeNodes(props: {
 
       case 'hosted-resource':
         return (
-          <BlockPartHostedResource
+          <BlockPartHostedResource /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.blockparthostedresource */
             key={node.key}
             hostedResourcePart={node.fragment.part}
             fragmentId={node.fragment.fId}
@@ -663,7 +668,7 @@ export function CMRenderTreeNodes(props: {
           }
         }
         return (
-          <BlockEdit_TextFragment
+          <BlockEdit_TextFragment /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.blockedit-textfragment */
             key={node.key}
             initialText={editText}
             inputLabel={editLabel}
@@ -706,7 +711,7 @@ export function CMRenderTreeNodes(props: {
 
       {/* Empty Message Block - if empty */}
       {showEmptyNotice && (
-        <BlockOpEmpty
+        <BlockOpEmpty /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.blockopempty */
           text={`empty ${fromAssistant ? 'model ' : fromUser ? 'user ' : ''}message`}
           contentScaling={props.contentScaling}
           onDelete={props.onMessageDelete}
@@ -714,7 +719,7 @@ export function CMRenderTreeNodes(props: {
       )}
 
       {body.map(node => !canReorderBlocks || !cmNodeFragments(node).length ? renderNode(node) : (
-        <CMSortableBlock
+        <CMSortableBlock /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.cmsortableblock */
           key={node.key}
           id={node.key}
           isMobile={props.isMobile}
@@ -729,7 +734,7 @@ export function CMRenderTreeNodes(props: {
   );
 
   const sortableBody = !canReorderBlocks ? bodyGrid : (
-    <DndContext sensors={blockSensors} modifiers={dndModifiers} onDragEnd={handleBlocksDragEnd}>
+    <DndContext /* @uxid src/apps/chat/components/message/render-tree/CMRenderTreeNodes::CMRenderTreeNodes.dndcontext */ sensors={blockSensors} modifiers={dndModifiers} onDragEnd={handleBlocksDragEnd}>
       <SortableContext items={blockKeys} strategy={verticalListSortingStrategy}>
         {bodyGrid}
       </SortableContext>

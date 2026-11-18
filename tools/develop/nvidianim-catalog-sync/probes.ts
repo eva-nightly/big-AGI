@@ -79,6 +79,7 @@ interface RawResult {
   elapsedMs: number;
 }
 
+// @uxid tools/develop/nvidianim-catalog-sync/probes::_pacedChatRequest
 async function _pacedChatRequest(apiKey: string, payload: unknown, timeoutMs = REQUEST_TIMEOUT_MS): Promise<RawResult> {
   await _paceGate();
   const startedAt = Date.now();

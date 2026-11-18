@@ -45,6 +45,7 @@ export function runClientTool(name, input) {
 
 // ---- SSE streaming call. Returns { events, message, raw } ----
 // message is the reconstructed final assistant message: { role, content, stop_reason, usage, container, id, model }
+// @uxid tools/develop/aix-anthropic-eviscerate/lib::callStream
 export async function callStream(body, { rawPath } = {}) {
   const res = await fetch(API, {
     method: 'POST',

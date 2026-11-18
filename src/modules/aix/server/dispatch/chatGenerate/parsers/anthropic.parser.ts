@@ -1327,6 +1327,7 @@ function _describePausedTurn(content: AnthropicWire_API_Message_Create.Response[
   const n = (v: number | null | undefined) => (v ?? 0).toLocaleString('en-US');
   const total = [...calls.values()].reduce((acc, c) => acc + c.direct + c.nested, 0);
   const byTool = [...calls].map(([name, c]) => `${name} ${c.direct + c.nested}${c.nested ? ` (${c.nested} from code)` : ''}`).join(', ');
+  // @uxid src/modules/aix/server/dispatch/chatGenerate/parsers/anthropic.parser::_describePausedTurn.prompt
   return `Anthropic paused its hosted-tool loop after ${total} tool call${total === 1 ? '' : 's'} in this request${byTool ? ` (${byTool})` : ''}: ${content.length} blocks, ${reasoning} reasoning.`
     + `\nThe partial turn was sent back unchanged and the model continued in a new request.`
     + (usage ? `\nTokens this request: ${n(usage.input_tokens)} in, ${n(usage.cache_read_input_tokens)} cached, ${n(usage.output_tokens)} out.` : '');

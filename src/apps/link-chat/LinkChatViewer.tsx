@@ -23,6 +23,7 @@ import { useIsMobile } from '~/common/components/useMatchMedia';
 /**
  * Renders a chat link view with conversation details and messages.
  */
+// @uxid src/apps/link-chat/LinkChatViewer::LinkChatViewer
 export function LinkChatViewer(props: { conversation: DConversation, storedAt: Date, expiresAt: Date | null }) {
 
   // state
@@ -126,7 +127,7 @@ export function LinkChatViewer(props: { conversation: DConversation, storedAt: D
               </ListItem>
 
               {filteredMessages.map((message, idx) =>
-                <ChatMessageMemo
+                <ChatMessageMemo /* @uxid src/apps/link-chat/LinkChatViewer::LinkChatViewer.chatmessagememo */
                   key={'msg-' + message.id}
                   message={message}
                   fitScreen={isMobile}
@@ -154,7 +155,7 @@ export function LinkChatViewer(props: { conversation: DConversation, storedAt: D
 
       {/* Buttons */}
       <Box sx={{ display: 'flex', flexFlow: 'row wrap', alignItems: 'center', justifyContent: 'center', gap: 2 }}>
-        <Button
+        <Button /* @uxid src/apps/link-chat/LinkChatViewer::LinkChatViewer.button */
           variant='solid' color='neutral' size='lg'
           disabled={!hasMessages || cloning} loading={cloning}
           endDecorator={<TelegramIcon />}
@@ -170,7 +171,7 @@ export function LinkChatViewer(props: { conversation: DConversation, storedAt: D
 
         {hasExistingChat && (
           <Tooltip title='This conversation is already present, enabling Overwrite'>
-            <Button
+            <Button /* @uxid src/apps/link-chat/LinkChatViewer::LinkChatViewer.button-2 */
               variant='soft' color='warning'
               disabled={!hasMessages || cloning} loading={cloning}
               endDecorator={<TelegramIcon />}

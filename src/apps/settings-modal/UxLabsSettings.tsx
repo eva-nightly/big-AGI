@@ -29,6 +29,7 @@ const _adaptiveRenderingOptions: FormSelectOption<'auto' | 'on' | 'off' | 'debug
 ];
 
 
+// @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings
 export function UxLabsSettings() {
 
   // external state
@@ -47,7 +48,7 @@ export function UxLabsSettings() {
 
   return <>
 
-    <FormSelectControl
+    <FormSelectControl /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.formselectcontrol */
       title={<><SpeedIcon sx={{ fontSize: 'lg', mr: 0.5, mb: 0.25 }} />Adaptive Rendering</>}
       tooltip='Keeps long replies smooth: the part still being written may show simpler formatting until the reply finishes.'
       options={_adaptiveRenderingOptions}
@@ -55,7 +56,7 @@ export function UxLabsSettings() {
       onChange={setLabsAdaptiveRendering}
     />
 
-    <FormSwitchControl
+    <FormSwitchControl /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.formswitchcontrol */
       title={<><PhImageSquare sx={{ fontSize: 'lg', mr: 0.5, mb: 0.25 }} />Lossless Images</>} description={labsLosslessImages ? 'Large storage use' : 'Compress'}
       tooltipWarning={labsLosslessImages}
       tooltip={<>
@@ -66,24 +67,24 @@ export function UxLabsSettings() {
       checked={labsLosslessImages} onChange={setLabsPreserveLosslessImages}
     />
 
-    {!isMobile && <FormSwitchControl
+    {!isMobile && <FormSwitchControl /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.formswitchcontrol-2 */
       title={<><ShortcutIcon sx={{ fontSize: 'lg', mr: 0.5, mb: 0.25 }} />Shortcuts Bar</>} description={labsShowShortcutBar ? 'Status Bar' : 'Disabled'}
       checked={labsShowShortcutBar} onChange={setLabsShowShortcutBar}
     />}
 
-    <FormSwitchControl
+    <FormSwitchControl /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.formswitchcontrol-3 */
       title={<><TextFieldsIcon sx={{ fontSize: 'lg', mr: 0.5, mb: 0.25 }} />Markdown in User Messages</>} description={labsUserMarkdown ? 'Markdown' : 'Plain text'}
       tooltip='Renders your messages as markdown, keeping your line breaks. Any message can switch between text and markdown from its menu.'
       checked={labsUserMarkdown} onChange={setLabsUserMarkdown}
     />
 
-    <FormSwitchControl
+    <FormSwitchControl /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.formswitchcontrol-4 */
       title={<><UnfoldMoreIcon sx={{ fontSize: 'lg', mr: 0.5, mb: 0.25 }} />Ungrouped fragments</>} description={labsUngroupedFragments ? 'Stored order' : 'Grouped'}
       tooltip='Show every message fragment on its own, in stored order. Disables fusing, tool call pairing and citation hoisting.'
       checked={labsUngroupedFragments} onChange={setLabsUngroupedFragments}
     />
 
-    <FormSwitchControl
+    <FormSwitchControl /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.formswitchcontrol-5 */
       title={<><CodeIcon sx={{ fontSize: 'lg', mr: 0.5, mb: 0.25 }} />Dollar Inline LaTeX</>} description={labsSingleDollarLatex ? 'Enabled' : 'Disabled'}
       tooltipWarning={labsSingleDollarLatex}
       tooltip={<>
@@ -94,18 +95,18 @@ export function UxLabsSettings() {
       checked={labsSingleDollarLatex} onChange={setLabsSingleDollarLatex}
     />
 
-    <FormSwitchControl
+    <FormSwitchControl /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.formswitchcontrol-6 */
       title={<><AttachFileRoundedIcon sx={{ fontSize: 'lg', mr: 0.5, mb: 0.25 }} />Attachment Buttons</>} description={labsComposerAttachmentsInline ? 'Enabled' : 'Disabled'}
       checked={labsComposerAttachmentsInline} onChange={setLabsComposerAttachmentsInline}
     />
 
-    <FormSwitchControl
+    <FormSwitchControl /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.formswitchcontrol-7 */
       title={<><WidthWideIcon sx={{ fontSize: 'lg', mr: 0.5, mb: 0.25 }} />Full-Width Messages</>} description={messageFullWidth ? 'Stretch' : 'Fit content'}
       tooltip='Stretch AI message contents to the full row width.'
       checked={messageFullWidth} onChange={setMessageFullWidth}
     />
 
-    <FormSwitchControl
+    <FormSwitchControl /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.formswitchcontrol-8 */
       title={<><EditNoteRoundedIcon sx={{ fontSize: 'lg', mr: 0.5, mb: 0.25 }} />Auto-hide input</>} description={labsAutoHideComposer ? 'Hover to show' : 'Always visible'}
       checked={labsAutoHideComposer} onChange={setLabsAutoHideComposer}
     />
@@ -121,11 +122,11 @@ export function UxLabsSettings() {
       <FormLabelStart title='Graduated' description='Ex-labs' />
       <Typography level='body-xs'>
         Screen Capture · Webcam · Cost Estimation · Enhanced Code Blocks
-        {' · '}<Link href='https://big-agi.com/blog/beam-multi-model-ai-reasoning' target='_blank'>Beam</Link>
-        {' · '}<Link href='https://github.com/enricoros/big-AGI/issues/208' target='_blank'>Split Chats</Link>
-        {' · '}<Link href='https://github.com/enricoros/big-AGI/issues/354' target='_blank'>Call AGI</Link>
-        {' · '}<Link href='https://github.com/enricoros/big-AGI/issues/282' target='_blank'>Persona Creator</Link>
-        {' · '}<Link href='https://github.com/enricoros/big-agi/issues/192' target='_blank'>Auto Diagrams</Link>
+        {' · '}<Link /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.link */ href='https://big-agi.com/blog/beam-multi-model-ai-reasoning' target='_blank'>Beam</Link>
+        {' · '}<Link /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.link-2 */ href='https://github.com/enricoros/big-AGI/issues/208' target='_blank'>Split Chats</Link>
+        {' · '}<Link /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.link-3 */ href='https://github.com/enricoros/big-AGI/issues/354' target='_blank'>Call AGI</Link>
+        {' · '}<Link /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.link-4 */ href='https://github.com/enricoros/big-AGI/issues/282' target='_blank'>Persona Creator</Link>
+        {' · '}<Link /* @uxid src/apps/settings-modal/UxLabsSettings::UxLabsSettings.link-5 */ href='https://github.com/enricoros/big-agi/issues/192' target='_blank'>Auto Diagrams</Link>
         {' · '}Imagine · Chat Search · Text Tools · LLM Overheat
       </Typography>
     </FormControl>

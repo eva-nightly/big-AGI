@@ -15,6 +15,7 @@ import { CreatorDrawerItem } from './CreatorDrawerItem';
 import { deleteSimplePersona, deleteSimplePersonas, useSimplePersonas } from '../store-app-personas';
 
 
+// @uxid src/apps/personas/creator/CreatorDrawer::CreatorDrawer
 export function CreatorDrawer(props: {
   selectedSimplePersonaId: string | null,
   setSelectedSimplePersonaId: (simplePersonaId: string | null) => void,
@@ -86,20 +87,20 @@ export function CreatorDrawer(props: {
   return <>
 
     {/* Drawer Header */}
-    <OptimaDrawerHeader
+    <OptimaDrawerHeader /* @uxid src/apps/personas/creator/CreatorDrawer::CreatorDrawer.optimadrawerheader */
       title={selectMode ? 'Selection Mode' : 'Recent'}
       onClose={selectMode ? handleSelectionClose : optimaCloseDrawer}
     >
       {hasPersonas && !selectMode && (
         <Tooltip title={selectMode ? 'Done' : 'Select'}>
-          <IconButton onClick={selectMode ? handleSelectionClose : () => setSelectMode(true)}>
+          <IconButton /* @uxid src/apps/personas/creator/CreatorDrawer::CreatorDrawer.iconbutton */ onClick={selectMode ? handleSelectionClose : () => setSelectMode(true)}>
             {selectMode ? <DoneIcon /> : <CheckBoxOutlineBlankIcon />}
           </IconButton>
         </Tooltip>
       )}
     </OptimaDrawerHeader>
 
-    <OptimaDrawerList
+    <OptimaDrawerList /* @uxid src/apps/personas/creator/CreatorDrawer::CreatorDrawer.optimadrawerlist */
       variant='plain'
       noTopPadding noBottomPadding tallRows
       onClick={handleSimplePersonaUnselect}
@@ -109,7 +110,7 @@ export function CreatorDrawer(props: {
         // Selection Header
         <Sheet variant='soft' color='warning' invertedColors>
           <Box sx={{ display: 'flex', alignItems: 'center', px: 1, minHeight: '3rem' }}>
-            <Button
+            <Button /* @uxid src/apps/personas/creator/CreatorDrawer::CreatorDrawer.button */
               variant='plain'
               color='warning'
               startDecorator={selectedIds.size === simplePersonas.length ? <CheckBoxOutlineBlankIcon /> : <CheckBoxIcon />}
@@ -121,7 +122,7 @@ export function CreatorDrawer(props: {
                   ? `Select ${simplePersonas.length.toLocaleString() || 'All'}`
                   : 'Invert'}
             </Button>
-            <Button
+            <Button /* @uxid src/apps/personas/creator/CreatorDrawer::CreatorDrawer.button-2 */
               variant='solid'
               color='warning'
               startDecorator={<DeleteOutlineIcon />}
@@ -135,7 +136,7 @@ export function CreatorDrawer(props: {
         </Sheet>
       ) : (
         // Create Button
-        <Button
+        <Button /* @uxid src/apps/personas/creator/CreatorDrawer::CreatorDrawer.button-3 */
           variant={props.selectedSimplePersonaId ? 'plain' : 'soft'}
           onClick={handleSimplePersonaUnselect}
           sx={{
@@ -162,7 +163,7 @@ export function CreatorDrawer(props: {
       {/* Personas [] */}
       <Box sx={{ flex: 1, overflowY: 'auto' }}>
         {simplePersonas.map(item =>
-          <CreatorDrawerItem
+          <CreatorDrawerItem /* @uxid src/apps/personas/creator/CreatorDrawer::CreatorDrawer.creatordraweritem */
             key={item.id}
             item={item}
             isActive={item.id === props.selectedSimplePersonaId}

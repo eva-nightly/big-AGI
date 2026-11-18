@@ -106,16 +106,18 @@ export function buttonIconForFragment(part: DMessageAttachmentFragment['part']):
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton::DocAttachmentDeleteButton
 function DocAttachmentDeleteButton(props: { fragmentId: DMessageFragmentId, color: ColorPaletteProp, onFragmentDelete: (fragmentId: DMessageFragmentId) => void }) {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', px: 0.5, borderLeft: '1px solid', borderColor: `${props.color}.outlinedDisabledBorder`, '& svg': { fontSize: '1.25rem' } }}>
       {/* the confirm floats to the left, so arming never moves the cancel target or wraps the chip */}
-      <ConfirmIconButton color='warning' side='start' tooltip='Delete Document' onConfirm={() => props.onFragmentDelete(props.fragmentId)} />
+      <ConfirmIconButton /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton::DocAttachmentDeleteButton.confirmiconbutton */ color='warning' side='start' tooltip='Delete Document' onConfirm={() => props.onFragmentDelete(props.fragmentId)} />
     </Box>
   );
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton::DocAttachmentFragmentButton
 export function DocAttachmentFragmentButton(props: {
   fragment: DMessageAttachmentFragment,
   contentScaling: ContentScaling,
@@ -182,7 +184,7 @@ export function DocAttachmentFragmentButton(props: {
   const labelContent = <Box sx={_styles.label}>{buttonText}</Box>;
 
   return (
-    <Button
+    <Button /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton::DocAttachmentFragmentButton.button */
       role={isSelectable ? 'button' : 'group'}
       component={(props.dragHandle || props.onFragmentDelete) ? 'div' : 'button' /* avoid nested buttons */}
       tabIndex={isSelectable ? undefined : -1}
@@ -226,7 +228,7 @@ export function DocAttachmentFragmentButton(props: {
         </TooltipOutlined>
       )}
       {!!props.onFragmentDelete && (
-        <DocAttachmentDeleteButton fragmentId={fragment.fId} color={unselColor} onFragmentDelete={props.onFragmentDelete} />
+        <DocAttachmentDeleteButton /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentButton::DocAttachmentFragmentButton.docattachmentdeletebutton */ fragmentId={fragment.fId} color={unselColor} onFragmentDelete={props.onFragmentDelete} />
       )}
     </Button>
   );

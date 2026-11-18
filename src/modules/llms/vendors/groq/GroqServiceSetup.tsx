@@ -18,6 +18,7 @@ import { useServiceSetup } from '../useServiceSetup';
 const GROQ_REG_LINK = 'https://console.groq.com/keys';
 
 
+// @uxid src/modules/llms/vendors/groq/GroqServiceSetup::GroqServiceSetup
 export function GroqServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -47,10 +48,10 @@ export function GroqServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/groq/GroqServiceSetup::GroqServiceSetup.forminputkey */
       autoCompleteId='groq-key' label='Groq API Key'
       rightLabel={<>{needsUserKey
-        ? !groqKey && <Link level='body-sm' href={GROQ_REG_LINK} target='_blank'>API keys</Link>
+        ? !groqKey && <Link /* @uxid src/modules/llms/vendors/groq/GroqServiceSetup::GroqServiceSetup.link */ level='body-sm' href={GROQ_REG_LINK} target='_blank'>API keys</Link>
         : <AlreadySet overridden={!!groqKey} />}
       </>}
       value={groqKey} onChange={value => updateSettings({ groqKey: value })}
@@ -58,7 +59,7 @@ export function GroqServiceSetup(props: { serviceId: DModelsServiceId }) {
       placeholder='...'
     />
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/groq/GroqServiceSetup::GroqServiceSetup.setupformclientsidetoggle */
       visible={!!groqKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

@@ -553,17 +553,20 @@ function _viewEquals(a: DocsView, b: DocsView): boolean {
 }
 
 
+// @uxid src/modules/news/components/DocsReaderModal::DocsTierChip
 function DocsTierChip(props: { tier: string }) {
   if (props.tier === 'open') return null;
   return <Chip size='sm' variant='soft' color='neutral'>{props.tier.charAt(0).toUpperCase() + props.tier.slice(1)}</Chip>;
 }
 
+// @uxid src/modules/news/components/DocsReaderModal::DocsNewChip
 function DocsNewChip() {
   return <Chip size='sm' variant='solid' color='accent' sx={_styles.newChip}>new</Chip>;
 }
 
 
 /** Home: one block per section - title, the lead's summary, a few pages and the rest as a count; Start Here tinted */
+// @uxid src/modules/news/components/DocsReaderModal::DocsHomeView
 function DocsHomeView(props: { sections: DocsSection[], onOpenSection: (title: string) => void, onOpen: (slug: SiteDocSlug) => void }) {
   const { onOpenSection, onOpen } = props;
   return (
@@ -572,19 +575,19 @@ function DocsHomeView(props: { sections: DocsSection[], onOpenSection: (title: s
         const { picks, more } = _homePicks(section);
         return (
           <Box key={section.title} sx={section.lead?.slug === NewsConfig.docsStartSlug ? _styles.homeBlockStart : _styles.homeBlock}>
-            <Link component='button' level='title-md' fontWeight='lg' textColor='text.primary' underline='hover' onClick={() => onOpenSection(section.title)}>
+            <Link /* @uxid src/modules/news/components/DocsReaderModal::DocsHomeView.link */ component='button' level='title-md' fontWeight='lg' textColor='text.primary' underline='hover' onClick={() => onOpenSection(section.title)}>
               {section.title}
             </Link>
             {!!section.lead?.summary && <Typography level='body-sm' textColor='text.tertiary'>{section.lead.summary}</Typography>}
             <Box sx={_styles.homeLinks}>
               {picks.map(doc => (
                 <Box key={doc.slug} sx={_styles.homeLink}>
-                  <Link component='button' level='body-sm' fontWeight='md' color='accent' underline='hover' onClick={() => onOpen(doc.slug)}>{_docLabel(doc)}</Link>
+                  <Link /* @uxid src/modules/news/components/DocsReaderModal::DocsHomeView.link-2 */ component='button' level='body-sm' fontWeight='md' color='accent' underline='hover' onClick={() => onOpen(doc.slug)}>{_docLabel(doc)}</Link>
                   {doc.new && <DocsNewChip />}
                 </Box>
               ))}
               {more > 0 && (
-                <Link component='button' level='body-sm' textColor='text.tertiary' underline='hover' onClick={() => onOpenSection(section.title)}>
+                <Link /* @uxid src/modules/news/components/DocsReaderModal::DocsHomeView.link-3 */ component='button' level='body-sm' textColor='text.tertiary' underline='hover' onClick={() => onOpenSection(section.title)}>
                   +{more} more
                 </Link>
               )}
@@ -607,6 +610,7 @@ function _homePicks(section: DocsSection): { picks: DocsIndexEntry[], more: numb
 
 
 /** A section: its pages with summaries; provider pages as a grid of AI services */
+// @uxid src/modules/news/components/DocsReaderModal::DocsSectionView
 function DocsSectionView(props: { docs: DocsIndexEntry[], onOpen: (slug: SiteDocSlug) => void }) {
   const { onOpen } = props;
   const pages = props.docs.filter(doc => doc.kind !== 'provider');
@@ -616,7 +620,7 @@ function DocsSectionView(props: { docs: DocsIndexEntry[], onOpen: (slug: SiteDoc
       <List sx={_styles.sectionPages}>
         {pages.map(doc => (
           <ListItem key={doc.slug}>
-            <ListItemButton variant='soft' onClick={() => onOpen(doc.slug)} sx={_styles.sectionPage}>
+            <ListItemButton /* @uxid src/modules/news/components/DocsReaderModal::DocsSectionView.listitembutton */ variant='soft' onClick={() => onOpen(doc.slug)} sx={_styles.sectionPage}>
               <ListItemContent>
                 <Typography level='title-md' fontWeight='lg'>{_docLabel(doc)}</Typography>
                 <Typography level='body-sm' textColor='text.tertiary' sx={_styles.clamp2}>{doc.summary}</Typography>
@@ -633,7 +637,7 @@ function DocsSectionView(props: { docs: DocsIndexEntry[], onOpen: (slug: SiteDoc
         <ListSubheader sx={_styles.sectionServicesHead}>AI services</ListSubheader>
         {services.map(doc => (
           <ListItem key={doc.slug}>
-            <ListItemButton variant='soft' onClick={() => onOpen(doc.slug)} sx={_styles.sectionService}>
+            <ListItemButton /* @uxid src/modules/news/components/DocsReaderModal::DocsSectionView.listitembutton-2 */ variant='soft' onClick={() => onOpen(doc.slug)} sx={_styles.sectionService}>
               <ListItemContent>
                 <Typography level='body-sm' fontWeight='md' color='accent'>{_docLabel(doc)}</Typography>
               </ListItemContent>
@@ -648,11 +652,12 @@ function DocsSectionView(props: { docs: DocsIndexEntry[], onOpen: (slug: SiteDoc
 }
 
 
+// @uxid src/modules/news/components/DocsReaderModal::DocsNavPage
 function DocsNavPage(props: { doc: DocsIndexEntry, nested: boolean, selected: boolean, onOpen: (slug: SiteDocSlug) => void }) {
   const { doc, selected, onOpen } = props;
   return (
     <ListItem>
-      <ListItemButton
+      <ListItemButton /* @uxid src/modules/news/components/DocsReaderModal::DocsNavPage.listitembutton */
         data-docs-row
         selected={selected}
         color={selected ? 'primary' : undefined}
@@ -674,6 +679,7 @@ function DocsNavPage(props: { doc: DocsIndexEntry, nested: boolean, selected: bo
  * them is current; the provider set under one row, open unless folded by hand.
  * ArrowUp/ArrowDown move through the visible rows, up from the first returns to search; Enter opens.
  */
+// @uxid src/modules/news/components/DocsReaderModal::DocsNavTree
 function DocsNavTree(props: {
   sections: DocsSection[],
   currentSlug: SiteDocSlug | null,
@@ -707,11 +713,11 @@ function DocsNavTree(props: {
   }, [onExitUp]);
 
   return (
-    <List ref={listRef} size='sm' onKeyDown={handleKeyDown} sx={_styles.navList}>
+    <List /* @uxid src/modules/news/components/DocsReaderModal::DocsNavTree.list */ ref={listRef} size='sm' onKeyDown={handleKeyDown} sx={_styles.navList}>
 
       {/* the docs home, like the Documentation crumb */}
       <ListItem>
-        <ListItemButton
+        <ListItemButton /* @uxid src/modules/news/components/DocsReaderModal::DocsNavTree.listitembutton */
           data-docs-row
           selected={props.atHome}
           color={props.atHome ? 'accent' : undefined}
@@ -733,7 +739,7 @@ function DocsNavTree(props: {
 
             {/* header: the lead page, else the section index */}
             <ListItem sx={_styles.navSectionGap}>
-              <ListItemButton
+              <ListItemButton /* @uxid src/modules/news/components/DocsReaderModal::DocsNavTree.listitembutton-2 */
                 data-docs-row
                 selected={headerSelected}
                 color={!headerSelected ? undefined : lead ? 'primary' : 'accent'}
@@ -752,9 +758,9 @@ function DocsNavTree(props: {
                 const childrenShown = row.doc.slug === currentSlug || row.children.some(doc => doc.slug === currentSlug);
                 return (
                   <React.Fragment key={row.doc.slug}>
-                    <DocsNavPage doc={row.doc} nested={!!row.doc.indent} selected={row.doc.slug === currentSlug} onOpen={onOpen} />
+                    <DocsNavPage /* @uxid src/modules/news/components/DocsReaderModal::DocsNavTree.docsnavpage */ doc={row.doc} nested={!!row.doc.indent} selected={row.doc.slug === currentSlug} onOpen={onOpen} />
                     {childrenShown && row.children.map(doc => (
-                      <DocsNavPage key={doc.slug} doc={doc} nested selected={doc.slug === currentSlug} onOpen={onOpen} />
+                      <DocsNavPage /* @uxid src/modules/news/components/DocsReaderModal::DocsNavTree.docsnavpage-2 */ key={doc.slug} doc={doc} nested selected={doc.slug === currentSlug} onOpen={onOpen} />
                     ))}
                   </React.Fragment>
                 );
@@ -763,7 +769,7 @@ function DocsNavTree(props: {
               return (
                 <React.Fragment key='set'>
                   <ListItem>
-                    <ListItemButton
+                    <ListItemButton /* @uxid src/modules/news/components/DocsReaderModal::DocsNavTree.listitembutton-3 */
                       data-docs-row
                       variant='soft'
                       aria-expanded={open}
@@ -775,7 +781,7 @@ function DocsNavTree(props: {
                     </ListItemButton>
                   </ListItem>
                   {open && row.docs.map(doc => (
-                    <DocsNavPage key={doc.slug} doc={doc} nested selected={doc.slug === currentSlug} onOpen={onOpen} />
+                    <DocsNavPage /* @uxid src/modules/news/components/DocsReaderModal::DocsNavTree.docsnavpage-3 */ key={doc.slug} doc={doc} nested selected={doc.slug === currentSlug} onOpen={onOpen} />
                   ))}
                 </React.Fragment>
               );
@@ -793,6 +799,7 @@ function DocsNavTree(props: {
  * Search results: title and section, then the best-matching question (else the summary) with the hits
  * in bold. While the search field has focus, the first result is marked as the Enter target.
  */
+// @uxid src/modules/news/components/DocsReaderModal::DocsSearchResults
 function DocsSearchResults(props: { hits: DocsHit[], words: string[], enterTarget: boolean, onOpen: (slug: SiteDocSlug) => void, onExitUp: () => void }) {
 
   const { onOpen, onExitUp } = props;
@@ -811,10 +818,10 @@ function DocsSearchResults(props: { hits: DocsHit[], words: string[], enterTarge
     return <Typography level='body-sm' sx={_styles.message}>No pages match.</Typography>;
 
   return (
-    <List size='sm' onKeyDown={handleKeyDown} sx={_styles.hits}>
+    <List /* @uxid src/modules/news/components/DocsReaderModal::DocsSearchResults.list */ size='sm' onKeyDown={handleKeyDown} sx={_styles.hits}>
       {props.hits.map(({ doc, answer }, idx) => (
         <ListItem key={doc.slug}>
-          <ListItemButton data-docs-hit variant={props.enterTarget && idx === 0 ? 'soft' : 'plain'} onClick={() => onOpen(doc.slug)} sx={_styles.hitButton}>
+          <ListItemButton /* @uxid src/modules/news/components/DocsReaderModal::DocsSearchResults.listitembutton */ data-docs-hit variant={props.enterTarget && idx === 0 ? 'soft' : 'plain'} onClick={() => onOpen(doc.slug)} sx={_styles.hitButton}>
             <ListItemContent>
               <Box sx={_styles.hitHead}>
                 <Typography level='title-sm' textColor='text.secondary' sx={_styles.hitSection}>{doc.section}</Typography>
@@ -854,6 +861,7 @@ function _brandTileSx(accent: string) {
 }
 
 /** Why a view is empty, with its way out: the site unreachable, a page it no longer has, or another failure */
+// @uxid src/modules/news/components/DocsReaderModal::DocsFailure
 function DocsFailure(props: { error: Error | null, onRetry: () => void, onHome?: () => void }) {
   const missing = props.error instanceof DocsPageMissingError;
   return (
@@ -862,14 +870,15 @@ function DocsFailure(props: { error: Error | null, onRetry: () => void, onHome?:
         {missing ? 'This page is no longer on big-agi.com.' : props.error instanceof TypeError ? 'Can\'t reach big-agi.com.' : 'The docs could not be loaded.'}
       </Typography>
       {missing && props.onHome
-        ? <Button size='sm' variant='soft' color='neutral' onClick={props.onHome}>Docs home</Button>
-        : <Button size='sm' variant='soft' color='neutral' onClick={props.onRetry}>Try again</Button>}
+        ? <Button /* @uxid src/modules/news/components/DocsReaderModal::DocsFailure.button */ size='sm' variant='soft' color='neutral' onClick={props.onHome}>Docs home</Button>
+        : <Button /* @uxid src/modules/news/components/DocsReaderModal::DocsFailure.button-2 */ size='sm' variant='soft' color='neutral' onClick={props.onRetry}>Try again</Button>}
     </Box>
   );
 }
 
 
 /** A page: title, summary as the lead, tier and update day, then the markdown */
+// @uxid src/modules/news/components/DocsReaderModal::DocsPageView
 function DocsPageView(props: { page: DocsPage, entry: DocsIndexEntry | undefined }) {
   const { page, entry } = props;
   const summary = page.summary || entry?.summary;
@@ -911,6 +920,7 @@ function DocsPageView(props: { page: DocsPage, entry: DocsIndexEntry | undefined
  * its markdown twin, rendered with the app's markdown renderer; links to other docs pages navigate in
  * place, with back and forward.
  */
+// @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal
 export function DocsReaderModal(props: { target: NewsDocsTarget }) {
 
   // state
@@ -1095,7 +1105,7 @@ export function DocsReaderModal(props: { target: NewsDocsTarget }) {
   else {
     if (sectionTitle)
       crumbs.push(view.kind === 'page'
-        ? <AppBreadcrumbs.Link key='section' color='neutral' textColor='text.primary' underline='hover' href='#' onClick={handleSectionCrumb}>{sectionTitle}</AppBreadcrumbs.Link>
+        ? <AppBreadcrumbs.Link /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.appbreadcrumbs-link */ key='section' color='neutral' textColor='text.primary' underline='hover' href='#' onClick={handleSectionCrumb}>{sectionTitle}</AppBreadcrumbs.Link>
         : <AppBreadcrumbs.Leaf key='section'><b>{sectionTitle}</b></AppBreadcrumbs.Leaf>);
     if (view.kind === 'page')
       crumbs.push(<AppBreadcrumbs.Leaf key='page'><b>{pageEntry ? _docLabel(pageEntry) : (pageData?.slug === view.slug && pageData.title) || view.slug}</b></AppBreadcrumbs.Leaf>);
@@ -1105,12 +1115,12 @@ export function DocsReaderModal(props: { target: NewsDocsTarget }) {
   const title = (
     <Box component='span' sx={_styles.titleBar}>
       <Tooltip title='Back (Alt+Left)'>
-        <span><IconButton size='sm' disabled={!canBack} onClick={handleBack} sx={_styles.titleButton}><ArrowBackRoundedIcon /></IconButton></span>
+        <span><IconButton /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.iconbutton */ size='sm' disabled={!canBack} onClick={handleBack} sx={_styles.titleButton}><ArrowBackRoundedIcon /></IconButton></span>
       </Tooltip>
       <Tooltip title='Forward (Alt+Right)'>
-        <span><IconButton size='sm' disabled={!canForward} onClick={handleForward} sx={_styles.titleButton}><ArrowForwardRoundedIcon /></IconButton></span>
+        <span><IconButton /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.iconbutton-2 */ size='sm' disabled={!canForward} onClick={handleForward} sx={_styles.titleButton}><ArrowForwardRoundedIcon /></IconButton></span>
       </Tooltip>
-      <AppBreadcrumbs size='md' rootTitle={atHome ? 'Documentation' : <PhHouse titleAccess='Documentation' sx={_styles.titleHome} />} onRootClick={atHome ? undefined : handleHome}>
+      <AppBreadcrumbs /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.appbreadcrumbs */ size='md' rootTitle={atHome ? 'Documentation' : <PhHouse titleAccess='Documentation' sx={_styles.titleHome} />} onRootClick={atHome ? undefined : handleHome}>
         {crumbs}
       </AppBreadcrumbs>
     </Box>
@@ -1122,27 +1132,27 @@ export function DocsReaderModal(props: { target: NewsDocsTarget }) {
   // content: search results, a page, a section, or every section
   let content: React.ReactNode = null;
   if (searching)
-    content = docs && <DocsSearchResults hits={hits} words={words} enterTarget={searchFocused} onOpen={openPage} onExitUp={handleSearchFocus} />;
+    content = docs && <DocsSearchResults /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.docssearchresults */ hits={hits} words={words} enterTarget={searchFocused} onOpen={openPage} onExitUp={handleSearchFocus} />;
   else if (shownView.kind === 'page')
     content = shownPage
       ? <DocsPageView page={shownPage} entry={docBySlug.get(shownPage.slug)} />
-      : <DocsFailure error={pageFailure} onRetry={() => void refetchPage()} onHome={handleHome} />;
+      : <DocsFailure /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.docsfailure */ error={pageFailure} onRetry={() => void refetchPage()} onHome={handleHome} />;
   else if (indexError)
-    content = <DocsFailure error={indexFailure} onRetry={() => void refetchIndex()} />;
+    content = <DocsFailure /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.docsfailure-2 */ error={indexFailure} onRetry={() => void refetchIndex()} />;
   else if (docs)
     content = shownSection
-      ? <DocsSectionView docs={sections.find(section => section.title === shownSection)?.docs ?? []} onOpen={openPage} />
-      : <DocsHomeView sections={sections} onOpenSection={openSection} onOpen={openPage} />;
+      ? <DocsSectionView /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.docssectionview */ docs={sections.find(section => section.title === shownSection)?.docs ?? []} onOpen={openPage} />
+      : <DocsHomeView /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.docshomeview */ sections={sections} onOpenSection={openSection} onOpen={openPage} />;
 
   const contentPane = <>
     {loading && <LinearProgress size='sm' variant='plain' sx={_styles.progress} />}
-    <Box ref={scrollRef} tabIndex={-1} onClickCapture={handleClickCapture} sx={_styles.scroller}>
+    <Box /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.box */ ref={scrollRef} tabIndex={-1} onClickCapture={handleClickCapture} sx={_styles.scroller}>
       <Box sx={_styles.column}>{content}</Box>
     </Box>
   </>;
 
   const searchField = (
-    <Input
+    <Input /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.input */
       placeholder='Search docs'
       startDecorator={<SearchIcon />}
       value={query}
@@ -1156,14 +1166,14 @@ export function DocsReaderModal(props: { target: NewsDocsTarget }) {
   );
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.goodmodal */
       open
       onClose={newsCloseDocs}
       title={title}
       fullscreen={isMobile || 'button'}
       unfilterBackdrop
       startButton={
-        <Button variant='soft' color='neutral' endDecorator={<LaunchIcon />} component='a' href={pageUrl} target='_blank' rel='noopener'>
+        <Button /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.button */ variant='soft' color='neutral' endDecorator={<LaunchIcon />} component='a' href={pageUrl} target='_blank' rel='noopener'>
           Open in browser
         </Button>
       }
@@ -1171,9 +1181,9 @@ export function DocsReaderModal(props: { target: NewsDocsTarget }) {
     >
 
       {isMobile ? (
-        <Box sx={_styles.mobileBody} onKeyDown={handleKeyDown}>
+        <Box /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.box-2 */ sx={_styles.mobileBody} onKeyDown={handleKeyDown}>
           {searchField}
-          <Select
+          <Select /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.select */
             value={pageSlug}
             placeholder='Contents'
             onChange={(_event, value) => value && openPage(value)}
@@ -1195,10 +1205,10 @@ export function DocsReaderModal(props: { target: NewsDocsTarget }) {
           <Box sx={_styles.mobileContent}>{contentPane}</Box>
         </Box>
       ) : (
-        <Box sx={_styles.body} onKeyDown={handleKeyDown}>
+        <Box /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.box-3 */ sx={_styles.body} onKeyDown={handleKeyDown}>
           <Box sx={_styles.nav}>
             {searchField}
-            <DocsNavTree
+            <DocsNavTree /* @uxid src/modules/news/components/DocsReaderModal::DocsReaderModal.docsnavtree */
               sections={sections}
               currentSlug={pageSlug}
               currentSection={view.kind === 'section' ? view.section : null}

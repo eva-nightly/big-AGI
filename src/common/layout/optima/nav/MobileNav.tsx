@@ -9,6 +9,7 @@ import { InvertedBar } from '../InvertedBar';
 import { MobileNavGroupBox, MobileNavIcon, mobileNavItemClasses } from './MobileNavIcon';
 
 
+// @uxid src/common/layout/optima/nav/MobileNav::MobileNav
 export function MobileNav(props: {
   component: React.ElementType,
   currentApp?: NavItemApp,
@@ -33,7 +34,7 @@ export function MobileNav(props: {
         }
 
         return (
-          <MobileNavIcon
+          <MobileNavIcon /* @uxid src/common/layout/optima/nav/MobileNav::MobileNav.mobilenavicon */
             key={'n-m-' + app.route.slice(1)}
             aria-label={app.mobileName || app.name}
             variant={isActive ? 'solid' : undefined}

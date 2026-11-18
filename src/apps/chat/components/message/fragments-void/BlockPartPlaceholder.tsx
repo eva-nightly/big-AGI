@@ -158,6 +158,7 @@ const _styles = {
 
 // --- Render Follow-Up ---
 
+// @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipFollowUp
 function RenderChipFollowUp(props: {
   text: string
 }) {
@@ -177,6 +178,7 @@ function RenderChipFollowUp(props: {
 
 // --- Render Notice ---
 
+// @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipNotice
 function RenderChipNotice({ text, detail, warn, fragmentId, onFragmentDelete }: {
   text: string,
   detail?: string, // shown on hover
@@ -190,7 +192,7 @@ function RenderChipNotice({ text, detail, warn, fragmentId, onFragmentDelete }: 
       color={warn ? 'warning' : undefined}
       variant={warn ? 'soft' : undefined}
       startDecorator={warn ? <WarningRoundedIcon /> : <InfoOutlinedIcon />}
-      endDecorator={!onFragmentDelete ? undefined : <ChipDelete onDelete={() => onFragmentDelete(fragmentId)} />}
+      endDecorator={!onFragmentDelete ? undefined : <ChipDelete /* @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipNotice.chipdelete */ onDelete={() => onFragmentDelete(fragmentId)} />}
       sx={warn ? _styles.noticeChipWarn : _styles.noticeChip}
     >
       {text}
@@ -200,6 +202,7 @@ function RenderChipNotice({ text, detail, warn, fragmentId, onFragmentDelete }: 
 }
 
 /** Notice detail, a markdown subset composed by the sender: blank lines split paragraphs, '- ' starts a bullet, inline **label**, *excerpt* and `code` */
+// @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderNoticeDetail
 function RenderNoticeDetail({ detail }: { detail: string }) {
   return (
     <Box sx={_styles.noticeDetail}>
@@ -226,6 +229,7 @@ function _renderNoticeInline(text: string): React.ReactNode[] {
 }
 
 /** Flow divider: the generation continued in a new upstream request here (e.g. Anthropic `pause_turn`); `code` spans in the text render monospaced */
+// @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderDividerNotice
 function RenderDividerNotice({ text, detail }: { text: string, detail?: string }) {
   const chip = (
     <Chip size='sm' startDecorator={<PauseRoundedIcon />} sx={_styles.dividerChip}>
@@ -247,6 +251,7 @@ function RenderDividerNotice({ text, detail }: { text: string, detail?: string }
 
 // --- Render AIX Control ---
 
+// @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipAixControl
 function RenderChipAixControl({ aixControl, text }: {
   text: string,
   aixControl: Exclude<DVoidPlaceholderPart['aixControl'], undefined>, // DVoidPlaceholderAixControlRetry
@@ -297,6 +302,7 @@ function RenderChipAixControl({ aixControl, text }: {
 
 // --- Render Model Operations ---
 
+// @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipListModelOps
 function RenderChipListModelOps(props: {
   opLog: Exclude<DVoidPlaceholderPart['opLog'], undefined>,
   contentScaling: ContentScaling,
@@ -362,7 +368,7 @@ function RenderChipListModelOps(props: {
 
       {/* Harakiri chip, if possible (the div avoids x-stretching) */}
       {!!onFragmentDelete && <div>
-        <OperationsHarakiriChip
+        <OperationsHarakiriChip /* @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::RenderChipListModelOps.operationsharakirichip */
           label='Clear steps'
           fragmentId={fragmentId}
           contentScaling={contentScaling}
@@ -374,6 +380,7 @@ function RenderChipListModelOps(props: {
   );
 }
 
+// @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::ModelOperationChip
 function ModelOperationChip(props: {
   op: DVoidPlaceholderMOp,
   contentScaling: ContentScaling,
@@ -424,7 +431,7 @@ function ModelOperationChip(props: {
   const inputCodeSx: SxProps = React.useMemo(() => ({ m: -1.5, fontSize: props.contentScaling }), [props.contentScaling]);
 
   const chipElement = (
-    <Chip
+    <Chip /* @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::ModelOperationChip.chip */
       size='sm'
       color={isError ? 'warning' : isFinished ? 'neutral' : color}
       variant={isFinished ? 'plain' : 'soft'}
@@ -472,6 +479,7 @@ function ModelOperationChip(props: {
   );
 }
 
+// @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::OperationsHarakiriChip
 function OperationsHarakiriChip(props: {
   label: string,
   fragmentId: DMessageFragmentId, // used for self deletion
@@ -496,7 +504,7 @@ function OperationsHarakiriChip(props: {
   }), [props.contentScaling]);
 
   return (
-    <Chip
+    <Chip /* @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::OperationsHarakiriChip.chip */
       size='sm'
       variant='plain'
       onClick={handleDeleteSelf}
@@ -526,6 +534,7 @@ interface BlockPartPlaceholderProps {
 /**
  * Transient placeholder: follow-ups, retries, model-op progress (with PFC nesting), dismissible notices, or italic text.
  */
+// @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::BlockPartPlaceholder
 export function BlockPartPlaceholder({ placeholderPart, contentScaling, messagePendingIncomplete, showAsDataStreamViz, zenMode, showNotices, fragmentId, onFragmentDelete }: BlockPartPlaceholderProps){
 
   // state
@@ -562,12 +571,12 @@ export function BlockPartPlaceholder({ placeholderPart, contentScaling, messageP
   if (pType === 'notice') return !showNotices ? null : placeholderPart.pNoticeKind === 'flow-cont' ? (
     <RenderDividerNotice text={pText} detail={pDetail} />
   ) : (
-    <RenderChipNotice text={pText} detail={pDetail} warn={placeholderPart.pNoticeLevel === 'warn'} fragmentId={fragmentId} onFragmentDelete={onFragmentDelete} />
+    <RenderChipNotice /* @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::BlockPartPlaceholder.renderchipnotice */ text={pText} detail={pDetail} warn={placeholderPart.pNoticeLevel === 'warn'} fragmentId={fragmentId} onFragmentDelete={onFragmentDelete} />
   );
 
   // 3. Model operation render - stacked list when multiple operations, single chip otherwise
   if (opLog?.length) return zenMode ? null : (
-    <RenderChipListModelOps
+    <RenderChipListModelOps /* @uxid src/apps/chat/components/message/fragments-void/BlockPartPlaceholder::BlockPartPlaceholder.renderchiplistmodelops */
       opLog={opLog}
       contentScaling={adjustContentScaling(contentScaling, -1)}
       messagePendingIncomplete={messagePendingIncomplete}

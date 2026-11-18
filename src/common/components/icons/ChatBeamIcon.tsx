@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/ChatBeamIcon::ChatBeamIcon
 export function ChatBeamIcon(props: SvgIconProps) {
   return (
     <SvgIcon viewBox='0 0 24 24' width='24' height='24' stroke='currentColor' fill='currentColor' strokeLinejoin='round'  {...props}>

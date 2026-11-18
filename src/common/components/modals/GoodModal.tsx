@@ -28,6 +28,7 @@ export const noBackdropSlotProps = {
 /**
  * Base for our Modal components (Preferences, Models Setup, etc.)
  */
+// @uxid src/common/components/modals/GoodModal::GoodModal
 export function GoodModal(props: {
   title?: React.ReactNode,
   titleStartDecorator?: React.JSX.Element,
@@ -131,14 +132,14 @@ export function GoodModal(props: {
   }, [onClose, props.disableBackdropClose]);
 
   return (
-    <Modal
+    <Modal /* @uxid src/common/components/modals/GoodModal::GoodModal.modal */
       open={props.open}
       onClose={!onClose ? undefined : handleOnClose}
       disableEscapeKeyDown={props.disableEscapeKeyClose}
       slotProps={modalProps}
     >
       <ModalOverflow>
-        <ModalDialog
+        <ModalDialog /* @uxid src/common/components/modals/GoodModal::GoodModal.modaldialog */
           color={props.themedColor}
           variant={props.themedColor ? 'soft' : 'plain' /* switched from bordered (undefined) to borderless (plain) */}
           layout={showFullscreen ? 'fullscreen' : 'center'}
@@ -165,7 +166,7 @@ export function GoodModal(props: {
                 {props.titleEndDecorator}
                 {/* optional fullscreen button */}
                 {hasFullscreenButton && (
-                  <IconButton aria-label={showFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'} size='sm' onClick={toggleFullscreen} sx={{ my: -1 }}>
+                  <IconButton /* @uxid src/common/components/modals/GoodModal::GoodModal.iconbutton */ aria-label={showFullscreen ? 'Exit Fullscreen' : 'Enter Fullscreen'} size='sm' onClick={toggleFullscreen} sx={{ my: -1 }}>
                     {showFullscreen ? <CloseFullscreenIcon /> : <OpenInFullIcon sx={{ fontSize: 'md' }} />}
                   </IconButton>
                 )}
@@ -197,7 +198,7 @@ export function GoodModal(props: {
             justifyContent: 'space-between',
           }}>
             {props.startButton}
-            {showBottomClose && <Button aria-label='Close Dialog' variant='solid' color='neutral' onClick={(event) => props.onClose?.(event, 'closeClick')} sx={{ ml: 'auto', minWidth: 100 }}>
+            {showBottomClose && <Button /* @uxid src/common/components/modals/GoodModal::GoodModal.button */ aria-label='Close Dialog' variant='solid' color='neutral' onClick={(event) => props.onClose?.(event, 'closeClick')} sx={{ ml: 'auto', minWidth: 100 }}>
               {props.closeText || 'Close'}
             </Button>}
           </Box>}

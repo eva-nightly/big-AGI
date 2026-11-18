@@ -128,6 +128,7 @@ function _sourceIcon(engine: DASRxEngineAny): React.ElementType | null {
 }
 
 
+// @uxid src/modules/asrx/components/ASRxConfigureEngines::ASRxConfigureEngines
 export function ASRxConfigureEngines(props: { isMobile: boolean }) {
 
   // state
@@ -206,10 +207,10 @@ export function ASRxConfigureEngines(props: { isMobile: boolean }) {
 
         {/* Delete - only shown for manually-added engines; keyed so switching engines disarms it */}
         {activeEngine && !activeEngine.isAutoLinked && !activeEngine.isAutoDetected && (
-          <ConfirmIconButton key={activeEngine.engineId} tooltip={`Remove ${activeEngine.label}`} onConfirm={handleDeleteActive} />
+          <ConfirmIconButton /* @uxid src/modules/asrx/components/ASRxConfigureEngines::ASRxConfigureEngines.confirmiconbutton */ key={activeEngine.engineId} tooltip={`Remove ${activeEngine.label}`} onConfirm={handleDeleteActive} />
         )}
 
-        <Select
+        <Select /* @uxid src/modules/asrx/components/ASRxConfigureEngines::ASRxConfigureEngines.select */
           placeholder='None'
           disabled={!hasEngines}
           value={activeEngineId}
@@ -262,7 +263,7 @@ export function ASRxConfigureEngines(props: { isMobile: boolean }) {
         </Select>
 
         {/* Add */}
-        <ButtonServiceAdd
+        <ButtonServiceAdd /* @uxid src/modules/asrx/components/ASRxConfigureEngines::ASRxConfigureEngines.buttonserviceadd */
           isMobile={props.isMobile}
           isEmpty={!hasEngines}
           emptyHint='' // was 'Add your transcription engine'
@@ -275,7 +276,7 @@ export function ASRxConfigureEngines(props: { isMobile: boolean }) {
     </Box>
 
     {/* Vendor picker popup anchored to the Add button */}
-    <CloseablePopup
+    <CloseablePopup /* @uxid src/modules/asrx/components/ASRxConfigureEngines::ASRxConfigureEngines.closeablepopup */
       menu
       anchorEl={addMenuAnchor}
       onClose={handleCloseAddMenu}
@@ -286,7 +287,7 @@ export function ASRxConfigureEngines(props: { isMobile: boolean }) {
       {(Object.entries(VENDOR_INFO) as [DASRxVendorType, typeof VENDOR_INFO[DASRxVendorType]][]).map(([vendorType, info]) => {
         const { icon: VendorIcon } = info;
         return (
-          <MenuItem key={vendorType} onClick={() => handleAddEngine(vendorType)} sx={_styles.addMenuItem}>
+          <MenuItem /* @uxid src/modules/asrx/components/ASRxConfigureEngines::ASRxConfigureEngines.menuitem */ key={vendorType} onClick={() => handleAddEngine(vendorType)} sx={_styles.addMenuItem}>
             <ListItemDecorator>
               <VendorIcon />
             </ListItemDecorator>
@@ -301,7 +302,7 @@ export function ASRxConfigureEngines(props: { isMobile: boolean }) {
 
     {/* Source banner + Configuration panel for the active engine */}
     {activeEngine && (
-      <ASRxConfigureEngineFull
+      <ASRxConfigureEngineFull /* @uxid src/modules/asrx/components/ASRxConfigureEngines::ASRxConfigureEngines.asrxconfigureenginefull */
         engine={activeEngine}
         isMobile={props.isMobile}
         onUpdate={handleEngineUpdate}

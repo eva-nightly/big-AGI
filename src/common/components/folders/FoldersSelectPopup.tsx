@@ -32,6 +32,7 @@ interface FoldersSelectPopupProps {
 /**
  * Note: state is external so we recycle 1 component in the parent instead of one per item
  */
+// @uxid src/common/components/folders/FoldersSelectPopup::FoldersSelectPopup
 export function FoldersSelectPopup({ allFolders, request, onClose }: FoldersSelectPopupProps) {
 
   // state
@@ -62,7 +63,7 @@ export function FoldersSelectPopup({ allFolders, request, onClose }: FoldersSele
 
 
   return (
-    <CloseablePopup
+    <CloseablePopup /* @uxid src/common/components/folders/FoldersSelectPopup::FoldersSelectPopup.closeablepopup */
       menu anchorEl={anchorEl} onClose={onClose}
       disableMenuTypeahead={true /* important: prevents accelerator from triggering menu items so instead we can type folder names in the input */}
       bigIcons
@@ -74,7 +75,7 @@ export function FoldersSelectPopup({ allFolders, request, onClose }: FoldersSele
 
       {/* Clear Folder Option */}
       {/*{currentFolder && (*/}
-      <ListItem
+      <ListItem /* @uxid src/common/components/folders/FoldersSelectPopup::FoldersSelectPopup.listitem */
         key='clear-folder'
         data-folder-id=''
         onClick={handleFolderClicked}
@@ -90,7 +91,7 @@ export function FoldersSelectPopup({ allFolders, request, onClose }: FoldersSele
 
       {/* Folder Assignment Buttons */}
       {allFolders.map(({ color, id, title }) => (
-        <ListItem
+        <ListItem /* @uxid src/common/components/folders/FoldersSelectPopup::FoldersSelectPopup.listitem-2 */
           key={id}
           data-folder-id={id}
           variant={id === currentFolderId ? 'soft' : 'plain'}
@@ -106,7 +107,7 @@ export function FoldersSelectPopup({ allFolders, request, onClose }: FoldersSele
       ))}
 
       {/* Add New Folder */}
-      <FoldersAddButton
+      <FoldersAddButton /* @uxid src/common/components/folders/FoldersSelectPopup::FoldersSelectPopup.foldersaddbutton */
         isAddingFolder={isAddingFolder}
         setIsAddingFolder={setIsAddingFolder}
         onFolderCreated={handleSetFolder}

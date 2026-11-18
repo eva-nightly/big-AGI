@@ -38,6 +38,7 @@ function isNvidiaNIMConfig(host?: string, key?: string) {
  * Community upgrade notice: shown on custom-host services pointing at NVIDIA's endpoint, which now
  * has a dedicated vendor (curated models, correct context windows, retired models filtered out).
  */
+// @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::NvidiaNIMUpgradeNotice
 function NvidiaNIMUpgradeNotice(props: { oaiServiceId: DModelsServiceId, nvapiKey: string }) {
 
   const handleMigrateService = React.useCallback(() => {
@@ -59,7 +60,7 @@ function NvidiaNIMUpgradeNotice(props: { oaiServiceId: DModelsServiceId, nvapiKe
           model list, correct context windows, reasoning controls, and no more retired models failing
           mid-chat. One click moves your API key to the new service and replaces this one.
         </Typography>
-        <Button color='success' onClick={handleMigrateService} sx={{ mt: 1 }}>
+        <Button /* @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::NvidiaNIMUpgradeNotice.button */ color='success' onClick={handleMigrateService} sx={{ mt: 1 }}>
           Switch to NVIDIA NIM service
         </Button>
       </Box>
@@ -68,6 +69,7 @@ function NvidiaNIMUpgradeNotice(props: { oaiServiceId: DModelsServiceId, nvapiKe
 }
 
 
+// @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup
 export function OpenAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -112,18 +114,18 @@ export function OpenAIServiceSetup(props: { serviceId: DModelsServiceId }) {
     )}
 
     {(showAdvanced || !!oaiHost) && (
-      <OpenAIHostAutocomplete
+      <OpenAIHostAutocomplete /* @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup.openaihostautocomplete */
         value={oaiHost}
         onChange={host => updateSettings({ oaiHost: host })}
       />
     )}
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup.forminputkey */
       autoCompleteId='openai-key' label='API Key'
       rightLabel={<>{needsUserKey
-        ? (!oaiKey && !oaiHost && <Link level='body-sm' href='https://platform.openai.com/account/api-keys' target='_blank'>create key</Link>)
+        ? (!oaiKey && !oaiHost && <Link /* @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup.link */ level='body-sm' href='https://platform.openai.com/account/api-keys' target='_blank'>create key</Link>)
         : (!oaiHost && <AlreadySet overridden={!!oaiKey} /> /* only show "Already set" when using default OpenAI, not custom endpoints */)
-      } {oaiKey && !oaiHost && keyValid && <Link level='body-sm' href='https://platform.openai.com/account/usage' target='_blank'>check usage</Link>}
+      } {oaiKey && !oaiHost && keyValid && <Link /* @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup.link-2 */ level='body-sm' href='https://platform.openai.com/account/usage' target='_blank'>check usage</Link>}
       </>}
       value={oaiKey} onChange={value => updateSettings({ oaiKey: value })}
       required={needsUserKey || !!oaiHost} isError={keyError}
@@ -132,7 +134,7 @@ export function OpenAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     {showAdvanced && <Divider>Advanced</Divider>}
 
-    {showAdvanced && <FormTextField
+    {showAdvanced && <FormTextField /* @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup.formtextfield */
       autoCompleteId='openai-service-name'
       title='Custom Name'
       // tooltip='Custom name for this service. Useful when you have multiple OpenAI-compatible services configured.'
@@ -140,22 +142,22 @@ export function OpenAIServiceSetup(props: { serviceId: DModelsServiceId }) {
       value={service?.label || ''}
       onChange={updateLabel}
       endDecorator={
-        <IconButton size='sm' variant='plain' color='neutral' onClick={() => updateLabel('')}>
+        <IconButton /* @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup.iconbutton */ size='sm' variant='plain' color='neutral' onClick={() => updateLabel('')}>
           <RestartAltIcon />
         </IconButton>
       }
     />}
 
-    {(showAdvanced || !!oaiOrg) && <FormTextField
+    {(showAdvanced || !!oaiOrg) && <FormTextField /* @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup.formtextfield-2 */
       autoCompleteId='openai-org'
       title='Organization ID'
-      description={<Link level='body-sm' href={BaseProduct.OpenSourceRepo + '/issues/63'} target='_blank'>What is this</Link>}
+      description={<Link /* @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup.link-3 */ level='body-sm' href={BaseProduct.OpenSourceRepo + '/issues/63'} target='_blank'>What is this</Link>}
       placeholder='Optional, for enterprise users'
       value={oaiOrg}
       onChange={text => updateSettings({ oaiOrg: text })}
     />}
 
-    {(showAdvanced || clientSideFetch) && <SetupFormClientSideToggle
+    {(showAdvanced || clientSideFetch) && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/openai/OpenAIServiceSetup::OpenAIServiceSetup.setupformclientsidetoggle */
       visible={!!oaiHost || !!oaiKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

@@ -44,6 +44,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/composer/buttons/ButtonGroupDrawRepeat::ButtonGroupDrawRepeat
 export function ButtonGroupDrawRepeat(props: {
   drawRepeat: number,
   setDrawRepeat: (n: number) => void,
@@ -55,7 +56,7 @@ export function ButtonGroupDrawRepeat(props: {
     <FormControl sx={_styles.control}>
       <Box sx={_styles.buttonGroup}>
         {[1, 2, 4, 5, 10].map((n) => (
-          <IconButton
+          <IconButton /* @uxid src/apps/chat/components/composer/buttons/ButtonGroupDrawRepeat::ButtonGroupDrawRepeat.iconbutton */
             key={n}
             size='sm'
             color='warning'

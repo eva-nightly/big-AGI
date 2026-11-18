@@ -19,6 +19,7 @@ import { FROM_V1_DISMISS_KEY, fromV1ArrivedRecently, fromV1DetectArrival } from 
  * Offers a one-click import of the V1 backup file - chats, folders, and API keys.
  * Hidden once dismissed, or after a successful import.
  */
+// @uxid src/common/from-v1/FromV1ImportBanner::FromV1ImportBanner
 export function FromV1ImportBanner() {
 
   // state
@@ -101,7 +102,7 @@ export function FromV1ImportBanner() {
       </Typography>
 
       {/* CTA */}
-      <Button
+      <Button /* @uxid src/common/from-v1/FromV1ImportBanner::FromV1ImportBanner.button */
         size='sm'
         variant='soft'
         loading={importing}
@@ -113,7 +114,7 @@ export function FromV1ImportBanner() {
       </Button>
 
       {/* Dismiss */}
-      <IconButton
+      <IconButton /* @uxid src/common/from-v1/FromV1ImportBanner::FromV1ImportBanner.iconbutton */
         size='sm'
         onClick={handleDismiss}
         sx={{ ml: { xs: 'auto', sm: 0 } }}

@@ -18,6 +18,7 @@ const _minTimeouts: ReadonlyArray<FormRadioOption<string>> = [
 ] as const;
 
 
+// @uxid src/apps/settings-modal/VoiceInSettings::VoiceInSettings
 export function VoiceInSettings(props: { isMobile: boolean }) {
 
   // external state
@@ -41,7 +42,7 @@ export function VoiceInSettings(props: { isMobile: boolean }) {
     </FormControl>
 
     {!props.isMobile && (
-      <FormChipControl
+      <FormChipControl /* @uxid src/apps/settings-modal/VoiceInSettings::VoiceInSettings.formchipcontrol */
         title='Mic Timeout'
         tooltip='Silence that ends a dictation. Calls can follow it too: see Send after in the call panel.'
         // color='primary'

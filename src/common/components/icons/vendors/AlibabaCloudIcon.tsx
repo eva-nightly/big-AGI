@@ -3,6 +3,7 @@ import * as React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
 // This icon has been converted from the official SVG of the Alibaba Cloud logo
+// @uxid src/common/components/icons/vendors/AlibabaCloudIcon::AlibabaCloudIcon
 export function AlibabaCloudIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 0 24 24' width='24' height='24' {...props}>
     <path d='m 8.025,12.9 h 7.95 v -1.8 h -7.95 z' />

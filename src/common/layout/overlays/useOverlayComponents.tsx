@@ -110,7 +110,7 @@ export function useOverlayComponents(): {
       };
 
       appendOverlay(overlayId,
-        <Component
+        <Component /* @uxid src/common/layout/overlays/useOverlayComponents::useOverlayComponents.component */
           onResolve={doResolve}
           onUserReject={() => {
             doReject(OverlayCloseReason.USER_REJECTED);

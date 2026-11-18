@@ -12,6 +12,7 @@ import { toggleAixDebuggerNoStreaming, useAixClientDebuggerStore } from './memst
 const ENABLE_UNLOCK_REFRESH = false;
 
 
+// @uxid src/modules/aix/client/debugger/DebugAdvancedOptions::DebugAdvancedOptions
 export function DebugAdvancedOptions() {
 
   // external state
@@ -29,7 +30,7 @@ export function DebugAdvancedOptions() {
           Force all AI requests to not stream
         </FormHelperText>
       </div>
-      <Switch
+      <Switch /* @uxid src/modules/aix/client/debugger/DebugAdvancedOptions::DebugAdvancedOptions.switch */
         color={aixNoStreaming ? 'warning' : undefined}
         checked={aixNoStreaming}
         onChange={toggleAixDebuggerNoStreaming}
@@ -48,7 +49,7 @@ export function DebugAdvancedOptions() {
           Draw every token in Chats and Beams - high CPU use, may stutter
         </FormHelperText>
       </div>
-      <Switch
+      <Switch /* @uxid src/modules/aix/client/debugger/DebugAdvancedOptions::DebugAdvancedOptions.switch-2 */
         color={labsUnlockRefresh ? 'warning' : undefined}
         checked={labsUnlockRefresh}
         onChange={event => setLabsUnlockRefresh(event.target.checked)}

@@ -9,6 +9,7 @@ import { FolderChangeRequest, FoldersSelectPopup } from '~/common/components/fol
 import { useChatFoldersForConversation } from '~/common/stores/folders/hooks/useChatFoldersForConversation';
 
 
+// @uxid src/apps/chat/components/layout-panel/ActionFolder::ActionFolder
 export function ActionFolder({ conversationId, disabled }: {
   conversationId: DConversationId | null;
   disabled: boolean;
@@ -45,7 +46,7 @@ export function ActionFolder({ conversationId, disabled }: {
   return <>
 
     {/*<TooltipOutlined slowEnter title='Change the folder of this conversation' placement='top'>*/}
-    <MenuItem
+    <MenuItem /* @uxid src/apps/chat/components/layout-panel/ActionFolder::ActionFolder.menuitem */
       disabled={disabled || !conversationId}
       onClick={handleOpenPicker}
     >
@@ -59,7 +60,7 @@ export function ActionFolder({ conversationId, disabled }: {
 
     {/* [Menu] Folder Picker */}
     {!!folderChangeRequest?.anchorEl && (
-      <FoldersSelectPopup
+      <FoldersSelectPopup /* @uxid src/apps/chat/components/layout-panel/ActionFolder::ActionFolder.foldersselectpopup */
         allFolders={allFolders}
         request={folderChangeRequest}
         onClose={handleClosePicker}

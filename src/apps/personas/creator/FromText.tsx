@@ -12,6 +12,7 @@ import type { SimplePersonaProvenance } from '../store-app-personas';
 const MIN_CHARS = 100;
 
 
+// @uxid src/apps/personas/creator/FromText::FromText
 export function FromText(props: {
   isCreating: boolean;
   onCreate: (text: string, provenance: SimplePersonaProvenance) => void;
@@ -31,8 +32,8 @@ export function FromText(props: {
       <b>Text</b> -&gt; Persona
     </Typography>
 
-    <form onSubmit={handleCreateFromText}>
-      <Textarea
+    <form /* @uxid src/apps/personas/creator/FromText::FromText.form */ onSubmit={handleCreateFromText}>
+      <Textarea /* @uxid src/apps/personas/creator/FromText::FromText.textarea */
         required
         variant='outlined'
         minRows={4} maxRows={8}

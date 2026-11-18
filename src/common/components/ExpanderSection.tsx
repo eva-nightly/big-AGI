@@ -69,6 +69,7 @@ const _styles = {
  * Semi-controlled: `expandRequest` nudges the internal state when its value changes.
  * Between controlled changes, the user can freely toggle via the header.
  */
+// @uxid src/common/components/ExpanderSection::ExpanderSection
 export function ExpanderSection(props: {
   title: string | ((expanded: boolean) => string),
   description?: string | ((expanded: boolean) => string),
@@ -102,7 +103,7 @@ export function ExpanderSection(props: {
 
   return <>
 
-    <Box
+    <Box /* @uxid src/common/components/ExpanderSection::ExpanderSection.box */
       aria-expanded={isExpanded}
       onClick={isCollapsible ? handleToggle : undefined}
       role={isCollapsible ? 'button' : undefined}

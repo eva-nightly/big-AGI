@@ -9,6 +9,7 @@ interface FlattenProfile {
   userPrompt: string;
 }
 
+// @uxid src/modules/aifn/flatten/flatten.data::systemPromptSuffix
 const systemPromptSuffix = 'Ensure the summary is impersonal and easy to read, write clear and separated paragraphs and use bullet points when possible.';
 
 export const FLATTEN_PROFILES: FlattenProfile[] = [

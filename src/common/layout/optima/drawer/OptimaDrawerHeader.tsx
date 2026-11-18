@@ -7,6 +7,7 @@ import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
 import { Link } from '~/common/components/Link';
 
 
+// @uxid src/common/layout/optima/drawer/OptimaDrawerHeader::OptimaDrawerHeader
 export const OptimaDrawerHeader = (props: {
   title: string,
   onClose: () => void,
@@ -38,7 +39,7 @@ export const OptimaDrawerHeader = (props: {
     {props.children || <IconButton disabled />}
 
     {props.onTitleClick ? (
-      <Link href='#' color='neutral' onClick={props.onTitleClick}>
+      <Link /* @uxid src/common/layout/optima/drawer/OptimaDrawerHeader::OptimaDrawerHeader.link */ href='#' color='neutral' onClick={props.onTitleClick}>
         <Typography level='title-md'>
           {props.title}
         </Typography>
@@ -48,7 +49,7 @@ export const OptimaDrawerHeader = (props: {
       </Typography>
     )}
 
-    <IconButton aria-label='Close Drawer' size='sm' onClick={props.onClose}>
+    <IconButton /* @uxid src/common/layout/optima/drawer/OptimaDrawerHeader::OptimaDrawerHeader.iconbutton */ aria-label='Close Drawer' size='sm' onClick={props.onClose}>
       <CloseRoundedIcon />
     </IconButton>
 

@@ -3,6 +3,7 @@ import * as React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
 // missing from MUI, using Tabler for Discord
+// @uxid src/common/components/icons/3rdparty/DiscordIcon::DiscordIcon
 export function DiscordIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 0 24 24' width='24' height='24' stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round' {...props}>
     <path stroke='none' d='M0 0h24v24H0z' fill='none'></path>

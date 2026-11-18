@@ -40,6 +40,7 @@ function ERCHeader(props: { children: React.ReactNode }) {
 }
 
 
+// @uxid src/modules/blocks/enhanced-code/EnhancedRenderCode::EnhancedRenderCode
 export function EnhancedRenderCode(props: {
   // same as RenderCode
   semiStableId: string | undefined,
@@ -162,7 +163,7 @@ export function EnhancedRenderCode(props: {
       {/* Icon and Title */}
       <TooltipOutlined placement='top-start' color='neutral' title={headerTooltipContents}>
         <Box sx={_styles.headerTitle}>
-          <IconButton
+          <IconButton /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCode::EnhancedRenderCode.iconbutton */
             aria-label={isCodeCollapsed ? 'Expand code block' : 'Collapse code block'}
             aria-expanded={!isCodeCollapsed}
             size='sm'
@@ -191,7 +192,7 @@ export function EnhancedRenderCode(props: {
       {liveFileButton}
 
       {/* Menu Options button */}
-      <IconButton
+      <IconButton /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCode::EnhancedRenderCode.iconbutton-2 */
         aria-label='Code block options'
         size='sm'
         onClick={handleToggleContextMenu}
@@ -221,7 +222,7 @@ export function EnhancedRenderCode(props: {
 
 
   return (
-    <RenderCodePanelFrame
+    <RenderCodePanelFrame /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCode::EnhancedRenderCode.rendercodepanelframe */
       frameless={props.frameless}
       color={props.color || 'neutral'}
       gutterBlock
@@ -235,7 +236,7 @@ export function EnhancedRenderCode(props: {
 
       {/* Body of the message (it's a RenderCode with patched sx, for looks) */}
       <ExpanderControlledBox noContain={true /* Important, allow fixed positioning on OverlayButttons */} expanded={!!props.frameless || !isCodeCollapsed}>
-        <RenderCodeMemo
+        <RenderCodeMemo /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCode::EnhancedRenderCode.rendercodememo */
           semiStableId={props.semiStableId}
           code={props.code} title={props.title} isPartial={props.isPartial}
           fitScreen={props.fitScreen}
@@ -251,7 +252,7 @@ export function EnhancedRenderCode(props: {
 
       {/* Context Menu */}
       {contextMenuAnchor && !props.frameless && (
-        <EnhancedRenderCodeMenu
+        <EnhancedRenderCodeMenu /* @uxid src/modules/blocks/enhanced-code/EnhancedRenderCode::EnhancedRenderCode.enhancedrendercodemenu */
           anchor={contextMenuAnchor}
           code={props.code} title={props.title}
           onClose={handleCloseContextMenu}

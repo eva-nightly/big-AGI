@@ -68,6 +68,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/PaneTitleOverlay::PaneTitleOverlay
 export function PaneTitleOverlay(props: {
   paneIdx: number,
   conversationId: DConversationId | null,
@@ -140,14 +141,14 @@ export function PaneTitleOverlay(props: {
     >
       {/* Close Others*/}
       {/*<TooltipOutlined title='Close Other Tabs'>*/}
-      {!editingTitle && <IconButton title='Close Other Tabs' size='sm' color={color} variant={variantP} onClick={handleCloseOthers} sx={_styles.toolButton}>
+      {!editingTitle && <IconButton /* @uxid src/apps/chat/components/PaneTitleOverlay::PaneTitleOverlay.iconbutton */ title='Close Other Tabs' size='sm' color={color} variant={variantP} onClick={handleCloseOthers} sx={_styles.toolButton}>
         <OpenInFullIcon sx={_styles.toolIcon} />
       </IconButton>}
       {/*</TooltipOutlined>*/}
 
       {/* Title */}
       {editingTitle ? (
-        <InlineTextarea
+        <InlineTextarea /* @uxid src/apps/chat/components/PaneTitleOverlay::PaneTitleOverlay.inlinetextarea */
           initialText={title || ''}
           placeholder='Chat title...'
           invertedColors
@@ -161,14 +162,14 @@ export function PaneTitleOverlay(props: {
           }}
         />
       ) : !!props.conversationId && <>
-        {hasTitle && <Box sx={_styles.title} onClick={handleTitleEditBegin}>
+        {hasTitle && <Box /* @uxid src/apps/chat/components/PaneTitleOverlay::PaneTitleOverlay.box */ sx={_styles.title} onClick={handleTitleEditBegin}>
           {title}
         </Box>}
-        {!hasTitle && <Box fontStyle='italic' onClick={handleTitleEditBegin}>
+        {!hasTitle && <Box /* @uxid src/apps/chat/components/PaneTitleOverlay::PaneTitleOverlay.box-2 */ fontStyle='italic' onClick={handleTitleEditBegin}>
           untitled
         </Box>}
         {!hasTitle && <TooltipOutlined title='Edit Chat Title'>
-          <IconButton title='' size='sm' color={color} variant={variantP} onClick={handleTitleEditBegin} sx={_styles.toolButton}>
+          <IconButton /* @uxid src/apps/chat/components/PaneTitleOverlay::PaneTitleOverlay.iconbutton-2 */ title='' size='sm' color={color} variant={variantP} onClick={handleTitleEditBegin} sx={_styles.toolButton}>
             <EditRoundedIcon sx={_styles.toolIcon} />
           </IconButton>
         </TooltipOutlined>}
@@ -177,7 +178,7 @@ export function PaneTitleOverlay(props: {
       {/* Delete This */}
       {ENABLE_DELETE && hasTitle && !!props.conversationId && (
         <TooltipOutlined title='Delete Chat (Shift+Click to bypass confirmation)'>
-          <IconButton size='sm' variant={variantP} onClick={handleDeleteClicked} sx={_styles.toolButton}>
+          <IconButton /* @uxid src/apps/chat/components/PaneTitleOverlay::PaneTitleOverlay.iconbutton-3 */ size='sm' variant={variantP} onClick={handleDeleteClicked} sx={_styles.toolButton}>
             <DeleteForeverIcon />
           </IconButton>
         </TooltipOutlined>
@@ -185,7 +186,7 @@ export function PaneTitleOverlay(props: {
 
       {/* Close This */}
       {/*<TooltipOutlined title='Close'>*/}
-      {!editingTitle && <IconButton title='Close Tab' size='sm' color={color} variant={variantP} onClick={handleCloseThis} sx={_styles.toolButton}>
+      {!editingTitle && <IconButton /* @uxid src/apps/chat/components/PaneTitleOverlay::PaneTitleOverlay.iconbutton-4 */ title='Close Tab' size='sm' color={color} variant={variantP} onClick={handleCloseThis} sx={_styles.toolButton}>
         <ClearIcon sx={_styles.toolIconLg} />
       </IconButton>}
       {/*</TooltipOutlined>*/}

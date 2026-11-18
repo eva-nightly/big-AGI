@@ -10,6 +10,7 @@ import YouTubeIcon from '@mui/icons-material/YouTube';
 import type { SimplePersona } from '../store-app-personas';
 
 
+// @uxid src/apps/personas/creator/CreatorDrawerItem::CreatorDrawerItem
 export function CreatorDrawerItem(props: {
   item: SimplePersona,
   isActive: boolean,
@@ -39,7 +40,7 @@ export function CreatorDrawerItem(props: {
 
 
   return (
-    <ListItemButton
+    <ListItemButton /* @uxid src/apps/personas/creator/CreatorDrawerItem::CreatorDrawerItem.listitembutton */
       variant={isActive ? 'soft' : undefined}
       onClick={props.onClick}
       sx={{
@@ -75,7 +76,7 @@ export function CreatorDrawerItem(props: {
 
       {/* Delete Arming */}
       {!props.isSelection && !deleteArmed && (
-        <IconButton
+        <IconButton /* @uxid src/apps/personas/creator/CreatorDrawerItem::CreatorDrawerItem.iconbutton */
           variant={isActive ? 'solid' : 'outlined'}
           size='sm'
           sx={{ opacity: { xs: 1, sm: 0 }, transition: 'opacity 0.2s' }}
@@ -87,10 +88,10 @@ export function CreatorDrawerItem(props: {
 
       {/* Delete / Cancel buttons */}
       {!props.isSelection && deleteArmed && <>
-        <IconButton size='sm' variant='solid' color='danger' onClick={() => props.onDelete(item.id)}>
+        <IconButton /* @uxid src/apps/personas/creator/CreatorDrawerItem::CreatorDrawerItem.iconbutton-2 */ size='sm' variant='solid' color='danger' onClick={() => props.onDelete(item.id)}>
           <DeleteOutlineIcon />
         </IconButton>
-        <IconButton size='sm' variant='solid' color='neutral' onClick={() => setDeleteArmed(false)}>
+        <IconButton /* @uxid src/apps/personas/creator/CreatorDrawerItem::CreatorDrawerItem.iconbutton-3 */ size='sm' variant='solid' color='neutral' onClick={() => setDeleteArmed(false)}>
           <CloseRoundedIcon />
         </IconButton>
       </>}

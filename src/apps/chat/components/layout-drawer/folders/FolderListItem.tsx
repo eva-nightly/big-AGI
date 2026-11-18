@@ -48,6 +48,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/layout-drawer/folders/FolderListItem::FolderListItem
 export function FolderListItem(props: {
   folder: DFolder;
   chatCount?: number;
@@ -139,7 +140,7 @@ export function FolderListItem(props: {
       }}
       sx={_styles.item}
       endAction={!isEditing &&
-        <IconButton
+        <IconButton /* @uxid src/apps/chat/components/layout-drawer/folders/FolderListItem::FolderListItem.iconbutton */
           size='sm'
           // variant='plain'
           onClick={handleMenuToggle}
@@ -151,7 +152,7 @@ export function FolderListItem(props: {
         </IconButton>
       }
     >
-      <ListItemButton
+      <ListItemButton /* @uxid src/apps/chat/components/layout-drawer/folders/FolderListItem::FolderListItem.listitembutton */
         selected={isActive}
         onClick={handleFolderActivate}
         sx={_styles.itemButton}
@@ -166,14 +167,14 @@ export function FolderListItem(props: {
         </ListItemDecorator>
 
         {isEditing ? (
-          <InlineTextarea
+          <InlineTextarea /* @uxid src/apps/chat/components/layout-drawer/folders/FolderListItem::FolderListItem.inlinetextarea */
             initialText={folderTitle}
             onEdit={newTitle => handleSetTitle(newTitle, folderId)}
             onCancel={handleCancelEditTitle}
             sx={_styles.itemTextArea}
           />
         ) : (
-          <ListItemContent onDoubleClick={handleEditTitle} className='agi-ellipsize'>
+          <ListItemContent /* @uxid src/apps/chat/components/layout-drawer/folders/FolderListItem::FolderListItem.listitemcontent */ onDoubleClick={handleEditTitle} className='agi-ellipsize'>
             {folderTitle}
             {chatCount !== undefined && chatCount > 0 && <span style={{ opacity: 0.6, fontSize: '0.75rem', marginLeft: '0.5rem' }}> {chatCount}</span>}
           </ListItemContent>
@@ -181,14 +182,14 @@ export function FolderListItem(props: {
 
         {/* Folder Options Menu */}
         {!!menuAnchorEl && (
-          <CloseablePopup
+          <CloseablePopup /* @uxid src/apps/chat/components/layout-drawer/folders/FolderListItem::FolderListItem.closeablepopup */
             menu anchorEl={menuAnchorEl} onClose={handleMenuClose}
             dense
             placement='top'
             zIndex={themeZIndexOverMobileDrawer /* need to be on top of the Modal on Mobile */}
           >
 
-            <MenuItem
+            <MenuItem /* @uxid src/apps/chat/components/layout-drawer/folders/FolderListItem::FolderListItem.menuitem */
               onClick={(event) => {
                 handleEditTitle(event);
                 handleMenuClose();
@@ -200,7 +201,7 @@ export function FolderListItem(props: {
               Edit
             </MenuItem>
 
-            <ConfirmMenuItem label='Delete' confirmLabel='Confirm Deletion' onConfirm={handleDeleteConfirmed} />
+            <ConfirmMenuItem /* @uxid src/apps/chat/components/layout-drawer/folders/FolderListItem::FolderListItem.confirmmenuitem */ label='Delete' confirmLabel='Confirm Deletion' onConfirm={handleDeleteConfirmed} />
 
             <MenuItem
               sx={{
@@ -223,7 +224,7 @@ export function FolderListItem(props: {
               >
                 Color
               </FormLabel>
-              <RadioGroup
+              <RadioGroup /* @uxid src/apps/chat/components/layout-drawer/folders/FolderListItem::FolderListItem.radiogroup */
                 aria-labelledby='product-color-attribute'
                 defaultValue={folderColor || 'warning'}
                 onChange={handleColorChange}

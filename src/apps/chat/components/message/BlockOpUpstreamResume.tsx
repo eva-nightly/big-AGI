@@ -26,6 +26,7 @@ const ARM_TIMEOUT_MS = 4000;
  * IMPORTANT: in-flight state is owned by the parent (`inFlightMode` + `onDetach`) so it survives
  * unmounts that happen while a long-running stream is active (e.g. Deep Research).
  */
+// @uxid src/apps/chat/components/message/BlockOpUpstreamResume::BlockOpUpstreamResume
 export function BlockOpUpstreamResume(props: {
   upstreamHandle: Exclude<DMessageGenerator['upstreamHandle'], undefined>,
   pending?: boolean; // true iff a local in-flight op (initial POST or resume); drives the state machine + hides the expiry footer
@@ -116,7 +117,7 @@ export function BlockOpUpstreamResume(props: {
       <ButtonGroup>
         {showResume && (
           <Tooltip title='Resume by re-streaming from the upstream run'>
-            <Button
+            <Button /* @uxid src/apps/chat/components/message/BlockOpUpstreamResume::BlockOpUpstreamResume.button */
               disabled={isDeleting}
               startDecorator={<PlayArrowRoundedIcon color='success' />}
               onClick={() => handleResume('replay')}
@@ -128,7 +129,7 @@ export function BlockOpUpstreamResume(props: {
 
         {showRecover && (
           <Tooltip title='Fetch the result without streaming - recovers stuck or hung runs'>
-            <Button
+            <Button /* @uxid src/apps/chat/components/message/BlockOpUpstreamResume::BlockOpUpstreamResume.button-2 */
               disabled={isDeleting}
               loading={isSnapshotting}
               loadingPosition='start'
@@ -142,7 +143,7 @@ export function BlockOpUpstreamResume(props: {
 
         {showDetach && (
           <Tooltip title='Close this connection only - the upstream run keeps going. Click Resume or Recover later to fetch results.'>
-            <Button
+            <Button /* @uxid src/apps/chat/components/message/BlockOpUpstreamResume::BlockOpUpstreamResume.button-3 */
               disabled={isDeleting}
               startDecorator={<LinkOffRoundedIcon />}
               onClick={props.onDetach}
@@ -154,7 +155,7 @@ export function BlockOpUpstreamResume(props: {
 
         {showCancel && (
           <Tooltip title={deleteArmed ? 'Click again to confirm - cancels the upstream run and clears the handle' : 'Cancel the upstream run'}>
-            <Button
+            <Button /* @uxid src/apps/chat/components/message/BlockOpUpstreamResume::BlockOpUpstreamResume.button-4 */
               loading={isDeleting}
               color={deleteArmed ? 'danger' : 'neutral'}
               variant={deleteArmed ? 'solid' : 'outlined'}

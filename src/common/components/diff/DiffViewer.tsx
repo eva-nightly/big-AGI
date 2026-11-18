@@ -42,6 +42,7 @@ interface LineDiff {
 /**
  * A simple diff viewer that compares two strings and highlights the differences.
  */
+// @uxid src/common/components/diff/DiffViewer::DiffViewer
 export function DiffViewer(props: {
   oldTitle?: string;
   oldText: string;
@@ -374,7 +375,7 @@ export function DiffViewer(props: {
       <Menu placement='bottom-end' disablePortal={!isFullscreen ? undefined : true} sx={{ minWidth: 200, zIndex: 1000000 }}>
 
         {/* Fullscreen */}
-        <MenuItem onClick={isFullscreen ? exitFullscreen : enterFullscreen}>
+        <MenuItem /* @uxid src/common/components/diff/DiffViewer::DiffViewer.menuitem */ onClick={isFullscreen ? exitFullscreen : enterFullscreen}>
           <ListItemDecorator><ZoomOutMapIcon /></ListItemDecorator>
           {isFullscreen ? 'Exit Fullscreen' : 'Fullscreen'}
         </MenuItem>
@@ -382,31 +383,31 @@ export function DiffViewer(props: {
         <ListDivider />
 
         {/* Split view button */}
-        <MenuItem onClick={() => setViewType(viewType => viewType === 'split' ? 'unified' : 'split')}>
+        <MenuItem /* @uxid src/common/components/diff/DiffViewer::DiffViewer.menuitem-2 */ onClick={() => setViewType(viewType => viewType === 'split' ? 'unified' : 'split')}>
           <ListItemDecorator><Checkbox variant='outlined' checked={viewType === 'split'} /></ListItemDecorator>
           Side-by-side Viewer <FlipIcon sx={{ fontSize: 'md', opacity: 0.5 }} />
         </MenuItem>
 
         {/* Ignore whitespace button */}
-        <MenuItem onClick={() => setIgnoreWhitespace(ignore => !ignore)}>
+        <MenuItem /* @uxid src/common/components/diff/DiffViewer::DiffViewer.menuitem-3 */ onClick={() => setIgnoreWhitespace(ignore => !ignore)}>
           <ListItemDecorator><Checkbox variant='outlined' checked={ignoreWhitespace} /></ListItemDecorator>
           Ignore Whitespace <SpaceBarIcon sx={{ fontSize: 'md', opacity: 0.5 }} />
         </MenuItem>
 
         {/* Wrap text button */}
-        <MenuItem onClick={() => setWrapLongLines(wrap => !wrap)}>
+        <MenuItem /* @uxid src/common/components/diff/DiffViewer::DiffViewer.menuitem-4 */ onClick={() => setWrapLongLines(wrap => !wrap)}>
           <ListItemDecorator><Checkbox variant='outlined' checked={wrapLongLines} /></ListItemDecorator>
           Soft-wrap Lines <WrapTextIcon sx={{ fontSize: 'md', opacity: 0.5 }} />
         </MenuItem>
 
-        <MenuItem onClick={() => setHighContrast(high => !high)}>
+        <MenuItem /* @uxid src/common/components/diff/DiffViewer::DiffViewer.menuitem-5 */ onClick={() => setHighContrast(high => !high)}>
           <ListItemDecorator><Checkbox variant='outlined' checked={highContrast} /></ListItemDecorator>
           High Contrast <ContrastIcon sx={{ fontSize: 'md', opacity: 0.5 }} />
         </MenuItem>
 
         {/* Shrink height button */}
         {!inModal && !isFullscreen && (
-          <MenuItem onClick={() => setShrinkHeight(shrink => !shrink)}>
+          <MenuItem /* @uxid src/common/components/diff/DiffViewer::DiffViewer.menuitem-6 */ onClick={() => setShrinkHeight(shrink => !shrink)}>
             <ListItemDecorator><Checkbox variant='outlined' checked={_shrinkHeight} /></ListItemDecorator>
             Enable Scrolling
           </MenuItem>
@@ -415,13 +416,13 @@ export function DiffViewer(props: {
         <ListDivider />
 
         {/* Collapse unchanced */}
-        <MenuItem onClick={() => setExpandedBlocks(new Set())}>
+        <MenuItem /* @uxid src/common/components/diff/DiffViewer::DiffViewer.menuitem-7 */ onClick={() => setExpandedBlocks(new Set())}>
           <ListItemDecorator><CompressRoundedIcon /></ListItemDecorator>
           Hide Unchanged Lines
         </MenuItem>
 
         {/* Expand collapsed sections */}
-        <MenuItem onClick={() => setExpandedBlocks(new Set(unifiedDiffData.filter(line => line.collapseId !== undefined).map(line => line.collapseId!)))}>
+        <MenuItem /* @uxid src/common/components/diff/DiffViewer::DiffViewer.menuitem-8 */ onClick={() => setExpandedBlocks(new Set(unifiedDiffData.filter(line => line.collapseId !== undefined).map(line => line.collapseId!)))}>
           <ListItemDecorator><ExpandRoundedIcon /></ListItemDecorator>
           Show All Lines
         </MenuItem>
@@ -430,11 +431,11 @@ export function DiffViewer(props: {
 
         {/* Copy options */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <MenuItem disabled={!props.oldText} onClick={() => copyToClipboard(props.oldText, typeof props.oldTitle === 'string' ? props.oldTitle : 'Left side content')}>
+          <MenuItem /* @uxid src/common/components/diff/DiffViewer::DiffViewer.menuitem-9 */ disabled={!props.oldText} onClick={() => copyToClipboard(props.oldText, typeof props.oldTitle === 'string' ? props.oldTitle : 'Left side content')}>
             <ListItemDecorator><ContentCopyIcon sx={{ fontSize: 'lg' }} /></ListItemDecorator>
             Copy 1
           </MenuItem>
-          <MenuItem disabled={!props.newText} onClick={() => copyToClipboard(props.newText, typeof props.newTitle === 'string' ? props.newTitle : 'Right side content')}>
+          <MenuItem /* @uxid src/common/components/diff/DiffViewer::DiffViewer.menuitem-10 */ disabled={!props.newText} onClick={() => copyToClipboard(props.newText, typeof props.newTitle === 'string' ? props.newTitle : 'Right side content')}>
             <ListItemDecorator><ContentCopyIcon sx={{ fontSize: 'lg' }} /></ListItemDecorator>
             Copy 2
           </MenuItem>
@@ -487,9 +488,9 @@ export function DiffViewer(props: {
                 const toggleCollapse = () => handleToggleCollapse(collapseId);
                 return (
                   <React.Fragment key={`expander-${index}`}>
-                    <div className={`dv-num expander`} onClick={toggleCollapse}>{dotString}</div>
-                    <div className={`dv-num dv-num-right expander`} onClick={toggleCollapse}>{dotString}</div>
-                    <div className={`dv-line expander`} onClick={toggleCollapse}>{oldText}</div>
+                    <div /* @uxid src/common/components/diff/DiffViewer::DiffViewer.div */ className={`dv-num expander`} onClick={toggleCollapse}>{dotString}</div>
+                    <div /* @uxid src/common/components/diff/DiffViewer::DiffViewer.div-2 */ className={`dv-num dv-num-right expander`} onClick={toggleCollapse}>{dotString}</div>
+                    <div /* @uxid src/common/components/diff/DiffViewer::DiffViewer.div-3 */ className={`dv-line expander`} onClick={toggleCollapse}>{oldText}</div>
                   </React.Fragment>
                 );
               }
@@ -546,10 +547,10 @@ export function DiffViewer(props: {
                 const toggleCollapse = () => handleToggleCollapse(collapseId);
                 return (
                   <React.Fragment key={`expander-${index}`}>
-                    <div className={`dv-num ${oldType} ${dimClass} expander`} onClick={toggleCollapse}>{dotString}</div>
-                    <div className={`dv-line ${oldType} expander unselectable`} onClick={toggleCollapse}>{oldText}</div>
-                    <div className={`dv-num dv-num-right ${newType} expander`} onClick={toggleCollapse}>{dotString}</div>
-                    <div className={`dv-line ${newType} expander`} onClick={toggleCollapse}>{oldText}</div>
+                    <div /* @uxid src/common/components/diff/DiffViewer::DiffViewer.div-4 */ className={`dv-num ${oldType} ${dimClass} expander`} onClick={toggleCollapse}>{dotString}</div>
+                    <div /* @uxid src/common/components/diff/DiffViewer::DiffViewer.div-5 */ className={`dv-line ${oldType} expander unselectable`} onClick={toggleCollapse}>{oldText}</div>
+                    <div /* @uxid src/common/components/diff/DiffViewer::DiffViewer.div-6 */ className={`dv-num dv-num-right ${newType} expander`} onClick={toggleCollapse}>{dotString}</div>
+                    <div /* @uxid src/common/components/diff/DiffViewer::DiffViewer.div-7 */ className={`dv-line ${newType} expander`} onClick={toggleCollapse}>{oldText}</div>
                   </React.Fragment>
                 );
               }

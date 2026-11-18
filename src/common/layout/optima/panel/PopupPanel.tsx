@@ -6,9 +6,10 @@ import { PanelContentPortal } from './PanelContentPortal';
 import { optimaClosePanel } from '../useOptima';
 
 
+// @uxid src/common/layout/optima/panel/PopupPanel::PopupPanel
 export function PopupPanel(props: { anchorEl: HTMLElement | null }) {
   return (
-    <CloseablePopup
+    <CloseablePopup /* @uxid src/common/layout/optima/panel/PopupPanel::PopupPanel.closeablepopup */
       menu // this is NOT needed or wanted, but improves the look compared to the Box alternative
       anchorEl={props.anchorEl} onClose={optimaClosePanel}
       maxHeightGapPx={56 + 24}

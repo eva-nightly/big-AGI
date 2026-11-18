@@ -61,6 +61,7 @@ const _styles = {
  * indented beneath. Selecting a top-level item shows all its sub-sections on the right;
  * selecting a sub-item shows just that one.
  */
+// @uxid src/apps/settings-modal/SettingsNavList::SettingsNavList
 export function SettingsNavList(props: {
   value: SettingsNavId,
   onSelect: (id: SettingsNavId) => void,
@@ -75,7 +76,7 @@ export function SettingsNavList(props: {
         return (
           <React.Fragment key={node.id}>
             <ListItem>
-              <ListItemButton
+              <ListItemButton /* @uxid src/apps/settings-modal/SettingsNavList::SettingsNavList.listitembutton */
                 selected={nodeSelected}
                 color={nodeSelected ? 'primary' : undefined}
                 variant={nodeSelected ? undefined : 'soft'}
@@ -90,7 +91,7 @@ export function SettingsNavList(props: {
               const childSelected = value === child.id;
               return (
                 <ListItem key={child.id}>
-                  <ListItemButton
+                  <ListItemButton /* @uxid src/apps/settings-modal/SettingsNavList::SettingsNavList.listitembutton-2 */
                     selected={childSelected}
                     color={childSelected ? 'primary' : undefined}
                     variant={childSelected ? undefined : 'soft'}

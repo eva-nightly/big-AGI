@@ -17,6 +17,7 @@ import { useDrawSectionDropdown } from './useDrawSectionDropdown';
 // }
 
 
+// @uxid src/apps/draw/AppDraw::AppDraw
 export function AppDraw() {
 
   // state
@@ -49,7 +50,7 @@ export function AppDraw() {
     <OptimaToolbarIn>{drawSectionDropdown}</OptimaToolbarIn>
 
     {drawSection === 'create' ? (
-      <DrawCreate
+      <DrawCreate /* @uxid src/apps/draw/AppDraw::AppDraw.drawcreate */
         queue={drawCreateQueue}
         isMobile={isMobile}
         showHeader={showHeader}

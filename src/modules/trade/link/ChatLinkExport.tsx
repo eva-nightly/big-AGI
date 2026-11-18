@@ -18,6 +18,7 @@ import { ChatLinkDetails } from './ChatLinkDetails';
 import { rememberChatLinkItem, updateChatLinkDeletionKey, useLinkStorageOwnerId } from './store-share-link';
 
 
+// @uxid src/modules/trade/link/ChatLinkExport::ChatLinkExport
 export function ChatLinkExport(props: {
   conversationId: DConversationId | null;
   enableSharing: boolean;
@@ -116,7 +117,7 @@ export function ChatLinkExport(props: {
 
   return <>
 
-    <Button
+    <Button /* @uxid src/modules/trade/link/ChatLinkExport::ChatLinkExport.button */
       variant='soft' disabled={!hasConversation || isUploading}
       loading={isUploading}
       color={linkPutResult ? 'success' : 'primary'}
@@ -129,13 +130,13 @@ export function ChatLinkExport(props: {
 
     {/* [chat link] confirmation */}
     {!!confirmConversationId && (
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/modules/trade/link/ChatLinkExport::ChatLinkExport.confirmationmodal */
         open onClose={handleCancel} onPositive={handleCreate}
         title='Upload Confirmation'
         confirmationText={<>
           Everyone who has the unlisted link will be able to access this chat.
           It will be automatically deleted after 30 days.
-          For more information, please see the <Link href={Brand.URIs.PrivacyPolicy} target='_blank'>privacy
+          For more information, please see the <Link /* @uxid src/modules/trade/link/ChatLinkExport::ChatLinkExport.link */ href={Brand.URIs.PrivacyPolicy} target='_blank'>privacy
           policy</Link> of this server. <br />
           Do you wish to continue?
         </>}
@@ -145,7 +146,7 @@ export function ChatLinkExport(props: {
 
     {/* [chat link] response */}
     {!!linkPutResult && (
-      <ChatLinkDetails
+      <ChatLinkDetails /* @uxid src/modules/trade/link/ChatLinkExport::ChatLinkExport.chatlinkdetails */
         open
         storageItem={linkPutResult}
         onClose={handleCloseDetails}

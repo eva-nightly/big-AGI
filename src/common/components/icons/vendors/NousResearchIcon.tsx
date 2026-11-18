@@ -3,6 +3,7 @@ import * as React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
 // from @lobehub/icons-static-svg 'nousresearch.svg' (official mark trace) - svgo precision=1 - 2026-08-10
+// @uxid src/common/components/icons/vendors/NousResearchIcon::NousResearchIcon
 export function NousResearchIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 0 24 24' width='24' height='24' fill='currentColor' stroke='none' {...props}>
     <path fillRule='evenodd' clipRule='evenodd' d='m6 12.8.3.2v.1zm2.4-3.4h.7l.6.2h.1-.6L9 9.4l.6.1.8.5h.1l.1.1h.3q0 .2.1.1 0 .2-.3.2v.2q.1.2-.4.2v.1h-.1v.2H10v.1h-.3v.1H8.3Q8.2 11 8 11h.2l.5.1h.6q.5 0 .7-.4l.2-.2-.4-.3q0 .2-.2.2v.3l-.2.2h-.6l-.2-.2v-.2q-.2 0-.1-.4V10l-.4.4h-.2v-.2l.1-.4h-.2q.2-.3.6-.5M8 10.8' />

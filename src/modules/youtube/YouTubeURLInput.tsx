@@ -17,6 +17,7 @@ interface YouTubeURLInputProps {
   sx?: SxProps;
 }
 
+// @uxid src/modules/youtube/YouTubeURLInput::YouTubeURLInput
 export const YouTubeURLInput: React.FC<YouTubeURLInputProps> = ({ onSubmit, sx }) => {
 
   // state
@@ -50,9 +51,9 @@ export const YouTubeURLInput: React.FC<YouTubeURLInputProps> = ({ onSubmit, sx }
 
   return (
     <Box sx={sx}>
-      <form onSubmit={handleSubmit}>
+      <form /* @uxid src/modules/youtube/YouTubeURLInput::YouTubeURLInput.form */ onSubmit={handleSubmit}>
         <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-          <Input
+          <Input /* @uxid src/modules/youtube/YouTubeURLInput::YouTubeURLInput.input */
             required
             type='url'
             fullWidth

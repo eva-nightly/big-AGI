@@ -76,6 +76,7 @@ function _errorIsNotFound(error: unknown): boolean {
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::AnthropicFileChip
 function AnthropicFileChip(props: {
   access: AnthropicAccessSchema,
   fileId: string,
@@ -220,7 +221,7 @@ function AnthropicFileChip(props: {
     if (autoEmbedEnabled)
       return useAIPreferencesStore.getState().setVndAntInlineFiles('off');
     if (await showPromisedOverlay('chat-message-auto-embed-notice', { rejectWithValue: false }, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::AnthropicFileChip.confirmationmodal */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         noTitleBar
         lowStakes
@@ -247,7 +248,7 @@ function AnthropicFileChip(props: {
 
 
   return (
-    <HostedFileChip
+    <HostedFileChip /* @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::AnthropicFileChip.hostedfilechip */
       title={metaLoading ? 'Loading...' : isFileGone ? `${fileId} - file no longer available` : displayName}
       subtitle={metadata && <>{humanReadableBytes(metadata.size_bytes)} · <TimeAgo date={metadata.created_at} /> · {metadata.mime_type}</>}
       error={actionError || (metaError && !isFileGone ? (metaError.message || 'Could not load file info') : null)}
@@ -260,7 +261,7 @@ function AnthropicFileChip(props: {
       canInline={canInline}
       menuExtras={!autoEmbedEnabled && (
         // Auto-embed toggle - shared global preference
-        <MenuItem disabled={!canInline || isBusy} onClick={handleToggleAutoEmbed}>
+        <MenuItem /* @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::AnthropicFileChip.menuitem */ disabled={!canInline || isBusy} onClick={handleToggleAutoEmbed}>
           <ListItemDecorator><Checkbox checked={autoEmbedEnabled} readOnly color='neutral' /></ListItemDecorator>
           <div>
             Always embed
@@ -277,6 +278,7 @@ function AnthropicFileChip(props: {
   );
 }
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::OpenAIContainerFileChip
 function OpenAIContainerFileChip(props: {
   access: OpenAIAccessSchema,
   containerId: string,
@@ -398,7 +400,7 @@ function OpenAIContainerFileChip(props: {
   const canInline = !!onFragmentReplace && !!fileMimeType && mimeTypeIsPlainText(fileMimeType);
 
   return (
-    <HostedFileChip
+    <HostedFileChip /* @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::OpenAIContainerFileChip.hostedfilechip */
       title={fileGone ? <>{displayName} <span style={{ color: 'var(--joy-palette-warning-plainColor)' }}>- container expired</span></> : displayName}
       tooltip='OpenAI container file'
       error={actionError}
@@ -416,6 +418,7 @@ function OpenAIContainerFileChip(props: {
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::GeminiFileChip
 function GeminiFileChip(props: {
   access: GeminiAccessSchema,
   fileName: string,
@@ -494,7 +497,7 @@ function GeminiFileChip(props: {
 
 
   return (
-    <HostedFileChip
+    <HostedFileChip /* @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::GeminiFileChip.hostedfilechip */
       title={metaLoading ? 'Loading...' : isFileGone ? 'Video no longer available (expired)' : displayName}
       subtitle={metadata && !isFileGone && <>
         {humanReadableBytes(metadata.sizeBytes)}
@@ -505,7 +508,7 @@ function GeminiFileChip(props: {
       busy={busy}
       disabled={isBusy}
       gone={isFileGone}
-      leading={isVideo && <HostedFileChipButton title='Play' icon={<PlayArrowRoundedIcon sx={{ fontSize: 'lg' }} />} busy={busy === 'play'} disabled={isBusy} onClick={handlePlay} />}
+      leading={isVideo && <HostedFileChipButton /* @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::GeminiFileChip.hostedfilechipbutton */ title='Play' icon={<PlayArrowRoundedIcon sx={{ fontSize: 'lg' }} />} busy={busy === 'play'} disabled={isBusy} onClick={handlePlay} />}
       onDownload={handleDownload}
       onDelete={onFragmentDelete ? handleDelete : undefined}
       deleteFrom='Google'
@@ -516,6 +519,7 @@ function GeminiFileChip(props: {
 
 
 /** URL-referenced video (user-added, e.g. YouTube): provider-fetched, so no credentials or download - a link-out card. */
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::UrlVideoChip
 function UrlVideoChip(props: {
   url: string,
   muted: boolean,
@@ -535,7 +539,7 @@ function UrlVideoChip(props: {
       )}
 
       <GoodTooltip title={(muted ? 'Video muted' : 'Video shared with the AI') + ' - open in a new tab'}>
-        <Typography
+        <Typography /* @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::UrlVideoChip.typography */
           level='body-sm' component='a' href={props.url} target='_blank' rel='noopener noreferrer'
           sx={{ minWidth: 0, textDecoration: 'none', ...(muted && { opacity: 0.5 }), '&:hover': { textDecoration: 'underline' } }}
         >
@@ -545,14 +549,14 @@ function UrlVideoChip(props: {
 
       {!!props.onToggleMuted && (
         <GoodTooltip title={muted ? 'Muted: not sent to the AI - click to unmute' : 'Sent with every message - click to mute'}>
-          <IconButton size='sm' variant={muted ? 'solid' : 'plain'} color={muted ? 'warning' : undefined} onClick={props.onToggleMuted}>
+          <IconButton /* @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::UrlVideoChip.iconbutton */ size='sm' variant={muted ? 'solid' : 'plain'} color={muted ? 'warning' : undefined} onClick={props.onToggleMuted}>
             {muted ? <VisibilityOffOutlinedIcon /> : <VisibilityOutlinedIcon />}
           </IconButton>
         </GoodTooltip>
       )}
 
       {!!props.onFragmentDelete && (
-        <IconButton size='sm' onClick={props.onFragmentDelete}>
+        <IconButton /* @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::UrlVideoChip.iconbutton-2 */ size='sm' onClick={props.onFragmentDelete}>
           <DeleteOutlineIcon />
         </IconButton>
       )}
@@ -562,6 +566,7 @@ function UrlVideoChip(props: {
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::NoAccessChip
 function NoAccessChip(props: { fileId: string }) {
   return (
     <Sheet variant='outlined' sx={{ display: 'inline-flex', alignItems: 'center', gap: 1, px: 1.5, py: 0.5, borderRadius: 'sm' }}>
@@ -574,6 +579,7 @@ function NoAccessChip(props: { fileId: string }) {
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::BlockPartHostedResource
 export function BlockPartHostedResource(props: {
   hostedResourcePart: DMessageHostedResourcePart,
   fragmentId: DMessageFragmentId,
@@ -608,7 +614,7 @@ export function BlockPartHostedResource(props: {
   // URL-referenced media: public URL, no credentials involved
   if (resource.via === 'url')
     return (
-      <UrlVideoChip
+      <UrlVideoChip /* @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::BlockPartHostedResource.urlvideochip */
         url={resource.url}
         muted={!!muted}
         onToggleMuted={onFragmentReplace ? handleToggleMuted : undefined}
@@ -619,7 +625,7 @@ export function BlockPartHostedResource(props: {
 
   if (resource.via === 'anthropic' && antAccess)
     return (
-      <AnthropicFileChip
+      <AnthropicFileChip /* @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::BlockPartHostedResource.anthropicfilechip */
         access={antAccess}
         fileId={resource.fileId}
         contentScaling={props.contentScaling}
@@ -630,7 +636,7 @@ export function BlockPartHostedResource(props: {
 
   if (resource.via === 'openai-container' && oaiAccess)
     return (
-      <OpenAIContainerFileChip
+      <OpenAIContainerFileChip /* @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::BlockPartHostedResource.openaicontainerfilechip */
         access={oaiAccess}
         containerId={resource.containerId}
         fileId={resource.fileId}
@@ -642,7 +648,7 @@ export function BlockPartHostedResource(props: {
 
   if (resource.via === 'gemini-file' && gemAccess)
     return (
-      <GeminiFileChip
+      <GeminiFileChip /* @uxid src/apps/chat/components/message/fragments-content/BlockPartHostedResource::BlockPartHostedResource.geminifilechip */
         access={gemAccess}
         fileName={resource.fileName}
         mimeType={resource.mimeType}

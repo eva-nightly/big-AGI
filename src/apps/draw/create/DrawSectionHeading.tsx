@@ -8,6 +8,7 @@ import FormatPaintTwoToneIcon from '@mui/icons-material/FormatPaintTwoTone';
 import { animationShadowRingLimey } from '~/common/util/animUtils';
 
 
+// @uxid src/apps/draw/create/DrawSectionHeading::DrawSectionHeading
 export function DrawSectionHeading(props: {
   title: React.ReactNode;
   isBeta?: boolean,
@@ -91,7 +92,7 @@ export function DrawSectionHeading(props: {
 
         {/* Close button */}
         {!!props.onRemoveHeading && (
-          <IconButton
+          <IconButton /* @uxid src/apps/draw/create/DrawSectionHeading::DrawSectionHeading.iconbutton */
             variant='plain'
             color='neutral'
             onClick={props.onRemoveHeading}

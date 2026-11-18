@@ -25,6 +25,7 @@ const StyledSheet = styled(Sheet, { name: 'StyledSheet' })({
 
 
 // This is the PageBar and the MobileAppNav and DesktopNav
+// @uxid src/common/layout/optima/InvertedBar::InvertedBar
 export const InvertedBar = (props: {
   id?: string,
   component: React.ElementType,
@@ -57,7 +58,7 @@ export const InvertedBar = (props: {
 
 
   return (
-    <StyledSheet
+    <StyledSheet /* @uxid src/common/layout/optima/InvertedBar::InvertedBar.styledsheet */
       id={props.id}
       component={props.component}
       variant={isDark ? 'soft' : 'solid'}

@@ -68,6 +68,7 @@ const _styles = {
 /**
  * This can be plugged to the Drawer or Panel, to have nav items on Mobile.
  */
+// @uxid src/common/layout/optima/nav/MobileNavItems::MobileNavItems
 export function MobileNavItems(props: { currentApp?: NavItemApp }) {
 
   // group apps into visible (rendered as of now) and overflow (rendered with a dropdown menu)
@@ -105,7 +106,7 @@ export function MobileNavItems(props: { currentApp?: NavItemApp }) {
         {visibleApps.map((app) => {
           const isActive = app === props.currentApp;
           return (
-            <Button
+            <Button /* @uxid src/common/layout/optima/nav/MobileNavItems::MobileNavItems.button */
               key={'app-' + (app.mobileName || app.name)}
               aria-selected={isActive}
               size='sm'
@@ -125,7 +126,7 @@ export function MobileNavItems(props: { currentApp?: NavItemApp }) {
 
       {/* Group 2: Modals & Social Links */}
       <Box sx={_styles.linksGroup}>
-        <Button
+        <Button /* @uxid src/common/layout/optima/nav/MobileNavItems::MobileNavItems.button-2 */
           size='sm'
           color='neutral'
           aria-selected={props.currentApp?.route === '/news'}
@@ -137,7 +138,7 @@ export function MobileNavItems(props: { currentApp?: NavItemApp }) {
         </Button>
 
         {/* HARDCODED: Models */}
-        <Button
+        <Button /* @uxid src/common/layout/optima/nav/MobileNavItems::MobileNavItems.button-3 */
           size='sm'
           color='neutral'
           variant='plain'

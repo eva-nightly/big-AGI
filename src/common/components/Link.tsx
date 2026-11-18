@@ -22,6 +22,7 @@ type LinkProps = {
 
 // A styled version of the Next.js Link component:
 // https://nextjs.org/docs/api-reference/next/link
+// @uxid src/common/components/Link::Link
 export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(function Link(props, ref) {
   const {
     activeClassName = 'active',
@@ -47,8 +48,8 @@ export const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(function Link
   const isExternal = typeof href === 'string' && (href.startsWith('http') || href.startsWith('mailto:'));
   if (isExternal)
     return noLinkStyle
-      ? <ExternalAnchor className={className} href={href} ref={ref} {...other} />
-      : <MuiLink className={className} href={href} ref={ref} {...other} />;
+      ? <ExternalAnchor /* @uxid src/common/components/Link::Link.externalanchor */ className={className} href={href} ref={ref} {...other} />
+      : <MuiLink /* @uxid src/common/components/Link::Link.muilink */ className={className} href={href} ref={ref} {...other} />;
 
   const nextjsProps = {
     href,

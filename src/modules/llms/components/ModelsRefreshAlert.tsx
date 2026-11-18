@@ -14,11 +14,12 @@ import { llmsRefreshAllServices, useModelsRefreshBatchStore, useModelsRefreshSum
 
 
 /** Starts the refresh session of every eligible service; disabled with a spinner while one runs. */
+// @uxid src/modules/llms/components/ModelsRefreshAlert::ModelsRefreshIconButton
 export function ModelsRefreshIconButton(props: { sx?: SxProps }) {
   const isRunning = useModelsRefreshBatchStore(state => state.runningAt !== null);
   return (
     <TooltipOutlined title='Update the models of all services'>
-      <IconButton variant='outlined' disabled={isRunning} onClick={() => void llmsRefreshAllServices('app-settings')} aria-label='Update all models' sx={props.sx}>
+      <IconButton /* @uxid src/modules/llms/components/ModelsRefreshAlert::ModelsRefreshIconButton.iconbutton */ variant='outlined' disabled={isRunning} onClick={() => void llmsRefreshAllServices('app-settings')} aria-label='Update all models' sx={props.sx}>
         {isRunning ? <CircularProgress size='sm' /> : <RefreshIcon />}
       </IconButton>
     </TooltipOutlined>
@@ -29,6 +30,7 @@ export function ModelsRefreshIconButton(props: { sx?: SxProps }) {
  * One-line status of the refresh session, while it runs and after it ends (until something newer is logged).
  * Clicking opens the AI Models dialog on the Updates screen.
  */
+// @uxid src/modules/llms/components/ModelsRefreshAlert::ModelsRefreshAlert
 export function ModelsRefreshAlert() {
 
   const summary = useModelsRefreshSummary();
@@ -52,7 +54,7 @@ export function ModelsRefreshAlert() {
   const color = !running && summary.failed ? 'warning' : 'primary';
 
   return (
-    <Alert
+    <Alert /* @uxid src/modules/llms/components/ModelsRefreshAlert::ModelsRefreshAlert.alert */
       tabIndex={0}
       color={color}
       startDecorator={running ? <CircularProgress size='sm' sx={{ '--CircularProgress-size': '20px', '--CircularProgress-thickness': '2px' }} /> : summary.failed ? <WarningRoundedIcon /> : <CheckRoundedIcon />}
