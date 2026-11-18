@@ -15,6 +15,7 @@ const _selectSx = { minWidth: '10rem' } as const;
 const _selectSlotProps = { button: { sx: { whiteSpace: 'inherit' } } } as const;
 
 
+// @uxid src/modules/t2i/gemini/GeminiT2ISettings::GeminiT2ISettings
 export function GeminiT2ISettings(props: {
   profile: DProfileGeminiImages;
   serviceId: DModelsServiceId | null;
@@ -38,7 +39,7 @@ export function GeminiT2ISettings(props: {
 
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
       <FormLabelStart title='Model' description={profile.imageModelRef ? undefined : resolved.label} />
-      <Select
+      <Select /* @uxid src/modules/t2i/gemini/GeminiT2ISettings::GeminiT2ISettings.select */
         value={profile.imageModelRef && profile.imageModelRef === resolved.modelRef ? profile.imageModelRef : _AUTO /* gone from the service: Auto */}
         onChange={(_event, value) => value && onUpdateProfile({ imageModelRef: value === _AUTO ? null : value })}
         slotProps={_selectSlotProps}
@@ -57,7 +58,7 @@ export function GeminiT2ISettings(props: {
     {resolved.aspectRatios.length > 0 && (
       <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
         <FormLabelStart title='Aspect Ratio' />
-        <Select
+        <Select /* @uxid src/modules/t2i/gemini/GeminiT2ISettings::GeminiT2ISettings.select-2 */
           value={aspectRatio}
           onChange={(_event, value) => value && onUpdateProfile({ aspectRatio: value === _AUTO ? undefined : value })}
           slotProps={_selectSlotProps}
@@ -74,7 +75,7 @@ export function GeminiT2ISettings(props: {
     {resolved.imageSizes.length > 1 && (
       <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
         <FormLabelStart title='Size' />
-        <Select
+        <Select /* @uxid src/modules/t2i/gemini/GeminiT2ISettings::GeminiT2ISettings.select-3 */
           value={imageSize}
           onChange={(_event, value) => value && onUpdateProfile({ imageSize: value === _AUTO ? undefined : value })}
           slotProps={_selectSlotProps}
@@ -91,7 +92,7 @@ export function GeminiT2ISettings(props: {
     {/* footer: 'Reset to defaults' when off-default - same chrome as the DALL-E/ASRx/Speex panels */}
     {hasUserParameters && (
       <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <Link component='button' color='neutral' level='body-xs' onClick={handleResetParameters}>
+        <Link /* @uxid src/modules/t2i/gemini/GeminiT2ISettings::GeminiT2ISettings.link */ component='button' color='neutral' level='body-xs' onClick={handleResetParameters}>
           Reset to defaults ...
         </Link>
       </Box>

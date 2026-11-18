@@ -27,6 +27,7 @@ import { speexFindVendor } from '../speex.vendors-registry';
 import { speexVendorTypeLabel } from './SpeexEngineSelect';
 
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::CredentialsApiKeyInputs
 function CredentialsApiKeyInputs({ credentials, onUpdate, vendorType, showHost, hostRequired, hostPlaceholder, keyPlaceholder }: {
   credentials: DCredentialsApiKey;
   onUpdate: (credentials: DCredentialsApiKey) => void;
@@ -38,7 +39,7 @@ function CredentialsApiKeyInputs({ credentials, onUpdate, vendorType, showHost, 
 }) {
   return <>
 
-    <FormSecretField
+    <FormSecretField /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::CredentialsApiKeyInputs.formsecretfield */
       autoCompleteId={`tts-${vendorType}-key`}
       title='API Key'
       description={hostRequired ? 'Optional' : speexVendorTypeLabel(vendorType)}
@@ -52,7 +53,7 @@ function CredentialsApiKeyInputs({ credentials, onUpdate, vendorType, showHost, 
     />
 
     {showHost && (
-      <FormTextField
+      <FormTextField /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::CredentialsApiKeyInputs.formtextfield */
         autoCompleteId={`speex-${vendorType}-host`}
         title='API Host'
         description={hostRequired ? 'Required' : 'Optional'}
@@ -67,6 +68,7 @@ function CredentialsApiKeyInputs({ credentials, onUpdate, vendorType, showHost, 
 }
 
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::PreviewButton
 function PreviewButton({ engineId }: { engineId: DSpeexEngineAny['engineId'] }) {
 
   // async + cache
@@ -88,7 +90,7 @@ function PreviewButton({ engineId }: { engineId: DSpeexEngineAny['engineId'] }) 
 
   return (
     <TooltipOutlined color='danger' title={error?.message ? <div style={{ whiteSpace: 'pre-wrap' }}>{error.message}</div> : false}>
-      <Button
+      <Button /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::PreviewButton.button */
         variant={isFetching ? 'soft' : 'outlined'}
         color={isError ? 'danger' : isFetching ? 'primary' : 'neutral'}
         size='sm'
@@ -130,6 +132,7 @@ const _styles = {
 // the Auto model by vendor - undefined for vendors without a model catalog (LocalAI, Web Speech)
 const _SPEEX_AUTO_MODEL_BY_VENDOR: Partial<Record<DSpeexVendorType, string>> = SPEEX_AUTO_MODELS;
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull
 export function SpeexConfigureEngineFull(props: {
   engine: DSpeexEngineAny;
   isMobile: boolean;
@@ -204,17 +207,17 @@ export function SpeexConfigureEngineFull(props: {
         <Box sx={_styles.sectionBody}>
 
           {engine.vendorType === 'elevenlabs' ? (
-            <ElevenLabsConfig engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
+            <ElevenLabsConfig /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull.elevenlabsconfig */ engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
           ) : engine.vendorType === 'gemini' ? (
-            <GeminiConfig engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
+            <GeminiConfig /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull.geminiconfig */ engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
           ) : engine.vendorType === 'inworld' ? (
-            <InworldConfig engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
+            <InworldConfig /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull.inworldconfig */ engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
           ) : engine.vendorType === 'localai' ? (
-            <LocalAIConfig engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
+            <LocalAIConfig /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull.localaiconfig */ engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
           ) : engine.vendorType === 'openai' ? (
-            <OpenAIConfig engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
+            <OpenAIConfig /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull.openaiconfig */ engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
           ) : engine.vendorType === 'webspeech' ? (
-            <WebSpeechConfig engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
+            <WebSpeechConfig /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull.webspeechconfig */ engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
           ) : (
             <Typography level='body-sm' color='warning'>Unknown engine type {(engine as any)?.vendorType}</Typography>
           )}
@@ -222,7 +225,7 @@ export function SpeexConfigureEngineFull(props: {
           {/* 'Reset to defaults' left when off-default, Preview of the configured voice right */}
           <Box sx={_styles.bottomRow}>
             {hasUserParameters && (
-              <Link component='button' color='neutral' level='body-xs' onClick={handleResetParameters}>
+              <Link /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull.link */ component='button' color='neutral' level='body-xs' onClick={handleResetParameters}>
                 Reset to defaults ...
               </Link>
             )}
@@ -257,7 +260,7 @@ export function SpeexConfigureEngineFull(props: {
           )}
 
           {manualCredentials && (
-            <CredentialsApiKeyInputs
+            <CredentialsApiKeyInputs /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull.credentialsapikeyinputs */
               credentials={manualCredentials}
               onUpdate={handleCredentialsUpdate}
               vendorType={engine.vendorType}
@@ -276,7 +279,7 @@ export function SpeexConfigureEngineFull(props: {
           {/* Advanced toggle (manual only, vendors with an optional host) */}
           {hasAdvancedHost && (
             <Box sx={_styles.bottomRow}>
-              <Typography
+              <Typography /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::SpeexConfigureEngineFull.typography */
                 level='body-xs'
                 onClick={advanced.toggle}
                 sx={_styles.advancedToggle}
@@ -303,6 +306,7 @@ const _ELEVENLABS_LABELS: FormChipModelLabels<typeof SPEEX_MODELS.elevenlabs[num
   'eleven_v3': { label: 'v3', description: 'Newest' },
 };
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::ElevenLabsConfig
 function ElevenLabsConfig({ engine, onUpdate, isMobile }: {
   engine: DSpeexEngine<'elevenlabs'>,
   onUpdate: (updates: Partial<DSpeexEngine<'elevenlabs'>>) => void;
@@ -323,7 +327,7 @@ function ElevenLabsConfig({ engine, onUpdate, isMobile }: {
 
   return <>
 
-    <FormChipModelControl
+    <FormChipModelControl /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::ElevenLabsConfig.formchipmodelcontrol */
       catalog={SPEEX_MODELS.elevenlabs}
       labels={_ELEVENLABS_LABELS}
       autoModel={SPEEX_AUTO_MODELS.elevenlabs}
@@ -333,7 +337,7 @@ function ElevenLabsConfig({ engine, onUpdate, isMobile }: {
 
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center', overflow: 'hidden' }}>
       <FormLabelStart title='Voice' description={isMobile ? undefined : 'ElevenLabs voice'} />
-      <SpeexVoiceSelect
+      <SpeexVoiceSelect /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::ElevenLabsConfig.speexvoiceselect */
         autoPreview
         engine={engine}
         voiceId={voice.ttsVoiceId ?? null}
@@ -350,6 +354,7 @@ const _GEMINI_TTS_LABELS: FormChipModelLabels<typeof SPEEX_MODELS.gemini[number]
   'gemini-3.8-flash-lite-tts': { label: '3.8 Flash-Lite', description: 'Fast' },
 };
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::GeminiConfig
 function GeminiConfig({ engine, onUpdate, isMobile }: {
   engine: DSpeexEngine<'gemini'>,
   onUpdate: (updates: Partial<DSpeexEngine<'gemini'>>) => void;
@@ -370,7 +375,7 @@ function GeminiConfig({ engine, onUpdate, isMobile }: {
 
   return <>
 
-    <FormChipModelControl
+    <FormChipModelControl /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::GeminiConfig.formchipmodelcontrol */
       catalog={SPEEX_MODELS.gemini}
       labels={_GEMINI_TTS_LABELS}
       autoModel={SPEEX_AUTO_MODELS.gemini}
@@ -381,7 +386,7 @@ function GeminiConfig({ engine, onUpdate, isMobile }: {
     {/* Voice: searchable - the Voice Library has 2000+ entries */}
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center', overflow: 'hidden' }}>
       <FormLabelStart title='Voice' description={isMobile ? undefined : 'Name or locale'} />
-      <SpeexVoiceAutocomplete
+      <SpeexVoiceAutocomplete /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::GeminiConfig.speexvoiceautocomplete */
         engine={engine}
         value={voice.ttsVoiceId}
         onValueChange={handleVoiceChange}
@@ -398,6 +403,7 @@ const _INWORLD_LABELS: FormChipModelLabels<typeof SPEEX_MODELS.inworld[number]> 
   'inworld-tts-1.5-mini': { label: 'TTS 1.5 Mini', description: 'Fast' },
 };
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::InworldConfig
 function InworldConfig({ engine, onUpdate, isMobile }: {
   engine: DSpeexEngine<'inworld'>,
   onUpdate: (updates: Partial<DSpeexEngine<'inworld'>>) => void;
@@ -422,7 +428,7 @@ function InworldConfig({ engine, onUpdate, isMobile }: {
 
   return <>
 
-    <FormChipModelControl
+    <FormChipModelControl /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::InworldConfig.formchipmodelcontrol */
       catalog={SPEEX_MODELS.inworld}
       labels={_INWORLD_LABELS}
       autoModel={SPEEX_AUTO_MODELS.inworld}
@@ -432,7 +438,7 @@ function InworldConfig({ engine, onUpdate, isMobile }: {
 
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center', overflow: 'hidden' }}>
       <FormLabelStart title='Voice' description={isMobile ? undefined : 'Inworld voice'} />
-      <SpeexVoiceSelect
+      <SpeexVoiceSelect /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::InworldConfig.speexvoiceselect */
         autoPreview
         engine={engine}
         voiceId={voice.ttsVoiceId ?? null}
@@ -440,7 +446,7 @@ function InworldConfig({ engine, onUpdate, isMobile }: {
       />
     </FormControl>
 
-    <FormSliderControl
+    <FormSliderControl /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::InworldConfig.formslidercontrol */
       title='Speed'
       description={`${voice.ttsSpeakingRate ?? 1}x`}
       min={0.5}
@@ -456,6 +462,7 @@ function InworldConfig({ engine, onUpdate, isMobile }: {
 }
 
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::LocalAIConfig
 function LocalAIConfig({ engine, onUpdate, isMobile }: {
   engine: DSpeexEngine<'localai'>,
   onUpdate: (updates: Partial<DSpeexEngine<'localai'>>) => void;
@@ -478,7 +485,7 @@ function LocalAIConfig({ engine, onUpdate, isMobile }: {
     {/* Model: autocomplete with suggestions + free-form input */}
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center', overflow: 'hidden' }}>
       <FormLabelStart title='Model' description={isMobile ? undefined : 'Select or type'} />
-      <SpeexVoiceAutocomplete
+      <SpeexVoiceAutocomplete /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::LocalAIConfig.speexvoiceautocomplete */
         engine={engine}
         value={voice.ttsModel}
         onValueChange={handleModelChange}
@@ -486,7 +493,7 @@ function LocalAIConfig({ engine, onUpdate, isMobile }: {
       />
     </FormControl>
 
-    <FormTextField
+    <FormTextField /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::LocalAIConfig.formtextfield */
       autoCompleteId='speex-localai-backend'
       title='Backend'
       description='Optional'
@@ -506,6 +513,7 @@ const _OPENAI_TTS_LABELS: FormChipModelLabels<typeof SPEEX_MODELS.openai[number]
   'tts-1-hd': { label: 'TTS-1-HD', description: 'Quality' },
 };
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::OpenAIConfig
 function OpenAIConfig({ engine, onUpdate, isMobile }: {
   engine: DSpeexEngine<'openai'>,
   onUpdate: (updates: Partial<DSpeexEngineAny>) => void;
@@ -533,7 +541,7 @@ function OpenAIConfig({ engine, onUpdate, isMobile }: {
 
   return <>
 
-    <FormChipModelControl
+    <FormChipModelControl /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::OpenAIConfig.formchipmodelcontrol */
       catalog={SPEEX_MODELS.openai}
       labels={_OPENAI_TTS_LABELS}
       autoModel={SPEEX_AUTO_MODELS.openai}
@@ -543,7 +551,7 @@ function OpenAIConfig({ engine, onUpdate, isMobile }: {
 
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center', overflow: 'hidden' }}>
       <FormLabelStart title='Voice' description={isMobile ? undefined : 'OpenAI TTS voice'} />
-      <SpeexVoiceSelect
+      <SpeexVoiceSelect /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::OpenAIConfig.speexvoiceselect */
         engine={engine}
         voiceId={voice.ttsVoiceId ?? null}
         onVoiceChange={handleVoiceChange}
@@ -551,7 +559,7 @@ function OpenAIConfig({ engine, onUpdate, isMobile }: {
     </FormControl>
 
 
-    <FormSliderControl
+    <FormSliderControl /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::OpenAIConfig.formslidercontrol */
       title='Speed'
       description={`${voice.ttsSpeed ?? 1}x`}
       min={0.5}
@@ -564,7 +572,7 @@ function OpenAIConfig({ engine, onUpdate, isMobile }: {
     />
 
     {effectiveModel === 'gpt-4o-mini-tts' && (
-      <FormTextField
+      <FormTextField /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::OpenAIConfig.formtextfield */
         autoCompleteId='speex-openai-instruction'
         title='Instruction'
         description={isMobile ? undefined : '4o Mini only'}
@@ -579,6 +587,7 @@ function OpenAIConfig({ engine, onUpdate, isMobile }: {
 }
 
 
+// @uxid src/modules/speex/components/SpeexConfigureEngineFull::WebSpeechConfig
 function WebSpeechConfig({ engine, onUpdate, isMobile }: {
   engine: DSpeexEngine<'webspeech'>
   onUpdate: (updates: Partial<DSpeexEngine<'webspeech'>>) => void;
@@ -609,14 +618,14 @@ function WebSpeechConfig({ engine, onUpdate, isMobile }: {
 
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center', overflow: 'hidden' }}>
       <FormLabelStart title='Voice' description={isMobile ? undefined : 'System voice'} />
-      <SpeexVoiceSelect
+      <SpeexVoiceSelect /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::WebSpeechConfig.speexvoiceselect */
         engine={engine}
         voiceId={voice.ttsVoiceURI ?? null}
         onVoiceChange={handleVoiceChange}
       />
     </FormControl>
 
-    <FormSliderControl
+    <FormSliderControl /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::WebSpeechConfig.formslidercontrol */
       title='Speed'
       description={`${(voice.ttsSpeed ?? 1).toFixed(1)}x`}
       min={0.5}
@@ -628,7 +637,7 @@ function WebSpeechConfig({ engine, onUpdate, isMobile }: {
       sliderSx={{ maxWidth: 220, my: -0.5 }}
     />
 
-    <FormSliderControl
+    <FormSliderControl /* @uxid src/modules/speex/components/SpeexConfigureEngineFull::WebSpeechConfig.formslidercontrol-2 */
       title='Pitch'
       description={`${(voice.ttsPitch ?? 1).toFixed(1)}`}
       min={0.5}

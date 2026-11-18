@@ -27,6 +27,7 @@ const _style = {
  * - undefined: input disabled, X button pressed (soft) - input shows empty
  * - number: input active, X button flat (plain) - pressing X clears to undefined
  */
+// @uxid src/common/components/forms/FormNumberInput::FormNumberInput
 export function FormNumberInput(props: {
   title: string,
   description?: string,
@@ -63,7 +64,7 @@ export function FormNumberInput(props: {
     <FormControl size={props.size} disabled={props.disabled} orientation='horizontal' sx={_style.control}>
       <FormLabelStart title={props.title} description={props.description} tooltip={props.tooltip} />
       <Box sx={_style.inputRow}>
-        <Input
+        <Input /* @uxid src/common/components/forms/FormNumberInput::FormNumberInput.input */
           type='number'
           size={props.size}
           variant={isSet ? 'outlined' : 'plain'}
@@ -80,7 +81,7 @@ export function FormNumberInput(props: {
           sx={props.inputSx}
         />
         <Tooltip arrow disableInteractive title={isSet ? 'Reset to default' : 'Customize'}>
-          <IconButton
+          <IconButton /* @uxid src/common/components/forms/FormNumberInput::FormNumberInput.iconbutton */
             size={props.size}
             variant={isSet ? 'plain' : 'soft'}
             onClick={handleToggle}

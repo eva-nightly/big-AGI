@@ -88,6 +88,7 @@ function prettyPricingComponent(pricingChatGenerate: DPricingChatGenerate): Reac
 }
 
 
+// @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal
 export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsContext, onClose: () => void }) {
 
   // external state
@@ -252,7 +253,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
 
   const hasUserParameters = llm.userParameters && Object.keys(llm.userParameters).length > 0;
   const resetButton = !hasUserParameters ? null : (
-    <Chip
+    <Chip /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.chip */
       variant='soft'
       onClick={handleResetParameters}
       sx={{
@@ -286,21 +287,21 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
 
   return (
 
-    <GoodModal
+    <GoodModal /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.goodmodal */
       autoOverflow
       // strongerTitle
       title={
         <Box sx={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: { xs: 1, md: 3 } }}>
 
           {/* Star + Model Name */}
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 0, md: 1 } }} onClick={event => event.shiftKey && console.log({ llm })}>
+          <Box /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.box */ sx={{ display: 'flex', alignItems: 'center', gap: { xs: 0, md: 1 } }} onClick={event => event.shiftKey && console.log({ llm })}>
             {ENABLE_STARRING_ICON && <TooltipOutlined title={llm.userStarred ? 'Unstar this model' : 'Star this model for quick access'}>
-              <IconButton size='sm' onClick={handleLlmStarredToggle} sx={{ ml: -0.5 }}>
+              <IconButton /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.iconbutton */ size='sm' onClick={handleLlmStarredToggle} sx={{ ml: -0.5 }}>
                 <StarredState isStarred={!!llm.userStarred} />
               </IconButton>
             </TooltipOutlined>}
             {ENABLE_HIDING_ICON && <TooltipOutlined title={visible ? 'Show this model in the app' : 'Hide this model from the app'}>
-              <IconButton size='sm' onClick={handleLlmVisibilityToggle} sx={{ ml: -0.5 }}>
+              <IconButton /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.iconbutton-2 */ size='sm' onClick={handleLlmVisibilityToggle} sx={{ ml: -0.5 }}>
                 {visible ? <VisibilityIcon sx={{ fontSize: 'xl' }} /> : <VisibilityOffIcon />}
               </IconButton>
             </TooltipOutlined>}
@@ -323,7 +324,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
 
             {/* -> Models Service */}
             {modelService && <>
-              <MenuItem onClick={handleGoToService}>
+              <MenuItem /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.menuitem */ onClick={handleGoToService}>
                 <ListItemDecorator><LLMVendorIconSprite vendorId={llm.vId} /></ListItemDecorator>
                 {modelService.label}
                 <ArrowForwardRoundedIcon sx={{ ml: 'auto' }} />
@@ -332,7 +333,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
             </>}
 
             {/* Reset to Defaults */}
-            <MenuItem disabled={!hasUserParameters} onClick={handleResetParameters}>
+            <MenuItem /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.menuitem-2 */ disabled={!hasUserParameters} onClick={handleResetParameters}>
               <ListItemDecorator><RestoreIcon /></ListItemDecorator>
               Reset Parameters
             </MenuItem>
@@ -340,7 +341,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
             <ListDivider />
 
             {/* Duplicate Model */}
-            <MenuItem onClick={() => setCloneDialogOpen(true)}>
+            <MenuItem /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.menuitem-3 */ onClick={() => setCloneDialogOpen(true)}>
               <ListItemDecorator><AddRoundedIcon /></ListItemDecorator>
               Duplicate Model ...
             </MenuItem>
@@ -348,11 +349,11 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
             <ListDivider />
 
             {/*View toggles */}
-            <MenuItem onClick={() => setShowDetails(!showDetails)}>
+            <MenuItem /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.menuitem-4 */ onClick={() => setShowDetails(!showDetails)}>
               <ListItemDecorator><Checkbox color='neutral' checked={showDetails} /></ListItemDecorator>
               Show Details
             </MenuItem>
-            <MenuItem onClick={() => setshowOverrides(!showOverrides)}>
+            <MenuItem /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.menuitem-5 */ onClick={() => setshowOverrides(!showOverrides)}>
               <ListItemDecorator><Checkbox color='neutral' checked={showOverrides} /></ListItemDecorator>
               Show Overrides
             </MenuItem>
@@ -360,7 +361,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
             <ListDivider />
 
             {/*  Delete */}
-            <MenuItem color='danger' onClick={handleLlmDelete}>
+            <MenuItem /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.menuitem-6 */ color='danger' onClick={handleLlmDelete}>
               <ListItemDecorator><DeleteOutlineIcon /></ListItemDecorator>
               Delete
             </MenuItem>
@@ -381,7 +382,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
         <Typography level='body-sm' sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
           ➕ Cloned from:{' '}
           {cloneSourceLlm
-            ? <Link component='button' onClick={handleGoToCloneSource}>{getLLMLabel(cloneSourceLlm)}</Link>
+            ? <Link /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.link */ component='button' onClick={handleGoToCloneSource}>{getLLMLabel(cloneSourceLlm)}</Link>
             : <Typography component='span' sx={{ color: 'text.tertiary' }}>{llm.cloneSourceId} (not found)</Typography>
           }
         </Typography>
@@ -399,7 +400,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
           <Grid xs={12} md={8}>
             <FormControl orientation='horizontal' sx={{ flexWrap: 'wrap', alignItems: 'center' }}>
               <FormLabelStart title='Name' sx={{ minWidth: 80 }} />
-              <Input variant='outlined' placeholder={llm.label} value={llm.userLabel ?? ''} onChange={handleLlmLabelSet} />
+              <Input /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.input */ variant='outlined' placeholder={llm.label} value={llm.userLabel ?? ''} onChange={handleLlmLabelSet} />
             </FormControl>
           </Grid>
 
@@ -407,7 +408,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
             {!ENABLE_HIDING_ICON && <FormControl orientation='horizontal' sx={{ flexWrap: 'wrap', alignItems: 'center' }}>
               <FormLabelStart title='Visible' sx={{ minWidth: 80 }} />
               <Tooltip title={visible ? 'Show this model in the list of Chat models' : 'Hide this model from the list of Chat models'}>
-                <Switch checked={visible} onChange={handleLlmVisibilityToggle}
+                <Switch /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.switch */ checked={visible} onChange={handleLlmVisibilityToggle}
                         endDecorator={visible ? <VisibilityIcon /> : <VisibilityOffIcon />}
                         slotProps={{ endDecorator: { sx: { minWidth: 26 } } }} />
               </Tooltip>
@@ -427,7 +428,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
               return (
                 // Note: use Tooltip instead of GoodTooltip here, because GoodTooltip is not working well with ButtonGroup
                 <Tooltip arrow placement='top' key={domainId} title={isActive && isAuto ? `${domainSpec.confTooltip} (currently Auto - click to pin this model)` : domainSpec.confTooltip}>
-                  <Button
+                  <Button /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.button */
                     variant={!isActive ? undefined : isAuto ? 'outlined' : 'solid'}
                     onClick={() => {
                       // not active OR active-via-Auto -> pin (materialize); active-and-pinned -> back to Auto
@@ -447,7 +448,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
         {!ENABLE_STARRING_ICON && <FormControl orientation='horizontal' sx={{ flexWrap: 'wrap', alignItems: 'center' }}>
           <FormLabelStart title='Starred' sx={{ minWidth: 80 }} />
           <Tooltip title={llm.userStarred ? 'Unstar this model' : 'Star this model for quick access'}>
-            <Switch checked={!!llm.userStarred} onChange={handleLlmStarredToggle}
+            <Switch /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.switch-2 */ checked={!!llm.userStarred} onChange={handleLlmStarredToggle}
                     endDecorator={<StarredState isStarred={!!llm.userStarred} />}
                     slotProps={{ endDecorator: { sx: { minWidth: 26 } } }}
             />
@@ -458,19 +459,19 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
         {!!llm.isUserClone && <Box sx={{ display: 'flex' }}>
           <FormLabelStart title='Special' description='ADVANCED' tooltip='Change special technical parameters, only available on cloned models.' sx={{ minWidth: 96 }} />
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3 }}>
-            <Switch
+            <Switch /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.switch-3 */
               size='sm'
               checked={!llm.interfaces.includes(LLM_IF_HOTFIX_NoTemperature)}
               onChange={(e) => handleInterfaceToggle(LLM_IF_HOTFIX_NoTemperature, !e.target.checked)}
               endDecorator={<Typography level='body-sm'>🌡️ Temperature</Typography>}
             />
-            <Switch
+            <Switch /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.switch-4 */
               size='sm'
               checked={!llm.interfaces.includes(LLM_IF_HOTFIX_NoStream)}
               onChange={(e) => handleInterfaceToggle(LLM_IF_HOTFIX_NoStream, !e.target.checked)}
               endDecorator={<Typography level='body-sm'>Streaming</Typography>}
             />
-            <Switch
+            <Switch /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.switch-5 */
               size='sm'
               checked={llm.interfaces.includes(LLM_IF_OAI_Reasoning)}
               onChange={(e) => handleInterfaceToggle(LLM_IF_OAI_Reasoning, e.target.checked)}
@@ -486,7 +487,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
 
       {showDetails && <FormControl orientation='horizontal' sx={{ flexWrap: 'nowrap', gap: 1 }}>
 
-        <Link
+        <Link /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.link-2 */
           component='button'
           color='neutral'
           level='title-sm'
@@ -534,7 +535,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
         <Grid xs={12} md={6}>
           <FormControl orientation='horizontal' sx={{ flexWrap: 'wrap', alignItems: 'center' }}>
             <FormLabelStart title='Context Window' description='Tokens Override' sx={{ minWidth: 120 }} />
-            <Input
+            <Input /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.input-2 */
               type='number'
               variant='outlined'
               placeholder={
@@ -544,7 +545,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
               value={llm.userContextTokens ?? ''}
               onChange={handleContextTokensChange}
               endDecorator={llm.userContextTokens !== undefined && (
-                <Button size='sm' variant='plain' onClick={handleContextTokensReset}>Reset</Button>
+                <Button /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.button-2 */ size='sm' variant='plain' onClick={handleContextTokensReset}>Reset</Button>
               )}
               slotProps={{ input: { min: 1 } }}
               sx={{ flex: 1 }}
@@ -555,7 +556,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
         <Grid xs={12} md={6}>
           <FormControl orientation='horizontal' sx={{ flexWrap: 'wrap', alignItems: 'center' }}>
             <FormLabelStart title='Max Output' description='Tokens Override' sx={{ minWidth: 120 }} />
-            <Input
+            <Input /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.input-3 */
               type='number'
               variant='outlined'
               placeholder={
@@ -566,7 +567,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
               onChange={handleMaxOutputTokensChange}
               slotProps={{ input: { min: 1 } }}
               endDecorator={llm.userMaxOutputTokens !== undefined && (
-                <Button size='sm' variant='plain' onClick={handleMaxOutputTokensReset}>Reset</Button>
+                <Button /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.button-3 */ size='sm' variant='plain' onClick={handleMaxOutputTokensReset}>Reset</Button>
               )}
               sx={{ flex: 1 }}
             />
@@ -582,7 +583,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
         <Grid xs={12} md={6}>
           <FormControl orientation='horizontal' sx={{ flexWrap: 'wrap', alignItems: 'center' }}>
             <FormLabelStart title='Input Price' description='$/M Override' sx={{ minWidth: 120 }} />
-            <Input
+            <Input /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.input-4 */
               type='number'
               variant='outlined'
               placeholder={
@@ -594,7 +595,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
               }
               onChange={handleInputPriceChange}
               endDecorator={llm.userPricing?.chat?.input !== undefined && (
-                <Button size='sm' variant='plain' onClick={handleInputPriceReset}>Reset</Button>
+                <Button /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.button-4 */ size='sm' variant='plain' onClick={handleInputPriceReset}>Reset</Button>
               )}
               slotProps={{ input: { min: 0, step: 0.01 } }}
               sx={{ flex: 1 }}
@@ -605,7 +606,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
         <Grid xs={12} md={6}>
           <FormControl orientation='horizontal' sx={{ flexWrap: 'wrap', alignItems: 'center' }}>
             <FormLabelStart title='Output Price' description='$/M Override' sx={{ minWidth: 120 }} />
-            <Input
+            <Input /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.input-5 */
               type='number'
               variant='outlined'
               placeholder={
@@ -618,7 +619,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
               onChange={handleOutputPriceChange}
               slotProps={{ input: { min: 0, step: 0.01 } }}
               endDecorator={llm.userPricing?.chat?.output !== undefined && (
-                <Button size='sm' variant='plain' onClick={handleOutputPriceReset}>Reset</Button>
+                <Button /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.button-5 */ size='sm' variant='plain' onClick={handleOutputPriceReset}>Reset</Button>
               )}
               sx={{ flex: 1 }}
             />
@@ -628,7 +629,7 @@ export function LLMOptionsModal(props: { id: DLLMId, context?: ModelOptionsConte
 
       {/* Clone Model Dialog */}
       {cloneDialogOpen && (
-        <LLMOptionsClone
+        <LLMOptionsClone /* @uxid src/modules/llms/models-modal/LLMOptionsModal::LLMOptionsModal.llmoptionsclone */
           llmId={llm.id}
           onClose={() => setCloneDialogOpen(false)}
           onCloned={handleLlmCloned}

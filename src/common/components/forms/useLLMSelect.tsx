@@ -231,7 +231,7 @@ export function useLLMSelect(
       if (hasMultipleServices && llm.sId !== prevServiceId) {
         if (!optimizeToSingleVisibleId) {
           const serviceLabel = findModelsServiceOrNull(llm.sId)?.label || serviceVendor?.name || llm.sId;
-          acc.push(<ListItemGroupCollapser key={'SID-' + llm.sId} id={llm.sId} label={serviceLabel} isCollapsed={isServiceCollapsed} onToggleCollapse={toggleServiceCollapse} readOnly={starredOnly} />);
+          acc.push(<ListItemGroupCollapser /* @uxid src/common/components/forms/useLLMSelect::useLLMSelect.listitemgroupcollapser */ key={'SID-' + llm.sId} id={llm.sId} label={serviceLabel} isCollapsed={isServiceCollapsed} onToggleCollapse={toggleServiceCollapse} readOnly={starredOnly} />);
         }
         prevServiceId = llm.sId;
       }
@@ -285,7 +285,7 @@ export function useLLMSelect(
           {/* Settings button on active model (only when not optimized) */}
           {showModelOptions && (
             <TooltipOutlined title='Model Settings'>
-              <IconButton
+              <IconButton /* @uxid src/common/components/forms/useLLMSelect::useLLMSelect.iconbutton */
                 size='sm'
                 // color='neutral'
                 // variant='outlined'
@@ -333,7 +333,7 @@ export function useLLMSelect(
     <FormControl orientation={(isHorizontal || setLlmToAuto) ? 'horizontal' : undefined}>
       {!!label && <FormLabelStart title={label} sx={/*{ mb: '0.25rem' }*/ undefined} />}
       {/*<Box sx={{ display: 'flex', justifyContent: 'space-between' }}>*/}
-      <Select<DLLMId>
+      <Select /* @uxid src/common/components/forms/useLLMSelect::useLLMSelect.select */<DLLMId>
         color={options.color}
         variant={options.variant ?? 'outlined'}
         value={selectValue}
@@ -346,7 +346,7 @@ export function useLLMSelect(
         slotProps={listboxSlotPropsStable}
         endDecorator={setLlmToAuto ?
           <TooltipOutlined title={isLlmAuto ? 'Currently in Auto' : 'Switch to Auto'}>
-            <IconButton color={isLlmAuto ? undefined : 'primary'} variant={isLlmAuto ? undefined : 'solid'} onClick={setLlmToAuto}>
+            <IconButton /* @uxid src/common/components/forms/useLLMSelect::useLLMSelect.iconbutton-2 */ color={isLlmAuto ? undefined : 'primary'} variant={isLlmAuto ? undefined : 'solid'} onClick={setLlmToAuto}>
               <AutoModeIcon />
             </IconButton>
           </TooltipOutlined>
@@ -384,7 +384,7 @@ export function useLLMSelect(
         {/* Star Filter Toggle - shown at the top of the list only if visible */}
         {showStarFilter && hasStarred && !optimizeToSingleVisibleId && (
           <ListItem key='star-filter-toggle' sx={_styles.listFooter}>
-            <ListItemButton
+            <ListItemButton /* @uxid src/common/components/forms/useLLMSelect::useLLMSelect.listitembutton */
               variant={starredOnly ? 'soft' : 'plain'}
               onClick={useUIPreferencesStore.getState().toggleShowModelsStarredOnly}
               // sx={{ backgroundColor: 'background.surface', position: 'sticky', top: 0, zIndex: 1 }}

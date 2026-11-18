@@ -19,11 +19,13 @@ import { wrapWithMarkdownSyntax } from './markdown.wrapper';
 
 
 // DelRenderer adds a strikethrough to the text
+// @uxid src/modules/blocks/markdown/CustomMarkdownRenderer::DelRenderer
 function DelRenderer({ children }: { children: React.ReactNode }) {
   return <del className='agi-content-delete'>{children}</del>;
 }
 
 // Mark Renderer adds a yellow background to the text
+// @uxid src/modules/blocks/markdown/CustomMarkdownRenderer::MarkRenderer
 function MarkRenderer({ children }: { children: React.ReactNode }) {
   // Mark by default has a yellow background, but we want to set a custom class here, so we can style it
   return <mark className='agi-highlight'>{children}</mark>;
@@ -112,6 +114,7 @@ function preprocessMarkdown(markdownText: string) {
 }
 
 
+// @uxid src/modules/blocks/markdown/CustomMarkdownRenderer::CustomMarkdownRenderer
 export default function CustomMarkdownRenderer({ content, disablePreprocessor, userTextFlavor, onParseCost, replaceContent }: RenderMarkdownRendererProps) {
 
   const enableCustomTaskList = replaceContent !== undefined;

@@ -22,6 +22,7 @@ import { ActionFolder } from './ActionFolder';
 import { WindowSplitControls } from './WindowSplitControls';
 
 
+// @uxid src/apps/chat/components/layout-panel/ChatPanel::VariformPaneFrame
 function VariformPaneFrame() {
   return (
     <OptimaPanelGroupGutter>
@@ -35,6 +36,7 @@ function VariformPaneFrame() {
 
 export const ChatPanelMemo = React.memo(ChatPanel);
 
+// @uxid src/apps/chat/components/layout-panel/ChatPanel::ChatPanel
 function ChatPanel(props: {
   isMobile: boolean,
   conversationId: DConversationId | null,
@@ -111,7 +113,7 @@ function ChatPanel(props: {
           {/* [PROD] Not comfortable with Archive yet, so let's just give the option to 'unarchive' chats, and have that as the alternative to the Folder button */}
           {isArchived ? (
             // Archive / Unarchive button
-            <MenuItem disabled={disableActions} onClick={handleToggleArchive}>
+            <MenuItem /* @uxid src/apps/chat/components/layout-panel/ChatPanel::ChatPanel.menuitem */ disabled={disableActions} onClick={handleToggleArchive}>
               <ListItemDecorator>{isArchived ? <UnarchiveOutlinedIcon /> : <ArchiveOutlinedIcon />}</ListItemDecorator>
               {isArchived ? <b>Unarchive</b> : 'Archive'}
             </MenuItem>
@@ -119,7 +121,7 @@ function ChatPanel(props: {
             <ActionFolder conversationId={props.conversationId} disabled={!props.conversationId} /* folder actions work on any existing conversation, unlike other actions that need non-empty chats */ />
           )}
 
-          <MenuItem disabled={disableActions} onClick={handleConversationBranch}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-panel/ChatPanel::ChatPanel.menuitem-2 */ disabled={disableActions} onClick={handleConversationBranch}>
             <ListItemDecorator><ForkRightIcon /></ListItemDecorator>
             Branch
           </MenuItem>
@@ -129,12 +131,12 @@ function ChatPanel(props: {
         {/* Right column */}
         <Box sx={{ display: 'flex', flexDirection: 'column' }}>
 
-          <MenuItem disabled={disableActions} onClick={handleConversationFlatten}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-panel/ChatPanel::ChatPanel.menuitem-3 */ disabled={disableActions} onClick={handleConversationFlatten}>
             <ListItemDecorator><CompressIcon /></ListItemDecorator>
             Compact
           </MenuItem>
 
-          <MenuItem disabled={disableActions} onClick={handleConversationRestart}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-panel/ChatPanel::ChatPanel.menuitem-4 */ disabled={disableActions} onClick={handleConversationRestart}>
             <ListItemDecorator><RestartAltIcon /></ListItemDecorator>
             <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'space-between', gap: 1 }}>
               Restart
@@ -146,7 +148,7 @@ function ChatPanel(props: {
       </Box>
 
       {/* Spans both columns */}
-      <MenuItem
+      <MenuItem /* @uxid src/apps/chat/components/layout-panel/ChatPanel::ChatPanel.menuitem-5 */
         disabled={disableActions}
         color={props.isMessageSelectionMode ? 'warning' : 'neutral'}
         variant={props.isMessageSelectionMode ? 'solid' : 'plain'}
@@ -161,11 +163,11 @@ function ChatPanel(props: {
 
     {/* ... how do we name this? ... */}
     <OptimaPanelGroupedList title='Persona' hideExpandedCheckbox persistentCollapsibleId='chat-persona'>
-      <ListItemButton disabled={disableActions} onClick={handleToggleSystemMessages}>
+      <ListItemButton /* @uxid src/apps/chat/components/layout-panel/ChatPanel::ChatPanel.listitembutton */ disabled={disableActions} onClick={handleToggleSystemMessages}>
         <ListItemDecorator><SettingsSuggestOutlinedIcon /></ListItemDecorator>
         Show Instruction
         {/*<FormLabelStart title='View System Instruction' />*/}
-        <Switch size='sm' checked={showSystemMessages} disabled={disableActions} onChange={handleToggleSystemMessages} sx={{ ml: 'auto' }} />
+        <Switch /* @uxid src/apps/chat/components/layout-panel/ChatPanel::ChatPanel.switch */ size='sm' checked={showSystemMessages} disabled={disableActions} onChange={handleToggleSystemMessages} sx={{ ml: 'auto' }} />
         {/*<Checkbox size='md' checked={showSystemMessages} disabled={disableActions} sx={{ ml: 'auto' }} />*/}
       </ListItemButton>
     </OptimaPanelGroupedList>

@@ -80,6 +80,7 @@ interface RenderCodeBaseProps {
   sx?: SxProps,
 }
 
+// @uxid src/modules/blocks/code/RenderCode::RenderCode
 function RenderCode(props: RenderCodeBaseProps) {
   return (
     <React.Suspense
@@ -170,6 +171,7 @@ function RCOverlay(props: { children: React.ReactNode }) {
 
 
 // Keep deferred catch-up renders inside the syntax subtree. Prism itself remains synchronous.
+// @uxid src/modules/blocks/code/RenderCode::RCSyntaxHighlight
 const RCSyntaxHighlight = React.memo(function RCSyntaxHighlight(props: {
   code: string,
   inferredCodeLanguage: string | null,
@@ -213,6 +215,7 @@ const RCSyntaxHighlight = React.memo(function RCSyntaxHighlight(props: {
 });
 
 
+// @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl
 function RenderCodeImpl(props: RenderCodeBaseProps & {
   highlightCode: (inferredCodeLanguage: string | null, code: string, addLineNumbers: boolean) => string,
   inferCodeLanguage: (blockTitle: string, code: string) => string | null,
@@ -466,11 +469,11 @@ function RenderCodeImpl(props: RenderCodeBaseProps & {
         {/* Show HTML + Reload */}
         {isHTMLCode && (
           <ButtonGroup aria-label='HTML options' sx={overlayGroupWithShadowSx}>
-            <OverlayButton tooltip={noTooltips ? null : renderHTML ? 'Show Code' : 'Show Web Page'} variant={renderHTML ? 'solid' : 'outlined'} color='danger' onClick={handleHtmlRenderToggle}>
+            <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton */ tooltip={noTooltips ? null : renderHTML ? 'Show Code' : 'Show Web Page'} variant={renderHTML ? 'solid' : 'outlined'} color='danger' onClick={handleHtmlRenderToggle}>
               <HtmlIcon sx={{ fontSize: 'xl2' }} />
             </OverlayButton>
             {renderHTML && (
-              <OverlayButton tooltip={noTooltips ? null : 'Reload'} variant='outlined' color='danger' onClick={() => setHtmlReloadKey(k => k + 1)}>
+              <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-2 */ tooltip={noTooltips ? null : 'Reload'} variant='outlined' color='danger' onClick={() => setHtmlReloadKey(k => k + 1)}>
                 <ReplayRoundedIcon />
               </OverlayButton>
             )}
@@ -479,7 +482,7 @@ function RenderCodeImpl(props: RenderCodeBaseProps & {
 
         {/* Show Markdown Preview */}
         {isMdCode && (
-          <OverlayButton tooltip={noTooltips ? null : renderMarkdown ? 'Show Code' : 'Show Preview'} variant={renderMarkdown ? 'solid' : 'outlined'} smShadow onClick={() => setShowMarkdown(!showMarkdown)}>
+          <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-3 */ tooltip={noTooltips ? null : renderMarkdown ? 'Show Code' : 'Show Preview'} variant={renderMarkdown ? 'solid' : 'outlined'} smShadow onClick={() => setShowMarkdown(!showMarkdown)}>
             <DescriptionOutlinedIcon />
           </OverlayButton>
         )}
@@ -489,7 +492,7 @@ function RenderCodeImpl(props: RenderCodeBaseProps & {
           <ButtonGroup aria-label='Diagram' sx={overlayGroupWithShadowSx}>
 
             {/* Toggle rendering */}
-            <OverlayButton
+            <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-4 */
               tooltip={noTooltips ? null
                 : (renderSVG || renderMermaid || renderPlantUML) ? 'Show Code'
                   : renderChartJS ? 'Show Data'
@@ -511,7 +514,7 @@ function RenderCodeImpl(props: RenderCodeBaseProps & {
 
             {/* PlantUML code-changing buttons */}
             {(isPlantUMLCode && showPlantUML) && (
-              <OverlayButton
+              <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-5 */
                 disabled={!onReplaceInCode}
                 tooltip={noTooltips ? null : 'Switch Direction'}
                 onClick={() => onReplaceInCode?.(codeRef.current, plantUMLCodeToggleDirection(codeRef.current))}
@@ -520,7 +523,7 @@ function RenderCodeImpl(props: RenderCodeBaseProps & {
               </OverlayButton>
             )}
             {(isPlantUMLCode && showPlantUML) && (
-              <OverlayButton
+              <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-6 */
                 disabled={!onReplaceInCode}
                 tooltip={noTooltips ? null : 'Cycle Theme'}
                 onClick={() => onReplaceInCode?.(codeRef.current, plantUMLCodeCycleTheme(codeRef.current))}
@@ -531,7 +534,7 @@ function RenderCodeImpl(props: RenderCodeBaseProps & {
 
             {/* Fit-Content */}
             {showFitButton && (
-              <OverlayButton tooltip={noTooltips ? null : fitScreen ? 'Original Size' : 'Fit Content'} variant={fitScreen ? 'solid' : 'outlined'} onClick={() => setFitScreen(on => !on)}>
+              <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-7 */ tooltip={noTooltips ? null : fitScreen ? 'Original Size' : 'Fit Content'} variant={fitScreen ? 'solid' : 'outlined'} onClick={() => setFitScreen(on => !on)}>
                 <FitScreenIcon />
               </OverlayButton>
             )}
@@ -544,7 +547,7 @@ function RenderCodeImpl(props: RenderCodeBaseProps & {
           <ButtonGroup color='neutral' aria-label='Image Actions' sx={overlayGroupWithShadowSx}>
 
             {/* Download PNG */}
-            <OverlayButton
+            <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-8 */
               tooltip={noTooltips ? null : !renderChartJS ? 'Download transparent PNG' : <>Download PNG<Box sx={{ fontSize: 'xs', m: 0.5 }}>hold ⇧ for transparent</Box></>}
               tooltipProps={{ color: 'warning' }}
               onClick={handleRenderHandleDownload}
@@ -553,7 +556,7 @@ function RenderCodeImpl(props: RenderCodeBaseProps & {
             </OverlayButton>
 
             {/* Copy PNG */}
-            <OverlayButton
+            <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-9 */
               tooltip={noTooltips ? null : !renderChartJS ? 'Copy transparent PNG' : <>Copy PNG<Box sx={{ fontSize: 'xs', m: 0.5 }}>hold ⇧ for transparent</Box></>}
               tooltipProps={{ color: 'warning' }}
               onClick={handleRenderHandleCopy}
@@ -568,7 +571,7 @@ function RenderCodeImpl(props: RenderCodeBaseProps & {
         {/* Special Group: Reattach SVG */}
         {isSVGCode && !!props.onReattachAsFile && (
           <ButtonGroup color='neutral' aria-label='SVG Actions' sx={overlayGroupWithShadowSx}>
-            <OverlayButton
+            <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-10 */
               tooltip={noTooltips ? null : 'Attach as image'}
               onClick={handleRenderHandleReattach}
             >
@@ -581,27 +584,27 @@ function RenderCodeImpl(props: RenderCodeBaseProps & {
         <ButtonGroup aria-label='Text and code options' sx={overlayGroupWithShadowSx}>
 
           {/* Fullscreen */}
-          <OverlayButton tooltip={noTooltips ? null : isFullscreen ? 'Exit Fullscreen' : !renderSyntaxHighlight ? 'Fullscreen' : 'Present'} variant={isFullscreen ? 'solid' : 'outlined'} onClick={isFullscreen ? exitFullscreen : enterFullscreen}>
+          <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-11 */ tooltip={noTooltips ? null : isFullscreen ? 'Exit Fullscreen' : !renderSyntaxHighlight ? 'Fullscreen' : 'Present'} variant={isFullscreen ? 'solid' : 'outlined'} onClick={isFullscreen ? exitFullscreen : enterFullscreen}>
             <ZoomOutMapIcon sx={{ fontSize: 'xl' }} />
           </OverlayButton>
 
           {/* Soft Wrap toggle */}
           {renderSyntaxHighlight && (
-            <OverlayButton tooltip={noTooltips ? null : 'Wrap Lines'} disabled={!renderSyntaxHighlight} variant={(showSoftWrap && renderSyntaxHighlight) ? 'solid' : 'outlined'} onClick={() => setShowSoftWrap(!showSoftWrap)}>
+            <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-12 */ tooltip={noTooltips ? null : 'Wrap Lines'} disabled={!renderSyntaxHighlight} variant={(showSoftWrap && renderSyntaxHighlight) ? 'solid' : 'outlined'} onClick={() => setShowSoftWrap(!showSoftWrap)}>
               <WrapTextIcon />
             </OverlayButton>
           )}
 
           {/* Line Numbers toggle */}
           {renderSyntaxHighlight && uiComplexityMode !== 'minimal' && (
-            <OverlayButton tooltip={noTooltips ? null : 'Line Numbers'} disabled={cannotRenderLineNumbers} variant={(renderLineNumbers && renderSyntaxHighlight) ? 'solid' : 'outlined'} onClick={() => setShowLineNumbers(!showLineNumbers)}>
+            <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-13 */ tooltip={noTooltips ? null : 'Line Numbers'} disabled={cannotRenderLineNumbers} variant={(renderLineNumbers && renderSyntaxHighlight) ? 'solid' : 'outlined'} onClick={() => setShowLineNumbers(!showLineNumbers)}>
               <NumbersRoundedIcon />
             </OverlayButton>
           )}
 
           {/* Comparison button: single button to initiate comparison if no base is set, shows as solid if this is the base (instead of formerly having a clear comparison button), and shows as 'color=success' or outlined if clicking it will compare this against the base */}
           {showCompareButton && (
-            <OverlayButton
+            <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-14 */
               tooltip={noTooltips ? null :
                 !compareBaseSet ? 'Compare this code'
                   : compareThisIsBase ? 'Cancel comparison'
@@ -617,7 +620,7 @@ function RenderCodeImpl(props: RenderCodeBaseProps & {
 
           {/* Copy */}
           {props.noCopyButton !== true && !renderChartJS && (
-            <OverlayButton tooltip={noTooltips ? null : 'Copy Code'} variant='outlined' onClick={handleCopyToClipboard}>
+            <OverlayButton /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.overlaybutton-15 */ tooltip={noTooltips ? null : 'Copy Code'} variant='outlined' onClick={handleCopyToClipboard}>
               <ContentCopyIcon />
             </OverlayButton>
           )}
@@ -672,10 +675,10 @@ function RenderCodeImpl(props: RenderCodeBaseProps & {
           {/* Renders HTML, or inline SVG, inline plantUML rendered, or highlighted code */}
           {renderHTML ? <RenderCodeHtmlIFrame key={htmlReloadKey} htmlCode={code} isFullscreen={isFullscreen} />
             : renderMarkdown ? <RenderCodeMarkdown mdCode={code} />
-              : renderMermaid ? <RenderCodeMermaid ref={renderHandleRef} mermaidCode={code} fitScreen={fitScreen} onReplaceInCode={onReplaceInCode} />
+              : renderMermaid ? <RenderCodeMermaid /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.rendercodemermaid */ ref={renderHandleRef} mermaidCode={code} fitScreen={fitScreen} onReplaceInCode={onReplaceInCode} />
                 : renderSVG ? <RenderCodeSVG ref={renderHandleRef} svgCode={code} fitScreen={fitScreen} />
-                  : renderPlantUML ? <RenderCodePlantUML ref={renderHandleRef} plantUMLCode={code} fitContainer={fitScreen} allowDetails={uiComplexityMode === 'extra'} onReplaceInCode={onReplaceInCode} />
-                    : renderChartJS ? <RenderCodeChartJS ref={renderHandleRef} chartJSCode={code} onReplaceInCode={onReplaceInCode} />
+                  : renderPlantUML ? <RenderCodePlantUML /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.rendercodeplantuml */ ref={renderHandleRef} plantUMLCode={code} fitContainer={fitScreen} allowDetails={uiComplexityMode === 'extra'} onReplaceInCode={onReplaceInCode} />
+                    : renderChartJS ? <RenderCodeChartJS /* @uxid src/modules/blocks/code/RenderCode::RenderCodeImpl.rendercodechartjs */ ref={renderHandleRef} chartJSCode={code} onReplaceInCode={onReplaceInCode} />
                       : <RCSyntaxHighlight
                         code={throttledCodeForHighlight}
                         inferredCodeLanguage={inferredCodeLanguage}

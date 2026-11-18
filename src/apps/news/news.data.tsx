@@ -35,6 +35,7 @@ import coverV113 from '../../../public/images/covers/release-cover-v1.13.0.png';
 import coverV112 from '../../../public/images/covers/release-cover-v1.12.0.png';
 
 
+// @uxid src/apps/news/news.data::NewsData
 const beamBlogUrl = 'https://big-agi.com/blog/beam-multi-model-ai-reasoning/';
 
 
@@ -66,7 +67,7 @@ export const DevNewsItem: NewsItem = {
   items: [
     { text: <>You&apos;re running an unsupported <B>developer build</B> of Big-AGI Open {_frontendPkgVersion}</> },
     { text: <>Please report screenshots of breakages and console error messages</> },
-    { text: <ExternalLink href='https://big-agi.com'>Back to the official version</ExternalLink> },
+    { text: <ExternalLink /* @uxid src/apps/news/news.data::NewsData.externallink */ href='https://big-agi.com'>Back to the official version</ExternalLink> },
   ],
 } as const;
 
@@ -141,7 +142,7 @@ export const NewsItems: NewsItem[] = [
     items: [
       { text: <><B>Kimi K2.5</B>, <B>Gemini 3 Flash</B>, <B>GPT Image 1.5</B>, <B>GPT 5.2 Codex</B>, <B issue={921}>Novita.ai</B> models, and xAI search and code execution</> },
       { text: <><B issue={943}>Google Drive</B>: attach docs, sheets, images with optimal LLM conversion</> },
-      { text: <>Speech: new <B href='https://inworld.ai'>Inworld</B> support, cancelable, unlimited length</> },
+      { text: <>Speech: new <B /* @uxid src/apps/news/news.data::NewsData.b */ href='https://inworld.ai'>Inworld</B> support, cancelable, unlimited length</> },
       { text: <>Copy as-seen, reorder messages, AI Injector, PDF auto-OCR</> },
       { text: <>Models: <B issue={941}>duplication</B>, improved parameters, cleaner UI</> },
       { text: <>Fixes, security patches, CJK/IME input</> },
@@ -160,7 +161,7 @@ export const NewsItems: NewsItem[] = [
       { text: <>Enhanced <B>OpenRouter</B> integration with auto-capabilities and reasoning</> },
       { text: <>Call transcripts, generate persona images, search button in beams</> },
       { text: <>Starred models, errors resilience, 278 fixes</> },
-      { text: <ExternalLink href='https://github.com/enricoros/big-agi/issues/new?template=ai-triage.yml'>AI-Automatic feature development</ExternalLink> },
+      { text: <ExternalLink /* @uxid src/apps/news/news.data::NewsData.externallink-2 */ href='https://github.com/enricoros/big-agi/issues/new?template=ai-triage.yml'>AI-Automatic feature development</ExternalLink> },
     ],
   },
   {
@@ -176,7 +177,7 @@ export const NewsItems: NewsItem[] = [
       { text: <><B>Web Search</B> with citations for supported models</> },
       { text: <><B>UI</B> &amp; Mobile UI overhaul with peeking and side panels</> },
       // { text: <><B>Performance</B>: 10x faster tokenization, lazy modals, fragment system</> },
-      { text: <>And many more <ExternalLink href='https://github.com/enricoros/big-AGI/issues/567#issuecomment-2262187617'>Big-AGI 2 changes</ExternalLink></> },
+      { text: <>And many more <ExternalLink /* @uxid src/apps/news/news.data::NewsData.externallink-3 */ href='https://github.com/enricoros/big-AGI/issues/567#issuecomment-2262187617'>Big-AGI 2 changes</ExternalLink></> },
       { text: <>Built for the future, madly optimized</> },
     ],
   },
@@ -188,7 +189,7 @@ export const NewsItems: NewsItem[] = [
     // versionDate: new Date('2024-05-09T00:00:00Z'),
     versionCoverImage: coverV116,
     items: [
-      { text: <><B href={beamBlogUrl} wow>Beam</B> core and UX improvements based on user feedback</>, issue: 470, icon: ChatBeamIcon },
+      { text: <><B /* @uxid src/apps/news/news.data::NewsData.b-2 */ href={beamBlogUrl} wow>Beam</B> core and UX improvements based on user feedback</>, issue: 470, icon: ChatBeamIcon },
       { text: <>Chat <B>Cost estimation</B> with supported models* 💰</> },
       { text: <>Major <B>Auto-Diagrams</B> enhancements</> },
       { text: <>Save/load chat files with Ctrl+S / O</>, issue: 466 },
@@ -197,16 +198,16 @@ export const NewsItems: NewsItem[] = [
       { text: <>More: <B issue={517}>code soft-wrap</B>, selection toolbar, <B issue={507}>3x faster</B> on Apple silicon</>, issue: 507 },
       { text: <>Updated <B>Anthropic</B>*, <B>Groq</B>, <B>Ollama</B>, <B>OpenAI</B>*, <B>OpenRouter</B>*, and <B>Perplexity</B></> },
       { text: <>Developers: update LLMs data structures</>, dev: true },
-      { text: <>1.16.1: Support for <B>OpenAI</B> <B href='https://openai.com/index/hello-gpt-4o/'>GPT-4o</B></> },
+      { text: <>1.16.1: Support for <B>OpenAI</B> <B /* @uxid src/apps/news/news.data::NewsData.b-3 */ href='https://openai.com/index/hello-gpt-4o/'>GPT-4o</B></> },
       { text: <>1.16.2: Proper <B>Gemini</B> support, <B>HTML/Markdown</B> downloads, and latest <B>Mistral</B></> },
-      { text: <>1.16.3: Support for <B href='https://www.anthropic.com/news/claude-3-5-sonnet'>Claude 3.5 Sonnet</B> (refresh your <B>Anthropic</B> models)</> },
+      { text: <>1.16.3: Support for <B /* @uxid src/apps/news/news.data::NewsData.b-4 */ href='https://www.anthropic.com/news/claude-3-5-sonnet'>Claude 3.5 Sonnet</B> (refresh your <B>Anthropic</B> models)</> },
       { text: <>1.16.4: <B>8192 tokens</B> support for Claude 3.5 Sonnet</> },
       { text: <>1.16.5: OpenAI <B>GPT-4o Mini</B> support</> },
       { text: <>1.16.6: Groq <B>Llama 3.1</B> support</> },
       { text: <>1.16.7: Gpt-4o <B>2024-08-06</B></> },
       { text: <>1.16.8: <B>ChatGPT-4o</B> latest</> },
       { text: <>1.16.9: <B>Gemini</B> fixes</> },
-      { text: <>OpenAI <B>o1</B>, DeepSeek R1, and newer models require Big-AGI Open. <B href='https://form.typeform.com/to/ZSADpr5u?utm_source=gh-2&utm_medium=news&utm_campaign=ea2'>Sign up here</B></> },
+      { text: <>OpenAI <B>o1</B>, DeepSeek R1, and newer models require Big-AGI Open. <B /* @uxid src/apps/news/news.data::NewsData.b-5 */ href='https://form.typeform.com/to/ZSADpr5u?utm_source=gh-2&utm_medium=news&utm_campaign=ea2'>Sign up here</B></> },
     ],
   },
   {
@@ -215,7 +216,7 @@ export const NewsItems: NewsItem[] = [
     versionDate: new Date('2024-04-10T08:00:00Z'),
     versionCoverImage: coverV115,
     items: [
-      { text: <><B href={beamBlogUrl} wow>Beam</B>: Find better answers with multi-model AI reasoning</>, issue: 443, icon: ChatBeamIcon },
+      { text: <><B /* @uxid src/apps/news/news.data::NewsData.b-6 */ href={beamBlogUrl} wow>Beam</B>: Find better answers with multi-model AI reasoning</>, issue: 443, icon: ChatBeamIcon },
       // { text: <><B>Explore diverse perspectives</B> and <B>synthesize optimal responses</B></>, noBullet: true },
       { text: <><B issue={436}>Auto-configure</B> models for managed deployments</>, issue: 436 },
       { text: <>Message <B issue={476}>starring ⭐</B>, filtering and attachment</>, issue: 476 },
@@ -231,13 +232,13 @@ export const NewsItems: NewsItem[] = [
     versionCoverImage: coverV114,
     versionDate: new Date('2024-03-07T08:00:00Z'),
     items: [
-      { text: <>Anthropic <B href='https://www.anthropic.com/news/claude-3-family'>Claude-3</B> support for smarter chats</>, issue: 443, icon: AnthropicIcon },
+      { text: <>Anthropic <B /* @uxid src/apps/news/news.data::NewsData.b-7 */ href='https://www.anthropic.com/news/claude-3-family'>Claude-3</B> support for smarter chats</>, issue: 443, icon: AnthropicIcon },
       { text: <><B issue={407}>Perplexity</B> support, including Online models</>, issue: 407, icon: PerplexityIcon },
       { text: <><B issue={427}>Groq</B> support, with speeds up to 500 tok/s</>, issue: 427, icon: GroqIcon },
       { text: <>Support for new Mistral-Large models</>, icon: MistralIcon },
       { text: <>Support for Google Gemini 1.5 models and various improvements</>, icon: GoogleIcon as any },
       { text: <>Deeper LocalAI integration including support for <B issue={411}>model galleries</B></>, icon: LocalAIIcon },
-      { text: <>Major <B href='https://x.com/enricoros/status/1756553038293303434'>performance optimizations</B>: runs faster, saves power, saves memory</> },
+      { text: <>Major <B /* @uxid src/apps/news/news.data::NewsData.b-8 */ href='https://x.com/enricoros/status/1756553038293303434'>performance optimizations</B>: runs faster, saves power, saves memory</> },
       { text: <>Improvements: auto-size charts, search and folder experience</> },
       { text: <>Perfect chat scaling, with rapid keyboard shortcuts</> },
       { text: <>Also: diagrams auto-resize, quick model visibility toggle, open links externally, docs on the web</> },
@@ -335,8 +336,8 @@ export const NewsItems: NewsItem[] = [
       { text: <><B>Single-Tab</B> mode, enhances data integrity and prevents DB corruption</> },
       { text: <>Updated Ollama (v0.1.17) and OpenRouter models</> },
       { text: <>More: fixed ⌘ shortcuts on Mac</> },
-      { text: <><Link href='https://big-agi.com'>Website</Link>: official downloads</> },
-      { text: <>Easier Vercel deployment, documented <Link href='https://github.com/enricoros/big-AGI/issues/276#issuecomment-1858591483'>network troubleshooting</Link></>, dev: true },
+      { text: <><Link /* @uxid src/apps/news/news.data::NewsData.link */ href='https://big-agi.com'>Website</Link>: official downloads</> },
+      { text: <>Easier Vercel deployment, documented <Link /* @uxid src/apps/news/news.data::NewsData.link-2 */ href='https://github.com/enricoros/big-AGI/issues/276#issuecomment-1858591483'>network troubleshooting</Link></>, dev: true },
     ],
   },
   {
@@ -349,7 +350,7 @@ export const NewsItems: NewsItem[] = [
       { text: <>Desktop <B issue={253}>webcam access</B> for direct image capture (Labs option)</> },
       { text: <>Independent browsing with <B code='/docs/config-feature-browse.md'>Browserless</B> support</> },
       { text: <><B issue={256}>Overheat</B> LLMs with higher temperature limits</> },
-      { text: <>Enhanced security via <B href={Brand.Docs.Public('self-host-configuration')}>password protection</B></> },
+      { text: <>Enhanced security via <B /* @uxid src/apps/news/news.data::NewsData.b-9 */ href={Brand.Docs.Public('self-host-configuration')}>password protection</B></> },
       { text: <>{platformAwareKeystrokes('Ctrl+Shift+O')}: quick access to model options</> },
       { text: <>Optimized voice input and performance</> },
       { text: <>Latest Ollama models</> },
@@ -379,7 +380,7 @@ export const NewsItems: NewsItem[] = [
       { text: <><B issue={192}>Visualization</B> Tool for data representations</> },
       { text: <><B code='/docs/config-local-ollama.md'>Ollama (guide)</B> local models support</> },
       { text: <><B issue={194}>Text Tools</B> including highlight differences</> },
-      { text: <><B href='https://mermaid.js.org/'>Mermaid</B> Diagramming Rendering</> },
+      { text: <><B /* @uxid src/apps/news/news.data::NewsData.b-10 */ href='https://mermaid.js.org/'>Mermaid</B> Diagramming Rendering</> },
       { text: <><B>OpenAI 1106</B> Chat Models</> },
       { text: <>Cloudflare OpenAI API Gateway</> },
     ],
@@ -418,7 +419,7 @@ export const NewsItems: NewsItem[] = [
     versionCode: '1.2.1',
     // text: '',
     items: [
-      { text: <>New home page: <b><Link href={Brand.URIs.Home + clientUtmSource()} target='_blank'>{Brand.URIs.Home.replace('https://', '')}</Link></b></> },
+      { text: <>New home page: <b><Link /* @uxid src/apps/news/news.data::NewsData.link-3 */ href={Brand.URIs.Home + clientUtmSource()} target='_blank'>{Brand.URIs.Home.replace('https://', '')}</Link></b></> },
       { text: 'Support 𝑓unction models' }, // (n)
       { text: <Box sx={{ display: 'flex', alignItems: 'center' }}>Labs: experiments</Box> }, // ⚗️🧬🔬🥼 🥽🧪 <ScienceIcon sx={{ fontSize: 24, opacity: 0.5 }} />
     ],
@@ -426,6 +427,7 @@ export const NewsItems: NewsItem[] = [
 ] as const;
 
 
+// @uxid src/apps/news/news.data::B
 function B(props: {
   // one-of
   href?: string,
@@ -449,7 +451,7 @@ function B(props: {
   // append UTM details if missing
   const hrefWithUtm = href.includes('utm_source=') ? href : href + clientUtmSource();
   return (
-    <ExternalLink href={hrefWithUtm} highlight={props.wow} icon={props.issue ? 'issue' : undefined}>
+    <ExternalLink /* @uxid src/apps/news/news.data::B-2.externallink */ href={hrefWithUtm} highlight={props.wow} icon={props.issue ? 'issue' : undefined}>
       {boldText}
     </ExternalLink>
   );

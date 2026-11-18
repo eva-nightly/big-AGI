@@ -90,6 +90,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/modules/llms/models-modal/ModelsWizard::WizardProviderSetup
 function WizardProviderSetup(props: {
   provider: WizardProvider,
   isFirst: boolean,
@@ -213,7 +214,7 @@ function WizardProviderSetup(props: {
       {/*  </IconButton>*/}
       {/*</TooltipOutlined>*/}
       {/*<TooltipOutlined title='Confirm'>*/}
-      <Button
+      <Button /* @uxid src/modules/llms/models-modal/ModelsWizard::WizardProviderSetup.button */
         color='primary'
         variant='solid'
         onClick={handleSetServiceKeyValue}
@@ -257,7 +258,7 @@ function WizardProviderSetup(props: {
         <Box sx={{ flex: 1, display: 'flex', flexDirection: 'row', gap: 0.5 }}>
 
           <Box sx={{ flex: 1 }}>
-            <FormInputKey
+            <FormInputKey /* @uxid src/modules/llms/models-modal/ModelsWizard::WizardProviderSetup.forminputkey */
               noKey={isLocal}
               autoCompleteId={autoCompleteId}
               value={localValue ?? ''}
@@ -287,6 +288,7 @@ function WizardProviderSetup(props: {
 }
 
 
+// @uxid src/modules/llms/models-modal/ModelsWizard::ModelsWizard
 export function ModelsWizard(props: {
   isMobile: boolean,
   onSkip?: () => void,
@@ -307,13 +309,13 @@ export function ModelsWizard(props: {
       <Box sx={props.isMobile ? _styles.text1Mobile : _styles.text1}>
         <Typography component='div' level='title-sm'>
           Enter {isLocal ? 'the addresses of ' : 'your API keys for '}
-          <Chip variant={!isLocal ? 'solid' : 'outlined'} sx={{ mx: 0.25 }} onClick={() => setActiveCategory('popular')}>
+          <Chip /* @uxid src/modules/llms/models-modal/ModelsWizard::ModelsWizard.chip */ variant={!isLocal ? 'solid' : 'outlined'} sx={{ mx: 0.25 }} onClick={() => setActiveCategory('popular')}>
             Popular
           </Chip>
-          <Chip variant={isLocal ? 'solid' : 'outlined'} sx={{ mx: 0.25 }} onClick={() => setActiveCategory('local')}>
+          <Chip /* @uxid src/modules/llms/models-modal/ModelsWizard::ModelsWizard.chip-2 */ variant={isLocal ? 'solid' : 'outlined'} sx={{ mx: 0.25 }} onClick={() => setActiveCategory('local')}>
             Local
           </Chip>
-          {' '}<Box component='a' onClick={props.onSwitchToWhy} sx={{ color: 'text.tertiary', cursor: 'pointer' }}>AI services </Box> below.
+          {' '}<Box /* @uxid src/modules/llms/models-modal/ModelsWizard::ModelsWizard.box */ component='a' onClick={props.onSwitchToWhy} sx={{ color: 'text.tertiary', cursor: 'pointer' }}>AI services </Box> below.
         </Typography>
         {/*<Box sx={{ fontSize: 'sm', color: 'text.primary' }}>*/}
         {/*  Enter API keys to connect your AI services.{' '}*/}
@@ -322,7 +324,7 @@ export function ModelsWizard(props: {
       </Box>
 
       {WizardProviders.map((provider, index) => (
-        <WizardProviderSetup
+        <WizardProviderSetup /* @uxid src/modules/llms/models-modal/ModelsWizard::ModelsWizard.wizardprovidersetup */
           key={provider.vendor.id}
           provider={provider}
           isFirst={!index}
@@ -335,13 +337,13 @@ export function ModelsWizard(props: {
         {/*{!props.isMobile && <>Switch to <Box component='a' onClick={props.onSwitchToAdvanced} sx={{ textDecoration: 'underline', cursor: 'pointer' }}>Advanced</Box> to choose between {getModelVendorsCount()} services.</>}{' '}*/}
         {!props.isMobile && <>
           Switch to{' '}
-          <Box component='a' onClick={props.onSwitchToAdvanced} sx={{ textDecoration: 'underline', cursor: 'pointer' }}>advanced configuration</Box>
+          <Box /* @uxid src/modules/llms/models-modal/ModelsWizard::ModelsWizard.box-2 */ component='a' onClick={props.onSwitchToAdvanced} sx={{ textDecoration: 'underline', cursor: 'pointer' }}>advanced configuration</Box>
           {/*<Chip variant={isLocal ? 'solid' : 'outlined'} sx={{ ml: 0.25 }} onClick={props.onSwitchToAdvanced}>*/}
           {/*  more services*/}
           {/*</Chip>*/}
           {' '}for more services,
         </>}{' '}
-        or <Box component='a' onClick={props.onSkip} sx={{ textDecoration: 'underline', cursor: 'pointer' }}>skip</Box> for now and do it later.
+        or <Box /* @uxid src/modules/llms/models-modal/ModelsWizard::ModelsWizard.box-3 */ component='a' onClick={props.onSkip} sx={{ textDecoration: 'underline', cursor: 'pointer' }}>skip</Box> for now and do it later.
       </Box>
 
     </Sheet>

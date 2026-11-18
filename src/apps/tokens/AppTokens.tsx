@@ -16,6 +16,7 @@ function generateColor(index: number) {
 }
 
 
+// @uxid src/apps/tokens/AppTokens::AppTokens
 export function AppTokens() {
 
   // Local state
@@ -72,7 +73,7 @@ export function AppTokens() {
 
       <FormControl>
         <FormLabelStart title='Text' />
-        <Textarea
+        <Textarea /* @uxid src/apps/tokens/AppTokens::AppTokens.textarea */
           placeholder='Paste or type here...'
           value={text}
           onChange={handleTextChange}

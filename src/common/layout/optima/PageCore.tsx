@@ -42,6 +42,7 @@ const pageCoreMobileNavSx: SxProps = {
 };
 
 
+// @uxid src/common/layout/optima/PageCore::PageCore
 export const PageCore = (props: {
   component: React.ElementType,
   currentApp?: NavItemApp,

@@ -53,6 +53,7 @@ const CONF = {
 } as const;
 
 
+// @uxid src/modules/t2i/dalle/DallESettings::DallESettings
 export function DallESettings(props: {
   profile: DProfileDalle;
   onUpdateProfile: (update: Partial<DProfileDalle>) => void;
@@ -105,7 +106,7 @@ export function DallESettings(props: {
 
   return <>
 
-    <FormSelectControl
+    <FormSelectControl /* @uxid src/modules/t2i/dalle/DallESettings::DallESettings.formselectcontrol */
       title='Model'
       options={CONF.MODEL_OPTS.map(opt => ({ ...opt, value: opt.value || 'auto', description: opt.description ?? '' }))}
       value={modelPickOrAuto(dalleModelId, DALLE_MODEL_IDS) ?? 'auto'}
@@ -115,7 +116,7 @@ export function DallESettings(props: {
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
       <FormLabelStart title='Resolution'
                       description={dalleSizeGI === DALLE_DEFAULT_IMAGE_SIZE ? 'Default' : 'Custom'} />
-      <Select
+      <Select /* @uxid src/modules/t2i/dalle/DallESettings::DallESettings.select */
         variant='outlined'
         value={dalleSizeGI}
         onChange={handleResolutionGIChange}
@@ -133,14 +134,14 @@ export function DallESettings(props: {
       </Select>
     </FormControl>
 
-    <FormChipControl
+    <FormChipControl /* @uxid src/modules/t2i/dalle/DallESettings::DallESettings.formchipcontrol */
       title='Quality'
       description={effectiveQualityGI !== dalleQualityGI ? `'${dalleQualityGI}' unsupported, using '${effectiveQualityGI}'` : 'Higher quality takes longer'}
       options={isGI25 ? CONF.QUALITY_GI_25 : CONF.QUALITY_GI}
       value={effectiveQualityGI} onChange={value => onUpdateProfile({ dalleQualityGI: value })}
     />
 
-    <FormChipControl
+    <FormChipControl /* @uxid src/modules/t2i/dalle/DallESettings::DallESettings.formchipcontrol-2 */
       title='Background'
       description={
         !showTransparencyWarning
@@ -153,7 +154,7 @@ export function DallESettings(props: {
       value={dalleBackgroundGI} onChange={value => onUpdateProfile({ dalleBackgroundGI: value })}
     />
 
-    {advanced.on && <FormChipControl
+    {advanced.on && <FormChipControl /* @uxid src/modules/t2i/dalle/DallESettings::DallESettings.formchipcontrol-3 */
       title='File Format'
       description='File format for the generated image'
       options={CONF.OUT_FORMAT_GI}
@@ -164,7 +165,7 @@ export function DallESettings(props: {
       <FormControl disabled={!isGICompressible} orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
         <FormLabelStart title='File Quality'
                         description={(isGICompressible && dalleOutputCompressionGI !== 100) ? `${100 - dalleOutputCompressionGI}% compression` : 'Uncompressed'} />
-        <Slider
+        <Slider /* @uxid src/modules/t2i/dalle/DallESettings::DallESettings.slider */
           aria-label='File Quality'
           color='neutral'
           disabled={!isGICompressible}
@@ -180,7 +181,7 @@ export function DallESettings(props: {
 
     {advanced.on && <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between' }}>
       <FormLabelStart title='Moderation' description='Content filter strictness' />
-      <Switch checked={dalleModerationGI === 'auto'} onChange={handleModerationGIChange}
+      <Switch /* @uxid src/modules/t2i/dalle/DallESettings::DallESettings.switch */ checked={dalleModerationGI === 'auto'} onChange={handleModerationGIChange}
               startDecorator={dalleModerationGI === 'low' ? 'Less Strict' : 'Standard'} />
     </FormControl>}
 
@@ -192,11 +193,11 @@ export function DallESettings(props: {
 
     {/* footer: 'Advanced...' toggle left, 'Reset to defaults' right when off-default - same chrome as the ASRx/Speex panels */}
     <Box sx={_styles.bottomRow}>
-      <Typography level='body-xs' onClick={advanced.toggle} sx={_styles.advancedToggle}>
+      <Typography /* @uxid src/modules/t2i/dalle/DallESettings::DallESettings.typography */ level='body-xs' onClick={advanced.toggle} sx={_styles.advancedToggle}>
         {advanced.on ? 'Hide Advanced' : 'Advanced...'}
       </Typography>
       {hasUserParameters && (
-        <Link component='button' color='neutral' level='body-xs' onClick={handleResetParameters}>
+        <Link /* @uxid src/modules/t2i/dalle/DallESettings::DallESettings.link */ component='button' color='neutral' level='body-xs' onClick={handleResetParameters}>
           Reset to defaults ...
         </Link>
       )}

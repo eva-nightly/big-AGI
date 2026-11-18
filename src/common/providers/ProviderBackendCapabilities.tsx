@@ -71,6 +71,7 @@ const styles: Record<string, React.CSSProperties> = {
  * Note: we used to have a NoSSR wrapper inside the AppLayout component (which was delaying rendering 1 cycle),
  * however this wrapper is now providing the same function, given the network roundtrip.
  */
+// @uxid src/common/providers/ProviderBackendCapabilities::ProviderBackendCapabilities
 export function ProviderBackendCapabilities(props: { children: React.ReactNode }) {
 
   // state
@@ -128,7 +129,7 @@ export function ProviderBackendCapabilities(props: { children: React.ReactNode }
             {/*  version. {Release.buildInfo('frontend').pkgVersion}*/}
             {/*</div>*/}
           </div>
-          <button
+          <button /* @uxid src/common/providers/ProviderBackendCapabilities::ProviderBackendCapabilities.button */
             style={styles.button}
             onClick={() => window.location.reload()}
             onMouseOver={(e) => e.currentTarget.style.opacity = '0.8'}
@@ -148,7 +149,7 @@ export function ProviderBackendCapabilities(props: { children: React.ReactNode }
         <div style={styles.content2}>
           <h2 style={styles.heading}>Connection Error</h2>
           <h2 style={styles.message}>Unable to connect to the server.<br /><br /></h2>
-          <button
+          <button /* @uxid src/common/providers/ProviderBackendCapabilities::ProviderBackendCapabilities.button-2 */
             style={styles.button}
             onClick={() => window.location.reload()}
             onMouseOver={(e) => e.currentTarget.style.opacity = '0.8'}

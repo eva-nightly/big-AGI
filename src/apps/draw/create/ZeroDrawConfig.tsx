@@ -5,6 +5,7 @@ import { Button, Card, CardActions, CardContent, Typography } from '@mui/joy';
 import { optimaOpenPreferences } from '~/common/layout/optima/useOptima';
 
 
+// @uxid src/apps/draw/create/ZeroDrawConfig::ZeroDrawConfig
 export function ZeroDrawConfig() {
 
   const handleConfigureDrawing = React.useCallback(() => {
@@ -24,7 +25,7 @@ export function ZeroDrawConfig() {
         </Typography>
       </CardContent>
       <CardActions buttonFlex='0'>
-        <Button color='danger' onClick={handleConfigureDrawing} sx={{ minWidth: '160px' }}>
+        <Button /* @uxid src/apps/draw/create/ZeroDrawConfig::ZeroDrawConfig.button */ color='danger' onClick={handleConfigureDrawing} sx={{ minWidth: '160px' }}>
           Configure
         </Button>
       </CardActions>

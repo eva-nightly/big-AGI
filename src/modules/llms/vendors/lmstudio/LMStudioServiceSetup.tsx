@@ -22,6 +22,7 @@ import { useServiceSetup } from '../useServiceSetup';
 import { ModelVendorLMStudio } from './lmstudio.vendor';
 
 
+// @uxid src/modules/llms/vendors/lmstudio/LMStudioServiceSetup::LMStudioServiceSetup
 export function LMStudioServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -53,12 +54,12 @@ export function LMStudioServiceSetup(props: { serviceId: DModelsServiceId }) {
     </ExpanderAccordion>
 
     <Typography level='body-sm'>
-      You can use a running <Link href='https://lmstudio.ai/' target='_blank'>LM Studio</Link> instance as a source
+      You can use a running <Link /* @uxid src/modules/llms/vendors/lmstudio/LMStudioServiceSetup::LMStudioServiceSetup.link */ href='https://lmstudio.ai/' target='_blank'>LM Studio</Link> instance as a source
       for local models. Please refer to our <ExternalDocsLink level='body-sm' docPage='connect-lmstudio'>configuration guide</ExternalDocsLink> for
       how to link to your LM Studio instance.
     </Typography>
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/lmstudio/LMStudioServiceSetup::LMStudioServiceSetup.forminputkey */
       autoCompleteId='lmstudio-url' label='LM Studio API'
       required noKey
       rightLabel={<ExternalDocsLink level='body-sm' docPage='connect-lmstudio'>Learn more</ExternalDocsLink>}
@@ -67,7 +68,7 @@ export function LMStudioServiceSetup(props: { serviceId: DModelsServiceId }) {
     />
 
     {/* [2026-08-23] not behind 'Advanced': a LAN/localhost LM Studio is only reachable from the browser, so this is the primary control (same as LocalAI/Ollama) */}
-    <SetupFormClientSideToggle
+    <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/lmstudio/LMStudioServiceSetup::LMStudioServiceSetup.setupformclientsidetoggle */
       visible={true}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

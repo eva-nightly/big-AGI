@@ -69,6 +69,7 @@ const typeTitleSx: SxProps = {
 /**
  * Simple cycler through the snackbars.
  */
+// @uxid src/common/components/snackbar/SnackbarInsert::SnackbarInsert
 export function SnackbarInsert() {
 
   // external state
@@ -85,7 +86,7 @@ export function SnackbarInsert() {
     return null;
 
   return (
-    <Snackbar
+    <Snackbar /* @uxid src/common/components/snackbar/SnackbarInsert::SnackbarInsert.snackbar */
       key={activeMessage.key}
       open={activeSnackbarOpen}
       color={config.color}
@@ -101,7 +102,7 @@ export function SnackbarInsert() {
       }}
       startDecorator={config.startDecorator}
       endDecorator={!config.closeButton ? undefined : (
-        <IconButton
+        <IconButton /* @uxid src/common/components/snackbar/SnackbarInsert::SnackbarInsert.iconbutton */
           onClick={animateCloseSnackbar}
           size='sm'
           sx={{ my: '-0.4rem' }}

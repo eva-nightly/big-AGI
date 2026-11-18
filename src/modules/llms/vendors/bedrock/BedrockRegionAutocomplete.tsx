@@ -40,6 +40,7 @@ const BEDROCK_REGIONS: BedrockRegion[] = [
 const DEFAULT_REGION = 'us-west-2';
 
 
+// @uxid src/modules/llms/vendors/bedrock/BedrockRegionAutocomplete::BedrockRegionAutocomplete
 export function BedrockRegionAutocomplete(props: {
   value: string;
   onChange: (value: string) => void;
@@ -80,7 +81,7 @@ export function BedrockRegionAutocomplete(props: {
         {/*  see <Link level='body-sm' href='https://docs.aws.amazon.com/bedrock/latest/userguide/models-regions.html' target='_blank'>regions</Link>*/}
         {/*</FormHelperText>*/}
       </Box>
-      <Autocomplete<BedrockRegion, false, false, true>
+      <Autocomplete /* @uxid src/modules/llms/vendors/bedrock/BedrockRegionAutocomplete::BedrockRegionAutocomplete.autocomplete */<BedrockRegion, false, false, true>
         freeSolo
         openOnFocus
         clearOnEscape

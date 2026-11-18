@@ -23,6 +23,7 @@ const _style = {
   } as const,
 } as const;
 
+// @uxid src/apps/chat/components/composer/textarea/ComposerTextAreaDrawActions::ComposerTextAreaDrawActions
 export function ComposerTextAreaDrawActions(props: {
   composerText: string,
   onReplaceText: (text: string) => void,
@@ -55,7 +56,7 @@ export function ComposerTextAreaDrawActions(props: {
 
       {/* Enhance button */}
       <Box sx={{ ml: 'auto' }}>
-        <Button
+        <Button /* @uxid src/apps/chat/components/composer/textarea/ComposerTextAreaDrawActions::ComposerTextAreaDrawActions.button */
           size='sm'
           variant={isSimpleEnhancing ? 'soft' : 'soft'}
           color='warning'

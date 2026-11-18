@@ -35,6 +35,7 @@ import { useBeamCardScrolling } from '../store-module-beam';
 import { useMessageAvatarLabel } from '~/common/util/dMessageUtils';
 
 
+// @uxid src/modules/beam/gather/Fusion::Fusion
 export function Fusion(props: {
   beamStore: BeamStoreApi,
   fusionId: string,
@@ -142,7 +143,7 @@ export function Fusion(props: {
     return;
 
   return (
-    <BeamCard
+    <BeamCard /* @uxid src/modules/beam/gather/Fusion::Fusion.beamcard */
       role='beam-card'
       tabIndex={-1}
       className={
@@ -155,7 +156,7 @@ export function Fusion(props: {
     >
 
       {/* Controls Row */}
-      <FusionControlsMemo
+      <FusionControlsMemo /* @uxid src/modules/beam/gather/Fusion::Fusion.fusioncontrolsmemo */
         fusion={fusion}
         factory={factory}
         isFusing={isFusing}
@@ -174,7 +175,7 @@ export function Fusion(props: {
       />
 
       {isEditable && (
-        <FusionInstructionsEditor
+        <FusionInstructionsEditor /* @uxid src/modules/beam/gather/Fusion::Fusion.fusioninstructionseditor */
           beamStore={props.beamStore}
           factory={factory}
           fusionId={props.fusionId}
@@ -201,9 +202,9 @@ export function Fusion(props: {
 
       {/* Output Message */}
       {(!!fusion?.outputDMessage?.fragments.length || fusion?.stage === 'running') && (
-        <Box onCopy={clipboardInterceptCtrlCForCleanup} sx={beamCardMessageWrapperSx}>
+        <Box /* @uxid src/modules/beam/gather/Fusion::Fusion.box */ onCopy={clipboardInterceptCtrlCForCleanup} sx={beamCardMessageWrapperSx}>
           {!!fusion.outputDMessage?.fragments.length && (
-            <ChatMessageMemo
+            <ChatMessageMemo /* @uxid src/modules/beam/gather/Fusion::Fusion.chatmessagememo */
               message={fusion.outputDMessage}
               fitScreen={true}
               isMobile={props.isMobile}
@@ -219,7 +220,7 @@ export function Fusion(props: {
       )}
 
       {/* Gemini Interactions (Deep Research) resume - state-gated: only when idle with a live upstream handle */}
-      <BeamUpstreamResume
+      <BeamUpstreamResume /* @uxid src/modules/beam/gather/Fusion::Fusion.beamupstreamresume */
         llmId={fusion?.llmId ?? null}
         generator={fusion?.outputDMessage?.generator}
         isPending={isFusing || isWaiting}
@@ -234,7 +235,7 @@ export function Fusion(props: {
 
           {/* Copy */}
           <GoodTooltip title='Copy'>
-            <IconButton
+            <IconButton /* @uxid src/modules/beam/gather/Fusion::Fusion.iconbutton */
               onClick={handleFusionCopyToClipboard}
             >
               <ContentCopyIcon sx={{ fontSize: 'md' }} />
@@ -243,7 +244,7 @@ export function Fusion(props: {
 
           {/* Continue */}
           <GoodTooltip title='Use this message'>
-            <IconButton
+            <IconButton /* @uxid src/modules/beam/gather/Fusion::Fusion.iconbutton-2 */
               size='sm'
               // variant='plain'
               color={GATHER_COLOR}

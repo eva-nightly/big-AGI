@@ -34,8 +34,9 @@ const OptionsPageSize = [
 ] as const;
 
 
+// @uxid src/apps/settings-modal/settings-ui/AppChatSettingsUI::ModelsSetupButton
 export function ModelsSetupButton(props: { isMissingModels?: boolean }) {
-  return <Button
+  return <Button /* @uxid src/apps/settings-modal/settings-ui/AppChatSettingsUI::ModelsSetupButton.button */
     // variant='soft' color='success'
     color={props.isMissingModels ? 'danger' : undefined}
     onClick={optimaOpenModels}
@@ -52,6 +53,7 @@ export function ModelsSetupButton(props: { isMissingModels?: boolean }) {
 }
 
 
+// @uxid src/apps/settings-modal/settings-ui/AppChatSettingsUI::AppChatSettingsUI
 export function AppChatSettingsUI() {
 
   // external state
@@ -96,7 +98,7 @@ export function AppChatSettingsUI() {
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between' }}>
       <FormLabelStart title='Enter sends ⏎'
                       description={enterIsNewline ? 'New line' : 'Sends message'} />
-      <Switch checked={!enterIsNewline} onChange={handleEnterIsNewlineChange}
+      <Switch /* @uxid src/apps/settings-modal/settings-ui/AppChatSettingsUI::AppChatSettingsUI.switch */ checked={!enterIsNewline} onChange={handleEnterIsNewlineChange}
               endDecorator={enterIsNewline ? 'Off' : 'On'}
               slotProps={{ endDecorator: { sx: { minWidth: 26 } } }} />
     </FormControl>
@@ -105,7 +107,7 @@ export function AppChatSettingsUI() {
       <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between' }}>
         <FormLabelStart title='Disable Markdown'
                         description={disableMarkdown ? 'As text' : 'Render markdown'} />
-        <Switch checked={disableMarkdown} onChange={handleDisableMarkdown}
+        <Switch /* @uxid src/apps/settings-modal/settings-ui/AppChatSettingsUI::AppChatSettingsUI.switch-2 */ checked={disableMarkdown} onChange={handleDisableMarkdown}
                 endDecorator={disableMarkdown ? 'On' : 'Off'}
                 slotProps={{ endDecorator: { sx: { minWidth: 26 } } }} />
       </FormControl>
@@ -114,7 +116,7 @@ export function AppChatSettingsUI() {
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between' }}>
       <FormLabelStart title={isMobile ? 'Edit Mode' : 'Easy Edit'}
                       description={doubleClickToEdit ? (isMobile ? 'Double tap' : 'Double click') : (isMobile ? 'Menu' : 'Shift + double-click')} />
-      <Switch checked={doubleClickToEdit} onChange={handleDoubleClickToEditChange}
+      <Switch /* @uxid src/apps/settings-modal/settings-ui/AppChatSettingsUI::AppChatSettingsUI.switch-3 */ checked={doubleClickToEdit} onChange={handleDoubleClickToEditChange}
               endDecorator={doubleClickToEdit ? 'On' : 'Off'}
               slotProps={{ endDecorator: { sx: { minWidth: 26 } } }} />
     </FormControl>
@@ -122,7 +124,7 @@ export function AppChatSettingsUI() {
     {SHOW_PURPOSE_FINDER && <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between' }}>
       <FormLabelStart title='Purpose finder'
                       description={showPersonaFinder ? 'Show search bar' : 'Hide search bar'} />
-      <Switch checked={showPersonaFinder} onChange={handleShowSearchBarChange}
+      <Switch /* @uxid src/apps/settings-modal/settings-ui/AppChatSettingsUI::AppChatSettingsUI.switch-4 */ checked={showPersonaFinder} onChange={handleShowSearchBarChange}
               endDecorator={showPersonaFinder ? 'On' : 'Off'}
               slotProps={{ endDecorator: { sx: { minWidth: 26 } } }} />
     </FormControl>}
@@ -130,7 +132,7 @@ export function AppChatSettingsUI() {
     <SettingUIContentScaling />
 
     {!isPwa() && !isMobile && (
-      <FormRadioControl
+      <FormRadioControl /* @uxid src/apps/settings-modal/settings-ui/AppChatSettingsUI::AppChatSettingsUI.formradiocontrol */
         title='Page Size'
         description={centerMode === 'full' ? 'Default' : centerMode === 'narrow' ? 'Narrow chat' : 'Wide'}
         options={OptionsPageSize}

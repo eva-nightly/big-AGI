@@ -21,6 +21,7 @@ export function platformAwareKeystrokes(text: string) {
 /**
  * Shows a shortcut combo in a nicely presented dark box.
  */
+// @uxid src/common/components/KeyStroke::KeyStroke
 export function KeyStroke(props: {
   combo: string,
   size?: 'sm' | 'md' | 'lg',
@@ -30,7 +31,7 @@ export function KeyStroke(props: {
   sx?: SxProps,
 }) {
   return (
-    <Chip
+    <Chip /* @uxid src/common/components/KeyStroke::KeyStroke.chip */
       size={props.size ?? 'md'}
       variant={props.variant}
       color={props.color || 'neutral'}

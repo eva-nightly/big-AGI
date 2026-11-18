@@ -20,6 +20,7 @@ const _styles = {
 /**
  * Model Selection Dropdowns: Shared search input with starred filter toggle
  */
+// @uxid src/common/stores/llms/components/LLMSearchFilterInput::LLMSearchFilterInput
 export const LLMSearchFilterInput = React.memo(function LLMSearchFilterInput(props: {
   size?: 'sm' | 'md' | 'lg',
   llmsCount: number,
@@ -34,7 +35,7 @@ export const LLMSearchFilterInput = React.memo(function LLMSearchFilterInput(pro
 
   // stable element, so the memoized input holds across our re-renders
   const starredDecorator = React.useMemo(() => !onStarredToggle ? undefined : (
-    <IconButton
+    <IconButton /* @uxid src/common/stores/llms/components/LLMSearchFilterInput::LLMSearchFilterInput.iconbutton */
       size='sm'
       variant='plain'
       aria-label='Filter starred models'
@@ -46,7 +47,7 @@ export const LLMSearchFilterInput = React.memo(function LLMSearchFilterInput(pro
   ), [onStarredToggle, showStarredOnly]);
 
   return (
-    <DebouncedInputMemo
+    <DebouncedInputMemo /* @uxid src/common/stores/llms/components/LLMSearchFilterInput::LLMSearchFilterInput.debouncedinputmemo */
       size={props.size}
       retainFocus
       debounceTimeout={300}

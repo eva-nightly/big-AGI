@@ -21,6 +21,7 @@ export type ImportConfig = { dir: 'import' };
  * Components and functionality to import conversations
  * Supports our own JSON/backup files
  */
+// @uxid src/modules/trade/ImportChats::ImportChats
 export function ImportChats(props: { onConversationActivate: (conversationId: DConversationId) => void, onClose: () => void }) {
 
   // state
@@ -54,7 +55,7 @@ export function ImportChats(props: { onConversationActivate: (conversationId: DC
       </Typography>
 
       <GoodTooltip title={<KeyStroke variant='solid' combo='Ctrl + O' />}>
-        <Button
+        <Button /* @uxid src/modules/trade/ImportChats::ImportChats.button */
           variant='soft' endDecorator={<FileUploadOutlinedIcon />} sx={{ minWidth: 240, justifyContent: 'space-between' }}
           onClick={handleImportFromFiles}
         >
@@ -68,7 +69,7 @@ export function ImportChats(props: { onConversationActivate: (conversationId: DC
     </Box>
 
     {/* import outcome */}
-    {!!importOutcome && <ImportOutcomeModal outcome={importOutcome} onClose={handleImportOutcomeClosed} />}
+    {!!importOutcome && <ImportOutcomeModal /* @uxid src/modules/trade/ImportChats::ImportChats.importoutcomemodal */ outcome={importOutcome} onClose={handleImportOutcomeClosed} />}
 
   </>;
 }

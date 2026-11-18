@@ -26,6 +26,7 @@ const _styles = {
  * Shared label part (left side)
  * Not memoized: callers pass element literals (description, tooltip) by design, so a memo could never hold.
  */
+// @uxid src/common/components/forms/FormLabelStart::FormLabelStart
 export function FormLabelStart(props: {
   title: React.ReactNode,
   description?: React.ReactNode,
@@ -36,7 +37,7 @@ export function FormLabelStart(props: {
 }) {
   return <div>
     {/* Title */}
-    <FormLabel
+    <FormLabel /* @uxid src/common/components/forms/FormLabelStart::FormLabelStart.formlabel */
       onClick={props.onClick}
       sx={props.onClick ? _styles.labelClickable
         : props.sx ? { ..._styles.label, ...props.sx }

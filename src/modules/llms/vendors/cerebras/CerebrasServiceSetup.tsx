@@ -18,6 +18,7 @@ import { useServiceSetup } from '../useServiceSetup';
 const CEREBRAS_REG_LINK = 'https://cloud.cerebras.ai/';
 
 
+// @uxid src/modules/llms/vendors/cerebras/CerebrasServiceSetup::CerebrasServiceSetup
 export function CerebrasServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -47,10 +48,10 @@ export function CerebrasServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/cerebras/CerebrasServiceSetup::CerebrasServiceSetup.forminputkey */
       autoCompleteId='cerebras-key' label='Cerebras API Key'
       rightLabel={<>{needsUserKey
-        ? !cerebrasKey && <Link level='body-sm' href={CEREBRAS_REG_LINK} target='_blank'>API keys</Link>
+        ? !cerebrasKey && <Link /* @uxid src/modules/llms/vendors/cerebras/CerebrasServiceSetup::CerebrasServiceSetup.link */ level='body-sm' href={CEREBRAS_REG_LINK} target='_blank'>API keys</Link>
         : <AlreadySet overridden={!!cerebrasKey} />}
       </>}
       value={cerebrasKey} onChange={value => updateSettings({ cerebrasKey: value })}
@@ -58,7 +59,7 @@ export function CerebrasServiceSetup(props: { serviceId: DModelsServiceId }) {
       placeholder='...'
     />
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/cerebras/CerebrasServiceSetup::CerebrasServiceSetup.setupformclientsidetoggle */
       visible={!!cerebrasKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

@@ -34,6 +34,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/modules/llms/vendors/bedrock/BedrockServiceSetup::BedrockServiceSetup
 export function BedrockServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -79,17 +80,17 @@ export function BedrockServiceSetup(props: { serviceId: DModelsServiceId }) {
       <Box sx={{ display: 'flex', gap: 2, alignItems: 'flex-start' }}>
         <ClaudeCrabIcon sx={{ fontSize: '2rem', mt: 0.5 }} />
         <Box sx={{ flex: 1 }}>
-          Access Amazong Nova, Claude, and many more models through your <Link color='neutral' href='https://aws.amazon.com/bedrock/' level='body-sm' target='_blank'>AWS Bedrock</Link> account
+          Access Amazong Nova, Claude, and many more models through your <Link /* @uxid src/modules/llms/vendors/bedrock/BedrockServiceSetup::BedrockServiceSetup.link */ color='neutral' href='https://aws.amazon.com/bedrock/' level='body-sm' target='_blank'>AWS Bedrock</Link> account
           using a long-term <strong>API Key</strong> or <strong>IAM credentials</strong>.
           {showSetupInstructions && (
             <Typography level='body-xs' component='ol' sx={{ pl: 2, mt: 1, display: 'flex', flexDirection: 'column', gap: 0.5 }}>
-              <li><strong>API Key</strong>: in the <Link href='https://console.aws.amazon.com/bedrock/' target='_blank'>Bedrock Console</Link>, create a long-term key (<code>ABSK...</code>). Short-term keys don&apos;t support model listing</li>
-              <li><strong>AWS IAM</strong>: in the <Link href='https://console.aws.amazon.com/iam/' target='_blank'>IAM Console</Link>, create a user with the <strong>AmazonBedrockFullAccess</strong> permission policy. Open the user, go to <strong>Security credentials</strong>, then <strong>Create access key</strong> (<strong>&quot;Application running outside AWS&quot;</strong>) and copy both keys</li>
+              <li><strong>API Key</strong>: in the <Link /* @uxid src/modules/llms/vendors/bedrock/BedrockServiceSetup::BedrockServiceSetup.link-2 */ href='https://console.aws.amazon.com/bedrock/' target='_blank'>Bedrock Console</Link>, create a long-term key (<code>ABSK...</code>). Short-term keys don&apos;t support model listing</li>
+              <li><strong>AWS IAM</strong>: in the <Link /* @uxid src/modules/llms/vendors/bedrock/BedrockServiceSetup::BedrockServiceSetup.link-3 */ href='https://console.aws.amazon.com/iam/' target='_blank'>IAM Console</Link>, create a user with the <strong>AmazonBedrockFullAccess</strong> permission policy. Open the user, go to <strong>Security credentials</strong>, then <strong>Create access key</strong> (<strong>&quot;Application running outside AWS&quot;</strong>) and copy both keys</li>
               <li>Select your <strong>AWS Models Region</strong> below</li>
             </Typography>
           )}
         </Box>
-        <IconButton size='sm' variant={showSetupInstructions ? 'solid' : 'soft'} color='neutral' onClick={() => setShowSetupInstructions(on => !on)}>
+        <IconButton /* @uxid src/modules/llms/vendors/bedrock/BedrockServiceSetup::BedrockServiceSetup.iconbutton */ size='sm' variant={showSetupInstructions ? 'solid' : 'soft'} color='neutral' onClick={() => setShowSetupInstructions(on => !on)}>
           <InfoOutlinedIcon />
         </IconButton>
       </Box>
@@ -97,7 +98,7 @@ export function BedrockServiceSetup(props: { serviceId: DModelsServiceId }) {
 
 
     {/* Bearer token (API Key) - highest client-side priority */}
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/bedrock/BedrockServiceSetup::BedrockServiceSetup.forminputkey */
       autoCompleteId='bedrock-bearer-token' label='Bedrock long-term API Key'
       rightLabel={<>{needsUserKey
         ? undefined
@@ -114,7 +115,7 @@ export function BedrockServiceSetup(props: { serviceId: DModelsServiceId }) {
     {/* IAM credentials - side by side on md+, stacked on mobile, dimmed when bearer is active */}
     {!hasBearer && <Box sx={hasBearer ? _styles.iamSectionDimmed : undefined}>
       <Box sx={_styles.iamGrid}>
-        <FormInputKey
+        <FormInputKey /* @uxid src/modules/llms/vendors/bedrock/BedrockServiceSetup::BedrockServiceSetup.forminputkey-2 */
           autoCompleteId='bedrock-access-key-id' label='AWS Access Key ID'
           rightLabel={<>{needsUserKey
             ? undefined
@@ -126,7 +127,7 @@ export function BedrockServiceSetup(props: { serviceId: DModelsServiceId }) {
           placeholder='AKIA...'
         />
 
-        <FormInputKey
+        <FormInputKey /* @uxid src/modules/llms/vendors/bedrock/BedrockServiceSetup::BedrockServiceSetup.forminputkey-3 */
           autoCompleteId='bedrock-secret-access-key' label='AWS Secret Access Key'
           value={bedrockSecretAccessKey} onChange={value => updateSettings({ bedrockSecretAccessKey: value })}
           required={false} // required={needsUserKey && !hasBearer}
@@ -137,7 +138,7 @@ export function BedrockServiceSetup(props: { serviceId: DModelsServiceId }) {
     </Box>}
 
 
-    <BedrockRegionAutocomplete
+    <BedrockRegionAutocomplete /* @uxid src/modules/llms/vendors/bedrock/BedrockServiceSetup::BedrockServiceSetup.bedrockregionautocomplete */
       value={bedrockRegion || ''}
       onChange={value => updateSettings({ bedrockRegion: value })}
     />

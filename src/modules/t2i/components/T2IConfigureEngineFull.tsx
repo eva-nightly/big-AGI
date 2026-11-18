@@ -20,6 +20,7 @@ import { useT2IStore } from '../store-module-t2i';
  * The openai, azure and localai vendors generate through the OpenAI/DALL·E
  * path and share a profile shape, so they share the DALL·E panel.
  */
+// @uxid src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfilePanel
 function T2IEngineProfilePanel(props: {
   engine: DT2IEngineAny;
   onUpdate: (updates: Partial<DT2IEngineAny>) => void;
@@ -30,21 +31,21 @@ function T2IEngineProfilePanel(props: {
   switch (profile.dialect) {
     case 'dalle':
       return (
-        <DallESettings
+        <DallESettings /* @uxid src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfilePanel.dallesettings */
           profile={profile}
           onUpdateProfile={update => onUpdate({ profile: { ...profile, ...update } })}
         />
       );
     case 'openrouter':
       return (
-        <OpenRouterT2ISettings
+        <OpenRouterT2ISettings /* @uxid src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfilePanel.openroutert2isettings */
           profile={profile}
           onUpdateProfile={update => onUpdate({ profile: { ...profile, ...update } })}
         />
       );
     case 'gemini':
       return (
-        <GeminiT2ISettings
+        <GeminiT2ISettings /* @uxid src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfilePanel.geminit2isettings */
           profile={profile}
           serviceId={engine.credentials.type === 'llms-service' ? engine.credentials.serviceId : null}
           onUpdateProfile={update => onUpdate({ profile: { ...profile, ...update } })}
@@ -60,12 +61,13 @@ function T2IEngineProfilePanel(props: {
  * Store-connected profile panel for a given engine id - used by the Draw app's
  * inline Options expander, which knows the active engine id but not the instance.
  */
+// @uxid src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfileEditor
 export function T2IEngineProfileEditor(props: { engineId: DT2IEngineId | null }) {
   const { engineId } = props;
   const engine = useT2IStore(state => engineId ? state.engines[engineId] ?? null : null);
   if (!engine || engine.isDeleted) return null;
   return (
-    <T2IEngineProfilePanel
+    <T2IEngineProfilePanel /* @uxid src/modules/t2i/components/T2IConfigureEngineFull::T2IEngineProfileEditor.t2iengineprofilepanel */
       engine={engine}
       onUpdate={updates => useT2IStore.getState().updateEngine(engine.engineId, updates)}
     />
@@ -75,6 +77,7 @@ export function T2IEngineProfileEditor(props: { engineId: DT2IEngineId | null })
 
 // --- Public component ---
 
+// @uxid src/modules/t2i/components/T2IConfigureEngineFull::T2IConfigureEngineFull
 export function T2IConfigureEngineFull(props: {
   engine: DT2IEngineAny;
   isMobile: boolean;
@@ -103,7 +106,7 @@ export function T2IConfigureEngineFull(props: {
         persistentDivider
       >
         <Box sx={_styles.sectionBody}>
-          <T2IEngineProfilePanel engine={engine} onUpdate={onUpdate} />
+          <T2IEngineProfilePanel /* @uxid src/modules/t2i/components/T2IConfigureEngineFull::T2IConfigureEngineFull.t2iengineprofilepanel */ engine={engine} onUpdate={onUpdate} />
         </Box>
       </ExpanderSection>
     </div>

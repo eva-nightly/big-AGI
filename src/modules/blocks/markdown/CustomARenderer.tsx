@@ -55,6 +55,7 @@ function _analyzeUrl(url: string): URLInfo {
 }
 
 
+// @uxid src/modules/blocks/markdown/CustomARenderer::GoogleFavicon
 function GoogleFavicon(props: {
   domain: string;
   size?: number;
@@ -93,6 +94,7 @@ function GoogleFavicon(props: {
   );
 }
 
+// @uxid src/modules/blocks/markdown/CustomARenderer::LinkPreview
 function LinkPreview({ urlInfo }: { urlInfo: URLInfo }) {
   return (
     <FormControl sx={{ px: 0.5, py: 0.75, minWidth: 200 }}>
@@ -113,6 +115,7 @@ function LinkPreview({ urlInfo }: { urlInfo: URLInfo }) {
 
 
 // Inert link: the text of a link the browser must not navigate, with the reason on hover
+// @uxid src/modules/blocks/markdown/CustomARenderer::InertLink
 function InertLink({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <TooltipOutlined title={title}>
@@ -124,6 +127,7 @@ function InertLink({ title, children }: { title: string; children: React.ReactNo
 }
 
 
+// @uxid src/modules/blocks/markdown/CustomARenderer::CustomARenderer
 export function CustomARenderer({ node, href, children, ...props }: {
   node?: any;
   href?: string;
@@ -138,7 +142,7 @@ export function CustomARenderer({ node, href, children, ...props }: {
   if (href && /^sandbox:/i.test(href))
     return hostedAction ? (
       <TooltipOutlined title='Download the attached file'>
-        <Link component='button' level='inherit' onClick={hostedAction}>{children}</Link>
+        <Link /* @uxid src/modules/blocks/markdown/CustomARenderer::CustomARenderer.link */ component='button' level='inherit' onClick={hostedAction}>{children}</Link>
       </TooltipOutlined>
     ) : <InertLink title='Generated in the sandbox. If it exists, it is attached to this message.'>{children}</InertLink>;
 
@@ -155,7 +159,7 @@ export function CustomARenderer({ node, href, children, ...props }: {
 
     return (
       <TooltipOutlined title={<LinkPreview urlInfo={urlInfo} />}>
-        <Link level='inherit' {...props} href={href} target='_blank' rel='noopener'>
+        <Link /* @uxid src/modules/blocks/markdown/CustomARenderer::CustomARenderer.link-2 */ level='inherit' {...props} href={href} target='_blank' rel='noopener'>
           {children} <GoogleFavicon domain={urlInfo.domain} size={16} />
         </Link>
       </TooltipOutlined>
@@ -164,7 +168,7 @@ export function CustomARenderer({ node, href, children, ...props }: {
 
   // adds a target="_blank" to all links
   return (
-    <a {...props} href={href} target='_blank' rel='noopener'>
+    <a /* @uxid src/modules/blocks/markdown/CustomARenderer::CustomARenderer.link-3 */ {...props} href={href} target='_blank' rel='noopener'>
       {children}
     </a>
   );

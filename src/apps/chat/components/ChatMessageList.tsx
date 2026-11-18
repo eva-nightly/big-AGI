@@ -47,6 +47,7 @@ const stableNoMessages: DMessage[] = [];
 /**
  * A list of ChatMessages
  */
+// @uxid src/apps/chat/components/ChatMessageList::ChatMessageList
 export function ChatMessageList(props: {
   conversationId: DConversationId | null,
   conversationHandler: ConversationHandler | null,
@@ -388,7 +389,7 @@ export function ChatMessageList(props: {
 
   // no conversation: sine qua non
   if (!conversationId)
-    return <CMLZeroConversation onConversationNew={props.onConversationNew} />;
+    return <CMLZeroConversation /* @uxid src/apps/chat/components/ChatMessageList::ChatMessageList.cmlzeroconversation */ onConversationNew={props.onConversationNew} />;
 
 
   // no content: show the persona selector
@@ -407,10 +408,10 @@ export function ChatMessageList(props: {
 
   return <ERCDiffContextProvider title='Compare Outputs' isMobile={props.isMobile} contentScaling={contentScaling}>
 
-    <List role='chat-messages-list' sx={listSx} onCopy={clipboardInterceptCtrlCForCleanup}>
+    <List /* @uxid src/apps/chat/components/ChatMessageList::ChatMessageList.list */ role='chat-messages-list' sx={listSx} onCopy={clipboardInterceptCtrlCForCleanup}>
 
       {props.isMessageSelectionMode ? (
-        <ChatCleanupControls
+        <ChatCleanupControls /* @uxid src/apps/chat/components/ChatMessageList::ChatMessageList.chatcleanupcontrols */
           isMobile={props.isMobile}
           conversationHandler={conversationHandler}
           conversationMessages={conversationMessages}
@@ -425,7 +426,7 @@ export function ChatMessageList(props: {
 
           return (
 
-            <ChatMessageStreamingMemo
+            <ChatMessageStreamingMemo /* @uxid src/apps/chat/components/ChatMessageList::ChatMessageList.chatmessagestreamingmemo */
               key={'msg-' + message.id}
               message={message}
               // diffPreviousText={message === diffTargetMessage ? diffPrevText : undefined}

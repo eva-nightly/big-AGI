@@ -20,6 +20,7 @@ import { ModelVendorOllama } from './ollama.vendor';
 import { OllamaAdministration } from './OllamaAdministration';
 
 
+// @uxid src/modules/llms/vendors/ollama/OllamaServiceSetup::OllamaServiceSetup
 export function OllamaServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state
@@ -42,7 +43,7 @@ export function OllamaServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   return <>
 
-    <FormTextField
+    <FormTextField /* @uxid src/modules/llms/vendors/ollama/OllamaServiceSetup::OllamaServiceSetup.formtextfield */
       autoCompleteId='ollama-host'
       title='Ollama Host'
       description={<ExternalDocsLink level='body-sm' docPage='connect-ollama'>Information</ExternalDocsLink>}
@@ -60,7 +61,7 @@ export function OllamaServiceSetup(props: { serviceId: DModelsServiceId }) {
       </Typography>
     </FormControl>
 
-    <SetupFormClientSideToggle
+    <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/ollama/OllamaServiceSetup::OllamaServiceSetup.setupformclientsidetoggle */
       visible={true}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}
@@ -71,7 +72,7 @@ export function OllamaServiceSetup(props: { serviceId: DModelsServiceId }) {
     <SetupFormRefetchButton
       refetch={refetch} disabled={!shallFetchSucceed || isFetching} loading={isFetching} error={isError}
       leftButton={
-        <Button color='neutral' variant='solid' disabled={adminOpen} onClick={() => setAdminOpen(true)} startDecorator={<OllamaIcon sx={{ fontSize:'lg' }}/>}>
+        <Button /* @uxid src/modules/llms/vendors/ollama/OllamaServiceSetup::OllamaServiceSetup.button */ color='neutral' variant='solid' disabled={adminOpen} onClick={() => setAdminOpen(true)} startDecorator={<OllamaIcon sx={{ fontSize:'lg' }}/>}>
           Ollama Admin
         </Button>
       }
@@ -83,7 +84,7 @@ export function OllamaServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     {isError && <InlineError error={error} />}
 
-    {adminOpen && <OllamaAdministration access={serviceAccess} onClose={() => setAdminOpen(false)} />}
+    {adminOpen && <OllamaAdministration /* @uxid src/modules/llms/vendors/ollama/OllamaServiceSetup::OllamaServiceSetup.ollamaadministration */ access={serviceAccess} onClose={() => setAdminOpen(false)} />}
 
   </>;
 }

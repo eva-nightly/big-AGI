@@ -45,6 +45,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/common/attachment-drafts/attachment-sources/useWebAttachmentModal::WebInputModal
 function WebInputModal(props: {
   composerText?: string,
   onClose: () => void,
@@ -148,7 +149,7 @@ function WebInputModal(props: {
 
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/common/attachment-drafts/attachment-sources/useWebAttachmentModal::WebInputModal.goodmodal */
       open
       onClose={handleClose}
       title='Add Web Content'
@@ -174,7 +175,7 @@ function WebInputModal(props: {
             {extractedUrlsCount} URL{extractedUrlsCount > 1 ? 's' : ''} in your message
             {/*{extractedUrlsCount} URL{extractedUrlsCount > 1 ? 's' : ''} found in your message*/}
           </Typography>
-          <Chip
+          <Chip /* @uxid src/common/attachment-drafts/attachment-sources/useWebAttachmentModal::WebInputModal.chip */
             variant='soft'
             onClick={handleAddAllUrls}
             startDecorator={<AddCircleOutlineRoundedIcon />}
@@ -186,7 +187,7 @@ function WebInputModal(props: {
       )}
 
 
-      <form onSubmit={formHandleSubmit(handleSubmit)}>
+      <form /* @uxid src/common/attachment-drafts/attachment-sources/useWebAttachmentModal::WebInputModal.form */ onSubmit={formHandleSubmit(handleSubmit)}>
         <Stack spacing={1}>
           {formFields.map((field, index) => (
             <Controller
@@ -197,7 +198,7 @@ function WebInputModal(props: {
               render={({ field: { value, onChange }, fieldState: { error } }) => (
                 <FormControl error={!!error}>
                   <Box sx={{ display: 'flex', gap: 1 }}>
-                    <Input
+                    <Input /* @uxid src/common/attachment-drafts/attachment-sources/useWebAttachmentModal::WebInputModal.input */
                       required={index === 0}
                       placeholder='https://...'
                       endDecorator={extractYoutubeVideoIDFromURL(value) ? <YouTubeIcon sx={_styles.ytIcon} /> : undefined}
@@ -211,7 +212,7 @@ function WebInputModal(props: {
                       sx={{ flex: 1 }}
                     />
                     {urlFieldCount > 1 && (
-                      <IconButton
+                      <IconButton /* @uxid src/common/attachment-drafts/attachment-sources/useWebAttachmentModal::WebInputModal.iconbutton */
                         size='sm'
                         variant='plain'
                         color='neutral'
@@ -231,7 +232,7 @@ function WebInputModal(props: {
         {/* Add a new link */}
         <Box sx={{ display: 'flex', justifyContent: 'space-between', gap: 1, mt: 2.5 }}>
 
-          {formIsDirty && <Button
+          {formIsDirty && <Button /* @uxid src/common/attachment-drafts/attachment-sources/useWebAttachmentModal::WebInputModal.button */
             color='neutral'
             variant='soft'
             disabled={!canAddMoreUrls}
@@ -271,7 +272,7 @@ export function useWebAttachmentModal(onAttachWebLinks: (urls: WebInputData[]) =
   const openWebInputDialog = React.useCallback(() => setOpen(true), []);
 
   const webInputDialogComponent = React.useMemo(() => open && (
-    <WebInputModal
+    <WebInputModal /* @uxid src/common/attachment-drafts/attachment-sources/useWebAttachmentModal::useWebAttachmentModal.webinputmodal */
       composerText={composerTextRef.current}
       onClose={() => setOpen(false)}
       onWebLinks={onAttachWebLinks}

@@ -11,6 +11,7 @@ import { ContentScaling, themeScalingMap } from '~/common/app.theme';
 import { ViewImageRefPartModal } from '~/common/components/modals/ViewImageRefPartModal';
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartImageRef::BlockPartImageRef
 export function BlockPartImageRef(props: {
   imageRefPart: DMessageImageRefPart,
   fragmentId?: DMessageFragmentId,
@@ -56,7 +57,7 @@ export function BlockPartImageRef(props: {
 
       {/* Render DBlob / URL / Error -> downloads -> Calls RenderImageURL */}
       {dataRef.reftype === 'dblob' ? (
-        <RenderImageRefDBlob
+        <RenderImageRefDBlob /* @uxid src/apps/chat/components/message/fragments-content/BlockPartImageRef::BlockPartImageRef.renderimagerefdblob */
           dataRefDBlobAssetId={dataRef.dblobAssetId}
           dataRefMimeType={dataRef.mimeType}
           dataRefBytesSize={dataRef.bytesSize}
@@ -80,7 +81,7 @@ export function BlockPartImageRef(props: {
 
       {/* Image viewer modal */}
       {!props.disableViewer && viewingImageRefPart && (
-        <ViewImageRefPartModal
+        <ViewImageRefPartModal /* @uxid src/apps/chat/components/message/fragments-content/BlockPartImageRef::BlockPartImageRef.viewimagerefpartmodal */
           imageRefPart={viewingImageRefPart}
           onClose={() => setViewingImageRefPart(null)}
           onDeleteFragment={onFragmentDelete ? handleDeleteFragment : undefined}

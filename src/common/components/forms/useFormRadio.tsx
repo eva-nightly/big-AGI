@@ -20,7 +20,7 @@ export function useFormRadio<T extends string>(initialValue: T, options: FormRad
   const component = React.useMemo(() => hidden === true ? null : (
     <FormControl /* size='sm' NOTE: this would make all forms smaller, but requires an adaptation of all the other <RadioGroups> as well, including settings */>
       {!!label && <FormLabel>{label}</FormLabel>}
-      <RadioGroup
+      <RadioGroup /* @uxid src/common/components/forms/useFormRadio::useFormRadio.radiogroup */
         orientation='horizontal'
         value={value} onChange={handleChange}
         sx={{ gap: 0.5 }}

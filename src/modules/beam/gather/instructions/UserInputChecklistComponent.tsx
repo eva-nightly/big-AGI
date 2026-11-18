@@ -55,6 +55,7 @@ function parseMarkdownBold(text: string | undefined) {
 }
 
 
+// @uxid src/modules/beam/gather/instructions/UserInputChecklistComponent::UserInputChecklistComponent
 export function UserInputChecklistComponent(props: {
   options: UserChecklistOption[];
   onConfirm: (selectedOptions: UserChecklistOption[]) => void;
@@ -82,7 +83,7 @@ export function UserInputChecklistComponent(props: {
       {/*</Typography>*/}
 
       {localOptions.map((option) => (
-        <Checkbox
+        <Checkbox /* @uxid src/modules/beam/gather/instructions/UserInputChecklistComponent::UserInputChecklistComponent.checkbox */
           key={option.id}
           size='sm'
           color={GATHER_COLOR}
@@ -98,14 +99,14 @@ export function UserInputChecklistComponent(props: {
       ))}
 
       <Box sx={{ display: 'flex', gap: 1, mt: 1 }}>
-        <Button
+        <Button /* @uxid src/modules/beam/gather/instructions/UserInputChecklistComponent::UserInputChecklistComponent.button */
           color={GATHER_COLOR}
           onClick={() => props.onConfirm(localOptions)}
         >
           Confirm Selection
         </Button>
 
-        <Button
+        <Button /* @uxid src/modules/beam/gather/instructions/UserInputChecklistComponent::UserInputChecklistComponent.button-2 */
           color='neutral'
           variant='soft'
           onClick={() => setLocalOptions(localOptions.map(option => ({ ...option, selected: !moreThanHalfSelected })))}
@@ -113,7 +114,7 @@ export function UserInputChecklistComponent(props: {
           {moreThanHalfSelected ? 'Uncheck All' : 'Check All'}
         </Button>
 
-        <Button
+        <Button /* @uxid src/modules/beam/gather/instructions/UserInputChecklistComponent::UserInputChecklistComponent.button-3 */
           color='neutral'
           variant='soft'
           onClick={props.onCancel}

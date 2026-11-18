@@ -27,7 +27,7 @@ export function useCameraCaptureDialog() {
 
   const openCameraCapture = React.useCallback((options?: CameraCaptureDialogOptions): Promise<CameraCaptureResult | null> =>
     showPromisedOverlay<CameraCaptureResult | null>('camera-capture', { rejectWithValue: null }, ({ onResolve }) => (
-      <CameraCaptureModal
+      <CameraCaptureModal /* @uxid src/common/components/camera/useCameraCaptureDialog::useCameraCaptureDialog.cameracapturemodal */
         allowMultiCapture={options?.allowMultiCapture}
         allowLiveFeed={options?.allowLiveFeed}
         liveFeedOnly={options?.liveFeedOnly}

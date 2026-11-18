@@ -68,6 +68,7 @@ export function findMatchingOpenAIAutoProvider(host: string): VerifiedProvider |
 
 // Autocomplete component for selecting verified OpenAI-compatible providers or typing custom URLs
 
+// @uxid src/modules/llms/vendors/openai/OpenAIHostAutocomplete::OpenAIHostAutocomplete
 export function OpenAIHostAutocomplete(props: {
   value: string;
   onChange: (value: string) => void;
@@ -108,7 +109,7 @@ export function OpenAIHostAutocomplete(props: {
 
   // dynamic right label: show docs link when a provider is matched
   const rightLabel = matchedProvider?.docsUrl
-    ? <Link level='body-sm' href={matchedProvider.docsUrl} target='_blank'>{matchedProvider.label} docs</Link>
+    ? <Link /* @uxid src/modules/llms/vendors/openai/OpenAIHostAutocomplete::OpenAIHostAutocomplete.link */ level='body-sm' href={matchedProvider.docsUrl} target='_blank'>{matchedProvider.label} docs</Link>
     : null;
 
   return (
@@ -122,7 +123,7 @@ export function OpenAIHostAutocomplete(props: {
         </FormLabel>
         {rightLabel && <FormHelperText sx={{ display: 'block' }}>{rightLabel}</FormHelperText>}
       </Box>
-      <Autocomplete<VerifiedProvider, false, false, true>
+      <Autocomplete /* @uxid src/modules/llms/vendors/openai/OpenAIHostAutocomplete::OpenAIHostAutocomplete.autocomplete */<VerifiedProvider, false, false, true>
         freeSolo
         openOnFocus
         clearOnEscape

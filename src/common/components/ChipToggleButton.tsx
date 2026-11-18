@@ -13,6 +13,7 @@ const _chipTBSx = {
 } as const;
 
 
+// @uxid src/common/components/ChipToggleButton::ChipToggleButton
 export function ChipToggleButton(props: {
   text: React.ReactNode,
   active?: boolean,
@@ -23,7 +24,7 @@ export function ChipToggleButton(props: {
   onClick?: () => void
 }) {
   return (
-    <Chip
+    <Chip /* @uxid src/common/components/ChipToggleButton::ChipToggleButton.chip */
       disabled={props.disabled}
       variant={props.active ? 'solid' : props.variant || 'outlined'}
       size={props.size}

@@ -84,6 +84,7 @@ function _createRenderDecayZone(alwaysDecayed: boolean, debug: boolean): RenderD
 const RenderDecayContext = React.createContext<RenderDecayZoneState | null>(null);
 
 
+// @uxid src/common/render-decay/RenderDecayZone::RenderDecayZone
 export function RenderDecayZone(props: { children: React.ReactNode }) {
 
   // external state

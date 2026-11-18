@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { OUT, apiKey, MODEL, save, runLoop, summarize } from './lib.mjs';
 const load = id => JSON.parse(fs.readFileSync(path.join(OUT, `${id}.json`), 'utf8'));
+// @uxid tools/develop/aix-anthropic-eviscerate/probes2::post
 async function post(url, body) {
   const res = await fetch(url, { method: 'POST', headers: { 'x-api-key': apiKey(), 'anthropic-version': '2023-06-01', 'content-type': 'application/json' }, body: JSON.stringify(body) });
   let j; try { j = await res.json(); } catch { j = {}; }

@@ -26,6 +26,7 @@ import { asrxAreCredentialsValid } from '../store-module-asrx';
 
 // --- Public component ---
 
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::ASRxConfigureEngineFull
 export function ASRxConfigureEngineFull(props: {
   engine: DASRxEngineAny;
   isMobile: boolean;
@@ -70,11 +71,11 @@ export function ASRxConfigureEngineFull(props: {
       >
         <Box sx={_styles.sectionBody}>
           {engine.vendorType === 'deepgram' ? (
-            <DeepgramParameters engine={engine} onUpdate={onUpdate} />
+            <DeepgramParameters /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::ASRxConfigureEngineFull.deepgramparameters */ engine={engine} onUpdate={onUpdate} />
           ) : engine.vendorType === 'gemini' ? (
-            <GeminiParameters engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
+            <GeminiParameters /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::ASRxConfigureEngineFull.geminiparameters */ engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
           ) : engine.vendorType === 'openai' ? (
-            <OpenAIParameters engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
+            <OpenAIParameters /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::ASRxConfigureEngineFull.openaiparameters */ engine={engine} onUpdate={onUpdate} isMobile={isMobile} />
           ) : (
             <Typography level='body-sm' color='warning'>Unknown engine type {(engine as any)?.vendorType}</Typography>
           )}
@@ -106,7 +107,7 @@ export function ASRxConfigureEngineFull(props: {
           )}
 
           {isManual && engine.credentials.type === 'api-key' && (
-            <ManualCredentials
+            <ManualCredentials /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::ASRxConfigureEngineFull.manualcredentials */
               engine={engine}
               credentials={engine.credentials}
               onUpdate={onUpdate}
@@ -117,7 +118,7 @@ export function ASRxConfigureEngineFull(props: {
           {/* Advanced toggle (manual only) */}
           {isManual && (
             <Box sx={_styles.bottomRow}>
-              <Typography
+              <Typography /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::ASRxConfigureEngineFull.typography */
                 level='body-xs'
                 onClick={advanced.toggle}
                 sx={_styles.advancedToggle}
@@ -160,6 +161,7 @@ const _styles = {
 
 // --- Manual credentials (api-key + optional host) ---
 
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::ManualCredentials
 function ManualCredentials({ engine, credentials, onUpdate, advancedOn }: {
   engine: DASRxEngineAny;
   credentials: DCredentialsApiKey;
@@ -181,7 +183,7 @@ function ManualCredentials({ engine, credentials, onUpdate, advancedOn }: {
 
   return <>
 
-    <FormSecretField
+    <FormSecretField /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::ManualCredentials.formsecretfield */
       autoCompleteId={`asrx-${vendorType}-key`}
       title='API Key'
       // description={keyDescription}
@@ -193,7 +195,7 @@ function ManualCredentials({ engine, credentials, onUpdate, advancedOn }: {
     />
 
     {advancedOn && (
-      <FormTextField
+      <FormTextField /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::ManualCredentials.formtextfield */
         autoCompleteId={`asrx-${vendorType}-host`}
         title='API Host'
         description='Optional'
@@ -211,6 +213,7 @@ function ManualCredentials({ engine, credentials, onUpdate, advancedOn }: {
 // --- Shared panel chrome ---
 
 /** Bottom row shared by every vendor panel: 'Advanced...' toggle left, 'Reset to defaults' right when off-default. */
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::PanelFooter
 function PanelFooter({ advanced, showReset, onReset }: {
   advanced: { on: boolean; toggle: () => void };
   showReset: boolean;
@@ -218,7 +221,7 @@ function PanelFooter({ advanced, showReset, onReset }: {
 }) {
   return (
     <Box sx={_styles.bottomRow}>
-      <Typography
+      <Typography /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::PanelFooter.typography */
         level='body-xs'
         onClick={advanced.toggle}
         sx={{ ..._styles.advancedToggle, mr: 'auto' }}
@@ -226,7 +229,7 @@ function PanelFooter({ advanced, showReset, onReset }: {
         {advanced.on ? 'Hide Advanced' : 'Advanced...'}
       </Typography>
       {showReset && (
-        <Link
+        <Link /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::PanelFooter.link */
           component='button'
           color='neutral'
           level='body-xs'
@@ -243,6 +246,7 @@ function PanelFooter({ advanced, showReset, onReset }: {
  * 'Personal Dictionary' row + editor modal, shared by every vendor panel.
  * Terms are data, not a parameter: each panel's reset handler preserves them.
  */
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::PersonalDictionaryRow
 function PersonalDictionaryRow({ show, terms, description, onSave }: {
   show: boolean;
   terms: string[];
@@ -257,12 +261,12 @@ function PersonalDictionaryRow({ show, terms, description, onSave }: {
   return <>
     <FormControl orientation='horizontal' sx={{ flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center' }}>
       <FormLabelStart title='Personal Dictionary' description={description ?? 'Fix names & jargon'} />
-      <Button variant='outlined' color='neutral' onClick={() => setOpen(true)}>
+      <Button /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::PersonalDictionaryRow.button */ variant='outlined' color='neutral' onClick={() => setOpen(true)}>
         {terms.length ? `${terms.length} term${terms.length === 1 ? '' : 's'}` : 'Add terms...'}
       </Button>
     </FormControl>
     {open && (
-      <DictionaryModal
+      <DictionaryModal /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::PersonalDictionaryRow.dictionarymodal */
         terms={terms}
         onSave={saved => {
           onSave(saved);
@@ -282,6 +286,7 @@ const _DEEPGRAM_MODEL_LABELS: FormChipModelLabels<typeof ASRX_MODELS.deepgram[nu
   'nova-2': { label: 'Nova 2', description: 'Stable' },
 };
 
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters
 function DeepgramParameters({ engine, onUpdate }: {
   engine: DASRxEngine<'deepgram'>;
   onUpdate: (updates: Partial<DASRxEngine<'deepgram'>>) => void;
@@ -313,7 +318,7 @@ function DeepgramParameters({ engine, onUpdate }: {
   return <>
 
     {/* Model */}
-    <FormChipModelControl
+    <FormChipModelControl /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters.formchipmodelcontrol */
       catalog={ASRX_MODELS.deepgram}
       labels={_DEEPGRAM_MODEL_LABELS}
       autoModel={ASRX_DEFAULTS.DEEPGRAM_MODEL}
@@ -322,11 +327,11 @@ function DeepgramParameters({ engine, onUpdate }: {
     />
 
     {/* Language */}
-    <FormTextField
+    <FormTextField /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters.formtextfield */
       autoCompleteId='asrx-deepgram-language'
       title='Language'
       description={
-        <Link level='inherit' color='neutral' href='https://developers.deepgram.com/docs/models-languages-overview' target='_blank' rel='noopener' sx={{ textDecoration: 'underline' }}>
+        <Link /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters.link */ level='inherit' color='neutral' href='https://developers.deepgram.com/docs/models-languages-overview' target='_blank' rel='noopener' sx={{ textDecoration: 'underline' }}>
           multi, en, es, ..
         </Link>
       }
@@ -337,7 +342,7 @@ function DeepgramParameters({ engine, onUpdate }: {
     />
 
     {/* Processing features */}
-    <FormSwitchControl
+    <FormSwitchControl /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters.formswitchcontrol */
       title='Smart Format'
       description='Punctuation, paragraphs'
       checked={profile.smartFormat !== false}
@@ -345,7 +350,7 @@ function DeepgramParameters({ engine, onUpdate }: {
     />
 
     {(advanced.on || !!profile.topics) && (
-      <FormSwitchControl
+      <FormSwitchControl /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters.formswitchcontrol-2 */
         title='Label Topics'
         description='Detects subject changes'
         checked={!!profile.topics}
@@ -354,7 +359,7 @@ function DeepgramParameters({ engine, onUpdate }: {
     )}
 
     {(advanced.on || !!profile.sentiment) && (
-      <FormSwitchControl
+      <FormSwitchControl /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters.formswitchcontrol-3 */
         title='Label Sentiment'
         description='Overall tone'
         checked={!!profile.sentiment}
@@ -363,7 +368,7 @@ function DeepgramParameters({ engine, onUpdate }: {
     )}
 
     {(advanced.on || !!profile.diarize) && (
-      <FormSwitchControl
+      <FormSwitchControl /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters.formswitchcontrol-4 */
         title='Label Speakers'
         description='Speaker 0: Hi...'
         checked={!!profile.diarize}
@@ -371,19 +376,20 @@ function DeepgramParameters({ engine, onUpdate }: {
       />
     )}
 
-    <PersonalDictionaryRow
+    <PersonalDictionaryRow /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters.personaldictionaryrow */
       show={advanced.on || termsCount > 0}
       terms={profile.keyterms ?? []}
       onSave={terms => handleProfileUpdate({ keyterms: terms.length ? terms : undefined })}
     />
 
-    <PanelFooter advanced={advanced} showReset={hasUserParameters} onReset={handleResetParameters} />
+    <PanelFooter /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DeepgramParameters.panelfooter */ advanced={advanced} showReset={hasUserParameters} onReset={handleResetParameters} />
 
   </>;
 }
 
 
 /** Minimal one-term-per-line editor for the user dictionary (Deepgram keyterms; OpenAI/Gemini keywords). */
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DictionaryModal
 function DictionaryModal(props: {
   terms: string[];
   onSave: (terms: string[]) => void;
@@ -411,7 +417,7 @@ function DictionaryModal(props: {
   }, [onSave, text]);
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DictionaryModal.goodmodal */
       open
       title='Personal Dictionary'
       hideBottomClose
@@ -420,7 +426,7 @@ function DictionaryModal(props: {
       <Typography level='body-sm'>
         One term per line, up to 100 terms. These are sent with every transcription to boost names, brands and jargon the engine keeps mis-hearing.
       </Typography>
-      <Textarea
+      <Textarea /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DictionaryModal.textarea */
         autoFocus
         minRows={6}
         maxRows={16}
@@ -429,8 +435,8 @@ function DictionaryModal(props: {
         onChange={event => setText(event.target.value)}
       />
       <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end' }}>
-        <Button variant='plain' color='neutral' onClick={props.onClose}>Cancel</Button>
-        <Button onClick={handleSave} sx={{ minWidth: 100 }}>Save</Button>
+        <Button /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DictionaryModal.button */ variant='plain' color='neutral' onClick={props.onClose}>Cancel</Button>
+        <Button /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::DictionaryModal.button-2 */ onClick={handleSave} sx={{ minWidth: 100 }}>Save</Button>
       </Box>
     </GoodModal>
   );
@@ -439,6 +445,7 @@ function DictionaryModal(props: {
 
 // --- Gemini parameters ---
 
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::GeminiParameters
 function GeminiParameters({ engine, onUpdate, isMobile }: {
   engine: DASRxEngine<'gemini'>;
   onUpdate: (updates: Partial<DASRxEngineAny>) => void;
@@ -466,7 +473,7 @@ function GeminiParameters({ engine, onUpdate, isMobile }: {
   return <>
 
     {/* Mode - the model's one big switch: vendor formatting vs literal transcript */}
-    <FormChipControl<Exclude<DProfileGemini['mode'], undefined>>
+    <FormChipControl /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::GeminiParameters.formchipcontrol */<Exclude<DProfileGemini['mode'], undefined>>
       title='Mode'
       alignEnd
       options={[
@@ -478,7 +485,7 @@ function GeminiParameters({ engine, onUpdate, isMobile }: {
     />
 
     {/* Language(s) */}
-    <FormTextField
+    <FormTextField /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::GeminiParameters.formtextfield */
       autoCompleteId='asrx-gemini-language'
       title='Language'
       description={isMobile ? undefined : `'en-US' or 'en,it' - blank = auto`}
@@ -488,13 +495,13 @@ function GeminiParameters({ engine, onUpdate, isMobile }: {
       inputSx={{ maxWidth: 210 }}
     />
 
-    <PersonalDictionaryRow
+    <PersonalDictionaryRow /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::GeminiParameters.personaldictionaryrow */
       show={advanced.on || keywordsCount > 0}
       terms={profile.keywords ?? []}
       onSave={terms => handleProfileUpdate({ keywords: terms.length ? terms : undefined })}
     />
 
-    <PanelFooter advanced={advanced} showReset={hasUserParameters} onReset={handleResetParameters} />
+    <PanelFooter /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::GeminiParameters.panelfooter */ advanced={advanced} showReset={hasUserParameters} onReset={handleResetParameters} />
 
   </>;
 }
@@ -511,6 +518,7 @@ const _OPENAI_MODEL_LABELS: FormChipModelLabels<typeof ASRX_MODELS.openai[number
   'whisper-1': { label: 'Whisper', description: 'Legacy', tooltip: '$0.36 per hour' },
 };
 
+// @uxid src/modules/asrx/components/ASRxConfigureEngineFull::OpenAIParameters
 function OpenAIParameters({ engine, onUpdate, isMobile }: {
   engine: DASRxEngine<'openai'>;
   onUpdate: (updates: Partial<DASRxEngineAny>) => void;
@@ -545,7 +553,7 @@ function OpenAIParameters({ engine, onUpdate, isMobile }: {
   return <>
 
     {/* Model */}
-    <FormChipModelControl
+    <FormChipModelControl /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::OpenAIParameters.formchipmodelcontrol */
       catalog={ASRX_MODELS.openai}
       labels={_OPENAI_MODEL_LABELS}
       autoModel={ASRX_DEFAULTS.OPENAI_MODEL}
@@ -554,7 +562,7 @@ function OpenAIParameters({ engine, onUpdate, isMobile }: {
     />
 
     {/* Language(s) */}
-    <FormTextField
+    <FormTextField /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::OpenAIParameters.formtextfield */
       autoCompleteId='asrx-openai-language'
       title='Language'
       description={isMobile ? undefined : `'en' or 'en,it' - blank = auto`}
@@ -565,7 +573,7 @@ function OpenAIParameters({ engine, onUpdate, isMobile }: {
     />
 
     {/* Prompt */}
-    <FormTextField
+    <FormTextField /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::OpenAIParameters.formtextfield-2 */
       autoCompleteId='asrx-openai-prompt'
       title='Prompt'
       description={isMobile ? undefined : 'Context / style hint'}
@@ -577,7 +585,7 @@ function OpenAIParameters({ engine, onUpdate, isMobile }: {
 
     {/* Temperature (whisper-1 only) */}
     {isWhisper && (
-      <FormSliderControl
+      <FormSliderControl /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::OpenAIParameters.formslidercontrol */
         title='Temperature'
         description={`${(profile.temperature ?? 0).toFixed(1)} (whisper-1)`}
         min={0}
@@ -591,7 +599,7 @@ function OpenAIParameters({ engine, onUpdate, isMobile }: {
     )}
 
     {(advanced.on || !!profile.diarize) && (
-      <FormSwitchControl
+      <FormSwitchControl /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::OpenAIParameters.formswitchcontrol */
         title='Label Speakers'
         description='Diarize model; skips Prompt'
         checked={!!profile.diarize}
@@ -599,14 +607,14 @@ function OpenAIParameters({ engine, onUpdate, isMobile }: {
       />
     )}
 
-    <PersonalDictionaryRow
+    <PersonalDictionaryRow /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::OpenAIParameters.personaldictionaryrow */
       show={advanced.on || keywordsCount > 0}
       terms={profile.keywords ?? []}
       description={keywordsApply ? undefined : 'Unused by this model'}
       onSave={terms => handleProfileUpdate({ keywords: terms.length ? terms : undefined })}
     />
 
-    <PanelFooter advanced={advanced} showReset={hasUserParameters} onReset={handleResetParameters} />
+    <PanelFooter /* @uxid src/modules/asrx/components/ASRxConfigureEngineFull::OpenAIParameters.panelfooter */ advanced={advanced} showReset={hasUserParameters} onReset={handleResetParameters} />
 
   </>;
 }

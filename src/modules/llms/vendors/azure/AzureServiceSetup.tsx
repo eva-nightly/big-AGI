@@ -23,6 +23,7 @@ import { useServiceSetup } from '../useServiceSetup';
 import { isValidAzureApiKey, ModelVendorAzure } from './azure.vendor';
 
 
+// @uxid src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup
 export function AzureServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state
@@ -55,20 +56,20 @@ export function AzureServiceSetup(props: { serviceId: DModelsServiceId }) {
     <ApproximateCosts>
       <div>
         <Typography level='body-sm'>
-          We support the <ExternalLink href='https://learn.microsoft.com/en-us/azure/ai-services/openai/overview'>Azure OpenAI Service</ExternalLink>.
+          We support the <ExternalLink /* @uxid src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup.externallink */ href='https://learn.microsoft.com/en-us/azure/ai-services/openai/overview'>Azure OpenAI Service</ExternalLink>.
           See more for Azure AI Foundry.
           {checkboxExpanded && <>
-            {' '}This is because the <ExternalLink href='https://learn.microsoft.com/en-us/azure/ai-studio/what-is-ai-studio'>Azure
-            AI Foundry</ExternalLink> requires a different model definition/enumeration, which <ExternalLink icon='issue' href='https://github.com/enricoros/big-AGI/issues/757'>not supported yet</ExternalLink> (PRs welcome).
+            {' '}This is because the <ExternalLink /* @uxid src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup.externallink-2 */ href='https://learn.microsoft.com/en-us/azure/ai-studio/what-is-ai-studio'>Azure
+            AI Foundry</ExternalLink> requires a different model definition/enumeration, which <ExternalLink /* @uxid src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup.externallink-3 */ icon='issue' href='https://github.com/enricoros/big-AGI/issues/757'>not supported yet</ExternalLink> (PRs welcome).
           </>}
-          <Chip component='span' variant='outlined' sx={{ ml: 1, fontSize: '0.75rem' }} onClick={() => setCheckboxExpanded(on => !on)}>
+          <Chip /* @uxid src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup.chip */ component='span' variant='outlined' sx={{ ml: 1, fontSize: '0.75rem' }} onClick={() => setCheckboxExpanded(on => !on)}>
             Show {checkboxExpanded ? 'less' : 'more'}
           </Chip>
         </Typography>
       </div>
     </ApproximateCosts>
 
-    <FormTextField
+    <FormTextField /* @uxid src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup.formtextfield */
       autoCompleteId='azure-endpoint'
       title='Azure Endpoint'
       description={<ExternalDocsLink level='body-sm' docPage='connect-azure'>configuration</ExternalDocsLink>}
@@ -78,10 +79,10 @@ export function AzureServiceSetup(props: { serviceId: DModelsServiceId }) {
       onChange={text => updateSettings({ azureEndpoint: text })}
     />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup.forminputkey */
       autoCompleteId='azure-key' label='Azure Key'
       rightLabel={<>{needsUserKey
-        ? !azureKey && <Link level='body-sm' href='https://azure.microsoft.com/en-us/products/ai-services/openai-service' target='_blank'>request Key</Link>
+        ? !azureKey && <Link /* @uxid src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup.link */ level='body-sm' href='https://azure.microsoft.com/en-us/products/ai-services/openai-service' target='_blank'>request Key</Link>
         : <AlreadySet overridden={!!azureKey} />}
       </>}
       value={azureKey} onChange={value => updateSettings({ azureKey: value })}
@@ -89,20 +90,20 @@ export function AzureServiceSetup(props: { serviceId: DModelsServiceId }) {
       placeholder='...'
     />
 
-    {showAdvanced && <FormTextField
+    {showAdvanced && <FormTextField /* @uxid src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup.formtextfield-2 */
       autoCompleteId='azure-service-name'
       title='Custom Name'
       placeholder='e.g., My Azure OpenAI, etc.'
       value={service?.label || ''}
       onChange={updateLabel}
       endDecorator={
-        <IconButton size='sm' variant='plain' color='neutral' onClick={() => updateLabel('')}>
+        <IconButton /* @uxid src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup.iconbutton */ size='sm' variant='plain' color='neutral' onClick={() => updateLabel('')}>
           <RestartAltIcon />
         </IconButton>
       }
     />}
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/azure/AzureServiceSetup::AzureServiceSetup.setupformclientsidetoggle */
       visible={!!(azureKey && azureEndpoint)}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

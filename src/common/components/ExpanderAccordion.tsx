@@ -5,6 +5,7 @@ import { Accordion, AccordionDetails, AccordionGroup, AccordionSummary, accordio
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 
+// @uxid src/common/components/ExpanderAccordion::ExpanderAccordion
 export function ExpanderAccordion(props: {
   title?: React.ReactNode,
   icon?: React.ReactNode,
@@ -19,7 +20,7 @@ export function ExpanderAccordion(props: {
 
   return (
     <AccordionGroup sx={props.sx}>
-      <Accordion
+      <Accordion /* @uxid src/common/components/ExpanderAccordion::ExpanderAccordion.accordion */
         // variant={expanded ? 'solid' : 'soft'}
         expanded={expanded}
         onChange={(_event, expanded) => setExpanded(expanded)}

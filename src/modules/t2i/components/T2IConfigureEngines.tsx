@@ -71,6 +71,7 @@ function _sourceIcon(provider: TextToImageProvider): React.ElementType | null {
 }
 
 
+// @uxid src/modules/t2i/components/T2IConfigureEngines::T2IConfigureEngines
 export function T2IConfigureEngines(props: { isMobile: boolean }) {
 
   // external state
@@ -135,7 +136,7 @@ export function T2IConfigureEngines(props: { isMobile: boolean }) {
 
       <Box sx={_styles.selectGroup}>
 
-        <Select
+        <Select /* @uxid src/modules/t2i/components/T2IConfigureEngines::T2IConfigureEngines.select */
           placeholder='None'
           disabled={!mayWork}
           value={activeProviderId}
@@ -201,7 +202,7 @@ export function T2IConfigureEngines(props: { isMobile: boolean }) {
 
     {/* Source banner + Configuration panel for the active engine */}
     {!!activeEngine && (
-      <T2IConfigureEngineFull
+      <T2IConfigureEngineFull /* @uxid src/modules/t2i/components/T2IConfigureEngines::T2IConfigureEngines.t2iconfigureenginefull */
         engine={activeEngine}
         isMobile={props.isMobile}
         onUpdate={handleEngineUpdate}

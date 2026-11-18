@@ -18,6 +18,7 @@ import type { SimplePersonaProvenance } from '../store-app-personas';
 const TEMP_DISABLE_YOUTUBE_TRANSCRIPT = true;
 
 
+// @uxid src/apps/personas/creator/FromYouTube::YouTubeDisabledCard
 function YouTubeDisabledCard() {
   return (
     <Card
@@ -45,6 +46,7 @@ function YouTubeDisabledCard() {
 }
 
 
+// @uxid src/apps/personas/creator/FromYouTube::YouTubeVideoTranscriptCard
 function YouTubeVideoTranscriptCard(props: { transcript: YTVideoTranscript, onClose: () => void, sx?: SxProps }) {
   const { transcript } = props;
   return (
@@ -78,7 +80,7 @@ function YouTubeVideoTranscriptCard(props: { transcript: YTVideoTranscript, onCl
         </Typography>
         {/*</Box>*/}
 
-        <IconButton
+        <IconButton /* @uxid src/apps/personas/creator/FromYouTube::YouTubeVideoTranscriptCard.iconbutton */
           size='sm'
           onClick={props.onClose}
           sx={{
@@ -93,6 +95,7 @@ function YouTubeVideoTranscriptCard(props: { transcript: YTVideoTranscript, onCl
 }
 
 
+// @uxid src/apps/personas/creator/FromYouTube::FromYouTube
 export function FromYouTube(props: {
   isTransforming: boolean;
   onCreate: (text: string, provenance: SimplePersonaProvenance) => void;
@@ -154,8 +157,8 @@ export function FromYouTube(props: {
       YouTube -&gt; Persona
     </Typography>
 
-    <form onSubmit={handleCreateFromTranscript}>
-      <Input
+    <form /* @uxid src/apps/personas/creator/FromYouTube::FromYouTube.form */ onSubmit={handleCreateFromTranscript}>
+      <Input /* @uxid src/apps/personas/creator/FromYouTube::FromYouTube.input */
         required
         type='url'
         fullWidth
@@ -178,7 +181,7 @@ export function FromYouTube(props: {
         </Button>
 
         <GoodTooltip title='This example comes from the popular Fireship YouTube channel, which presents technical topics with irreverent humor.'>
-          <Button variant='outlined' color='neutral' onClick={() => setVideoURL('https://www.youtube.com/watch?v=M_wZpSEvOkc')}>
+          <Button /* @uxid src/apps/personas/creator/FromYouTube::FromYouTube.button */ variant='outlined' color='neutral' onClick={() => setVideoURL('https://www.youtube.com/watch?v=M_wZpSEvOkc')}>
             Example
           </Button>
         </GoodTooltip>
@@ -190,7 +193,7 @@ export function FromYouTube(props: {
     )}
 
     {!!transcript && !!videoID && (
-      <YouTubeVideoTranscriptCard transcript={transcript} onClose={() => setVideoID(null)} sx={{ mt: 3 }} />
+      <YouTubeVideoTranscriptCard /* @uxid src/apps/personas/creator/FromYouTube::FromYouTube.youtubevideotranscriptcard */ transcript={transcript} onClose={() => setVideoID(null)} sx={{ mt: 3 }} />
     )}
 
   </>;

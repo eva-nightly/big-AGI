@@ -23,6 +23,7 @@ const ENABLE_AUTO_WORKSPACE_PICK = false;
 /**
  * Allows selection of LiveFiles in the current Workspace
  */
+// @uxid src/common/stores/workspace/WorkspaceLiveFilePicker::WorkspaceLiveFilePicker
 export function WorkspaceLiveFilePicker(props: {
   allowRemove?: boolean;
   autoSelectName: string | null;
@@ -112,14 +113,14 @@ export function WorkspaceLiveFilePicker(props: {
   return <>
 
     {/* Main Button, also a drop target */}
-    <Box
+    <Box /* @uxid src/common/stores/workspace/WorkspaceLiveFilePicker::WorkspaceLiveFilePicker.box */
       onDragEnter={handleContainerDragEnter}
       onDragStart={handleContainerDragStart}
       sx={containerSx}
     >
       {!liveFileId ? (
         <TooltipOutlined title={props.labelTooltip} placement='top-end'>
-          <Button
+          <Button /* @uxid src/common/stores/workspace/WorkspaceLiveFilePicker::WorkspaceLiveFilePicker.button */
             variant='plain'
             color='neutral'
             size='sm'
@@ -131,7 +132,7 @@ export function WorkspaceLiveFilePicker(props: {
           </Button>
         </TooltipOutlined>
       ) : (
-        <IconButton
+        <IconButton /* @uxid src/common/stores/workspace/WorkspaceLiveFilePicker::WorkspaceLiveFilePicker.iconbutton */
           size='sm'
           onClick={handleToggleMenu}
         >
@@ -146,7 +147,7 @@ export function WorkspaceLiveFilePicker(props: {
 
     {/* Select/Upload file menu */}
     {!!menuAnchor && (
-      <CloseablePopup
+      <CloseablePopup /* @uxid src/common/stores/workspace/WorkspaceLiveFilePicker::WorkspaceLiveFilePicker.closeablepopup */
         menu anchorEl={menuAnchor} onClose={handleCloseMenu}
         placement='bottom-end'
         sx={{ '--ListItem-paddingRight': '1.5rem' }}
@@ -158,7 +159,7 @@ export function WorkspaceLiveFilePicker(props: {
         </ListItem>
 
         {haveLiveFiles && wLiveFiles.map((lfm: LiveFileMetadata) => (
-          <MenuItem
+          <MenuItem /* @uxid src/common/stores/workspace/WorkspaceLiveFilePicker::WorkspaceLiveFilePicker.menuitem */
             key={lfm.id}
             selected={lfm.id === liveFileId}
             onClick={() => handleSelectLiveFile(lfm.id)}
@@ -176,7 +177,7 @@ export function WorkspaceLiveFilePicker(props: {
 
         {/* Pair a new file */}
         {haveLiveFiles && <ListDivider sx={{ my: 0 }} />}
-        <MenuItem
+        <MenuItem /* @uxid src/common/stores/workspace/WorkspaceLiveFilePicker::WorkspaceLiveFilePicker.menuitem-2 */
           onClick={handleSelectNewFile}
           // sx={haveLiveFiles ? { minHeight: '3rem' } : undefined}
         >
@@ -188,7 +189,7 @@ export function WorkspaceLiveFilePicker(props: {
 
         {/* Remove pairing */}
         {showRemove && (
-          <MenuItem disabled={!liveFileId} onClick={() => handleSelectLiveFile(null)}>
+          <MenuItem /* @uxid src/common/stores/workspace/WorkspaceLiveFilePicker::WorkspaceLiveFilePicker.menuitem-3 */ disabled={!liveFileId} onClick={() => handleSelectLiveFile(null)}>
             <ListItemDecorator><ClearIcon /></ListItemDecorator>
             Close
           </MenuItem>

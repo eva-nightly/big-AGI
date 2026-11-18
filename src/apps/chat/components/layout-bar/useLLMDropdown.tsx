@@ -23,6 +23,7 @@ import { setPrimaryChatModelId, useModelDomain } from '~/common/stores/llms/hook
 import { useUIComplexityMode } from '~/common/stores/store-ui';
 
 
+// @uxid src/apps/chat/components/layout-bar/useLLMDropdown::LLMDropdown
 function LLMDropdown(props: {
   dropdownRef: React.Ref<OptimaBarControlMethods>,
   llms: ReadonlyArray<DLLM>,
@@ -127,7 +128,7 @@ function LLMDropdown(props: {
         <KeyStroke variant='outlined' combo='Ctrl + Shift + O' sx={{ my: 0.5 }} />
       </Box>
     }>
-      <IconButton
+      <IconButton /* @uxid src/apps/chat/components/layout-bar/useLLMDropdown::LLMDropdown.iconbutton */
         size='sm'
         onClick={handleOpenLLMOptions}
         sx={{
@@ -148,7 +149,7 @@ function LLMDropdown(props: {
   const llmDropdownPrependOptions = React.useMemo(() =>
     !showFilter ? undefined : (
       <Box sx={{ p: 1 }}>
-        <DebouncedInputMemo
+        <DebouncedInputMemo /* @uxid src/apps/chat/components/layout-bar/useLLMDropdown::LLMDropdown.debouncedinputmemo */
           retainFocus
           debounceTimeout={300}
           onDebounce={setfilterString}
@@ -183,7 +184,7 @@ function LLMDropdown(props: {
     {/*  </ListItemButton>*/}
     {/*)}*/}
 
-    <ListItemButton key='menu-llms' onClick={() => openModelsForLLM(chatLlmId)} sx={{ backgroundColor: 'background.surface', py: 'calc(2 * var(--ListDivider-gap))' }}>
+    <ListItemButton /* @uxid src/apps/chat/components/layout-bar/useLLMDropdown::LLMDropdown.listitembutton */ key='menu-llms' onClick={() => openModelsForLLM(chatLlmId)} sx={{ backgroundColor: 'background.surface', py: 'calc(2 * var(--ListDivider-gap))' }}>
       <ListItemDecorator>{!hasDropdownOptions ? '⚠️' : <BuildCircleIcon color='success' />}</ListItemDecorator>
       <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'space-between', gap: 1, alignItems: 'center' }}>
         {!hasDropdownOptions ? 'Add Models' : 'Models'}
@@ -198,7 +199,7 @@ function LLMDropdown(props: {
 
 
   return (
-    <OptimaBarDropdownMemo
+    <OptimaBarDropdownMemo /* @uxid src/apps/chat/components/layout-bar/useLLMDropdown::LLMDropdown.optimabardropdownmemo */
       ref={props.dropdownRef}
       items={llmDropdownItems}
       value={chatLlmId}

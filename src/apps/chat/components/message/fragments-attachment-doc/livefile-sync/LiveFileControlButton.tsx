@@ -26,6 +26,7 @@ const refreshButtonSx: SxProps = {
 };
 
 
+// @uxid src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/LiveFileControlButton::LiveFileControlButton
 export function LiveFileControlButton(props: {
   disabled: boolean;
   hasContent: boolean;
@@ -62,7 +63,7 @@ export function LiveFileControlButton(props: {
     return null;
 
   return (
-    <Box
+    <Box /* @uxid src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/LiveFileControlButton::LiveFileControlButton.box */
       onDragEnter={handleContainerDragEnter}
       onDragStart={handleContainerDragStart}
       sx={dragContainerSx}
@@ -76,7 +77,7 @@ export function LiveFileControlButton(props: {
         color='success'
         placement='top-end'
       >
-        <Button
+        <Button /* @uxid src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/LiveFileControlButton::LiveFileControlButton.button */
           variant={props.hasContent ? 'outlined' : 'plain'}
           color={BUTTON_COLOR}
           size='sm'

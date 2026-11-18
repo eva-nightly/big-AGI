@@ -67,6 +67,7 @@ function createChain(instructions: string[], titles: string[]): LLMChainStep[] {
 }
 
 
+// @uxid src/apps/personas/creator/Creator::PersonaPromptCard
 export const PersonaPromptCard = (props: {
   content: string,
   contentScaling: ContentScaling,
@@ -78,7 +79,7 @@ export const PersonaPromptCard = (props: {
         Persona Prompt
       </Typography>
       <GoodTooltip title='Copy system prompt'>
-        <Button color='success' onClick={() => copyToClipboard(props.content, 'Persona prompt')} endDecorator={<ContentCopyIcon />} sx={{ minWidth: 120 }}>
+        <Button /* @uxid src/apps/personas/creator/Creator::PersonaPromptCard.button */ color='success' onClick={() => copyToClipboard(props.content, 'Persona prompt')} endDecorator={<ContentCopyIcon />} sx={{ minWidth: 120 }}>
           Copy
         </Button>
       </GoodTooltip>
@@ -97,6 +98,7 @@ export const PersonaPromptCard = (props: {
   </Card>;
 
 
+// @uxid src/apps/personas/creator/Creator::Creator
 export function Creator(props: { display: boolean }) {
 
   // state
@@ -192,7 +194,7 @@ export function Creator(props: { display: boolean }) {
 
 
     {/* Inputs */}
-    <Tabs
+    <Tabs /* @uxid src/apps/personas/creator/Creator::Creator-2.tabs */
       variant='outlined'
       defaultValue={0}
       value={selectedTab}
@@ -221,10 +223,10 @@ export function Creator(props: { display: boolean }) {
         <Tab>From Text</Tab>
       </TabList>
       <TabPanel keepMounted value={0} sx={{ p: 3 }}>
-        <FromYouTube isTransforming={isTransforming} onCreate={handleCreate} />
+        <FromYouTube /* @uxid src/apps/personas/creator/Creator::Creator-2.fromyoutube */ isTransforming={isTransforming} onCreate={handleCreate} />
       </TabPanel>
       <TabPanel keepMounted value={1} sx={{ p: 3 }}>
-        <FromText isCreating={isTransforming} onCreate={handleCreate} />
+        <FromText /* @uxid src/apps/personas/creator/Creator::Creator-2.fromtext */ isCreating={isTransforming} onCreate={handleCreate} />
       </TabPanel>
 
       <Divider orientation='horizontal' />
@@ -238,7 +240,7 @@ export function Creator(props: { display: boolean }) {
           </Box>
         )}
 
-        <FormLabel onClick={advanced.toggle} sx={{ textDecoration: 'underline', cursor: 'pointer' }}>
+        <FormLabel /* @uxid src/apps/personas/creator/Creator::Creator-2.formlabel */ onClick={advanced.toggle} sx={{ textDecoration: 'underline', cursor: 'pointer' }}>
           {advanced.on ? 'Hide Advanced' : 'Advanced: Prompts'}
         </FormLabel>
       </Box>
@@ -274,7 +276,7 @@ export function Creator(props: { display: boolean }) {
         if you experience any errors (e.g. LLM timeouts, or context overflows for larger videos)
         please try again with faster/smaller models.
       </Typography>
-      <Button variant='soft' color='neutral' onClick={handleCancel} sx={{ ml: 'auto', minWidth: 100, mt: 3 }}>
+      <Button /* @uxid src/apps/personas/creator/Creator::Creator-2.button */ variant='soft' color='neutral' onClick={handleCancel} sx={{ ml: 'auto', minWidth: 100, mt: 3 }}>
         Cancel
       </Button>
     </CardContent></Card>}
@@ -302,7 +304,7 @@ export function Creator(props: { display: boolean }) {
         <Typography level='title-lg'>
           {isTransforming ? 'Working ...' : 'Intermediate Work'}
         </Typography>
-        <IconButton size='sm' variant={showIntermediates ? 'solid' : 'outlined'} onClick={() => setShowIntermediates(s => !s)}>
+        <IconButton /* @uxid src/apps/personas/creator/Creator::Creator-2.iconbutton */ size='sm' variant={showIntermediates ? 'solid' : 'outlined'} onClick={() => setShowIntermediates(s => !s)}>
           <AddIcon />
         </IconButton>
       </Box>

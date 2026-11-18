@@ -34,6 +34,7 @@ const SAFETY_OPTIONS: { value: GeminiWire_Safety.HarmBlockThreshold, label: stri
 ];
 
 
+// @uxid src/modules/llms/vendors/gemini/GeminiServiceSetup::GeminiServiceSetup
 export function GeminiServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -59,10 +60,10 @@ export function GeminiServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/gemini/GeminiServiceSetup::GeminiServiceSetup.forminputkey */
       autoCompleteId='gemini-key' label='Gemini API Key'
       rightLabel={<>{needsUserKey
-        ? !geminiKey && <Link level='body-sm' href={GEMINI_API_KEY_LINK} target='_blank'>request Key</Link>
+        ? !geminiKey && <Link /* @uxid src/modules/llms/vendors/gemini/GeminiServiceSetup::GeminiServiceSetup.link */ level='body-sm' href={GEMINI_API_KEY_LINK} target='_blank'>request Key</Link>
         : <AlreadySet overridden={!!geminiKey} />}
       </>}
       value={geminiKey} onChange={value => updateSettings({ geminiKey: value.trim() })}
@@ -73,7 +74,7 @@ export function GeminiServiceSetup(props: { serviceId: DModelsServiceId }) {
     {(showAdvanced || minSafetyLevel !== 'HARM_BLOCK_THRESHOLD_UNSPECIFIED') && <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
       <FormLabelStart title='Safety Settings'
                       description='Threshold' />
-      <Select
+      <Select /* @uxid src/modules/llms/vendors/gemini/GeminiServiceSetup::GeminiServiceSetup.select */
         variant='outlined'
         value={minSafetyLevel} onChange={(_event, value) => value && updateSettings({ minSafetyLevel: value })}
         startDecorator={<HealthAndSafetyIcon sx={{ display: { xs: 'none', sm: 'inherit' } }} />}
@@ -91,14 +92,14 @@ export function GeminiServiceSetup(props: { serviceId: DModelsServiceId }) {
     </FormControl>}
 
     {showAdvanced && <FormHelperText sx={{ display: 'block' }}>
-      Gemini has advanced <Link href='https://ai.google.dev/docs/safety_setting_gemini' target='_blank' noLinkStyle>
+      Gemini has advanced <Link /* @uxid src/modules/llms/vendors/gemini/GeminiServiceSetup::GeminiServiceSetup.link-2 */ href='https://ai.google.dev/docs/safety_setting_gemini' target='_blank' noLinkStyle>
       safety settings</Link> on: harassment, hate speech,
       sexually explicit, civic integrity, and dangerous content, in addition to non-adjustable built-in filters.
       {/*By default, the model will block content with <em>medium and above</em> probability*/}
       {/*of being unsafe.*/}
     </FormHelperText>}
 
-    {(showAdvanced || !!geminiHost) && <FormTextField
+    {(showAdvanced || !!geminiHost) && <FormTextField /* @uxid src/modules/llms/vendors/gemini/GeminiServiceSetup::GeminiServiceSetup.formtextfield */
       autoCompleteId='gemini-host'
       title='API Endpoint'
       placeholder={`https://generativelanguage.googleapis.com`}
@@ -106,7 +107,7 @@ export function GeminiServiceSetup(props: { serviceId: DModelsServiceId }) {
       onChange={text => updateSettings({ geminiHost: text })}
     />}
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/gemini/GeminiServiceSetup::GeminiServiceSetup.setupformclientsidetoggle */
       visible={!!geminiKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

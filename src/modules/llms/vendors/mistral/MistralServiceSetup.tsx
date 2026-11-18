@@ -21,6 +21,7 @@ import { ModelVendorMistral } from './mistral.vendor';
 const MISTRAL_REG_LINK = 'https://console.mistral.ai/';
 
 
+// @uxid src/modules/llms/vendors/mistral/MistralServiceSetup::MistralServiceSetup
 export function MistralServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -46,10 +47,10 @@ export function MistralServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/mistral/MistralServiceSetup::MistralServiceSetup.forminputkey */
       autoCompleteId='mistral-key' label='Mistral Key'
       rightLabel={<>{needsUserKey
-        ? !mistralKey && <Link level='body-sm' href={MISTRAL_REG_LINK} target='_blank'>request Key</Link>
+        ? !mistralKey && <Link /* @uxid src/modules/llms/vendors/mistral/MistralServiceSetup::MistralServiceSetup.link */ level='body-sm' href={MISTRAL_REG_LINK} target='_blank'>request Key</Link>
         : <AlreadySet overridden={!!mistralKey} />}
       </>}
       value={mistralKey} onChange={value => updateSettings({ oaiKey: value })}
@@ -62,7 +63,7 @@ export function MistralServiceSetup(props: { serviceId: DModelsServiceId }) {
     {/*  Note the elegance of the numbers, representing the Year and Month or release (YYMM).*/}
     {/*</Typography>*/}
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/mistral/MistralServiceSetup::MistralServiceSetup.setupformclientsidetoggle */
       visible={!!mistralKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

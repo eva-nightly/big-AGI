@@ -31,6 +31,7 @@ interface SpeexVoiceAutocompleteProps {
 }
 
 
+// @uxid src/modules/speex/components/SpeexVoiceAutocomplete::SpeexVoiceAutocomplete
 export function SpeexVoiceAutocomplete(props: SpeexVoiceAutocompleteProps) {
   const { engine, value /* e.g. ttsModel */, onValueChange, placeholder = 'Select or type...', disabled } = props;
 
@@ -76,7 +77,7 @@ export function SpeexVoiceAutocomplete(props: SpeexVoiceAutocompleteProps) {
       {/* Refresh button (only if refetch available) */}
       {refetch && (
         <TooltipOutlined color={error ? 'danger' : undefined} title={error ? <div style={{ whiteSpace: 'pre-wrap' }}>{error}</div> : 'Refresh'}>
-          <IconButton
+          <IconButton /* @uxid src/modules/speex/components/SpeexVoiceAutocomplete::SpeexVoiceAutocomplete.iconbutton */
             color={error ? 'danger' : 'neutral'}
             variant='plain'
             disabled={isLoading}
@@ -88,7 +89,7 @@ export function SpeexVoiceAutocomplete(props: SpeexVoiceAutocompleteProps) {
       )}
 
       {/* Autocomplete */}
-      <Autocomplete<SpeexListVoiceOption, false, false, true>
+      <Autocomplete /* @uxid src/modules/speex/components/SpeexVoiceAutocomplete::SpeexVoiceAutocomplete.autocomplete */<SpeexListVoiceOption, false, false, true>
         freeSolo
         openOnFocus
         clearOnEscape

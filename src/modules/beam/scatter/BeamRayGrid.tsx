@@ -25,6 +25,7 @@ const rayGridMobileSx: SxProps = {
 } as const;
 
 
+// @uxid src/modules/beam/scatter/BeamRayGrid::BeamRayGrid
 export function BeamRayGrid(props: {
   beamStore: BeamStoreApi,
   hadImportedRays: boolean,
@@ -56,7 +57,7 @@ export function BeamRayGrid(props: {
       {/* Add Ray */}
       {(props.showRayAdd && raysCount < SCATTER_RAY_MAX) && (
         <BeamCard sx={{ mb: 'auto' }}>
-          <Button variant='plain' color='neutral' onClick={props.onIncreaseRayCount} sx={{
+          <Button /* @uxid src/modules/beam/scatter/BeamRayGrid::BeamRayGrid.button */ variant='plain' color='neutral' onClick={props.onIncreaseRayCount} sx={{
             minHeight: 'calc(2 * var(--Card-padding) + 2rem - 0.5rem)',
             marginBlock: 'calc(-1 * var(--Card-padding) + 0.25rem)',
             marginInline: 'calc(-1 * var(--Card-padding) + 0.375rem)',

@@ -22,6 +22,7 @@ import { withNextJSPerPageLayout } from '~/common/layout/withLayout';
  *   - if the URL is not a valid URL, it will be shared as text
  *  - title: the title of the shared content
  */
+// @uxid pages/link/share_target::AppShareTarget
 function AppShareTarget() {
   // state
   const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
@@ -115,7 +116,7 @@ function AppShareTarget() {
         <Alert variant='soft' color='danger' sx={{ my: 1 }}>
           <Typography>{errorMessage}</Typography>
         </Alert>
-        <Button
+        <Button /* @uxid pages/link/share_target::AppShareTarget.button */
           variant='solid' color='danger'
           onClick={() => navigateToIndex()}
           endDecorator={<ArrowBackIcon />}

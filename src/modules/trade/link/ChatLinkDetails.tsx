@@ -26,6 +26,7 @@ import type { StorageDeleteSchema, StoragePutSchema } from '../server/link';
 import { forgetChatLinkItem } from './store-share-link';
 
 
+// @uxid src/modules/trade/link/ChatLinkDetails::ChatLinkDetails
 export function ChatLinkDetails(props: {
   open: boolean,
   onClose: () => void,
@@ -44,7 +45,7 @@ export function ChatLinkDetails(props: {
   // in case of 'put' error, just display the message
   if (props.storageItem.type === 'error') {
     return (
-      <GoodModal title='❌ Upload Error' dividers open={props.open} onClose={props.onClose}>
+      <GoodModal /* @uxid src/modules/trade/link/ChatLinkDetails::ChatLinkDetails.goodmodal */ title='❌ Upload Error' dividers open={props.open} onClose={props.onClose}>
         <InlineError error={props.storageItem.error} />
       </GoodModal>
     );
@@ -107,7 +108,7 @@ export function ChatLinkDetails(props: {
 
 
   return (
-    <GoodModal title='🔗 Link created' strongerTitle noTitleBar={isDeleted} dividers={!isDeleted} open onClose={props.onClose}>
+    <GoodModal /* @uxid src/modules/trade/link/ChatLinkDetails::ChatLinkDetails.goodmodal-2 */ title='🔗 Link created' strongerTitle noTitleBar={isDeleted} dividers={!isDeleted} open onClose={props.onClose}>
 
       {/* Success */}
       {!tryDeleted && <Card variant='solid' color='primary' invertedColors>
@@ -121,7 +122,7 @@ export function ChatLinkDetails(props: {
 
         <Stack direction='row' gap={1}>
           <Tooltip title='Open the link in a new tab'>
-            <Button
+            <Button /* @uxid src/modules/trade/link/ChatLinkDetails::ChatLinkDetails.button */
               variant={opened ? 'soft' : 'solid'} onClick={onOpen}
               color={opened ? 'success' : undefined} endDecorator={opened ? <DoneIcon /> : <LaunchIcon />}
               component={Link} href={relativeUrl} noLinkStyle
@@ -132,7 +133,7 @@ export function ChatLinkDetails(props: {
           </Tooltip>
 
           <Tooltip title='Copy the link to your clipboard'>
-            <Button
+            <Button /* @uxid src/modules/trade/link/ChatLinkDetails::ChatLinkDetails.button-2 */
               variant={copied ? 'soft' : 'solid'} onClick={onCopy}
               color={copied ? 'success' : undefined} endDecorator={copied ? <DoneIcon /> : <LinkIcon />}
               sx={{ flexGrow: 1 }}
@@ -143,7 +144,7 @@ export function ChatLinkDetails(props: {
 
           {webSharePresent() &&
             <Tooltip title='Share the link using your device'>
-              <Button
+              <Button /* @uxid src/modules/trade/link/ChatLinkDetails::ChatLinkDetails.button-3 */
                 variant={native ? 'soft' : 'solid'} onClick={onNativeShare}
                 color={native ? 'success' : undefined} endDecorator={native ? <DoneIcon /> : <IosShareIcon />}
                 sx={{ flexGrow: 1 }}
@@ -174,7 +175,7 @@ export function ChatLinkDetails(props: {
 
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           {isEditingDeletionKey ? (
-            <InlineTextarea
+            <InlineTextarea /* @uxid src/modules/trade/link/ChatLinkDetails::ChatLinkDetails.inlinetextarea */
               invertedColors
               initialText={deletionKey}
               onEdit={handleKeyEditChange}
@@ -192,7 +193,7 @@ export function ChatLinkDetails(props: {
               endDecorator={
                 <Box sx={{ display: 'flex', gap: 2 }}>
                   <Tooltip title='Edit Deletion Key'>
-                    <IconButton
+                    <IconButton /* @uxid src/modules/trade/link/ChatLinkDetails::ChatLinkDetails.iconbutton */
                       variant='soft'
                       color='primary'
                       disabled={isEditingDeletionKey}
@@ -201,7 +202,7 @@ export function ChatLinkDetails(props: {
                       <EditRoundedIcon />
                     </IconButton>
                   </Tooltip>
-                  <IconButton
+                  <IconButton /* @uxid src/modules/trade/link/ChatLinkDetails::ChatLinkDetails.iconbutton-2 */
                     variant='soft'
                     color='primary'
                     disabled={isEditingDeletionKey}
@@ -228,7 +229,7 @@ export function ChatLinkDetails(props: {
               This chat will auto-expire <TimeAgo date={expiresAt} />.
             </Typography>
           )}
-          <Button variant='outlined' color='neutral' endDecorator={<DeleteForeverIcon />} onClick={onDeleteNow}>
+          <Button /* @uxid src/modules/trade/link/ChatLinkDetails::ChatLinkDetails.button-4 */ variant='outlined' color='neutral' endDecorator={<DeleteForeverIcon />} onClick={onDeleteNow}>
             Delete Now
           </Button>
         </Stack>
@@ -236,7 +237,7 @@ export function ChatLinkDetails(props: {
       </Card>}
 
       {/* Delete confirmation */}
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/modules/trade/link/ChatLinkDetails::ChatLinkDetails.confirmationmodal */
         open={confirmDeletion} onClose={onDeleteCancelled} onPositive={onConfirmedDeletion}
         confirmationText={'Are you sure you want to delete this link?'} positiveActionText={'Yes, Delete'}
       />

@@ -30,6 +30,7 @@ export interface ImportedOutcome {
 /**
  * Displays the result of an import operation as a modal dialog.
  */
+// @uxid src/modules/trade/ImportOutcomeModal::ImportOutcomeModal
 export function ImportOutcomeModal(props: { outcome: ImportedOutcome, onClose: () => void }) {
   const { conversations } = props.outcome;
 
@@ -39,7 +40,7 @@ export function ImportOutcomeModal(props: { outcome: ImportedOutcome, onClose: (
   const hasAnyFailures = failures.length > 0;
 
   return (
-    <GoodModal open title={hasAnyResults ? hasAnyFailures ? 'Import issues' : 'Import successful' : 'Import failed'} strongerTitle onClose={props.onClose}>
+    <GoodModal /* @uxid src/modules/trade/ImportOutcomeModal::ImportOutcomeModal.goodmodal */ open title={hasAnyResults ? hasAnyFailures ? 'Import issues' : 'Import successful' : 'Import failed'} strongerTitle onClose={props.onClose}>
 
       <Divider />
 

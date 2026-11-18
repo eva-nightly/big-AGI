@@ -55,6 +55,7 @@ const userChatMessageSx: SxProps = {
 } as const;
 
 
+// @uxid src/modules/beam/scatter/BeamScatterInput::BeamScatterInput
 export function BeamScatterInput(props: {
   isMobile: boolean,
   history: DMessage[] | null,
@@ -82,7 +83,7 @@ export function BeamScatterInput(props: {
   const userMessageDecorator = React.useMemo(() => {
     return (/*showHistoryMessage &&*/ otherHistoryCount >= 1 && scatterShowPrevMessages) ? (
       // <Chip color='primary' variant='outlined' endDecorator={<ChipDelete />} sx={{ my: 1 }}>
-      <Typography level='body-xs' sx={{ my: 1, textAlign: 'center', color: 'neutral.softColor' }} onClick={undefined /*() => setShowHistoryMessage(on => !on)*/}>
+      <Typography /* @uxid src/modules/beam/scatter/BeamScatterInput::BeamScatterInput.typography */ level='body-xs' sx={{ my: 1, textAlign: 'center', color: 'neutral.softColor' }} onClick={undefined /*() => setShowHistoryMessage(on => !on)*/}>
         ... {otherHistoryCount === 1 ? (isFirstMessageSystem ? '1 system message' : '1 message') : `${otherHistoryCount} messages`} before this one ...
       </Typography>
       // </Chip>
@@ -95,8 +96,8 @@ export function BeamScatterInput(props: {
     return null;
 
   return (
-    <Box onCopy={clipboardInterceptCtrlCForCleanup} sx={!BEAM_INVERT_BACKGROUND ? userMessageWrapperSx : isDarkMode ? userMessageWrapperDarkINVSx : userMessageWrapperINVSx}>
-      <ChatMessageMemo
+    <Box /* @uxid src/modules/beam/scatter/BeamScatterInput::BeamScatterInput.box */ onCopy={clipboardInterceptCtrlCForCleanup} sx={!BEAM_INVERT_BACKGROUND ? userMessageWrapperSx : isDarkMode ? userMessageWrapperDarkINVSx : userMessageWrapperINVSx}>
+      <ChatMessageMemo /* @uxid src/modules/beam/scatter/BeamScatterInput::BeamScatterInput.chatmessagememo */
         message={lastHistoryMessage}
         fitScreen={props.isMobile}
         isMobile={props.isMobile}

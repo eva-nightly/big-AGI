@@ -14,6 +14,7 @@ function _formatTime(timestamp: number) {
 }
 
 
+// @uxid src/common/logger/viewer/LogEntryDetails::LogEntryDetails
 export function LogEntryDetails(props: {
   entry: LogEntry;
   onCloseDetails: () => void;
@@ -43,7 +44,7 @@ export function LogEntryDetails(props: {
     <Card variant='outlined' sx={{ backgroundColor: 'background.popup' }}>
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Typography level='title-md'>{entry.message}</Typography>
-        <Button
+        <Button /* @uxid src/common/logger/viewer/LogEntryDetails::LogEntryDetails.button */
           size='sm'
           variant='plain'
           color='neutral'
@@ -99,7 +100,7 @@ export function LogEntryDetails(props: {
           <Typography level='title-sm' sx={{ mb: 1 }}>Actions</Typography>
           <Stack direction='row' spacing={1} flexWrap='wrap' sx={{ mb: 1 }}>
             {entry.actions.map((action, index) => (
-              <Button
+              <Button /* @uxid src/common/logger/viewer/LogEntryDetails::LogEntryDetails.button-2 */
                 key={action.id || index}
                 size='sm'
                 variant={action.completed ? 'soft' : 'solid'}

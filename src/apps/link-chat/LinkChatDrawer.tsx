@@ -17,6 +17,7 @@ import { optimaCloseDrawer } from '~/common/layout/optima/useOptima';
  * Drawer Items are all the links already shared, for quick access.
  * This is stores in the Trade Store (local storage).
  */
+// @uxid src/apps/link-chat/LinkChatDrawer::LinkChatDrawer
 export function LinkChatDrawer(props: {
   activeLinkId: string | null,
   sharedChatLinkItems: SharedChatLinkItem[]
@@ -43,7 +44,7 @@ export function LinkChatDrawer(props: {
 
   return <>
 
-    <OptimaDrawerHeader
+    <OptimaDrawerHeader /* @uxid src/apps/link-chat/LinkChatDrawer::LinkChatDrawer.optimadrawerheader */
       title='Your Shared Links'
       onClose={optimaCloseDrawer}
     />
@@ -60,7 +61,7 @@ export function LinkChatDrawer(props: {
 
         {hasLinks && <Box sx={{ overflowY: 'auto' }}>
           {chatLinkItems.map(item => (
-            <ListItemButton
+            <ListItemButton /* @uxid src/apps/link-chat/LinkChatDrawer::LinkChatDrawer.listitembutton */
               key={'chat-link-' + item.objectId}
               variant={activeLinkId === item.objectId ? 'soft' : undefined}
               component={Link} href={getChatLinkRelativePath(item.objectId)} noLinkStyle
@@ -88,14 +89,14 @@ export function LinkChatDrawer(props: {
 
       <ListDivider sx={{ my: 0 }} />
 
-      <ListItemButton disabled={!hasLinks || !activeLinkId} onClick={handleDeleteLink}>
+      <ListItemButton /* @uxid src/apps/link-chat/LinkChatDrawer::LinkChatDrawer.listitembutton-2 */ disabled={!hasLinks || !activeLinkId} onClick={handleDeleteLink}>
         <ListItemDecorator>
           <DeleteOutlineIcon />
         </ListItemDecorator>
         Delete
       </ListItemButton>
 
-      <ListItemButton onClick={handleToggleDeletionKeys}>
+      <ListItemButton /* @uxid src/apps/link-chat/LinkChatDrawer::LinkChatDrawer.listitembutton-3 */ onClick={handleToggleDeletionKeys}>
         <ListItemDecorator />
         Show Deletion Keys
         <Switch checked={showDeletionKeys} sx={{ ml: 'auto' }} />

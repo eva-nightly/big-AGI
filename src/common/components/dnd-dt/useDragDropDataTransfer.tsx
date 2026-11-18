@@ -123,7 +123,7 @@ export function useDragDropDataTransfer(
     if (!enabled) return null;
 
     return (
-      <Card
+      <Card /* @uxid src/common/components/dnd-dt/useDragDropDataTransfer::useDragDropDataTransfer.card */
         color={isDragging ? 'success' : isPotentialTarget ? 'success' : undefined}
         variant={isDragging ? 'soft' : isPotentialTarget ? 'soft' : undefined}
         invertedColors={isDragging}

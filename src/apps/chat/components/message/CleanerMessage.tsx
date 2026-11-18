@@ -132,6 +132,7 @@ const styles = {
 /**
  * Header bar for controlling the operations during the Selection mode
  */
+// @uxid src/apps/chat/components/message/CleanerMessage::MessagesSelectionHeader
 export const MessagesSelectionHeader = (props: {
   hasSelected: boolean,
   sumTokens: number,
@@ -149,12 +150,12 @@ export const MessagesSelectionHeader = (props: {
     alignItems: 'center',
     gap: { xs: 1, sm: 2 }, px: { xs: 1, md: 2 }, py: 1,
   }}>
-    <Checkbox size='md' onChange={event => props.onSelectAll(event.target.checked)} sx={{ minWidth: 24, justifyContent: 'center' }} />
+    <Checkbox /* @uxid src/apps/chat/components/message/CleanerMessage::MessagesSelectionHeader.checkbox */ size='md' onChange={event => props.onSelectAll(event.target.checked)} sx={{ minWidth: 24, justifyContent: 'center' }} />
 
     <Box sx={{ fontSize: 'sm' }}>Select all ({props.sumTokens?.toLocaleString()})</Box>
 
     <Box sx={{ mx: 'auto', display: 'flex', gap: 1 }}>
-      <Button
+      <Button /* @uxid src/apps/chat/components/message/CleanerMessage::MessagesSelectionHeader.button */
         size='sm'
         disabled={!props.hasSelected}
         onClick={props.onToggleVisibility}
@@ -163,12 +164,12 @@ export const MessagesSelectionHeader = (props: {
       >
         {props.areAllMessagesHidden ? 'Show' : 'Hide'}
       </Button>
-      <Button size='sm' disabled={!props.hasSelected} onClick={props.onDeleteMessages} sx={{ minWidth: { md: 120 } }} endDecorator={<DeleteOutlineIcon />}>
+      <Button /* @uxid src/apps/chat/components/message/CleanerMessage::MessagesSelectionHeader.button-2 */ size='sm' disabled={!props.hasSelected} onClick={props.onDeleteMessages} sx={{ minWidth: { md: 120 } }} endDecorator={<DeleteOutlineIcon />}>
         Delete
       </Button>
     </Box>
 
-    <IconButton size='sm' onClick={props.onClose}>
+    <IconButton /* @uxid src/apps/chat/components/message/CleanerMessage::MessagesSelectionHeader.iconbutton */ size='sm' onClick={props.onClose}>
       <ClearIcon />
     </IconButton>
   </Sheet>;
@@ -179,6 +180,7 @@ export const MessagesSelectionHeader = (props: {
  *
  * Shall look similarly to the main ChatMessage, for consistency, but just allow a simple checkbox selection
  */
+// @uxid src/apps/chat/components/message/CleanerMessage::CleanerMessage
 export function CleanerMessage(props: {
   message: DMessage,
   selected: boolean,
@@ -234,7 +236,7 @@ export function CleanerMessage(props: {
   const hasChips = analysis.textCount > 1 || analysis.errorCount > 0 || analysis.toolCount > 0 || analysis.imageCount > 0 || analysis.attachmentCount > 0;
 
   return (
-    <ListItem
+    <ListItem /* @uxid src/apps/chat/components/message/CleanerMessage::CleanerMessage.listitem */
       onClick={() => props.onToggleSelected?.(messageId, !props.selected)}
       sx={{
         backgroundColor,
@@ -248,7 +250,7 @@ export function CleanerMessage(props: {
     >
 
       {!!props.onToggleSelected && <Box sx={{ display: 'flex', minWidth: 24, justifyContent: 'center' }}>
-        <Checkbox size='md' checked={props.selected} onChange={handleCheckedChange} sx={{ zIndex: 2 }} />
+        <Checkbox /* @uxid src/apps/chat/components/message/CleanerMessage::CleanerMessage.checkbox */ size='md' checked={props.selected} onChange={handleCheckedChange} sx={{ zIndex: 2 }} />
       </Box>}
 
       {props.remainingTokens !== undefined && <Box sx={styles.tokenBadge}>
@@ -316,7 +318,7 @@ export function CleanerMessage(props: {
       {/* Delete button (desktop only, two-step) */}
       {!!props.onDeleteMessage && (
         <Box sx={{ display: 'flex', alignItems: 'center', ml: 'auto' }}>
-          <ConfirmIconButton color='danger' side='start' tooltip='Delete' onConfirm={handleDeleteConfirm} />
+          <ConfirmIconButton /* @uxid src/apps/chat/components/message/CleanerMessage::CleanerMessage.confirmiconbutton */ color='danger' side='start' tooltip='Delete' onConfirm={handleDeleteConfirm} />
         </Box>
       )}
     </ListItem>

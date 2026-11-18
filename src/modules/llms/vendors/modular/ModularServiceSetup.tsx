@@ -24,6 +24,7 @@ const _modularModes: ReadonlyArray<FormRadioOption<'cloud' | 'selfhosted'>> = [
 ] as const;
 
 
+// @uxid src/modules/llms/vendors/modular/ModularServiceSetup::ModularServiceSetup
 export function ModularServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -52,24 +53,24 @@ export function ModularServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormChipControl
+    <FormChipControl /* @uxid src/modules/llms/vendors/modular/ModularServiceSetup::ModularServiceSetup.formchipcontrol */
       title='Endpoint'
       options={_modularModes}
       value={isCloud ? 'cloud' : 'selfhosted'}
       onChange={mode => updateSettings({ mode })}
     />
 
-    {!isCloud && <FormInputKey
+    {!isCloud && <FormInputKey /* @uxid src/modules/llms/vendors/modular/ModularServiceSetup::ModularServiceSetup.forminputkey */
       autoCompleteId='modular-host' label='MAX Server URL'
       required noKey
       placeholder='http://localhost:8000'
       value={modularHost} onChange={value => updateSettings({ modularHost: value })}
     />}
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/modular/ModularServiceSetup::ModularServiceSetup.forminputkey-2 */
       autoCompleteId='modular-key' label='Modular API Key'
       rightLabel={<>{needsUserKey
-        ? !modularKey && isCloud && <Link level='body-sm' href={MODULAR_REG_LINK} target='_blank'>API tokens</Link>
+        ? !modularKey && isCloud && <Link /* @uxid src/modules/llms/vendors/modular/ModularServiceSetup::ModularServiceSetup.link */ level='body-sm' href={MODULAR_REG_LINK} target='_blank'>API tokens</Link>
         : <AlreadySet overridden={!!modularKey} />}
       </>}
       description={isCloud ? 'A 401 can also mean the prepaid credits ran out, or the token expired - not only a wrong key.' : undefined}

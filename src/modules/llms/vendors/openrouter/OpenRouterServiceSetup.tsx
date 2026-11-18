@@ -23,6 +23,7 @@ import { useServiceSetup } from '../useServiceSetup';
 import { isValidOpenRouterKey, ModelVendorOpenRouter } from './openrouter.vendor';
 
 
+// @uxid src/modules/llms/vendors/openrouter/OpenRouterServiceSetup::OpenRouterServiceSetup
 export function OpenRouterServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -61,8 +62,8 @@ export function OpenRouterServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
       <Typography level='body-sm'>
-        <Link href='https://openrouter.ai' target='_blank'>OpenRouter</Link> is a service
-        providing access to <Link href='https://openrouter.ai/models' target='_blank'>a wide range of models</Link>. See
+        <Link /* @uxid src/modules/llms/vendors/openrouter/OpenRouterServiceSetup::OpenRouterServiceSetup.link */ href='https://openrouter.ai' target='_blank'>OpenRouter</Link> is a service
+        providing access to <Link /* @uxid src/modules/llms/vendors/openrouter/OpenRouterServiceSetup::OpenRouterServiceSetup.link-2 */ href='https://openrouter.ai/models' target='_blank'>a wide range of models</Link>. See
         our <ExternalDocsLink level='body-sm' docPage='connect-openrouter'>Docs</ExternalDocsLink>.
       </Typography>
 
@@ -79,7 +80,7 @@ export function OpenRouterServiceSetup(props: { serviceId: DModelsServiceId }) {
       </Typography>
     </Box>
 
-    <Button
+    <Button /* @uxid src/modules/llms/vendors/openrouter/OpenRouterServiceSetup::OpenRouterServiceSetup.button */
       color='neutral' variant={needsLink ? 'solid' : 'outlined'}
       onClick={handleOpenRouterLogin}
       // endDecorator={needsLink ? <LaunchIcon /> /*<PhKey />*/ /*'🎁'*/ : undefined}
@@ -89,12 +90,12 @@ export function OpenRouterServiceSetup(props: { serviceId: DModelsServiceId }) {
       {needsLink ? 'Link OpenRouter Key' : 'Create New Key'}
     </Button>
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/openrouter/OpenRouterServiceSetup::OpenRouterServiceSetup.forminputkey */
       autoCompleteId='openrouter-key' label='API Key'
       rightLabel={<>{needsUserKey
-        ? !oaiKey && <Link level='body-sm' href='https://openrouter.ai/keys' target='_blank'>your keys</Link>
+        ? !oaiKey && <Link /* @uxid src/modules/llms/vendors/openrouter/OpenRouterServiceSetup::OpenRouterServiceSetup.link-3 */ level='body-sm' href='https://openrouter.ai/keys' target='_blank'>your keys</Link>
         : <AlreadySet overridden={!!oaiKey} />
-      } {oaiKey && keyValid && <Link level='body-sm' href='https://openrouter.ai/activity' target='_blank'>check usage</Link>}
+      } {oaiKey && keyValid && <Link /* @uxid src/modules/llms/vendors/openrouter/OpenRouterServiceSetup::OpenRouterServiceSetup.link-4 */ level='body-sm' href='https://openrouter.ai/activity' target='_blank'>check usage</Link>}
       </>}
       value={oaiKey} onChange={value => updateSettings({ oaiKey: value })}
       required={needsUserKey} isError={keyError}
@@ -106,7 +107,7 @@ export function OpenRouterServiceSetup(props: { serviceId: DModelsServiceId }) {
     {/*  These are usually moderated by the upstream provider (e.g. OpenAI).*/}
     {/*</Typography>*/}
 
-    {(showAdvanced || !!orRequireParameters) && <FormSwitchControl
+    {(showAdvanced || !!orRequireParameters) && <FormSwitchControl /* @uxid src/modules/llms/vendors/openrouter/OpenRouterServiceSetup::OpenRouterServiceSetup.formswitchcontrol */
       title='Require Parameters' on='Strict' off='Default'
       tooltip='When enabled, OpenRouter only routes to providers that support all the parameters in your request (e.g. temperature, top_p, tools). When off, unsupported parameters are silently dropped.'
       description={orRequireParameters ? 'Strict provider filtering' : 'Best-effort routing'}
@@ -114,7 +115,7 @@ export function OpenRouterServiceSetup(props: { serviceId: DModelsServiceId }) {
       onChange={on => updateSettings({ requireParameters: on })}
     />}
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/openrouter/OpenRouterServiceSetup::OpenRouterServiceSetup.setupformclientsidetoggle */
       visible={!!oaiKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

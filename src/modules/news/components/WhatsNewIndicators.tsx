@@ -40,6 +40,7 @@ const _styles = {
 
 
 /** What's New and the docs reader. Mount once with the app modals. */
+// @uxid src/modules/news/components/WhatsNewIndicators::NewsModals
 export function NewsModals() {
   const { whatsNewOpen, docsTarget } = useNewsModals();
   const { off } = useNewsAudience();
@@ -55,6 +56,7 @@ export function NewsModals() {
 
 
 /** The count; none while the changelog count is uncountable (new items run past the loaded page) */
+// @uxid src/modules/news/components/WhatsNewIndicators::NewCount
 function NewCount(props: { changelog: number, changelogMore: boolean, announcements: number }) {
   return props.announcements > 0 ? <Chip size='sm' color='accent' variant='solid'>{props.announcements}</Chip>
     : (props.changelog > 0 && !props.changelogMore) ? <Typography level='body-xs'>{props.changelog} new</Typography>
@@ -63,6 +65,7 @@ function NewCount(props: { changelog: number, changelogMore: boolean, announceme
 
 
 /** Accent dot over a nav icon while an announcement is unseen; the changelog is passive and never dots */
+// @uxid src/modules/news/components/WhatsNewIndicators::WhatsNewNavDot
 export function WhatsNewNavDot(props: { children: React.ReactElement }) {
   // build-time gate: with announcements off, the nav runs no news hooks at all
   return NewsConfig.indicatorNavDot && NewsConfig.announcementsEnabled
@@ -70,6 +73,7 @@ export function WhatsNewNavDot(props: { children: React.ReactElement }) {
     : props.children;
 }
 
+// @uxid src/modules/news/components/WhatsNewIndicators::AnnouncementsNavDot
 function AnnouncementsNavDot(props: { children: React.ReactElement }) {
   const { announcementsNewCount } = useNews(false);
   return !announcementsNewCount ? props.children : (
@@ -81,12 +85,13 @@ function AnnouncementsNavDot(props: { children: React.ReactElement }) {
 
 
 /** "What's New" menu item; hidden when the operator turned the feeds off */
+// @uxid src/modules/news/components/WhatsNewIndicators::WhatsNewMenuItem
 export function WhatsNewMenuItem() {
   const { off } = useNewsAudience();
   if (off)
     return null;
   return (
-    <MenuItem onClick={newsOpenWhatsNew}>
+    <MenuItem /* @uxid src/modules/news/components/WhatsNewIndicators::WhatsNewMenuItem.menuitem */ onClick={newsOpenWhatsNew}>
       <ListItemDecorator />
       <ListItemContent>What&apos;s New</ListItemContent>
     </MenuItem>
@@ -95,16 +100,17 @@ export function WhatsNewMenuItem() {
 
 
 /** "Documentation" menu item: the in-app reader, or big-agi.com in a tab when the operator turned remote feeds off */
+// @uxid src/modules/news/components/WhatsNewIndicators::DocsMenuItem
 export function DocsMenuItem() {
   const { off } = useNewsAudience();
   return off ? (
-    <MenuItem component='a' href={BaseProduct.DocsBaseSite} target='_blank' rel='noopener'>
+    <MenuItem /* @uxid src/modules/news/components/WhatsNewIndicators::DocsMenuItem.menuitem */ component='a' href={BaseProduct.DocsBaseSite} target='_blank' rel='noopener'>
       <ListItemDecorator><PhBookOpenText /></ListItemDecorator>
       Documentation
       <LaunchIcon sx={{ ml: 'auto', fontSize: 16, opacity: 0.7 }} />
     </MenuItem>
   ) : (
-    <MenuItem onClick={() => newsOpenDocs()}>
+    <MenuItem /* @uxid src/modules/news/components/WhatsNewIndicators::DocsMenuItem.menuitem-2 */ onClick={() => newsOpenDocs()}>
       <ListItemDecorator><PhBookOpenText /></ListItemDecorator>
       Documentation
     </MenuItem>
@@ -116,6 +122,7 @@ export function DocsMenuItem() {
  * Side panel rows. Desktop: What's New, only while something is new. Mobile, where the panel holds
  * the only entry points: What's New and Documentation, always.
  */
+// @uxid src/modules/news/components/WhatsNewIndicators::WhatsNewPanelRow
 export function WhatsNewPanelRow() {
 
   // external state
@@ -140,7 +147,7 @@ export function WhatsNewPanelRow() {
 
       {!off && (
         <ListItem>
-          <ListItemButton onClick={handleOpenWhatsNew}>
+          <ListItemButton /* @uxid src/modules/news/components/WhatsNewIndicators::WhatsNewPanelRow.listitembutton */ onClick={handleOpenWhatsNew}>
             {/* no icon; the gap only where the Documentation row below has one */}
             {isMobile && <ListItemDecorator />}
             <ListItemContent>What&apos;s New</ListItemContent>
@@ -152,13 +159,13 @@ export function WhatsNewPanelRow() {
       {isMobile && (
         <ListItem>
           {off ? (
-            <ListItemButton component='a' href={BaseProduct.DocsBaseSite} target='_blank' rel='noopener'>
+            <ListItemButton /* @uxid src/modules/news/components/WhatsNewIndicators::WhatsNewPanelRow.listitembutton-2 */ component='a' href={BaseProduct.DocsBaseSite} target='_blank' rel='noopener'>
               <ListItemDecorator><PhBookOpenText /></ListItemDecorator>
               <ListItemContent>Documentation</ListItemContent>
               <LaunchIcon sx={{ fontSize: 16, opacity: 0.7 }} />
             </ListItemButton>
           ) : (
-            <ListItemButton onClick={handleOpenDocs}>
+            <ListItemButton /* @uxid src/modules/news/components/WhatsNewIndicators::WhatsNewPanelRow.listitembutton-3 */ onClick={handleOpenDocs}>
               <ListItemDecorator><PhBookOpenText /></ListItemDecorator>
               <ListItemContent>Documentation</ListItemContent>
             </ListItemButton>
@@ -172,6 +179,7 @@ export function WhatsNewPanelRow() {
 
 
 /** Last row of an empty chat, 12px tertiary, one link to the hub: the changes since the last visit, else plain What's New until the hub first opens, else how far behind this build is */
+// @uxid src/modules/news/components/WhatsNewIndicators::WhatsNewEmptyChatLine
 export function WhatsNewEmptyChatLine() {
   const { off, changelogGroups, changelogNewCount, changelogNewMore, changelogMark, changelogAfterBuildCount } = useNews(false);
   const afterBuild = useNewsAfterBuild();
@@ -186,7 +194,7 @@ export function WhatsNewEmptyChatLine() {
 
   return (
     <Typography level='body-xs' sx={_styles.emptyChatLine}>
-      {!text ? '\u00A0' : <Link component='button' level='body-xs' color='neutral' underline='hover' onClick={newsOpenWhatsNew}>{text}</Link>}
+      {!text ? '\u00A0' : <Link /* @uxid src/modules/news/components/WhatsNewIndicators::WhatsNewEmptyChatLine.link */ component='button' level='body-xs' color='neutral' underline='hover' onClick={newsOpenWhatsNew}>{text}</Link>}
     </Typography>
   );
 }

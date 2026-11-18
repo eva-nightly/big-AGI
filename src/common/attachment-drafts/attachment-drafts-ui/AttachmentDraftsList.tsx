@@ -66,6 +66,7 @@ const _style = {
  * Generic renderer of attachment drafts, with menus, etc.
  * Portable across Composer, ChatMessage edit, FollowUps, etc.
  */
+// @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList
 export function AttachmentDraftsList(props: {
   attachmentDraftsStoreApi: AttachmentDraftsStoreApi,
   attachmentDrafts: AttachmentDraft[],
@@ -129,7 +130,7 @@ export function AttachmentDraftsList(props: {
 
   const handleOverallClear = React.useCallback(async () => {
     if (await showPromisedOverlay('chat-attachments-clear', { rejectWithValue: false }, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList.confirmationmodal */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         title='Confirm Removal'
         positiveActionText='Remove All'
@@ -179,7 +180,7 @@ export function AttachmentDraftsList(props: {
 
         {/* Attachment Buttons */}
         {attachmentDrafts.map((draft) =>
-          <AttachmentDraftButtonMemo
+          <AttachmentDraftButtonMemo /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList.attachmentdraftbuttonmemo */
             key={draft.id}
             draft={draft}
             enrichment={props.enrichment}
@@ -193,7 +194,7 @@ export function AttachmentDraftsList(props: {
 
       {/* Overall Menu button */}
       {!props.buttonsCanWrap && (
-        <IconButton
+        <IconButton /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList.iconbutton */
           aria-label='Attachment options'
           aria-haspopup='menu'
           aria-expanded={!!overallMenuAnchor}
@@ -211,13 +212,13 @@ export function AttachmentDraftsList(props: {
 
 
     {/* Viewers */}
-    {!!viewerImageRefPart && <ViewImageRefPartModal imageRefPart={viewerImageRefPart} onClose={handleCloseImageViewer} />}
-    {!!viewerDocPart && <ViewDocPartModal docPart={viewerDocPart} onClose={handleCloseDocPartViewer} />}
+    {!!viewerImageRefPart && <ViewImageRefPartModal /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList.viewimagerefpartmodal */ imageRefPart={viewerImageRefPart} onClose={handleCloseImageViewer} />}
+    {!!viewerDocPart && <ViewDocPartModal /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList.viewdocpartmodal */ docPart={viewerDocPart} onClose={handleCloseDocPartViewer} />}
 
 
     {/* Single Attachment Draft Menu */}
     {!!itemMenuAnchor && !!itemMenuAttachmentDraft && !!props.attachmentDraftsStoreApi && (
-      <AttachmentDraftMenu
+      <AttachmentDraftMenu /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList.attachmentdraftmenu */
         attachmentDraftsStoreApi={props.attachmentDraftsStoreApi}
         draft={itemMenuAttachmentDraft}
         enrichment={props.enrichment}
@@ -234,7 +235,7 @@ export function AttachmentDraftsList(props: {
 
     {/* All Drafts Menu */}
     {!!overallMenuAnchor && (
-      <CloseablePopup
+      <CloseablePopup /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList.closeablepopup */
         menu anchorEl={overallMenuAnchor} onClose={handleOverallMenuHide}
         dense
         placement='top-end'
@@ -247,17 +248,17 @@ export function AttachmentDraftsList(props: {
         {/* Slot: extra overall menu items (e.g. "What can I do?") */}
         {props.renderOverallMenuExtra?.()}
 
-        {hasAttachments && !!onAttachmentDraftsAction && <MenuItem onClick={handleOverallInlineText} disabled={!canInlineSomeFragments}>
+        {hasAttachments && !!onAttachmentDraftsAction && <MenuItem /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList.menuitem */ onClick={handleOverallInlineText} disabled={!canInlineSomeFragments}>
           <ListItemDecorator><VerticalAlignBottomIcon /></ListItemDecorator>
           Inline all text
         </MenuItem>}
-        {hasAttachments && !!onAttachmentDraftsAction && <MenuItem onClick={handleOverallCopyText} disabled={!canInlineSomeFragments}>
+        {hasAttachments && !!onAttachmentDraftsAction && <MenuItem /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList.menuitem-2 */ onClick={handleOverallCopyText} disabled={!canInlineSomeFragments}>
           <ListItemDecorator><ContentCopyIcon /></ListItemDecorator>
           Copy all text
         </MenuItem>}
         {hasAttachments && !!onAttachmentDraftsAction && <ListDivider />}
 
-        {hasAttachments && <MenuItem onClick={handleOverallClear}>
+        {hasAttachments && <MenuItem /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftsList::AttachmentDraftsList.menuitem-3 */ onClick={handleOverallClear}>
           <ListItemDecorator><ClearIcon /></ListItemDecorator>
           Remove All{attachmentDrafts.length > 5 ? <span style={{ opacity: 0.5 }}> {attachmentDrafts.length} attachments</span> : null}
         </MenuItem>}

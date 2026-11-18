@@ -56,6 +56,7 @@ const desktopGatherPaneSx: SxProps = {
 };
 
 
+// @uxid src/modules/beam/gather/BeamGatherPane::BeamGatherPane
 export function BeamGatherPane(props: {
   beamStore: BeamStoreApi,
   canGather: boolean,
@@ -142,7 +143,7 @@ export function BeamGatherPane(props: {
             const isActive = factoryId === currentFactoryId;
             const buttonColor: ColorPaletteProp = isActive ? GATHER_COLOR : 'neutral';
             return (
-              <Button
+              <Button /* @uxid src/modules/beam/gather/BeamGatherPane::BeamGatherPane.button */
                 key={'factory-' + factoryId}
                 color={buttonColor}
                 onClick={event => handleFactoryActivate(factoryId, !!event?.shiftKey)}

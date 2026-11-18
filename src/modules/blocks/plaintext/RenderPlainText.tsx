@@ -46,6 +46,7 @@ export function isTextChatCommand(text: string): boolean {
 /**
  * Renders a text block with chat commands.
  */
+// @uxid src/modules/blocks/plaintext/RenderPlainText::RenderPlainText
 export const RenderPlainText = (props: { content: string; renderHighlightCommands?: boolean, sx?: SxProps; }) => {
 
   const slashCommand = !props.renderHighlightCommands ? undefined : extractPlainTextCommand(props.content);
