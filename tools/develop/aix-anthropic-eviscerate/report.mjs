@@ -45,6 +45,7 @@ function turnRows(d) {
 
 const retRow = r => `<tr><td class="mono">${esc(r.name)}</td><td>${r.status === 200 ? '<span class="ok">200 ' + r.stop + '</span>' : '<span class="bad">400</span>'}</td><td>${esc(r.hypothesis)}</td><td class="mono small">${r.status === 200 ? '' : esc((r.errMsg || '').slice(0, 120))}</td></tr>`;
 
+// @uxid tools/develop/aix-anthropic-eviscerate/report::html
 const html = `<title>Anthropic API - Hosted + Client Tools, Programmatic Calling & Retention (live eviscerate)</title>
 <style>
 :root{--bg:#0b0d0a;--panel:#14171200;--card:#151812;--ink:#e8ece2;--dim:#9aa38c;--lime:#d5ec31;--srv:#5aa9ff;--cli:#ffcf4d;--res:#7c8474;--line:#2a2f24;}

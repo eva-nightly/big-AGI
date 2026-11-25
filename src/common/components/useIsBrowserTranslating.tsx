@@ -55,7 +55,7 @@ export function useBrowserTranslationWarning() {
       startDecorator={<WarningRoundedIcon />}
       endDecorator={
         <IconButton color='warning'>
-          <CloseRoundedIcon onClick={() => {
+          <CloseRoundedIcon /* @uxid src/common/components/useIsBrowserTranslating::useBrowserTranslationWarning.closeroundedicon */ onClick={() => {
             setHideWarning(true);
             touch();
           }} />

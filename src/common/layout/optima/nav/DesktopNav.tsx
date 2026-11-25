@@ -48,6 +48,7 @@ const navItemsDividerSx: SxProps = {
 };
 
 
+// @uxid src/common/layout/optima/nav/DesktopNav::DesktopNav
 export function DesktopNav(props: { component: React.ElementType, currentApp?: NavItemApp }) {
 
   // external state
@@ -66,7 +67,7 @@ export function DesktopNav(props: { component: React.ElementType, currentApp?: N
 
   const handleShowTechnologies = React.useCallback(async () => {
     return await showPromisedOverlay<boolean>('app-recent-changes', { rejectWithValue: false }, ({ onUserReject }) =>
-      <GoodModal open onClose={onUserReject} noTitleBar unfilterBackdrop>
+      <GoodModal /* @uxid src/common/layout/optima/nav/DesktopNav::DesktopNav.goodmodal */ open onClose={onUserReject} noTitleBar unfilterBackdrop>
         <BuildInfoCard noMargin />
       </GoodModal>,
     );
@@ -107,7 +108,7 @@ export function DesktopNav(props: { component: React.ElementType, currentApp?: N
 
       return (
         <Tooltip key={'n-m-' + app.route.slice(1)} disableInteractive enterDelay={600} title={app.name + (app.isDev ? ' [DEV]' : '')}>
-          <DesktopNavIcon
+          <DesktopNavIcon /* @uxid src/common/layout/optima/nav/DesktopNav::DesktopNav.desktopnavicon */
             variant={isActive ? 'solid' : undefined}
             onPointerDown={isDrawerable ? optimaToggleDrawer : () => Router.push(app.landingRoute || app.route)}
             className={`${navItemClasses.typeApp} ${isActive ? navItemClasses.active : ''} ${isPaneOpen ? navItemClasses.paneOpen : ''} ${app.isDev ? navItemClasses.dev : ''}`}
@@ -136,7 +137,7 @@ export function DesktopNav(props: { component: React.ElementType, currentApp?: N
           sx={{ minWidth: 260 }}
         >
 
-          <MenuItem component='a' variant='solid' color='primary' href={bigAgiProUrl} target='_blank' sx={{ minHeight: 40 }}>
+          <MenuItem /* @uxid src/common/layout/optima/nav/DesktopNav::DesktopNav.menuitem */ component='a' variant='solid' color='primary' href={bigAgiProUrl} target='_blank' sx={{ minHeight: 40 }}>
             {/*<ListItemDecorator>New</ListItemDecorator>*/}
             {/*<ListItemDecorator><RocketLaunchRounded /></ListItemDecorator>*/}
             Big-AGI Pro
@@ -155,7 +156,7 @@ export function DesktopNav(props: { component: React.ElementType, currentApp?: N
                 </Typography>
               </ListItem>
               {overflowApps.map((app, appIdx) =>
-                <MenuItem key={'nav-app-extra-' + appIdx} onClick={() => Router.push(app.landingRoute || app.route)}>
+                <MenuItem /* @uxid src/common/layout/optima/nav/DesktopNav::DesktopNav.menuitem-2 */ key={'nav-app-extra-' + appIdx} onClick={() => Router.push(app.landingRoute || app.route)}>
                   <ListItemDecorator>
                     <app.icon />
                   </ListItemDecorator>
@@ -172,11 +173,11 @@ export function DesktopNav(props: { component: React.ElementType, currentApp?: N
               Quick Tools
             </Typography>
           </ListItem>
-          <MenuItem onClick={optimaActions().openAIXDebugger}>
+          <MenuItem /* @uxid src/common/layout/optima/nav/DesktopNav::DesktopNav.menuitem-3 */ onClick={optimaActions().openAIXDebugger}>
             <ListItemDecorator><TerminalOutlinedIcon /></ListItemDecorator>
             AI Inspector
           </MenuItem>
-          <MenuItem disabled={!scratchClipSupported()} onClick={toggleScratchClipVisibility}>
+          <MenuItem /* @uxid src/common/layout/optima/nav/DesktopNav::DesktopNav.menuitem-4 */ disabled={!scratchClipSupported()} onClick={toggleScratchClipVisibility}>
             <ListItemDecorator><HistoryIcon /></ListItemDecorator>
             {isScratchClipVisible ? 'Hide ' : ''}Clipboard {scratchClipSupported() ? 'History' : '(not supported)'}
           </MenuItem>
@@ -190,7 +191,7 @@ export function DesktopNav(props: { component: React.ElementType, currentApp?: N
           </ListItem>
           <WhatsNewMenuItem />
           <DocsMenuItem />
-          <MenuItem onClick={handleShowTechnologies}>
+          <MenuItem /* @uxid src/common/layout/optima/nav/DesktopNav::DesktopNav.menuitem-5 */ onClick={handleShowTechnologies}>
             {/*<ListItemDecorator><BuildCircleOutlinedIcon /></ListItemDecorator>*/}
             <ListItemDecorator />
             Build Info
@@ -241,7 +242,7 @@ export function DesktopNav(props: { component: React.ElementType, currentApp?: N
 
       return (
         <Tooltip key={'n-m-' + item.overlayId} title={isAttractive ? 'Add Language Models - REQUIRED' : item.name}>
-          <DesktopNavIcon
+          <DesktopNavIcon /* @uxid src/common/layout/optima/nav/DesktopNav::DesktopNav.desktopnavicon-2 */
             variant={isActive ? 'soft' : undefined}
             onClick={showModal}
             className={`${navItemClasses.typeLinkOrModal} ${isActive ? navItemClasses.active : ''} ${isAttractive ? navItemClasses.attractive : ''}`}
@@ -255,7 +256,7 @@ export function DesktopNav(props: { component: React.ElementType, currentApp?: N
 
 
   return (
-    <InvertedBar
+    <InvertedBar /* @uxid src/common/layout/optima/nav/DesktopNav::DesktopNav.invertedbar */
       id='desktop-nav'
       component={props.component}
       direction='vertical'
@@ -266,7 +267,7 @@ export function DesktopNav(props: { component: React.ElementType, currentApp?: N
 
       <InvertedBarCornerItem>
         <Tooltip disableInteractive title={isDrawerPeeking ? 'Pin Drawer' : (isDrawerOpen ? 'Close Drawer' /* for Aria reasons */ : 'Open Drawer')}>
-          <DesktopNavIcon
+          <DesktopNavIcon /* @uxid src/common/layout/optima/nav/DesktopNav::DesktopNav.desktopnavicon-3 */
             disabled={!logoButtonTogglesPane}
             onPointerDown={logoButtonTogglesPane ? optimaToggleDrawer : undefined}
             className={navItemClasses.typeMenu}

@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/vendors/OllamaIcon::OllamaIcon
 export function OllamaIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 0 6.3499999 6.35' width='24' height='24' stroke='none' fill='currentColor' {...props}>
     <path

@@ -60,6 +60,7 @@ const _tokenCountingMethodOptions: FormSelectOption<TokenCountingMethod>[] = [
 ] as const;
 
 
+// @uxid src/apps/settings-modal/AppChatSettingsAI::FormControlDomainModel
 function FormControlDomainModel(props: {
   domainId: DModelDomainId,
   title: React.ReactNode,
@@ -90,6 +91,7 @@ function FormControlDomainModel(props: {
 }
 
 
+// @uxid src/apps/settings-modal/AppChatSettingsAI::AppChatSettingsAI
 export function AppChatSettingsAI() {
 
   const {
@@ -158,7 +160,7 @@ export function AppChatSettingsAI() {
       tooltip='Vision model used to generate text descriptions of images when the Caption (Text) attachment option is selected.'
     />
 
-    <FormSelectControl
+    <FormSelectControl /* @uxid src/apps/settings-modal/AppChatSettingsAI::AppChatSettingsAI.formselectcontrol */
       title='Token Counting'
       tooltip='Controls how tokens are counted for context limits and pricing estimates.'
       options={_tokenCountingMethodOptions}
@@ -166,7 +168,7 @@ export function AppChatSettingsAI() {
       onChange={setTokenCountingMethod}
     />
 
-    <FormSelectControl
+    <FormSelectControl /* @uxid src/apps/settings-modal/AppChatSettingsAI::AppChatSettingsAI.formselectcontrol-2 */
       title='Reasoning traces'
       tooltip='Controls how AI thinking/reasoning blocks are kept in your chat history. "Most Recent" keeps only the last message traces (default). "Discard All" removes all traces after each response, which may reduce multi-turn quality with some providers.'
       options={_keepThinkingBlocksOptions}
@@ -174,7 +176,7 @@ export function AppChatSettingsAI() {
       onChange={setChatThinkingPolicy}
     />
 
-    <FormSelectControl<AIVndAntInlineFilesPolicy>
+    <FormSelectControl /* @uxid src/apps/settings-modal/AppChatSettingsAI::AppChatSettingsAI.formselectcontrol-3 */<AIVndAntInlineFilesPolicy>
       title='Anthropic Files'
       tooltip={<>
         When Claude uses tools like code execution, it may produce text and image files stored in Anthropic&apos;s File API. This setting controls whether Big-AGI should automatically download and embed them in the chat.
@@ -191,7 +193,7 @@ export function AppChatSettingsAI() {
       onChange={useAIPreferencesStore.getState().setVndAntInlineFiles}
     />
 
-    <FormSelectControl<AIVndGeminiVertexLinksPolicy>
+    <FormSelectControl /* @uxid src/apps/settings-modal/AppChatSettingsAI::AppChatSettingsAI.formselectcontrol-4 */<AIVndGeminiVertexLinksPolicy>
       title='Vertex AI Links'
       tooltip='Resolve Google redirect links in live search steps and save destination URLs when a message completes. Sends requests to Google’s redirect service. Failed or expired links stay unchanged.'
       options={_vndGeminiVertexLinksOptions}
@@ -206,7 +208,7 @@ export function AppChatSettingsAI() {
                       description={autoTitleChat ? 'Auto' : 'Manual only'}
                       tooltip='[Utility model]  Automatically generates relevant titles for new chat conversations.'
                       tooltipWarning={!autoTitleChat} />
-      <Switch checked={autoTitleChat} onChange={handleAutoSetChatTitleChange}
+      <Switch /* @uxid src/apps/settings-modal/AppChatSettingsAI::AppChatSettingsAI.switch */ checked={autoTitleChat} onChange={handleAutoSetChatTitleChange}
               endDecorator={autoTitleChat ? 'On' : 'Off'}
               slotProps={{ endDecorator: { sx: { minWidth: 26 } } }} />
     </FormControl>
@@ -215,7 +217,7 @@ export function AppChatSettingsAI() {
       <FormLabelStart title='Attachment Prompts'
                       description={autoSuggestAttachmentPrompts ? 'Guess Actions' : 'Off'}
                       tooltip={!autoSuggestAttachmentPrompts ? undefined : '[Utility model]  Suggests actions/prompts when attachments are added to the conversation.'} />
-      <Switch checked={autoSuggestAttachmentPrompts} onChange={handleAutoSuggestAttachmentPromptsChange}
+      <Switch /* @uxid src/apps/settings-modal/AppChatSettingsAI::AppChatSettingsAI.switch-2 */ checked={autoSuggestAttachmentPrompts} onChange={handleAutoSuggestAttachmentPromptsChange}
               endDecorator={autoSuggestAttachmentPrompts ? 'On' : 'Off'}
               slotProps={{ endDecorator: { sx: { minWidth: 26 } } }} />
     </FormControl>
@@ -227,7 +229,7 @@ export function AppChatSettingsAI() {
       <FormLabelStart title='Generative Diagrams'
                       description={autoSuggestDiagrams ? 'Add Diagrams' : 'Off'}
                       tooltip={!autoSuggestDiagrams ? undefined : '[Coding model]  Automatically creates visual diagrams and flowcharts when the AI detects that a response would be clearer with a visual representation.'} />
-      <Switch checked={autoSuggestDiagrams} onChange={handleAutoSuggestDiagramsChange}
+      <Switch /* @uxid src/apps/settings-modal/AppChatSettingsAI::AppChatSettingsAI.switch-3 */ checked={autoSuggestDiagrams} onChange={handleAutoSuggestDiagramsChange}
               endDecorator={autoSuggestDiagrams ? 'On' : 'Off'}
               slotProps={{ endDecorator: { sx: { minWidth: 26 } } }} />
     </FormControl>
@@ -245,7 +247,7 @@ export function AppChatSettingsAI() {
           ALPHA QUALITY FOR TESTING ONLY. Use at your own risk.
         </>}
       />
-      <Switch checked={autoSuggestHTMLUI} onChange={handleAutoSuggestHTMLUIChange}
+      <Switch /* @uxid src/apps/settings-modal/AppChatSettingsAI::AppChatSettingsAI.switch-4 */ checked={autoSuggestHTMLUI} onChange={handleAutoSuggestHTMLUIChange}
               endDecorator={autoSuggestHTMLUI ? <div>On{' '}<WarningRoundedIcon sx={{ cursor: 'pointer', color: 'red' }} /></div> : 'Off'}
               slotProps={{ endDecorator: { sx: { minWidth: 26 } } }} />
     </FormControl>

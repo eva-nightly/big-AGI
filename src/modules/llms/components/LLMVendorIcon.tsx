@@ -83,6 +83,7 @@ export function llmsGetVendorIcon(vendorId: ModelVendorId | undefined): React.Fu
  * @param props - Optional SVG icon props to pass to the icon component
  * @returns The rendered icon element or null if vendor not found
  */
+// @uxid src/modules/llms/components/LLMVendorIcon::LLMVendorIcon
 export function LLMVendorIcon({ vendorId, ...props }: { vendorId: ModelVendorId | undefined } & SvgIconProps): React.ReactElement {
   const Icon = llmsGetVendorIcon(vendorId);
   return <Icon {...props} />;

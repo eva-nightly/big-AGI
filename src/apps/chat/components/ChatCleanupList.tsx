@@ -11,6 +11,7 @@ import { CleanerMessage, MessagesSelectionHeader } from './message/CleanerMessag
 /**
  * Cleanup controls and message selection. The parent retains selection across cleanup sessions.
  */
+// @uxid src/apps/chat/components/ChatCleanupList::ChatCleanupControls
 export function ChatCleanupControls(props: {
   isMobile: boolean,
   conversationHandler: Pick<ConversationHandler, 'messagesDelete' | 'messageSetUserFlag'> | null,
@@ -59,7 +60,7 @@ export function ChatCleanupControls(props: {
     if (!conversationHandler || !selectedMessages.size) return;
     const messageIds = Array.from(selectedMessages);
     const confirmed = await showPromisedOverlay('chat-message-delete-confirmation', { rejectWithValue: false }, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/apps/chat/components/ChatCleanupList::ChatCleanupControls.confirmationmodal */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         title='Delete Messages'
         confirmationText={`Permanently delete ${messageIds.length} selected message${messageIds.length === 1 ? '' : 's'}? This cannot be undone.`}
@@ -90,7 +91,7 @@ export function ChatCleanupControls(props: {
 
   return <>
 
-    <MessagesSelectionHeader
+    <MessagesSelectionHeader /* @uxid src/apps/chat/components/ChatCleanupList::ChatCleanupControls.messagesselectionheader */
       hasSelected={selectedMessages.size > 0}
       sumTokens={historyTokenCount}
       onClose={onClose}
@@ -101,7 +102,7 @@ export function ChatCleanupControls(props: {
     />
 
     {props.filteredMessages.map((message) => (
-      <CleanerMessage
+      <CleanerMessage /* @uxid src/apps/chat/components/ChatCleanupList::ChatCleanupControls.cleanermessage */
         key={'sel-' + message.id}
         message={message}
         remainingTokens={props.remainingTokens}

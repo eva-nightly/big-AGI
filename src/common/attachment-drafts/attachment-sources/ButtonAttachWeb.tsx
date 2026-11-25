@@ -9,6 +9,7 @@ import { KeyStroke } from '~/common/components/KeyStroke';
 
 export const ButtonAttachWebMemo = React.memo(ButtonAttachWeb);
 
+// @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachWeb::ButtonAttachWeb
 function ButtonAttachWeb(props: {
   color?: ColorPaletteProp,
   isMobile?: boolean,
@@ -19,11 +20,11 @@ function ButtonAttachWeb(props: {
 }) {
 
   const button = props.isMobile ? (
-    <IconButton color={props.color} disabled={props.disabled} onClick={props.onOpenWebInput}>
+    <IconButton /* @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachWeb::ButtonAttachWeb.iconbutton */ color={props.color} disabled={props.disabled} onClick={props.onOpenWebInput}>
       <LanguageRoundedIcon />
     </IconButton>
   ) : (
-    <Button
+    <Button /* @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachWeb::ButtonAttachWeb.button */
       variant={props.color ? 'soft' : 'plain'}
       color={props.color || 'neutral'}
       disabled={props.disabled}

@@ -11,6 +11,7 @@ export interface InlineTextareaDraft {
   replaceText: (text: string) => boolean;
 }
 
+// @uxid src/common/components/InlineTextarea::InlineTextarea
 export function InlineTextarea(props: {
   initialText: string,
   disableAutoSaveOnBlur?: boolean // NOTE: this will disable the enter=newline as well
@@ -109,7 +110,7 @@ export function InlineTextarea(props: {
   };
 
   return (
-    <Textarea
+    <Textarea /* @uxid src/common/components/InlineTextarea::InlineTextarea.textarea */
       size={props.size}
       variant={props.explicitSave ? 'outlined' : props.invertedColors ? 'plain' : 'soft'}
       color={props.explicitSave ? 'neutral' : props.decolor ? undefined : props.invertedColors ? 'primary' : 'warning'}
@@ -124,8 +125,8 @@ export function InlineTextarea(props: {
       startDecorator={props.renderStartDecorator?.({ text, replaceText })}
       endDecorator={props.explicitSave ? (
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', flexWrap: 'wrap', gap: 1, width: '100%' }}>
-          <Button size='sm' variant='plain' color='neutral' onClick={props.onCancel} sx={{ minHeight: 36, minWidth: 72 }}>Cancel</Button>
-          <Button size='sm' disabled={!text.trim()} onClick={() => props.onEdit(text)} sx={{ minHeight: 36, minWidth: 72 }}>Save</Button>
+          <Button /* @uxid src/common/components/InlineTextarea::InlineTextarea.button */ size='sm' variant='plain' color='neutral' onClick={props.onCancel} sx={{ minHeight: 36, minWidth: 72 }}>Cancel</Button>
+          <Button /* @uxid src/common/components/InlineTextarea::InlineTextarea.button-2 */ size='sm' disabled={!text.trim()} onClick={() => props.onEdit(text)} sx={{ minHeight: 36, minWidth: 72 }}>Save</Button>
         </Box>
       ) : undefined}
       slotProps={{

@@ -9,7 +9,7 @@ export function useChipBoolean(text: React.ReactNode, initialExpand = false): [b
   const [expanded, setExpanded] = React.useState(initialExpand);
 
   const component = React.useMemo(() => (
-    <ChipExpander text={text} expanded={expanded} onToggleExpanded={() => setExpanded(on => !on)} />
+    <ChipExpander /* @uxid src/common/components/useChipBoolean::useChipBoolean.chipexpander */ text={text} expanded={expanded} onToggleExpanded={() => setExpanded(on => !on)} />
   ), [expanded, text]);
 
   return [expanded, component];

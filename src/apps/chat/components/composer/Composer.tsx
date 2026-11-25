@@ -112,6 +112,7 @@ export const ComposerMemo = React.memo(Composer);
 /**
  * A React component for composing messages, with attachments and different modes.
  */
+// @uxid src/apps/chat/components/composer/Composer::Composer
 function Composer(props: {
   isMobile: boolean;
   composerTextAreaRef: React.RefObject<HTMLTextAreaElement>;
@@ -193,7 +194,7 @@ function Composer(props: {
   const { onConversationBeamEdit, onConversationsImportFromFiles } = props;
   const handleFilterAGIFile = React.useCallback(async (file: File): Promise<boolean> =>
     await showPromisedOverlay('composer-open-or-attach', { rejectWithValue: false }, ({ onResolve, onUserReject }) => (
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/apps/chat/components/composer/Composer::Composer.confirmationmodal */
         open onClose={onUserReject}
         onPositive={() => {
           onConversationsImportFromFiles([file]);
@@ -753,7 +754,7 @@ function Composer(props: {
       {/* This container is here just to let the potential statusbar fill the whole space, so we moved the padding here and not in the parent */}
       <Box sx={(!isMinimized || isMobile || !labsShowShortcutBar) ? paddingBoxSx : minimizedSx}>
 
-        <Grid
+        <Grid /* @uxid src/apps/chat/components/composer/Composer::Composer.grid */
           container
           onDragEnter={handleContainerDragEnter}
           onDragStart={handleContainerDragStart}
@@ -769,14 +770,14 @@ function Composer(props: {
               <Box sx={{ flexGrow: 0, display: 'grid', gap: 1, alignSelf: 'flex-start' }}>
 
                 {/* [mobile] Mic button */}
-                {recognitionState.isAvailable && <ButtonMicMemo variant={micVariant} color={micColor === 'danger' ? 'danger' : showTint || micColor} errorMessage={recognitionState.errorMessage} onClick={handleToggleMic} />}
+                {recognitionState.isAvailable && <ButtonMicMemo /* @uxid src/apps/chat/components/composer/Composer::Composer.buttonmicmemo */ variant={micVariant} color={micColor === 'danger' ? 'danger' : showTint || micColor} errorMessage={recognitionState.errorMessage} onClick={handleToggleMic} />}
 
                 {/* [mobile] Attach file button (in draw with image mode)  */}
-                {showChatAttachments === 'only-images' && <ButtonAttachFilesMemo color={showTint} isMobile onAttachFiles={handleAttachFiles} multiple />}
+                {showChatAttachments === 'only-images' && <ButtonAttachFilesMemo /* @uxid src/apps/chat/components/composer/Composer::Composer.buttonattachfilesmemo */ color={showTint} isMobile onAttachFiles={handleAttachFiles} multiple />}
 
                 {/* [mobile] [+] attachment sources menu */}
                 {showChatAttachments === true && (
-                  <AttachmentSourcesMemo
+                  <AttachmentSourcesMemo /* @uxid src/apps/chat/components/composer/Composer::Composer.attachmentsourcesmemo */
                     mode='menu-compact'
                     canBrowse={browseCapability.mayWork}
                     hasScreenCapture={supportsScreenCapture}
@@ -792,7 +793,7 @@ function Composer(props: {
                 )}
 
                 {/* [Mobile] MultiChat button */}
-                {props.isMulticast !== null && <ButtonMultiChatMemo isMobile multiChat={props.isMulticast} onSetMultiChat={props.setIsMulticast} />}
+                {props.isMulticast !== null && <ButtonMultiChatMemo /* @uxid src/apps/chat/components/composer/Composer::Composer.buttonmultichatmemo */ isMobile multiChat={props.isMulticast} onSetMultiChat={props.setIsMulticast} />}
 
               </Box>
             )}
@@ -802,7 +803,7 @@ function Composer(props: {
               <Box sx={{ flexGrow: 0, display: 'grid', gap: 0.5, alignSelf: 'flex-start' }}>
 
                 {/* [desktop] Attachment Sources: dropdown menu or inline buttons */}
-                <AttachmentSourcesMemo
+                <AttachmentSourcesMemo /* @uxid src/apps/chat/components/composer/Composer::Composer.attachmentsourcesmemo-2 */
                   mode={!labsComposerAttachmentsInline ? 'menu-rich' : 'inline-buttons'}
                   color={!labsComposerAttachmentsInline ? (showTint || 'neutral') : showTint}
                   richButtonStandOut={!isText && !isAppend}
@@ -838,7 +839,7 @@ function Composer(props: {
                 {/* Edit box with inner Token Progress bar */}
                 <Box sx={{ position: 'relative' /* for TokenBadge & TokenProgress */, height: '100%' }}>
 
-                  <Textarea
+                  <Textarea /* @uxid src/apps/chat/components/composer/Composer::Composer.textarea */
                     variant='outlined'
                     color={isDraw ? 'warning' : isReAct ? 'success' : undefined}
                     autoFocus={isDesktop}
@@ -852,11 +853,11 @@ function Composer(props: {
                     // onFocusCapture={handleFocusModeOn}
                     // onBlurCapture={handleFocusModeOff}
                     endDecorator={isDraw
-                      ? <ComposerTextAreaDrawActions
+                      ? <ComposerTextAreaDrawActions /* @uxid src/apps/chat/components/composer/Composer::Composer.composertextareadrawactions */
                         composerText={composeText}
                         onReplaceText={setComposeText}
                       />
-                      : <ComposerTextAreaActions
+                      : <ComposerTextAreaActions /* @uxid src/apps/chat/components/composer/Composer::Composer.composertextareaactions */
                         agiAttachmentPrompts={agiAttachmentPrompts}
                         onAppendAndSend={handleAppendTextAndSend}
                       >
@@ -864,7 +865,7 @@ function Composer(props: {
                           <>
                             {/* In-Reference-To bubbles */}
                             {inReferenceTo?.map((item, index) => (
-                              <InReferenceToBubble
+                              <InReferenceToBubble /* @uxid src/apps/chat/components/composer/Composer::Composer.inreferencetobubble */
                                 key={index}
                                 item={item}
                                 onRemove={handleRemoveInReferenceTo}
@@ -877,7 +878,7 @@ function Composer(props: {
                               const enhancer = COMPOSER_INPUT_ENHANCERS.find(e => e.ownsPart(part));
                               if (!enhancer) return null;
                               const PendingChip = enhancer.PendingChip;
-                              return <PendingChip key={index} part={part} onRemove={() => handleRemovePendingPart(part)} />;
+                              return <PendingChip /* @uxid src/apps/chat/components/composer/Composer::Composer.pendingchip */ key={index} part={part} onRemove={() => handleRemovePendingPart(part)} />;
                             })}
 
                             {/* Capability hint from a disabled enhancer (e.g. video URL pasted on a non-video model) */}
@@ -928,10 +929,10 @@ function Composer(props: {
                     mr: isDesktop ? 1 : 0.25,
                     display: 'flex', flexDirection: 'column', gap: isDesktop ? 1 : 0.25,
                   }}>
-                    {isDesktop && <ButtonMicMemo variant={micVariant} color={micColor} errorMessage={recognitionState.errorMessage} onClick={handleToggleMic} noBackground={!recognitionState.isActive} />}
+                    {isDesktop && <ButtonMicMemo /* @uxid src/apps/chat/components/composer/Composer::Composer.buttonmicmemo-2 */ variant={micVariant} color={micColor} errorMessage={recognitionState.errorMessage} onClick={handleToggleMic} noBackground={!recognitionState.isActive} />}
 
                     {micIsRunning && (
-                      <ButtonMicContinuationMemo
+                      <ButtonMicContinuationMemo /* @uxid src/apps/chat/components/composer/Composer::Composer.buttonmiccontinuationmemo */
                         isActive={micContinuation}
                         variant='soft' color={micContinuation ? 'primary' : 'neutral'}
                         onClick={handleToggleMicContinuation}
@@ -993,7 +994,7 @@ function Composer(props: {
 
               {/* Render any Attachments & menu items */}
               {!!conversationOverlayStore && showChatAttachments && (
-                <ComposerAttachmentDraftsList
+                <ComposerAttachmentDraftsList /* @uxid src/apps/chat/components/composer/Composer::Composer.composerattachmentdraftslist */
                   attachmentDraftsStoreApi={conversationOverlayStore}
                   attachmentDrafts={attachmentDrafts}
                   enrichment={attEnrichment}
@@ -1020,10 +1021,10 @@ function Composer(props: {
                 {/* [mobile] bottom-corner secondary button */}
                 {isMobile && (showChatExtras
                     ? (composerQuickButton === 'call' && speechMayWork
-                      ? <ButtonCallMemo isMobile disabled={noConversation || noLLM} onClick={handleCallClicked} />
-                      : <ButtonBeamMemo isMobile disabled={noConversation /*|| noLLM*/} color={beamButtonColor} hasContent={!!composeText} onClick={handleSendTextBeamClicked} />)
+                      ? <ButtonCallMemo /* @uxid src/apps/chat/components/composer/Composer::Composer.buttoncallmemo */ isMobile disabled={noConversation || noLLM} onClick={handleCallClicked} />
+                      : <ButtonBeamMemo /* @uxid src/apps/chat/components/composer/Composer::Composer.buttonbeammemo */ isMobile disabled={noConversation /*|| noLLM*/} color={beamButtonColor} hasContent={!!composeText} onClick={handleSendTextBeamClicked} />)
                     : isDraw
-                      ? <ButtonOptionsDraw isMobile onClick={handleDrawOptionsClicked} sx={{ mr: { xs: 1, md: 2 } }} />
+                      ? <ButtonOptionsDraw /* @uxid src/apps/chat/components/composer/Composer::Composer.buttonoptionsdraw */ isMobile onClick={handleDrawOptionsClicked} sx={{ mr: { xs: 1, md: 2 } }} />
                       : <IconButton disabled sx={{ mr: { xs: 1, md: 2 } }} />
                 )}
 
@@ -1038,7 +1039,7 @@ function Composer(props: {
                   }}
                 >
                   {!assistantAbortible ? (
-                    <Button
+                    <Button /* @uxid src/apps/chat/components/composer/Composer::Composer.button */
                       key='composer-act'
                       fullWidth
                       disabled={noConversation /* || noLLM*/}
@@ -1051,7 +1052,7 @@ function Composer(props: {
                       {micContinuation && 'Voice '}{sendButtonLabel}
                     </Button>
                   ) : (
-                    <Button
+                    <Button /* @uxid src/apps/chat/components/composer/Composer::Composer.button-2 */
                       key='composer-stop'
                       fullWidth
                       variant='soft'
@@ -1080,7 +1081,7 @@ function Composer(props: {
                   {/*</Tooltip>}*/}
 
                   {/* Mode expander */}
-                  <IconButton
+                  <IconButton /* @uxid src/apps/chat/components/composer/Composer::Composer.iconbutton */
                     variant={chatExecuteMenuShown ? 'outlined' : assistantAbortible ? 'soft' : isDraw ? undefined : undefined}
                     disabled={noConversation /*|| chatExecuteMenuShown*/}
                     onClick={showChatExecuteMenu}
@@ -1091,7 +1092,7 @@ function Composer(props: {
 
                 {/* [desktop] secondary-top buttons */}
                 {isDesktop && showChatExtras && !assistantAbortible && (
-                  <ButtonBeamMemo
+                  <ButtonBeamMemo /* @uxid src/apps/chat/components/composer/Composer::Composer.buttonbeammemo-2 */
                     color={beamButtonColor}
                     disabled={noConversation /*|| noLLM*/}
                     hasContent={!!composeText}
@@ -1105,16 +1106,16 @@ function Composer(props: {
               {isDesktop && isDraw && <ButtonGroupDrawRepeat drawRepeat={drawRepeat} setDrawRepeat={setDrawRepeat} />}
 
               {/* [desktop] Multicast switch (under the Chat button) */}
-              {isDesktop && props.isMulticast !== null && <ButtonMultiChatMemo multiChat={props.isMulticast} onSetMultiChat={props.setIsMulticast} />}
+              {isDesktop && props.isMulticast !== null && <ButtonMultiChatMemo /* @uxid src/apps/chat/components/composer/Composer::Composer.buttonmultichatmemo-2 */ multiChat={props.isMulticast} onSetMultiChat={props.setIsMulticast} />}
 
               {/* [desktop] secondary bottom-buttons (aligned to bottom for now, and mutually exclusive) */}
               {isDesktop && <Box sx={{ mt: 'auto', display: 'grid', gap: 1 }}>
 
                 {/* [desktop] Call secondary button - hidden when speech recognition is not available */}
-                {showChatExtras && speechMayWork && <ButtonCallMemo disabled={noConversation || noLLM || assistantAbortible} onClick={handleCallClicked} />}
+                {showChatExtras && speechMayWork && <ButtonCallMemo /* @uxid src/apps/chat/components/composer/Composer::Composer.buttoncallmemo-2 */ disabled={noConversation || noLLM || assistantAbortible} onClick={handleCallClicked} />}
 
                 {/* [desktop] Draw Options secondary button */}
-                {isDraw && <ButtonOptionsDraw onClick={handleDrawOptionsClicked} />}
+                {isDraw && <ButtonOptionsDraw /* @uxid src/apps/chat/components/composer/Composer::Composer.buttonoptionsdraw-2 */ onClick={handleDrawOptionsClicked} />}
 
               </Box>}
 

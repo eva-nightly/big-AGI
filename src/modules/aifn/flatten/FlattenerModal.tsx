@@ -19,6 +19,7 @@ import { FLATTEN_PROFILES, FlattenStyleType } from './flatten.data';
 import { useModelDomain } from '~/common/stores/llms/hooks/useModelDomain';
 
 
+// @uxid src/modules/aifn/flatten/FlattenerModal::StylesList
 function StylesList(props: { selectedStyle: FlattenStyleType | null, onSelectedStyle: (type: FlattenStyleType) => void }) {
   const readonly = !!props.selectedStyle;
   const items = FLATTEN_PROFILES.filter(style => !readonly || style.type === props.selectedStyle);
@@ -27,7 +28,7 @@ function StylesList(props: { selectedStyle: FlattenStyleType | null, onSelectedS
       {items.map((style, idx) => (
         <React.Fragment key={style.type}>
           <ListItem>
-            <ListItemButton onClick={() => !readonly && props.onSelectedStyle(style.type)}>
+            <ListItemButton /* @uxid src/modules/aifn/flatten/FlattenerModal::StylesList.listitembutton */ onClick={() => !readonly && props.onSelectedStyle(style.type)}>
               <ListItemDecorator sx={{ fontSize: '16pt' }}>
                 {style.emoji}
               </ListItemDecorator>
@@ -48,6 +49,7 @@ function StylesList(props: { selectedStyle: FlattenStyleType | null, onSelectedS
   );
 }
 
+// @uxid src/modules/aifn/flatten/FlattenerModal::FlatteningProgress
 function FlatteningProgress(props: { llmLabel: string, partialText: string | null }) {
   return (
     <Box sx={{ mx: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2 }}>
@@ -81,6 +83,7 @@ function encodeConversationAsUserMessage(userPrompt: string, messages: Readonly<
 }
 
 
+// @uxid src/modules/aifn/flatten/FlattenerModal::FlattenerModal
 export function FlattenerModal(props: {
   conversationId: string | null,
   onConversationBranch: (conversationId: DConversationId, messageId: string | null, addSplitPane: boolean) => DConversationId | null,
@@ -158,7 +161,7 @@ export function FlattenerModal(props: {
   const isError = !!errorMessage || !!streamError;
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/modules/aifn/flatten/FlattenerModal::FlattenerModal.goodmodal */
       open={!!props.conversationId} dividers
       title={!selectedStyle ? 'Compact' : 'Compacting...'}
       onClose={props.onClose}
@@ -167,7 +170,7 @@ export function FlattenerModal(props: {
       {/* Style selector */}
       <FormControl>
         <FormLabel>Style</FormLabel>
-        <StylesList selectedStyle={selectedStyle} onSelectedStyle={handlePerformFlattening} />
+        <StylesList /* @uxid src/modules/aifn/flatten/FlattenerModal::FlattenerModal.styleslist */ selectedStyle={selectedStyle} onSelectedStyle={handlePerformFlattening} />
       </FormControl>
 
       {/* Progress indicator */}
@@ -184,7 +187,7 @@ export function FlattenerModal(props: {
             {!!errorMessage && <Typography>{errorMessage}</Typography>}
             {!!streamError && <Typography>LLM issue: {streamError}</Typography>}
           </Alert>
-          <IconButton variant='solid' color='danger' onClick={handleErrorRetry}>
+          <IconButton /* @uxid src/modules/aifn/flatten/FlattenerModal::FlattenerModal.iconbutton */ variant='solid' color='danger' onClick={handleErrorRetry}>
             <ReplayRoundedIcon />
           </IconButton>
         </Box>}
@@ -192,24 +195,24 @@ export function FlattenerModal(props: {
         {/* Proceed*/}
         {isSuccess && !isError && (
           <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, alignItems: 'center' }}>
-            <IconButton
+            <IconButton /* @uxid src/modules/aifn/flatten/FlattenerModal::FlattenerModal.iconbutton-2 */
               variant={isError ? 'solid' : 'plain'} color={isError ? 'danger' : 'primary'}
               onClick={handleErrorRetry}
             >
               <ReplayRoundedIcon />
             </IconButton>
 
-            <Button variant='outlined' onClick={() => setConfirmOverwrite(true)} sx={{ ml: 'auto' }}>
+            <Button /* @uxid src/modules/aifn/flatten/FlattenerModal::FlattenerModal.button */ variant='outlined' onClick={() => setConfirmOverwrite(true)} sx={{ ml: 'auto' }}>
               Replace Chat
             </Button>
-            <Button variant='solid' onClick={() => handleReplaceConversation(true)} startDecorator={<ForkRightIcon />}>
+            <Button /* @uxid src/modules/aifn/flatten/FlattenerModal::FlattenerModal.button-2 */ variant='solid' onClick={() => handleReplaceConversation(true)} startDecorator={<ForkRightIcon />}>
               Branch
             </Button>
           </Box>
         )}
 
         {/* Review or Edit Text */}
-        {isSuccess && <InlineTextarea initialText={flattenedText} selectAllOnFocus={false} onEdit={setText} />}
+        {isSuccess && <InlineTextarea /* @uxid src/modules/aifn/flatten/FlattenerModal::FlattenerModal.inlinetextarea */ initialText={flattenedText} selectAllOnFocus={false} onEdit={setText} />}
 
       </Box>}
 
@@ -219,7 +222,7 @@ export function FlattenerModal(props: {
 
 
       {/* [confirmation] Overwrite Conversation */}
-      {confirmOverwrite && <ConfirmationModal
+      {confirmOverwrite && <ConfirmationModal /* @uxid src/modules/aifn/flatten/FlattenerModal::FlattenerModal.confirmationmodal */
         open onClose={() => setConfirmOverwrite(false)} onPositive={() => handleReplaceConversation(false)}
         confirmationText='Are you sure you want to overwrite the conversation with the compacted text?'
         positiveActionText='Replace conversation'

@@ -60,6 +60,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/modules/beam/scatter/BeamScatterPane::BeamScatterPane
 export function BeamScatterPane(props: {
   beamStore: BeamStoreApi,
   isMobile: boolean,
@@ -75,7 +76,7 @@ export function BeamScatterPane(props: {
 }) {
 
   const dropdownMemo = React.useMemo(() => (
-    <BeamScatterDropdown
+    <BeamScatterDropdown /* @uxid src/modules/beam/scatter/BeamScatterPane::BeamScatterPane.beamscatterdropdown */
       beamStore={props.beamStore}
       onExplainerShow={props.onExplainerShow}
     />
@@ -115,7 +116,7 @@ export function BeamScatterPane(props: {
           {SCATTER_RAY_PRESETS.map((n) => {
             const isActive = n === props.rayCount;
             return (
-              <Button
+              <Button /* @uxid src/modules/beam/scatter/BeamScatterPane::BeamScatterPane.button */
                 key={n}
                 // variant={isActive ? 'solid' : undefined}
                 color={isActive ? SCATTER_COLOR : 'neutral'}
@@ -134,7 +135,7 @@ export function BeamScatterPane(props: {
             );
           })}
           {props.showRayAdd && (
-            <Button
+            <Button /* @uxid src/modules/beam/scatter/BeamScatterPane::BeamScatterPane.button-2 */
               color='neutral'
               size='sm'
               onClick={() => props.setRayCount(props.rayCount + 1)}
@@ -154,7 +155,7 @@ export function BeamScatterPane(props: {
       {/* Start / Stop buttons */}
       {!props.startBusy ? (
         <TooltipOutlined slowEnter title={startRestart ? 'Shift + Click to re-run active Beams' : null} placement='top-end'>
-          <Button
+          <Button /* @uxid src/modules/beam/scatter/BeamScatterPane::BeamScatterPane.button-3 */
             // key='scatter-start' // used for animation triggering, which we don't have now
             variant='solid' color={SCATTER_COLOR}
             disabled={!props.startEnabled || props.startBusy} loading={props.startBusy}
@@ -166,7 +167,7 @@ export function BeamScatterPane(props: {
           </Button>
         </TooltipOutlined>
       ) : (
-        <Button
+        <Button /* @uxid src/modules/beam/scatter/BeamScatterPane::BeamScatterPane.button-4 */
           // key='scatter-stop'
           variant='solid' color='danger'
           endDecorator={<StopRoundedIcon />}

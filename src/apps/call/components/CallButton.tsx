@@ -11,6 +11,7 @@ import { SxProps } from '@mui/joy/styles/types';
  *  | Mute |
  *  --------
  */
+// @uxid src/apps/call/components/CallButton::CallButton
 export function CallButton(props: {
   Icon: React.FC, text: string,
   variant?: VariantProp, color?: ColorPaletteProp, disabled?: boolean,
@@ -18,7 +19,7 @@ export function CallButton(props: {
   sx?: SxProps,
 }) {
   return (
-    <FormControl
+    <FormControl /* @uxid src/apps/call/components/CallButton::CallButton.formcontrol */
       onClick={() => !props.disabled && props.onClick?.()}
       sx={{
         display: 'flex', flexDirection: 'column', alignItems: 'center',

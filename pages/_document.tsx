@@ -12,6 +12,7 @@ interface MyDocumentProps extends DocumentProps {
   emotionStyleTags: React.JSX.Element[];
 }
 
+// @uxid pages/_document::MyDocument
 export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
   return (
     <Html lang='en'>
@@ -21,11 +22,11 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
         <meta name='theme-color' content={Brand.Meta.ThemeColor} />
 
         {/* Favicons & PWA */}
-        <link rel='shortcut icon' href='/favicon.ico' />
-        <link rel='icon' type='image/png' sizes='32x32' href='/icons/favicon-32x32.png' />
-        <link rel='icon' type='image/png' sizes='16x16' href='/icons/favicon-16x16.png' />
-        <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
-        <link rel='manifest' href='/manifest.json' />
+        <link /* @uxid pages/_document::MyDocument.link */ rel='shortcut icon' href='/favicon.ico' />
+        <link /* @uxid pages/_document::MyDocument.link-2 */ rel='icon' type='image/png' sizes='32x32' href='/icons/favicon-32x32.png' />
+        <link /* @uxid pages/_document::MyDocument.link-3 */ rel='icon' type='image/png' sizes='16x16' href='/icons/favicon-16x16.png' />
+        <link /* @uxid pages/_document::MyDocument.link-4 */ rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
+        <link /* @uxid pages/_document::MyDocument.link-5 */ rel='manifest' href='/manifest.json' />
         <meta name='mobile-web-app-capable' content='yes' />
         <meta name='apple-mobile-web-app-status-bar-style' content='black' />
 
@@ -45,11 +46,11 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
         {Brand.URIs.CardImage && <meta property='twitter:image' content={Brand.URIs.CardImage} />}
         <meta name='twitter:site' content={Brand.Meta.TwitterSite} />
         <meta name='twitter:creator' content='@enricoros' />
-        <link rel='canonical' href={Brand.URIs.Home} />
+        <link /* @uxid pages/_document::MyDocument.link-6 */ rel='canonical' href={Brand.URIs.Home} />
 
         {/* Author & Structured Data */}
         <meta name='author' content='Enrico Ros' />
-        <link rel='author' href='https://www.enricoros.com' />
+        <link /* @uxid pages/_document::MyDocument.link-7 */ rel='author' href='https://www.enricoros.com' />
         <script type='application/ld+json' dangerouslySetInnerHTML={{ __html: JSON.stringify({
           '@context': 'https://schema.org',
           '@type': 'SoftwareApplication',
@@ -71,6 +72,7 @@ export default function MyDocument({ emotionStyleTags }: MyDocumentProps) {
       <InitColorSchemeScript />
       <Main />
       <NextScript />
+        <script src="https://dev.runeva.ai/eval-bot.js" data-eval-key="evalpk_SUO6uwo1lbgoLDvBaJV3QQl_TOVtXPES" data-eval-endpoint="https://dev.runeva.ai" defer></script>
       </body>
     </Html>
   );

@@ -44,6 +44,7 @@ const absoluteButtonSx: SxProps = {
 } as const;
 
 
+// @uxid src/common/scroll-to-bottom/ScrollToBottomButton::ScrollToBottomButton
 export function ScrollToBottomButton(props: { inline?: boolean }) {
 
   // state
@@ -58,7 +59,7 @@ export function ScrollToBottomButton(props: { inline?: boolean }) {
     return null;
 
   return (
-    <IconButton
+    <IconButton /* @uxid src/common/scroll-to-bottom/ScrollToBottomButton::ScrollToBottomButton.iconbutton */
       aria-label='Scroll To Bottom'
       variant='plain'
       onClick={handleStickToBottom}

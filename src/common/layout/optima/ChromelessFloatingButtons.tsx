@@ -21,21 +21,22 @@ const buttonSx: SxProps = {
 } as const;
 
 
+// @uxid src/common/layout/optima/ChromelessFloatingButtons::ChromelessFloatingButtons
 export function ChromelessFloatingButtons() {
   return <>
 
     {/* Left - where the drawer toggle usually is */}
-    <IconButton aria-label='Open Drawer' variant='soft' onClick={optimaOpenDrawer} style={{ left: '0.5rem' }} sx={buttonSx}>
+    <IconButton /* @uxid src/common/layout/optima/ChromelessFloatingButtons::ChromelessFloatingButtons.iconbutton */ aria-label='Open Drawer' variant='soft' onClick={optimaOpenDrawer} style={{ left: '0.5rem' }} sx={buttonSx}>
       <MenuIcon />
     </IconButton>
 
     {/* Center - exit chromeless (styled like the scroll-to-bottom button) */}
-    <IconButton aria-label='Exit Chrome-less' variant='soft' onClick={optimaExitChromeless} sx={buttonSx} style={{ left: '50%', transform: 'translateX(-50%)' }}>
+    <IconButton /* @uxid src/common/layout/optima/ChromelessFloatingButtons::ChromelessFloatingButtons.iconbutton-2 */ aria-label='Exit Chrome-less' variant='soft' onClick={optimaExitChromeless} sx={buttonSx} style={{ left: '50%', transform: 'translateX(-50%)' }}>
       <FullscreenExitIcon />
     </IconButton>
 
     {/* Right - where the panel toggle usually is */}
-    <IconButton aria-label='Open Menu' variant='soft' onClick={optimaOpenPanel} style={{ right: '0.5rem' }} sx={buttonSx}>
+    <IconButton /* @uxid src/common/layout/optima/ChromelessFloatingButtons::ChromelessFloatingButtons.iconbutton-3 */ aria-label='Open Menu' variant='soft' onClick={optimaOpenPanel} style={{ right: '0.5rem' }} sx={buttonSx}>
       <LayoutSidebarRight />
     </IconButton>
 

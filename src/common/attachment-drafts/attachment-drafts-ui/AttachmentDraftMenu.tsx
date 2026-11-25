@@ -51,6 +51,7 @@ const actionButtonsSx: SxProps = {
 };
 
 
+// @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu
 export function AttachmentDraftMenu(props: {
   attachmentDraftsStoreApi: AttachmentDraftsStoreApi,
   draft: AttachmentDraft,
@@ -180,7 +181,7 @@ export function AttachmentDraftMenu(props: {
   const showInputs = uiComplexityMode !== 'minimal';
 
   return (
-    <CloseablePopup
+    <CloseablePopup /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.closeablepopup */
       menu anchorEl={props.menuAnchor} onClose={props.onClose}
       dense
       maxWidth={460}
@@ -194,14 +195,14 @@ export function AttachmentDraftMenu(props: {
 
       {/* Move Arrows */}
       {!isUnmoveable && <Box sx={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid', borderColor: 'divider' }}>
-        <MenuItem
+        <MenuItem /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.menuitem */
           disabled={props.isPositionFirst}
           onClick={handleMoveUp}
           sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}
         >
           <KeyboardArrowLeftIcon />
         </MenuItem>
-        <MenuItem
+        <MenuItem /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.menuitem-2 */
           disabled={props.isPositionLast}
           onClick={handleMoveDown}
           sx={{ flex: 1, display: 'flex', justifyContent: 'center' }}
@@ -224,7 +225,7 @@ export function AttachmentDraftMenu(props: {
                 ? (draftSource.method === 'drop' ? 'drop' : draftSource.method === 'clipboard-read' ? 'clipboard' : draftSource.method === 'paste' ? 'paste' : '')
                 : ''} as:
           {uiComplexityMode === 'extra' && (
-            <Chip component='span' size='sm' color='neutral' variant='outlined' startDecorator={<ContentCopyIcon />} onClick={(event) => handleCopyLabelToClipboard(event, draft.label)} sx={{ ml: 'auto' }}>
+            <Chip /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.chip */ component='span' size='sm' color='neutral' variant='outlined' startDecorator={<ContentCopyIcon />} onClick={(event) => handleCopyLabelToClipboard(event, draft.label)} sx={{ ml: 'auto' }}>
               copy name
             </Chip>
           )}
@@ -242,7 +243,7 @@ export function AttachmentDraftMenu(props: {
         </ListItem>
       )}
       {!isUnconvertible && draft.converters.map((c, idx) =>
-        <MenuItem
+        <MenuItem /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.menuitem-3 */
           disabled={c.disabled || isConverting}
           key={'c-' + c.id}
           onClick={async () => (c.isCheckbox || !c.isActive) && await handleSetConverterIdx(idx)}
@@ -271,13 +272,13 @@ export function AttachmentDraftMenu(props: {
 
       {SHOW_INLINING_OPERATIONS && !!onDraftAction && <ListDivider />}
       {SHOW_INLINING_OPERATIONS && !!onDraftAction && (
-        <MenuItem onClick={() => onDraftAction?.(draftId, 'inline-text')} disabled={!llmSupportsTextFragments || isConverting}>
+        <MenuItem /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.menuitem-4 */ onClick={() => onDraftAction?.(draftId, 'inline-text')} disabled={!llmSupportsTextFragments || isConverting}>
           <ListItemDecorator><VerticalAlignBottomIcon /></ListItemDecorator>
           Inline text
         </MenuItem>
       )}
       {SHOW_INLINING_OPERATIONS && !!onDraftAction && (
-        <MenuItem onClick={() => onDraftAction?.(draftId, 'copy-text')} disabled={!llmSupportsTextFragments || isConverting}>
+        <MenuItem /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.menuitem-5 */ onClick={() => onDraftAction?.(draftId, 'copy-text')} disabled={!llmSupportsTextFragments || isConverting}>
           <ListItemDecorator><ContentCopyIcon /></ListItemDecorator>
           Copy text
         </MenuItem>
@@ -330,7 +331,7 @@ export function AttachmentDraftMenu(props: {
       )}
 
       {/* Details Expandable Menu */}
-      {!isInputError && <MenuItem
+      {!isInputError && <MenuItem /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.menuitem-6 */
         variant='soft'
         color={isOutputMissing ? 'warning' : 'success'}
         disabled={!canHaveDetails}
@@ -369,7 +370,7 @@ export function AttachmentDraftMenu(props: {
               <Typography level='body-sm' textColor='success.softColor' sx={{ display: 'flex', alignItems: 'center' }}>
                 Input: {draftInput.urlImage.mimeType} · {draftInput.urlImage.width}x{draftInput.urlImage.height}{!draftInput.urlImage.imgDataUrl?.length ? '' : ` · ${humanReadableBytes(draftInput.urlImage.imgDataUrl.length)}`}
                 &nbsp;
-                <Chip component='span' size='sm' color='success' variant='soft' startDecorator={<VisibilityIcon />} onClick={(event) => {
+                <Chip /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.chip-2 */ component='span' size='sm' color='success' variant='soft' startDecorator={<VisibilityIcon />} onClick={(event) => {
                   if (draftInput?.urlImage?.imgDataUrl) {
                     // Invoke the viewer but with a virtual 'temp' part description to see this preview image
                     handleViewImageRefPart(event, {
@@ -415,10 +416,10 @@ export function AttachmentDraftMenu(props: {
                         {/*  copy*/}
                         {/*</Chip>*/}
                         <ButtonGroup size='sm' color='primary' variant='outlined' sx={actionButtonsSx}>
-                          <Button startDecorator={<VisibilityIcon sx={{ fontSize: 'md' }} />} onClick={(event) => handleViewDocPart(event, part)}>
+                          <Button /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.button */ startDecorator={<VisibilityIcon sx={{ fontSize: 'md' }} />} onClick={(event) => handleViewDocPart(event, part)}>
                             view
                           </Button>
-                          <Button onClick={(event) => handleCopyToClipboard(event, part.data.text)}/* endDecorator={<ContentCopyIcon />} */>
+                          <Button /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.button-2 */ onClick={(event) => handleCopyToClipboard(event, part.data.text)}/* endDecorator={<ContentCopyIcon />} */>
                             copy
                           </Button>
                         </ButtonGroup>
@@ -444,14 +445,14 @@ export function AttachmentDraftMenu(props: {
                         {/*  del*/}
                         {/*</Chip>}*/}
                         <ButtonGroup size='sm' color='primary' variant='outlined' sx={actionButtonsSx}>
-                          <Button
+                          <Button /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.button-3 */
                             startDecorator={<VisibilityIcon sx={{ fontSize: 'md' }} />}
                             onClick={(event) => handleViewImageRefPart(event, legacyImageRefPart)}
                           >
                             view
                           </Button>
                           {isOutputMultiple && (
-                            <Button
+                            <Button /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.button-4 */
                               color='warning'
                               endDecorator={<DeleteOutlineIcon sx={{ fontSize: 'md' }} />}
                               onClick={(event) => handleDeleteOutputFragment(event, index)}
@@ -492,13 +493,13 @@ export function AttachmentDraftMenu(props: {
 
       {/* Rename: menu item, or inline editor while renaming */}
       {!isRenaming ? (
-        <MenuItem onClick={handleRenameBegin} disabled={isConverting}>
+        <MenuItem /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.menuitem-7 */ onClick={handleRenameBegin} disabled={isConverting}>
           <ListItemDecorator><EditRoundedIcon /></ListItemDecorator>
           Rename
         </MenuItem>
       ) : (
-        <ListItem onKeyDown={handleRenameKeyDown}>
-          <InlineTextarea
+        <ListItem /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.listitem */ onKeyDown={handleRenameKeyDown}>
+          <InlineTextarea /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.inlinetextarea */
             initialText={draft.label}
             placeholder='Attachment name'
             disableAutoSaveOnBlur /* focus is contended in a MenuList - commit with Enter only, so a stray blur can't close/save the editor */
@@ -511,7 +512,7 @@ export function AttachmentDraftMenu(props: {
       )}
 
       {/* Remove */}
-      <MenuItem onClick={handleRemove}>
+      <MenuItem /* @uxid src/common/attachment-drafts/attachment-drafts-ui/AttachmentDraftMenu::AttachmentDraftMenu.menuitem-8 */ onClick={handleRemove}>
         <ListItemDecorator><ClearIcon /></ListItemDecorator>
         Remove
       </MenuItem>

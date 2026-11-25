@@ -111,7 +111,7 @@ export const useActileManager = (enable: boolean, providers: ActileProvider[], a
 
   const actileComponent = React.useMemo(() => {
     return (!popupOpen || !enable) ? null : (
-      <ActilePopup
+      <ActilePopup /* @uxid src/apps/chat/components/composer/actile/useActileManager::useActileManager.actilepopup */
         anchorEl={anchorRef.current}
         onClose={handleClose}
         itemsByProvider={activeItemsByProvider}

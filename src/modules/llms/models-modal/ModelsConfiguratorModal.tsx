@@ -49,6 +49,7 @@ type TabValue = 'wizard' | 'setup' | 'changelog';
 /**
  * Note: the reason for this component separation from the parent state, is delayed state initialization.
  */
+// @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal
 export function ModelsConfiguratorModal(props: {
   modelsServices: DModelsService[],
   confServiceId: string | null,
@@ -197,7 +198,7 @@ export function ModelsConfiguratorModal(props: {
 
   const handleResetAllParameters = React.useCallback(() => {
     showPromisedOverlay('llms-reset-parameters', {}, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.confirmationmodal */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         confirmationText={`Reset all user-customized model parameters and names for ${activeService?.label ?? 'this service'}? All settings such as temperature, reasoning effort, etc. will be reverted to defaults. Duplicated models will not be affected.`}
         positiveActionText='Reset'
@@ -207,7 +208,7 @@ export function ModelsConfiguratorModal(props: {
 
   const handleResetVisibility = React.useCallback(() => {
     showPromisedOverlay('llms-reset-visibility', {}, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.confirmationmodal-2 */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         confirmationText={`Reset visibility for all models in ${activeService?.label ?? 'this service'}? Models will revert to their default visibility.`}
         positiveActionText='Reset'
@@ -239,7 +240,7 @@ export function ModelsConfiguratorModal(props: {
 
   const handleRemoveClones = React.useCallback(() => {
     showPromisedOverlay('llms-remove-clones', {}, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.confirmationmodal-3 */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         confirmationText={`Remove all user-cloned models from ${activeService?.label ?? 'this service'}?`}
         positiveActionText='Remove'
@@ -262,7 +263,7 @@ export function ModelsConfiguratorModal(props: {
     if (skipConfirmation) return doDelete();
 
     showPromisedOverlay('llms-service-remove', {}, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.confirmationmodal-4 */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         confirmationText={`Remove ${targetService.label} and all its models?`}
         positiveActionText='Remove'
@@ -278,14 +279,14 @@ export function ModelsConfiguratorModal(props: {
 
     // return <Badge size='sm' badgeContent='14 Services' color='neutral' variant='outlined'><Button variant='outlined' color='neutral' onClick={handleShowAdvanced}>{isMobile ? 'Advanced' : 'Switch to Advanced'}</Button></Badge>;
     if (!hasAnyServices)
-      return <Button variant='outlined' color='neutral' onClick={handleShowWizard} sx={{ backgroundColor: 'background.popup' }}>{isMobile ? 'Quick Setup' : 'Quick Setup'}</Button>;
+      return <Button /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.button */ variant='outlined' color='neutral' onClick={handleShowWizard} sx={{ backgroundColor: 'background.popup' }}>{isMobile ? 'Quick Setup' : 'Quick Setup'}</Button>;
 
     // Service-level 3-dots menu when we have LLMs
     if (isTabSetup && hasLLMs)
       return (
         <SubMenuHost host={subMenuHost}>
           <Box sx={{ flex: 1, display: 'flex', gap: 1, alignItems: 'center', justifyContent: 'space-between' }}>
-            <Dropdown open={mainMenuOpen} onOpenChange={handleMainMenuOpenChange}>
+            <Dropdown /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.dropdown */ open={mainMenuOpen} onOpenChange={handleMainMenuOpenChange}>
               <MenuButton slots={{ root: IconButton }} /* slotProps={{ root: { variant: 'plain' } }} */>
                 <MoreVertIcon sx={{ fontSize: 'xl' }} />
               </MenuButton>
@@ -293,25 +294,25 @@ export function ModelsConfiguratorModal(props: {
 
                 {/*{dcHasEligible && <Typography level='body-sm' textAlign='center' my={1}>All services</Typography>}*/}
                 <SubMenuItem label='All Services' minWidth={240} isMobile={isMobile}>
-                  <MenuItem disabled={isRefreshingAll} onClick={handleUpdateAllModels}>
+                  <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem */ disabled={isRefreshingAll} onClick={handleUpdateAllModels}>
                     <ListItemDecorator>
                       {isRefreshingAll ? <CircularProgress size='sm' /> : <RefreshIcon />}
                     </ListItemDecorator>
                     Update All Models
                   </MenuItem>
-                  <MenuItem onClick={handleShowChangelog}>
+                  <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-2 */ onClick={handleShowChangelog}>
                     <ListItemDecorator><HistoryIcon /></ListItemDecorator>
                     Updates
                   </MenuItem>
                   {dcHasEligible && <ListDivider>Direct Connection {dcStatus.enabled}/{dcStatus.eligible}</ListDivider>}
                   {dcHasEligible && (
-                    <MenuItem disabled={dcAllEnabled} onClick={handleEnableAllDC}>
+                    <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-3 */ disabled={dcAllEnabled} onClick={handleEnableAllDC}>
                       {/*<ListItemDecorator><VisibilityIcon /></ListItemDecorator>*/}
                       Enable for all
                     </MenuItem>
                   )}
                   {dcHasEligible && (
-                    <MenuItem disabled={dcNoneEnabled} onClick={handleDisableAllDC}>
+                    <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-4 */ disabled={dcNoneEnabled} onClick={handleDisableAllDC}>
                       {/*<ListItemDecorator><VisibilityOffIcon /></ListItemDecorator>*/}
                       Disable for all
                     </MenuItem>
@@ -323,7 +324,7 @@ export function ModelsConfiguratorModal(props: {
                 {/*<Typography level='body-sm' textAlign='center' my={2}>{activeService?.label ?? 'Service'} models</Typography>*/}
 
                 {/* Refresh Models */}
-                <MenuItem disabled={isRefreshing} onClick={handleRefreshModels}>
+                <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-5 */ disabled={isRefreshing} onClick={handleRefreshModels}>
                   <ListItemDecorator>
                     {isRefreshing ? <CircularProgress size='sm' /> : <RefreshIcon />}
                   </ListItemDecorator>
@@ -331,20 +332,20 @@ export function ModelsConfiguratorModal(props: {
                 </MenuItem>
 
                 {/* Reset All Parameters */}
-                <MenuItem disabled={!hasServiceCustomizations} onClick={handleResetAllParameters}>
+                <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-6 */ disabled={!hasServiceCustomizations} onClick={handleResetAllParameters}>
                   <ListItemDecorator><RestoreIcon /></ListItemDecorator>
                   Reset Customizations
                 </MenuItem>
 
                 {/* Remove Cloned Models */}
-                <MenuItem disabled={!hasServiceClones} onClick={handleRemoveClones}>
+                <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-7 */ disabled={!hasServiceClones} onClick={handleRemoveClones}>
                   <ListItemDecorator><DeleteOutlineIcon /></ListItemDecorator>
                   Remove Duplicated Models
                 </MenuItem>
 
                 {/* Vendor Setup Guide (big-agi.com/docs) */}
                 {!!activeServiceDocsUrl && (
-                  <MenuItem component='a' href={activeServiceDocsUrl} target='_blank'>
+                  <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-8 */ component='a' href={activeServiceDocsUrl} target='_blank'>
                     <ListItemDecorator><PhBookOpenText /></ListItemDecorator>
                     {activeService?.label ?? 'Service'} setup guide
                   </MenuItem>
@@ -353,42 +354,42 @@ export function ModelsConfiguratorModal(props: {
                 <ListDivider />
 
                 {/* View toggles */}
-                <MenuItem onClick={joyKeepPopup(() => setShowModelsFn(!showModelsFn))}>
+                <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-9 */ onClick={joyKeepPopup(() => setShowModelsFn(!showModelsFn))}>
                   <ListItemDecorator><Checkbox color='neutral' checked={showModelsFn} /></ListItemDecorator>
                   Show Function Support (DEV)
                 </MenuItem>
-                <MenuItem onClick={joyKeepPopup(() => setStarredOnTop(!starredOnTop))}>
+                <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-10 */ onClick={joyKeepPopup(() => setStarredOnTop(!starredOnTop))}>
                   <ListItemDecorator><Checkbox color='neutral' checked={starredOnTop} /></ListItemDecorator>
                   Show Starred on Top
                 </MenuItem>
 
                 <ListDivider />
 
-                <MenuItem onClick={joyKeepPopup(() => setShowModelsHidden(!showModelsHidden))}>
+                <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-11 */ onClick={joyKeepPopup(() => setShowModelsHidden(!showModelsHidden))}>
                   <ListItemDecorator><Checkbox color='neutral' checked={showModelsHidden} /></ListItemDecorator>
                   View Hidden Models
                 </MenuItem>
 
                 <SubMenuItem label='Visibility' minWidth={160} isMobile={isMobile}>
-                  <MenuItem onClick={handleShowAllModels}>
+                  <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-12 */ onClick={handleShowAllModels}>
                     <ListItemDecorator><VisibilityIcon /></ListItemDecorator>
                     Show All
                   </MenuItem>
-                  <MenuItem onClick={handleHideAllModels}>
+                  <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-13 */ onClick={handleHideAllModels}>
                     <ListItemDecorator><VisibilityOffIcon /></ListItemDecorator>
                     Hide All
                   </MenuItem>
                   {activeHasFreeLLMs && <ListDivider />}
-                  {activeHasFreeLLMs && <MenuItem onClick={handleShowOnlyFree}>
+                  {activeHasFreeLLMs && <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-14 */ onClick={handleShowOnlyFree}>
                     <ListItemDecorator><PhGift /></ListItemDecorator>
                     Only Free
                   </MenuItem>}
-                  {activeHasFreeLLMs && <MenuItem onClick={handleShowOnlyPaid}>
+                  {activeHasFreeLLMs && <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-15 */ onClick={handleShowOnlyPaid}>
                     <ListItemDecorator />
                     Only Paid
                   </MenuItem>}
                   <ListDivider />
-                  <MenuItem onClick={handleResetVisibility}>
+                  <MenuItem /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.menuitem-16 */ onClick={handleResetVisibility}>
                     <ListItemDecorator><RestoreIcon /></ListItemDecorator>
                     Reset
                   </MenuItem>
@@ -418,7 +419,7 @@ export function ModelsConfiguratorModal(props: {
     return (
       <Box sx={{ display: 'flex', width: '100%', gap: 1, justifyContent: 'space-between', alignItems: 'center' }}>
         {/* more services */}
-        <Button variant='outlined' color='neutral' onClick={handleShowAdvanced} sx={{ backgroundColor: 'background.popup' }}>
+        <Button /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.button-2 */ variant='outlined' color='neutral' onClick={handleShowAdvanced} sx={{ backgroundColor: 'background.popup' }}>
           {isMobile ? 'More Services' : 'More Services'}
         </Button>
 
@@ -430,7 +431,7 @@ export function ModelsConfiguratorModal(props: {
         )}
 
         {/* "Done" button */}
-        <Button
+        <Button /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.button-3 */
           variant='solid'
           color='neutral'
           disabled={!hasLLMs || hasUnsavedChanges}
@@ -457,7 +458,7 @@ export function ModelsConfiguratorModal(props: {
   // }, [handleUpdateAllModels, isMobile, isRefreshingAll, isTabSetup, modelsServices.length, uiComplexityMode]);
 
   const updateAllButton = React.useMemo(() => (
-    <Button
+    <Button /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.button-4 */
       disabled={refreshBatch.running}
       startDecorator={refreshBatch.running ? <CircularProgress sx={{ '--CircularProgress-size': '16px' }} /> : <RefreshIcon />}
       onClick={handleUpdateAllModels}
@@ -488,7 +489,7 @@ export function ModelsConfiguratorModal(props: {
 
   if (showExplainer) {
     return (
-      <GoodModal
+      <GoodModal /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.goodmodal */
         title={
           <AppBreadcrumbs size='md' rootTitle='Welcome'>
             <AppBreadcrumbs.Leaf>Notice on linking AI services</AppBreadcrumbs.Leaf>
@@ -539,7 +540,7 @@ export function ModelsConfiguratorModal(props: {
 
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.goodmodal-2 */
       title={isTabWizard ? (
         <AppBreadcrumbs size='md' rootTitle='Welcome'>
           <AppBreadcrumbs.Leaf><b>Setup AI Models</b></AppBreadcrumbs.Leaf>
@@ -547,7 +548,7 @@ export function ModelsConfiguratorModal(props: {
         </AppBreadcrumbs>
       ) : isTabChangelog ? (
         <AppBreadcrumbs size='md' rootTitle='Configure'>
-          <AppBreadcrumbs.Link color='neutral' textColor='text.primary' underline='hover' href='#' onClick={handleBreadcrumbSetup}>AI Models</AppBreadcrumbs.Link>
+          <AppBreadcrumbs.Link /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.appbreadcrumbs-link */ color='neutral' textColor='text.primary' underline='hover' href='#' onClick={handleBreadcrumbSetup}>AI Models</AppBreadcrumbs.Link>
           <AppBreadcrumbs.Leaf><b>Updates</b></AppBreadcrumbs.Leaf>
         </AppBreadcrumbs>
       ) : (
@@ -579,7 +580,7 @@ export function ModelsConfiguratorModal(props: {
     >
 
       {isTabWizard && (
-        <ModelsWizard
+        <ModelsWizard /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.modelswizard */
           isMobile={isMobile}
           onSkip={optimaActions().closeModels}
           onSwitchToAdvanced={handleShowAdvanced}
@@ -588,7 +589,7 @@ export function ModelsConfiguratorModal(props: {
         />
       )}
 
-      {(isTabSetup || isTabChangelog) && <ModelsServiceSelector modelsServices={modelsServices} selectedServiceId={isTabChangelog ? ALL_SERVICES_OPTION_ID : activeServiceId} setSelectedServiceId={handleSelectService} onDeleteService={handleDeleteService} onSwitchToWizard={handleShowWizard} allServicesControl={updateAllButton} />}
+      {(isTabSetup || isTabChangelog) && <ModelsServiceSelector /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.modelsserviceselector */ modelsServices={modelsServices} selectedServiceId={isTabChangelog ? ALL_SERVICES_OPTION_ID : activeServiceId} setSelectedServiceId={handleSelectService} onDeleteService={handleDeleteService} onSwitchToWizard={handleShowWizard} allServicesControl={updateAllButton} />}
       {(isTabSetup || isTabChangelog) && <Divider sx={(activeService || isTabChangelog) ? undefined : { visibility: 'hidden' }} />}
 
       {isTabSetup && (
@@ -601,7 +602,7 @@ export function ModelsConfiguratorModal(props: {
       )}
 
       {isTabSetup && hasLLMs && (
-        <ModelsList
+        <ModelsList /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.modelslist */
           filterServiceId={showAllServices ? null : activeServiceId}
           showHiddenModels={showModelsHidden}
           starredOnTop={starredOnTop}
@@ -637,7 +638,7 @@ export function ModelsConfiguratorModal(props: {
         />
       )}
 
-      {isTabChangelog && <ModelsChangelogPanel modelsServices={modelsServices} isMobile={isMobile} onConfigureService={handleSelectService} />}
+      {isTabChangelog && <ModelsChangelogPanel /* @uxid src/modules/llms/models-modal/ModelsConfiguratorModal::ModelsConfiguratorModal.modelschangelogpanel */ modelsServices={modelsServices} isMobile={isMobile} onConfigureService={handleSelectService} />}
 
     </GoodModal>
   );

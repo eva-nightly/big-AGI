@@ -53,6 +53,7 @@ function hotFixDiagramCode(llmCode: string): string {
 }
 
 
+// @uxid src/modules/aifn/digrams/DiagramsModal::DiagramsModal
 export function DiagramsModal(props: { config: DiagramConfig, onClose: () => void; }) {
 
   // state
@@ -180,14 +181,14 @@ export function DiagramsModal(props: { config: DiagramConfig, onClose: () => voi
 
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/modules/aifn/digrams/DiagramsModal::DiagramsModal.goodmodal */
       // titleStartDecorator={<AutoFixHighIcon sx={{ fontSize: 'md', mr: 1 }} />}
       title={<Box sx={{ flex: 1, display: 'flex', alignItems: 'center' }}>
         <AppBreadcrumbs size='md' rootTitle='Create'>
           <AppBreadcrumbs.Leaf><b>Diagram</b></AppBreadcrumbs.Leaf>
         </AppBreadcrumbs>
         <Box sx={{ ml: 1.25 }}>
-          <ChipToggleButton
+          <ChipToggleButton /* @uxid src/modules/aifn/digrams/DiagramsModal::DiagramsModal.chiptogglebutton */
             text={showOptions ? 'show less' : 'show more'}
             onClick={() => setShowOptions(options => !options)}
           />
@@ -222,7 +223,7 @@ export function DiagramsModal(props: { config: DiagramConfig, onClose: () => voi
           <Grid xs={12} md={6}>
             <FormControl>
               <FormLabel>Customize</FormLabel>
-              <Input
+              <Input /* @uxid src/modules/aifn/digrams/DiagramsModal::DiagramsModal.input */
                 title='Custom Instruction'
                 placeholder='e.g. visualize as state'
                 value={customInstruction}
@@ -271,7 +272,7 @@ export function DiagramsModal(props: { config: DiagramConfig, onClose: () => voi
       <Box sx={{ mt: 'auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
 
         {/* Add Message to Chat (once complete) */}
-        <Button variant='soft' color='success' disabled={!diagramCode || !!abortController} endDecorator={<TelegramIcon />} onClick={handleAppendMessageAndClose}>
+        <Button /* @uxid src/modules/aifn/digrams/DiagramsModal::DiagramsModal.button */ variant='soft' color='success' disabled={!diagramCode || !!abortController} endDecorator={<TelegramIcon />} onClick={handleAppendMessageAndClose}>
           Add To Chat
         </Button>
 
@@ -283,7 +284,7 @@ export function DiagramsModal(props: { config: DiagramConfig, onClose: () => voi
           {/*>*/}
           {/*  {showOptions ? <ExpandLessIcon /> : <ExpandMoreIcon />}*/}
           {/*</IconButton>*/}
-          <Button
+          <Button /* @uxid src/modules/aifn/digrams/DiagramsModal::DiagramsModal.button-2 */
             variant={abortController ? 'soft' : 'solid'} color='primary'
             disabled={!diagramLlm}
             onClick={abortController ? () => {

@@ -65,7 +65,7 @@ export function useFolderDropdown(conversationId: DConversationId | null) {
       return null;
 
     return (
-      <OptimaBarDropdownMemo
+      <OptimaBarDropdownMemo /* @uxid src/apps/chat/components/layout-bar/useFolderDropdown::useFolderDropdown.optimabardropdownmemo */
         items={folderItems}
         value={currentFolderId}
         onChange={handleFolderChange}

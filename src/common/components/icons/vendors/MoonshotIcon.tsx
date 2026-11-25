@@ -3,6 +3,7 @@ import * as React from 'react';
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
 // from https://platform.moonshot.ai/lightmode.svg - 2025-11-09
+// @uxid src/common/components/icons/vendors/MoonshotIcon::MoonshotIcon
 export function MoonshotIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 0 465 470' width='24' height='24' strokeWidth={0} stroke='none' fill='currentColor' strokeLinecap='butt' strokeLinejoin='miter' {...props}>
     <path fillRule='evenodd' clipRule='evenodd'

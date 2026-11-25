@@ -23,6 +23,7 @@ const _breadcrumbSlotProps: BreadcrumbsSlotsAndSlotProps['slotProps'] = {
 } as const;
 
 
+// @uxid src/common/components/AppBreadcrumbs::AppBreadcrumbs
 export function AppBreadcrumbs(props: {
   size?: 'sm' | 'md' | 'lg';
   children?: React.ReactNode;
@@ -40,7 +41,7 @@ export function AppBreadcrumbs(props: {
 
   return <Breadcrumbs size={props.size || 'sm'} aria-label='breadcrumbs' separator={<KeyboardArrowRightIcon />} slotProps={_breadcrumbSlotProps}>
     {/* Title */}
-    {(props.children && !!rootTitle && !!onRootClick) ? <AppBreadcrumbs.Link color='neutral' href='#' onClick={handleRootClick}>{props.rootTitle}</AppBreadcrumbs.Link>
+    {(props.children && !!rootTitle && !!onRootClick) ? <AppBreadcrumbs.Link /* @uxid src/common/components/AppBreadcrumbs::AppBreadcrumbs.appbreadcrumbs-link */ color='neutral' href='#' onClick={handleRootClick}>{props.rootTitle}</AppBreadcrumbs.Link>
       : (typeof props.rootTitle === 'string') ? <Typography>{props.rootTitle}</Typography>
         : props.rootTitle
     }

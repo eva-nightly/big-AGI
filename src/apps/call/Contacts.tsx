@@ -20,8 +20,9 @@ import { useAppCallStore } from './state/store-app-call';
 const COLLAPSED_COUNT = 2;
 
 
+// @uxid src/apps/call/Contacts::ContactCardAvatar
 const ContactCardAvatar = (props: { size: string, symbol?: string, imageUrl?: string, onClick?: () => void, sx?: SxProps }) =>
-  <Avatar
+  <Avatar /* @uxid src/apps/call/Contacts::ContactCardAvatar.avatar */
     // variant='outlined'
     onClick={props.onClick}
     src={props.imageUrl}
@@ -38,8 +39,9 @@ const ContactCardAvatar = (props: { size: string, symbol?: string, imageUrl?: st
   </Avatar>;
 
 
+// @uxid src/apps/call/Contacts::ContactCardConversationCall
 const ContactCardConversationCall = (props: { conversation: DConversation, onConversationClicked: (conversationId: DConversationId) => void, }) =>
-  <Chip
+  <Chip /* @uxid src/apps/call/Contacts::ContactCardConversationCall.chip */
     variant='plain' color='primary' size='sm'
     endDecorator={<CallIcon />}
     onClick={() => props.onConversationClicked(props.conversation.id)}
@@ -58,6 +60,7 @@ const ContactCardConversationCall = (props: { conversation: DConversation, onCon
   </Chip>;
 
 
+// @uxid src/apps/call/Contacts::CallContactCard
 function CallContactCard(props: {
   persona: MockPersona,
   callGrayUI: boolean,
@@ -120,14 +123,14 @@ function CallContactCard(props: {
 
           {/* Persona Recent Converstions */}
           {conversations.map(conversation =>
-            <ContactCardConversationCall
+            <ContactCardConversationCall /* @uxid src/apps/call/Contacts::CallContactCard.contactcardconversationcall */
               key={conversation.id}
               conversation={conversation}
               onConversationClicked={handleCallPersonaRe}
             />,
           )}
 
-          {showExpander && <Chip
+          {showExpander && <Chip /* @uxid src/apps/call/Contacts::CallContactCard.chip */
             variant='plain' color='primary' size='sm'
             onClick={() => setConversationsExpanded(true)}
             slotProps={{
@@ -170,7 +173,7 @@ function CallContactCard(props: {
           <Typography level='title-md'>
             {persona.title}
           </Typography>
-          <MuiLink overlay onClick={handleCallPersona}>
+          <MuiLink /* @uxid src/apps/call/Contacts::CallContactCard.muilink */ overlay onClick={handleCallPersona}>
             <IconButton size='md' variant='soft' sx={{
               // borderRadius: '50%',
               ml: 'auto',
@@ -210,6 +213,7 @@ function useConversationsByPersona() {
 }
 
 
+// @uxid src/apps/call/Contacts::ContactsMenuItems
 function ContactsMenuItems() {
 
   // external state
@@ -222,17 +226,17 @@ function ContactsMenuItems() {
   return (
     <OptimaPanelGroupedList title='Window'>
 
-      <MenuItem onClick={toggleGrayUI}>
+      <MenuItem /* @uxid src/apps/call/Contacts::ContactsMenuItems.menuitem */ onClick={toggleGrayUI}>
         <ListItemDecorator><Checkbox size='md' color={grayUI ? 'primary' : 'neutral'} variant={grayUI ? 'plain' : 'outlined'} checked={grayUI} /></ListItemDecorator>
         Grayed UI
       </MenuItem>
 
-      <MenuItem onClick={toggleShowConversations}>
+      <MenuItem /* @uxid src/apps/call/Contacts::ContactsMenuItems.menuitem-2 */ onClick={toggleShowConversations}>
         <ListItemDecorator><Checkbox size='md' color={showConversations ? 'primary' : 'neutral'} variant={showConversations ? 'plain' : 'outlined'} checked={showConversations} /></ListItemDecorator>
         Recent calls
       </MenuItem>
 
-      <MenuItem onClick={toggleShowSupport}>
+      <MenuItem /* @uxid src/apps/call/Contacts::ContactsMenuItems.menuitem-3 */ onClick={toggleShowSupport}>
         <ListItemDecorator><Checkbox size='md' color={showSupport ? 'primary' : 'neutral'} variant={showSupport ? 'plain' : 'outlined'} checked={showSupport} /></ListItemDecorator>
         Support card
       </MenuItem>
@@ -242,6 +246,7 @@ function ContactsMenuItems() {
 }
 
 
+// @uxid src/apps/call/Contacts::Contacts
 export function Contacts(props: { setCallIntent: (intent: AppCallIntent) => void }) {
 
   // external state

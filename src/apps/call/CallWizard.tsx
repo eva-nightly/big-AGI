@@ -20,6 +20,7 @@ import { useChatStore } from '~/common/stores/chat/store-chats';
 import { useUICounter } from '~/common/stores/store-ui';
 
 
+// @uxid src/apps/call/CallWizard::StatusCard
 function StatusCard(props: { icon: React.JSX.Element, hasIssue: boolean, text: string, button?: React.JSX.Element }) {
   return (
     <Card sx={{ width: '100%' }}>
@@ -40,6 +41,7 @@ function StatusCard(props: { icon: React.JSX.Element, hasIssue: boolean, text: s
 }
 
 
+// @uxid src/apps/call/CallWizard::CallWizard
 export function CallWizard(props: { strict?: boolean, conversationId: string | null, children: React.ReactNode }) {
 
   // state
@@ -107,7 +109,7 @@ export function CallWizard(props: { strict?: boolean, conversationId: string | n
       hasIssue={!overriddenEmptyChat}
       text={overriddenEmptyChat ? 'Great! Your chat has messages.' : 'The chat is empty. Calls are effective when the caller has context.'}
       button={overriddenEmptyChat ? undefined : (
-        <Button variant='outlined' onClick={handleOverrideChatEmpty} sx={{ mx: 1 }}>
+        <Button /* @uxid src/apps/call/CallWizard::CallWizard.button */ variant='outlined' onClick={handleOverrideChatEmpty} sx={{ mx: 1 }}>
           Ignore
         </Button>
       )}
@@ -123,10 +125,10 @@ export function CallWizard(props: { strict?: boolean, conversationId: string | n
         + (recognition.warnings.length ? ' ⚠️ ' + recognition.warnings.join(' · ') : '')
       }
       button={overriddenRecognition ? undefined : <>
-        <Button variant='outlined' component='a' href={BaseProduct.DocsBaseSite + '/feature-voice'} target='_blank' sx={{ ml: 1 }}>
+        <Button /* @uxid src/apps/call/CallWizard::CallWizard.button-2 */ variant='outlined' component='a' href={BaseProduct.DocsBaseSite + '/feature-voice'} target='_blank' sx={{ ml: 1 }}>
           How to fix
         </Button>
-        <Button variant='outlined' onClick={handleOverrideRecognition} sx={{ mx: 1 }}>
+        <Button /* @uxid src/apps/call/CallWizard::CallWizard.button-3 */ variant='outlined' onClick={handleOverrideRecognition} sx={{ mx: 1 }}>
           Ignore
         </Button>
       </>}
@@ -141,7 +143,7 @@ export function CallWizard(props: { strict?: boolean, conversationId: string | n
         // + (synthesis.isConfiguredServerSide ? '' : (synthesis.isConfiguredClientSide ? '' : ' Please add your API key in the settings.'))
       }
       button={synthesisShallWork ? undefined : (
-        <Button variant='outlined' onClick={handleConfigureVoice} sx={{ mx: 1 }}>
+        <Button /* @uxid src/apps/call/CallWizard::CallWizard.button-4 */ variant='outlined' onClick={handleConfigureVoice} sx={{ mx: 1 }}>
           Configure
         </Button>
       )}
@@ -165,7 +167,7 @@ export function CallWizard(props: { strict?: boolean, conversationId: string | n
         {allGood ? 'Ready, Set, Call' : 'Please resolve the issues above before proceeding with the call'}
       </Typography>
 
-      <IconButton
+      <IconButton /* @uxid src/apps/call/CallWizard::CallWizard.iconbutton */
         size='lg'
         variant='solid' color={allGood ? 'success' : 'danger'}
         onClick={handleFinishButton}

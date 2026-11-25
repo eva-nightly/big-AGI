@@ -240,6 +240,7 @@ const _xaiSearchIntervalOptions = [
 ] as const;
 
 
+// @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor
 export function LLMParametersEditor(props: {
   // constants
   maxOutputTokens: DLLMMaxOutputTokens,
@@ -390,7 +391,7 @@ export function LLMParametersEditor(props: {
 
   return <>
 
-    {!(props.simplified && props.parameterOmitTemperature) && <FormSliderControl
+    {!(props.simplified && props.parameterOmitTemperature) && <FormSliderControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formslidercontrol */
       title={<span style={{ minWidth: 100 }}>Temperature</span>} ariaLabel='Model Temperature'
       description={
         antThinkingEnabled_Adaptive ? 'Off (adaptive)' : antThinkingEnabled ? 'Off (thinking)'
@@ -413,7 +414,7 @@ export function LLMParametersEditor(props: {
       onChange={value => onChangeParameter({ llmTemperature: Array.isArray(value) ? value[0] : value })}
       endAdornment={
         <Tooltip arrow disableInteractive title={overheat ? 'Disable LLM Overheating' : 'Increase Max LLM Temperature to 2'} sx={{ p: 1 }}>
-          <IconButton
+          <IconButton /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.iconbutton */
             disabled={!showOverheatButton}
             variant={overheat ? 'soft' : 'plain'} color={overheat ? 'danger' : 'neutral'}
             onClick={handleOverheatToggle} sx={{ ml: 2 }}
@@ -428,7 +429,7 @@ export function LLMParametersEditor(props: {
       <InlineError error='Max Output Tokens: Token computations are disabled because this model does not declare the context window size.' />
     ) : !props.simplified && (
       <Box sx={{ mr: 1 }}>
-        <FormSliderControl
+        <FormSliderControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formslidercontrol-2 */
           title={<span style={{ minWidth: 100 }}>Output Tokens</span>} ariaLabel='Model Max Tokens'
           description='Max Size'
           min={256} max={props.maxOutputTokens} step={256} defaultValue={1024}
@@ -442,7 +443,7 @@ export function LLMParametersEditor(props: {
 
     {/* pre-Effort: Anthropic [thinking switch (adaptive-only models, e.g. Opus 5, Sonnet 5.5) | thinking budget, effort, ...] */}
     {antThinkingShown && antThinkingAdaptiveOnly ? (
-      <FormSwitchControl
+      <FormSwitchControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formswitchcontrol */
         title='Thinking'
         description={antThinkingEnabled ? 'Adaptive (model decides)' : 'Off'}
         tooltip='Adaptive: the model decides when and how much to reason. Off: no up-front reasoning, faster first token, effort capped at High.'
@@ -456,7 +457,7 @@ export function LLMParametersEditor(props: {
         }}
       />
     ) : antThinkingShown && (
-      <FormSliderControl
+      <FormSliderControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formslidercontrol-3 */
         title={antThinkingEnabled ? 'Thinking Budget' : 'Disabled'} ariaLabel='Anthropic Extended Thinking Token Budget'
         description='Tokens'
         min={defAntTB.range[0]} max={defAntTB.range[1]} step={1024}
@@ -466,7 +467,7 @@ export function LLMParametersEditor(props: {
         onChange={value => onChangeParameter({ llmVndAntThinkingBudget: value })}
         endAdornment={
           <Tooltip arrow disableInteractive title={antThinkingEnabled ? 'Disable Thinking' : 'Enable Thinking'}>
-            <IconButton
+            <IconButton /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.iconbutton-2 */
               variant={antThinkingEnabled ? 'outlined' : 'solid'}
               onClick={() => antThinkingEnabled
                 ? onChangeParameter({ llmVndAntThinkingBudget: null })
@@ -484,7 +485,7 @@ export function LLMParametersEditor(props: {
 
     {/* Anthropic Effort */}
     {showParam('llmVndAntEffort') && antEffortOptions && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol */
         title='Effort'
         tooltip='Controls thinking depth. Max = deepest reasoning with no constraints. Works alongside thinking budget.'
         value={llmVndAntEffort ?? _UNSPECIFIED}
@@ -497,7 +498,7 @@ export function LLMParametersEditor(props: {
     )}
     {/* Gemini Thinking Level */}
     {showParam('llmVndGemEffort') && gemEffortOptions && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-2 */
         title='Thinking Level'
         tooltip='Controls internal reasoning depth. When unset, the model decides dynamically.'
         value={llmVndGemEffort ?? _UNSPECIFIED}
@@ -510,7 +511,7 @@ export function LLMParametersEditor(props: {
     )}
     {/* OpenAI Reasoning Effort */}
     {showParam('llmVndOaiEffort') && oaiEffortOptions && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-3 */
         title='Reasoning Effort'
         tooltip='Controls how much effort the model spends on reasoning'
         value={llmVndOaiEffort ?? _UNSPECIFIED}
@@ -523,7 +524,7 @@ export function LLMParametersEditor(props: {
     )}
     {/* OpenAI Reasoning Mode (GPT-5.6+) */}
     {showParam('llmVndOaiReasoningMode') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-4 */
         title='Reasoning Mode'
         tooltip='Pro mode performs additional model work for difficult tasks; token usage is higher, billed at standard rates'
         value={llmVndOaiReasoningMode ?? _UNSPECIFIED}
@@ -536,7 +537,7 @@ export function LLMParametersEditor(props: {
     )}
     {/* OpenAI Service Tier */}
     {showParam('llmVndOaiServiceTier') && oaiServiceTierOptions && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-5 */
         title='Service Tier'
         tooltip='Flex: slower at half price. Fast: faster at 2x price. Ultrafast: fastest at 6x price. A downgraded request bills at standard rates.'
         value={llmVndOaiServiceTier ?? _UNSPECIFIED}
@@ -549,7 +550,7 @@ export function LLMParametersEditor(props: {
     )}
     {/* Moonshot/Z.ai Thinking */}
     {showParam('llmVndMiscEffort') && miscEffortOptions && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-6 */
         title='Thinking'
         tooltip='Enable or disable extended thinking mode'
         value={llmVndMiscEffort ?? _UNSPECIFIED}
@@ -563,7 +564,7 @@ export function LLMParametersEditor(props: {
 
 
     {showParam('llmVndAntWebSearch') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-7 */
         title='Web Search'
         tooltip='Enable web search for real-time information retrieval'
         value={llmVndAntWebSearch ?? _UNSPECIFIED}
@@ -576,7 +577,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndAntWebSearchMaxUses') && llmVndAntWebSearch === 'auto' && <Box sx={{ ml: 2, mt: -1 }}>
-      <FormSliderControl
+      <FormSliderControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formslidercontrol-4 */
         title='Max Searches' ariaLabel='Anthropic Web Search Max Uses'
         description={llmVndAntWebSearchMaxUses === undefined ? 'Default' : `Per step (${llmVndAntWebSearchMaxUses})`}
         disabled={llmVndAntWebSearchMaxUses === undefined}
@@ -586,7 +587,7 @@ export function LLMParametersEditor(props: {
         onChange={value => onChangeParameter({ llmVndAntWebSearchMaxUses: value })}
         startAdornment={
           <Tooltip arrow disableInteractive title={llmVndAntWebSearchMaxUses === undefined ? 'Enable limit' : 'Reset to default'}>
-            <IconButton
+            <IconButton /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.iconbutton-3 */
               // size='sm'
               variant={llmVndAntWebSearchMaxUses === undefined ? 'soft' : 'plain'}
               onClick={() => {
@@ -604,7 +605,7 @@ export function LLMParametersEditor(props: {
     </Box>}
 
     {showParam('llmVndAntWebFetch') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-8 */
         title='Web Fetch'
         tooltip='Enable fetching full content from web pages and PDF documents'
         value={llmVndAntWebFetch ?? _UNSPECIFIED}
@@ -617,7 +618,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndAntWebFetchMaxUses') && llmVndAntWebFetch === 'auto' && <Box sx={{ ml: 2, mt: -1 }}>
-      <FormSliderControl
+      <FormSliderControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formslidercontrol-5 */
         title='Max Fetches' ariaLabel='Anthropic Web Fetch Max Uses'
         description={llmVndAntWebFetchMaxUses === undefined ? 'Default' : `Per step (${llmVndAntWebFetchMaxUses})`}
         disabled={llmVndAntWebFetchMaxUses === undefined}
@@ -627,7 +628,7 @@ export function LLMParametersEditor(props: {
         onChange={value => onChangeParameter({ llmVndAntWebFetchMaxUses: value })}
         startAdornment={
           <Tooltip arrow disableInteractive title={llmVndAntWebFetchMaxUses === undefined ? 'Enable limit' : 'Reset to default'}>
-            <IconButton
+            <IconButton /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.iconbutton-4 */
               // size='sm'
               variant={llmVndAntWebFetchMaxUses === undefined ? 'soft' : 'plain'}
               onClick={() => {
@@ -645,7 +646,7 @@ export function LLMParametersEditor(props: {
     </Box>}
 
     {showParam('llmVndAntWebDynamic') && (
-      <FormSwitchControl
+      <FormSwitchControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formswitchcontrol-2 */
         title='Web Dynamic Filtering'
         description='Code-based web refinement'
         tooltip='Use dynamic filtering for search/fetch - more accurate, reduces tokens (Opus/Sonnet 4.6+, not ZDR-eligible)'
@@ -659,7 +660,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndAntCodeSandbox') && (
-      <FormSwitchControl
+      <FormSwitchControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formswitchcontrol-3 */
         title='Code Sandbox'
         description={llmVndAntSkills ? 'On (via Skills)' : 'Hosted-container sandbox'}
         tooltip='Run code in a server-side hosted-container sandbox for data analysis, file processing, and charts. Document Skills and programmatic tool calls enable this automatically. Can be combined with Web Search/Fetch (free when used together).'
@@ -673,11 +674,11 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndAntSkills') && (
-      <AnthropicSkillsConfig llmVndAntSkills={llmVndAntSkills} onChangeParameter={onChangeParameter} onRemoveParameter={onRemoveParameter} />
+      <AnthropicSkillsConfig /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.anthropicskillsconfig */ llmVndAntSkills={llmVndAntSkills} onChangeParameter={onChangeParameter} onRemoveParameter={onRemoveParameter} />
     )}
 
     {showParam('llmVndAnt1MContext') && (
-      <FormSwitchControl
+      <FormSwitchControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formswitchcontrol-4 */
         title='1M Context Window (Beta)'
         description='Enable 1M token context'
         tooltip='Enables the 1M token context window with premium pricing for &gt;200K input tokens. - https://docs.claude.com/en/docs/build-with-claude/context-windows#1m-token-context-window'
@@ -691,7 +692,7 @@ export function LLMParametersEditor(props: {
 
     {/* Anthropic Fast Mode - currently hidden via parameterSpec.hidden */}
     {showParam('llmVndAntInfSpeed') && (
-      <FormSwitchControl
+      <FormSwitchControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formswitchcontrol-5 */
         title='Fast Mode (Preview)'
         description={llmVndAntInfSpeed ? `Fast - ${antInfSpeedMult}x pricing ⚠️` : 'Standard (default)'}
         tooltip='Accelerated inference at premium pricing. Preview access may be required.'
@@ -707,7 +708,7 @@ export function LLMParametersEditor(props: {
     {/* Gemini [effort, ... ] */}
 
     {showParam('llmVndGeminiThinkingBudget') && (
-      <FormSliderControl
+      <FormSliderControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formslidercontrol-6 */
         title='Thinking Budget' ariaLabel='Gemini Thinking Token Budget'
         description={gemThinkingAuto ? 'Auto' : gemThinkingOff ? 'Thinking Off' : 'Tokens'}
         min={gemTBMinMax[0]} max={gemTBMinMax[1]} step={1024}
@@ -718,7 +719,7 @@ export function LLMParametersEditor(props: {
         onChange={value => onChangeParameter({ llmVndGeminiThinkingBudget: Array.isArray(value) ? (value[0] || value[1]) : value })}
         startAdornment={gemTBMinMax[0] === 0 && (
           <Tooltip arrow disableInteractive title={gemThinkingOff ? 'Thinking Off' : 'Disable Thinking'}>
-            <IconButton
+            <IconButton /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.iconbutton-5 */
               variant={gemThinkingOff ? 'solid' : 'outlined'}
               // disabled={gemThinkingOff}
               onClick={() => onChangeParameter({ llmVndGeminiThinkingBudget: 0 })}
@@ -730,7 +731,7 @@ export function LLMParametersEditor(props: {
         )}
         endAdornment={
           <Tooltip arrow disableInteractive title={gemThinkingAuto ? 'Automatic Thinking (default)' : 'Auto Budget'}>
-            <IconButton
+            <IconButton /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.iconbutton-6 */
               variant={gemThinkingAuto ? 'solid' : 'outlined'}
               // disabled={gemThinkingAuto}
               onClick={() => onRemoveParameter('llmVndGeminiThinkingBudget')}
@@ -753,7 +754,7 @@ export function LLMParametersEditor(props: {
     {/*)}*/}
 
     {showParam('llmVndGeminiImageSize') && gemImageSizeOptions && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-9 */
         title='Image Size'
         tooltip='Controls the resolution of generated images'
         value={llmVndGeminiImageSize ?? _UNSPECIFIED}
@@ -766,7 +767,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndGeminiAspectRatio') && gemAspectRatioOptions && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-10 */
         title='Aspect Ratio'
         tooltip='Controls the aspect ratio of generated images'
         value={llmVndGeminiAspectRatio ?? _UNSPECIFIED}
@@ -780,7 +781,7 @@ export function LLMParametersEditor(props: {
 
 
     {showParam('llmVndGeminiGoogleSearch') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-11 */
         title='Google Search'
         // tooltip='Enable Google Search grounding to ground responses in real-time web content. Optionally filter results by publication date.'
         value={llmVndGeminiGoogleSearch ?? _UNSPECIFIED}
@@ -793,7 +794,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndGeminiUrlContext') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-12 */
         title='URL Context'
         tooltip='Read content from URLs independently of Google Search'
         value={llmVndGeminiUrlContext ?? _UNSPECIFIED}
@@ -806,7 +807,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndGeminiCodeExecution') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-13 */
         title='Code Sandbox'
         tooltip='Enable automatic Python code generation and execution by the model'
         value={llmVndGeminiCodeExecution ?? _UNSPECIFIED}
@@ -819,7 +820,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndGeminiMediaResolution') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-14 */
         title='Media Resolution'
         tooltip='Controls vision processing quality for multimodal inputs. Higher resolution improves text reading and detail identification but increases token usage.'
         value={llmVndGeminiMediaResolution ?? _UNSPECIFIED}
@@ -832,7 +833,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndGeminiAgentViz') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-15 */
         title='Visualizations'
         tooltip='Charts and images in Deep Research reports. Disable for text-only output (helpful when merging multiple reports).'
         value={llmVndGeminiAgentViz ?? _UNSPECIFIED}
@@ -860,7 +861,7 @@ export function LLMParametersEditor(props: {
 
 
     {showParam('llmVndOaiWebSearchContext') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-16 */
         title='Web Search'
         tooltip={oaiSkipSearchOnMinimalEffort ? 'Web search is not compatible with minimal reasoning effort' : 'Controls how much context is retrieved from the web (low = default for Perplexity, medium = default for OpenAI). For GPT-5 models, Default=OFF.'}
         disabled={oaiSkipSearchOnMinimalEffort}
@@ -876,7 +877,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndOaiWebSearchGeolocation') && (
-      <FormSwitchControl
+      <FormSwitchControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formswitchcontrol-6 */
         title='Add User Location'
         description='Use approximate location for better search results'
         tooltip={oaiSkipSearchOnMinimalEffort ? 'Web search geolocation is not compatible with minimal reasoning effort' : 'When enabled, uses browser geolocation API to provide approximate location data to improve search results relevance'}
@@ -896,7 +897,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndOaiVerbosity') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-17 */
         title='Verbosity'
         tooltip='Controls response length and detail level'
         value={llmVndOaiVerbosity ?? _UNSPECIFIED}
@@ -911,7 +912,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndOaiImageGeneration') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-18 */
         title='Image Generation'
         tooltip='Configure image generation mode and quality'
         value={llmVndOaiImageGeneration ?? _UNSPECIFIED}
@@ -926,7 +927,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndOaiCodeInterpreter') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-19 */
         title='Code Sandbox'
         tooltip='Enable Python code execution in a sandboxed container. Costs $0.03 per container (expires after 20 minutes of inactivity).'
         value={llmVndOaiCodeInterpreter ?? _UNSPECIFIED}
@@ -941,7 +942,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndOaiRestoreMarkdown') && (
-      <FormSwitchControl
+      <FormSwitchControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formswitchcontrol-7 */
         title='Restore Markdown'
         description='Enable markdown formatting'
         tooltip='o1 and o3 models in the API will avoid generating responses with markdown formatting. This option signals to the model to re-enable markdown formatting in the respons'
@@ -956,7 +957,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmForceNoStream') && (
-      <FormSwitchControl
+      <FormSwitchControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formswitchcontrol-8 */
         title='Disable Streaming'
         description='For unverified OpenAI orgs'
         tooltip='Disables streaming and reasoning summaries, which both require OpenAI organization verification. Enable if you get verification errors with GPT-5 models.'
@@ -972,7 +973,7 @@ export function LLMParametersEditor(props: {
 
 
     {showParam('llmVndPerplexitySearchMode') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-20 */
         title='Search Mode'
         tooltip='Type of sources to prioritize in search results'
         value={llmVndPerplexitySearchMode ?? _UNSPECIFIED}
@@ -987,7 +988,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndPerplexityDateFilter') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-21 */
         title='Date Range'
         tooltip='Filter search results by publication date'
         value={llmVndPerplexityDateFilter ?? _UNSPECIFIED}
@@ -1003,7 +1004,7 @@ export function LLMParametersEditor(props: {
 
 
     {(showParam('llmVndOrtWebSearch') || showParam('llmVndOrtWebFetch')) && (
-      <OpenRouterWebToolsConfig
+      <OpenRouterWebToolsConfig /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.openrouterwebtoolsconfig */
         showAdvanced={showParam('llmVndOrtWebToolsAdvanced')}
         searchSpec={showParam('llmVndOrtWebSearch') ? modelParamSpec['llmVndOrtWebSearch'] : undefined}
         hasFetch={showParam('llmVndOrtWebFetch')}
@@ -1017,7 +1018,7 @@ export function LLMParametersEditor(props: {
 
 
     {showParam('llmVndXaiCodeExecution') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-22 */
         title='Code Sandbox'
         value={llmVndXaiCodeExecution ?? _UNSPECIFIED}
         onChange={(value) => {
@@ -1029,7 +1030,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndXaiWebSearch') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-23 */
         title='Web Search'
         value={llmVndXaiWebSearch ?? _UNSPECIFIED}
         onChange={(value) => {
@@ -1041,7 +1042,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndXaiXSearch') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-24 */
         title='X Search'
         value={llmVndXaiXSearch ?? 'off'}
         onChange={(value) => onChangeParameter({ llmVndXaiXSearch: value /* we don't remove because there's a default to this param, so we must user-override it */ })}
@@ -1050,7 +1051,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndXaiSearchInterval') && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formselectcontrol-25 */
         title='X Search Period'
         disabled={llmVndXaiXSearch !== 'auto'}
         value={llmVndXaiSearchInterval ?? _UNSPECIFIED}
@@ -1063,7 +1064,7 @@ export function LLMParametersEditor(props: {
     )}
 
     {showParam('llmVndXaiXSearchHandles') && llmVndXaiXSearch === 'auto' && (
-      <FormTextField
+      <FormTextField /* @uxid src/modules/llms/models-modal/LLMParametersEditor::LLMParametersEditor.formtextfield */
         autoCompleteId='xai-x-handles'
         title='X Search Handles'
         description='Optional filter'

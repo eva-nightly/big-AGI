@@ -30,6 +30,7 @@ export const enhancedCodePanelTitleTooltipSx: SxProps = {
 };
 
 
+// @uxid src/modules/blocks/code/RenderCodePanelFrame::RenderCodePanelFrame
 export function RenderCodePanelFrame(props: {
   color: ColorPaletteProp;
   toolbarColor?: ColorPaletteProp;
@@ -136,7 +137,7 @@ export function RenderCodePanelFrame(props: {
 
       {/* header(s) */}
       {!props.frameless && (!!props.headerRow || !!props.subHeaderInline) && (
-        <Box
+        <Box /* @uxid src/modules/blocks/code/RenderCodePanelFrame::RenderCodePanelFrame.box */
           aria-label={isClickableHeader ? 'Click to expand/collapse' : undefined}
           role={isClickableHeader ? 'button' : undefined}
           tabIndex={isClickableHeader ? 0 : undefined}

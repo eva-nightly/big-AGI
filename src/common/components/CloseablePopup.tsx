@@ -64,6 +64,7 @@ export function joyKeepPopup<TEvent extends React.MouseEvent>(fn: (event: TEvent
  *  - dynamic menus unsupported
  *  - ...
  */
+// @uxid src/common/components/CloseablePopup::CloseablePopup
 export function CloseablePopup(props: {
   menu?: true, // whether to render as a MenuList (or as a Box otherwise)
   anchorEl: HTMLElement | null,
@@ -189,7 +190,7 @@ export function CloseablePopup(props: {
       <Portal><Box zIndex={(props.zIndex ?? 1000) - 1} sx={popupBackdropSx} /></Portal>
     )}
 
-    <Popup
+    <Popup /* @uxid src/common/components/CloseablePopup::CloseablePopup.popup */
       role={undefined}
       open={!!props.anchorEl}
       anchorEl={props.anchorEl}
@@ -198,13 +199,13 @@ export function CloseablePopup(props: {
       modifiers={modifiersMemo}
       sx={popperMemoSx}
     >
-      <ClickAwayListener onClickAway={handleClickAway}>
+      <ClickAwayListener /* @uxid src/common/components/CloseablePopup::CloseablePopup.clickawaylistener */ onClickAway={handleClickAway}>
         {props.menu ? (
-          <MenuList variant={props.darkenBackdrop ? 'plain' : undefined} ref={props.noAutoFocus ? undefined : autoFocusOnMount} size={props.size} onKeyDown={handleKeyDown} sx={styleMemoSx} {...{ [closeablePopupDataAttr]: '' }}>
+          <MenuList /* @uxid src/common/components/CloseablePopup::CloseablePopup.menulist */ variant={props.darkenBackdrop ? 'plain' : undefined} ref={props.noAutoFocus ? undefined : autoFocusOnMount} size={props.size} onKeyDown={handleKeyDown} sx={styleMemoSx} {...{ [closeablePopupDataAttr]: '' }}>
             {props.children}
           </MenuList>
         ) : (
-          <Box ref={props.noAutoFocus ? undefined : autoFocusOnMount} onKeyDown={handleKeyDown} sx={styleMemoSx} {...{ [closeablePopupDataAttr]: '' }}>
+          <Box /* @uxid src/common/components/CloseablePopup::CloseablePopup.box */ ref={props.noAutoFocus ? undefined : autoFocusOnMount} onKeyDown={handleKeyDown} sx={styleMemoSx} {...{ [closeablePopupDataAttr]: '' }}>
             {props.children}
           </Box>
         )}

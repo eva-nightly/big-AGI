@@ -17,6 +17,7 @@ interface DraggableWindowTitleProps {
   sxStable?: SxProps;
 }
 
+// @uxid src/common/components/dnd-window/DraggableWindowTitle::DraggableWindowTitle
 export function DraggableWindowTitle(props: DraggableWindowTitleProps) {
   const { active, color, title, onClose, onMouseDown, onTouchStart, sxStable, children } = props;
 
@@ -51,7 +52,7 @@ export function DraggableWindowTitle(props: DraggableWindowTitleProps) {
   } as const), [color, sxStable]);
 
   return (
-    <Box onMouseDown={onMouseDown} onTouchStart={onTouchStart} sx={stylesMemo.header} aria-pressed={active}>
+    <Box /* @uxid src/common/components/dnd-window/DraggableWindowTitle::DraggableWindowTitle.box */ onMouseDown={onMouseDown} onTouchStart={onTouchStart} sx={stylesMemo.header} aria-pressed={active}>
       <DragIndicatorIcon sx={stylesMemo.dragIndicator} />
 
       <Typography color={color} sx={stylesMemo.title}>
@@ -62,7 +63,7 @@ export function DraggableWindowTitle(props: DraggableWindowTitleProps) {
 
       {/* Close button */}
       {/*<GoodTooltip title='Close'>*/}
-      <IconButton
+      <IconButton /* @uxid src/common/components/dnd-window/DraggableWindowTitle::DraggableWindowTitle.iconbutton */
         aria-label={`Close ${title.toLowerCase()}`}
         size='sm'
         variant='plain'

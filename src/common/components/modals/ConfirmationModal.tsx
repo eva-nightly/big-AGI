@@ -10,6 +10,7 @@ import { GoodModal } from '~/common/components/modals/GoodModal';
  * A confirmation dialog (Joy Modal)
  * Pass the question and the positive answer, and get called when it's time to close the dialog, or when the positive action is taken
  */
+// @uxid src/common/components/modals/ConfirmationModal::ConfirmationModal
 export function ConfirmationModal(props: {
   open?: boolean, onClose?: () => void, onPositive: () => void,
   title?: React.ReactNode,
@@ -21,7 +22,7 @@ export function ConfirmationModal(props: {
   negativeActionStartDecorator?: React.ReactNode,
 }) {
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/common/components/modals/ConfirmationModal::ConfirmationModal.goodmodal */
       open={props.open === undefined ? true : props.open}
       title={props.noTitleBar ? undefined : (props.title || 'Confirmation')}
       titleStartDecorator={props.noTitleBar ? undefined : <WarningRoundedIcon sx={{ color: 'danger.solidBg' }} />}
@@ -37,11 +38,11 @@ export function ConfirmationModal(props: {
 
       <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end', mt: 2 }}>
         {!!props.onClose && (
-          <Button autoFocus variant='plain' color='neutral' onClick={props.onClose} startDecorator={props.negativeActionStartDecorator}>
+          <Button /* @uxid src/common/components/modals/ConfirmationModal::ConfirmationModal.button */ autoFocus variant='plain' color='neutral' onClick={props.onClose} startDecorator={props.negativeActionStartDecorator}>
             {props.negativeActionText || 'Cancel'}
           </Button>
         )}
-        <Button
+        <Button /* @uxid src/common/components/modals/ConfirmationModal::ConfirmationModal.button-2 */
           variant={props.lowStakes ? 'soft' : 'solid'}
           color={props.lowStakes ? undefined : 'danger'}
           onClick={props.onPositive}

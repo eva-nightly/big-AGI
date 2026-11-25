@@ -10,6 +10,7 @@ import { ModelsConfiguratorModal } from './ModelsConfiguratorModal';
 /**
  * This is here so we can lazy-load the ModelsModals component, which includes two medium-heavy modals.
  */
+// @uxid src/modules/llms/models-modal/ModelsModals::ModelsModals
 export function ModelsModals() {
 
   // external state
@@ -31,7 +32,7 @@ export function ModelsModals() {
 
     {/* per-LLM options */}
     {!!showModelOptions && (
-      <LLMOptionsModal id={showModelOptions} context={showModelOptionsContext} onClose={optimaActions().closeModelOptions} />
+      <LLMOptionsModal /* @uxid src/modules/llms/models-modal/ModelsModals::ModelsModals.llmoptionsmodal */ id={showModelOptions} context={showModelOptionsContext} onClose={optimaActions().closeModelOptions} />
     )}
 
   </>;

@@ -61,6 +61,7 @@ const RenderMarkdownBox = styled(Box, { name: 'RenderMarkdownBox' })({
 
 const DynamicMarkdownRenderer = React.lazy(() => import('./CustomMarkdownRenderer'));
 
+// @uxid src/modules/blocks/markdown/RenderMarkdown::RenderMarkdown
 export function RenderMarkdown(props: RenderMarkdownRendererProps & { lite?: boolean | 'debug', noGutter?: boolean, sx?: SxProps }) {
   const { lite, noGutter, sx, ...rendererProps } = props;
   return (

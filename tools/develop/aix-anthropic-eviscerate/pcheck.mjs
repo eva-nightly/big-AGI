@@ -4,6 +4,7 @@ const d = JSON.parse(fs.readFileSync(path.join(OUT,'s2a_hosted_dynamic.json'),'u
 const container = d.turns.find(t=>t.container)?.container?.id;
 const base = d.finalMessages.concat([{role:'user',content:'In one line, restate the Iceland population number.'}]);
 const tools=[{type:'web_search_20260318',name:'web_search',max_uses:5},{type:'web_fetch_20260318',name:'web_fetch',max_uses:3}];
+// @uxid tools/develop/aix-anthropic-eviscerate/pcheck::call
 async function call(withC){const b={model:MODEL,max_tokens:60,messages:base,tools,...(withC&&container?{container}:{})};
   const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'x-api-key':apiKey(),'anthropic-version':'2023-06-01','content-type':'application/json'},body:JSON.stringify(b)});
   const j=await r.json(); return {status:r.status, stop:j.stop_reason, in:j.usage?.input_tokens, err:j.error?.message};}

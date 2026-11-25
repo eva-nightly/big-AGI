@@ -47,6 +47,7 @@ const _advancedSxSmaller = { ml: 1.5, display: 'flex', flexDirection: 'column', 
  * the codec in openrouter.webtools.ts. Search and fetch run on OpenRouter itself, not on the model provider.
  * The values arrive as they will be sent (the panel applies the exec overrides before mounting).
  */
+// @uxid src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig
 export function OpenRouterWebToolsConfig(props: {
   smaller?: boolean; // chat side panel density
   searchOverride?: 'force_on' | 'force_off'; // conversation exec override: forced on keeps the controls live and only removes 'Off'; forced off locks them
@@ -106,7 +107,7 @@ export function OpenRouterWebToolsConfig(props: {
   return <>
 
     {!!searchSpec && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig.formselectcontrol */
         title={smaller ? 'Search' : 'Web Search'}
         tooltip={smaller ? undefined : 'Web search run by OpenRouter. The model decides when to search; results show as citations.'}
         disabled={disabled}
@@ -125,7 +126,7 @@ export function OpenRouterWebToolsConfig(props: {
     {showAdvanced && !!search && <Box sx={smaller ? _advancedSxSmaller : _advancedSx}>
 
       {!!modeOptions.length && (
-        <FormSelectControl
+        <FormSelectControl /* @uxid src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig.formselectcontrol-2 */
           title={smaller ? 'Depth' : 'Search Depth'}
           tooltip={smaller ? undefined : 'Search depth of the engine. Deeper is slower.'}
           disabled={disabled}
@@ -138,7 +139,7 @@ export function OpenRouterWebToolsConfig(props: {
       )}
 
       {_hasContextAxis(search) && (
-        <FormSelectControl
+        <FormSelectControl /* @uxid src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig.formselectcontrol-3 */
           title={smaller ? 'Context' : 'Search Context'}
           tooltip={smaller ? undefined : 'Text retrieved per result. The character cap below overrides it.'}
           disabled={disabled}
@@ -150,7 +151,7 @@ export function OpenRouterWebToolsConfig(props: {
         />
       )}
 
-      <_OptionalSlider
+      <_OptionalSlider /* @uxid src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig.optionalslider */
         title={smaller ? 'Results/search' : 'Max Results per Search'} ariaLabel='OpenRouter Web Search Max Results per Search'
         value={advanced?.search?.maxResults} enableValue={5}
         min={1} max={search === 'perplexity' ? 20 : 25} step={1}
@@ -160,7 +161,7 @@ export function OpenRouterWebToolsConfig(props: {
       />
 
       {_hasContextAxis(search) && (
-        <_OptionalSlider
+        <_OptionalSlider /* @uxid src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig.optionalslider-2 */
           title={smaller ? 'Chars/result' : 'Max Chars per Result'} ariaLabel='OpenRouter Web Search Max Characters per Result'
           value={advanced?.search?.maxCharacters} enableValue={15000}
           min={1000} max={100000} step={1000}
@@ -173,7 +174,7 @@ export function OpenRouterWebToolsConfig(props: {
     </Box>}
 
     {hasFetch && (
-      <FormSelectControl
+      <FormSelectControl /* @uxid src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig.formselectcontrol-4 */
         title={smaller ? 'Fetch' : 'Web Fetch'}
         tooltip={smaller ? undefined : 'Page fetching run by OpenRouter: the model reads the URLs it needs.'}
         disabled={disabled}
@@ -192,7 +193,7 @@ export function OpenRouterWebToolsConfig(props: {
     {showAdvanced && !!fetch && <Box sx={smaller ? _advancedSxSmaller : _advancedSx}>
 
       {/* one more fetch than set gets through, as an error to the model (aix.wiretypes.openrouter.ts) */}
-      <_OptionalSlider
+      <_OptionalSlider /* @uxid src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig.optionalslider-3 */
         title={smaller ? 'Fetches/request' : 'Max Fetches per Request'} ariaLabel='OpenRouter Web Fetch Max Fetches per Request'
         value={advanced?.fetch?.maxUses} enableValue={10}
         min={1} max={50} step={1}
@@ -201,7 +202,7 @@ export function OpenRouterWebToolsConfig(props: {
         onChange={value => setAdvanced({ fetch: { maxUses: value } })}
       />
 
-      <_OptionalSlider
+      <_OptionalSlider /* @uxid src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig.optionalslider-4 */
         title={smaller ? 'Tokens/page' : 'Max Tokens per Page'} ariaLabel='OpenRouter Web Fetch Max Tokens per Page'
         value={advanced?.fetch?.maxContentTokens} enableValue={10000}
         min={1000} max={100000} step={1000}
@@ -214,7 +215,7 @@ export function OpenRouterWebToolsConfig(props: {
 
     {/* request-level step budget across search and fetch; one more call than set gets through (aix.wiretypes.openrouter.ts) */}
     {showAdvanced && !!(search || fetch) && (
-      <_OptionalSlider
+      <_OptionalSlider /* @uxid src/modules/llms/models-modal/OpenRouterWebToolsConfig::OpenRouterWebToolsConfig.optionalslider-5 */
         title={smaller ? 'Tool calls/request' : 'Max Tool Calls per Request'} ariaLabel='OpenRouter Max Tool Calls per Request'
         value={advanced?.maxToolCalls} enableValue={10}
         min={1} max={30} step={1}
@@ -245,7 +246,7 @@ function _OptionalSlider(props: {
   const { value, enableValue, disabled, onChange } = props;
   const isSet = value !== undefined;
   return (
-    <FormSliderControl
+    <FormSliderControl /* @uxid src/modules/llms/models-modal/OpenRouterWebToolsConfig::_OptionalSlider.formslidercontrol */
       title={props.title} ariaLabel={props.ariaLabel}
       description={isSet ? props.format(value) : '-'}
       disabled={disabled || !isSet}
@@ -257,7 +258,7 @@ function _OptionalSlider(props: {
       sliderSx={props.size === 'sm' ? { maxWidth: '4.5rem' } : { maxWidth: 148 }}
       startAdornment={
         <Tooltip arrow disableInteractive placement='top' title={isSet ? 'Reset to default' : 'Enable limit'}>
-          <IconButton
+          <IconButton /* @uxid src/modules/llms/models-modal/OpenRouterWebToolsConfig::_OptionalSlider.iconbutton */
             size={props.size}
             variant={isSet ? 'plain' : 'soft'}
             disabled={disabled}

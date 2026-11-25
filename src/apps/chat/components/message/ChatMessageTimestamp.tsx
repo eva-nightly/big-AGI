@@ -8,6 +8,7 @@ import { formatMessageTimestampDate, getMessageTimestamp, type MessageTimestampS
 
 
 /** Timestamp content for the message footer. Visibility policy belongs to the list. */
+// @uxid src/apps/chat/components/message/ChatMessageTimestamp::ChatMessageTimestamp
 export function ChatMessageTimestamp(props: {
   message: MessageTimestampSource,
   onShowInfo: () => void,
@@ -21,7 +22,7 @@ export function ChatMessageTimestamp(props: {
   const duration = durationMs === undefined ? null : prettyDuration(durationMs, true);
 
   return (
-    <Typography
+    <Typography /* @uxid src/apps/chat/components/message/ChatMessageTimestamp::ChatMessageTimestamp.typography */
       component='button'
       type='button'
       level='body-xs'

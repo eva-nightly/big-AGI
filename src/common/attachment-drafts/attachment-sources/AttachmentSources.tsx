@@ -40,10 +40,11 @@ const _style = {
 
 
 // Live feed record button - returns null if onClick is undefined
+// @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::LiveFeedButton
 function LiveFeedButton(props: { isActive: boolean, tooltip: string, onClick: () => void }) {
   return (
     <TooltipOutlined title={props.tooltip} placement='top'>
-      <IconButton
+      <IconButton /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::LiveFeedButton.iconbutton */
         size='sm'
         variant={props.isActive ? 'solid' : 'outlined'}
         color='danger'
@@ -62,6 +63,7 @@ function LiveFeedButton(props: { isActive: boolean, tooltip: string, onClick: ()
 
 
 // Auto-download toggle (shown when browsing capability exists)
+// @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AutoDownloadToggle
 function AutoDownloadToggle() {
 
   // external state
@@ -78,7 +80,7 @@ function AutoDownloadToggle() {
 
     <ListItem sx={richMenuItemSx.item}>
       <ListItemDecorator>
-        <Checkbox
+        <Checkbox /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AutoDownloadToggle.checkbox */
           size='sm'
           color='neutral'
           checked={enableComposerAttach}
@@ -110,6 +112,7 @@ function AutoDownloadToggle() {
  */
 export const AttachmentSourcesMemo = React.memo(AttachmentSources);
 
+// @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources
 function AttachmentSources(props: {
   // mode
   mode: 'menu-compact' | 'menu-rich' | 'inline-buttons' | 'menu-message',
@@ -170,29 +173,29 @@ function AttachmentSources(props: {
     return <>
 
       {/* Files */}
-      <ButtonAttachFilesMemo color={props.color} onAttachFiles={props.onAttachFiles} /*fullWidth*/ multiple />
+      <ButtonAttachFilesMemo /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.buttonattachfilesmemo */ color={props.color} onAttachFiles={props.onAttachFiles} /*fullWidth*/ multiple />
 
       {/* Web */}
-      {!props.onlyImages && <ButtonAttachWebMemo color={props.color} disabled={!props.canBrowse} onOpenWebInput={props.onOpenWebInput} />}
+      {!props.onlyImages && <ButtonAttachWebMemo /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.buttonattachwebmemo */ color={props.color} disabled={!props.canBrowse} onOpenWebInput={props.onOpenWebInput} />}
 
       {/* Google Drive */}
       {hasGoogleDriveCapability && !props.onlyImages && !!props.onOpenGoogleDrivePicker && (
-        <ButtonAttachGoogleDriveMemo color={props.color} onOpenGoogleDrivePicker={props.onOpenGoogleDrivePicker} />
+        <ButtonAttachGoogleDriveMemo /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.buttonattachgoogledrivememo */ color={props.color} onOpenGoogleDrivePicker={props.onOpenGoogleDrivePicker} />
       )}
 
       {/* Clipboard */}
       {supportsClipboardRead() && !props.onlyImages && (
-        <ButtonAttachClipboardMemo color={props.color} onAttachClipboard={props.onAttachClipboard} />
+        <ButtonAttachClipboardMemo /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.buttonattachclipboardmemo */ color={props.color} onAttachClipboard={props.onAttachClipboard} />
       )}
 
       {/* Screen Capture */}
       {props.hasScreenCapture && (
-        <ButtonAttachScreenCaptureMemo color={props.color} onAttachScreenCapture={props.onAttachScreenCapture} />
+        <ButtonAttachScreenCaptureMemo /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.buttonattachscreencapturememo */ color={props.color} onAttachScreenCapture={props.onAttachScreenCapture} />
       )}
 
       {/* Camera */}
       {props.hasCamera && (
-        <ButtonAttachCameraMemo color={props.color} onOpenCamera={props.onOpenCamera} />
+        <ButtonAttachCameraMemo /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.buttonattachcameramemo */ color={props.color} onOpenCamera={props.onOpenCamera} />
       )}
 
     </>;
@@ -222,45 +225,45 @@ function AttachmentSources(props: {
         <RichMenu compact darkenBackdrop={!isMessage /* mobile '+': scrim signals a modal choice, like the voice engine picker */} /* menu-compact or menu-message: above dialogs (default zIndex) */>
 
           {/* Files */}
-          <RichMenuItem name={props.onlyImages ? 'Images' : 'Files'} description='PDF, DOCX, images, code' color={props.color} Icon={AttachFileRoundedIcon} onClick={handleAttachFilePicker} />
+          <RichMenuItem /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.richmenuitem */ name={props.onlyImages ? 'Images' : 'Files'} description='PDF, DOCX, images, code' color={props.color} Icon={AttachFileRoundedIcon} onClick={handleAttachFilePicker} />
 
           {/* Web */}
           {!props.onlyImages && /*props.canBrowse &&*/ (
-            <RichMenuItem name='Web' description='Import from web pages' color={props.color} Icon={LanguageRoundedIcon} onClick={props.onOpenWebInput} disabled={!props.canBrowse} />
+            <RichMenuItem /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.richmenuitem-2 */ name='Web' description='Import from web pages' color={props.color} Icon={LanguageRoundedIcon} onClick={props.onOpenWebInput} disabled={!props.canBrowse} />
           )}
 
           {/* Google Drive */}
           {!props.onlyImages && hasGoogleDriveCapability && !!props.onOpenGoogleDrivePicker && (
-            <RichMenuItem name='Drive' description='Attach Google Drive files' color={props.color} Icon={AddToDriveRoundedIcon} onClick={props.onOpenGoogleDrivePicker} />
+            <RichMenuItem /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.richmenuitem-3 */ name='Drive' description='Attach Google Drive files' color={props.color} Icon={AddToDriveRoundedIcon} onClick={props.onOpenGoogleDrivePicker} />
           )}
 
           {/* Clipboard */}
           {!props.onlyImages && supportsClipboardRead() && (
-            <RichMenuItem name='Clipboard' description='Auto-convert to the best format' color={props.color} Icon={ContentPasteGoIcon} onClick={props.onAttachClipboard} />
+            <RichMenuItem /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.richmenuitem-4 */ name='Clipboard' description='Auto-convert to the best format' color={props.color} Icon={ContentPasteGoIcon} onClick={props.onAttachClipboard} />
           )}
 
           {/* Screen Capture */}
           {props.hasScreenCapture && (
-            <RichMenuItem
+            <RichMenuItem /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.richmenuitem-5 */
               name='Screen'
               color={screenCaptureError ? 'danger' : props.color}
               description={screenCaptureError ? `Error: ${screenCaptureError}` : 'Capture tabs, apps, and screens'}
               Icon={ScreenshotMonitorIcon}
               disabled={capturingScreen}
               onClick={handleTakeScreenCapture}
-              endAction={!isMessage && props.onStartLiveScreenFeed && <LiveFeedButton isActive={!!props.hasActiveScreenFeed} tooltip='Live Screen chat' onClick={props.onStartLiveScreenFeed} />}
+              endAction={!isMessage && props.onStartLiveScreenFeed && <LiveFeedButton /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.livefeedbutton */ isActive={!!props.hasActiveScreenFeed} tooltip='Live Screen chat' onClick={props.onStartLiveScreenFeed} />}
             />
           )}
 
           {/* Camera */}
           {props.hasCamera && isMessage && (
-            <RichMenuItem
+            <RichMenuItem /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.richmenuitem-6 */
               name='Camera'
               color={props.color}
               Icon={CameraAltOutlinedIcon}
               description='Capture photos with optional OCR'
               onClick={props.onOpenCamera}
-              endAction={!isMessage && props.onStartLiveCameraFeed && <LiveFeedButton isActive={!!props.hasActiveCameraFeed} tooltip='Live Camera chat' onClick={props.onStartLiveCameraFeed} />}
+              endAction={!isMessage && props.onStartLiveCameraFeed && <LiveFeedButton /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.livefeedbutton-2 */ isActive={!!props.hasActiveCameraFeed} tooltip='Live Camera chat' onClick={props.onStartLiveCameraFeed} />}
             />
           )}
 
@@ -268,7 +271,7 @@ function AttachmentSources(props: {
       </Dropdown>
 
       {/* [mobile] Responsive Camera OCR button */}
-      {props.hasCamera && !isMessage && <ButtonAttachCameraMemo isMobile color={props.color} onOpenCamera={props.onOpenCamera} />}
+      {props.hasCamera && !isMessage && <ButtonAttachCameraMemo /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.buttonattachcameramemo-2 */ isMobile color={props.color} onOpenCamera={props.onOpenCamera} />}
 
     </>;
   }
@@ -288,7 +291,7 @@ function AttachmentSources(props: {
       <RichMenu stagger color={props.color}>
 
         {/* File Attachment */}
-        <RichMenuItem
+        <RichMenuItem /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.richmenuitem-7 */
           name={props.onlyImages ? 'Images' : 'Files'}
           Icon={AttachFileRoundedIcon}
           description={props.onlyImages ? 'PNG, JPG, WEBP images to edit' : 'PDF, DOCX, images, code'}
@@ -297,7 +300,7 @@ function AttachmentSources(props: {
 
         {/* Web/URL Attachment */}
         {!props.onlyImages && /*props.canBrowse &&*/ (
-          <RichMenuItem
+          <RichMenuItem /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.richmenuitem-8 */
             name='Web'
             Icon={LanguageRoundedIcon}
             description='Import web pages, including screenshots'
@@ -308,7 +311,7 @@ function AttachmentSources(props: {
 
         {/* Google Drive Attachment */}
         {!props.onlyImages && hasGoogleDriveCapability && !!props.onOpenGoogleDrivePicker && (
-          <RichMenuItem
+          <RichMenuItem /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.richmenuitem-9 */
             name='Drive'
             Icon={AddToDriveRoundedIcon}
             description='Attach Google Drive files'
@@ -318,7 +321,7 @@ function AttachmentSources(props: {
 
         {/* Clipboard Attachment */}
         {!props.onlyImages && supportsClipboardRead() && (
-          <RichMenuItem
+          <RichMenuItem /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.richmenuitem-10 */
             name='Clipboard'
             Icon={ContentPasteGoIcon}
             // description='Auto-converts images and text to the best format'
@@ -356,25 +359,25 @@ function AttachmentSources(props: {
 
         {/* Screen Capture */}
         {props.hasScreenCapture && (
-          <RichMenuItem
+          <RichMenuItem /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.richmenuitem-11 */
             name='Screen'
             Icon={ScreenshotMonitorIcon}
             description={screenCaptureError ? `Error: ${screenCaptureError}` : 'Capture tabs, apps, and screens'}
             onClick={handleTakeScreenCapture}
             disabled={capturingScreen}
             color={screenCaptureError ? 'danger' : undefined}
-            endAction={props.onStartLiveScreenFeed && <LiveFeedButton isActive={!!props.hasActiveScreenFeed} tooltip='Live Screen chat' onClick={props.onStartLiveScreenFeed} />}
+            endAction={props.onStartLiveScreenFeed && <LiveFeedButton /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.livefeedbutton-3 */ isActive={!!props.hasActiveScreenFeed} tooltip='Live Screen chat' onClick={props.onStartLiveScreenFeed} />}
           />
         )}
 
         {/* Camera */}
         {props.hasCamera && (
-          <RichMenuItem
+          <RichMenuItem /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.richmenuitem-12 */
             name='Camera'
             Icon={CameraAltOutlinedIcon}
             description='Capture photos with optional OCR'
             onClick={props.onOpenCamera}
-            endAction={props.onStartLiveCameraFeed && <LiveFeedButton isActive={!!props.hasActiveCameraFeed} tooltip='Live Camera chat' onClick={props.onStartLiveCameraFeed} />}
+            endAction={props.onStartLiveCameraFeed && <LiveFeedButton /* @uxid src/common/attachment-drafts/attachment-sources/AttachmentSources::AttachmentSources.livefeedbutton-4 */ isActive={!!props.hasActiveCameraFeed} tooltip='Live Camera chat' onClick={props.onStartLiveCameraFeed} />}
           />
         )}
 

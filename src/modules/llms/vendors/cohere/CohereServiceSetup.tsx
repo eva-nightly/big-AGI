@@ -20,6 +20,7 @@ import { ModelVendorCohere } from './cohere.vendor';
 const COHERE_REG_LINK = 'https://dashboard.cohere.com/api-keys';
 
 
+// @uxid src/modules/llms/vendors/cohere/CohereServiceSetup::CohereServiceSetup
 export function CohereServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state
@@ -48,10 +49,10 @@ export function CohereServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/cohere/CohereServiceSetup::CohereServiceSetup.forminputkey */
       autoCompleteId='cohere-key' label='Cohere Key'
       rightLabel={<>{needsUserKey
-        ? !cohereKey && <ExternalLink level='body-sm' href={COHERE_REG_LINK}>request Key</ExternalLink>
+        ? !cohereKey && <ExternalLink /* @uxid src/modules/llms/vendors/cohere/CohereServiceSetup::CohereServiceSetup.externallink */ level='body-sm' href={COHERE_REG_LINK}>request Key</ExternalLink>
         : <AlreadySet overridden={!!cohereKey} />}
       </>}
       value={cohereKey} onChange={value => updateSettings({ cohereKey: value })}
@@ -59,7 +60,7 @@ export function CohereServiceSetup(props: { serviceId: DModelsServiceId }) {
       placeholder='Your Cohere API Key'
     />
 
-    {showAdvanced && <FormTextField
+    {showAdvanced && <FormTextField /* @uxid src/modules/llms/vendors/cohere/CohereServiceSetup::CohereServiceSetup.formtextfield */
       autoCompleteId='cohere-host'
       title='API Host'
       tooltip={`An alternative Cohere OpenAI-compatible endpoint to use instead of the default.\n\nDefault:\n - https://api.cohere.ai/compatibility`}
@@ -68,7 +69,7 @@ export function CohereServiceSetup(props: { serviceId: DModelsServiceId }) {
       onChange={text => updateSettings({ cohereHost: text })}
     />}
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/cohere/CohereServiceSetup::CohereServiceSetup.setupformclientsidetoggle */
       visible={!!cohereKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

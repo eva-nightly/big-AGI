@@ -17,6 +17,7 @@ import { useUIContentScaling } from '~/common/stores/store-ui';
 import { AppSmallContainer } from '../AppSmallContainer';
 
 
+// @uxid src/apps/diff/AppDiff::AppDiff
 export function AppDiff() {
 
   // state
@@ -77,9 +78,9 @@ export function AppDiff() {
           <FormControl sx={{ alignSelf: 'flex-start' }}>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 1, mb: 1 }}>
               <FormLabelStart title='Original' />
-              <ButtonAttachFilesMemo noToolTip onAttachFiles={handleAttachOriginal} />
+              <ButtonAttachFilesMemo /* @uxid src/apps/diff/AppDiff::AppDiff.buttonattachfilesmemo */ noToolTip onAttachFiles={handleAttachOriginal} />
             </Box>
-            <Textarea
+            <Textarea /* @uxid src/apps/diff/AppDiff::AppDiff.textarea */
               variant='outlined'
               color={text1 ? undefined : 'warning'}
               minRows={5}
@@ -108,7 +109,7 @@ export function AppDiff() {
           </FormControl>
 
           <Tooltip title='Swap texts' disableInteractive>
-            <IconButton
+            <IconButton /* @uxid src/apps/diff/AppDiff::AppDiff.iconbutton */
               variant='soft'
               onClick={handleSwap}
               sx={{
@@ -124,9 +125,9 @@ export function AppDiff() {
           <FormControl sx={{ alignSelf: 'flex-start' }}>
             <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 1, mb: 1 }}>
               <FormLabelStart title='Modified' />
-              <ButtonAttachFilesMemo noToolTip onAttachFiles={handleAttachModified} />
+              <ButtonAttachFilesMemo /* @uxid src/apps/diff/AppDiff::AppDiff.buttonattachfilesmemo-2 */ noToolTip onAttachFiles={handleAttachModified} />
             </Box>
-            <Textarea
+            <Textarea /* @uxid src/apps/diff/AppDiff::AppDiff.textarea-2 */
               variant='outlined'
               color={text2 ? undefined : 'warning'}
               minRows={5}

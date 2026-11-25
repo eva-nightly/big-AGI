@@ -30,6 +30,7 @@ export function optionWithTooltip(tooltip: undefined | string | React.JSX.Elemen
 }
 
 
+// @uxid src/common/components/forms/FormRadioControl::FormRadioControl
 export const FormRadioControl = <TValue extends string>(props: {
   title: string | React.JSX.Element,
   description?: string | React.JSX.Element,
@@ -46,7 +47,7 @@ export const FormRadioControl = <TValue extends string>(props: {
   return (
     <FormControl size={props.size} orientation='horizontal' disabled={props.disabled} sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
       {(!!props.title || !!description) && <FormLabelStart title={props.title} description={description} tooltip={props.tooltip} />}
-      <RadioGroup
+      <RadioGroup /* @uxid src/common/components/forms/FormRadioControl::FormRadioControl.radiogroup */
         size={props.size}
         orientation='horizontal'
         value={props.value}

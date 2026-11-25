@@ -10,6 +10,7 @@ import type { DProfileOpenRouterImages } from '../t2i.types';
 import { OPENROUTER_IMAGE_MODEL_IDS, OPENROUTER_IMAGE_MODELS } from '../t2i.config';
 
 
+// @uxid src/modules/t2i/openrouter/OpenRouterT2ISettings::OpenRouterT2ISettings
 export function OpenRouterT2ISettings(props: {
   profile: DProfileOpenRouterImages;
   onUpdateProfile: (update: Partial<DProfileOpenRouterImages>) => void;
@@ -22,9 +23,9 @@ export function OpenRouterT2ISettings(props: {
     <FormControl orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
       <FormLabelStart
         title='Model'
-        description={<Link level='body-sm' href='https://openrouter.ai/models?fmt=cards&output_modalities=image' target='_blank'>Image models</Link>}
+        description={<Link /* @uxid src/modules/t2i/openrouter/OpenRouterT2ISettings::OpenRouterT2ISettings.link */ level='body-sm' href='https://openrouter.ai/models?fmt=cards&output_modalities=image' target='_blank'>Image models</Link>}
       />
-      <Select
+      <Select /* @uxid src/modules/t2i/openrouter/OpenRouterT2ISettings::OpenRouterT2ISettings.select */
         value={modelPickOrAuto(profile.imageModelId, OPENROUTER_IMAGE_MODEL_IDS) ?? 'auto'}
         onChange={(_event, value) => value && onUpdateProfile({ imageModelId: modelPickOrAuto(value, OPENROUTER_IMAGE_MODEL_IDS) ?? null })}
         slotProps={{ button: { sx: { whiteSpace: 'inherit' } } }}

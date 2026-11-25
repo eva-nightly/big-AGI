@@ -7,6 +7,7 @@ import AddIcon from '@mui/icons-material/Add';
 
 const _btnSx: SxProps = { borderColor: 'neutral.outlinedBorder' } as const;
 
+// @uxid src/common/components/ButtonServiceAdd::ButtonServiceAdd
 export function ButtonServiceAdd(props: {
   isMobile: boolean;
   isEmpty: boolean;
@@ -24,7 +25,7 @@ export function ButtonServiceAdd(props: {
   // Mobile + populated = icon-only (no hint needed - user already knows)
   if (isMobile && !isEmpty)
     return (
-      <IconButton color="primary" variant={variant} onClick={onClick} disabled={disabled} sx={_btnSx}>
+      <IconButton /* @uxid src/common/components/ButtonServiceAdd::ButtonServiceAdd.iconbutton */ color="primary" variant={variant} onClick={onClick} disabled={disabled} sx={_btnSx}>
         <AddIcon />
       </IconButton>
     );
@@ -32,7 +33,7 @@ export function ButtonServiceAdd(props: {
   // Full button with controlled empty-state hint tooltip
   return (
     <Tooltip open={isEmpty && !menuOpen} color='primary' variant='outlined' title={emptyHint} arrow disableInteractive placement={isMobile ? 'bottom-end' : 'top-start'}>
-      <Button
+      <Button /* @uxid src/common/components/ButtonServiceAdd::ButtonServiceAdd.button */
         variant={variant}
         disabled={disabled}
         onClick={onClick}

@@ -99,6 +99,7 @@ function useDebouncedAixDebuggerStore() {
 // auto-enable inspection the first time the dialog is opened (per app session); afterwards it follows the on/off toggle
 let inspectorAutoArmed = false;
 
+// @uxid src/modules/aix/client/debugger/AixDebuggerDialog::AixDebuggerDialog
 export function AixDebuggerDialog(props: {
   onClose: () => void;
 }) {
@@ -158,14 +159,14 @@ export function AixDebuggerDialog(props: {
 
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/modules/aix/client/debugger/AixDebuggerDialog::AixDebuggerDialog.goodmodal */
       open
       onClose={props.onClose}
       unfilterBackdrop
       autoOverflow
       fullscreen={isMobile || 'button'}
       titleStartDecorator={
-        <Switch
+        <Switch /* @uxid src/modules/aix/client/debugger/AixDebuggerDialog::AixDebuggerDialog.switch */
           checked={hasInspector}
           onChange={useUIPreferencesStore.getState().toggleAixInspector}
           sx={{ mr: 1 }}
@@ -179,7 +180,7 @@ export function AixDebuggerDialog(props: {
       }
       startButton={
         <Box sx={{ display: 'flex', gap: 1 }}>
-          <Button
+          <Button /* @uxid src/modules/aix/client/debugger/AixDebuggerDialog::AixDebuggerDialog.button */
             size='sm'
             color={willInjectJson ? 'warning' : 'neutral'}
             variant={showInjector ? 'solid' : willInjectJson ? 'soft' : 'plain'}
@@ -190,7 +191,7 @@ export function AixDebuggerDialog(props: {
           >
             {isMobile ? 'Inject' : 'AI Injector'}
           </Button>
-          <Button
+          <Button /* @uxid src/modules/aix/client/debugger/AixDebuggerDialog::AixDebuggerDialog.button-2 */
             size='sm'
             color={hasAdvancedActive ? 'warning' : 'neutral'}
             variant={showAdvanced ? 'solid' : hasAdvancedActive ? 'soft' : 'plain'}
@@ -209,7 +210,7 @@ export function AixDebuggerDialog(props: {
         {/* Request Switcher */}
         <FormControl sx={{ flex: 1, minWidth: 0 }}>
           <FormLabel>Select Request</FormLabel>
-          <Select
+          <Select /* @uxid src/modules/aix/client/debugger/AixDebuggerDialog::AixDebuggerDialog.select */
             size='sm'
             variant='outlined'
             value={activeFrameId}
@@ -234,7 +235,7 @@ export function AixDebuggerDialog(props: {
         <Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 2 }}>
           <FormControl>
             <FormLabel>History Size</FormLabel>
-            <Select
+            <Select /* @uxid src/modules/aix/client/debugger/AixDebuggerDialog::AixDebuggerDialog.select-2 */
               size='sm'
               value={maxFrames}
               onChange={(_, value) => value !== null && handleSetMaxFrames(value)}
@@ -248,7 +249,7 @@ export function AixDebuggerDialog(props: {
           </FormControl>
 
           {/* Clear History */}
-          <Button
+          <Button /* @uxid src/modules/aix/client/debugger/AixDebuggerDialog::AixDebuggerDialog.button-3 */
             size='sm'
             color='danger'
             onClick={aixClientDebuggerActions().clearHistory}
@@ -273,7 +274,7 @@ export function AixDebuggerDialog(props: {
               {hasInspector
                 ? 'Your next AI request will be captured here.'
                 : <>
-                  <Link
+                  <Link /* @uxid src/modules/aix/client/debugger/AixDebuggerDialog::AixDebuggerDialog.link */
                     component='button'
                     level='body-sm'
                     onClick={useUIPreferencesStore.getState().toggleAixInspector}

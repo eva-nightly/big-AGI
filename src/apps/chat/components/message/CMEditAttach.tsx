@@ -70,6 +70,7 @@ const _styles = {
  * session's `CMEditDrafts` under its anchor; Insert takes the drafts into the copy now, else Done takes them.
  * Without `drafts`, text only.
  */
+// @uxid src/apps/chat/components/message/CMEditAttach::CMEditAttach
 export function CMEditAttach(props: {
   variant: 'bar' | 'group',
   drafts?: CMEditDrafts,
@@ -111,7 +112,7 @@ export function CMEditAttach(props: {
 
 
   const sources = !drafts ? null : (
-    <AttachmentSourcesMemo
+    <AttachmentSourcesMemo /* @uxid src/apps/chat/components/message/CMEditAttach::CMEditAttach.attachmentsourcesmemo */
       mode='menu-message'
       menuButtonLabel={props.variant === 'group' ? 'Add' : undefined}
       canBrowse={browseCapability.mayWork}
@@ -132,7 +133,7 @@ export function CMEditAttach(props: {
       attachmentDrafts={attachmentDrafts}
       buttonsCanWrap
     />
-    <Button size='sm' variant='solid' color='warning' disabled={draftsBusy} startDecorator={<CheckRoundedIcon />} onClick={handleInsert} sx={_styles.textButton}>
+    <Button /* @uxid src/apps/chat/components/message/CMEditAttach::CMEditAttach.button */ size='sm' variant='solid' color='warning' disabled={draftsBusy} startDecorator={<CheckRoundedIcon />} onClick={handleInsert} sx={_styles.textButton}>
       Insert
     </Button>
   </>;
@@ -155,7 +156,7 @@ export function CMEditAttach(props: {
   return <>
     <Sheet color='warning' variant='soft' sx={_styles.bar}>
       {!!props.onAddText && (
-        <Button size='sm' variant='soft' color='warning' startDecorator={<AddRoundedIcon />} onClick={props.onAddText} sx={_styles.textButton}>
+        <Button /* @uxid src/apps/chat/components/message/CMEditAttach::CMEditAttach.button-2 */ size='sm' variant='soft' color='warning' startDecorator={<AddRoundedIcon />} onClick={props.onAddText} sx={_styles.textButton}>
           Text
         </Button>
       )}

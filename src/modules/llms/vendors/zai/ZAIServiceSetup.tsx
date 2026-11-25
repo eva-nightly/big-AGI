@@ -20,6 +20,7 @@ import { ModelVendorZAI } from './zai.vendor';
 const ZAI_REG_LINK = 'https://z.ai/manage-apikey/apikey-list';
 
 
+// @uxid src/modules/llms/vendors/zai/ZAIServiceSetup::ZAIServiceSetup
 export function ZAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state
@@ -49,10 +50,10 @@ export function ZAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/zai/ZAIServiceSetup::ZAIServiceSetup.forminputkey */
       autoCompleteId='zai-key' label='Z.ai Key'
       rightLabel={<>{needsUserKey
-        ? !zaiKey && <ExternalLink level='body-sm' href={ZAI_REG_LINK}>request Key</ExternalLink>
+        ? !zaiKey && <ExternalLink /* @uxid src/modules/llms/vendors/zai/ZAIServiceSetup::ZAIServiceSetup.externallink */ level='body-sm' href={ZAI_REG_LINK}>request Key</ExternalLink>
         : <AlreadySet overridden={!!zaiKey} />}
       </>}
       value={zaiKey} onChange={value => updateSettings({ zaiKey: value })}
@@ -60,7 +61,7 @@ export function ZAIServiceSetup(props: { serviceId: DModelsServiceId }) {
       placeholder='Your Z.ai API Key'
     />
 
-    {showAdvanced && <FormTextField
+    {showAdvanced && <FormTextField /* @uxid src/modules/llms/vendors/zai/ZAIServiceSetup::ZAIServiceSetup.formtextfield */
       autoCompleteId='zai-host'
       title='API Host'
       tooltip={`An alternative Z.ai API endpoint to use instead of the default 'api.z.ai'.\n\nExamples:\n - https://api.z.ai/api/paas (default)\n - https://api.z.ai/api/coding/paas (GLM Coding Plan subscriptions)`}
@@ -69,7 +70,7 @@ export function ZAIServiceSetup(props: { serviceId: DModelsServiceId }) {
       onChange={text => updateSettings({ zaiHost: text })}
     />}
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/zai/ZAIServiceSetup::ZAIServiceSetup.setupformclientsidetoggle */
       visible={!!zaiKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

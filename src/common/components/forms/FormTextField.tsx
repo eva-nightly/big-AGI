@@ -21,6 +21,7 @@ const _styles = {
 /**
  * Text form field (e.g. enter a host)
  */
+// @uxid src/common/components/forms/FormTextField::FormTextField
 export function FormTextField(props: {
   autoCompleteId: string,
   title: string | React.JSX.Element,
@@ -40,7 +41,7 @@ export function FormTextField(props: {
       sx={_styles.formControl}
     >
       <FormLabelStart title={props.title} description={props.description} tooltip={props.tooltip} />
-      <Input
+      <Input /* @uxid src/common/components/forms/FormTextField::FormTextField.input */
         key={acId}
         name={acId}
         autoComplete='off'

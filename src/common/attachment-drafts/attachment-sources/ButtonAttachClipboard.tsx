@@ -9,6 +9,7 @@ import { buttonAttachSx } from '~/common/components/ButtonAttachFiles';
 
 export const ButtonAttachClipboardMemo = React.memo(ButtonAttachClipboard);
 
+// @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachClipboard::ButtonAttachClipboard
 function ButtonAttachClipboard(props: {
   color?: ColorPaletteProp,
   isMobile?: boolean,
@@ -18,7 +19,7 @@ function ButtonAttachClipboard(props: {
   onAttachClipboard: () => void,
 }) {
   return props.isMobile ? (
-    <IconButton color={props.color} disabled={props.disabled} onClick={props.onAttachClipboard}>
+    <IconButton /* @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachClipboard::ButtonAttachClipboard.iconbutton */ color={props.color} disabled={props.disabled} onClick={props.onAttachClipboard}>
       <ContentPasteGoIcon />
     </IconButton>
   ) : (
@@ -29,7 +30,7 @@ function ButtonAttachClipboard(props: {
         <KeyStroke combo='Ctrl + Shift + V' sx={{ mt: 1, mb: 0.5 }} />
       </Box>
     )}>
-      <Button
+      <Button /* @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachClipboard::ButtonAttachClipboard.button */
         variant={props.color ? 'soft' : 'plain'}
         color={props.color || 'neutral'}
         disabled={props.disabled}

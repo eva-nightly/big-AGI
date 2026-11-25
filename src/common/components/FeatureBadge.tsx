@@ -10,6 +10,7 @@ const DEBUG_SHOW_ALL = false;  // set to true to show all badges (for debugging 
 const FEATURE_COLOR = 'color-feature';
 
 
+// @uxid src/common/components/FeatureBadge::FeatureBadge
 export function FeatureBadge(props: Omit<BadgeProps, 'size'> & {
   /** will be prefixed with 'feature-badge-...' */
   featureKey: string;

@@ -12,6 +12,7 @@ import { PreferencesListItem } from './items/PreferencesListItem';
 import { optimaClosePanel, useOptimaPanelOpen } from '../useOptima';
 
 
+// @uxid src/common/layout/optima/panel/MobilePanel::MobilePanel
 export function MobilePanel(props: { component: React.ElementType, currentApp?: NavItemApp }) {
 
   // external state
@@ -19,7 +20,7 @@ export function MobilePanel(props: { component: React.ElementType, currentApp?: 
 
   // NOTE on `disableEnforceFocus` (Joy UI): see MobileDrawer
   return (
-    <Drawer
+    <Drawer /* @uxid src/common/layout/optima/panel/MobilePanel::MobilePanel.drawer */
       id='mobile-panel'
       component={props.component}
       disableEnforceFocus

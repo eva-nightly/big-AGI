@@ -8,6 +8,7 @@ import { buttonAttachSx } from '~/common/components/ButtonAttachFiles';
 
 export const ButtonAttachNewMemo = React.memo(ButtonAttachNew);
 
+// @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachNewDoc::ButtonAttachNew
 function ButtonAttachNew(props: {
   color?: ColorPaletteProp,
   isMobile?: boolean,
@@ -17,7 +18,7 @@ function ButtonAttachNew(props: {
   onAttachNew: () => void,
 }) {
   return props.isMobile ? (
-    <IconButton color={props.color} disabled={props.disabled} onClick={props.onAttachNew}>
+    <IconButton /* @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachNewDoc::ButtonAttachNew.iconbutton */ color={props.color} disabled={props.disabled} onClick={props.onAttachNew}>
       <AddRoundedIcon />
     </IconButton>
   ) : (
@@ -29,7 +30,7 @@ function ButtonAttachNew(props: {
         {/*<KeyStroke combo='Ctrl + Alt + N' sx={{ mt: 1, mb: 0.5 }} />*/}
       </Box>
     )}>
-      <Button
+      <Button /* @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachNewDoc::ButtonAttachNew.button */
         variant={props.color ? 'soft' : 'plain'}
         color={props.color || 'neutral'}
         disabled={props.disabled}

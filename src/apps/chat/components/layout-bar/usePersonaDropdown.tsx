@@ -11,6 +11,7 @@ import { useUIComplexityIsMinimal } from '~/common/stores/store-ui';
 import { usePurposeStore } from '../persona-selector/store-purposes';
 
 
+// @uxid src/apps/chat/components/layout-bar/usePersonaDropdown::PersonaDropdown
 function PersonaDropdown(props: {
   dropdownRef: React.Ref<OptimaBarControlMethods>,
   systemPurposeId: SystemPurposeId | null,
@@ -41,7 +42,7 @@ function PersonaDropdown(props: {
 
 
   return (
-    <OptimaBarDropdownMemo
+    <OptimaBarDropdownMemo /* @uxid src/apps/chat/components/layout-bar/usePersonaDropdown::PersonaDropdown.optimabardropdownmemo */
       ref={props.dropdownRef}
       items={visibleSystemPurposes}
       value={props.systemPurposeId}

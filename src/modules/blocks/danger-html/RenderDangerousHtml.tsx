@@ -17,6 +17,7 @@ export function heuristicIsBlockPureHTML(text: string): boolean {
 }
 
 
+// @uxid src/modules/blocks/danger-html/RenderDangerousHtml::RenderDangerousHtml
 export function RenderDangerousHtml(props: { html: string, sx?: SxProps }) {
 
   // state
@@ -58,10 +59,10 @@ export function RenderDangerousHtml(props: { html: string, sx?: SxProps }) {
               may pose potential risks. Click the button to view the content, if you wish to proceed.
             </Typography>
             <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end', mt: 2 }}>
-              <Button variant='plain' color='neutral' onClick={() => setShowHTML(false)}>
+              <Button /* @uxid src/modules/blocks/danger-html/RenderDangerousHtml::RenderDangerousHtml.button */ variant='plain' color='neutral' onClick={() => setShowHTML(false)}>
                 Ignore
               </Button>
-              <Button variant='solid' color='danger' onClick={() => setShowHTML(true)}>
+              <Button /* @uxid src/modules/blocks/danger-html/RenderDangerousHtml::RenderDangerousHtml.button-2 */ variant='solid' color='danger' onClick={() => setShowHTML(true)}>
                 Show HTML Page
               </Button>
             </Box>
@@ -71,11 +72,11 @@ export function RenderDangerousHtml(props: { html: string, sx?: SxProps }) {
         {/* [overlay] Buttons (dangerous-HTML) */}
         <Box className={overlayButtonsClassName} sx={overlayButtonsTopRightSx}>
 
-          <OverlayButton tooltip={showHTML ? 'Close HTML Page' : 'Show HTML Page'} variant={showHTML ? 'solid' : 'outlined'} color='danger' smShadow onClick={() => setShowHTML(!showHTML)}>
+          <OverlayButton /* @uxid src/modules/blocks/danger-html/RenderDangerousHtml::RenderDangerousHtml.overlaybutton */ tooltip={showHTML ? 'Close HTML Page' : 'Show HTML Page'} variant={showHTML ? 'solid' : 'outlined'} color='danger' smShadow onClick={() => setShowHTML(!showHTML)}>
             <WebIcon />
           </OverlayButton>
 
-          <OverlayButton tooltip='Copy Code' variant='outlined' smShadow onClick={handleCopyToClipboard}>
+          <OverlayButton /* @uxid src/modules/blocks/danger-html/RenderDangerousHtml::RenderDangerousHtml.overlaybutton-2 */ tooltip='Copy Code' variant='outlined' smShadow onClick={handleCopyToClipboard}>
             <ContentCopyIcon />
           </OverlayButton>
 

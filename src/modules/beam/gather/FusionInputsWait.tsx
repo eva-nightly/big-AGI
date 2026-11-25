@@ -13,6 +13,7 @@ import { GatherInputsWait, gatherInputsFromRays } from './beam.gather.inputs';
  * Shown while a merge waits for the replies still generating, and gone by itself once they are in.
  * Not waiting is 'Merge now' here; giving up is the Stop in the card header.
  */
+// @uxid src/modules/beam/gather/FusionInputsWait::FusionInputsWait
 export function FusionInputsWait(props: {
   beamStore: BeamStoreApi,
   inputsWait: GatherInputsWait,
@@ -33,7 +34,7 @@ export function FusionInputsWait(props: {
         Waiting for {pendingCount === 1 ? '1 more response' : `${pendingCount} responses`} ...
       </Typography>
       <Box sx={{ display: 'grid', gap: 0.5 }}>
-        <Button color={GATHER_COLOR} disabled={!canMergeNow} onClick={props.inputsWait.mergeNow} endDecorator={<PlayArrowRoundedIcon />}>
+        <Button /* @uxid src/modules/beam/gather/FusionInputsWait::FusionInputsWait.button */ color={GATHER_COLOR} disabled={!canMergeNow} onClick={props.inputsWait.mergeNow} endDecorator={<PlayArrowRoundedIcon />}>
           Proceed with just {readyCount}
         </Button>
         {!canMergeNow && <Typography level='body-xs' sx={{ textAlign: 'center' }}>

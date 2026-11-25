@@ -8,6 +8,7 @@ import { InlineTextarea } from './InlineTextarea';
 /**
  * Displays text and switches to edit mode on click
  */
+// @uxid src/common/components/InlineTextareaEditable::InlineTextareaEditable
 export function InlineTextareaEditable(props: {
   value: string;
   onSave: (newValue: string) => void | boolean | Promise<void>; // synchronous false keeps the editor open
@@ -57,7 +58,7 @@ export function InlineTextareaEditable(props: {
   // render
 
   return !isEditing ? props.renderDisplay(handleBeginEditing) : (
-    <InlineTextarea
+    <InlineTextarea /* @uxid src/common/components/InlineTextareaEditable::InlineTextareaEditable.inlinetextarea */
       initialText={props.value}
       placeholder={props.placeholder}
       {...props.editorProps}

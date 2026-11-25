@@ -26,6 +26,7 @@ type DebounceInputProps = Omit<InputProps, 'onChange'> & {
   onDebounce: (value: string) => void;
 };
 
+// @uxid src/common/components/DebouncedInput::DebouncedInput
 const DebouncedInput: React.FC<DebounceInputProps> = (props: DebounceInputProps) => {
 
   // state
@@ -100,7 +101,7 @@ const DebouncedInput: React.FC<DebounceInputProps> = (props: DebounceInputProps)
 
 
   return (
-    <Input
+    <Input /* @uxid src/common/components/DebouncedInput::DebouncedInput.input */
       {...rest}
       value={inputValue}
       onChange={handleChange}
@@ -117,7 +118,7 @@ const DebouncedInput: React.FC<DebounceInputProps> = (props: DebounceInputProps)
       endDecorator={
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           {!!inputValue && (
-            <IconButton size='sm' aria-label='Clear search' onClick={handleClear}>
+            <IconButton /* @uxid src/common/components/DebouncedInput::DebouncedInput.iconbutton */ size='sm' aria-label='Clear search' onClick={handleClear}>
               <ClearIcon sx={{ fontSize: 'xl' }} />
             </IconButton>
           )}

@@ -94,6 +94,7 @@ function _isActive(def: ShortcutDefinition, fingerprints: Set<string>): boolean 
 }
 
 
+// @uxid src/apps/settings-modal/ShortcutsModal::ShortcutKeyCombo
 function ShortcutKeyCombo(props: { def: ShortcutDefinition }) {
   const { ctrl, shift, alt, key } = props.def;
   const parts: string[] = [];
@@ -111,6 +112,7 @@ function ShortcutKeyCombo(props: { def: ShortcutDefinition }) {
 }
 
 
+// @uxid src/apps/settings-modal/ShortcutsModal::ShortcutsModal
 export function ShortcutsModal(props: { onClose: () => void }) {
 
   // external state
@@ -120,7 +122,7 @@ export function ShortcutsModal(props: { onClose: () => void }) {
   const activeFingerprints = React.useMemo(_buildActiveFingerprints, []);
 
   return (
-    <GoodModal open fullscreen={isMobile} title='Keyboard Shortcuts' onClose={props.onClose}>
+    <GoodModal /* @uxid src/apps/settings-modal/ShortcutsModal::ShortcutsModal.goodmodal */ open fullscreen={isMobile} title='Keyboard Shortcuts' onClose={props.onClose}>
       <Box sx={_styles.grid}>
         {shortcutsCatalog.map((category, ci) => (
           <React.Fragment key={category.label}>

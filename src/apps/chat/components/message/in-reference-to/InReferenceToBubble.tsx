@@ -55,6 +55,7 @@ export const inlineMessageBubbleSx: SxProps = {
 };
 
 
+// @uxid src/apps/chat/components/message/in-reference-to/InReferenceToBubble::InReferenceToBubble
 export function InReferenceToBubble(props: {
   item: DMetaReferenceItem,
   onRemove?: (item: DMetaReferenceItem) => void,
@@ -100,7 +101,7 @@ export function InReferenceToBubble(props: {
       </Typography>
 
       {!!props.onRemove && (
-        <IconButton size='sm' onClick={handleRemoveClicked} sx={{ my: -0.5, background: 'none' }}>
+        <IconButton /* @uxid src/apps/chat/components/message/in-reference-to/InReferenceToBubble::InReferenceToBubble.iconbutton */ size='sm' onClick={handleRemoveClicked} sx={{ my: -0.5, background: 'none' }}>
           <CloseRoundedIcon />
         </IconButton>
       )}

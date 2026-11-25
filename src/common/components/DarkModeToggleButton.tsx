@@ -30,6 +30,7 @@ const _nextThemeMode: Record<ThemeMode, ThemeMode> = {
 const _themeModeLabel: Record<ThemeMode, string> = {
   light: 'Light Theme',
   dark: 'Dark Theme',
+  // @uxid src/common/components/DarkModeToggleButton::_themeModeLabel.system
   system: 'System Theme',
 };
 
@@ -45,6 +46,7 @@ function _themeModeIcon(mode: ThemeMode) {
   }
 }
 
+// @uxid src/common/components/DarkModeToggleButton::DarkModeToggleButton
 export function DarkModeToggleButton(props: { hasText?: boolean, inPage?: boolean }) {
 
   // external state
@@ -63,7 +65,7 @@ export function DarkModeToggleButton(props: { hasText?: boolean, inPage?: boolea
   return (
     <GoodTooltip title={title}>
       {props.hasText || props.inPage ? (
-        <Button
+        <Button /* @uxid src/common/components/DarkModeToggleButton::DarkModeToggleButton.button */
           variant={props.inPage ? 'outlined' : 'soft'}
           color='neutral'
           onClick={handleToggleDarkMode}
@@ -73,7 +75,7 @@ export function DarkModeToggleButton(props: { hasText?: boolean, inPage?: boolea
           {_themeModeLabel[mode]}
         </Button>
       ) : (
-        <IconButton size='sm' variant='soft' onClick={handleToggleDarkMode} sx={{ ml: 'auto', /*mr: '2px',*/ my: '-0.25rem' /* absorb the menuItem padding */ }}>
+        <IconButton /* @uxid src/common/components/DarkModeToggleButton::DarkModeToggleButton.iconbutton */ size='sm' variant='soft' onClick={handleToggleDarkMode} sx={{ ml: 'auto', /*mr: '2px',*/ my: '-0.25rem' /* absorb the menuItem padding */ }}>
           {_themeModeIcon(mode)}
         </IconButton>
       )}

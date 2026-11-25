@@ -52,6 +52,7 @@ const BoxCollapsee = styled(Box, { name: 'BoxCollapsee' })({
 });
 
 
+// @uxid src/common/components/ExpanderControlledBox::ExpanderControlledBox
 export function ExpanderControlledBox({ expanded, noContain, children, ...rest }: BoxProps & { expanded: boolean, noContain?: boolean, sx?: never }) {
 
   const collapserRef = React.useRef<HTMLDivElement>(null);

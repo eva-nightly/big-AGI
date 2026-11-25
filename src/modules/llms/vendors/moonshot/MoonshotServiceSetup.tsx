@@ -22,6 +22,7 @@ const MOONSHOT_API_LINK = 'https://platform.moonshot.ai/console/api-keys';
 const KIMI_CODE_API_LINK = 'https://www.kimi.com/code/console';
 
 
+// @uxid src/modules/llms/vendors/moonshot/MoonshotServiceSetup::MoonshotServiceSetup
 export function MoonshotServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -57,21 +58,21 @@ export function MoonshotServiceSetup(props: { serviceId: DModelsServiceId }) {
         <Typography level='body-sm'>
           {isKimiCodeKey
             ? <>Using your <strong>Kimi Code subscription</strong>: listing your plan&apos;s models on the coding endpoint.</>
-            : <>Supports both <ExternalLink href={MOONSHOT_API_LINK}>Kimi Platform</ExternalLink> API
-              keys and <ExternalLink href={KIMI_CODE_API_LINK}>Kimi Code</ExternalLink> subscription
+            : <>Supports both <ExternalLink /* @uxid src/modules/llms/vendors/moonshot/MoonshotServiceSetup::MoonshotServiceSetup.externallink */ href={MOONSHOT_API_LINK}>Kimi Platform</ExternalLink> API
+              keys and <ExternalLink /* @uxid src/modules/llms/vendors/moonshot/MoonshotServiceSetup::MoonshotServiceSetup.externallink-2 */ href={KIMI_CODE_API_LINK}>Kimi Code</ExternalLink> subscription
               keys.</>}
         </Typography>
       </div>
     </ApproximateCosts>
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/moonshot/MoonshotServiceSetup::MoonshotServiceSetup.forminputkey */
       autoCompleteId='moonshot-key' label={isKimiCodeKey ? 'Kimi Code API Key' : 'Moonshot API Key'}
       rightLabel={<>{needsUserKey
         ? !moonshotKey
           ? <>
-            <Link level='body-sm' href={MOONSHOT_API_LINK} target='_blank'>Kimi Platform</Link>
+            <Link /* @uxid src/modules/llms/vendors/moonshot/MoonshotServiceSetup::MoonshotServiceSetup.link */ level='body-sm' href={MOONSHOT_API_LINK} target='_blank'>Kimi Platform</Link>
             {' · '}
-            <Link level='body-sm' href={KIMI_CODE_API_LINK} target='_blank'>Kimi Code</Link>
+            <Link /* @uxid src/modules/llms/vendors/moonshot/MoonshotServiceSetup::MoonshotServiceSetup.link-2 */ level='body-sm' href={KIMI_CODE_API_LINK} target='_blank'>Kimi Code</Link>
           </>
           : isKimiCodeKey ? 'Kimi Code subscription' : 'Kimi Platform'
         : <AlreadySet overridden={!!moonshotKey} />}
@@ -81,7 +82,7 @@ export function MoonshotServiceSetup(props: { serviceId: DModelsServiceId }) {
       placeholder='sk-... or sk-kimi-...'
     />
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/moonshot/MoonshotServiceSetup::MoonshotServiceSetup.setupformclientsidetoggle */
       visible={!!moonshotKey && !isKimiCodeKey /* the Kimi Code endpoint has no CORS */}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

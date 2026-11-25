@@ -11,6 +11,7 @@ import { useModelServiceClientSideFetch } from '~/common/stores/llms/hooks/useMo
 /**
  * Error recovery component for "Connection terminated" errors.
  */
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartError_NetDisconnected::BlockPartError_NetDisconnected
 export function BlockPartError_NetDisconnected(props: {
   disconnectionKind: 'net-client-closed' | 'net-server-closed' | 'net-unknown-closed';
   messageGeneratorLlmId?: string | null;
@@ -79,7 +80,7 @@ export function BlockPartError_NetDisconnected(props: {
               </FormHelperText>
             </Box>
 
-            <Switch
+            <Switch /* @uxid src/apps/chat/components/message/fragments-content/BlockPartError_NetDisconnected::BlockPartError_NetDisconnected.switch */
               checked={csfActive}
               onChange={(e) => csfToggle(e.target.checked)}
             />

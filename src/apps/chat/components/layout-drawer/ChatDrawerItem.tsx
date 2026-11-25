@@ -90,6 +90,7 @@ export interface ChatNavigationItemData {
   searchFrequency: number;
 }
 
+// @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem
 function ChatDrawerItem(props: {
   // NOTE: always update the Memo comparison if you add or remove props
   item: ChatNavigationItemData,
@@ -273,7 +274,7 @@ function ChatDrawerItem(props: {
     {/* Title */}
     {!isEditingTitle ? (
       // using Box to not reset the parent font scaling
-      <Box
+      <Box /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem.box */
         onDoubleClick={handleTitleEditBegin}
         sx={{
           ..._titleTextSx,
@@ -284,7 +285,7 @@ function ChatDrawerItem(props: {
         {title.trim() ? title : CHAT_NOVEL_TITLE}{beingGenerated && ' ...'}
       </Box>
     ) : (
-      <InlineTextarea
+      <InlineTextarea /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem.inlinetextarea */
         invertedColors
         maxRows={3} // long titles scroll within ~3 rows instead of making the row very tall
         initialText={title}
@@ -326,7 +327,7 @@ function ChatDrawerItem(props: {
   return (isActive || isAlsoOpen) ? (
 
     // Active or Also Open
-    <Sheet
+    <Sheet /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem.sheet */
       aria-current={isActive ? 'true' : undefined}
       variant={isActive ? 'solid' : 'outlined'}
       invertedColors={isActive}
@@ -393,11 +394,11 @@ function ChatDrawerItem(props: {
               {(folder !== undefined) && <>
                 <Tooltip arrow disableInteractive title={folder ? `Change Folder (${folder.title})` : 'Add to Folder'}>
                   {folder ? (
-                    <IconButton size='sm' onClick={handleFolderChangeBegin}>
+                    <IconButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem.iconbutton */ size='sm' onClick={handleFolderChangeBegin}>
                       <FolderIcon style={{ color: folder.color || 'inherit' }} />
                     </IconButton>
                   ) : (
-                    <FadeInButton size='sm' onClick={handleFolderChangeBegin}>
+                    <FadeInButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem.fadeinbutton */ size='sm' onClick={handleFolderChangeBegin}>
                       <FolderOutlinedIcon />
                     </FadeInButton>
                   )}
@@ -407,33 +408,33 @@ function ChatDrawerItem(props: {
               </>}
 
               <Tooltip arrow disableInteractive title='Rename'>
-                <FadeInButton size='sm' disabled={isEditingTitle || isAutoEditingTitle} onClick={handleTitleEditBegin}>
+                <FadeInButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem.fadeinbutton-2 */ size='sm' disabled={isEditingTitle || isAutoEditingTitle} onClick={handleTitleEditBegin}>
                   <EditRoundedIcon />
                 </FadeInButton>
               </Tooltip>
 
               {!isNew && <>
                 <Tooltip arrow disableInteractive color='success' title='Auto-Title'>
-                  <FadeInButton size='sm' disabled={isEditingTitle || isAutoEditingTitle} onClick={handleTitleEditAuto}>
+                  <FadeInButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem.fadeinbutton-3 */ size='sm' disabled={isEditingTitle || isAutoEditingTitle} onClick={handleTitleEditAuto}>
                     <AutoFixHighIcon />
                   </FadeInButton>
                 </Tooltip>
 
                 <Tooltip arrow disableInteractive title='Duplicate'>
-                  <FadeInButton size='sm' onClick={handleConversationBranch}>
+                  <FadeInButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem.fadeinbutton-4 */ size='sm' onClick={handleConversationBranch}>
                     <CopyAllIcon />
                   </FadeInButton>
                 </Tooltip>
 
                 <Tooltip arrow disableInteractive title='Export Chat'>
-                  <FadeInButton size='sm' onClick={handleConversationExport}>
+                  <FadeInButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem.fadeinbutton-5 */ size='sm' onClick={handleConversationExport}>
                     <FileUploadOutlinedIcon />
                   </FadeInButton>
                 </Tooltip>
 
                 {!props.item.isArchived && (
                   <Tooltip arrow disableInteractive title='Archive'>
-                    <FadeInButton size='sm' aria-label='Archive' onClick={handleConversationArchive}>
+                    <FadeInButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem.fadeinbutton-6 */ size='sm' aria-label='Archive' onClick={handleConversationArchive}>
                       <ArchiveOutlinedIcon />
                     </FadeInButton>
                   </Tooltip>
@@ -449,14 +450,14 @@ function ChatDrawerItem(props: {
             {/*{!searchFrequency && <>*/}
             {deleteArmed && (
               <Tooltip color='danger' arrow disableInteractive title='Confirm Deletion'>
-                <FadeInButton key='btn-del' variant='solid' color='success' size='sm' onClick={handleConversationDelete} sx={{ opacity: 1, mr: 0.5 }}>
+                <FadeInButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem.fadeinbutton-7 */ key='btn-del' variant='solid' color='success' size='sm' onClick={handleConversationDelete} sx={{ opacity: 1, mr: 0.5 }}>
                   <DeleteForeverIcon sx={{ color: 'danger.solidBg' }} />
                 </FadeInButton>
               </Tooltip>
             )}
 
             <Tooltip arrow disableInteractive title={deleteArmed ? 'Cancel Delete' : 'Delete'}>
-              <FadeInButton key='btn-arm' size='sm' onClick={deleteArmed ? handleDeleteButtonHide : handleDeleteButtonShow} sx={deleteArmed ? { opacity: 1 } : {}}>
+              <FadeInButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem.fadeinbutton-8 */ key='btn-arm' size='sm' onClick={deleteArmed ? handleDeleteButtonHide : handleDeleteButtonShow} sx={deleteArmed ? { opacity: 1 } : {}}>
                 {deleteArmed ? <CloseRoundedIcon /> : <DeleteOutlineIcon />}
               </FadeInButton>
             </Tooltip>
@@ -486,7 +487,7 @@ function ChatDrawerItem(props: {
       // sx={{ '--ListItem-minHeight': '2.75rem' }}
     >
 
-      <ListItemButton
+      <ListItemButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerItem::ChatDrawerItem.listitembutton */
         onClick={handleConversationActivate}
         sx={{
           border: 'none', // there's a default border of 1px and invisible.. hmm

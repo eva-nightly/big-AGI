@@ -32,6 +32,7 @@ const chipSx: SxProps = {
 };
 
 
+// @uxid src/apps/chat/components/message/BlockOpContinue::BlockOpContinue
 export function BlockOpContinue(props: {
   contentScaling: ContentScaling,
   messageRole: DMessageRole,
@@ -48,7 +49,7 @@ export function BlockOpContinue(props: {
         // showAsItalic
       />
 
-      <Chip
+      <Chip /* @uxid src/apps/chat/components/message/BlockOpContinue::BlockOpContinue.chip */
         color={ACTIVE_COLOR}
         variant='outlined'
         size={props.contentScaling === 'md' ? 'lg' : 'md'}

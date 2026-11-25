@@ -52,6 +52,7 @@ const textPageSx: SxProps = {
 };
 
 
+// @uxid src/common/components/modals/ViewDocPartModal::ViewDocPartModal
 export function ViewDocPartModal(props: {
   docPart: DMessageDocPart,
   onClose: () => void,
@@ -71,7 +72,7 @@ export function ViewDocPartModal(props: {
   // const renderAsCode = docPart.vdt === 'application/vnd.agi.code';
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/common/components/modals/ViewDocPartModal::ViewDocPartModal.goodmodal */
       open={true}
       onClose={props.onClose}
       title='Text Attachment'
