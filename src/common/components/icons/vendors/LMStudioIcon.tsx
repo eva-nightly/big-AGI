@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/vendors/LMStudioIcon::LMStudioIcon
 export function LMStudioIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 0 24 24' width='24' height='24' stroke='none' fill='currentColor' {...props}>
     <rect width='11' height='2' x='3' y='4' ry='1' />

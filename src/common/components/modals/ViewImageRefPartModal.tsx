@@ -38,6 +38,7 @@ const imageViewerContainerSx: SxProps = {
 };
 
 
+// @uxid src/common/components/modals/ViewImageRefPartModal::ViewImageRefPartModal
 export function ViewImageRefPartModal(props: {
   imageRefPart: DMessageImageRefPart,
   onClose: () => void,
@@ -99,7 +100,7 @@ export function ViewImageRefPartModal(props: {
 
   const title = altText || 'Attachment Image';
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/common/components/modals/ViewImageRefPartModal::ViewImageRefPartModal.goodmodal */
       open={true}
       onClose={props.onClose}
       title={
@@ -122,7 +123,7 @@ export function ViewImageRefPartModal(props: {
           {/*>*/}
           {/*  Copy*/}
           {/*</Button>*/}
-          <Button
+          <Button /* @uxid src/common/components/modals/ViewImageRefPartModal::ViewImageRefPartModal.button */
             variant='soft'
             color='neutral'
             loading={downloading}
@@ -138,7 +139,7 @@ export function ViewImageRefPartModal(props: {
     >
       <Box sx={imageViewerContainerSx}>
         {dataRef.reftype === 'dblob' ? (
-          <RenderImageRefDBlob
+          <RenderImageRefDBlob /* @uxid src/common/components/modals/ViewImageRefPartModal::ViewImageRefPartModal.renderimagerefdblob */
             dataRefDBlobAssetId={dataRef.dblobAssetId}
             dataRefMimeType={dataRef.mimeType}
             dataRefBytesSize={dataRef.bytesSize}

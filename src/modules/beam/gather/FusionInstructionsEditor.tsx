@@ -13,6 +13,7 @@ import { useModuleBeamStore } from '../store-module-beam';
 
 
 // Editor for a ChatInstruction
+// @uxid src/modules/beam/gather/FusionInstructionsEditor::EditableChatInstructionPrompt
 function EditableChatInstructionPrompt(props: {
   isEditable: boolean,
   itemKey: keyof GatherInstruction,
@@ -47,7 +48,7 @@ function EditableChatInstructionPrompt(props: {
 
     {/* Instruction > Key > Text | Edit */}
     {props.isEditable ? (
-      <InlineTextarea
+      <InlineTextarea /* @uxid src/modules/beam/gather/FusionInstructionsEditor::EditableChatInstructionPrompt.inlinetextarea */
         decolor
         initialText={props.itemValue}
         minRows={3}
@@ -62,7 +63,7 @@ function EditableChatInstructionPrompt(props: {
         }}
       />
     ) : (
-      <Box onDoubleClick={props.isEditable ? handleEditBegin : undefined} sx={{
+      <Box /* @uxid src/modules/beam/gather/FusionInstructionsEditor::EditableChatInstructionPrompt.box */ onDoubleClick={props.isEditable ? handleEditBegin : undefined} sx={{
         // fontSize: 'sm',
         whiteSpace: 'break-spaces',
       }}>
@@ -81,6 +82,7 @@ function EditableChatInstructionPrompt(props: {
 
 
 // Editor for any Instruction (specializes the implementation)
+// @uxid src/modules/beam/gather/FusionInstructionsEditor::EditableInstruction
 function EditableInstruction(props: {
   instruction: Instruction,
   instructionIndex: number,
@@ -103,7 +105,7 @@ function EditableInstruction(props: {
   return (instruction.type === 'gather') ? (
     <>
       {gatherShowAllPrompts && (
-        <EditableChatInstructionPrompt
+        <EditableChatInstructionPrompt /* @uxid src/modules/beam/gather/FusionInstructionsEditor::EditableInstruction.editablechatinstructionprompt */
           isEditable={props.isEditable}
           itemKey='systemPrompt'
           itemValue={instruction.systemPrompt}
@@ -111,7 +113,7 @@ function EditableInstruction(props: {
           onEdit={handleEditInstructionItem}
         />
       )}
-      <EditableChatInstructionPrompt
+      <EditableChatInstructionPrompt /* @uxid src/modules/beam/gather/FusionInstructionsEditor::EditableInstruction.editablechatinstructionprompt-2 */
         isEditable={props.isEditable}
         itemKey='userPrompt'
         itemValue={instruction.userPrompt}
@@ -165,6 +167,7 @@ const instructionsListSx: SxProps = {
 };
 
 
+// @uxid src/modules/beam/gather/FusionInstructionsEditor::FusionInstructionsEditor
 export function FusionInstructionsEditor(props: {
   beamStore: BeamStoreApi,
   factory: FusionFactorySpec,
@@ -198,7 +201,7 @@ export function FusionInstructionsEditor(props: {
         elements.push(<Divider key={'div-' + instructionIndex} sx={{ gridColumn: '1 / -1' }} />);
 
       elements.push(
-        <EditableInstruction
+        <EditableInstruction /* @uxid src/modules/beam/gather/FusionInstructionsEditor::FusionInstructionsEditor.editableinstruction */
           key={'inst-' + instructionIndex}
           isEditable
           instruction={instruction}

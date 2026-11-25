@@ -79,6 +79,7 @@ function _blockElement(paragraph: boolean, key: number, text: string) {
 }
 
 
+// @uxid src/modules/blocks/markdown/RenderMarkdownLite::RenderMarkdownLite
 export function RenderMarkdownLite(props: { content: string }) {
 
   // one scanner per mounted block: it keeps the closed blocks between renders, so each update scans only the new lines

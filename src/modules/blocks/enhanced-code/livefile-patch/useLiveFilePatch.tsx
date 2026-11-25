@@ -130,7 +130,7 @@ export function useLiveFilePatch(title: string, code: string, isPartial: boolean
 
   const button = React.useMemo(() => !isEnabled ? null : (
     <Box sx={{ ml: 'auto' }}>
-      <WorkspaceLiveFilePicker
+      <WorkspaceLiveFilePicker /* @uxid src/modules/blocks/enhanced-code/livefile-patch/useLiveFilePatch::useLiveFilePatch.workspacelivefilepicker */
         allowRemove
         autoSelectName={title}
         labelButton='Apply ...'
@@ -183,7 +183,7 @@ export function useLiveFilePatch(title: string, code: string, isPartial: boolean
         {status.mtype === 'success' && patchState.newContent && (
           <Box sx={{ display: 'flex', gap: 1 }}>
 
-            <Button
+            <Button /* @uxid src/modules/blocks/enhanced-code/livefile-patch/useLiveFilePatch::useLiveFilePatch.button */
               color='success'
               size='sm'
               variant='outlined'

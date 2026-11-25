@@ -21,14 +21,15 @@ const desktopSx: SxProps = {
 
 export const ButtonCallMemo = React.memo(ButtonCall);
 
+// @uxid src/apps/chat/components/composer/buttons/ButtonCall::ButtonCall
 function ButtonCall(props: { isMobile?: boolean, disabled?: boolean, onClick: () => void }) {
   return props.isMobile ? (
-    <IconButton variant='soft' color='primary' disabled={props.disabled} onClick={props.onClick} sx={mobileSx}>
+    <IconButton /* @uxid src/apps/chat/components/composer/buttons/ButtonCall::ButtonCall.iconbutton */ variant='soft' color='primary' disabled={props.disabled} onClick={props.onClick} sx={mobileSx}>
       <CallIcon />
     </IconButton>
   ) : (
     <Tooltip disableInteractive variant='solid' arrow placement='right' title={callConversationLegend}>
-      <Button variant='soft' color='primary' disabled={props.disabled} onClick={props.onClick} endDecorator={<CallIcon />} sx={desktopSx}>
+      <Button /* @uxid src/apps/chat/components/composer/buttons/ButtonCall::ButtonCall.button */ variant='soft' color='primary' disabled={props.disabled} onClick={props.onClick} endDecorator={<CallIcon />} sx={desktopSx}>
         Call
       </Button>
     </Tooltip>

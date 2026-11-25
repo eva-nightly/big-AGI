@@ -1,4 +1,5 @@
 import { apiKey, MODEL, save } from './lib.mjs';
+// @uxid tools/develop/aix-anthropic-eviscerate/r3clean::callJson
 async function callJson(body) {
   const res = await fetch('https://api.anthropic.com/v1/messages', { method: 'POST', headers: { 'x-api-key': apiKey(), 'anthropic-version': '2023-06-01', 'content-type': 'application/json' }, body: JSON.stringify(body) });
   let json; try { json = await res.json(); } catch { json = { parseError: true }; }
@@ -6,6 +7,7 @@ async function callJson(body) {
 }
 const METRIC = { name: 'lookup_metric', description: 'Look up the metric for an entity. Returns JSON {"entity","score","unit"}.', input_schema: { type: 'object', properties: { entity: { type: 'string' } }, required: ['entity'] }, allowed_callers: ['code_execution_20260120'] };
 const CE = { type: 'code_execution_20260120', name: 'code_execution' };
+// @uxid tools/develop/aix-anthropic-eviscerate/r3clean::prompt
 const prompt = 'Use lookup_metric to get scores for alpha, bravo, charlie and tell me the max. Do it in code.';
 
 // 1) fresh request -> expect pause (PTC)

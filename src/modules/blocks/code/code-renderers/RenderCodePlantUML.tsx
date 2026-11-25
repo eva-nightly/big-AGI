@@ -195,6 +195,7 @@ async function fetchPlantUmlSvg(plantUmlCode: string): Promise<{ svg: string | n
 }
 
 
+// @uxid src/modules/blocks/code/code-renderers/RenderCodePlantUML::RenderCodePlantUML
 export const RenderCodePlantUML = React.forwardRef(function RenderCodePlantUML(props: {
   plantUMLCode: string;
   fitContainer: boolean;
@@ -260,7 +261,7 @@ export const RenderCodePlantUML = React.forwardRef(function RenderCodePlantUML(p
       <Box component='div'>
         {onReplaceInCode && (
           <Box sx={{ display: 'grid', gap: 1, justifyItems: 'start' }}>
-            <Button
+            <Button /* @uxid src/modules/blocks/code/code-renderers/RenderCodePlantUML::RenderCodePlantUML.button */
               size='sm'
               variant='outlined'
               color='success'
@@ -287,8 +288,8 @@ export const RenderCodePlantUML = React.forwardRef(function RenderCodePlantUML(p
         <Typography component='div' level='body-sm' color='warning' sx={diagramErrorSx}>
           {conversion?.errorText || serverError?.message || 'Unknown error'}
           {!!conversion?.errorCause && !!props.allowDetails && (
-            <details>
-              <summary>Details</summary>
+            <details /* @uxid src/modules/blocks/code/code-renderers/RenderCodePlantUML::RenderCodePlantUML.details */>
+              <summary /* @uxid src/modules/blocks/code/code-renderers/RenderCodePlantUML::RenderCodePlantUML.summary */>Details</summary>
               <Box sx={{ whiteSpace: 'break-spaces' }}>{conversion.errorCause}</Box>
             </details>
           )}
@@ -303,8 +304,8 @@ export const RenderCodePlantUML = React.forwardRef(function RenderCodePlantUML(p
       <Typography component='div' level='body-sm' color='warning' sx={diagramErrorSx}>
         {conversion?.errorText || 'Unknown error'}
         {!!conversion?.errorCause && !!props.allowDetails && (
-          <details>
-            <summary>Details</summary>
+          <details /* @uxid src/modules/blocks/code/code-renderers/RenderCodePlantUML::RenderCodePlantUML.details-2 */>
+            <summary /* @uxid src/modules/blocks/code/code-renderers/RenderCodePlantUML::RenderCodePlantUML.summary-2 */>Details</summary>
             <Box sx={{ whiteSpace: 'break-spaces' }}>{conversion.errorCause}</Box>
           </details>
         )}

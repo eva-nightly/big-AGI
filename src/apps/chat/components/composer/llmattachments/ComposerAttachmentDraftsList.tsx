@@ -17,6 +17,7 @@ import { MessageFragmentOrderControl } from './MessageFragmentOrderControl';
  * Composer-specific wrapper around the generic AttachmentDraftsList.
  * Provides: the AI prompts button and the group ordering menu item.
  */
+// @uxid src/apps/chat/components/composer/llmattachments/ComposerAttachmentDraftsList::ComposerAttachmentDraftsList
 export function ComposerAttachmentDraftsList(props: {
   attachmentDrafts: AttachmentDraft[],
   attachmentDraftsStoreApi: AttachmentDraftsStoreApi,
@@ -63,7 +64,7 @@ export function ComposerAttachmentDraftsList(props: {
 
 
   return (
-    <AttachmentDraftsList
+    <AttachmentDraftsList /* @uxid src/apps/chat/components/composer/llmattachments/ComposerAttachmentDraftsList::ComposerAttachmentDraftsList.attachmentdraftslist */
       attachmentDraftsStoreApi={props.attachmentDraftsStoreApi}
       attachmentDrafts={attachmentDrafts}
       showWhenEmpty={hasOtherContent}

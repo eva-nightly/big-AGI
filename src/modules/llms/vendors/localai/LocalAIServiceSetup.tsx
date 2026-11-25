@@ -29,6 +29,7 @@ import { ModelVendorLocalAI } from './localai.vendor';
 const localAIHostSchema = z.url().startsWith('http');
 
 
+// @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup
 export function LocalAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state
@@ -58,9 +59,9 @@ export function LocalAIServiceSetup(props: { serviceId: DModelsServiceId }) {
     <ApproximateCosts>
       <div>
         <Typography level='body-sm'>
-          Please ensure your <ExternalLink href='https://localai.io'>LocalAI</ExternalLink> instance is correctly configured.
-          {checkboxExpanded && <> Visit the <Link href='https://localai.io/basics/getting_started/' target='_blank'>LocalAI website</Link> for detailed setup instructions.</>}
-          <Chip component='span' variant='outlined' sx={{ ml: 1, fontSize: '0.75rem' }} onClick={() => setCheckboxExpanded(on => !on)}>
+          Please ensure your <ExternalLink /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.externallink */ href='https://localai.io'>LocalAI</ExternalLink> instance is correctly configured.
+          {checkboxExpanded && <> Visit the <Link /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.link */ href='https://localai.io/basics/getting_started/' target='_blank'>LocalAI website</Link> for detailed setup instructions.</>}
+          <Chip /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.chip */ component='span' variant='outlined' sx={{ ml: 1, fontSize: '0.75rem' }} onClick={() => setCheckboxExpanded(on => !on)}>
             Show {checkboxExpanded ? 'less' : 'more'}
           </Chip>
         </Typography>
@@ -68,32 +69,32 @@ export function LocalAIServiceSetup(props: { serviceId: DModelsServiceId }) {
         <ExpanderControlledBox expanded={checkboxExpanded}>
           <Typography level='title-sm' sx={{ mt: 2 }}>Supported features:</Typography>
           <Typography level='body-xs' sx={{ whiteSpace: 'break-spaces', mt: 0.5, ml: '1px' }}>
-            ✅{'  '}<Link href='https://localai.io/features/text-generation/' target='_blank'>Text generation</Link> with GPTs<br />
-            ✅{'  '}<Link href='https://localai.io/features/openai-functions/' target='_blank'>Function calling</Link> by GPTs<br />
-            ✅{'  '}<Link href='https://localai.io/models/' target='_blank'>Model Gallery</Link><br />
-            ✅{'  '}<Link href='https://localai.io/features/gpt-vision/' target='_blank'>Vision API</Link> for image chats<br />
-            ✅{'  '}<Link href='https://localai.io/features/constrained_grammars/' target='_blank'>JSON output</Link><br />
-            ✅{'  '}<Link href='https://localai.io/features/image-generation' target='_blank'>Image generation</Link> (stablediffusion, dreamshaper, sd-3.5-large/medium-ggml)<br />
-            ✖️{'  '}<Link href='https://localai.io/features/audio-to-text/' target='_blank'>Speech transcription</Link><br />
-            ✖️{'  '}<Link href='https://localai.io/features/text-to-audio/' target='_blank'>Text to speech</Link><br />
-            ✖️{'  '}<Link href='https://localai.io/features/embeddings/' target='_blank'>Embeddings generation</Link><br />
+            ✅{'  '}<Link /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.link-2 */ href='https://localai.io/features/text-generation/' target='_blank'>Text generation</Link> with GPTs<br />
+            ✅{'  '}<Link /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.link-3 */ href='https://localai.io/features/openai-functions/' target='_blank'>Function calling</Link> by GPTs<br />
+            ✅{'  '}<Link /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.link-4 */ href='https://localai.io/models/' target='_blank'>Model Gallery</Link><br />
+            ✅{'  '}<Link /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.link-5 */ href='https://localai.io/features/gpt-vision/' target='_blank'>Vision API</Link> for image chats<br />
+            ✅{'  '}<Link /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.link-6 */ href='https://localai.io/features/constrained_grammars/' target='_blank'>JSON output</Link><br />
+            ✅{'  '}<Link /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.link-7 */ href='https://localai.io/features/image-generation' target='_blank'>Image generation</Link> (stablediffusion, dreamshaper, sd-3.5-large/medium-ggml)<br />
+            ✖️{'  '}<Link /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.link-8 */ href='https://localai.io/features/audio-to-text/' target='_blank'>Speech transcription</Link><br />
+            ✖️{'  '}<Link /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.link-9 */ href='https://localai.io/features/text-to-audio/' target='_blank'>Text to speech</Link><br />
+            ✖️{'  '}<Link /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.link-10 */ href='https://localai.io/features/embeddings/' target='_blank'>Embeddings generation</Link><br />
             ✖️{'  '}Voice cloning
           </Typography>
         </ExpanderControlledBox>
       </div>
     </ApproximateCosts>
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.forminputkey */
       autoCompleteId='localai-host' label='LocalAI URL'
       placeholder='e.g. http://127.0.0.1:8080'
       noKey
       required={userHostRequired}
       isError={userHostError}
-      rightLabel={backendHasHost ? <AlreadySet overridden={!!localAIHost} /> : <Link level='body-sm' href='https://localai.io' target='_blank'>Learn more</Link>}
+      rightLabel={backendHasHost ? <AlreadySet overridden={!!localAIHost} /> : <Link /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.link-11 */ level='body-sm' href='https://localai.io' target='_blank'>Learn more</Link>}
       value={localAIHost} onChange={value => updateSettings({ localAIHost: value })}
     />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.forminputkey-2 */
       autoCompleteId='localai-api-key' label='Optional API Key'
       placeholder='...'
       required={false}
@@ -101,7 +102,7 @@ export function LocalAIServiceSetup(props: { serviceId: DModelsServiceId }) {
       value={localAIKey} onChange={value => updateSettings({ localAIKey: value })}
     />
 
-    <SetupFormClientSideToggle
+    <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.setupformclientsidetoggle */
       visible={true}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}
@@ -112,7 +113,7 @@ export function LocalAIServiceSetup(props: { serviceId: DModelsServiceId }) {
     <SetupFormRefetchButton
       refetch={refetch} disabled={!shallFetchSucceed || isFetching} loading={isFetching} error={isError}
       leftButton={
-        <Button color='neutral' variant='solid' disabled={adminOpen} onClick={() => setAdminOpen(true)} startDecorator={<LocalAIIcon />}>
+        <Button /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.button */ color='neutral' variant='solid' disabled={adminOpen} onClick={() => setAdminOpen(true)} startDecorator={<LocalAIIcon />}>
           Install Models
         </Button>
       }
@@ -124,7 +125,7 @@ export function LocalAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     {isError && <InlineError error={error} />}
 
-    {adminOpen && <LocalAIAdmin access={serviceAccess} onClose={() => setAdminOpen(false)} />}
+    {adminOpen && <LocalAIAdmin /* @uxid src/modules/llms/vendors/localai/LocalAIServiceSetup::LocalAIServiceSetup.localaiadmin */ access={serviceAccess} onClose={() => setAdminOpen(false)} />}
 
   </>;
 }

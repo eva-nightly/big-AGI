@@ -51,6 +51,7 @@ const antCachePromptOnSx: SxProps = {
 };
 
 
+// @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu
 export function ChatMessageMenu(props: {
   anchor: HTMLElement,
   onClose: () => void
@@ -159,7 +160,7 @@ export function ChatMessageMenu(props: {
 
   return (
     <SubMenuHost host={subMenuHost}>
-    <CloseablePopup
+    <CloseablePopup /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.closeablepopup */
       menu anchorEl={props.anchor} onClose={props.onClose}
       dense
       darkenBackdrop={props.isMobile /* mobile: mute the busy chat behind the app's densest menu */}
@@ -181,20 +182,20 @@ export function ChatMessageMenu(props: {
         {/* Edit */}
         {onOpsMessageEditToggle && (
           <TooltipOutlined title={props.isMobile || props.isEditingText ? undefined : !doubleClickToEdit ? 'You can also Shift + Double-Click any chat response' : undefined}>
-            <MenuItem disabled={pending} onClick={onOpsMessageEditToggle} sx={{ flex: 1 }}>
+            <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem */ disabled={pending} onClick={onOpsMessageEditToggle} sx={{ flex: 1 }}>
               <ListItemDecorator>{props.isEditingText ? <CloseRoundedIcon /> : <EditRoundedIcon />}</ListItemDecorator>
               {props.isEditingText ? 'Discard' : 'Edit'}
             </MenuItem>
           </TooltipOutlined>
         )}
         {/* Copy */}
-        <MenuItem onClick={onOpsMessageCopySrc} sx={{ flex: 1 }}>
+        <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-2 */ onClick={onOpsMessageCopySrc} sx={{ flex: 1 }}>
           <ListItemDecorator><ContentCopyIcon /></ListItemDecorator>
           Copy
         </MenuItem>
         {/* Starred */}
         {onMessageUserFlagToggle && (
-          <MenuItem onClick={() => onMessageUserFlagToggle(MESSAGE_FLAG_STARRED)} sx={{ flexGrow: 0, px: 1 }}>
+          <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-3 */ onClick={() => onMessageUserFlagToggle(MESSAGE_FLAG_STARRED)} sx={{ flexGrow: 0, px: 1 }}>
             <TooltipOutlined title={!props.isUserStarred ? 'Star message - use @ to refer to it from another chat' : 'Remove star'}>
               <span style={{ display: 'flex' }}><StarredState isStarred={props.isUserStarred} /></span>
             </TooltipOutlined>
@@ -202,7 +203,7 @@ export function ChatMessageMenu(props: {
         )}
         {/* Info */}
         {!!onOpsShowInfo && (
-          <MenuItem onClick={handleShowInfo} sx={{ flexGrow: 0, px: 1 }}>
+          <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-4 */ onClick={handleShowInfo} sx={{ flexGrow: 0, px: 1 }}>
             <InfoOutlinedIcon sx={{ fontSize: 'xl' }} />
           </MenuItem>
         )}
@@ -211,7 +212,7 @@ export function ChatMessageMenu(props: {
       {/* Notify Complete */}
       {pending && onMessageUserFlagToggle && <ListDivider />}
       {pending && onMessageUserFlagToggle && (
-        <MenuItem disabled={!props.userNotifyCompleteLlmId} onClick={handleOpsToggleNotifyComplete}>
+        <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-5 */ disabled={!props.userNotifyCompleteLlmId} onClick={handleOpsToggleNotifyComplete}>
           <ListItemDecorator>{props.isUserNotifyComplete ? <NotificationsActiveIcon color='success' /> : <NotificationsOutlinedIcon />}</ListItemDecorator>
           Notify on reply
         </MenuItem>
@@ -236,43 +237,43 @@ export function ChatMessageMenu(props: {
             <ListItemDecorator><AddCircleOutlineRoundedIcon /></ListItemDecorator>
             Start a new conversation
           </MenuItem>
-          <MenuItem onClick={onOpsBranchFrom}>
+          <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-6 */ onClick={onOpsBranchFrom}>
             <ListItemDecorator><ForkRightIcon /></ListItemDecorator>
             Branch <span style={{ opacity: 0.5 }}>history up to here</span>
           </MenuItem>
         </SubMenuItem>
       )}
       {onMessageDelete && (
-        <ConfirmMenuItem label={<>Delete <span style={{ opacity: 0.5 }}>message</span></>} confirmLabel='Confirm Delete' onConfirm={handleDeleteConfirmed} />
+        <ConfirmMenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.confirmmenuitem */ label={<>Delete <span style={{ opacity: 0.5 }}>message</span></>} confirmLabel='Confirm Delete' onConfirm={handleDeleteConfirmed} />
       )}
       {onOpsMessageTruncate && (
-        <ConfirmMenuItem icon={VerticalAlignBottomIcon} label={<>Truncate <span style={{ opacity: 0.5 }}>after this</span></>} confirmLabel='Confirm Truncate' disabled={props.isBottom} onConfirm={onOpsMessageTruncate} />
+        <ConfirmMenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.confirmmenuitem-2 */ icon={VerticalAlignBottomIcon} label={<>Truncate <span style={{ opacity: 0.5 }}>after this</span></>} confirmLabel='Confirm Truncate' disabled={props.isBottom} onConfirm={onOpsMessageTruncate} />
       )}
 
       {!pending && <ListDivider />}
       {/* Saved presentation of this message */}
       {!pending && onOpsMessagePresentationChange && (
-        <MenuItem onClick={event => onOpsMessagePresentationChange(event, { textMode: props.isViewMarkdown ? 'plain' : 'markdown' })}>
+        <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-7 */ onClick={event => onOpsMessagePresentationChange(event, { textMode: props.isViewMarkdown ? 'plain' : 'markdown' })}>
           <ListItemDecorator><TextFieldsIcon /></ListItemDecorator>
           {props.isViewMarkdown ? 'View as text' : 'View as markdown'}
         </MenuItem>
       )}
       {Release.IsNodeDevBuild && !pending && onOpsMessagePresentationChange && (
-        <MenuItem onClick={event => onOpsMessagePresentationChange(event, { fragmentGrouping: props.isViewUngrouped ? 'grouped' : 'ungrouped' })}>
+        <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-8 */ onClick={event => onOpsMessagePresentationChange(event, { fragmentGrouping: props.isViewUngrouped ? 'grouped' : 'ungrouped' })}>
           <ListItemDecorator><PhTreeStructure /></ListItemDecorator>
           {props.isViewUngrouped ? 'Group fragments' : 'Ungroup fragments'}
         </MenuItem>
       )}
       {/* Aix Skip Message */}
       {!pending && onMessageUserFlagToggle && (
-        <MenuItem onClick={() => onMessageUserFlagToggle(MESSAGE_FLAG_AIX_SKIP)}>
+        <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-9 */ onClick={() => onMessageUserFlagToggle(MESSAGE_FLAG_AIX_SKIP)}>
           <ListItemDecorator>{props.isUserMessageSkipped ? <VisibilityOffIcon sx={{ color: 'danger.plainColor' }} /> : <VisibilityOffIcon sx={{ color: 'neutral.plainDisabledColor' }} /> /*<VisibilityIcon />*/}</ListItemDecorator>
           {props.isUserMessageSkipped ? 'Unskip' : 'Skip message'}
         </MenuItem>
       )}
       {/* Anthropic Breakpoint Toggle */}
       {!pending && props.showVndAntCaching && (
-        <MenuItem onClick={() => onMessageUserFlagToggle?.(MESSAGE_FLAG_VND_ANT_CACHE_USER, 2)}>
+        <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-10 */ onClick={() => onMessageUserFlagToggle?.(MESSAGE_FLAG_VND_ANT_CACHE_USER, 2)}>
           <ListItemDecorator><AnthropicIcon sx={props.isVndAndCacheUser ? antCachePromptOnSx : antCachePromptOffSx} /></ListItemDecorator>
           {props.isVndAndCacheUser ? 'Do not cache' : <>Cache <span style={{ opacity: 0.5 }}>up to here</span></>}
         </MenuItem>
@@ -298,13 +299,13 @@ export function ChatMessageMenu(props: {
             <Typography level='body-sm'>Add Message</Typography>
           </ListItem>
           {onOpsTextDiagram && (
-            <MenuItem onClick={onOpsTextDiagram} disabled={!props.canTextDiagram}>
+            <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-11 */ onClick={onOpsTextDiagram} disabled={!props.canTextDiagram}>
               <ListItemDecorator><PhTreeStructure color='success' /></ListItemDecorator>
               Create Diagram ...
             </MenuItem>
           )}
           {onOpsTextImagine && (
-            <MenuItem onClick={onOpsTextImagine} disabled={!props.canTextImagine || props.isTextImagining}>
+            <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-12 */ onClick={onOpsTextImagine} disabled={!props.canTextImagine || props.isTextImagining}>
               <ListItemDecorator>{props.isTextImagining ? <CircularProgress color='success' size='sm' sx={{ '--CircularProgress-size': '1.25rem' }} /> : <FormatPaintOutlinedIcon color='success' />}</ListItemDecorator>
               Create Picture
             </MenuItem>
@@ -312,14 +313,14 @@ export function ChatMessageMenu(props: {
         </SubMenuItem>
       )}
       {onOpsTextSpeak && (
-        <MenuItem disabled={pending} onClick={handleSpeakAndClose}>
+        <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-13 */ disabled={pending} onClick={handleSpeakAndClose}>
           <ListItemDecorator>
             {/*{props.isTextSpeaking ? <CircularProgress color='success' size='sm' sx={{ '--CircularProgress-size': '1.25rem' }} /> : <PhVoice color={pending ? undefined : 'success'} />}*/}
             <PhVoice color={pending ? undefined : 'success'} />
           </ListItemDecorator>
           Speak
           {/*<GoodTooltip arrow title={props.isMobile ? null : props.onPersonaVoiceSettings ? 'Persona Voice' : 'App Voice Settings'} placement='top'>*/}
-          <IconButton
+          <IconButton /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.iconbutton */
             size='sm'
             variant='soft'
             disabled={pending}
@@ -346,7 +347,7 @@ export function ChatMessageMenu(props: {
       {/* Retry/Beam Edit */}
       {(onOpsAssistantFrom || onOpsBeamFrom) && <ListDivider />}
       {onOpsAssistantFrom && (
-        <MenuItem disabled={fromSystem} onClick={onOpsAssistantFrom}>
+        <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-14 */ disabled={fromSystem} onClick={onOpsAssistantFrom}>
           <ListItemDecorator>{fromAssistant ? <ReplayRoundedIcon color='primary' /> : <TelegramIcon color='primary' />}</ListItemDecorator>
           {!fromAssistant
             ? <>Restart <span style={{ opacity: 0.5 }}>from here</span></>
@@ -356,7 +357,7 @@ export function ChatMessageMenu(props: {
         </MenuItem>
       )}
       {onOpsBeamFrom && (
-        <MenuItem disabled={fromSystem} onClick={onOpsBeamFrom}>
+        <MenuItem /* @uxid src/apps/chat/components/message/ChatMessageMenu::ChatMessageMenu.menuitem-15 */ disabled={fromSystem} onClick={onOpsBeamFrom}>
           <ListItemDecorator>
             <ChatBeamIcon color={fromSystem ? undefined : 'primary'} />
           </ListItemDecorator>

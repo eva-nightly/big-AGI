@@ -7,6 +7,7 @@ import { Box, CircularProgress } from '@mui/joy';
 /**
  * 64x64 logo with a circular progress indicator around it
  */
+// @uxid src/common/components/LogoProgress::LogoProgress
 export function LogoProgress(props: { showProgress: boolean }) {
   return <Box sx={{
     width: 64,

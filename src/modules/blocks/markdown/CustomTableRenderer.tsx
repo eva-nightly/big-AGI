@@ -45,6 +45,7 @@ interface TableRendererProps {
  *
  * Optimized: table data extraction happens only on button click, not on every render.
  */
+// @uxid src/modules/blocks/markdown/CustomTableRenderer::CustomTableRenderer
 export function CustomTableRenderer({ children, node, ...props }: TableRendererProps) {
 
   const tableRef = React.useRef<HTMLTableElement>(null);
@@ -90,7 +91,7 @@ export function CustomTableRenderer({ children, node, ...props }: TableRendererP
     {/* Download CSV link and Copy Markdown Button */}
     <Box data-agi-no-copy /* do not copy these buttons */ sx={_styles.buttons}>
       {/* Download button*/}
-      <Chip
+      <Chip /* @uxid src/modules/blocks/markdown/CustomTableRenderer::CustomTableRenderer.chip */
         size='sm'
         variant='soft'
         onClick={handleDownloadCsv}
@@ -101,7 +102,7 @@ export function CustomTableRenderer({ children, node, ...props }: TableRendererP
       </Chip>
 
       {/* Button to copy markdown */}
-      <Chip
+      <Chip /* @uxid src/modules/blocks/markdown/CustomTableRenderer::CustomTableRenderer.chip-2 */
         size='sm'
         variant='soft'
         onClick={handleCopyMarkdown}

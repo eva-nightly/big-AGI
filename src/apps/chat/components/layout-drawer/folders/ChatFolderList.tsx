@@ -60,6 +60,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/layout-drawer/folders/ChatFolderList::ChatFolderList
 export function ChatFolderList(props: {
   isMobile: boolean;
   folders: DFolder[];
@@ -117,7 +118,7 @@ export function ChatFolderList(props: {
         {/* Zero State message */}
         {displayZeroState && (
           <ListItem>
-            <ListItemButton variant='plain' sx={_styles.zeroStateButton} onClick={() => setIsAddingFolder(true)}>
+            <ListItemButton /* @uxid src/apps/chat/components/layout-drawer/folders/ChatFolderList::ChatFolderList.listitembutton */ variant='plain' sx={_styles.zeroStateButton} onClick={() => setIsAddingFolder(true)}>
               <CreateNewFolderOutlinedIcon />
               Create folders to organize chats
             </ListItemButton>
@@ -127,7 +128,7 @@ export function ChatFolderList(props: {
         {/* 'All' Button */}
         {(!!activeFolderId || !!folders.length) && (
           <ListItem>
-            <ListItemButton
+            <ListItemButton /* @uxid src/apps/chat/components/layout-drawer/folders/ChatFolderList::ChatFolderList.listitembutton-2 */
               selected={!activeFolderId}
               onClick={(event) => {
                 event.stopPropagation(); // Prevent the ListItemButton's onClick from firing
@@ -142,7 +143,7 @@ export function ChatFolderList(props: {
         )}
 
         {/* Sortable folders */}
-        <DndContext
+        <DndContext /* @uxid src/apps/chat/components/layout-drawer/folders/ChatFolderList::ChatFolderList.dndcontext */
           sensors={sensors}
           collisionDetection={closestCenter}
           onDragEnd={handleDragEnd}
@@ -155,7 +156,7 @@ export function ChatFolderList(props: {
 
             {/* Folder Items */}
             {folders.map((folder) => (
-              <FolderListItem
+              <FolderListItem /* @uxid src/apps/chat/components/layout-drawer/folders/ChatFolderList::ChatFolderList.folderlistitem */
                 key={folder.id}
                 folder={folder}
                 chatCount={folderChatCounts?.[folder.id] || 0}

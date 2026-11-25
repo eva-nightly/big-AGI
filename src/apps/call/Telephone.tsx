@@ -90,6 +90,7 @@ const _chipRowEndSx: SxProps = {
 };
 
 
+// @uxid src/apps/call/Telephone::CallMenu
 function CallMenu(props: {
   pushToTalk: boolean,
   setPushToTalk: (pushToTalk: boolean) => void,
@@ -108,7 +109,7 @@ function CallMenu(props: {
   return <>
 
     <OptimaPanelGroupedList title='Window'>
-      <MenuItem onClick={toggleGrayUI}>
+      <MenuItem /* @uxid src/apps/call/Telephone::CallMenu.menuitem */ onClick={toggleGrayUI}>
         <ListItemDecorator><Checkbox size='md' color={grayUI ? 'primary' : 'neutral'} variant={grayUI ? 'plain' : 'outlined'} checked={grayUI} /></ListItemDecorator>
         Grayed UI
       </MenuItem>
@@ -117,7 +118,7 @@ function CallMenu(props: {
     <OptimaPanelGroupedList title='Microphone'>
 
       <ListItem sx={_chipRowSx}>
-        <FormChipGroupControl
+        <FormChipGroupControl /* @uxid src/apps/call/Telephone::CallMenu.formchipgroupcontrol */
           size='sm'
           title='Start'
           renderVariant='solid'
@@ -136,7 +137,7 @@ function CallMenu(props: {
       )}
 
       <ListItem sx={_chipRowSx}>
-        <FormChipGroupControl
+        <FormChipGroupControl /* @uxid src/apps/call/Telephone::CallMenu.formchipgroupcontrol-2 */
           size='sm'
           title='Send after'
           renderVariant='solid'
@@ -148,7 +149,7 @@ function CallMenu(props: {
 
       {sendAfterMode === 'custom' && (
         <ListItem sx={_chipRowEndSx}>
-          <FormChipGroupControl
+          <FormChipGroupControl /* @uxid src/apps/call/Telephone::CallMenu.formchipgroupcontrol-3 */
             size='sm'
             title=''
             renderVariant='solid'
@@ -165,6 +166,7 @@ function CallMenu(props: {
 }
 
 
+// @uxid src/apps/call/Telephone::Telephone
 export function Telephone(props: {
   callIntent: AppCallIntent,
   backToContacts: () => void,
@@ -431,7 +433,7 @@ export function Telephone(props: {
           {isConnected ? personaName : 'Hello'}
         </Typography>
 
-        <CallAvatar
+        <CallAvatar /* @uxid src/apps/call/Telephone::Telephone.callavatar */
           symbol={persona?.symbol || '?'}
           imageUrl={persona?.imageUri}
           isRinging={isRinging}
@@ -468,11 +470,11 @@ export function Telephone(props: {
 
           <ScrollToBottom stickToBottomInitial>
 
-            <Box onCopy={clipboardInterceptCtrlCForCleanup} sx={{ minHeight: '100%', p: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
+            <Box /* @uxid src/apps/call/Telephone::Telephone.box */ onCopy={clipboardInterceptCtrlCForCleanup} sx={{ minHeight: '100%', p: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
 
               {/* Call Messages [] */}
               {callMessages.map((message) =>
-                <CallMessage
+                <CallMessage /* @uxid src/apps/call/Telephone::Telephone.callmessage */
                   key={message.id}
                   text={messageFragmentsReduceText(message.fragments)}
                   variant={message.role === 'assistant' ? 'solid' : 'soft'}
@@ -483,7 +485,7 @@ export function Telephone(props: {
 
               {/* Persona streaming text... */}
               {!!personaTextInterim && (
-                <CallMessage
+                <CallMessage /* @uxid src/apps/call/Telephone::Telephone.callmessage-2 */
                   text={personaTextInterim}
                   variant='outlined'
                   color='neutral'
@@ -493,7 +495,7 @@ export function Telephone(props: {
 
               {/* Listening... */}
               {recognitionState.isActive && (
-                <CallMessage
+                <CallMessage /* @uxid src/apps/call/Telephone::Telephone.callmessage-3 */
                   text={<>{speechInterim?.transcript.trim() || null}{speechInterim?.interimTranscript.trim() ? <i> {speechInterim.interimTranscript}</i> : null}</>}
                   variant={(recognitionState.hasSpeech || !!speechInterim?.transcript) ? 'soft' : 'outlined'}
                   color='primary'
@@ -516,13 +518,13 @@ export function Telephone(props: {
     <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-evenly', gap: 4 }}>
 
       {/* [ringing] Decline / Accept */}
-      {isRinging && <CallButton Icon={CallEndIcon} text='Decline' color='danger' variant='solid' onClick={() => setStage('declined')} />}
-      {isRinging && isEnabled && <CallButton Icon={CallIcon} text='Accept' color='success' variant='solid' onClick={() => setStage('connected')} />}
+      {isRinging && <CallButton /* @uxid src/apps/call/Telephone::Telephone.callbutton */ Icon={CallEndIcon} text='Decline' color='danger' variant='solid' onClick={() => setStage('declined')} />}
+      {isRinging && isEnabled && <CallButton /* @uxid src/apps/call/Telephone::Telephone.callbutton-2 */ Icon={CallIcon} text='Accept' color='success' variant='solid' onClick={() => setStage('connected')} />}
 
       {/* [Calling] Hang / PTT (mute not enabled yet) */}
-      {isConnected && <CallButton Icon={CallEndIcon} text='Hang up' color='danger' variant='soft' onClick={handleCallStop} />}
+      {isConnected && <CallButton /* @uxid src/apps/call/Telephone::Telephone.callbutton-3 */ Icon={CallEndIcon} text='Hang up' color='danger' variant='soft' onClick={handleCallStop} />}
       {isConnected && (pushToTalk ? (
-          <CallButton
+          <CallButton /* @uxid src/apps/call/Telephone::Telephone.callbutton-4 */
             Icon={MicIcon} onClick={toggleRecognition}
             text={recognitionState.hasSpeech ? 'Listening...' : recognitionState.isActive ? 'Listening' : 'Push To Talk'}
             variant={recognitionState.hasSpeech ? 'solid' : recognitionState.isActive ? 'soft' : 'outlined'}
@@ -536,8 +538,8 @@ export function Telephone(props: {
       )}
 
       {/* [ended] Back / Call Again */}
-      {(isEnded || isDeclined) && <CallButton Icon={ArrowBackIcon} text='Back' variant='soft' onClick={() => props.callIntent.backTo === 'app-chat' ? navigateToIndex() : props.backToContacts()} />}
-      {(isEnded || isDeclined) && <CallButton Icon={CallIcon} text='Call Again' color='success' variant='soft' onClick={() => setStage('connected')} />}
+      {(isEnded || isDeclined) && <CallButton /* @uxid src/apps/call/Telephone::Telephone.callbutton-5 */ Icon={ArrowBackIcon} text='Back' variant='soft' onClick={() => props.callIntent.backTo === 'app-chat' ? navigateToIndex() : props.backToContacts()} />}
+      {(isEnded || isDeclined) && <CallButton /* @uxid src/apps/call/Telephone::Telephone.callbutton-6 */ Icon={CallIcon} text='Call Again' color='success' variant='soft' onClick={() => setStage('connected')} />}
 
     </Box>
 

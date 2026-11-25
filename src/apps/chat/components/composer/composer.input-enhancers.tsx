@@ -90,6 +90,7 @@ const _thumbSx: SxProps = {
   flexShrink: 0,
 } as const;
 
+// @uxid src/apps/chat/components/composer/composer.input-enhancers::VideoUrlPendingChip
 function VideoUrlPendingChip(props: { part: Parameters<AttachmentInputEnhancer['ownsPart']>[0], onRemove: () => void }) {
 
   const resource = props.part.resource;
@@ -116,7 +117,7 @@ function VideoUrlPendingChip(props: { part: Parameters<AttachmentInputEnhancer['
         </Typography>
       </Tooltip>
 
-      <IconButton size='sm' onClick={props.onRemove} sx={{ flexShrink: 0, background: 'none' }}>
+      <IconButton /* @uxid src/apps/chat/components/composer/composer.input-enhancers::VideoUrlPendingChip.iconbutton */ size='sm' onClick={props.onRemove} sx={{ flexShrink: 0, background: 'none' }}>
         <CloseRoundedIcon />
       </IconButton>
 
@@ -126,6 +127,7 @@ function VideoUrlPendingChip(props: { part: Parameters<AttachmentInputEnhancer['
 
 
 /** Capability hint: a video URL was pasted on a non-video model - offer the editorial pick, or Models setup. */
+// @uxid src/apps/chat/components/composer/composer.input-enhancers::VideoUrlDisabledHint
 function VideoUrlDisabledHint(props: AttachmentEnhancerHintItem) {
 
   // reactive: upgrades in-place from the setup pointer when the user adds a capable model (e.g. via the Models button)
@@ -153,11 +155,11 @@ function VideoUrlDisabledHint(props: AttachmentEnhancerHintItem) {
         {candidate ? EditorialVideoInput.hintSwitch : EditorialVideoInput.hintSetup}
       </Typography>
 
-      <Button size='sm' color='neutral' onClick={candidate ? handleSwitchAndConvert : optimaOpenModels} sx={{ flexShrink: 0 }}>
+      <Button /* @uxid src/apps/chat/components/composer/composer.input-enhancers::VideoUrlDisabledHint.button */ size='sm' color='neutral' onClick={candidate ? handleSwitchAndConvert : optimaOpenModels} sx={{ flexShrink: 0 }}>
         {candidate ? EditorialVideoInput.actionSwitch(candidate.label) : EditorialVideoInput.actionSetup}
       </Button>
 
-      <IconButton size='sm' onClick={props.onDismiss} sx={{ flexShrink: 0, background: 'none' }}>
+      <IconButton /* @uxid src/apps/chat/components/composer/composer.input-enhancers::VideoUrlDisabledHint.iconbutton */ size='sm' onClick={props.onDismiss} sx={{ flexShrink: 0, background: 'none' }}>
         <CloseRoundedIcon />
       </IconButton>
 

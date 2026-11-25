@@ -88,6 +88,7 @@ function parseSSEFrames(raw: string): SSEFrame[] {
 
 // -- Capture --
 
+// @uxid tools/develop/aix-gemini-antigravity-probe/probe::captureToFile
 async function captureToFile(prompt: string, outPath: string): Promise<void> {
   const API_KEY = process.env.GEMINI_API_KEY;
   if (!API_KEY) throw new Error('GEMINI_API_KEY not set');
@@ -249,6 +250,7 @@ function printParticleSummary(prefix: string, log: LogEntry[], warnings: { msg: 
 
 // -- Recovery path: JSON GET capture + NS (non-streaming) replay --
 
+// @uxid tools/develop/aix-gemini-antigravity-probe/probe::fetchInteractionJson
 async function fetchInteractionJson(id: string, outPath: string): Promise<void> {
   const API_KEY = process.env.GEMINI_API_KEY;
   if (!API_KEY) throw new Error('GEMINI_API_KEY not set');

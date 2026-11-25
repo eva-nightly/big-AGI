@@ -193,6 +193,7 @@ function renderOutput(versions) {
   const keys = Object.keys(versions).sort();
   // IDE: block auto-injection of TypeScript into the template below (its relative import is meaningless from here)
   // language=TEXT
+  // @uxid tools/develop/gen-llms-defs/generate-llms-defs::renderOutput.prompt
   return `// GENERATED FILE - DO NOT EDIT
 // Per-vendor model-defs versions, derived from the runtime semantics of the files claimed by
 // ../llms.defs.manifest.ts - regenerate with: node tools/develop/gen-llms-defs/generate-llms-defs.mjs

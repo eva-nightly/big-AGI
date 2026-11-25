@@ -27,6 +27,7 @@ const _styles = {
  * Mobile section selector: a single dropdown listing every nav node (sub-items indented),
  * replacing the side-by-side panes used on desktop.
  */
+// @uxid src/apps/settings-modal/SettingsNavSelect::SettingsNavSelect
 export function SettingsNavSelect(props: {
   value: SettingsNavId,
   onSelect: (id: SettingsNavId) => void,
@@ -51,7 +52,7 @@ export function SettingsNavSelect(props: {
     <Box sx={_styles.box}>
 
       {backArrowId && (
-        <IconButton
+        <IconButton /* @uxid src/apps/settings-modal/SettingsNavSelect::SettingsNavSelect.iconbutton */
           // color='primary'
           onClick={() => onSelect(backArrowId)}
         >
@@ -59,7 +60,7 @@ export function SettingsNavSelect(props: {
         </IconButton>
       )}
 
-      <Select<SettingsNavId>
+      <Select /* @uxid src/apps/settings-modal/SettingsNavSelect::SettingsNavSelect.select */<SettingsNavId>
         value={props.value}
         onChange={handleChange}
         // color='primary'

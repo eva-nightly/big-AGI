@@ -43,6 +43,7 @@ const _selectSlotProps: SelectSlotsAndSlotProps<false>['slotProps'] = {
 } as const;
 
 
+// @uxid src/modules/speex/components/SpeexVoiceSelect::SpeexVoiceSelect
 export function SpeexVoiceSelect(props: {
   engine: DSpeexEngineAny;
   voiceId: string | null;
@@ -83,7 +84,7 @@ export function SpeexVoiceSelect(props: {
 
     {refetch && (
       <TooltipOutlined color={error ? 'danger' : undefined} title={error ? <div style={{ whiteSpace: 'pre-wrap' }}>{error}</div> : 'Refresh voices'}>
-        <IconButton
+        <IconButton /* @uxid src/modules/speex/components/SpeexVoiceSelect::SpeexVoiceSelect.iconbutton */
           color={error ? 'danger' : 'neutral'}
           variant='plain'
           disabled={isLoading}
@@ -94,7 +95,7 @@ export function SpeexVoiceSelect(props: {
       </TooltipOutlined>
     )}
 
-    <Select
+    <Select /* @uxid src/modules/speex/components/SpeexVoiceSelect::SpeexVoiceSelect.select */
       variant='outlined'
       disabled={disabled || isLoading || voices.length === 0}
       value={voiceId ?? null}

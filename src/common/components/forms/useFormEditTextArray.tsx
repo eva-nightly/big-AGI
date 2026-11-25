@@ -22,7 +22,7 @@ export function useFormEditTextArray(initialStrings: string[], titles: string[])
     <FormControl key={i} orientation='vertical'>
       <FormLabelStart title={i > 0 ? `${i}. ${titles[i]}` : titles[i]} />
       <Box sx={{ display: 'flex', alignItems: 'start', gap: 1 }}>
-        <Textarea
+        <Textarea /* @uxid src/common/components/forms/useFormEditTextArray::useFormEditTextArray.textarea */
           value={text}
           size='sm'
           variant='outlined'
@@ -30,7 +30,7 @@ export function useFormEditTextArray(initialStrings: string[], titles: string[])
           sx={{ flex: 1, backgroundColor: 'background.level1', boxShadow: 'none' }}
         />
         <Tooltip title='Reset'>
-          <IconButton size='sm' onClick={() => editString(i, initialStrings[i])}>
+          <IconButton /* @uxid src/common/components/forms/useFormEditTextArray::useFormEditTextArray.iconbutton */ size='sm' onClick={() => editString(i, initialStrings[i])}>
             <ReplayRoundedIcon />
           </IconButton>
         </Tooltip>

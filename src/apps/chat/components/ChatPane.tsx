@@ -61,6 +61,7 @@ const _styles = {
  */
 export const ChatPaneMemo = React.memo(ChatPane);
 
+// @uxid src/apps/chat/components/ChatPane::ChatPane
 function ChatPane(props: {
   paneId: string,
   paneIdx: number,
@@ -115,7 +116,7 @@ function ChatPane(props: {
   const _sepId = `sep-pane-${paneIdx}`;
   return <WorkspaceIdProvider conversationId={conversationId /*isFocused ? conversationId : null*/}><ErrorBoundary>
 
-    <Panel
+    <Panel /* @uxid src/apps/chat/components/ChatPane::ChatPane.panel */
       id={_keyAndId}
       order={paneIdx}
       collapsible={panesCount === 2}
@@ -157,7 +158,7 @@ function ChatPane(props: {
     >
 
       {isMultiPane && !props.isZenMode && (
-        <PaneTitleOverlayMemo
+        <PaneTitleOverlayMemo /* @uxid src/apps/chat/components/ChatPane::ChatPane.panetitleoverlaymemo */
           paneIdx={paneIdx}
           conversationId={conversationId}
           isFocused={isFocused}
@@ -174,7 +175,7 @@ function ChatPane(props: {
       >
 
         {!isBeamOpen && (<RenderDecayZone>
-          <ChatMessageListMemo
+          <ChatMessageListMemo /* @uxid src/apps/chat/components/ChatPane::ChatPane.chatmessagelistmemo */
             conversationId={conversationId}
             conversationHandler={chatHandler}
             capabilityHasT2I={props.capabilityHasT2I}

@@ -19,6 +19,7 @@ import { ModelVendorSakanaAI } from './sakanaai.vendor';
 const SAKANA_REG_LINK = 'https://console.sakana.ai/get-started';
 
 
+// @uxid src/modules/llms/vendors/sakanaai/SakanaAIServiceSetup::SakanaAIServiceSetup
 export function SakanaAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state
@@ -48,10 +49,10 @@ export function SakanaAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/sakanaai/SakanaAIServiceSetup::SakanaAIServiceSetup.forminputkey */
       autoCompleteId='sakana-key' label='Sakana AI Key'
       rightLabel={<>{needsUserKey
-        ? !sakanaKey && <Link level='body-sm' href={SAKANA_REG_LINK} target='_blank'>request Key</Link>
+        ? !sakanaKey && <Link /* @uxid src/modules/llms/vendors/sakanaai/SakanaAIServiceSetup::SakanaAIServiceSetup.link */ level='body-sm' href={SAKANA_REG_LINK} target='_blank'>request Key</Link>
         : <AlreadySet overridden={!!sakanaKey} />}
       </>}
       value={sakanaKey} onChange={value => updateSettings({ sakanaKey: value })}
@@ -59,7 +60,7 @@ export function SakanaAIServiceSetup(props: { serviceId: DModelsServiceId }) {
       placeholder='fish_...'
     />
 
-    {showAdvanced && <FormTextField
+    {showAdvanced && <FormTextField /* @uxid src/modules/llms/vendors/sakanaai/SakanaAIServiceSetup::SakanaAIServiceSetup.formtextfield */
       autoCompleteId='sakana-host'
       title='API Host'
       tooltip={`An alternative Sakana AI API endpoint to use instead of the default 'api.sakana.ai'.`}

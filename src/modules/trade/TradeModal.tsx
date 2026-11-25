@@ -9,9 +9,10 @@ import { ImportChats, ImportConfig } from './ImportChats';
 
 export type TradeConfig = ImportConfig | ExportConfig;
 
+// @uxid src/modules/trade/TradeModal::TradeModal
 export function TradeModal(props: { config: TradeConfig, onConversationActivate: (conversationId: DConversationId) => void, onClose: () => void }) {
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/modules/trade/TradeModal::TradeModal.goodmodal */
       open onClose={props.onClose}
       dividers
       title={<>
@@ -21,11 +22,11 @@ export function TradeModal(props: { config: TradeConfig, onConversationActivate:
     >
 
       {props.config.dir === 'import' && (
-        <ImportChats onConversationActivate={props.onConversationActivate} onClose={props.onClose} />
+        <ImportChats /* @uxid src/modules/trade/TradeModal::TradeModal.importchats */ onConversationActivate={props.onConversationActivate} onClose={props.onClose} />
       )}
 
       {props.config.dir === 'export' && (
-        <ExportChats config={props.config} onClose={props.onClose} />
+        <ExportChats /* @uxid src/modules/trade/TradeModal::TradeModal.exportchats */ config={props.config} onClose={props.onClose} />
       )}
 
     </GoodModal>

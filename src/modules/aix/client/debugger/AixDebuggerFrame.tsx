@@ -84,6 +84,7 @@ const _styles = {
 } as const satisfies Record<string, SxProps>;
 
 
+// @uxid src/modules/aix/client/debugger/AixDebuggerFrame::AixDebuggerFrame
 export function AixDebuggerFrame(props: {
   frame: AixClientDebugger.Frame;
 }) {
@@ -134,7 +135,7 @@ export function AixDebuggerFrame(props: {
 
       {/* Headers */}
       <Sheet variant='outlined' color='warning' sx={_styles.requestSheet}>
-        <Typography color='warning' variant='soft' level='title-sm' sx={_styles.sheetTitleClickable} onClick={handleToggleShowHeaders}>
+        <Typography /* @uxid src/modules/aix/client/debugger/AixDebuggerFrame::AixDebuggerFrame.typography */ color='warning' variant='soft' level='title-sm' sx={_styles.sheetTitleClickable} onClick={handleToggleShowHeaders}>
           <span>-&gt; Headers</span>
           <Box component='span' typography='body-xs'>{showHeaders ? 'hide' : 'show headers'}</Box>
         </Typography>
@@ -157,7 +158,7 @@ export function AixDebuggerFrame(props: {
 
       {/* Body */}
       <Sheet variant='outlined' color='primary' sx={_styles.requestSheet}>
-        <Typography color='primary' variant='soft' level='title-sm' sx={_styles.sheetTitleClickable} onClick={handleToggleShowBody}>
+        <Typography /* @uxid src/modules/aix/client/debugger/AixDebuggerFrame::AixDebuggerFrame.typography-2 */ color='primary' variant='soft' level='title-sm' sx={_styles.sheetTitleClickable} onClick={handleToggleShowBody}>
           <span>-&gt; Body</span>
           {frame.bodySize > 0 && <span>{frame.bodySize.toLocaleString()} bytes</span>}
         </Typography>
@@ -180,7 +181,7 @@ export function AixDebuggerFrame(props: {
 
       {/* Particles List */}
       <Sheet variant='outlined' sx={_styles.requestSheet}>
-        <Typography level='title-sm' variant='soft' color='neutral' sx={_styles.sheetTitleClickable} onClick={handleToggleShowParticles}>
+        <Typography /* @uxid src/modules/aix/client/debugger/AixDebuggerFrame::AixDebuggerFrame.typography-3 */ level='title-sm' variant='soft' color='neutral' sx={_styles.sheetTitleClickable} onClick={handleToggleShowParticles}>
           <span>&lt;- Particles {!frame.isComplete && ' - In Progress...'}{frame.particles.length > 0 && ` (${frame.particles.length})`}</span>
           <Box component='span' typography='body-xs'>{showParticles ? 'hide' : 'show particles'}</Box>
         </Typography>

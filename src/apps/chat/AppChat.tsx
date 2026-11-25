@@ -94,6 +94,7 @@ const FlattenerModalLazy = React.lazy(() => import('~/modules/aifn/flatten/Flatt
 const TradeModalLazy = React.lazy(() => import('~/modules/trade/TradeModal').then(module => ({ default: module.TradeModal })));
 
 
+// @uxid src/apps/chat/AppChat::AppChat
 export function AppChat() {
 
   // state
@@ -361,7 +362,7 @@ export function AppChat() {
 
   const handleConversationReset = React.useCallback(async (conversationId: DConversationId) => {
     if (await showPromisedOverlay('chat-reset-confirmation', { rejectWithValue: false }, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/apps/chat/AppChat::AppChat-2.confirmationmodal */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         confirmationText='This will clear all messages while keeping the current chat settings, model, and persona. Do you want to continue?'
         positiveActionText='Restart Chat'
@@ -376,7 +377,7 @@ export function AppChat() {
 
     // show confirmation dialog
     if (!bypassConfirmation && !await showPromisedOverlay('chat-delete-confirmation', { rejectWithValue: false }, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/apps/chat/AppChat::AppChat-2.confirmationmodal-2 */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         confirmationText={`Are you absolutely sure you want to delete ${conversationIds.length === 1 ? 'this conversation' : 'these conversations'}? This action cannot be undone.`}
         positiveActionText={conversationIds.length === 1 ? 'Delete conversation' : `Yes, delete all ${conversationIds.length} conversations`}
@@ -481,7 +482,7 @@ export function AppChat() {
   return <>
 
     {/* Shortcuts gated on the focused chat */}
-    <ChatShortcutsMemo
+    <ChatShortcutsMemo /* @uxid src/apps/chat/AppChat::AppChat-2.chatshortcutsmemo */
       conversationId={focusedPaneConversationId}
       llmDropdownRef={llmDropdownRef}
       personaDropdownRef={personaDropdownRef}
@@ -503,7 +504,7 @@ export function AppChat() {
     </OptimaToolbarIn>
     <OptimaDrawerIn>
       {/* always mounted: gating on the drawer-open state lags the opening and vanishes during the closing animation */}
-      <ChatDrawerMemo
+      <ChatDrawerMemo /* @uxid src/apps/chat/AppChat::AppChat-2.chatdrawermemo */
         isMobile={isMobile}
         activeConversationId={focusedPaneConversationId}
         chatPanesConversationIds={chatPaneIds}
@@ -517,7 +518,7 @@ export function AppChat() {
       />
     </OptimaDrawerIn>
     <OptimaPanelIn>
-      <ChatPanelMemo
+      <ChatPanelMemo /* @uxid src/apps/chat/AppChat::AppChat-2.chatpanelmemo */
         isMobile={isMobile}
         conversationId={focusedPaneConversationId}
         isMessageSelectionMode={isMessageSelectionMode}
@@ -540,7 +541,7 @@ export function AppChat() {
 
       {/* Render each sub-app in Chat (right now it's either CML or Beam */}
       {chatPanes.map((pane, idx) => (
-        <ChatPaneMemo
+        <ChatPaneMemo /* @uxid src/apps/chat/AppChat::AppChat-2.chatpanememo */
           key={`chat-pane-${pane.paneId}`}
           paneId={pane.paneId}
           paneIdx={idx}
@@ -568,7 +569,7 @@ export function AppChat() {
     {/* Composer with auto-hide */}
     <ComposerDock conversationId={focusedPaneConversationId} isMobile={isMobile}>
       {(setComposerHasContent) => (
-        <ComposerMemo
+        <ComposerMemo /* @uxid src/apps/chat/AppChat::AppChat-2.composermemo */
           isMobile={isMobile}
           composerTextAreaRef={composerTextAreaRef}
           targetConversationId={focusedPaneConversationId}
@@ -589,7 +590,7 @@ export function AppChat() {
     {/* Diagrams */}
     {!!diagramConfig && (
       <React.Suspense fallback={null}>
-        <DiagramsModalLazy
+        <DiagramsModalLazy /* @uxid src/apps/chat/AppChat::AppChat-2.diagramsmodallazy */
           config={diagramConfig}
           onClose={() => setDiagramConfig(null)}
         />
@@ -599,7 +600,7 @@ export function AppChat() {
     {/* Flatten */}
     {!!flattenConversationId && (
       <React.Suspense fallback={null}>
-        <FlattenerModalLazy
+        <FlattenerModalLazy /* @uxid src/apps/chat/AppChat::AppChat-2.flattenermodallazy */
           conversationId={flattenConversationId}
           onConversationBranch={handleConversationBranchAndFocus}
           onClose={() => setFlattenConversationId(null)}
@@ -610,7 +611,7 @@ export function AppChat() {
     {/* Import / Export  */}
     {!!tradeConfig && (
       <React.Suspense fallback={null}>
-        <TradeModalLazy
+        <TradeModalLazy /* @uxid src/apps/chat/AppChat::AppChat-2.trademodallazy */
           config={tradeConfig}
           onConversationActivate={handleOpenConversationInFocusedPane}
           onClose={() => setTradeConfig(null)}

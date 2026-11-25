@@ -48,6 +48,7 @@ export interface RunControlsProps {
 }
 
 
+// @uxid src/apps/llm-capabilities/components/RunControls::RunControls
 export function RunControls(props: RunControlsProps) {
   const {
     vendors, selectedVendor, onSelectedVendorChange,
@@ -71,7 +72,7 @@ export function RunControls(props: RunControlsProps) {
       <Stack direction='row' spacing={1} sx={{ flexWrap: 'wrap', alignItems: 'center' }}>
         <Typography level='body-sm' sx={{ minWidth: 60 }}>Filter:</Typography>
 
-        <Select
+        <Select /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.select */
           size='sm'
           value={selectedVendor}
           onChange={(_e, v) => onSelectedVendorChange(v ?? '')}
@@ -83,7 +84,7 @@ export function RunControls(props: RunControlsProps) {
           ))}
         </Select>
 
-        <Select
+        <Select /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.select-2 */
           size='sm'
           value={declaredFcFilter}
           onChange={(_e, v) => onDeclaredFcFilterChange((v ?? 'any') as DeclaredFcFilter)}
@@ -94,7 +95,7 @@ export function RunControls(props: RunControlsProps) {
           <Option value='no'>No FC declared</Option>
         </Select>
 
-        <Button
+        <Button /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.button */
           size='sm'
           variant={showHidden ? 'solid' : 'outlined'}
           color='neutral'
@@ -104,7 +105,7 @@ export function RunControls(props: RunControlsProps) {
         </Button>
 
         <Tooltip title='Open the AI Models configurator to add/remove services and edit per-model options.' size='sm'>
-          <Button
+          <Button /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.button-2 */
             size='sm'
             variant='outlined'
             color='neutral'
@@ -124,26 +125,26 @@ export function RunControls(props: RunControlsProps) {
       {/* Selection shortcuts */}
       <Stack direction='row' spacing={1} sx={{ flexWrap: 'wrap', alignItems: 'center' }}>
         <Typography level='body-sm' sx={{ minWidth: 60 }}>Select:</Typography>
-        <Button size='sm' variant='outlined' onClick={onSelectAllVisible} disabled={isRunning || visibleCount === 0}>All visible ({visibleCount})</Button>
-        <Button size='sm' variant='outlined' onClick={onSelectAllFailing} disabled={isRunning || failingSelectedCount === 0}>All failing in view ({failingSelectedCount})</Button>
-        <Button size='sm' variant='plain' onClick={onClearSelection} disabled={isRunning || selectedCount === 0}>Clear</Button>
+        <Button /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.button-3 */ size='sm' variant='outlined' onClick={onSelectAllVisible} disabled={isRunning || visibleCount === 0}>All visible ({visibleCount})</Button>
+        <Button /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.button-4 */ size='sm' variant='outlined' onClick={onSelectAllFailing} disabled={isRunning || failingSelectedCount === 0}>All failing in view ({failingSelectedCount})</Button>
+        <Button /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.button-5 */ size='sm' variant='plain' onClick={onClearSelection} disabled={isRunning || selectedCount === 0}>Clear</Button>
       </Stack>
 
       {/* Execution row */}
       <Stack direction='row' spacing={1} sx={{ flexWrap: 'wrap', alignItems: 'center' }}>
         <Typography level='body-sm' sx={{ minWidth: 60 }}>Run:</Typography>
 
-        <Select size='sm' value={concurrency} onChange={(_e, v) => v && onConcurrencyChange(v)} sx={{ minWidth: 130 }}>
+        <Select /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.select-3 */ size='sm' value={concurrency} onChange={(_e, v) => v && onConcurrencyChange(v)} sx={{ minWidth: 130 }}>
           {[1, 2, 4, 8, 16].map(n => <Option key={n} value={n}>{n} parallel</Option>)}
         </Select>
 
-        <Select size='sm' value={timeoutSec} onChange={(_e, v) => v && onTimeoutSecChange(v)} sx={{ minWidth: 130 }}>
+        <Select /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.select-4 */ size='sm' value={timeoutSec} onChange={(_e, v) => v && onTimeoutSecChange(v)} sx={{ minWidth: 130 }}>
           {[10, 20, 30, 60, 120, 300, 600].map(n => <Option key={n} value={n}>{n >= 60 ? `${n / 60}m` : `${n}s`} timeout</Option>)}
         </Select>
 
         <Tooltip title='Run all selected models through all scenarios.' size='sm'>
           <span>
-            <Button
+            <Button /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.button-6 */
               size='sm'
               color='primary'
               startDecorator={<PlayArrowRoundedIcon />}
@@ -157,7 +158,7 @@ export function RunControls(props: RunControlsProps) {
 
         <Tooltip title='Re-run only probes that previously failed for selected models.' size='sm'>
           <span>
-            <Button
+            <Button /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.button-7 */
               size='sm'
               variant='outlined'
               startDecorator={<RefreshIcon />}
@@ -170,7 +171,7 @@ export function RunControls(props: RunControlsProps) {
         </Tooltip>
 
         {isRunning && (
-          <Button
+          <Button /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.button-8 */
             size='sm'
             color='danger'
             variant='solid'
@@ -184,10 +185,10 @@ export function RunControls(props: RunControlsProps) {
         <Box sx={{ flex: 1 }} />
 
         <Tooltip title='Clear all stored probe results (not the selection).' size='sm'>
-          <IconButton size='sm' variant='outlined' color='danger' onClick={onClearResults} disabled={isRunning}><ClearIcon /></IconButton>
+          <IconButton /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.iconbutton */ size='sm' variant='outlined' color='danger' onClick={onClearResults} disabled={isRunning}><ClearIcon /></IconButton>
         </Tooltip>
         <Tooltip title='Export current view to CSV.' size='sm'>
-          <IconButton size='sm' variant='outlined' onClick={onExportCsv}><DownloadIcon /></IconButton>
+          <IconButton /* @uxid src/apps/llm-capabilities/components/RunControls::RunControls.iconbutton-2 */ size='sm' variant='outlined' onClick={onExportCsv}><DownloadIcon /></IconButton>
         </Tooltip>
       </Stack>
 

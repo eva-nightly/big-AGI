@@ -14,6 +14,7 @@ import { useChatShowSystemMessages } from '../chat/store-app-chat';
 /**
  * Menu Items are the settings for the chat.
  */
+// @uxid src/apps/link-chat/LinkChatAppMenuItems::LinkChatAppMenuItems
 export function LinkChatAppMenuItems(props: {
   activeLinkId: string | null,
   onDeleteLink: (linkId: string) => void,
@@ -33,11 +34,11 @@ export function LinkChatAppMenuItems(props: {
 
   return <OptimaPanelGroupedList title='Conversation'>
 
-    <MenuItem onClick={() => setShowSystemMessages(!showSystemMessages)} sx={{ justifyContent: 'space-between' }}>
+    <MenuItem /* @uxid src/apps/link-chat/LinkChatAppMenuItems::LinkChatAppMenuItems.menuitem */ onClick={() => setShowSystemMessages(!showSystemMessages)} sx={{ justifyContent: 'space-between' }}>
       <Typography>
         System message
       </Typography>
-      <Switch
+      <Switch /* @uxid src/apps/link-chat/LinkChatAppMenuItems::LinkChatAppMenuItems.switch */
         checked={showSystemMessages} onChange={handleRenderSystemMessageChange}
         // endDecorator={showSystemMessages ? 'On' : 'Off'}
         slotProps={{ endDecorator: { sx: { minWidth: 26 } } }}
@@ -50,7 +51,7 @@ export function LinkChatAppMenuItems(props: {
 
     <ListDivider />
 
-    <MenuItem onClick={handleDeleteLink} sx={{ justifyContent: 'space-between' }}>
+    <MenuItem /* @uxid src/apps/link-chat/LinkChatAppMenuItems::LinkChatAppMenuItems.menuitem-2 */ onClick={handleDeleteLink} sx={{ justifyContent: 'space-between' }}>
       Delete
       <ListItemDecorator>
         <DeleteOutlineIcon />

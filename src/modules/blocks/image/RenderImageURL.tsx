@@ -47,6 +47,7 @@ const imageExtensions = /\.(jpg|jpeg|png|gif|bmp|svg)/i;
 const overlayButtonsGridSx: SxProps = {
   ...overlayButtonsTopRightSx,
   display: 'grid',
+  // @uxid src/modules/blocks/image/RenderImageURL::overlayButtonsGridSx.gridTemplateColumns
   gridTemplateColumns: 'auto auto',
   gap: 0.5,
   '& svg': { fontSize: '1.25rem' },
@@ -57,6 +58,7 @@ export type RenderImageURLVariant = 'content-part' | 'attachment-card' | 'attach
 /**
  * Renders an Image Data URL, or a remote URL.
  */
+// @uxid src/modules/blocks/image/RenderImageURL::RenderImageURL
 export const RenderImageURL = (props: {
   imageURL: string | null,        // remote URL, or data URL: `data:image/png;base64,...`
   overlayText?: React.ReactNode,  // bottom overlay text
@@ -150,7 +152,7 @@ export const RenderImageURL = (props: {
 
 
   return (
-    <Sheet
+    <Sheet /* @uxid src/modules/blocks/image/RenderImageURL::RenderImageURL.sheet */
       color={cardColor}
       variant={isCard ? 'outlined' : 'solid'}
       aria-disabled={props.disabled}
@@ -186,7 +188,7 @@ export const RenderImageURL = (props: {
     >
 
       {/* Image and Overlay - clickable to view/maximize */}
-      <Box sx={{ position: 'relative', cursor: isImageClickable ? 'pointer' : undefined }} onClick={isImageClickable ? handleImageClick : undefined}>
+      <Box /* @uxid src/modules/blocks/image/RenderImageURL::RenderImageURL.box */ sx={{ position: 'relative', cursor: isImageClickable ? 'pointer' : undefined }} onClick={isImageClickable ? handleImageClick : undefined}>
 
         {/* Image / Loading Indicator */}
         {props.imageURL ? (
@@ -241,35 +243,35 @@ export const RenderImageURL = (props: {
 
         {/* Info toggle */}
         {!!props.expandableText && (
-          <OverlayButton tooltip={infoOpen ? 'Hide Prompt' : 'Show Prompt'} variant={infoOpen ? 'solid' : 'outlined'} color={cardColor} onClick={handleToggleInfoOpen} sx={{ gridRow: '1', gridColumn: '1' }}>
+          <OverlayButton /* @uxid src/modules/blocks/image/RenderImageURL::RenderImageURL.overlaybutton */ tooltip={infoOpen ? 'Hide Prompt' : 'Show Prompt'} variant={infoOpen ? 'solid' : 'outlined'} color={cardColor} onClick={handleToggleInfoOpen} sx={{ gridRow: '1', gridColumn: '1' }}>
             <InfoOutlinedIcon />
           </OverlayButton>
         )}
 
         {/* Delete toggle/cancel */}
         {!!onImageDelete && !regenArmed && (
-          <OverlayButton tooltip={deleteArmed ? 'Cancel Deletion' : 'Delete Image'} aria-label={deleteArmed ? 'Cancel Deletion' : 'Delete Image'} placement='bottom' size={isEditingAttachment ? 'sm' : undefined} variant={deleteArmed ? 'solid' : isEditingAttachment ? 'soft' : 'outlined'} color={cardColor} onClick={handleToggleDeleteArmed} sx={{ gridRow: '1', gridColumn: '2' }}>
+          <OverlayButton /* @uxid src/modules/blocks/image/RenderImageURL::RenderImageURL.overlaybutton-2 */ tooltip={deleteArmed ? 'Cancel Deletion' : 'Delete Image'} aria-label={deleteArmed ? 'Cancel Deletion' : 'Delete Image'} placement='bottom' size={isEditingAttachment ? 'sm' : undefined} variant={deleteArmed ? 'solid' : isEditingAttachment ? 'soft' : 'outlined'} color={cardColor} onClick={handleToggleDeleteArmed} sx={{ gridRow: '1', gridColumn: '2' }}>
             {deleteArmed ? <CloseRoundedIcon /> : <DeleteOutlineIcon />}
           </OverlayButton>
         )}
 
         {/* Delete confirm (armed) */}
         {deleteArmed && !regenArmed && (
-          <OverlayButton tooltip='Confirm Deletion' aria-label='Confirm Deletion' placement='bottom' size={isEditingAttachment ? 'sm' : undefined} variant='outlined' color='danger' onClick={onImageDelete} sx={{ gridRow: '2', gridColumn: '2' }}>
+          <OverlayButton /* @uxid src/modules/blocks/image/RenderImageURL::RenderImageURL.overlaybutton-3 */ tooltip='Confirm Deletion' aria-label='Confirm Deletion' placement='bottom' size={isEditingAttachment ? 'sm' : undefined} variant='outlined' color='danger' onClick={onImageDelete} sx={{ gridRow: '2', gridColumn: '2' }}>
             <DeleteForeverIcon sx={{ color: 'danger.solidBg' }} />
           </OverlayButton>
         )}
 
         {/* Regenerate toggle/cancel - only in modal context (click image to view inline) */}
         {showRegenerate && !deleteArmed && (
-          <OverlayButton tooltip={regenArmed ? 'Cancel Regeneration' : 'Draw again'} placement='bottom' variant={regenArmed ? 'solid' : 'outlined'} onClick={handleToggleRegenArmed} sx={{ gridRow: onImageDelete ? '2' : '1', gridColumn: onImageDelete ? '1' : '2' }}>
+          <OverlayButton /* @uxid src/modules/blocks/image/RenderImageURL::RenderImageURL.overlaybutton-4 */ tooltip={regenArmed ? 'Cancel Regeneration' : 'Draw again'} placement='bottom' variant={regenArmed ? 'solid' : 'outlined'} onClick={handleToggleRegenArmed} sx={{ gridRow: onImageDelete ? '2' : '1', gridColumn: onImageDelete ? '1' : '2' }}>
             {regenArmed ? <CloseRoundedIcon /> : <ReplayRoundedIcon />}
           </OverlayButton>
         )}
 
         {/* Regenerate confirm (armed) */}
         {regenArmed && !deleteArmed && (
-          <OverlayButton tooltip='Confirm Regeneration' placement='bottom' variant='outlined' color='success' onClick={handleImageRegenerate} sx={{ gridRow: '2', gridColumn: '2' }}>
+          <OverlayButton /* @uxid src/modules/blocks/image/RenderImageURL::RenderImageURL.overlaybutton-5 */ tooltip='Confirm Regeneration' placement='bottom' variant='outlined' color='success' onClick={handleImageRegenerate} sx={{ gridRow: '2', gridColumn: '2' }}>
             <ReplayRoundedIcon sx={{ color: 'success.solidBg' }} />
           </OverlayButton>
         )}

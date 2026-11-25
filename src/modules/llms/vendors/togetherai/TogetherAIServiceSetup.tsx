@@ -22,6 +22,7 @@ import { ModelVendorTogetherAI } from './togetherai.vendor';
 const TOGETHERAI_REG_LINK = 'https://api.together.xyz/settings/api-keys';
 
 
+// @uxid src/modules/llms/vendors/togetherai/TogetherAIServiceSetup::TogetherAIServiceSetup
 export function TogetherAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -51,10 +52,10 @@ export function TogetherAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/togetherai/TogetherAIServiceSetup::TogetherAIServiceSetup.forminputkey */
       autoCompleteId='togetherai-key' label='Together AI Key'
       rightLabel={<>{needsUserKey
-        ? !togetherKey && <Link level='body-sm' href={TOGETHERAI_REG_LINK} target='_blank'>request Key</Link>
+        ? !togetherKey && <Link /* @uxid src/modules/llms/vendors/togetherai/TogetherAIServiceSetup::TogetherAIServiceSetup.link */ level='body-sm' href={TOGETHERAI_REG_LINK} target='_blank'>request Key</Link>
         : <AlreadySet overridden={!!togetherKey} />}
       </>}
       value={togetherKey} onChange={value => updateSettings({ togetherKey: value })}
@@ -62,7 +63,7 @@ export function TogetherAIServiceSetup(props: { serviceId: DModelsServiceId }) {
       placeholder='...'
     />
 
-    {(showAdvanced || !!partialSettings?.togetherFreeTrial) && <FormSwitchControl
+    {(showAdvanced || !!partialSettings?.togetherFreeTrial) && <FormSwitchControl /* @uxid src/modules/llms/vendors/togetherai/TogetherAIServiceSetup::TogetherAIServiceSetup.formswitchcontrol */
       title='Rate Limiter' on='Enabled' off='Disabled'
       description={partialSettings?.togetherFreeTrial ? 'Free trial: 2 requests/2s' : 'Disabled'}
       checked={partialSettings?.togetherFreeTrial ?? false}
@@ -73,7 +74,7 @@ export function TogetherAIServiceSetup(props: { serviceId: DModelsServiceId }) {
       Note: Please refresh the models list if you toggle the rate limiter.
     </Alert>}
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/togetherai/TogetherAIServiceSetup::TogetherAIServiceSetup.setupformclientsidetoggle */
       visible={!!togetherKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

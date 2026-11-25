@@ -32,6 +32,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/messages-list/CMLZeroConversation::CMLZeroConversation
 export function CMLZeroConversation(props: {
   onConversationNew: (forceNoRecycle: boolean, isIncognito: boolean) => void,
 }) {
@@ -46,7 +47,7 @@ export function CMLZeroConversation(props: {
           the left pane, <>branch</> a chat,
           or create a new one.
         </Typography>
-        <Button
+        <Button /* @uxid src/apps/chat/components/messages-list/CMLZeroConversation::CMLZeroConversation.button */
           variant='soft'
           onClick={() => props.onConversationNew(true, false)}
           startDecorator={<AddIcon />}

@@ -10,6 +10,7 @@ import type { ChatExecuteMode } from './execute-mode.types';
 import { ExecuteModeItems } from './execute-mode.items';
 
 
+// @uxid src/apps/chat/execute-mode/ExecuteModeMenu::ExecuteModeMenu
 export function ExecuteModeMenu(props: {
   isMobile: boolean,
   hasCapabilityT2I: boolean,
@@ -23,7 +24,7 @@ export function ExecuteModeMenu(props: {
   const enterIsNewline = useUIPreferencesStore(state => state.enterIsNewline);
 
   return (
-    <CloseablePopup
+    <CloseablePopup /* @uxid src/apps/chat/execute-mode/ExecuteModeMenu::ExecuteModeMenu.closeablepopup */
       menu anchorEl={props.anchorEl} onClose={props.onClose}
       darkenBackdrop={props.isMobile /* mobile: scrim signals a modal choice, like the '+' attach menu */}
       minWidth={320}
@@ -40,7 +41,7 @@ export function ExecuteModeMenu(props: {
       {Object.entries(ExecuteModeItems)
         .filter(([_key, data]) => !data.hideOnDesktop || props.isMobile)
         .map(([key, data]) =>
-          <MenuItem key={'chat-mode-' + key} onClick={() => props.onSetChatExecuteMode(key as ChatExecuteMode)}>
+          <MenuItem /* @uxid src/apps/chat/execute-mode/ExecuteModeMenu::ExecuteModeMenu.menuitem */ key={'chat-mode-' + key} onClick={() => props.onSetChatExecuteMode(key as ChatExecuteMode)}>
             <Box sx={{ flexGrow: 1, display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2 }}>
               <Radio color={data.highlight ? 'success' : undefined} checked={key === props.chatExecuteMode} />
               <Box sx={{ flexGrow: 1 }}>

@@ -9,6 +9,7 @@ import { animationColorRainbow } from '~/common/util/animUtils';
 import { DesktopNavIcon, navItemClasses } from './DesktopNavIcon';
 
 
+// @uxid src/common/layout/optima/nav/BringTheLove::BringTheLove
 export function BringTheLove(props: { text: string, link: string, asIcon?: boolean, icon: React.FC, sx?: SxProps }) {
   // state
   const [loved, setLoved] = React.useState(false);
@@ -26,7 +27,7 @@ export function BringTheLove(props: { text: string, link: string, asIcon?: boole
   return (
     <Tooltip title={props.text}>
       {props.asIcon ? (
-        <DesktopNavIcon
+        <DesktopNavIcon /* @uxid src/common/layout/optima/nav/BringTheLove::BringTheLove.desktopnavicon */
           variant='solid'
           className={navItemClasses.typeLinkOrModal}
           component={Link} href={props.link} target='_blank'
@@ -42,7 +43,7 @@ export function BringTheLove(props: { text: string, link: string, asIcon?: boole
           {icon}
         </DesktopNavIcon>
       ) : (
-        <Button
+        <Button /* @uxid src/common/layout/optima/nav/BringTheLove::BringTheLove.button */
           variant='plain'
           color='neutral'
           component={Link} href={props.link} target='_blank' noLinkStyle

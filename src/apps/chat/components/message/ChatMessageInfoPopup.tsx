@@ -48,6 +48,7 @@ const _roleOptions: FormRadioOption<Exclude<DMessageRole, 'system'>>[] = [
 ];
 
 
+// @uxid src/apps/chat/components/message/ChatMessageInfoPopup::ChatMessageInfoPopup
 export function ChatMessageInfoPopup(props: {
   open: boolean,
   onClose: () => void,
@@ -73,7 +74,7 @@ export function ChatMessageInfoPopup(props: {
   }, [modelExists, modelId, onClose]);
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/apps/chat/components/message/ChatMessageInfoPopup::ChatMessageInfoPopup.goodmodal */
       open={props.open}
       onClose={onClose}
       title={`${capitalizeFirstLetter(role)} Message Info`}
@@ -90,7 +91,7 @@ export function ChatMessageInfoPopup(props: {
             <Box sx={{ flex: 1, minWidth: 0, overflowWrap: 'anywhere' }}>
               <Typography level='title-sm'>
                 {modelExists ? (
-                  <Link component='button' type='button' color='neutral' underline='hover' onClick={handleOpenModelOptions} sx={{ textAlign: 'left' }}>
+                  <Link /* @uxid src/apps/chat/components/message/ChatMessageInfoPopup::ChatMessageInfoPopup.link */ component='button' type='button' color='neutral' underline='hover' onClick={handleOpenModelOptions} sx={{ textAlign: 'left' }}>
                     {prettyShortChatModelName(generator.name)}
                   </Link>
                 ) : prettyShortChatModelName(generator.name)}
@@ -99,7 +100,7 @@ export function ChatMessageInfoPopup(props: {
             </Box>
             {modelExists && (
               <TooltipOutlined title='Model Settings'>
-                <IconButton size='sm' variant='soft' color='neutral' aria-label='Model Settings' onClick={handleOpenModelOptions} sx={{ flexShrink: 0 }}>
+                <IconButton /* @uxid src/apps/chat/components/message/ChatMessageInfoPopup::ChatMessageInfoPopup.iconbutton */ size='sm' variant='soft' color='neutral' aria-label='Model Settings' onClick={handleOpenModelOptions} sx={{ flexShrink: 0 }}>
                   <PhGearSixIcon />
                 </IconButton>
               </TooltipOutlined>
@@ -111,7 +112,7 @@ export function ChatMessageInfoPopup(props: {
         <Box sx={tooltipMetricsGridSx}>
           {(onRoleChange && role !== 'system') ? <>
             <Box sx={{ alignSelf: 'center' }}>Role:</Box>
-            <FormChipGroupControl
+            <FormChipGroupControl /* @uxid src/apps/chat/components/message/ChatMessageInfoPopup::ChatMessageInfoPopup.formchipgroupcontrol */
               size='sm'
               title=''
               renderVariant='solid'

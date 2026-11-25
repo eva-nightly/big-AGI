@@ -95,6 +95,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/message/fragments-void/BlockPartModelAnnotations::BlockPartModelAnnotations
 export function BlockPartModelAnnotations(props: {
   itemsName?: string;
   annotations: Immutable<DVoidWebCitation[]>;
@@ -176,7 +177,7 @@ export function BlockPartModelAnnotations(props: {
     >
 
       {/* Row of favicons */}
-      <Button
+      <Button /* @uxid src/apps/chat/components/message/fragments-void/BlockPartModelAnnotations::BlockPartModelAnnotations.button */
         size='sm'
         component='div'
         role='button'
@@ -214,7 +215,7 @@ export function BlockPartModelAnnotations(props: {
 
           {/* Copy buttons - only show when expanded */}
           {expanded && (
-            <Chip
+            <Chip /* @uxid src/apps/chat/components/message/fragments-void/BlockPartModelAnnotations::BlockPartModelAnnotations.chip */
               size='sm'
               color={COLOR}
               variant='soft'
@@ -226,7 +227,7 @@ export function BlockPartModelAnnotations(props: {
             </Chip>
           )}
           {expanded && (
-            <Chip
+            <Chip /* @uxid src/apps/chat/components/message/fragments-void/BlockPartModelAnnotations::BlockPartModelAnnotations.chip-2 */
               size='sm'
               color={COLOR}
               variant='soft'
@@ -257,7 +258,7 @@ export function BlockPartModelAnnotations(props: {
 
             return (
               <ListItem key={index}>
-                <ListItemButton
+                <ListItemButton /* @uxid src/apps/chat/components/message/fragments-void/BlockPartModelAnnotations::BlockPartModelAnnotations.listitembutton */
                   component='a'
                   href={citation.url}
                   target='_blank'

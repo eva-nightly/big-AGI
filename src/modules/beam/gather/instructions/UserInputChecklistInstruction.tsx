@@ -76,7 +76,7 @@ export async function executeUserInputChecklistInstruction(
 
     // Update the instruction component to render the checklist
     inputs.updateInstructionComponent(
-      <UserInputChecklistComponent
+      <UserInputChecklistComponent /* @uxid src/modules/beam/gather/instructions/UserInputChecklistInstruction::executeUserInputChecklistInstruction.userinputchecklistcomponent */
         options={options}
         onCancel={onCancel}
         onConfirm={onConfirm}

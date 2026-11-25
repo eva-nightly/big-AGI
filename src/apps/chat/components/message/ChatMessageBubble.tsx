@@ -56,6 +56,7 @@ const _styles = {
 } as const satisfies Record<string, SxProps>;
 
 
+// @uxid src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble
 export function ChatMessageBubble(props: {
   anchorEl: HTMLElement;
   onClose: (event?: MouseEvent | TouchEvent) => void;
@@ -96,13 +97,13 @@ export function ChatMessageBubble(props: {
     <Popper placement='top-start' open anchorEl={props.anchorEl} slotProps={{
       root: { style: { zIndex: themeZIndexChatBubble } },
     }}>
-      <ClickAwayListener onClickAway={props.onClose}>
+      <ClickAwayListener /* @uxid src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble.clickawaylistener */ onClickAway={props.onClose}>
         <Box sx={_styles.container}>
 
           {/* Refer to */}
           {!!props.onReferenceTo && (
             <Tooltip color='primary' disableInteractive arrow placement='top' title={props.hasInReferenceTo ? 'Refer to this too' : 'Refer to'}>
-              <IconButton variant='plain' color='primary' onClick={props.onReferenceTo} sx={_styles.actionButton}>
+              <IconButton /* @uxid src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble.iconbutton */ variant='plain' color='primary' onClick={props.onReferenceTo} sx={_styles.actionButton}>
                 {props.hasInReferenceTo ? <ReplyAllRoundedIcon /> : <ReplyRoundedIcon />}
               </IconButton>
             </Tooltip>
@@ -116,25 +117,25 @@ export function ChatMessageBubble(props: {
           {fromAssistant && <Box sx={_styles.gridX2}>
 
             <Tooltip disableInteractive arrow placement='top' title='Highlight Text'>
-              <IconButton variant='plain' disabled={!onHighlight} sx={_styles.gridButton} onClick={!onHighlight ? undefined : () => handleHighlightAndClose('highlight')}>
+              <IconButton /* @uxid src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble.iconbutton-2 */ variant='plain' disabled={!onHighlight} sx={_styles.gridButton} onClick={!onHighlight ? undefined : () => handleHighlightAndClose('highlight')}>
                 <MarkHighlightIcon hcolor={onHighlight ? 'yellow' : undefined} />
               </IconButton>
             </Tooltip>
 
             <Tooltip disableInteractive arrow placement='top' title='Cut Text'>
-              <IconButton variant='plain' disabled={!onHighlight} sx={_styles.gridButton} onClick={!onHighlight ? undefined : () => handleHighlightAndClose('cut')}>
+              <IconButton /* @uxid src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble.iconbutton-3 */ variant='plain' disabled={!onHighlight} sx={_styles.gridButton} onClick={!onHighlight ? undefined : () => handleHighlightAndClose('cut')}>
                 <ContentCutIcon />
               </IconButton>
             </Tooltip>
 
             <Tooltip disableInteractive arrow placement='top' title='Toggle Bold'>
-              <IconButton variant='plain' disabled={!onHighlight} sx={_styles.gridButton} onClick={!onHighlight ? undefined : () => handleHighlightAndClose('strong')}>
+              <IconButton /* @uxid src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble.iconbutton-4 */ variant='plain' disabled={!onHighlight} sx={_styles.gridButton} onClick={!onHighlight ? undefined : () => handleHighlightAndClose('strong')}>
                 <FormatBoldIcon />
               </IconButton>
             </Tooltip>
 
             <Tooltip disableInteractive arrow placement='top' title='Strike Through'>
-              <IconButton variant='plain' disabled={!onHighlight} sx={_styles.gridButton} onClick={!onHighlight ? undefined : () => handleHighlightAndClose('strike')}>
+              <IconButton /* @uxid src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble.iconbutton-5 */ variant='plain' disabled={!onHighlight} sx={_styles.gridButton} onClick={!onHighlight ? undefined : () => handleHighlightAndClose('strike')}>
                 <StrikethroughSIcon />
               </IconButton>
             </Tooltip>
@@ -149,19 +150,19 @@ export function ChatMessageBubble(props: {
           {hasAITools && <Box sx={_styles.gridX2}>
 
             {props.onImagine && <Tooltip color='success' disableInteractive arrow placement='top' title='Draw this concept'>
-              <IconButton variant='plain' color='success' onClick={props.onImagine} disabled={!props.couldImagine || props.isImagining} sx={_styles.gridButton}>
+              <IconButton /* @uxid src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble.iconbutton-6 */ variant='plain' color='success' onClick={props.onImagine} disabled={!props.couldImagine || props.isImagining} sx={_styles.gridButton}>
                 {!props.isImagining ? <PhPaintBrush /> : <CircularProgress sx={{ '--CircularProgress-size': '16px' }} />}
               </IconButton>
             </Tooltip>}
 
             {props.onSpeak && <Tooltip color='success' disableInteractive arrow placement='top' title='Read aloud'>
-              <IconButton variant='plain' color='success' onClick={props.onSpeak} disabled={!props.couldSpeak || props.isSpeaking} sx={_styles.gridButton}>
+              <IconButton /* @uxid src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble.iconbutton-7 */ variant='plain' color='success' onClick={props.onSpeak} disabled={!props.couldSpeak || props.isSpeaking} sx={_styles.gridButton}>
                 {!props.isSpeaking ? <PhVoice /> : <CircularProgress sx={{ '--CircularProgress-size': '16px' }} />}
               </IconButton>
             </Tooltip>}
 
             {props.onDiagram && <Tooltip color={props.couldDiagram ? 'success' : undefined} disableInteractive arrow placement='top' title={props.couldDiagram ? 'Create a diagram' : 'Too short to Auto-Diagram'}>
-              <IconButton variant='plain' color='success' onClick={props.couldDiagram ? props.onDiagram : undefined} sx={_styles.gridButton}>
+              <IconButton /* @uxid src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble.iconbutton-8 */ variant='plain' color='success' onClick={props.couldDiagram ? props.onDiagram : undefined} sx={_styles.gridButton}>
                 <PhTreeStructure sx={{ color: props.couldDiagram ? 'primary' : 'neutral.plainDisabledColor' }} />
               </IconButton>
             </Tooltip>}
@@ -178,7 +179,7 @@ export function ChatMessageBubble(props: {
           <Tooltip variant='outlined' disableInteractive arrow placement='top' title={!selText ? 'Copy' :
             <>Copy rich text<Box fontSize='xs' mt={0.5}>{selText.length.toLocaleString()} ch · {(selText.match(/\S+/g) || []).length.toLocaleString()} words</Box></>
           }>
-            <IconButton variant='plain' onClick={props.onCopy} sx={_styles.actionButton}>
+            <IconButton /* @uxid src/apps/chat/components/message/ChatMessageBubble::ChatMessageBubble.iconbutton-9 */ variant='plain' onClick={props.onCopy} sx={_styles.actionButton}>
               <ContentCopyIcon />
             </IconButton>
           </Tooltip>

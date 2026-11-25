@@ -13,6 +13,7 @@ const _styleNoTrack = {
 /**
  * Slider Control
  */
+// @uxid src/common/components/forms/FormSliderControl::FormSliderControl
 export function FormSliderControl(props: {
   title: string | React.JSX.Element, description?: string | React.JSX.Element, ariaLabel?: string,
   size?: 'sm' | 'md' | 'lg',
@@ -56,7 +57,7 @@ export function FormSliderControl(props: {
     <FormControl size={props.size} disabled={props.disabled} orientation='horizontal' sx={{ justifyContent: 'space-between', alignItems: 'center' }}>
       <FormLabelStart title={props.title} description={props.description} />
       {props.startAdornment}
-      <Slider
+      <Slider /* @uxid src/common/components/forms/FormSliderControl::FormSliderControl.slider */
         aria-label={props.ariaLabel}
         color='neutral'
         variant={props.variant}

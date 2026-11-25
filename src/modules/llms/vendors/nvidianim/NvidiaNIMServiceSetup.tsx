@@ -22,6 +22,7 @@ import { ModelVendorNvidiaNIM } from './nvidianim.vendor';
 const NVIDIA_REG_LINK = 'https://build.nvidia.com/settings/api-keys';
 
 
+// @uxid src/modules/llms/vendors/nvidianim/NvidiaNIMServiceSetup::NvidiaNIMServiceSetup
 export function NvidiaNIMServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -51,10 +52,10 @@ export function NvidiaNIMServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/nvidianim/NvidiaNIMServiceSetup::NvidiaNIMServiceSetup.forminputkey */
       autoCompleteId='nvidianim-key' label='NVIDIA API Key'
       rightLabel={<>{needsUserKey
-        ? !nvidiaKey && <Link level='body-sm' href={NVIDIA_REG_LINK} target='_blank'>get API Key</Link>
+        ? !nvidiaKey && <Link /* @uxid src/modules/llms/vendors/nvidianim/NvidiaNIMServiceSetup::NvidiaNIMServiceSetup.link */ level='body-sm' href={NVIDIA_REG_LINK} target='_blank'>get API Key</Link>
         : <AlreadySet overridden={!!nvidiaKey} />}
       </>}
       value={nvidiaKey} onChange={value => updateSettings({ nvidiaKey: value })}
@@ -63,13 +64,13 @@ export function NvidiaNIMServiceSetup(props: { serviceId: DModelsServiceId }) {
     />
 
     <Typography level='body-sm'>
-      Free hosted models from <Link href='https://build.nvidia.com' target='_blank'>build.nvidia.com</Link> (Nemotron,
+      Free hosted models from <Link /* @uxid src/modules/llms/vendors/nvidianim/NvidiaNIMServiceSetup::NvidiaNIMServiceSetup.link-2 */ href='https://build.nvidia.com' target='_blank'>build.nvidia.com</Link> (Nemotron,
       GPT-OSS, DeepSeek, and more), rate-limited to ~40 requests/minute. When creating the key, make sure it includes
       the <code>Public API Endpoints</code> scope. Note: NVIDIA&apos;s trial terms allow it to use prompts to improve
       its services.
     </Typography>
 
-    {showAdvanced && <FormTextField
+    {showAdvanced && <FormTextField /* @uxid src/modules/llms/vendors/nvidianim/NvidiaNIMServiceSetup::NvidiaNIMServiceSetup.formtextfield */
       autoCompleteId='nvidianim-host'
       title='API Host'
       tooltip={`An alternative endpoint instead of the default 'integrate.api.nvidia.com' - e.g. a self-hosted NIM or vLLM server (such as on a DGX Spark: http://spark-xxxx.local:8000).`}
@@ -78,7 +79,7 @@ export function NvidiaNIMServiceSetup(props: { serviceId: DModelsServiceId }) {
       onChange={text => updateSettings({ nvidiaHost: text })}
     />}
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/nvidianim/NvidiaNIMServiceSetup::NvidiaNIMServiceSetup.setupformclientsidetoggle */
       visible={!!nvidiaHost}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

@@ -97,6 +97,7 @@ const beamExplainerSx: SxProps = {
 };
 
 
+// @uxid src/modules/beam/BeamExplainer::BeamExplainer
 export function BeamExplainer(props: {
   onWizardComplete: () => any,
 }) {
@@ -108,7 +109,7 @@ export function BeamExplainer(props: {
       sx={beamExplainerSx}
     >
 
-      <ExplainerCarousel
+      <ExplainerCarousel /* @uxid src/modules/beam/BeamExplainer::BeamExplainer.explainercarousel */
         explainerId='beam-onboard'
         steps={beamSteps}
         // footer={

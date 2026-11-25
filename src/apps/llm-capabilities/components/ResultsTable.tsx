@@ -84,6 +84,7 @@ export interface ResultsTableProps {
   onToggleAll: (ids: string[], selected: boolean) => void;
 }
 
+// @uxid src/apps/llm-capabilities/components/ResultsTable::ResultsTable
 export function ResultsTable(props: ResultsTableProps) {
 
   const results = useLlmCapabilitiesStore(s => s.results);
@@ -109,7 +110,7 @@ export function ResultsTable(props: ResultsTableProps) {
         <thead>
           <tr>
             <th style={{ width: 32 }}>
-              <Checkbox
+              <Checkbox /* @uxid src/apps/llm-capabilities/components/ResultsTable::ResultsTable.checkbox */
                 size='sm'
                 checked={allSelected}
                 indeterminate={someSelected}
@@ -165,7 +166,7 @@ export function ResultsTable(props: ResultsTableProps) {
             return (
               <tr key={llm.id}>
                 <td>
-                  <Checkbox
+                  <Checkbox /* @uxid src/apps/llm-capabilities/components/ResultsTable::ResultsTable.checkbox-2 */
                     size='sm'
                     checked={selected}
                     onChange={() => onToggleId(llm.id)}

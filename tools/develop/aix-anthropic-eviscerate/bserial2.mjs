@@ -1,4 +1,5 @@
 import { apiKey, MODEL, save } from './lib.mjs';
+// @uxid tools/develop/aix-anthropic-eviscerate/bserial2::create
 async function create(b) { const res = await fetch('https://api.anthropic.com/v1/messages', { method: 'POST', headers: { 'x-api-key': apiKey(), 'anthropic-version': '2023-06-01', 'content-type': 'application/json' }, body: JSON.stringify(b) }); return { status: res.status, body: await res.json() }; }
 const CE = { type: 'code_execution_20260120', name: 'code_execution' };
 const CHAIN = { A: 'B', B: 'C', C: 'D', D: 'STOP' };

@@ -7,6 +7,7 @@ import { Brand } from '~/common/app.config';
 import { ExternalLink } from '~/common/components/ExternalLink';
 
 
+// @uxid src/common/components/ExternalDocsLink::ExternalDocsLink
 export function ExternalDocsLink(props: {
   docPage: SiteDocSlug;
   color?: ColorPaletteProp,
@@ -15,7 +16,7 @@ export function ExternalDocsLink(props: {
   children: React.ReactNode,
 }) {
   return (
-    <ExternalLink
+    <ExternalLink /* @uxid src/common/components/ExternalDocsLink::ExternalDocsLink.externallink */
       href={Brand.Docs.Public(props.docPage)}
       color={props.color}
       level={props.level}

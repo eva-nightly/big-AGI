@@ -26,6 +26,7 @@ export type FormSelectOption<T extends string> = {
 };
 
 
+// @uxid src/common/components/forms/FormSelectControl::FormSelectControl
 export const FormSelectControl = <TValue extends string>(props: {
   title?: React.ReactNode;
   tooltip?: React.ReactNode;
@@ -49,7 +50,7 @@ export const FormSelectControl = <TValue extends string>(props: {
           tooltip={props.tooltip}
         />
       )}
-      <Select
+      <Select /* @uxid src/common/components/forms/FormSelectControl::FormSelectControl.select */
         size={props.size}
         color={props.color}
         value={props.value}

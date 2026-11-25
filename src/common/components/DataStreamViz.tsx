@@ -45,6 +45,7 @@ type Token = {
 };
 
 
+// @uxid src/common/components/DataStreamViz::DataStreamViz
 export function DataStreamViz(props: { height: number, speed?: number }) {
 
   // state

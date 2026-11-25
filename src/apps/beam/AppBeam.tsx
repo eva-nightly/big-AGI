@@ -26,6 +26,7 @@ function initTestBeamStore(messages: DMessage[], beamStore: BeamStoreApi): BeamS
 }
 
 
+// @uxid src/apps/beam/AppBeam::AppBeam
 export function AppBeam() {
 
   // state
@@ -58,17 +59,17 @@ export function AppBeam() {
 
   const toolbarItems = React.useMemo(() => <>
     {/* button to toggle debug info */}
-    <Button size='sm' variant='plain' color='neutral' onClick={() => setShowDebug(on => !on)}>
+    <Button /* @uxid src/apps/beam/AppBeam::AppBeam.button */ size='sm' variant='plain' color='neutral' onClick={() => setShowDebug(on => !on)}>
       {showDebug ? 'Hide' : 'Show'} debug
     </Button>
 
     {/* 'open' */}
-    <Button size='sm' variant='plain' color='neutral' onClick={() => setConversation(initTestConversation())}>
+    <Button /* @uxid src/apps/beam/AppBeam::AppBeam.button-2 */ size='sm' variant='plain' color='neutral' onClick={() => setConversation(initTestConversation())}>
       .open
     </Button>
 
     {/* 'close' */}
-    <Button size='sm' variant='plain' color='neutral' onClick={handleClose}>
+    <Button /* @uxid src/apps/beam/AppBeam::AppBeam.button-3 */ size='sm' variant='plain' color='neutral' onClick={handleClose}>
       .close
     </Button>
   </>, [handleClose, showDebug]);

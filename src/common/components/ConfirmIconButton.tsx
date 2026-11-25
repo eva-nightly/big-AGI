@@ -37,6 +37,7 @@ const _confirmSideSx = {
  * Icon button behind a two-step confirm. Armed, the clicked spot becomes Cancel and the confirm floats
  * (solid danger) on `side` - a double-click slip cancels. Esc cancels too. Icons come as components, sized by the button.
  */
+// @uxid src/common/components/ConfirmIconButton::ConfirmIconButton
 export function ConfirmIconButton(props: {
   icon?: React.ComponentType, // defaults to DeleteOutline
   confirmIcon?: React.ComponentType, // defaults to `icon`, or DeleteForever when `icon` is the default
@@ -54,7 +55,7 @@ export function ConfirmIconButton(props: {
   const ConfirmIcon = props.confirmIcon ?? props.icon ?? DeleteForeverIcon;
 
   return (
-    <Box
+    <Box /* @uxid src/common/components/ConfirmIconButton::ConfirmIconButton.box */
       onKeyDown={event => {
         if (event.key === 'Escape' && armed) {
           event.stopPropagation(); // cancel only, don't close the parent modal
@@ -64,13 +65,13 @@ export function ConfirmIconButton(props: {
       sx={_styles.root}
     >
       <TooltipOutlined title={armed ? 'Cancel' : props.tooltip}>
-        <IconButton size='sm' variant={props.variant ?? (armed ? 'soft' : 'plain')} color={props.color} aria-label={armed ? 'Cancel' : props.tooltip} onClick={toggle} sx={_styles.button}>
+        <IconButton /* @uxid src/common/components/ConfirmIconButton::ConfirmIconButton.iconbutton */ size='sm' variant={props.variant ?? (armed ? 'soft' : 'plain')} color={props.color} aria-label={armed ? 'Cancel' : props.tooltip} onClick={toggle} sx={_styles.button}>
           {armed ? <CloseRoundedIcon /> : <Icon />}
         </IconButton>
       </TooltipOutlined>
       {armed && (
         <TooltipOutlined title={`Confirm: ${props.tooltip}`} color='danger'>
-          <IconButton size='sm' variant='solid' color='danger' aria-label={`Confirm: ${props.tooltip}`} onClick={confirm} sx={_confirmSideSx[props.side ?? 'end']}>
+          <IconButton /* @uxid src/common/components/ConfirmIconButton::ConfirmIconButton.iconbutton-2 */ size='sm' variant='solid' color='danger' aria-label={`Confirm: ${props.tooltip}`} onClick={confirm} sx={_confirmSideSx[props.side ?? 'end']}>
             <ConfirmIcon />
           </IconButton>
         </TooltipOutlined>

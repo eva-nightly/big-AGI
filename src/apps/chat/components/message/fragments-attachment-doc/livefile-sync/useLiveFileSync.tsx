@@ -177,7 +177,7 @@ export function useLiveFileSync(
 
     // ask the user for confirmation before saving to file
     if (!event.shiftKey && !await showPromisedOverlay('livefile-overwrite', { rejectWithValue: false }, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/useLiveFileSync::useLiveFileSync.confirmationmodal */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         title='Overwrite File'
         positiveActionText='Overwrite'
@@ -197,7 +197,7 @@ export function useLiveFileSync(
   // Memoed components code
 
   const liveFileControlButton = React.useMemo(() => (!isLiveFileSupported() || !onReplaceLiveFileId) ? null : (
-    <LiveFileControlButton
+    <LiveFileControlButton /* @uxid src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/useLiveFileSync::useLiveFileSync.livefilecontrolbutton */
       disabled={isSavingFile}
       hasContent={fileHasContent}
       hideWhenHasContent
@@ -228,7 +228,7 @@ export function useLiveFileSync(
           {/* Refresh Content Button */}
           {isPairingValid && (
             <TooltipOutlined title='Reload and compare File' placement='top-start' color='success'>
-              <IconButton size='sm' variant='outlined' onClick={() => _handleReloadFileContent()} sx={{ mr: 1 }}>
+              <IconButton /* @uxid src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/useLiveFileSync::useLiveFileSync.iconbutton */ size='sm' variant='outlined' onClick={() => _handleReloadFileContent()} sx={{ mr: 1 }}>
                 <LiveFileIcon color='success' />
               </IconButton>
             </TooltipOutlined>
@@ -245,7 +245,7 @@ export function useLiveFileSync(
         <Box sx={{ ml: 'auto', display: 'flex', gap: 1 }}>
           {/* Load from file */}
           {fileIsDifferent && !isError && !!onSetBufferText && (
-            <Button
+            <Button /* @uxid src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/useLiveFileSync::useLiveFileSync.button */
               variant='outlined'
               color='neutral'
               size='sm'
@@ -260,7 +260,7 @@ export function useLiveFileSync(
 
           {/* Save to File */}
           {fileIsDifferent && !isError && (
-            <Button
+            <Button /* @uxid src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/useLiveFileSync::useLiveFileSync.button-2 */
               variant='outlined'
               color='danger'
               size='sm'
@@ -288,7 +288,7 @@ export function useLiveFileSync(
 
               {/* Reassign File button */}
               {!!onReplaceLiveFileId && (
-                <MenuItem onClick={handlePairNewFileWithPicker}>
+                <MenuItem /* @uxid src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/useLiveFileSync::useLiveFileSync.menuitem */ onClick={handlePairNewFileWithPicker}>
                   <ListItemDecorator>
                     <LiveFileChooseIcon />
                   </ListItemDecorator>
@@ -299,7 +299,7 @@ export function useLiveFileSync(
               <ListDivider />
 
               {/* Close button */}
-              <MenuItem onClick={handleStopLiveFile}>
+              <MenuItem /* @uxid src/apps/chat/components/message/fragments-attachment-doc/livefile-sync/useLiveFileSync::useLiveFileSync.menuitem-2 */ onClick={handleStopLiveFile}>
                 <ListItemDecorator>
                   <LiveFileCloseIcon />
                 </ListItemDecorator>

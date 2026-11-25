@@ -5,6 +5,7 @@ import { SxProps } from '@mui/joy/styles/types';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 
+// @uxid src/common/components/Section::Section
 export function Section(props: { title?: string; collapsible?: boolean, collapsed?: boolean, disclaimer?: string, asLink?: boolean, sx?: SxProps, children: React.ReactNode }) {
   const [collapsed, setCollapsed] = React.useState(props.collapsed ?? false);
 
@@ -17,12 +18,12 @@ export function Section(props: { title?: string; collapsible?: boolean, collapse
 
     <Stack direction='row' sx={{ mt: (props.title ? 1 : 0), alignItems: 'center', ...(props.sx ?? {}) }}>
       {!!props.title && (
-        <FormLabel onClick={() => !!props.collapsible && setCollapsed(!collapsed)} sx={labelSx}>
+        <FormLabel /* @uxid src/common/components/Section::Section.formlabel */ onClick={() => !!props.collapsible && setCollapsed(!collapsed)} sx={labelSx}>
           {props.title}
         </FormLabel>
       )}
       {!!props.collapsible && !props.asLink && (
-        <IconButton onClick={() => setCollapsed(!collapsed)} sx={{ ml: 1 }}>
+        <IconButton /* @uxid src/common/components/Section::Section.iconbutton */ onClick={() => setCollapsed(!collapsed)} sx={{ ml: 1 }}>
           {!collapsed ? <KeyboardArrowDownIcon sx={{ transform: 'rotate(180deg)' }} /> : <KeyboardArrowDownIcon />}
         </IconButton>
       )}

@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/3rdparty/AuthGoogleIcon::AuthGoogleIcon
 export function AuthGoogleIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 0 24 24' width='24' height='24' stroke='none' {...props}>
     <path fill='#EA4335' d='M5.27 9.76A7.08 7.08 0 0 1 16.42 6.5L19.9 3A11.97 11.97 0 0 0 1.24 6.65l4.03 3.11Z' />

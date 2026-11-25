@@ -72,6 +72,7 @@ export const rayControlsMobileSx: SxProps = {
 
 const RayControlsMemo = React.memo(RayControls);
 
+// @uxid src/modules/beam/scatter/BeamRay::RayControls
 function RayControls(props: {
   isEmpty: boolean,
   isMobile: boolean,
@@ -100,7 +101,7 @@ function RayControls(props: {
 
     {/* Letter / LLM Icon (default) */}
     <TooltipOutlined asLargePane enableInteractive title={props.rayAvatarTooltip || props.llmLabel} placement='top-start'>
-      <Box sx={{ display: 'flex', '--Icon-fontSize': 'var(--joy-fontSize-lg)' }} onClick={props.onIconClick}>
+      <Box /* @uxid src/modules/beam/scatter/BeamRay::RayControls.box */ sx={{ display: 'flex', '--Icon-fontSize': 'var(--joy-fontSize-lg)' }} onClick={props.onIconClick}>
         {props.rayLetter ? (
           <Typography level='title-sm' color={SCATTER_COLOR !== 'neutral' ? SCATTER_COLOR : undefined}>
             {props.rayLetter}
@@ -130,13 +131,13 @@ function RayControls(props: {
 
     {!props.isScattering ? (
       <GoodTooltip title='Generate'>
-        <IconButton size='sm' variant='plain' color='success' onClick={props.onToggleGenerate}>
+        <IconButton /* @uxid src/modules/beam/scatter/BeamRay::RayControls.iconbutton */ size='sm' variant='plain' color='success' onClick={props.onToggleGenerate}>
           {props.isEmpty ? <PlayArrowRoundedIcon sx={{ fontSize: 'xl2' }} /> : <ReplayRoundedIcon />}
         </IconButton>
       </GoodTooltip>
     ) : (
       <GoodTooltip title='Stop'>
-        <IconButton size='sm' variant='plain' color='danger' onClick={props.onToggleGenerate}>
+        <IconButton /* @uxid src/modules/beam/scatter/BeamRay::RayControls.iconbutton-2 */ size='sm' variant='plain' color='danger' onClick={props.onToggleGenerate}>
           <StopRoundedIcon />
         </IconButton>
       </GoodTooltip>
@@ -144,7 +145,7 @@ function RayControls(props: {
 
     {props.isRemovable && (
       <GoodTooltip title='Remove'>
-        <IconButton disabled={!props.isRemovable} size='sm' variant='plain' color='neutral' onClick={props.onRemove}>
+        <IconButton /* @uxid src/modules/beam/scatter/BeamRay::RayControls.iconbutton-3 */ disabled={!props.isRemovable} size='sm' variant='plain' color='neutral' onClick={props.onRemove}>
           <RemoveCircleOutlineRoundedIcon />
         </IconButton>
       </GoodTooltip>
@@ -153,6 +154,7 @@ function RayControls(props: {
 }
 
 
+// @uxid src/modules/beam/scatter/BeamRay::BeamRay
 export function BeamRay(props: {
   beamStore: BeamStoreApi,
   hadImportedRays: boolean,
@@ -249,7 +251,7 @@ export function BeamRay(props: {
 
 
   return (
-    <BeamCard
+    <BeamCard /* @uxid src/modules/beam/scatter/BeamRay::BeamRay.beamcard */
       role='beam-card'
       tabIndex={-1}
       // onClick={isSelectable ? handleRayToggleSelect : undefined}
@@ -260,7 +262,7 @@ export function BeamRay(props: {
     >
 
       {/* Controls Row */}
-      <RayControlsMemo
+      <RayControlsMemo /* @uxid src/modules/beam/scatter/BeamRay::BeamRay.raycontrolsmemo */
         isEmpty={!isSelectable}
         isMobile={props.isMobile}
         isRemovable={props.isRemovable}
@@ -287,9 +289,9 @@ export function BeamRay(props: {
 
       {/* Ray Message */}
       {(!!ray?.message?.fragments.length || ray?.status === 'running') && (
-        <Box onCopy={clipboardInterceptCtrlCForCleanup} sx={beamCardMessageWrapperSx}>
+        <Box /* @uxid src/modules/beam/scatter/BeamRay::BeamRay.box */ onCopy={clipboardInterceptCtrlCForCleanup} sx={beamCardMessageWrapperSx}>
           {!!ray.message && (
-            <ChatMessageMemo
+            <ChatMessageMemo /* @uxid src/modules/beam/scatter/BeamRay::BeamRay.chatmessagememo */
               message={ray.message}
               fitScreen={true}
               isMobile={props.isMobile}
@@ -305,7 +307,7 @@ export function BeamRay(props: {
       )}
 
       {/* Gemini Interactions (Deep Research) resume - state-gated: only when idle with a live upstream handle */}
-      <BeamUpstreamResume
+      <BeamUpstreamResume /* @uxid src/modules/beam/scatter/BeamRay::BeamRay.beamupstreamresume */
         llmId={ray?.rayLlmId ?? null}
         generator={ray?.message.generator}
         isPending={isScattering}
@@ -327,7 +329,7 @@ export function BeamRay(props: {
             {/* Copy */}
             {!isImported && (
               <GoodTooltip title='Copy'>
-                <IconButton
+                <IconButton /* @uxid src/modules/beam/scatter/BeamRay::BeamRay.iconbutton */
                   size='sm'
                   onClick={handleRayCopyToClipboard}
                 >
@@ -338,7 +340,7 @@ export function BeamRay(props: {
 
             {/* Continue */}
             <GoodTooltip title='Choose this message'>
-              <IconButton
+              <IconButton /* @uxid src/modules/beam/scatter/BeamRay::BeamRay.iconbutton-2 */
                 size='sm'
                 // variant='plain'
                 color={GATHER_COLOR}

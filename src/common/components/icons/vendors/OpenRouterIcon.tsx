@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/vendors/OpenRouterIcon::OpenRouterIcon
 export function OpenRouterIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 0 512 512' width='24' height='24' strokeWidth={0} stroke='currentColor' fill='none' strokeLinecap='round' strokeLinejoin='round' {...props}>
     <path d='M3 248.945C18 248.945 76 236 106 219C136 202 136 202 198 158C276.497 102.293 332 120.945 423 120.945' strokeWidth={70} />

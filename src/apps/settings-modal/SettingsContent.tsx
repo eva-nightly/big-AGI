@@ -82,17 +82,19 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/settings-modal/SettingsContent::SectionHeader
 function SectionHeader(props: { label: string }) {
   return <ListDivider inset='gutter' sx={_styles.sectionDivider}>{props.label}</ListDivider>;
 }
 
 /** Parent 'hub' navigation: one card per child sub-section, so the parent page stays small. */
+// @uxid src/apps/settings-modal/SettingsContent::ChildNav
 function ChildNav(props: { parentId: SettingsNavId, onSelect: (id: SettingsNavId) => void }) {
   return (
     <List sx={_styles.childNavList}>
       {getSettingsNavChildren(props.parentId).map((child) => (
         <ListItem key={child.id}>
-          <ListItemButton variant='outlined' onClick={() => props.onSelect(child.id)} sx={_styles.childNavButton}>
+          <ListItemButton /* @uxid src/apps/settings-modal/SettingsContent::ChildNav.listitembutton */ variant='outlined' onClick={() => props.onSelect(child.id)} sx={_styles.childNavButton}>
             <ListItemDecorator>{child.icon}</ListItemDecorator>
             <ListItemContent>
               <Typography level='title-sm'>{child.label}</Typography>
@@ -107,6 +109,7 @@ function ChildNav(props: { parentId: SettingsNavId, onSelect: (id: SettingsNavId
 }
 
 
+// @uxid src/apps/settings-modal/SettingsContent::VoiceInputBlock
 function VoiceInputBlock(props: { isMobile: boolean }) {
   return (
     <Box sx={_styles.block}>
@@ -116,6 +119,7 @@ function VoiceInputBlock(props: { isMobile: boolean }) {
   );
 }
 
+// @uxid src/apps/settings-modal/SettingsContent::VoiceOutputBlock
 function VoiceOutputBlock(props: { isMobile: boolean }) {
   return (
     <Box sx={_styles.block}>
@@ -125,12 +129,13 @@ function VoiceOutputBlock(props: { isMobile: boolean }) {
 }
 
 /** Diagnostics group: developer/inspection surfaces (not AI tools), styled as the child-nav cards. */
+// @uxid src/apps/settings-modal/SettingsContent::ToolsDiagnostics
 function ToolsDiagnostics() {
   return <>
     <SectionHeader label='Diagnostics' />
     <List size='sm' sx={_styles.childNavList}>
       <ListItem>
-        <ListItemButton onClick={() => optimaActions().openAIXDebugger()} sx={_styles.childNavButton}>
+        <ListItemButton /* @uxid src/apps/settings-modal/SettingsContent::ToolsDiagnostics.listitembutton */ onClick={() => optimaActions().openAIXDebugger()} sx={_styles.childNavButton}>
           <ListItemDecorator><TerminalOutlinedIcon /></ListItemDecorator>
           <ListItemContent>
             AI Inspector
@@ -140,7 +145,7 @@ function ToolsDiagnostics() {
         </ListItemButton>
       </ListItem>
       <ListItem>
-        <ListItemButton onClick={() => optimaActions().openLogger()} sx={_styles.childNavButton}>
+        <ListItemButton /* @uxid src/apps/settings-modal/SettingsContent::ToolsDiagnostics.listitembutton-2 */ onClick={() => optimaActions().openLogger()} sx={_styles.childNavButton}>
           <ListItemDecorator><TerminalOutlinedIcon /></ListItemDecorator>
           <ListItemContent>
             Logs Viewer
@@ -153,6 +158,7 @@ function ToolsDiagnostics() {
   </>;
 }
 
+// @uxid src/apps/settings-modal/SettingsContent::ToolsSearchBanner
 function ToolsSearchBanner() {
   return (
     <Box sx={_styles.searchBanner}>
@@ -187,7 +193,7 @@ function renderSection(nodeId: SettingsNavId, isMobile: boolean, onSelect: (id: 
         <Typography level='body-sm' sx={_styles.intro}>
           Configure speech input and output.
         </Typography>
-        <ChildNav parentId='voice' onSelect={onSelect} />
+        <ChildNav /* @uxid src/apps/settings-modal/SettingsContent::renderSection.childnav */ parentId='voice' onSelect={onSelect} />
       </>;
     case 'voice-in':
       return <VoiceInputBlock isMobile={isMobile} />;
@@ -198,7 +204,7 @@ function renderSection(nodeId: SettingsNavId, isMobile: boolean, onSelect: (id: 
     case 'tools':
       return <>
         <ToolsSearchBanner />
-        <ChildNav parentId='tools' onSelect={onSelect} />
+        <ChildNav /* @uxid src/apps/settings-modal/SettingsContent::renderSection.childnav-2 */ parentId='tools' onSelect={onSelect} />
         <ToolsDiagnostics />
       </>;
     // Draw: engine Select doubles as active engine + configuration focus (ASRx-style)
@@ -224,6 +230,7 @@ function renderSection(nodeId: SettingsNavId, isMobile: boolean, onSelect: (id: 
  * parent nodes (with children) render a light 'hub' - any common content plus cards that
  * navigate into the sub-sections, so the parent page never stacks all children at once.
  */
+// @uxid src/apps/settings-modal/SettingsContent::SettingsContent
 export function SettingsContent(props: { nodeId: SettingsNavId, isMobile?: boolean, onSelect: (id: SettingsNavId) => void }) {
   return (
     <Box sx={_styles.container}>

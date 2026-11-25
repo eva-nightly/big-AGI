@@ -9,6 +9,7 @@ import type { ToggleableBoolean } from '~/common/util/hooks/useToggleableBoolean
 /**
  * Bottom row: model reload and optional 'advanced' toggle
  */
+// @uxid src/common/components/forms/SetupFormRefetchButton::SetupFormRefetchButton
 export function SetupFormRefetchButton(props: {
   refetch: () => void,
   disabled: boolean,
@@ -23,12 +24,12 @@ export function SetupFormRefetchButton(props: {
       {props.leftButton}
 
       {!!props.advanced && (
-        <FormLabel onClick={props.advanced.toggle} sx={{ textDecoration: 'underline', cursor: 'pointer', color: 'text.tertiary' }}>
+        <FormLabel /* @uxid src/common/components/forms/SetupFormRefetchButton::SetupFormRefetchButton.formlabel */ onClick={props.advanced.toggle} sx={{ textDecoration: 'underline', cursor: 'pointer', color: 'text.tertiary' }}>
           {props.advanced.on ? 'Hide Advanced' : 'Advanced'}
         </FormLabel>
       )}
 
-      <Button
+      <Button /* @uxid src/common/components/forms/SetupFormRefetchButton::SetupFormRefetchButton.button */
         color={props.error ? 'warning' : 'primary'}
         disabled={props.disabled}
         loading={props.loading}

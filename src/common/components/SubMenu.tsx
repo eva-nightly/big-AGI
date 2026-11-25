@@ -111,13 +111,14 @@ const SubMenuHostContext = React.createContext<SubMenuHostController | null>(nul
 // id of the enclosing SubMenuItem (0 = top-level). Lets a nested SubMenuItem know its parent so single-open spares ancestors.
 const SubMenuParentIdContext = React.createContext<number>(0);
 
+// @uxid src/common/components/SubMenu::SubMenuHost
 export function SubMenuHost(props: { host: SubMenuHostController, children: React.ReactNode }) {
   const descriptors = React.useSyncExternalStore(props.host._subscribe, props.host._getSnapshot, props.host._getSnapshot);
   return (
     <SubMenuHostContext.Provider value={props.host}>
       {props.children}
       {descriptors.map(d => (
-        <CloseablePopup key={d.id} menu anchorEl={d.anchorEl} onClose={d.onClose} placement={d.placement} zIndex={d.zIndex} minWidth={d.minWidth}>
+        <CloseablePopup /* @uxid src/common/components/SubMenu::SubMenuHost.closeablepopup */ key={d.id} menu anchorEl={d.anchorEl} onClose={d.onClose} placement={d.placement} zIndex={d.zIndex} minWidth={d.minWidth}>
           {/* provide this popup's id so any nested <SubMenuItem> in the content learns its parentId */}
           <SubMenuParentIdContext.Provider value={d.id}>
             {d.content}
@@ -136,6 +137,7 @@ export function SubMenuHost(props: { host: SubMenuHostController, children: Reac
  * Encapsulates: the trigger row (decorator + label + right arrow), open/close anchor state,
  * the parent keep-open trick, single-open behavior, and responsive (mobile-safe) placement.
  */
+// @uxid src/common/components/SubMenu::SubMenuItem
 export function SubMenuItem(props: {
   label: React.ReactNode,
   decorator?: React.ReactNode, // left ListItemDecorator content (empty spacer if omitted, for alignment)
@@ -193,7 +195,7 @@ export function SubMenuItem(props: {
   }, [host, anchorEl, handleClose, props.children, placement, props.minWidth, zIndex]);
 
   return (
-    <MenuItem disabled={props.disabled} onClick={handleTriggerClick}>
+    <MenuItem /* @uxid src/common/components/SubMenu::SubMenuItem.menuitem */ disabled={props.disabled} onClick={handleTriggerClick}>
       <ListItemDecorator>{props.decorator}</ListItemDecorator>
       {props.label}
       <KeyboardArrowRightIcon sx={{ ml: 'auto' }} />

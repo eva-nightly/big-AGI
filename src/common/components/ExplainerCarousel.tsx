@@ -60,6 +60,7 @@ const buttonNextSx: SxProps = {
 };
 
 
+// @uxid src/common/components/ExplainerCarousel::AllStepsStepper
 function AllStepsStepper(props: {
   steps: ExplainerStep[],
   activeIndex: number,
@@ -78,7 +79,7 @@ function AllStepsStepper(props: {
             completed={completed}
             active={active}
             indicator={
-              <StepIndicator
+              <StepIndicator /* @uxid src/common/components/ExplainerCarousel::AllStepsStepper.stepindicator */
                 variant={(completed || active) ? 'solid' : 'outlined'}
                 color={colorStepper}
                 onClick={() => props.onStepClicked(stepIndex)}
@@ -113,6 +114,7 @@ export interface ExplainerPage extends ExplainerStep {
   mdContent: string
 }
 
+// @uxid src/common/components/ExplainerCarousel::ExplainerCarousel
 export function ExplainerCarousel(props: {
   explainerId: string,
   steps: ExplainerPage[],
@@ -239,7 +241,7 @@ export function ExplainerCarousel(props: {
         )}
 
         {/* Advance Button */}
-        <Button
+        <Button /* @uxid src/common/components/ExplainerCarousel::ExplainerCarousel.button */
           variant='solid'
           color={colorButtons}
           onClick={handleNextPage}
@@ -250,7 +252,7 @@ export function ExplainerCarousel(props: {
         </Button>
 
         {/* Back Button */}
-        <Button
+        <Button /* @uxid src/common/components/ExplainerCarousel::ExplainerCarousel.button-2 */
           variant='plain'
           color={colorButtons}
           disabled={isFirstPage}
@@ -266,7 +268,7 @@ export function ExplainerCarousel(props: {
 
       {/* All Steps */}
       {props.noStepper ? null : (
-        <AllStepsStepper
+        <AllStepsStepper /* @uxid src/common/components/ExplainerCarousel::ExplainerCarousel.allstepsstepper */
           steps={props.steps}
           activeIndex={stepIndex}
           isMobile={isMobile}

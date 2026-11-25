@@ -15,6 +15,7 @@ import { functionNameAppearance, humanReadableFunctionName } from './BlockPartTo
 import { KeyValueData, KeyValueGrid } from './BlockPartToolInvocation';
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartToolResponse::BlockPartToolResponse
 export function BlockPartToolResponse(props: {
   toolResponsePart: DMessageToolResponsePart,
   contentScaling: ContentScaling,
@@ -85,7 +86,7 @@ export function BlockPartToolResponse(props: {
 
 
   return (
-    <BlocksContainer onDoubleClick={props.onDoubleClick}><Box /*sx={{ px: 1.5 }}*/>
+    <BlocksContainer /* @uxid src/apps/chat/components/message/fragments-content/BlockPartToolResponse::BlockPartToolResponse.blockscontainer */ onDoubleClick={props.onDoubleClick}><Box /*sx={{ px: 1.5 }}*/>
       <Sheet
         variant='soft'
         color={rError ? 'danger' : undefined}
@@ -109,7 +110,7 @@ export function BlockPartToolResponse(props: {
       >
 
         {/* Compact header */}
-        <Box
+        <Box /* @uxid src/apps/chat/components/message/fragments-content/BlockPartToolResponse::BlockPartToolResponse.box */
           sx={{
             display: 'flex',
             alignItems: 'center',

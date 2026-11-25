@@ -8,6 +8,7 @@ import { llmsStoreActions } from '~/common/stores/llms/store-llms';
 import { LLMParametersEditor } from './LLMParametersEditor';
 
 
+// @uxid src/modules/llms/models-modal/LLMOptionsGlobal::LLMOptionsGlobal
 export function LLMOptionsGlobal(props: { llm: DLLM }) {
 
   // derived input
@@ -29,7 +30,7 @@ export function LLMOptionsGlobal(props: { llm: DLLM }) {
     return <InlineError error='No model selected' />;
 
   return (
-    <LLMParametersEditor
+    <LLMParametersEditor /* @uxid src/modules/llms/models-modal/LLMOptionsGlobal::LLMOptionsGlobal.llmparameterseditor */
       maxOutputTokens={getLLMMaxOutputTokens(llm) ?? null}
       parameterSpecs={llm.parameterSpecs}
       parameterOmitTemperature={llm.interfaces.includes(LLM_IF_HOTFIX_NoTemperature)}

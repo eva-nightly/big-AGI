@@ -25,6 +25,7 @@ const ALIBABA_REG_LINK = 'https://bailian.console.alibabacloud.com/?apiKey=1#/ap
 const ALIBABA_MODELS = 'https://www.alibabacloud.com/help/en/model-studio/getting-started/models';
 
 
+// @uxid src/modules/llms/vendors/alibaba/AlibabaServiceSetup::AlibabaServiceSetup
 export function AlibabaServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -52,16 +53,16 @@ export function AlibabaServiceSetup(props: { serviceId: DModelsServiceId }) {
     <ApproximateCosts serviceId={service?.id}>
       <div>
         <Typography level='body-sm'>
-          Alibaba Cloud supports the <ExternalLink href={ALIBABA_MODELS}>following models</ExternalLink> via
+          Alibaba Cloud supports the <ExternalLink /* @uxid src/modules/llms/vendors/alibaba/AlibabaServiceSetup::AlibabaServiceSetup.externallink */ href={ALIBABA_MODELS}>following models</ExternalLink> via
           the OpenAI-compatible endpoint.
         </Typography>
       </div>
     </ApproximateCosts>
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/alibaba/AlibabaServiceSetup::AlibabaServiceSetup.forminputkey */
       autoCompleteId='alibaba-key' label='Alibaba Cloud API Key'
       rightLabel={needsUserKey
-        ? alibabaOaiKey && <Link level='body-sm' href={ALIBABA_REG_LINK} target='_blank'>get API key</Link>
+        ? alibabaOaiKey && <Link /* @uxid src/modules/llms/vendors/alibaba/AlibabaServiceSetup::AlibabaServiceSetup.link */ level='body-sm' href={ALIBABA_REG_LINK} target='_blank'>get API key</Link>
         : <AlreadySet overridden={!!alibabaOaiKey} />
       }
       value={alibabaOaiKey}
@@ -75,7 +76,7 @@ export function AlibabaServiceSetup(props: { serviceId: DModelsServiceId }) {
     {/*  See the <ExternalLink href={ALIBABA_REG_LINK}>Alibaba Cloud Model Studio</ExternalLink> for more information.*/}
     {/*</Typography>*/}
 
-    {(showAdvanced || !!alibabaOaiHost) && <FormTextField
+    {(showAdvanced || !!alibabaOaiHost) && <FormTextField /* @uxid src/modules/llms/vendors/alibaba/AlibabaServiceSetup::AlibabaServiceSetup.formtextfield */
       autoCompleteId='alibaba-host'
       title='API Endpoint'
       tooltip={`The API endpoint for the Alibaba Cloud OpenAI service, to be used instead of the default endpoint.`}
@@ -84,7 +85,7 @@ export function AlibabaServiceSetup(props: { serviceId: DModelsServiceId }) {
       onChange={text => updateSettings({ alibabaOaiHost: text })}
     />}
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/alibaba/AlibabaServiceSetup::AlibabaServiceSetup.setupformclientsidetoggle */
       visible={!!alibabaOaiKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

@@ -8,10 +8,11 @@ import { ChatMulticastOffIcon } from '~/common/components/icons/ChatMulticastOff
 
 export const ButtonMultiChatMemo = React.memo(ButtonMultiChat);
 
+// @uxid src/apps/chat/components/composer/buttons/ButtonMultiChat::ButtonMultiChat
 export function ButtonMultiChat(props: { isMobile?: boolean, multiChat: boolean, onSetMultiChat: (multiChat: boolean) => void }) {
   const { multiChat } = props;
   return props.isMobile ? (
-    <IconButton
+    <IconButton /* @uxid src/apps/chat/components/composer/buttons/ButtonMultiChat::ButtonMultiChat.iconbutton */
       variant={multiChat ? 'solid' : 'outlined'}
       color={multiChat ? 'warning' : undefined}
       onClick={() => props.onSetMultiChat(!multiChat)}
@@ -26,7 +27,7 @@ export function ButtonMultiChat(props: { isMobile?: boolean, multiChat: boolean,
         </Box>
         {multiChat ? 'Multichat · On' : 'Multichat'}
       </FormLabel>
-      <Switch color={multiChat ? 'primary' : undefined} checked={multiChat} onChange={(e) => props.onSetMultiChat(e.target.checked)} />
+      <Switch /* @uxid src/apps/chat/components/composer/buttons/ButtonMultiChat::ButtonMultiChat.switch */ color={multiChat ? 'primary' : undefined} checked={multiChat} onChange={(e) => props.onSetMultiChat(e.target.checked)} />
     </FormControl>
   );
 }

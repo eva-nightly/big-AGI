@@ -1327,6 +1327,7 @@ function saveDialectResults(dialect: string, dialectResults: DialectReultsByMode
   }, 2);
   const jsonBody = withPlaceholders.replace(/"___ARRAY___(\d+)"/g, (_, idx) => arrays[parseInt(idx)]);
   // Insert header comments after opening brace
+  // @uxid tools/develop/llm-parameter-sweep/sweep::comment1
   const comment1 = '"_comment": "API-validated parameter values. null=undefined/missing. Values are tested and working. Note: temperature is continuous, not discrete.",';
   const comment2 = `"_evaluated": "Evaluated: ${evaluatedSweeps.sort().join(', ')}. If missing, the parameter is not supported by that model.",`;
   const comment3 = modelFilter ? `"_modelFilter": "${modelFilter}",` : '';

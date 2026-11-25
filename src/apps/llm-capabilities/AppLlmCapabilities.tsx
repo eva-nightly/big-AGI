@@ -31,6 +31,7 @@ function _csvEscape(v: unknown): string {
 }
 
 
+// @uxid src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilitiesAllowed
 function AppLlmCapabilitiesAllowed() {
 
   // state
@@ -267,7 +268,7 @@ function AppLlmCapabilitiesAllowed() {
         </Typography>
 
         <Sheet variant='outlined' sx={{ p: 1.5, borderRadius: 'sm' }}>
-          <RunControls
+          <RunControls /* @uxid src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilitiesAllowed.runcontrols */
             vendors={vendorListForFilter}
             selectedVendor={selectedVendor}
             onSelectedVendorChange={setSelectedVendor}
@@ -297,7 +298,7 @@ function AppLlmCapabilitiesAllowed() {
           />
         </Sheet>
 
-        <ResultsTable
+        <ResultsTable /* @uxid src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilitiesAllowed.resultstable */
           rows={rows}
           vendorNameById={vendorNameById}
           serviceLabelById={serviceLabelById}
@@ -314,6 +315,7 @@ function AppLlmCapabilitiesAllowed() {
 }
 
 
+// @uxid src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilitiesDenied
 function AppLlmCapabilitiesDenied() {
   return (
     <AppPlaceholder title='LLM Capabilities'>
@@ -325,6 +327,7 @@ function AppLlmCapabilitiesDenied() {
 }
 
 
+// @uxid src/apps/llm-capabilities/AppLlmCapabilities::AppLlmCapabilities
 export function AppLlmCapabilities() {
   const allow = Release.IsNodeDevBuild;
   return allow ? <AppLlmCapabilitiesAllowed /> : <AppLlmCapabilitiesDenied />;

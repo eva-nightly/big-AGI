@@ -89,6 +89,7 @@ const styles = {
 } as const;
 
 
+// @uxid src/modules/llms/models-modal/ModelsList::ModelItem
 export const ModelItem = React.memo(function ModelItem(props: {
   llm: DLLM,
   serviceLabel: string,
@@ -202,7 +203,7 @@ export const ModelItem = React.memo(function ModelItem(props: {
 
   return (
     <ListItem>
-      <ListItemButton
+      <ListItemButton /* @uxid src/modules/llms/models-modal/ModelsList::ModelItem.listitembutton */
         aria-label='Configure LLM'
         // color={(seemsFree && !isHidden) ? 'success' : undefined}
         // variant={(seemsFree && !isHidden) ? 'soft' : undefined}
@@ -212,7 +213,7 @@ export const ModelItem = React.memo(function ModelItem(props: {
       >
 
         {/* Star Toggle */}
-        {(ENABLE_STARRING_ICON || llm.userStarred) && <IconButton size='sm' onClick={handleLLMToggleStar} sx={absorbListPadding}>
+        {(ENABLE_STARRING_ICON || llm.userStarred) && <IconButton /* @uxid src/modules/llms/models-modal/ModelsList::ModelItem.iconbutton */ size='sm' onClick={handleLLMToggleStar} sx={absorbListPadding}>
           <StarredToggle isStarred={!!llm.userStarred} />
         </IconButton>}
 
@@ -274,7 +275,7 @@ export const ModelItem = React.memo(function ModelItem(props: {
 
           {/*{!props.isMobile && !!onModelSetHidden && <GoodTooltip title={isHidden ? 'Hidden' : 'Shown in Chat'}>*/}
           {!props.isMobile && (
-            <IconButton aria-label={isHidden ? 'Unhide' : 'Hide in Chat'} size='sm' onClick={isHidden ? handleLLMUnhide : handleLLMHide} sx={absorbListPadding}>
+            <IconButton /* @uxid src/modules/llms/models-modal/ModelsList::ModelItem.iconbutton-2 */ aria-label={isHidden ? 'Unhide' : 'Hide in Chat'} size='sm' onClick={isHidden ? handleLLMUnhide : handleLLMHide} sx={absorbListPadding}>
               {isHidden ? <VisibilityOffOutlinedIcon sx={{ opacity: 0.5, fontSize: 'md' }} /> : <VisibilityOutlinedIcon />}
             </IconButton>
           )}
@@ -282,7 +283,7 @@ export const ModelItem = React.memo(function ModelItem(props: {
 
           {/* mobile: the whole row opens the options, the gear would only repeat it */}
           {/*<GoodTooltip title='Options'>*/}
-          {!props.isMobile && <IconButton aria-label='Configure LLM' size='sm' onClick={handleLLMConfigure} sx={absorbListPadding}>
+          {!props.isMobile && <IconButton /* @uxid src/modules/llms/models-modal/ModelsList::ModelItem.iconbutton-3 */ aria-label='Configure LLM' size='sm' onClick={handleLLMConfigure} sx={absorbListPadding}>
             <PhGearSixIcon />
           </IconButton>}
           {/*</GoodTooltip>*/}
@@ -294,6 +295,7 @@ export const ModelItem = React.memo(function ModelItem(props: {
   );
 });
 
+// @uxid src/modules/llms/models-modal/ModelsList::ModelsList
 export function ModelsList(props: {
   filterServiceId: DModelsServiceId | null,
   showHiddenModels: boolean,
@@ -351,7 +353,7 @@ export function ModelsList(props: {
       // for safety, ensure the vendor exists
       const vendor = findModelVendor(llm.vId);
       !!vendor && items.push(
-        <ModelItem
+        <ModelItem /* @uxid src/modules/llms/models-modal/ModelsList::ModelsList.modelitem */
           key={llm.userStarred ? llm.id + '_starred' : llm.id}
           llm={llm}
           serviceLabel={serviceLabel}
