@@ -85,7 +85,7 @@ export async function runPersonaOnConversationHead(
       const includeFragments = !!fragments?.length || messageComplete || !messageOverwrite.pendingIncomplete;
 
       // update the message
-      cHandler.messageEdit(assistantMessageId, { ...(includeFragments && { fragments }), ...rest }, messageComplete, false);
+      cHandler.messageEdit(assistantMessageId, { ...(includeFragments && { fragments: messageComplete ? [] : fragments }), ...rest }, messageComplete, false);
 
       // if requested, speak the message
       autoSpeaker?.handleMessage(messageOverwrite, messageComplete);
