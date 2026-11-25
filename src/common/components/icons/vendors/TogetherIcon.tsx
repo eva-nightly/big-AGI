@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/vendors/TogetherIcon::TogetherIcon
 export function TogetherIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='-0.4 -0.4 27 27' width='24' height='24' stroke='none' fill='currentColor' {...props}>
     <path d='M26.1 3.4C24.2 0.1 20.1-1 16.9 0.9C14.8 2.1 13.6 4.2 13.5 6.4L20.3 6.4V7H13.5C13.5 8.1 13.8 9.1 14.4 10.1C16.3 13.3 20.4 14.4 23.6 12.6C26.9 10.7 28 6.6 26.1 3.4Z' />

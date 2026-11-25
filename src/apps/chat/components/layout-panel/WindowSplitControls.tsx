@@ -11,6 +11,7 @@ import { CodiconSplitVerticalRemove } from '~/common/components/icons/CodiconSpl
 import { chatPanesActions, usePaneDuplicateOrClose } from '../panes/store-panes-manager';
 
 
+// @uxid src/apps/chat/components/layout-panel/WindowSplitControls::WindowSplitControls
 export function WindowSplitControls(props: {
   isVerticalSplit: boolean,
 }) {
@@ -47,7 +48,7 @@ export function WindowSplitControls(props: {
     <ListItem
       endAction={!isMultiPane ? undefined : (
         <Tooltip title='Add Another Split'>
-          <IconButton
+          <IconButton /* @uxid src/apps/chat/components/layout-panel/WindowSplitControls::WindowSplitControls.iconbutton */
             size='sm'
             variant='outlined'
             disabled={!canAddPane}
@@ -59,7 +60,7 @@ export function WindowSplitControls(props: {
         </Tooltip>
       )}
     >
-      <ListItemButton onClick={handleToggleMultiPane}>
+      <ListItemButton /* @uxid src/apps/chat/components/layout-panel/WindowSplitControls::WindowSplitControls.listitembutton */ onClick={handleToggleMultiPane}>
         <ListItemDecorator>{props.isVerticalSplit
           ? (isMultiPane ? <CodiconSplitVerticalRemove /> : <CodiconSplitVertical />)
           : (isMultiPane ? <CodiconSplitHorizontalRemove /> : <CodiconSplitHorizontal />)

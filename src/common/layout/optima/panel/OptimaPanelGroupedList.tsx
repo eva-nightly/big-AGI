@@ -18,6 +18,7 @@ const gutterSx: SxProps = {
   gap: 1.5,
 };
 
+// @uxid src/common/layout/optima/panel/OptimaPanelGroupedList::OptimaPanelGroupGutter
 export function OptimaPanelGroupGutter(props: { children?: React.ReactNode }) {
   return (
     <Box sx={gutterSx}>
@@ -116,6 +117,7 @@ const groupListSx: SxProps = {
 } as const;
 
 
+// @uxid src/common/layout/optima/panel/OptimaPanelGroupedList::OptimaPanelGroupedList
 export function OptimaPanelGroupedList(props: {
   title?: React.ReactNode;
   startDecorator?: React.ReactNode;
@@ -170,7 +172,7 @@ export function OptimaPanelGroupedList(props: {
 
       {/* Header */}
       {(!!props.title || isCollapsible) && (
-        <Box
+        <Box /* @uxid src/common/layout/optima/panel/OptimaPanelGroupedList::OptimaPanelGroupedList.box */
           aria-expanded={isExpanded}
           onClick={isCollapsible ? handleToggle : undefined}
           role={isCollapsible ? 'button' : undefined}

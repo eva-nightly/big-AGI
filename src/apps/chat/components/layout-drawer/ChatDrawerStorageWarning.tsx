@@ -91,6 +91,7 @@ function isPhraseMatch(input: string): boolean {
  * Note: the cloud/sync build (`dev`, Pro offering) backs chats up to a server and survives cache
  * clears; there this banner is hidden for backed-up users and gains Upgrade-to-Pro paths.
  */
+// @uxid src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::ChatDrawerStorageWarning
 export function ChatDrawerStorageWarning() {
 
   // state
@@ -127,7 +128,7 @@ export function ChatDrawerStorageWarning() {
       </Typography>
 
       {/* Close 'x': soft, rounded, overflowing the top-right corner */}
-      <IconButton
+      <IconButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::ChatDrawerStorageWarning.iconbutton */
         aria-label='Dismiss storage warning'
         size='sm'
         color={COLOR}
@@ -141,7 +142,7 @@ export function ChatDrawerStorageWarning() {
 
     {/* Confirmation Modal */}
     {confirmOpen && (
-      <StorageWarningConfirmationModal
+      <StorageWarningConfirmationModal /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::ChatDrawerStorageWarning.storagewarningconfirmationmodal */
         onClose={() => setConfirmOpen(false)}
         onConfirm={handleConfirm}
       />
@@ -151,6 +152,7 @@ export function ChatDrawerStorageWarning() {
 }
 
 
+// @uxid src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::StorageWarningConfirmationModal
 function StorageWarningConfirmationModal(props: {
   onClose: () => void;
   onConfirm: () => void;
@@ -163,7 +165,7 @@ function StorageWarningConfirmationModal(props: {
 
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::StorageWarningConfirmationModal.goodmodal */
       open
       noTitleBar
       hideBottomClose
@@ -171,7 +173,7 @@ function StorageWarningConfirmationModal(props: {
       onClose={props.onClose}
       sx={_styles.modalDialog}
     >
-      <ModalClose aria-label='Close storage warning' onClick={props.onClose} />
+      <ModalClose /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::StorageWarningConfirmationModal.modalclose */ aria-label='Close storage warning' onClick={props.onClose} />
 
       {/* Header */}
       <Box sx={_styles.header}>
@@ -197,7 +199,7 @@ function StorageWarningConfirmationModal(props: {
           <Box sx={{ fontSize: 'sm', mb: 1 }}>
             To dismiss this notice, type <Box component='span' sx={{ fontWeight: 'bold', color: 'primary.softColor' }}>&quot;{CONFIRMATION_PHRASE}&quot;</Box>:
           </Box>
-          <Input
+          <Input /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::StorageWarningConfirmationModal.input */
             // color='warning'
             // autoFocus
             placeholder={CONFIRMATION_PHRASE}
@@ -208,7 +210,7 @@ function StorageWarningConfirmationModal(props: {
                 props.onConfirm();
             }}
           />
-          <Button
+          <Button /* @uxid src/apps/chat/components/layout-drawer/ChatDrawerStorageWarning::StorageWarningConfirmationModal.button */
             // size='lg'
             // color='neutral'
             variant='soft'

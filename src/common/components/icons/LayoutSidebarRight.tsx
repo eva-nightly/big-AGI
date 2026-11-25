@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/LayoutSidebarRight::LayoutSidebarRight
 export function LayoutSidebarRight(props: SvgIconProps) {
   return (
     <SvgIcon

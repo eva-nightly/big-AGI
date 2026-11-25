@@ -94,7 +94,7 @@ export function useCMEditSession(messageId: DMessageId, messageFragments: CMEdit
     // edited, or attachments waiting in an add control: confirm before dropping them
     if (current.editable || current.drafts.getState() & 1) {
       const confirmed = await showPromisedOverlay('chat-message-edit-discard', { rejectWithValue: false }, ({ onResolve, onUserReject }) =>
-        <ConfirmationModal
+        <ConfirmationModal /* @uxid src/apps/chat/components/message/useCMEditSession::useCMEditSession.confirmationmodal */
           open onClose={onUserReject} onPositive={() => onResolve(true)}
           title='Discard Edits'
           confirmationText='Discard the changes to this message?'
@@ -116,7 +116,7 @@ export function useCMEditSession(messageId: DMessageId, messageFragments: CMEdit
     // the stored message changed under the copy (sync, a follow-up, another tab): confirm the overwrite
     if (started.base && !isDeepEqual(started.base, storedRef.current)) {
       const confirmed = await showPromisedOverlay('chat-message-edit-overwrite', { rejectWithValue: false }, ({ onResolve, onUserReject }) =>
-        <ConfirmationModal
+        <ConfirmationModal /* @uxid src/apps/chat/components/message/useCMEditSession::useCMEditSession.confirmationmodal-2 */
           open onClose={onUserReject} onPositive={() => onResolve(true)}
           title='Message Changed'
           confirmationText='The message changed while you edited. Overwrite it?'

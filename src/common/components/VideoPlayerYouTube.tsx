@@ -1,6 +1,7 @@
 import { LiteVideoEmbed } from './LiteVideoEmbed';
 
 
+// @uxid src/common/components/VideoPlayerYouTube::VideoPlayerYouTube
 export function VideoPlayerYouTube(props: {
   youTubeVideoId: string;
   title?: string;                       // a11y label + poster overlay

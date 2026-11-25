@@ -21,6 +21,7 @@ const panelWrapperStyle = {
 } as const;
 
 
+// @uxid src/common/layout/optima/portals/OptimaPortalsIn::OptimaDrawerIn
 export function OptimaDrawerIn(props: { children: React.ReactNode }) {
   const portalElement = useOptimaPortalTargetElement('optima-portal-drawer');
   if (!portalElement) return null;
@@ -28,7 +29,7 @@ export function OptimaDrawerIn(props: { children: React.ReactNode }) {
   // wrap portal contents in a div that updates the hover state of the drawer
   const { peekDrawerEnter, peekDrawerLeave } = optimaActions();
   return createPortal(
-    <div
+    <div /* @uxid src/common/layout/optima/portals/OptimaPortalsIn::OptimaDrawerIn.div */
       data-optima-piw='drawer' // portal input wrapper
       onMouseEnter={peekDrawerEnter}
       onMouseLeave={peekDrawerLeave}
@@ -38,6 +39,7 @@ export function OptimaDrawerIn(props: { children: React.ReactNode }) {
     </div>, portalElement);
 }
 
+// @uxid src/common/layout/optima/portals/OptimaPortalsIn::OptimaPanelIn
 export function OptimaPanelIn(props: { children: React.ReactNode }) {
   const portalElement = useOptimaPortalTargetElement('optima-portal-panel');
   if (!portalElement) return null;
@@ -45,7 +47,7 @@ export function OptimaPanelIn(props: { children: React.ReactNode }) {
   // wrap portal contents in a div that updates the hover state of the panel
   const { peekPanelEnter, peekPanelLeave } = optimaActions();
   return createPortal(
-    <div
+    <div /* @uxid src/common/layout/optima/portals/OptimaPortalsIn::OptimaPanelIn.div */
       data-optima-piw='panel' // portal input wrapper
       onMouseEnter={peekPanelEnter}
       onMouseLeave={peekPanelLeave}

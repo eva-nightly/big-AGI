@@ -10,6 +10,7 @@ import { clientUtmSource } from '~/common/util/pwaUtils';
 
 export const bigAgiProUrl = 'https://big-agi.com' + clientUtmSource('upgrade');
 
+// @uxid src/apps/news/bigAgiPro.data::BigAgiProNewsCallout
 export function BigAgiProNewsCallout() {
 
   const bigAgiSupportUrl = 'https://form.typeform.com/to/nLf8gFmx?utm_source=big-agi-1&utm_medium=app&utm_campaign=support';
@@ -25,7 +26,7 @@ export function BigAgiProNewsCallout() {
 
         <Grid container spacing={1}>
           <Grid xs={12} sm={7}>
-            <Button
+            <Button /* @uxid src/apps/news/bigAgiPro.data::BigAgiProNewsCallout.button */
               size='lg'
               fullWidth
               variant='solid'
@@ -41,7 +42,7 @@ export function BigAgiProNewsCallout() {
           </Grid>
 
           <Grid xs={12} sm={5} sx={{ display: 'flex', flexAlign: 'center', justifyContent: 'center' }}>
-            <Button
+            <Button /* @uxid src/apps/news/bigAgiPro.data::BigAgiProNewsCallout.button-2 */
               fullWidth
               variant='soft'
               color='primary'

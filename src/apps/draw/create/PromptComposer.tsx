@@ -39,6 +39,7 @@ export interface DesignerPrompt {
 }
 
 
+// @uxid src/apps/draw/create/PromptComposer::PromptComposer
 export function PromptComposer(props: {
   isMobile: boolean,
   queueLength: number,
@@ -163,7 +164,7 @@ export function PromptComposer(props: {
       {/*)}*/}
 
       {/* PromptFx */}
-      <Button
+      <Button /* @uxid src/apps/draw/create/PromptComposer::PromptComposer.button */
         variant={isSimpleEnhancing ? 'solid' : 'soft'}
         color='primary'
         disabled={!userHasText}
@@ -192,7 +193,7 @@ export function PromptComposer(props: {
       {/*</Button>*/}
 
       <ButtonGroup sx={{ ml: 'auto' }}>
-        {tempCount > 1 && <IconButton onClick={() => setTempCount(count => count - 1)}>
+        {tempCount > 1 && <IconButton /* @uxid src/apps/draw/create/PromptComposer::PromptComposer.iconbutton */ onClick={() => setTempCount(count => count - 1)}>
           <RemoveIcon />
         </IconButton>}
         {tempCount > 1 && <>
@@ -213,7 +214,7 @@ export function PromptComposer(props: {
             <KeyboardArrowRightIcon />
           </IconButton>
         </>}
-        <IconButton onClick={() => setTempCount(count => count + 1)}>
+        <IconButton /* @uxid src/apps/draw/create/PromptComposer::PromptComposer.iconbutton-2 */ onClick={() => setTempCount(count => count + 1)}>
           <AddRoundedIcon />
         </IconButton>
       </ButtonGroup>
@@ -251,7 +252,7 @@ export function PromptComposer(props: {
                     {/*  <ButtonPromptFromPlaceholder name='History' disabled />*/}
                     {/*</MenuItem>*/}
                     <MenuItem>
-                      <ButtonPromptFromIdea disabled={userHasText} onIdeaNext={nextRandomIdea} onIdeaUse={handleIdeaUse} />
+                      <ButtonPromptFromIdea /* @uxid src/apps/draw/create/PromptComposer::PromptComposer.buttonpromptfromidea */ disabled={userHasText} onIdeaNext={nextRandomIdea} onIdeaUse={handleIdeaUse} />
                     </MenuItem>
                     {/*<MenuItem>*/}
                     {/*  <ButtonPromptFromX name='Image' disabled />*/}
@@ -266,7 +267,7 @@ export function PromptComposer(props: {
             ) : (
               <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
 
-                <ButtonPromptFromIdea disabled={userHasText} onIdeaNext={nextRandomIdea} onIdeaUse={handleIdeaUse} />
+                <ButtonPromptFromIdea /* @uxid src/apps/draw/create/PromptComposer::PromptComposer.buttonpromptfromidea-2 */ disabled={userHasText} onIdeaNext={nextRandomIdea} onIdeaUse={handleIdeaUse} />
 
                 {/*<ButtonPromptFromX name='Image' disabled />*/}
 
@@ -276,7 +277,7 @@ export function PromptComposer(props: {
 
             )}
 
-            <Textarea
+            <Textarea /* @uxid src/apps/draw/create/PromptComposer::PromptComposer.textarea */
               variant='outlined'
               // size='sm'
               autoFocus
@@ -314,7 +315,7 @@ export function PromptComposer(props: {
 
           {/* Toggle the Numbers Picker */}
           {props.isMobile && (
-            <IconButton
+            <IconButton /* @uxid src/apps/draw/create/PromptComposer::PromptComposer.iconbutton-3 */
               variant='soft'
               onClick={() => setShowMobileRepeat(show => !show)}
               sx={isRepeatShown ? {
@@ -335,7 +336,7 @@ export function PromptComposer(props: {
 
             {/* Draw / Stop */}
             {!qBusy ? (
-              <Button
+              <Button /* @uxid src/apps/draw/create/PromptComposer::PromptComposer.button-2 */
                 key='draw-queue'
                 variant='solid' color='primary'
                 endDecorator={<FormatPaintTwoToneIcon />}
@@ -349,7 +350,7 @@ export function PromptComposer(props: {
                 Draw {tempCount > 1 ? `(${tempCount})` : ''}
               </Button>
             ) : <>
-              <Button
+              <Button /* @uxid src/apps/draw/create/PromptComposer::PromptComposer.button-3 */
                 key='draw-terminate'
                 variant='soft' color='warning'
                 endDecorator={<StopOutlinedIcon sx={{ fontSize: 18 }} />}
@@ -362,7 +363,7 @@ export function PromptComposer(props: {
               >
                 Stop / CLEAR (wip)
               </Button>
-              <Button
+              <Button /* @uxid src/apps/draw/create/PromptComposer::PromptComposer.button-4 */
                 key='draw-queuemore'
                 variant='soft'
                 color='primary'
@@ -384,7 +385,7 @@ export function PromptComposer(props: {
                 {!props.isMobile && <Typography level='body-xs'>&nbsp;Number of Images:</Typography>}
                 <Box sx={{ display: 'flex', justifyContent: 'space-evenly' }}>
                   {[1, 2, 3, 4, 5].map((n) => (
-                    <IconButton
+                    <IconButton /* @uxid src/apps/draw/create/PromptComposer::PromptComposer.iconbutton-4 */
                       key={n}
                       color={tempRepeat === n ? 'primary' : 'neutral'}
                       variant={tempRepeat === n ? 'soft' : 'plain'}

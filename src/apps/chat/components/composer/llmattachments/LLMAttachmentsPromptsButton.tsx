@@ -38,6 +38,7 @@ const brightenSx: SxProps = {
   boxShadow: 'xs',
 };
 
+// @uxid src/apps/chat/components/composer/llmattachments/LLMAttachmentsPromptsButton::LLMAttachmentsPromptsButton
 function LLMAttachmentsPromptsButton({ data }: { data: AgiAttachmentPromptsData }) {
 
   const tooltipTitle =
@@ -47,7 +48,7 @@ function LLMAttachmentsPromptsButton({ data }: { data: AgiAttachmentPromptsData 
           : 'Give me more ideas';
 
   const button = (
-    <IconButton
+    <IconButton /* @uxid src/apps/chat/components/composer/llmattachments/LLMAttachmentsPromptsButton::LLMAttachmentsPromptsButton.iconbutton */
       variant={data.error ? 'soft' : data.hasData ? 'outlined' : 'soft'}
       color={data.error ? 'danger' : data.hasData ? AGI_SUGGESTIONS_COLOR : AGI_SUGGESTIONS_COLOR}
       size='sm'

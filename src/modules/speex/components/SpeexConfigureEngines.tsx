@@ -111,6 +111,7 @@ function _sourceIcon(engine: DSpeexEngineAny): React.ElementType | null {
 }
 
 
+// @uxid src/modules/speex/components/SpeexConfigureEngines::SpeexConfigureEngines
 export function SpeexConfigureEngines(props: { isMobile: boolean }) {
 
   // state
@@ -170,7 +171,7 @@ export function SpeexConfigureEngines(props: { isMobile: boolean }) {
     {/* Row: "Speech Generation" label  +  Select + Add dropdown */}
     <Box sx={_styles.row}>
 
-      <Box onClick={event => event.shiftKey && setShowSystemTest(on => !on)}>
+      <Box /* @uxid src/modules/speex/components/SpeexConfigureEngines::SpeexConfigureEngines.box */ onClick={event => event.shiftKey && setShowSystemTest(on => !on)}>
         <FormLabelStart
           title='Voice generation'
           description={
@@ -191,10 +192,10 @@ export function SpeexConfigureEngines(props: { isMobile: boolean }) {
 
         {/* Delete - only shown for manually-added engines; keyed so switching engines disarms it */}
         {activeEngine && !activeEngine.isAutoLinked && !activeEngine.isAutoDetected && (
-          <ConfirmIconButton key={activeEngine.engineId} tooltip={`Remove ${activeEngine.label}`} onConfirm={handleDeleteActive} />
+          <ConfirmIconButton /* @uxid src/modules/speex/components/SpeexConfigureEngines::SpeexConfigureEngines.confirmiconbutton */ key={activeEngine.engineId} tooltip={`Remove ${activeEngine.label}`} onConfirm={handleDeleteActive} />
         )}
 
-        <Select
+        <Select /* @uxid src/modules/speex/components/SpeexConfigureEngines::SpeexConfigureEngines.select */
           placeholder='None'
           disabled={!hasEngines}
           value={activeEngineId}
@@ -241,7 +242,7 @@ export function SpeexConfigureEngines(props: { isMobile: boolean }) {
         </Select>
 
         {/* Add */}
-        <ButtonServiceAdd
+        <ButtonServiceAdd /* @uxid src/modules/speex/components/SpeexConfigureEngines::SpeexConfigureEngines.buttonserviceadd */
           isMobile={props.isMobile}
           isEmpty={!hasEngines}
           emptyHint=''
@@ -254,7 +255,7 @@ export function SpeexConfigureEngines(props: { isMobile: boolean }) {
     </Box>
 
     {/* Vendor picker popup anchored to the Add button */}
-    <CloseablePopup
+    <CloseablePopup /* @uxid src/modules/speex/components/SpeexConfigureEngines::SpeexConfigureEngines.closeablepopup */
       menu
       anchorEl={addMenuAnchor}
       onClose={handleCloseAddMenu}
@@ -267,7 +268,7 @@ export function SpeexConfigureEngines(props: { isMobile: boolean }) {
         .map(([vendorType, info]) => {
           const { icon: VendorIcon } = info;
           return (
-            <MenuItem key={vendorType} onClick={() => handleAddEngine(vendorType)} sx={_styles.addMenuItem}>
+            <MenuItem /* @uxid src/modules/speex/components/SpeexConfigureEngines::SpeexConfigureEngines.menuitem */ key={vendorType} onClick={() => handleAddEngine(vendorType)} sx={_styles.addMenuItem}>
               <ListItemDecorator>
                 <VendorIcon />
               </ListItemDecorator>
@@ -282,7 +283,7 @@ export function SpeexConfigureEngines(props: { isMobile: boolean }) {
 
     {/* Voice parameters + Service access panels for the active engine */}
     {activeEngine && (
-      <SpeexConfigureEngineFull
+      <SpeexConfigureEngineFull /* @uxid src/modules/speex/components/SpeexConfigureEngines::SpeexConfigureEngines.speexconfigureenginefull */
         engine={activeEngine}
         isMobile={props.isMobile}
         onUpdate={handleEngineUpdate}

@@ -46,6 +46,7 @@ const _headerStaticSx = { ..._styles.headerButton, pointerEvents: 'none' } as co
 const _headerCollapserHiddenSx = { ..._styles.headerCollapser, visibility: 'hidden' } as const satisfies SxProps;
 
 
+// @uxid src/common/components/ListItemGroupCollapser::ListItemGroupCollapser
 export function ListItemGroupCollapser<TId extends string>(props: {
   id: TId;
   label: string;
@@ -63,7 +64,7 @@ export function ListItemGroupCollapser<TId extends string>(props: {
 
   return (
     <ListItem>
-      <ListItemButton
+      <ListItemButton /* @uxid src/common/components/ListItemGroupCollapser::ListItemGroupCollapser.listitembutton */
         color='neutral'
         aria-expanded={readOnly ? undefined : !props.isCollapsed}
         tabIndex={readOnly ? -1 : undefined}
@@ -72,7 +73,7 @@ export function ListItemGroupCollapser<TId extends string>(props: {
       >
         {/*{serviceVendor?.id && <ListItemDecorator><LLMVendorIconSprite vendorId={serviceVendor.id} /></ListItemDecorator>}*/}
         {(onCollapseAll && !readOnly) ? (
-          <IconButton
+          <IconButton /* @uxid src/common/components/ListItemGroupCollapser::ListItemGroupCollapser.iconbutton */
             className='agi-collapse-all'
             size='sm'
             variant='soft'

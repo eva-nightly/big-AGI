@@ -69,6 +69,7 @@ interface OverlayButtonWithTooltipProps extends IconButtonProps {
   smShadow?: boolean;
 }
 
+// @uxid src/modules/blocks/OverlayButton::OverlayButton
 export const OverlayButton = ({ tooltip, placement, tooltipProps, smShadow, color, variant, ...buttonProps }: OverlayButtonWithTooltipProps) =>
   tooltip ? (
     <Tooltip disableInteractive arrow placement={placement || 'top'} title={tooltip} color={color} {...tooltipProps}>

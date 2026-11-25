@@ -73,7 +73,7 @@ export function useTokenizerSelect(
   const tokenizerSelectComponent = React.useMemo(() => (
     <FormControl orientation={isHorizontal ? 'horizontal' : undefined}>
       {!!label && <FormLabelStart title={label} />}
-      <Select
+      <Select /* @uxid src/common/tokens/useTokenizerSelect::useTokenizerSelect.select */
         variant='outlined'
         value={tokenizerId}
         size={smaller ? 'sm' : undefined}

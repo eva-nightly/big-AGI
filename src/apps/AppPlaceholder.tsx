@@ -9,6 +9,7 @@ import { useRouterRoute } from '~/common/app.routes';
 /**
  * https://github.com/enricoros/big-AGI/issues/299
  */
+// @uxid src/apps/AppPlaceholder::AppPlaceholder
 export function AppPlaceholder(props: {
   title?: string | null,
   text?: React.ReactNode,

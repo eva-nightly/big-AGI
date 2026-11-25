@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/vendors/MiniMaxIcon::MiniMaxIcon
 export function MiniMaxIcon(props: SvgIconProps) {
   return <SvgIcon viewBox='0 0 36.9 31.1' width='24' height='24' stroke='none' fill='currentColor' {...props}>
     <path d='M17.6 3.1C17.6 2.4 17 1.8 16.3 1.8C15.5 1.8 14.9 2.4 14.9 3.1V25C14.9 26.7 13.6 28.1 11.9 28.1C10.2 28.1 8.8 26.7 8.8 25V11C8.8 10.2 8.2 9.6 7.5 9.6C6.7 9.6 6.1 10.2 6.1 11V16.9C6.1 18.6 4.8 20 3.1 20C1.4 20 0 18.6 0 16.9V14.8C0 14.3 0.4 13.9 0.9 13.9C1.4 13.9 1.8 14.3 1.8 14.8V16.9C1.8 17.7 2.3 18.2 3.1 18.2C3.8 18.2 4.4 17.6 4.4 16.9V11C4.4 9.3 5.8 7.9 7.5 7.9C9.2 7.9 10.5 9.3 10.5 11V25C10.5 25.8 11.1 26.4 11.9 26.4C12.6 26.4 13.2 25.8 13.2 25V16.4V3.1C13.2 1.4 14.6 0 16.3 0C18 0 19.3 1.4 19.3 3.1V21.3C19.3 21.7 18.9 22.1 18.5 22.1C18 22.1 17.6 21.7 17.6 21.3V3.1Z' />

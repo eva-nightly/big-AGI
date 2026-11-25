@@ -15,12 +15,13 @@ import { capitalizeFirstLetter } from '~/common/util/textUtils';
 import type { OpenAIAccessSchema } from '../../server/openai/openai.access';
 
 
+// @uxid src/modules/llms/vendors/localai/LocalAIAdmin::ListItemSwitch
 function ListItemSwitch(props: { title: string, checked: boolean, onChange: (checked: boolean) => void }) {
   return (
     <ListItem variant='soft'>
       <Box sx={{ display: 'flex', alignItems: 'center', flex: 1 }}>
         {props.title}
-        <Switch
+        <Switch /* @uxid src/modules/llms/vendors/localai/LocalAIAdmin::ListItemSwitch.switch */
           checked={props.checked}
           onChange={event => props.onChange(event.target.checked)}
           endDecorator={props.checked ? 'Show' : 'Hide'}
@@ -36,6 +37,7 @@ function ListItemSwitch(props: { title: string, checked: boolean, onChange: (che
  * Show the progress of a model install job by polling the server every 1 second until complete.
  *  - uses the LocalAI /models/jobs API
  */
+// @uxid src/modules/llms/vendors/localai/LocalAIAdmin::ModelJobStatusChecker
 function ModelJobStatusChecker(props: { access: OpenAIAccessSchema, jobId: string }) {
 
   // local state
@@ -80,6 +82,7 @@ function ModelJobStatusChecker(props: { access: OpenAIAccessSchema, jobId: strin
  * Every model being installed has a panel showing the status.
  *  - uses the LocalAI /models/apply API
  */
+// @uxid src/modules/llms/vendors/localai/LocalAIAdmin::ModelInstallPanel
 function ModelInstallPanel(props: { access: OpenAIAccessSchema, modelName: string, galleryName: string }) {
 
   // state
@@ -103,7 +106,7 @@ function ModelInstallPanel(props: { access: OpenAIAccessSchema, modelName: strin
         <Typography level='title-sm'>
           Installing <strong>{props.modelName}</strong> from the <strong>{props.galleryName}</strong>
         </Typography>
-        <IconButton size='sm' onClick={() => setHideSelf(true)} sx={{ ml: 'auto' }}>
+        <IconButton /* @uxid src/modules/llms/vendors/localai/LocalAIAdmin::ModelInstallPanel.iconbutton */ size='sm' onClick={() => setHideSelf(true)} sx={{ ml: 'auto' }}>
           <CloseRoundedIcon />
         </IconButton>
       </Box>
@@ -120,6 +123,7 @@ function ModelInstallPanel(props: { access: OpenAIAccessSchema, modelName: strin
 /**
  * Administration panel for LocalAI. Mainly to install models from the Gallery.
  */
+// @uxid src/modules/llms/vendors/localai/LocalAIAdmin::LocalAIAdmin
 export function LocalAIAdmin(props: { access: OpenAIAccessSchema, onClose: () => void }) {
 
   // state
@@ -164,7 +168,7 @@ export function LocalAIAdmin(props: { access: OpenAIAccessSchema, onClose: () =>
 
 
   return (
-    <GoodModal title='LocalAI Administration' dividers open onClose={props.onClose}>
+    <GoodModal /* @uxid src/modules/llms/vendors/localai/LocalAIAdmin::LocalAIAdmin.goodmodal */ title='LocalAI Administration' dividers open onClose={props.onClose}>
       <Box sx={{ display: 'grid', gap: 'var(--Card-padding)' }}>
 
         <Typography level='body-sm'>
@@ -195,7 +199,7 @@ export function LocalAIAdmin(props: { access: OpenAIAccessSchema, onClose: () =>
         {!!error && <InlineError error={error} />}
         {galleryNotConfigured && <InlineError error={<>
           Model galleries do not seem to be configured (null response).
-          Please refer to the <Link href='https://localai.io/models/' target='_blank'>documentation</Link> for
+          Please refer to the <Link /* @uxid src/modules/llms/vendors/localai/LocalAIAdmin::LocalAIAdmin.link */ href='https://localai.io/models/' target='_blank'>documentation</Link> for
           how to configure model galleries.
         </>} />}
 
@@ -204,7 +208,7 @@ export function LocalAIAdmin(props: { access: OpenAIAccessSchema, onClose: () =>
           <CircularProgress color='success' />
         ) : (
           <>
-            <Input
+            <Input /* @uxid src/modules/llms/vendors/localai/LocalAIAdmin::LocalAIAdmin.input */
               placeholder='Filter models...'
               value={searchQuery}
               onChange={event => setSearchQuery(event.target.value)}
@@ -274,7 +278,7 @@ export function LocalAIAdmin(props: { access: OpenAIAccessSchema, onClose: () =>
                             )}
                           </td>
                           <td style={{ minWidth: 0, textAlign: 'right', flexShrink: 0 }}>
-                            <Button
+                            <Button /* @uxid src/modules/llms/vendors/localai/LocalAIAdmin::LocalAIAdmin.button */
                               size='sm'
                               color='neutral'
                               disabled={!model.gallery?.name || installModels.some(p => p.galleryName === model.gallery?.name && p.modelName === model.name)}
@@ -293,7 +297,7 @@ export function LocalAIAdmin(props: { access: OpenAIAccessSchema, onClose: () =>
             </Sheet>
 
             <List variant='outlined' sx={{ borderRadius: 'md', p: 0, mt: 2 }}>
-              <ListItemSwitch title='Show Voice Models' checked={showVoiceModels} onChange={setShowVoiceModels} />
+              <ListItemSwitch /* @uxid src/modules/llms/vendors/localai/LocalAIAdmin::LocalAIAdmin.listitemswitch */ title='Show Voice Models' checked={showVoiceModels} onChange={setShowVoiceModels} />
 
               <ExpanderAccordion title='Debug: show JSON' startCollapsed sx={{ fontSize: 'sm' }}>
                 <Box sx={{ whiteSpace: 'break-spaces' }}>

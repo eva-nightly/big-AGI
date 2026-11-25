@@ -161,7 +161,7 @@ function _renderSectionHeader(title: string, isFirst: boolean = false) {
 // a section header that also toggles the section: 'Cloud ... SHOW MORE v' collapsed, 'Cloud ^' expanded
 function _renderSectionHeaderToggle(title: string, expanded: boolean, onToggle: () => void) {
   return (
-    <MenuItem key={`header-${title}`} variant='plain' aria-expanded={expanded} onClick={onToggle} sx={{ ..._styles.header, ..._styles.headerToggle }}>
+    <MenuItem /* @uxid src/modules/llms/models-modal/ModelsServiceSelector::_renderSectionHeaderToggle.menuitem */ key={`header-${title}`} variant='plain' aria-expanded={expanded} onClick={onToggle} sx={{ ..._styles.header, ..._styles.headerToggle }}>
       {title}
       <Box sx={expanded ? { ..._styles.headerToggleHint, alignSelf: 'center' } : _styles.headerToggleHint}>
         {!expanded && 'Show more'}
@@ -174,7 +174,7 @@ function _renderSectionHeaderToggle(title: string, expanded: boolean, onToggle: 
 // the last tile of a collapsed section: a plain text link, no icon or background (expanded, the header collapses it)
 function _renderShowMoreTile(onExpand: () => void) {
   return (
-    <MenuItem key='show-more-tile' variant='plain' color='neutral' aria-expanded={false} onClick={onExpand} sx={{ ..._styles.vendorItem, fontSize: 'sm' }}>
+    <MenuItem /* @uxid src/modules/llms/models-modal/ModelsServiceSelector::_renderShowMoreTile.menuitem */ key='show-more-tile' variant='plain' color='neutral' aria-expanded={false} onClick={onExpand} sx={{ ..._styles.vendorItem, fontSize: 'sm' }}>
       <Box sx={_styles.toggleTileSpacer} />
       Show more…
     </MenuItem>
@@ -187,7 +187,7 @@ function _renderVendorItem({ vendor, canAdd, vendorInstancesCount }: VendorItemD
   const hasInstances = vendorInstancesCount > 0;
 
   return (
-    <MenuItem
+    <MenuItem /* @uxid src/modules/llms/models-modal/ModelsServiceSelector::_renderVendorItem.menuitem */
       key={vendor.id}
       variant='soft'
       color={hasInstances ? 'neutral' : canAdd ? 'primary' : /*vendor.hasFreeModels ? 'success' :*/ 'neutral'}
@@ -260,7 +260,7 @@ function _renderVendorItem({ vendor, canAdd, vendorInstancesCount }: VendorItemD
       {/* Add IconButton for adding additional instances */}
       {isMultiInstance && hasInstances && canAdd && (
         <GoodTooltip title={`Add another ${vendor.name.replace('OpenAI', 'OpenAI-compatible')} service`} placement='top' arrow>
-          <IconButton
+          <IconButton /* @uxid src/modules/llms/models-modal/ModelsServiceSelector::_renderVendorItem.iconbutton */
             size='sm'
             color='primary'
             variant='soft'
@@ -281,6 +281,7 @@ function _renderVendorItem({ vendor, canAdd, vendorInstancesCount }: VendorItemD
 }
 
 
+// @uxid src/modules/llms/models-modal/ModelsServiceSelector::ModelsServiceSelector
 export function ModelsServiceSelector(props: {
   modelsServices: DModelsService[],
   selectedServiceId: DModelsServiceId | null,
@@ -428,7 +429,7 @@ export function ModelsServiceSelector(props: {
         Service:
       </Typography>}
 
-      <Select
+      <Select /* @uxid src/modules/llms/models-modal/ModelsServiceSelector::ModelsServiceSelector.select */
         variant='outlined'
         value={props.selectedServiceId}
         disabled={noServices}
@@ -441,7 +442,7 @@ export function ModelsServiceSelector(props: {
       >
         {/* the Updates screen, as a pseudo-service */}
         {!noServices && <Option value={ALL_SERVICES_OPTION_ID}>All services</Option>}
-        {!noServices && <ListDivider role='none' />}
+        {!noServices && <ListDivider /* @uxid src/modules/llms/models-modal/ModelsServiceSelector::ModelsServiceSelector.listdivider */ role='none' />}
 
         {serviceItems.map(item => item.component)}
 
@@ -457,7 +458,7 @@ export function ModelsServiceSelector(props: {
         {/*</ListItem>*/}
       </Select>
 
-      <ButtonServiceAdd
+      <ButtonServiceAdd /* @uxid src/modules/llms/models-modal/ModelsServiceSelector::ModelsServiceSelector.buttonserviceadd */
         isMobile={isMobile}
         isEmpty={noServices}
         emptyHint='Add your first AI service'
@@ -469,7 +470,7 @@ export function ModelsServiceSelector(props: {
 
       {enableDeleteButton && (
         <TooltipOutlined title={`Remove ${selectedServiceItem?.service.label || 'Service'}`}>
-          <IconButton
+          <IconButton /* @uxid src/modules/llms/models-modal/ModelsServiceSelector::ModelsServiceSelector.iconbutton */
             variant='plain' color='neutral' disabled={!enableDeleteButton} sx={{ ml: 'auto' }}
             onClick={(event) => props.selectedServiceId && props.onDeleteService(props.selectedServiceId, event.shiftKey)}
           >
@@ -480,7 +481,7 @@ export function ModelsServiceSelector(props: {
 
 
       {/* vendors popup, for adding */}
-      <CloseablePopup
+      <CloseablePopup /* @uxid src/modules/llms/models-modal/ModelsServiceSelector::ModelsServiceSelector.closeablepopup */
         menu
         anchorEl={vendorsMenuAnchor} onClose={closeVendorsMenu}
         placement={isMobile ? 'bottom' : 'auto-end'}

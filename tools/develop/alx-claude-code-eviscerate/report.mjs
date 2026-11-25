@@ -24,14 +24,17 @@ const TYPE_DESC = {
   'assistant': 'one API content block per record (text | thinking | tool_use), sharing message.id + usage across the records of one API call',
   'progress': 'RETIRED (2.1.17→2.1.83): live subagent/hook/bash progress duplicated inline, linked by toolUseID/parentToolUseID',
   'file-history-snapshot': 'per-prompt checkpoint of tracked file backups - the /rewind substrate (content lives in ~/.claude/file-history)',
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::TYPE_DESC.system
   'system': 'app events on the tree: hook summaries, turn_duration, compact_boundary, api_error, local_command…',
   'attachment': 'system-injected context deltas riding the tape (e.g. deferred_tools_delta, file attachments)',
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::TYPE_DESC.last-prompt
   'last-prompt': 'floating pointer: last composer prompt + leafUuid (no parentUuid - state, not history)',
   'ai-title': 'auto-generated session title (floating state record)',
   'permission-mode': 'permission mode switches (floating state record)',
   'mode': 'UI mode marker (normal/plan…), floating state record',
   'queue-operation': 'prompt queue enqueue/dequeue with full prompt content',
   'custom-title': 'user-set session title (floating state record)',
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::TYPE_DESC.agent-name
   'agent-name': 'assigned agent name for the session (floating state record)',
   'summary': 'topic summary + leafUuid - the session-picker index, points at a leaf of the tree',
   'file-history-delta': 'NEW (seen 2026-07-14): incremental per-file backup pointer, replaces re-snapshotting',
@@ -208,6 +211,7 @@ function idBlocksView(T) {
     if (b.t === 'tool_result') return `<span class="blk t-res">tool_result<em style="color:${P.tid[b.id]}">${P.tmark[b.id]} toolu …${esc(b.id)}</em></span>`;
     return `<span class="blk t-text">${esc(b.t)}</span>`;
   };
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::h
   let h = `<div class="idsys"><div class="idses"><div class="idlab">session <code>…${esc(T.sessionId)}</code> <span class="muted2">· sessionId + cwd + gitBranch + version stamped on every record</span></div>`;
   h += `<div class="idturn"><div class="idlab" style="color:var(--lime)">turn <code>promptId …${esc(T.promptId)}</code> <span class="muted2">· groups the prompt with its whole loop</span></div>`;
   let openMsg = null;
@@ -335,6 +339,7 @@ function gallery() {
   return trees.exemplars.map(e => {
     const s = e.stats;
     const big = e.tree.nodes.length > 40;
+    // @uxid tools/develop/alx-claude-code-eviscerate/report::gallery.prompt
     return `<h3>${esc(e.label)}</h3>
 <div class="sub" style="margin:-2px 0 8px">${esc(e.title || e.session.slice(0, 8))} · ${esc(e.project.replace(/^-Users-[^-]+-?/, '~/').replace(/-/g, '/'))} · ${fmtNum(s.records)} records · ${s.prompts} prompts · ${s.forks} forks${s.maxSiblings > 1 ? ` (max ${s.maxSiblings} siblings)` : ''}${s.compactSeams ? ` · ${s.compactSeams} compact seam` : ''} · showing ${e.tree.nodes.length} of ${fmtNum(e.tree.keptTotal)} structural nodes${e.tree.pruned || e.tree.truncated ? ' <span style="color:#ffb04d">(condensed further to fit)</span>' : ''}</div>
 <div class="panel">${treeSVG(e.tree)}</div>
@@ -378,10 +383,13 @@ const attRows2 = attAll.slice(attHalf).map(attRow).join('');
 // ---- level-2 taxonomy: every type, one level down ------------------------------
 const SUB_NOTES = {
   'tool_result carrier': "the loop's return path - carries the raw block + the parsed toolUseResult twin",
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::SUB_NOTES.prompt · plain string
   'prompt · plain string': 'what the user actually typed',
   'meta (isMeta - caveats, notices)': 'injected caveats/notices rendered as user turns but not real prompts',
   'interrupt marker': '"[Request interrupted by user]" persisted as a real record',
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::SUB_NOTES.prompt · with image(s)
   'prompt · with image(s)': 'pasted/attached images ride as blocks',
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::SUB_NOTES.prompt · rich blocks
   'prompt · rich blocks': 'block-array prompts without images',
   'compact summary (isCompactSummary)': 'the post-compaction carry-forward, render-only',
   'tool_use record': 'pauses the API call; the loop hinge',
@@ -463,9 +471,11 @@ function transitionMatrix() {
 
 // floating-state cadence table
 const FLO_TRIGGER = {
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::FLO_TRIGGER.last-prompt
   'last-prompt': 'every submission - the draft buffer, survives interrupts',
   'ai-title': 'regenerated as the topic drifts',
   'custom-title': 'user-set; re-flushed with the state block',
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::FLO_TRIGGER.agent-name
   'agent-name': 'assigned identity; re-flushed with the state block',
   'permission-mode': 'flushed on every submission (state block)',
   'mode': 'flushed on every submission (state block)',
@@ -487,9 +497,11 @@ const KIND_DESC = {
   'no-tool chat': 'plain Q&A / notes - 0-2 messages, nothing executed',
   'slash command': 'initiated by a /command (XML command envelope)',
   'interrupted': 'the user stopped it - marker record or aborted stream',
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::KIND_DESC.delegating (spawns agents)
   'delegating (spawns agents)': 'spawns Agent/Task children - the fleet turns',
   'task-notification continuation': 'woken by a background task notification, not a human',
   'interactive (asks the user)': 'the model asked back (AskUserQuestion) and waited',
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::KIND_DESC.system/sdk-injected
   'system/sdk-injected': 'programmatic prompts (SDK / system)',
   'queued auto-run': 'dequeued from the typed-ahead queue (promptSource stamp is recent - the queue journal itself shows 397 dequeues)',
 };
@@ -960,11 +972,14 @@ const explRows = explOrder.map(k => `<tr><td class="mono">${k}</td><td>${bar(c.e
 const NOTE = {
   'record:progress': 'retired - replaced by subagents/ sidecar tapes', 'inline isSidechain record': 'retired - subagents left the main tape',
   'field:todos': 'retired - todos moved out of the tape', 'field:thinkingMetadata': 'retired',
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::NOTE.field:promptId
   'field:promptId': 'turn identity - groups a prompt with its whole loop', 'field:forkedFrom': 'session forking provenance',
   'field:sourceToolAssistantUUID': 'tool_result → issuing assistant record backlink', 'field:slug': 'human-readable session slug',
   'field:attributionMcpServer': 'per-message MCP attribution', 'field:attributionSkill': 'per-message skill attribution',
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::NOTE.field:promptSource
   'field:sessionKind': 'session kind marker', 'field:promptSource': 'how the prompt arrived', 'record:file-history-delta': 'incremental file backups',
   'field:logicalParentUuid': 'compaction seam link', 'field:toolDenialKind': 'permission-denial taxonomy', 'record:attachment': 'system context deltas',
+  // @uxid tools/develop/alx-claude-code-eviscerate/report::NOTE.field:agentId
   'field:interruptedMessageId': 'interrupt bookkeeping', 'field:agentId': 'inline sidechain agent id (retired with them)',
 };
 const evoRows = Object.entries(eras)
@@ -983,6 +998,7 @@ const agentRows = sortDesc(S.agentTypes).slice(0, 8).map(([k, n]) => `<tr><td cl
 
 // ------------------------------------------------------------------------------
 
+// @uxid tools/develop/alx-claude-code-eviscerate/report::html
 const html = `<title>Claude Code session tapes - format, forest, loops & persistence (local eviscerate)</title>
 <style>
 :root{--bg:#0b0d0a;--card:#151812;--ink:#e8ece2;--dim:#9aa38c;--lime:#d5ec31;--srv:#5aa9ff;--cli:#ffcf4d;--res:#7c8474;--line:#2a2f24;}

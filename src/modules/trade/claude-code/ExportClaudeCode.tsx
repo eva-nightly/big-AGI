@@ -17,7 +17,7 @@ import { ClaudeCodeExport } from './claudeCode.export';
 function _OptionCheckbox(props: { label: string, detail: string, checked: boolean, disabled?: boolean, onChange?: (checked: boolean) => void }) {
   return (
     <FormControl orientation='horizontal' sx={{ gap: 1 }}>
-      <Checkbox
+      <Checkbox /* @uxid src/modules/trade/claude-code/ExportClaudeCode::_OptionCheckbox.checkbox */
         size='md'
         color='neutral'
         checked={props.checked}
@@ -38,6 +38,7 @@ function _OptionCheckbox(props: { label: string, detail: string, checked: boolea
 /**
  * Button + dialog: export the chat as a Claude Code session, or as a folder for Claude Code to work on.
  */
+// @uxid src/modules/trade/claude-code/ExportClaudeCode::ExportClaudeCode
 export function ExportClaudeCode(props: {
   conversationId: DConversationId | null,
   getConversation: (conversationId: DConversationId) => Immutable<DConversation> | null,
@@ -86,7 +87,7 @@ export function ExportClaudeCode(props: {
 
   return <>
 
-    <Button
+    <Button /* @uxid src/modules/trade/claude-code/ExportClaudeCode::ExportClaudeCode.button */
       variant='soft' disabled={!conversationId}
       endDecorator={<FileDownloadOutlinedIcon />}
       sx={{ minWidth: 240, justifyContent: 'space-between' }}
@@ -96,28 +97,28 @@ export function ExportClaudeCode(props: {
     </Button>
 
     {!!content && (
-      <GoodModal open onClose={handleClose} title={<><b>Export</b> for Claude Code</>}>
+      <GoodModal /* @uxid src/modules/trade/claude-code/ExportClaudeCode::ExportClaudeCode.goodmodal */ open onClose={handleClose} title={<><b>Export</b> for Claude Code</>}>
 
         <Typography level='body-sm'>
           Resume this chat in Claude Code, or give Claude Code a folder to work on.
         </Typography>
 
         <Sheet variant='soft' sx={{ p: 2, borderRadius: 'md', display: 'grid', gap: 1.5 }}>
-          <_OptionCheckbox
+          <_OptionCheckbox /* @uxid src/modules/trade/claude-code/ExportClaudeCode::ExportClaudeCode.optioncheckbox */
             label='Images'
             detail={content.imageCount ? `${content.imageCount} · ${humanReadableBytes(content.imageBytes)}` : 'none in this chat'}
             checked={options.includeImages && content.imageCount > 0}
             disabled={!content.imageCount}
             onChange={checked => setOptions(o => ({ ...o, includeImages: checked }))}
           />
-          <_OptionCheckbox
+          <_OptionCheckbox /* @uxid src/modules/trade/claude-code/ExportClaudeCode::ExportClaudeCode.optioncheckbox-2 */
             label='System prompt'
             detail={content.hasSystemPrompt ? 'as context at the start of the session' : 'none in this chat'}
             checked={options.includeSystemPrompt && content.hasSystemPrompt}
             disabled={!content.hasSystemPrompt}
             onChange={checked => setOptions(o => ({ ...o, includeSystemPrompt: checked }))}
           />
-          <_OptionCheckbox
+          <_OptionCheckbox /* @uxid src/modules/trade/claude-code/ExportClaudeCode::ExportClaudeCode.optioncheckbox-3 */
             label='Session in folder'
             detail='adds session.claude.jsonl to the zip, to resume from the folder'
             checked={options.includeSessionInFolder}
@@ -132,7 +133,7 @@ export function ExportClaudeCode(props: {
         </Sheet>
 
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
-          <Button
+          <Button /* @uxid src/modules/trade/claude-code/ExportClaudeCode::ExportClaudeCode.button-2 */
             variant='soft' loading={busyFormat === 'folder'} disabled={!!busyFormat}
             endDecorator={<FileDownloadOutlinedIcon />}
             sx={{ flex: 1, minWidth: 200, justifyContent: 'space-between' }}
@@ -140,7 +141,7 @@ export function ExportClaudeCode(props: {
           >
             Folder · ZIP
           </Button>
-          <Button
+          <Button /* @uxid src/modules/trade/claude-code/ExportClaudeCode::ExportClaudeCode.button-3 */
             variant='soft' loading={busyFormat === 'session'} disabled={!!busyFormat}
             endDecorator={<FileDownloadOutlinedIcon />}
             sx={{ flex: 1, minWidth: 200, justifyContent: 'space-between' }}
@@ -164,7 +165,7 @@ export function ExportClaudeCode(props: {
             <Typography level='body-sm' sx={{ fontFamily: 'code', flex: 1, overflowWrap: 'anywhere' }}>
               {resumeCommand}
             </Typography>
-            <IconButton size='sm' onClick={() => copyToClipboard(resumeCommand, 'Command')}>
+            <IconButton /* @uxid src/modules/trade/claude-code/ExportClaudeCode::ExportClaudeCode.iconbutton */ size='sm' onClick={() => copyToClipboard(resumeCommand, 'Command')}>
               <ContentCopyIcon />
             </IconButton>
           </Sheet>

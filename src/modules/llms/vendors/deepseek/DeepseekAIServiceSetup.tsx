@@ -20,6 +20,7 @@ import { ModelVendorDeepseek } from './deepseekai.vendor';
 const DEEPSEEK_REG_LINK = 'https://platform.deepseek.com/api_keys';
 
 
+// @uxid src/modules/llms/vendors/deepseek/DeepseekAIServiceSetup::DeepseekAIServiceSetup
 export function DeepseekAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -49,10 +50,10 @@ export function DeepseekAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/deepseek/DeepseekAIServiceSetup::DeepseekAIServiceSetup.forminputkey */
       autoCompleteId='deepseek-key' label='Deepseek Key'
       rightLabel={<>{needsUserKey
-        ? !deepseekKey && <Link level='body-sm' href={DEEPSEEK_REG_LINK} target='_blank'>request Key</Link>
+        ? !deepseekKey && <Link /* @uxid src/modules/llms/vendors/deepseek/DeepseekAIServiceSetup::DeepseekAIServiceSetup.link */ level='body-sm' href={DEEPSEEK_REG_LINK} target='_blank'>request Key</Link>
         : <AlreadySet overridden={!!deepseekKey} />}
       </>}
       value={deepseekKey} onChange={value => updateSettings({ deepseekKey: value })}
@@ -60,7 +61,7 @@ export function DeepseekAIServiceSetup(props: { serviceId: DModelsServiceId }) {
       placeholder='...'
     />
 
-    {showAdvanced && <FormTextField
+    {showAdvanced && <FormTextField /* @uxid src/modules/llms/vendors/deepseek/DeepseekAIServiceSetup::DeepseekAIServiceSetup.formtextfield */
       autoCompleteId='deepseek-host'
       title='API Host'
       tooltip={`An alternative Deepseek API endpoint to use instead of the default 'api.deepseek.com'.\n\nExamples:\n - https://api.deepseek.com/beta`}
@@ -69,7 +70,7 @@ export function DeepseekAIServiceSetup(props: { serviceId: DModelsServiceId }) {
       onChange={text => updateSettings({ deepseekHost: text })}
     />}
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/deepseek/DeepseekAIServiceSetup::DeepseekAIServiceSetup.setupformclientsidetoggle */
       visible={!!deepseekKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

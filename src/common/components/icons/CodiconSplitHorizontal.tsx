@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { SvgIcon, SvgIconProps } from '@mui/joy';
 
+// @uxid src/common/components/icons/CodiconSplitHorizontal::CodiconSplitHorizontal
 export function CodiconSplitHorizontal(props: SvgIconProps) {
   return (
     <SvgIcon viewBox='0 0 16 16' width={16} height={16} fill='currentColor' {...props}>

@@ -20,6 +20,7 @@ function _parseJsonOrError(json: string): { parsed: Record<string, unknown> | nu
 }
 
 
+// @uxid src/modules/aix/client/debugger/DebugPayloadOverride::DebugPayloadOverride
 export function DebugPayloadOverride() {
 
   // external state
@@ -66,7 +67,7 @@ export function DebugPayloadOverride() {
 
       <Box sx={{ display: 'flex', gap: 1 }}>
 
-        <Textarea
+        <Textarea /* @uxid src/modules/aix/client/debugger/DebugPayloadOverride::DebugPayloadOverride.textarea */
           placeholder='{"field": "value"}'
           value={localJson}
           onChange={(e) => setLocalJson(e.target.value)}
@@ -77,7 +78,7 @@ export function DebugPayloadOverride() {
         />
 
         <Box sx={{ flex: 0, display: 'flex', flexDirection: 'column', gap: 1 }}>
-          <Button
+          <Button /* @uxid src/modules/aix/client/debugger/DebugPayloadOverride::DebugPayloadOverride.button */
             size='sm'
             variant={canApply ? 'solid' : 'plain'}
             disabled={!canApply}
@@ -85,7 +86,7 @@ export function DebugPayloadOverride() {
           >
             Apply
           </Button>
-          <Button
+          <Button /* @uxid src/modules/aix/client/debugger/DebugPayloadOverride::DebugPayloadOverride.button-2 */
             size='sm'
             variant={storeJson ? 'solid' : 'soft'}
             color={storeJson ? 'primary' : 'neutral'}

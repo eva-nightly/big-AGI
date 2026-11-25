@@ -10,6 +10,7 @@ import { takeScreenCapture } from '~/common/util/screenCaptureUtils';
 
 export const ButtonAttachScreenCaptureMemo = React.memo(ButtonAttachScreenCapture);
 
+// @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachScreenCapture::ButtonAttachScreenCapture
 function ButtonAttachScreenCapture(props: {
   color?: ColorPaletteProp,
   isMobile?: boolean,
@@ -42,7 +43,7 @@ function ButtonAttachScreenCapture(props: {
 
 
   return props.isMobile ? (
-    <IconButton color={props.color} disabled={props.disabled} onClick={handleTakeScreenCapture}>
+    <IconButton /* @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachScreenCapture::ButtonAttachScreenCapture.iconbutton */ color={props.color} disabled={props.disabled} onClick={handleTakeScreenCapture}>
       <ScreenshotMonitorIcon />
     </IconButton>
   ) : (
@@ -55,7 +56,7 @@ function ButtonAttachScreenCapture(props: {
         )}
       </Box>
     )}>
-      <Button
+      <Button /* @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachScreenCapture::ButtonAttachScreenCapture.button */
         variant={capturing ? 'solid' : props.color ? 'soft' : 'plain'}
         color={!!error ? 'danger' : props.color || 'neutral'}
         disabled={props.disabled}

@@ -15,6 +15,7 @@ import { useOptimaDrawerOpen, useOptimaPanelOpen } from './useOptima';
  *  - mobile: just the 100dvh pageCore
  *  - desktop: animated left margin (sync with the drawer) and centering via the Container, then the PageCore
  */
+// @uxid src/common/layout/optima/PageWrapper::PageWrapper
 export function PageWrapper(props: { component: React.ElementType, currentApp?: NavItemApp, isMobile: boolean, children: React.ReactNode }) {
 
   // external state

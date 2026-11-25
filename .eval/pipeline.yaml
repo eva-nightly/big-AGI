@@ -1,0 +1,14 @@
+stack: next-typescript
+packageManager: npm
+commit: ffbe666d15c529d3b9e83775eaa6a785c66da69d
+verifiedAt: 2026-11-25T17:06:46.698Z
+commands:
+  install: npm ci
+  build: npm run build
+  analyze: npm run lint
+  test: npm test
+status:
+  install: none
+  build: none
+  analyze: none
+  test: none

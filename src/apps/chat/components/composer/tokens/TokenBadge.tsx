@@ -13,6 +13,7 @@ import { tokenCountsMathAndMessage, TokenTooltip } from './TokenTooltip';
  */
 export const TokenBadgeMemo = React.memo(TokenBadge);
 
+// @uxid src/apps/chat/components/composer/tokens/TokenBadge::TokenBadge
 function TokenBadge(props: {
   chatPricing?: DPricingChatGenerate,
 
@@ -68,7 +69,7 @@ function TokenBadge(props: {
 
   return (
     <TokenTooltip color={color} message={message} placement='top-end'>
-      <Badge
+      <Badge /* @uxid src/apps/chat/components/composer/tokens/TokenBadge::TokenBadge.badge */
         variant='soft' color={color} max={1000000}
         // invisible={shallHide}
         onMouseEnter={props.enableHover ? handleHoverEnter : undefined}

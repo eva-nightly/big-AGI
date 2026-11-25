@@ -37,6 +37,7 @@ const tileSize = 7; // rem
 const tileGap = 0.5; // rem
 
 
+// @uxid src/apps/chat/components/persona-selector/PersonaSelector::Tile
 function Tile(props: {
   text?: string,
   imageUrl?: string,
@@ -49,7 +50,7 @@ function Tile(props: {
   sx?: SxProps,
 }) {
   return (
-    <Button
+    <Button /* @uxid src/apps/chat/components/persona-selector/PersonaSelector::Tile.button */
       variant={(!props.isEditMode && props.isActive) ? 'solid' : props.isHighlighted ? 'soft' : 'soft'}
       color={(!props.isEditMode && props.isActive) ? 'primary' : props.isHighlighted ? 'primary' : TILE_ACTIVE_COLOR}
       onClick={props.onClick}
@@ -115,6 +116,7 @@ function Tile(props: {
 /**
  * Purpose selector for the current chat. Clicking on any item activates it for the current chat.
  */
+// @uxid src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector
 export function PersonaSelector(props: {
   conversationId: DConversationId,
   isMobile: boolean,
@@ -254,7 +256,7 @@ export function PersonaSelector(props: {
     }}>
 
       {showPersonaFinder && <Box>
-        <Input
+        <Input /* @uxid src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector.input */
           fullWidth
           variant='outlined' color='neutral'
           value={searchQuery} onChange={handleSearchOnChange}
@@ -262,7 +264,7 @@ export function PersonaSelector(props: {
           placeholder='Search for purpose…'
           startDecorator={<SearchIcon />}
           endDecorator={searchQuery && (
-            <IconButton onClick={handleSearchClear}>
+            <IconButton /* @uxid src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector.iconbutton */ onClick={handleSearchClear}>
               <ClearIcon />
             </IconButton>
           )}
@@ -290,7 +292,7 @@ export function PersonaSelector(props: {
             AI Persona
           </Typography>
           <Tooltip disableInteractive title={editMode ? 'Done Editing' : 'Edit Tiles'}>
-            <IconButton size='sm' onClick={toggleEditMode} sx={{ my: '-0.25rem' /* absorb the button padding */ }}>
+            <IconButton /* @uxid src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector.iconbutton-2 */ size='sm' onClick={toggleEditMode} sx={{ my: '-0.25rem' /* absorb the button padding */ }}>
               {editMode ? <DoneIcon /> : <EditRoundedIcon />}
             </IconButton>
           </Tooltip>
@@ -301,7 +303,7 @@ export function PersonaSelector(props: {
           const isActive = systemPurposeId === spId;
           const systemPurpose = SystemPurposes[spId];
           return (
-            <Tile
+            <Tile /* @uxid src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector.tile */
               key={'tile-' + spId}
               text={systemPurpose?.title}
               imageUrl={systemPurpose?.imageUri}
@@ -317,7 +319,7 @@ export function PersonaSelector(props: {
 
         {/* Persona Creator Tile */}
         {(editMode || !hidePersonaCreator) && (
-          <Tile
+          <Tile /* @uxid src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector.tile-2 */
             text='Persona Creator'
             symbol='🎭'
             isActive={false}
@@ -378,7 +380,7 @@ export function PersonaSelector(props: {
                       '&:hover svg': { opacity: 1 },
                     }}
                   >
-                    <ListItemButton onClick={() => props.runExample(example)} sx={{ justifyContent: 'space-between', borderRadius: 'md' }}>
+                    <ListItemButton /* @uxid src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector.listitembutton */ onClick={() => props.runExample(example)} sx={{ justifyContent: 'space-between', borderRadius: 'md' }}>
                       <Typography level='body-sm'>
                         {/* Icon 📁 when the .action is 'require-data-attachment' */}
                         {(typeof example === 'object' && example.action === 'require-data-attachment') ? '📁 ' : ''}
@@ -397,7 +399,7 @@ export function PersonaSelector(props: {
                     <Typography level='title-sm'>
                       System Prompt
                     </Typography>
-                    <Button
+                    <Button /* @uxid src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector.button */
                       variant='plain' color='neutral' size='sm'
                       endDecorator={<EditNoteIcon />}
                       onClick={() => handleSwitchToCustom(bareBonesPromptMixer(selectedPurpose?.systemMessage || 'No system message available', chatLLM?.id))}
@@ -425,7 +427,7 @@ export function PersonaSelector(props: {
 
         {/* [row -1] Custom Prompt box */}
         {systemPurposeId === 'Custom' && (
-          <Textarea
+          <Textarea /* @uxid src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector.textarea */
             autoFocus
             variant='outlined'
             placeholder='Craft your custom system message here…'
@@ -452,7 +454,7 @@ export function PersonaSelector(props: {
 
         {/* [row -1] YouTube URL */}
         {isYouTubeTranscriber && (
-          <YouTubeURLInput
+          <YouTubeURLInput /* @uxid src/apps/chat/components/persona-selector/PersonaSelector::PersonaSelector.youtubeurlinput */
             onSubmit={handleAppendTranscriptAsMessage}
             sx={{
               gridColumn: '1 / -1',

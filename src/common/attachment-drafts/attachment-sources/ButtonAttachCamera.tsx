@@ -9,6 +9,7 @@ import { buttonAttachSx } from '~/common/components/ButtonAttachFiles';
 
 export const ButtonAttachCameraMemo = React.memo(ButtonAttachCamera);
 
+// @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachCamera::ButtonAttachCamera
 function ButtonAttachCamera(props: {
   color?: ColorPaletteProp,
   isMobile?: boolean,
@@ -18,7 +19,7 @@ function ButtonAttachCamera(props: {
   onOpenCamera: () => void,
 }) {
   return props.isMobile ? (
-    <IconButton color={props.color} disabled={props.disabled} onClick={props.onOpenCamera}>
+    <IconButton /* @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachCamera::ButtonAttachCamera.iconbutton */ color={props.color} disabled={props.disabled} onClick={props.onOpenCamera}>
       <AddAPhotoIcon />
     </IconButton>
   ) : (
@@ -28,7 +29,7 @@ function ButtonAttachCamera(props: {
         {!!props.isMobile ? 'Auto-OCR to read text' : 'See the world, on the go'}
       </Box>
     )}>
-      <Button
+      <Button /* @uxid src/common/attachment-drafts/attachment-sources/ButtonAttachCamera::ButtonAttachCamera.button */
         variant={props.color ? 'soft' : 'plain'}
         color={props.color || 'neutral'}
         disabled={props.disabled}

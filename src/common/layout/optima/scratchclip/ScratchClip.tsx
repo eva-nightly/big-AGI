@@ -20,6 +20,7 @@ import { ClipboardHistoryItem, scratchClipActions, useScratchClipHistory } from 
 const MAX_DISPLAY_LENGTH = 100; // and still will be ellipsized
 
 
+// @uxid src/common/layout/optima/scratchclip/ScratchClip::ScratchClip
 export function ScratchClip() {
 
   // external state
@@ -85,7 +86,7 @@ export function ScratchClip() {
 
 
   return (
-    <GoodModal
+    <GoodModal /* @uxid src/common/layout/optima/scratchclip/ScratchClip::ScratchClip.goodmodal */
       open={isVisible}
       onClose={handleClose}
       titleStartDecorator={<HistoryIcon />}
@@ -101,7 +102,7 @@ export function ScratchClip() {
           {/* Clear Button */}
           {history.length > 0 && (
             <Tooltip title='Clear All History' variant='solid' placement='bottom'>
-              <IconButton size='sm' variant='plain' color='neutral' onClick={handleClearHistory} sx={{ mr: 1 }}>
+              <IconButton /* @uxid src/common/layout/optima/scratchclip/ScratchClip::ScratchClip.iconbutton */ size='sm' variant='plain' color='neutral' onClick={handleClearHistory} sx={{ mr: 1 }}>
                 <ClearAllIcon />
               </IconButton>
             </Tooltip>
@@ -110,7 +111,7 @@ export function ScratchClip() {
         </Box>
       }
       startButton={!supportsClipboardRead() ? undefined : (
-        <Button
+        <Button /* @uxid src/common/layout/optima/scratchclip/ScratchClip::ScratchClip.button */
           variant='soft'
           color='neutral'
           startDecorator={<ContentPasteGoIcon />}
@@ -153,7 +154,7 @@ export function ScratchClip() {
               {/* > Copy */}
               <ListItemDecorator>
                 <Tooltip title='Copy to Clipboard' variant='outlined' placement='left'>
-                  <IconButton
+                  <IconButton /* @uxid src/common/layout/optima/scratchclip/ScratchClip::ScratchClip.iconbutton-2 */
                     size='sm'
                     // color='primary'
                     onClick={(e) => handleRestoreSnippet(item, e)}
@@ -175,7 +176,7 @@ export function ScratchClip() {
               </ListItemContent>
 
               {/* > Delete */}
-              <IconButton
+              <IconButton /* @uxid src/common/layout/optima/scratchclip/ScratchClip::ScratchClip.iconbutton-3 */
                 size='sm'
                 // color='danger'
                 onClick={(e) => handleRemoveSnippet(item.id, e)}

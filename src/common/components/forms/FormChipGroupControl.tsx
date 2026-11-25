@@ -59,6 +59,7 @@ const _styles = {
 /**
  * Exact drop-in replacement for FormRadioControl, but with a ButtonGroup.
  */
+// @uxid src/common/components/forms/FormChipGroupControl::FormChipGroupControl
 export const FormChipGroupControl = <TValue extends string>(props: {
   // specific
   size?: 'sm' | 'md' | 'lg',
@@ -91,7 +92,7 @@ export const FormChipGroupControl = <TValue extends string>(props: {
         sx={_styles.group}
       >
         {props.options.map((option) => optionWithTooltip(option.tooltip,
-          <Button
+          <Button /* @uxid src/common/components/forms/FormChipGroupControl::FormChipGroupControl.button */
             aria-pressed={option === active}
             key={option.value}
             variant={!rvSolid ? undefined : option === active ? 'solid' : 'outlined'}

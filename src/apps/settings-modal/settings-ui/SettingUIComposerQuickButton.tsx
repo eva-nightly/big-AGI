@@ -11,13 +11,14 @@ const QuickOptions: FormSelectOption<'off' | 'call' | 'beam'>[] = [
   { value: 'off', label: 'Off', description: 'Hide' },
 ];
 
+// @uxid src/apps/settings-modal/settings-ui/SettingUIComposerQuickButton::SettingUIComposerQuickButton
 export function SettingUIComposerQuickButton(props: { noLabel?: boolean }) {
 
   // external state
   const [composerQuickButton, setComposerQuickButton] = useUIPreferencesStore(useShallow(state => [state.composerQuickButton, state.setComposerQuickButton]));
 
   return (
-    <FormSelectControl
+    <FormSelectControl /* @uxid src/apps/settings-modal/settings-ui/SettingUIComposerQuickButton::SettingUIComposerQuickButton.formselectcontrol */
       title={props.noLabel ? undefined : 'Quick Button'}
       options={QuickOptions}
       value={composerQuickButton}

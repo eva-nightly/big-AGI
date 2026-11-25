@@ -17,6 +17,7 @@ const _floatingWindowSx: SxProps = {
 } as const;
 
 
+// @uxid src/common/components/dnd-window/JoyFloatingWindow::JoyFloatingWindow
 export function JoyFloatingWindow(props: {
   id: string;
   label: string;
@@ -48,7 +49,7 @@ export function JoyFloatingWindow(props: {
   return (
     <Portal>
       {/* this is a full screen div */}
-      <Box
+      <Box /* @uxid src/common/components/dnd-window/JoyFloatingWindow::JoyFloatingWindow.box */
         ref={setElement} id={id}
         data-floating-window={id}
         tabIndex={-1} role='dialog' aria-label={label} aria-modal={false}

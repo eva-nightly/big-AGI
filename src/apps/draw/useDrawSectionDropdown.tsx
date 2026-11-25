@@ -24,6 +24,7 @@ const drawDropdownItems: OptimaDropdownItems = {
 };
 
 
+// @uxid src/apps/draw/useDrawSectionDropdown::DrawSectionDropdown
 function DrawSectionDropdown(props: {
   drawSection: DrawSection | null,
   setDrawSection: (drawSection: DrawSection | null) => void,
@@ -36,7 +37,7 @@ function DrawSectionDropdown(props: {
   }, [setDrawSection]);
 
   return (
-    <OptimaBarDropdownMemo
+    <OptimaBarDropdownMemo /* @uxid src/apps/draw/useDrawSectionDropdown::DrawSectionDropdown.optimabardropdownmemo */
       items={drawDropdownItems}
       value={props.drawSection}
       onChange={handleSystemPurposeChange}
@@ -55,7 +56,7 @@ export function useDrawSectionDropdown(remainingJobs: number, cancelAllJobs: () 
       alignItems: 'center',
       gap: 1,
     }}>
-      <Link href={ROUTE_INDEX}>
+      <Link /* @uxid src/apps/draw/useDrawSectionDropdown::useDrawSectionDropdown.link */ href={ROUTE_INDEX}>
         <BigAgiSquircleIcon inverted sx={{ width: 32, height: 32, color: 'white' }} />
       </Link>
 
@@ -67,7 +68,7 @@ export function useDrawSectionDropdown(remainingJobs: number, cancelAllJobs: () 
       {/* Button to cancel pending Jobs from the UI (running and queued) */}
       {!!remainingJobs && (
         <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-          <Button size='sm' color='danger' variant='soft' onClick={cancelAllJobs} sx={{ my: 0 }}>
+          <Button /* @uxid src/apps/draw/useDrawSectionDropdown::useDrawSectionDropdown.button */ size='sm' color='danger' variant='soft' onClick={cancelAllJobs} sx={{ my: 0 }}>
             {remainingJobs} · <CloseRoundedIcon />
           </Button>
         </Box>

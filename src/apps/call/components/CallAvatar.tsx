@@ -5,9 +5,10 @@ import { Avatar, Box } from '@mui/joy';
 import { animationScalePulse } from '~/common/util/animUtils';
 
 
+// @uxid src/apps/call/components/CallAvatar::CallAvatar
 export function CallAvatar(props: { symbol: string, imageUrl?: string, isRinging?: boolean, onClick: () => void }) {
   return (
-    <Avatar
+    <Avatar /* @uxid src/apps/call/components/CallAvatar::CallAvatar.avatar */
       onClick={props.onClick}
       src={props.imageUrl}
       sx={{

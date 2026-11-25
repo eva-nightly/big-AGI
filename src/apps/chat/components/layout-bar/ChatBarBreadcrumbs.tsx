@@ -74,6 +74,7 @@ const _styles = {
 } as const;
 
 
+// @uxid src/apps/chat/components/layout-bar/ChatBarBreadcrumbs::ChatBarBreadcrumbs
 export function ChatBarBreadcrumbs(props: {
   conversationId: DConversationId | null,
   conversationTitle: string,
@@ -95,7 +96,7 @@ export function ChatBarBreadcrumbs(props: {
   // NOTE: once ancestor crumbs (Projects/Spaces) exist, render this editor *within* the leaf crumb instead of replacing the trail.
   if (isEditing && !isSubContext) {
     return (
-      <InlineTextarea
+      <InlineTextarea /* @uxid src/apps/chat/components/layout-bar/ChatBarBreadcrumbs::ChatBarBreadcrumbs.inlinetextarea */
         initialText={conversationTitle?.trim() || ''}
         placeholder='Chat title...'
         invertedColors
@@ -115,7 +116,7 @@ export function ChatBarBreadcrumbs(props: {
     <Box className='agi-ellipsize' sx={_styles.titleCap}>{displayTitle}</Box>
   ) : (
     <TooltipOutlined placement='bottom-start' title='Rename Chat'>
-      <Box className='agi-ellipsize' sx={[_styles.titleCap, _styles.titleEditable]} onClick={beginEdit}>
+      <Box /* @uxid src/apps/chat/components/layout-bar/ChatBarBreadcrumbs::ChatBarBreadcrumbs.box */ className='agi-ellipsize' sx={[_styles.titleCap, _styles.titleEditable]} onClick={beginEdit}>
         {displayTitle}
       </Box>
     </TooltipOutlined>
@@ -123,7 +124,7 @@ export function ChatBarBreadcrumbs(props: {
 
   return (
     <Box sx={_styles.root}>
-      <AppBreadcrumbs
+      <AppBreadcrumbs /* @uxid src/apps/chat/components/layout-bar/ChatBarBreadcrumbs::ChatBarBreadcrumbs.appbreadcrumbs */
         size='md' // match the persona/model selectors and Beam's title-md leaf; unifies sizing across chat & beam
         rootTitle={conversationCrumb}
         onRootClick={isSubContext ? onConversationClick : undefined}

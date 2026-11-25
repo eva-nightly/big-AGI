@@ -49,6 +49,7 @@ const AGE_FILTER_OPTIONS: { days: number | null, label: string, shortLabel: stri
 
 export const ChatDrawerMemo = React.memo(ChatDrawer);
 
+// @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer
 function ChatDrawer(props: {
   isMobile: boolean,
   activeConversationId: DConversationId | null,
@@ -186,7 +187,7 @@ function ChatDrawer(props: {
             <Typography level='body-sm'>Group By</Typography>
           </ListItem>
           {(['date', 'persona', 'dimension'] as Exclude<ChatNavGrouping, false>[]).map(_gName => (
-            <MenuItem
+            <MenuItem /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.menuitem */
               key={'group-' + _gName}
               aria-label={`Group by ${_gName}`}
               selected={navGrouping === _gName}
@@ -201,19 +202,19 @@ function ChatDrawer(props: {
           <ListItem>
             <Typography level='body-sm'>Filter</Typography>
           </ListItem>
-          <MenuItem onClick={toggleFilterHasStars}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.menuitem-2 */ onClick={toggleFilterHasStars}>
             <ListItemDecorator>{filterHasStars && <CheckRoundedIcon />}</ListItemDecorator>
             Starred <StarOutlineRoundedIcon />
           </MenuItem>
-          <MenuItem onClick={toggleFilterIsArchived}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.menuitem-3 */ onClick={toggleFilterIsArchived}>
             <ListItemDecorator>{filterIsArchived && <CheckRoundedIcon />}</ListItemDecorator>
             Archived <ArchiveOutlinedIcon />
           </MenuItem>
-          <MenuItem onClick={toggleFilterHasImageAssets}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.menuitem-4 */ onClick={toggleFilterHasImageAssets}>
             <ListItemDecorator>{filterHasImageAssets && <CheckRoundedIcon />}</ListItemDecorator>
             Has Images <FormatPaintOutlinedIcon />
           </MenuItem>
-          <MenuItem onClick={toggleFilterHasDocFragments}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.menuitem-5 */ onClick={toggleFilterHasDocFragments}>
             <ListItemDecorator>{filterHasDocFragments && <CheckRoundedIcon />}</ListItemDecorator>
             Has Attachments <AttachFileRoundedIcon />
           </MenuItem>
@@ -222,7 +223,7 @@ function ChatDrawer(props: {
           <ListItem sx={{ display: 'flex', alignItems: 'center', gap: 0.5, flexWrap: 'wrap' }}>
             <ListItemDecorator><Typography level='body-sm'>Age</Typography></ListItemDecorator>
             {AGE_FILTER_OPTIONS.map(({ days, label, shortLabel }) => (
-              <Chip
+              <Chip /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.chip */
                 key={label}
                 aria-label={label}
                 // size='sm'
@@ -238,11 +239,11 @@ function ChatDrawer(props: {
           <ListItem>
             <Typography level='body-sm'>Show</Typography>
           </ListItem>
-          <MenuItem onClick={toggleShowPersonaIcons}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.menuitem-6 */ onClick={toggleShowPersonaIcons}>
             <ListItemDecorator>{showPersonaIcons && <CheckRoundedIcon />}</ListItemDecorator>
             Icons
           </MenuItem>
-          <MenuItem onClick={toggleShowRelativeSize}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.menuitem-7 */ onClick={toggleShowRelativeSize}>
             <ListItemDecorator>{showRelativeSize && <CheckRoundedIcon />}</ListItemDecorator>
             Relative Size
           </MenuItem>
@@ -253,11 +254,11 @@ function ChatDrawer(props: {
           <ListItem>
             <Typography level='body-sm'>Sort By</Typography>
           </ListItem>
-          <MenuItem selected={searchSorting === 'frequency'} onClick={() => setSearchSorting('frequency')}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.menuitem-8 */ selected={searchSorting === 'frequency'} onClick={() => setSearchSorting('frequency')}>
             <ListItemDecorator>{searchSorting === 'frequency' && <CheckRoundedIcon />}</ListItemDecorator>
             Matches
           </MenuItem>
-          <MenuItem selected={searchSorting === 'date'} onClick={() => setSearchSorting('date')}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.menuitem-9 */ selected={searchSorting === 'date'} onClick={() => setSearchSorting('date')}>
             <ListItemDecorator>{searchSorting === 'date' && <CheckRoundedIcon />}</ListItemDecorator>
             Date
           </MenuItem>
@@ -265,19 +266,19 @@ function ChatDrawer(props: {
           <ListItem>
             <Typography level='body-sm'>Search In</Typography>
           </ListItem>
-          <MenuItem selected={searchDepth === 'titles'} onClick={() => setSearchDepth('titles')}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.menuitem-10 */ selected={searchDepth === 'titles'} onClick={() => setSearchDepth('titles')}>
             <ListItemDecorator>{searchDepth === 'titles' && <CheckRoundedIcon />}</ListItemDecorator>
             Titles
           </MenuItem>
-          <MenuItem selected={searchDepth === 'content'} onClick={() => setSearchDepth('content')}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.menuitem-11 */ selected={searchDepth === 'content'} onClick={() => setSearchDepth('content')}>
             <ListItemDecorator>{searchDepth === 'content' && <CheckRoundedIcon />}</ListItemDecorator>
             Titles + Content
           </MenuItem>
-          <MenuItem selected={searchDepth === 'attachments'} onClick={() => setSearchDepth('attachments')}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.menuitem-12 */ selected={searchDepth === 'attachments'} onClick={() => setSearchDepth('attachments')}>
             <ListItemDecorator>{searchDepth === 'attachments' && <CheckRoundedIcon />}</ListItemDecorator>
             Full
           </MenuItem>
-          <MenuItem selected={searchInArchived} onClick={() => setSearchInArchived(!searchInArchived)}>
+          <MenuItem /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.menuitem-13 */ selected={searchInArchived} onClick={() => setSearchInArchived(!searchInArchived)}>
             <ListItemDecorator>{searchInArchived && <CheckRoundedIcon />}</ListItemDecorator>
             Include Archived
           </MenuItem>
@@ -316,9 +317,9 @@ function ChatDrawer(props: {
   return <>
 
     {/* Drawer Header */}
-    <OptimaDrawerHeader title='Chats' onClose={optimaCloseDrawer}>
+    <OptimaDrawerHeader /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.optimadrawerheader */ title='Chats' onClose={optimaCloseDrawer}>
       <Tooltip title={enableFolders ? 'Hide Folders' : 'Use Folders'}>
-        <IconButton size='sm' onClick={toggleEnableFolders}>
+        <IconButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.iconbutton */ size='sm' onClick={toggleEnableFolders}>
           {enableFolders ? <FoldersToggleOn /> : <FoldersToggleOff />}
         </IconButton>
       </Tooltip>
@@ -336,7 +337,7 @@ function ChatDrawer(props: {
     {/*  },*/}
     {/*}}>*/}
     {enableFolders && (
-      <ChatFolderList
+      <ChatFolderList /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.chatfolderlist */
         isMobile={props.isMobile}
         folders={allFolders}
         // folderChatCounts={folderChatCounts}
@@ -363,7 +364,7 @@ function ChatDrawer(props: {
       <Box sx={{ display: 'flex', flexDirection: 'column', m: 2, gap: 2 }}>
 
         {/* Search Input Field */}
-        <DebouncedInputMemo
+        <DebouncedInputMemo /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.debouncedinputmemo */
           minChars={2}
           onDebounce={setDebouncedSearchQuery}
           debounceTimeout={300}
@@ -373,7 +374,7 @@ function ChatDrawer(props: {
         />
 
         {/* New Chat Button */}
-        <Button
+        <Button /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.button */
           // variant='outlined'
           variant={disableNewButton ? undefined : 'soft'}
           disabled={disableNewButton}
@@ -402,7 +403,7 @@ function ChatDrawer(props: {
       {/* Chat Titles List (shrink as half the rate as the Folders List) */}
       <Box key='chatlist' ref={chatsListRef} sx={{ flexGrow: 1, flexShrink: 1, flexBasis: '20rem', overflowY: 'auto', ...themeScalingMap[contentScaling].chatDrawerItemSx }}>
         {displayNavItems.map((item, idx) => item.type === 'nav-item-chat-data' ? (
-            <ChatDrawerItemMemo
+            <ChatDrawerItemMemo /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.chatdraweritemmemo */
               key={'nav-chat-' + item.conversationId}
               item={item}
               showSymbols={!showPersonaIcons ? false : zenMode ? false : gifMode ? 'gif' : true}
@@ -434,7 +435,7 @@ function ChatDrawer(props: {
               </Typography>
               {(filterHasBeamOpen || filterHasStars || filterHasImageAssets || filterHasDocFragments || filterIsArchived || filterOlderThanDays !== null) && (
                 <Tooltip title='Clear Filters'>
-                  <IconButton size='sm' color='primary' onClick={clearFilters}>
+                  <IconButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.iconbutton-2 */ size='sm' color='primary' onClick={clearFilters}>
                     <ClearIcon />
                   </IconButton>
                 </Tooltip>
@@ -446,7 +447,7 @@ function ChatDrawer(props: {
         {/* Load More Button */}
         {filteredChatsCount > 200 && (
           <ListItem>
-            <ListItemButton
+            <ListItemButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.listitembutton */
               variant='soft'
               onClick={handleRenderLimitIncrease}
               sx={{ justifyContent: 'center', py: 3 }}
@@ -473,7 +474,7 @@ function ChatDrawer(props: {
 
       {/* Bottom commands */}
       <Box sx={{ flexShrink: 0, display: 'flex', alignItems: 'center' }}>
-        <ListItemButton onClick={props.onConversationsImportDialog} sx={{ flex: 1 }}>
+        <ListItemButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.listitembutton-2 */ onClick={props.onConversationsImportDialog} sx={{ flex: 1 }}>
           <ListItemDecorator>
             <FileDownloadOutlinedIcon />
           </ListItemDecorator>
@@ -484,7 +485,7 @@ function ChatDrawer(props: {
         {/* Always enabled: this is also the only route to 'Backup All Chats' / 'Export All', which must stay reachable (e.g. with Beam open, or zero chats).
           - former gate (d8c78b1a004, 'Export: disable when beam open, as it's not exported for now'), kept for the record:
             disabled={filteredChatsAreEmpty || props.focusedChatBeamOpen} */}
-        <ListItemButton onClick={handleConversationsExport} sx={{ flex: 1 }}>
+        <ListItemButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.listitembutton-3 */ onClick={handleConversationsExport} sx={{ flex: 1 }}>
           <ListItemDecorator>
             <FileUploadOutlinedIcon />
           </ListItemDecorator>
@@ -492,7 +493,7 @@ function ChatDrawer(props: {
         </ListItemButton>
       </Box>
 
-      <ListItemButton disabled={filteredChatsAreEmpty} onClick={handleConversationsDeleteFiltered}>
+      <ListItemButton /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.listitembutton-4 */ disabled={filteredChatsAreEmpty} onClick={handleConversationsDeleteFiltered}>
         <ListItemDecorator>
           <DeleteOutlineIcon />
         </ListItemDecorator>
@@ -504,7 +505,7 @@ function ChatDrawer(props: {
 
     {/* [Menu] Chat Item Folder Change */}
     {!!folderChangeRequest?.anchorEl && (
-      <FoldersSelectPopup
+      <FoldersSelectPopup /* @uxid src/apps/chat/components/layout-drawer/ChatDrawer::ChatDrawer.foldersselectpopup */
         allFolders={allFolders}
         request={folderChangeRequest}
         onClose={handleConversationFolderCancel}

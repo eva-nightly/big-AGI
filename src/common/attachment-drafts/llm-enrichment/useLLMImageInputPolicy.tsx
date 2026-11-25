@@ -28,7 +28,7 @@ export function useLLMImageInputPolicy(chatLLM: DLLM | null, attachmentDrafts: A
   const confirmUnsupportedLLMAttachments = React.useCallback(async (): Promise<boolean> => {
     if (attEnrichSummary.allCompatible) return true;
     return await showPromisedOverlay('composer-unsupported-attachments', { rejectWithValue: false }, ({ onResolve, onUserReject }) => (
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/common/attachment-drafts/llm-enrichment/useLLMImageInputPolicy::useLLMImageInputPolicy.confirmationmodal */
         open
         onClose={onUserReject}
         onPositive={() => onResolve(true)}

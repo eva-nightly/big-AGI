@@ -49,6 +49,7 @@ const _styles = {
  * With `drafts`, a footer row adds attachments to this group (after its last member; Insert now, else at Done).
  * The view-mode lists (`ImageAttachmentFragments`, `DocumentAttachmentFragments`) render the same items, per kind.
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-edit/EditAttachmentFragments::EditAttachmentFragments
 export function EditAttachmentFragments(props: {
   fragments: readonly DMessageAttachmentFragment[],
   contentScaling: ContentScaling,
@@ -103,10 +104,10 @@ export function EditAttachmentFragments(props: {
     <Sheet color='warning' variant='soft' aria-label={`${props.fragments.length} attachments`} sx={_styles.frame}>
 
       <Box sx={_styles.list}>
-        <DndContext sensors={sensors} modifiers={dndModifiers} onDragEnd={handleDragEnd}>
+        <DndContext /* @uxid src/apps/chat/components/message/fragments-attachment-edit/EditAttachmentFragments::EditAttachmentFragments.dndcontext */ sensors={sensors} modifiers={dndModifiers} onDragEnd={handleDragEnd}>
           <SortableContext items={fragmentIds}>
             {props.fragments.map(fragment => isImagePart(fragment.part) ? (
-              <SortableImageAttachmentCard
+              <SortableImageAttachmentCard /* @uxid src/apps/chat/components/message/fragments-attachment-edit/EditAttachmentFragments::EditAttachmentFragments.sortableimageattachmentcard */
                 key={fragment.fId}
                 fragment={fragment}
                 isEditing
@@ -117,7 +118,7 @@ export function EditAttachmentFragments(props: {
                 cardStyleSx={cardSx}
               />
             ) : (
-              <SortableDocAttachmentButton
+              <SortableDocAttachmentButton /* @uxid src/apps/chat/components/message/fragments-attachment-edit/EditAttachmentFragments::EditAttachmentFragments.sortabledocattachmentbutton */
                 key={fragment.fId}
                 fragment={fragment}
                 contentScaling={props.contentScaling}
@@ -135,7 +136,7 @@ export function EditAttachmentFragments(props: {
       {/* Document viewer and editor: edits go to the copy, Ok closes the editor, Done stores */}
       {!!selectedFragment && isDocPart(selectedFragment.part) && (
         <Box sx={_styles.pane}>
-          <DocAttachmentFragmentPane
+          <DocAttachmentFragmentPane /* @uxid src/apps/chat/components/message/fragments-attachment-edit/EditAttachmentFragments::EditAttachmentFragments.docattachmentfragmentpane */
             key={selectedFragment.fId /* the useLiveFile hook must not carry state across fragments */}
             fragment={selectedFragment}
             controlledEditor
@@ -157,7 +158,7 @@ export function EditAttachmentFragments(props: {
 
       {/* Image Viewer modal */}
       {viewingImageRefPart && (
-        <ViewImageRefPartModal
+        <ViewImageRefPartModal /* @uxid src/apps/chat/components/message/fragments-attachment-edit/EditAttachmentFragments::EditAttachmentFragments.viewimagerefpartmodal */
           imageRefPart={viewingImageRefPart}
           onClose={handleCloseViewImage}
         />

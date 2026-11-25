@@ -23,6 +23,7 @@ import { useServiceSetup } from '../useServiceSetup';
 import { isValidAnthropicApiKey, ModelVendorAnthropic } from './anthropic.vendor';
 
 
+// @uxid src/modules/llms/vendors/anthropic/AnthropicServiceSetup::AnthropicServiceSetup
 export function AnthropicServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -51,23 +52,23 @@ export function AnthropicServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id}>
       <Box sx={{ level: 'body-sm' }}>
-        Enjoy <b>Fable</b>, <b>Opus</b>, <b>Sonnet</b> and <b>Haiku</b>. Issues? Check <Link href='https://status.anthropic.com/' level='body-sm' target='_blank'>Anthropic status</Link>.
+        Enjoy <b>Fable</b>, <b>Opus</b>, <b>Sonnet</b> and <b>Haiku</b>. Issues? Check <Link /* @uxid src/modules/llms/vendors/anthropic/AnthropicServiceSetup::AnthropicServiceSetup.link */ href='https://status.anthropic.com/' level='body-sm' target='_blank'>Anthropic status</Link>.
       </Box>
     </ApproximateCosts>
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/anthropic/AnthropicServiceSetup::AnthropicServiceSetup.forminputkey */
       autoCompleteId='anthropic-key' label={!!anthropicHost ? 'API Key' : 'Anthropic API Key'}
       rightLabel={<>{needsUserKey
-        ? !anthropicKey && <Link level='body-sm' href='https://www.anthropic.com/earlyaccess' target='_blank'>request Key</Link>
+        ? !anthropicKey && <Link /* @uxid src/modules/llms/vendors/anthropic/AnthropicServiceSetup::AnthropicServiceSetup.link-2 */ level='body-sm' href='https://www.anthropic.com/earlyaccess' target='_blank'>request Key</Link>
         : <AlreadySet overridden={!!anthropicKey} />
-      } {anthropicKey && keyValid && <Link level='body-sm' href='https://console.anthropic.com/settings/usage' target='_blank'>show usage</Link>}
+      } {anthropicKey && keyValid && <Link /* @uxid src/modules/llms/vendors/anthropic/AnthropicServiceSetup::AnthropicServiceSetup.link-3 */ level='body-sm' href='https://console.anthropic.com/settings/usage' target='_blank'>show usage</Link>}
       </>}
       value={anthropicKey} onChange={value => updateSettings({ anthropicKey: value })}
       required={needsUserKey} isError={keyError}
       placeholder='sk-...'
     />
 
-    {(showAdvanced || !autoVndAntBreakpoints) && <FormSwitchControl
+    {(showAdvanced || !autoVndAntBreakpoints) && <FormSwitchControl /* @uxid src/modules/llms/vendors/anthropic/AnthropicServiceSetup::AnthropicServiceSetup.formswitchcontrol */
       title='Auto-Caching' on='Enabled' off='Disabled'
       tooltip='Auto-breakpoints: 3 breakpoints are always set on the System instruction and on the last 2 User messages. This leaves the user with 1 breakpoint of their choice. (max 4)'
       description={autoVndAntBreakpoints ? <>Last 2 user messages</> : 'Disabled'}
@@ -87,7 +88,7 @@ export function AnthropicServiceSetup(props: { serviceId: DModelsServiceId }) {
       </Typography>
     </FormControl>}
 
-    {(showAdvanced || !!anthropicHost) && <FormTextField
+    {(showAdvanced || !!anthropicHost) && <FormTextField /* @uxid src/modules/llms/vendors/anthropic/AnthropicServiceSetup::AnthropicServiceSetup.formtextfield */
       autoCompleteId='anthropic-host'
       title='API Host'
       description='Proxies, custom endpoints'
@@ -97,7 +98,7 @@ export function AnthropicServiceSetup(props: { serviceId: DModelsServiceId }) {
       onChange={text => updateSettings({ anthropicHost: text })}
     />}
 
-    {(showAdvanced || !!anthropicInferenceGeo) && <FormSwitchControl
+    {(showAdvanced || !!anthropicInferenceGeo) && <FormSwitchControl /* @uxid src/modules/llms/vendors/anthropic/AnthropicServiceSetup::AnthropicServiceSetup.formswitchcontrol-2 */
       title='US-only Inference' on='US' off='Off'
       tooltip='Restrict model inference to US data centers at 1.1x pricing. Supported on Claude Opus 4.6 and newer models only - older models will return an error.'
       description={anthropicInferenceGeo ? 'US region (1.1x)' : 'Global (default)'}
@@ -105,7 +106,7 @@ export function AnthropicServiceSetup(props: { serviceId: DModelsServiceId }) {
       onChange={on => updateSettings({ inferenceGeoUS: on })}
     />}
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/anthropic/AnthropicServiceSetup::AnthropicServiceSetup.setupformclientsidetoggle */
       visible={!!anthropicKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

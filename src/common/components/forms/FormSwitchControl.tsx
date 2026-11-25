@@ -8,6 +8,7 @@ import { FormLabelStart } from './FormLabelStart';
 /**
  * Switch control
  */
+// @uxid src/common/components/forms/FormSwitchControl::FormSwitchControl
 export function FormSwitchControl(props: {
   title: string | React.JSX.Element, description?: string | React.JSX.Element,
   on?: React.ReactNode, off?: string, fullWidth?: boolean,
@@ -20,7 +21,7 @@ export function FormSwitchControl(props: {
   return (
     <FormControl size={props.size} orientation='horizontal' disabled={props.disabled} sx={{ flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center' }}>
       <FormLabelStart title={props.title} description={props.description} tooltip={props.tooltip} tooltipWarning={props.tooltipWarning} />
-      <Switch
+      <Switch /* @uxid src/common/components/forms/FormSwitchControl::FormSwitchControl.switch */
         checked={props.checked}
         onChange={event => props.onChange(event.target.checked)}
         size={props.size}

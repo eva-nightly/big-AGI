@@ -144,6 +144,7 @@ const _titleOverlayCompactSx: SxProps = { ..._styles.titleOverlay, ..._styles.ti
 /**
  * Title overlay component with inline editing functionality
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageTitleEditorOverlay
 function ImageTitleEditorOverlay(props: {
   title?: string,
   fragment: DMessageAttachmentFragment,
@@ -202,9 +203,9 @@ function ImageTitleEditorOverlay(props: {
   if (!onFragmentReplace) return null;
 
   return (
-    <Sheet color='primary' variant='solid' invertedColors className={isEditingTitle ? 'agi-image-title agi-editing' : 'agi-image-title'} sx={props.compact ? _titleOverlayCompactSx : _styles.titleOverlay} onClick={handleStartEditTitle}>
+    <Sheet /* @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageTitleEditorOverlay.sheet */ color='primary' variant='solid' invertedColors className={isEditingTitle ? 'agi-image-title agi-editing' : 'agi-image-title'} sx={props.compact ? _titleOverlayCompactSx : _styles.titleOverlay} onClick={handleStartEditTitle}>
       {isEditingTitle ? (
-        <Input
+        <Input /* @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageTitleEditorOverlay.input */
           size='sm'
           autoFocus
           value={editTitle}
@@ -227,6 +228,7 @@ function ImageTitleEditorOverlay(props: {
 /**
  * Renders a single image attachment based on its part type
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentCard
 function ImageAttachmentCard(props: {
   fragment: DMessageAttachmentFragment,
   isEditing?: boolean,
@@ -260,7 +262,7 @@ function ImageAttachmentCard(props: {
       const legacy = part._legacyImageRefPart;
       return (
         <Box sx={props.compact ? _styles.imageCardTitleWrapperCompact : _styles.imageCardTitleWrapper}>
-          <RenderImageRefDBlob
+          <RenderImageRefDBlob /* @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentCard.renderimagerefdblob */
             key={'att-img-legacy-' + fId}
             dataRefDBlobAssetId={legacy.dataRef.dblobAssetId}
             dataRefMimeType={legacy.dataRef.mimeType}
@@ -275,7 +277,7 @@ function ImageAttachmentCard(props: {
           />
 
           {/* Editable Title overlay */}
-          <ImageTitleEditorOverlay
+          <ImageTitleEditorOverlay /* @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentCard.imagetitleeditoroverlay */
             title={title}
             fragment={props.fragment}
             compact={props.compact}
@@ -296,7 +298,7 @@ function ImageAttachmentCard(props: {
 
       return (
         <Box sx={props.compact ? _styles.imageCardTitleWrapperCompact : _styles.imageCardTitleWrapper}>
-          <RenderImageRefDBlob
+          <RenderImageRefDBlob /* @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentCard.renderimagerefdblob-2 */
             key={'att-img-' + fId}
             dataRefDBlobAssetId={dataRef.dblobAssetId}
             dataRefMimeType={dataRef.mimeType}
@@ -311,7 +313,7 @@ function ImageAttachmentCard(props: {
           />
 
           {/* Editable Title overlay */}
-          <ImageTitleEditorOverlay
+          <ImageTitleEditorOverlay /* @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentCard.imagetitleeditoroverlay-2 */
             title={title}
             fragment={props.fragment}
             compact={props.compact}
@@ -360,6 +362,7 @@ export function imageAttachmentCardSx(contentScaling: ContentScaling, renderVari
 /**
  * Wrapper for a RenderImageRefDBlob that adds DnD support with a grab handle. Also an item of `EditAttachmentFragments`.
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::SortableImageAttachmentCard
 export function SortableImageAttachmentCard(props: {
   fragment: DMessageAttachmentFragment,
   isEditing?: boolean,
@@ -381,7 +384,7 @@ export function SortableImageAttachmentCard(props: {
       {!!dragHandle && <Box sx={_styles.sortableHandle}>{dragHandle}</Box>}
 
       {/* Image - using extracted component */}
-      <ImageAttachmentCard
+      <ImageAttachmentCard /* @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::SortableImageAttachmentCard.imageattachmentcard */
         fragment={fragment}
         isEditing={isEditing}
         compact={props.compact}
@@ -399,6 +402,7 @@ export function SortableImageAttachmentCard(props: {
  * Shows image attachments in a flexbox that wraps the images (overflowing by rows)
  * Also see `TextAttachmentFragments` for the text version, and 'CMRenderTreeNodes'.
  */
+// @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentFragments
 export function ImageAttachmentFragments(props: {
   imageAttachments: readonly DMessageAttachmentFragment[],
   contentScaling: ContentScaling,
@@ -455,7 +459,7 @@ export function ImageAttachmentFragments(props: {
       {/* Image attachments with or without DnD */}
       {!isReorderable ? (
         props.imageAttachments.map((fragment) => (
-          <ImageAttachmentCard
+          <ImageAttachmentCard /* @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentFragments.imageattachmentcard */
             key={fragment.fId}
             fragment={fragment}
             onFragmentDelete={props.onFragmentDelete}
@@ -465,10 +469,10 @@ export function ImageAttachmentFragments(props: {
           />
         ))
       ) : (
-        <DndContext sensors={sensors} modifiers={dndModifiers} onDragEnd={handleDragEnd}>
+        <DndContext /* @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentFragments.dndcontext */ sensors={sensors} modifiers={dndModifiers} onDragEnd={handleDragEnd}>
           <SortableContext items={fragmentIds}>
             {props.imageAttachments.map((fragment) =>
-              <SortableImageAttachmentCard
+              <SortableImageAttachmentCard /* @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentFragments.sortableimageattachmentcard */
                 key={fragment.fId}
                 fragment={fragment}
                 onFragmentDelete={props.onFragmentDelete}
@@ -484,7 +488,7 @@ export function ImageAttachmentFragments(props: {
 
       {/* Image Viewer modal */}
       {viewingImageRefPart && (
-        <ViewImageRefPartModal
+        <ViewImageRefPartModal /* @uxid src/apps/chat/components/message/fragments-attachment-image/ImageAttachmentFragments::ImageAttachmentFragments.viewimagerefpartmodal */
           imageRefPart={viewingImageRefPart}
           onClose={handleCloseViewImage}
         />

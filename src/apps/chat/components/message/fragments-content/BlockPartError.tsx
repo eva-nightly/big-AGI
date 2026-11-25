@@ -10,6 +10,7 @@ import { BlockPartError_NetDisconnected } from './BlockPartError_NetDisconnected
 import { BlockPartError_RequestExceeded } from './BlockPartError_RequestExceeded';
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartError::BlockPartError
 export function BlockPartError(props: {
   errorText: string,
   errorHint?: DMessageErrorPart['hint'],

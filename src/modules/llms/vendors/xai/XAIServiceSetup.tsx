@@ -20,6 +20,7 @@ import { ModelVendorXAI } from './xai.vendor';
 const EXTERNAL_LINK_XAI_API_KEYS = 'https://console.x.ai/';
 
 
+// @uxid src/modules/llms/vendors/xai/XAIServiceSetup::XAIServiceSetup
 export function XAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // external state
@@ -46,11 +47,11 @@ export function XAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/xai/XAIServiceSetup::XAIServiceSetup.forminputkey */
       autoCompleteId='xai-key'
       label='API Key'
       rightLabel={<>{needsUserKey
-        ? !xaiKey && <ExternalLink level='body-sm' href={EXTERNAL_LINK_XAI_API_KEYS}>get a key</ExternalLink>
+        ? !xaiKey && <ExternalLink /* @uxid src/modules/llms/vendors/xai/XAIServiceSetup::XAIServiceSetup.externallink */ level='body-sm' href={EXTERNAL_LINK_XAI_API_KEYS}>get a key</ExternalLink>
         : <AlreadySet overridden={!!xaiKey} />}
       </>}
       value={xaiKey}
@@ -68,7 +69,7 @@ export function XAIServiceSetup(props: { serviceId: DModelsServiceId }) {
     {/*  onChange={(text) => updateSettings({ xaiHost: text })}*/}
     {/*/>*/}
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/xai/XAIServiceSetup::XAIServiceSetup.setupformclientsidetoggle */
       visible={!!xaiKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

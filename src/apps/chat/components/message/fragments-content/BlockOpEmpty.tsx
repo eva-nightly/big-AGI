@@ -27,6 +27,7 @@ const chipSx: SxProps = {
 };
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockOpEmpty::BlockOpEmpty
 export function BlockOpEmpty(props: {
   text: string,
   contentScaling: ContentScaling,
@@ -41,7 +42,7 @@ export function BlockOpEmpty(props: {
 
   const handleConfirmDelete = React.useCallback(async () => {
     if (onDelete && await showPromisedOverlay('chat-message-delete-confirmation', { rejectWithValue: false }, ({ onResolve, onUserReject }) =>
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/apps/chat/components/message/fragments-content/BlockOpEmpty::BlockOpEmpty.confirmationmodal */
         open onClose={onUserReject} onPositive={() => onResolve(true)}
         confirmationText='Permanently delete this message? This cannot be undone.'
         positiveActionText='Delete'
@@ -61,7 +62,7 @@ export function BlockOpEmpty(props: {
       />
 
       {!!props.onDelete && (
-        <Chip
+        <Chip /* @uxid src/apps/chat/components/message/fragments-content/BlockOpEmpty::BlockOpEmpty.chip */
           color='neutral'
           variant='outlined'
           size={props.contentScaling === 'md' ? 'lg' : 'md'}

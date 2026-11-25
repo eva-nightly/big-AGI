@@ -21,6 +21,7 @@ import type { FusionFactorySpec } from './instructions/beam.gather.factories';
 
 export const FusionControlsMemo = React.memo(FusionControls);
 
+// @uxid src/modules/beam/gather/FusionControls::FusionControls
 function FusionControls(props: {
   fusion: BFusion,
   factory: FusionFactorySpec,
@@ -46,7 +47,7 @@ function FusionControls(props: {
         {/*<Box sx={{ display: 'flex' }} onClick={props.onIconClick}>*/}
         {/*  <props.llmVendorIcon sx={{ fontSize: 'lg', my: 'auto' }} />*/}
         {/*</Box>*/}
-        <IconButton
+        <IconButton /* @uxid src/modules/beam/gather/FusionControls::FusionControls.iconbutton */
           size='sm'
           variant={props.llmComponent ? 'plain' : 'plain'}
           onClick={props.onIconClick}
@@ -113,13 +114,13 @@ function FusionControls(props: {
       {/* Generate / Stop Button - Stop also gives up a start that is waiting for replies */}
       {!(props.isFusing || props.isWaiting) ? (
         <GoodTooltip title={!props.isUsable ? 'Start Merge' : 'Retry'}>
-          <IconButton size='sm' variant='plain' color='success' onClick={props.onToggleGenerate}>
+          <IconButton /* @uxid src/modules/beam/gather/FusionControls::FusionControls.iconbutton-2 */ size='sm' variant='plain' color='success' onClick={props.onToggleGenerate}>
             {!props.isUsable ? <PlayArrowRoundedIcon sx={{ fontSize: 'xl2' }} /> : <ReplayRoundedIcon />}
           </IconButton>
         </GoodTooltip>
       ) : (
         <GoodTooltip title='Stop'>
-          <IconButton size='sm' variant='plain' color='danger' onClick={props.onToggleGenerate}>
+          <IconButton /* @uxid src/modules/beam/gather/FusionControls::FusionControls.iconbutton-3 */ size='sm' variant='plain' color='danger' onClick={props.onToggleGenerate}>
             <StopRoundedIcon />
           </IconButton>
         </GoodTooltip>
@@ -127,7 +128,7 @@ function FusionControls(props: {
 
       {/* Remove Button */}
       <GoodTooltip title='Remove'>
-        <IconButton size='sm' variant='plain' color='neutral' onClick={props.onRemove}>
+        <IconButton /* @uxid src/modules/beam/gather/FusionControls::FusionControls.iconbutton-4 */ size='sm' variant='plain' color='neutral' onClick={props.onRemove}>
           <RemoveCircleOutlineRoundedIcon />
         </IconButton>
       </GoodTooltip>

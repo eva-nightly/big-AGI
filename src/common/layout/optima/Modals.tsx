@@ -18,6 +18,7 @@ const ModelsModalsLazy = React.lazy(() => import('~/modules/llms/models-modal/Mo
 const SettingsModalLazy = React.lazy(() => import('../../../apps/settings-modal/SettingsModal').then(module => ({ default: module.SettingsModal })));
 
 
+// @uxid src/common/layout/optima/Modals::Modals
 export function Modals(props: { suspendAutoModelsSetup?: boolean }) {
 
   // external state
@@ -41,7 +42,7 @@ export function Modals(props: { suspendAutoModelsSetup?: boolean }) {
     {/* Overlay - Preferences Modal */}
     {showPreferences && (
       <React.Suspense fallback={null}>
-        <SettingsModalLazy
+        <SettingsModalLazy /* @uxid src/common/layout/optima/Modals::Modals.settingsmodallazy */
           open={showPreferences}
           tab={preferencesTab}
           setTab={optimaOpenPreferences}
@@ -59,17 +60,17 @@ export function Modals(props: { suspendAutoModelsSetup?: boolean }) {
     )}
 
     {/* Logger */}
-    {showLogger && <LogViewerDialog onClose={closeLogger} />}
+    {showLogger && <LogViewerDialog /* @uxid src/common/layout/optima/Modals::Modals.logviewerdialog */ onClose={closeLogger} />}
 
     {/* What's New, Docs reader */}
     <NewsModals />
 
     {/* AIX Debugger Dialog */}
-    {showAIXDebugger && <AixDebuggerDialog onClose={closeAIXDebugger} />}
+    {showAIXDebugger && <AixDebuggerDialog /* @uxid src/common/layout/optima/Modals::Modals.aixdebuggerdialog */ onClose={closeAIXDebugger} />}
 
     {/* Overlay Shortcuts */}
     {showKeyboardShortcuts && (
-      <ShortcutsModal onClose={closeKeyboardShortcuts} />
+      <ShortcutsModal /* @uxid src/common/layout/optima/Modals::Modals.shortcutsmodal */ onClose={closeKeyboardShortcuts} />
     )}
 
   </>;

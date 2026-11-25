@@ -54,6 +54,7 @@ function _inferInitialViewAsCode(attachmentFragment: DMessageAttachmentFragment)
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane::DocAttachmentFragmentPane
 export const DocAttachmentFragmentPane = React.memo(function DocAttachmentFragmentPane(props: {
   fragment: DMessageAttachmentFragment,
   controlledEditor: boolean,
@@ -240,7 +241,7 @@ export const DocAttachmentFragmentPane = React.memo(function DocAttachmentFragme
       {!!fragment.caption && <div>Att. Caption</div>}
       {!!fragment.caption && <div>{fragment.caption}</div>}
       <div>view as code</div>
-      <Switch
+      <Switch /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane::DocAttachmentFragmentPane.switch */
         size='sm'
         variant='solid'
         color='neutral'
@@ -263,7 +264,7 @@ export const DocAttachmentFragmentPane = React.memo(function DocAttachmentFragme
         </Tooltip>
 
         {(!isEditingTitle || isEditing) ? (
-          <Typography
+          <Typography /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane::DocAttachmentFragmentPane.typography */
             level='title-sm'
             onClick={isEditing ? undefined : onFragmentReplace ? handleTitleEditBegin : undefined}
             sx={isEditing ? _styles.titleDisabled : onFragmentReplace ? _styles.titleEditable : undefined}
@@ -272,7 +273,7 @@ export const DocAttachmentFragmentPane = React.memo(function DocAttachmentFragme
             {displayTitle}
           </Typography>
         ) : (
-          <InlineTextarea
+          <InlineTextarea /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane::DocAttachmentFragmentPane.inlinetextarea */
             initialText={displayTitle}
             placeholder='Document title'
             onEdit={handleTitleEditSave}
@@ -302,7 +303,7 @@ export const DocAttachmentFragmentPane = React.memo(function DocAttachmentFragme
       {/* Delete / Confirm */}
       {!!onFragmentDelete && (
         <Box sx={{ display: 'flex', flexDirection: !reverseToolbar ? 'row' : 'row-reverse', gap: 1 }}>
-          {!isEditing && <Button
+          {!isEditing && <Button /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane::DocAttachmentFragmentPane.button */
             variant='soft'
             color={DocSelColor}
             size='sm'
@@ -313,7 +314,7 @@ export const DocAttachmentFragmentPane = React.memo(function DocAttachmentFragme
             {isDeleteArmed ? 'Cancel' : 'Delete'}
           </Button>}
           {isDeleteArmed && (
-            <Button
+            <Button /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane::DocAttachmentFragmentPane.button-2 */
               variant='solid'
               color='danger'
               size='sm'
@@ -329,7 +330,7 @@ export const DocAttachmentFragmentPane = React.memo(function DocAttachmentFragme
       {/* Edit / Save */}
       {!!onFragmentReplace && (
         <Box sx={{ display: 'flex', flexDirection: !reverseToolbar ? 'row' : 'row-reverse', gap: 1 }}>
-          {(!props.controlledEditor || !isEditing) && <Button
+          {(!props.controlledEditor || !isEditing) && <Button /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane::DocAttachmentFragmentPane.button-3 */
             variant='soft'
             color={DocSelColor}
             size='sm'
@@ -340,7 +341,7 @@ export const DocAttachmentFragmentPane = React.memo(function DocAttachmentFragme
             {isEditing ? 'Cancel' : 'Edit'}
           </Button>}
           {isEditing && (
-            <Button
+            <Button /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane::DocAttachmentFragmentPane.button-4 */
               variant={props.controlledEditor ? 'soft' : 'solid'}
               color={showDeleteInstead ? 'danger' : props.controlledEditor ? undefined : 'success'}
               onClick={handleEditApply}
@@ -370,7 +371,7 @@ export const DocAttachmentFragmentPane = React.memo(function DocAttachmentFragme
       {/* Show / Edit the Document Attachment Part */}
       {isEditing ? (
         // Document Editor
-        <BlockEdit_TextFragment
+        <BlockEdit_TextFragment /* @uxid src/apps/chat/components/message/fragments-attachment-doc/DocAttachmentFragmentPane::DocAttachmentFragmentPane.blockedit-textfragment */
           initialText={fragmentDocPart.data.text}
           fragmentId={fragmentId}
           contentScaling={props.contentScaling}

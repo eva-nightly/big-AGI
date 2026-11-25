@@ -158,6 +158,7 @@ export type OptimaBarControlMethods = {
 /**
  * A Select component that blends-in nicely (cleaner, easier to the eyes)
  */
+// @uxid src/common/layout/optima/bar/OptimaBarDropdown::OptimaBarDropdown
 function OptimaBarDropdown<TValue extends string>(props: {
   // required
   items: OptimaDropdownItems,
@@ -228,7 +229,7 @@ function OptimaBarDropdown<TValue extends string>(props: {
       if (_item.type === 'separator') {
         const collapseId = _item.collapseId ?? _itemKey;
         return props.onSeparatorClick ? (
-          <ListItemGroupCollapser
+          <ListItemGroupCollapser /* @uxid src/common/layout/optima/bar/OptimaBarDropdown::OptimaBarDropdown.listitemgroupcollapser */
             key={_itemKey}
             id={collapseId}
             label={safeTitle}
@@ -295,7 +296,7 @@ function OptimaBarDropdown<TValue extends string>(props: {
   const hasRest = true; // !optimizeToSingleVisibleId;
 
   return (
-    <Select
+    <Select /* @uxid src/common/layout/optima/bar/OptimaBarDropdown::OptimaBarDropdown.select */
       variant='plain'
       value={props.value ?? null /* remove 'undefined' as an option */}
       onChange={handleOnChange}
@@ -313,7 +314,7 @@ function OptimaBarDropdown<TValue extends string>(props: {
       {/*{hasRest && !!props.prependOption && hasItems && <ListDivider sx={_styles.divider} />}*/}
 
       {/* Scrollable Items list*/}
-      {hasItems && <Box role='items-list' sx={_styles.itemsScrollable}>
+      {hasItems && <Box /* @uxid src/common/layout/optima/bar/OptimaBarDropdown::OptimaBarDropdown.box */ role='items-list' sx={_styles.itemsScrollable}>
         {selectOptions}
       </Box>}
 

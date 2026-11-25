@@ -26,6 +26,7 @@ const _FORM_FACTOR_ICONS: Record<Exclude<UAFormFactor, 'unknown'>, React.Compone
 
 
 /** Form-factor symbol (phone, tablet, computer) - renders nothing when unknown. */
+// @uxid src/common/components/icons/DeviceSymbols::DeviceFormFactorIcon
 export function DeviceFormFactorIcon(props: { form: UAFormFactor } & SvgIconProps): React.JSX.Element | null {
   const { form, ...iconProps } = props;
   if (form === 'unknown') return null;
@@ -34,6 +35,7 @@ export function DeviceFormFactorIcon(props: { form: UAFormFactor } & SvgIconProp
 }
 
 /** App-form chip (Mobile App / PWA / Web), falling back to the UA-classified form factor for legacy rows without device_form. */
+// @uxid src/common/components/icons/DeviceSymbols::DeviceFormChip
 export function DeviceFormChip(props: { deviceForm: string | null, formFactor: UAFormFactor }) {
   if (props.deviceForm === 'app') return <Chip size='sm' color='primary'>Mobile App</Chip>;
   if (props.deviceForm === 'pwa') return <Chip size='sm' color='success'>PWA</Chip>;

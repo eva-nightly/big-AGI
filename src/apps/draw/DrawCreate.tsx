@@ -98,6 +98,7 @@ function TempPromptImageGen(props: { prompt: DesignerPrompt, sx?: SxProps }) {
 }
 */
 
+// @uxid src/apps/draw/DrawCreate::DrawCreate
 export function DrawCreate(props: {
   queue: DrawCreateQueue,
   isMobile: boolean,
@@ -143,7 +144,7 @@ export function DrawCreate(props: {
 
         {/* [overlay] Welcoming header - Closeable */}
         {props.showHeader && (
-          <DrawSectionHeading
+          <DrawSectionHeading /* @uxid src/apps/draw/DrawCreate::DrawCreate.drawsectionheading */
             isBeta
             title='Imagine'
             subTitle={props.mayWork ? 'Model, Prompts, Go!' : 'No AI providers configured :('}
@@ -219,7 +220,7 @@ export function DrawCreate(props: {
 
 
       {/* Prompt Composer - inside the workspace for root-scrollability */}
-      <PromptComposer
+      <PromptComposer /* @uxid src/apps/draw/DrawCreate::DrawCreate.promptcomposer */
         isMobile={props.isMobile}
         queueLength={prompts.length}
         onDrawingStop={handleStopDrawing}

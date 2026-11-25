@@ -46,6 +46,7 @@ const _styleKeyValueGrid: SxProps = {
 
 export type KeyValueData = { label: string, value: React.ReactNode, asCode?: boolean }[];
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartToolInvocation::KeyValueGrid
 export function KeyValueGrid(props: {
   data: KeyValueData,
   // contentScaling: ContentScaling,
@@ -82,6 +83,7 @@ export function KeyValueGrid(props: {
 }
 
 
+// @uxid src/apps/chat/components/message/fragments-content/BlockPartToolInvocation::BlockPartToolInvocation
 export function BlockPartToolInvocation(props: {
   toolInvocationPart: DMessageToolInvocationPart,
   contentScaling: ContentScaling,
@@ -138,7 +140,7 @@ export function BlockPartToolInvocation(props: {
 
 
   return (
-    <BlocksContainer onDoubleClick={props.onDoubleClick}><Box /*sx={{ px: 1.5 }}*/>
+    <BlocksContainer /* @uxid src/apps/chat/components/message/fragments-content/BlockPartToolInvocation::BlockPartToolInvocation.blockscontainer */ onDoubleClick={props.onDoubleClick}><Box /*sx={{ px: 1.5 }}*/>
 
       <Sheet
         variant='soft'
@@ -162,7 +164,7 @@ export function BlockPartToolInvocation(props: {
       >
 
         {/* Compact header */}
-        <Box
+        <Box /* @uxid src/apps/chat/components/message/fragments-content/BlockPartToolInvocation::BlockPartToolInvocation.box */
           sx={{
             display: 'flex',
             alignItems: 'center',

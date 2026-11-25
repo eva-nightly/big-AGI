@@ -22,6 +22,7 @@ import { DevNewsItem, newsFrontendTimestamp, NewsItems } from './news.data';
 
 
 // number of news items to show by default, before the expander
+// @uxid src/apps/news/AppNews::AppNewsModuleScope
 const NEWS_INITIAL_COUNT = 3;
 const NEWS_LOAD_STEP = 2;
 
@@ -38,7 +39,7 @@ export const newsRoadmapCallout =
       </Typography>
       <Grid container spacing={1}>
         <Grid xs={12} sm={7}>
-          <Button
+          <Button /* @uxid src/apps/news/AppNews::AppNewsModuleScope.button */
             fullWidth variant='soft' color='primary' endDecorator={<LaunchIcon />}
             component={Link} href={Brand.URIs.OpenProject} noLinkStyle target='_blank'
           >
@@ -46,7 +47,7 @@ export const newsRoadmapCallout =
           </Button>
         </Grid>
         <Grid xs={12} sm={5} sx={{ display: 'flex', flexAlign: 'center', justifyContent: 'center' }}>
-          <Button
+          <Button /* @uxid src/apps/news/AppNews::AppNewsModuleScope.button-2 */
             fullWidth variant='plain' color='primary' endDecorator={<LaunchIcon />}
             component={Link} href={Brand.URIs.OpenRepo + '/issues/new?template=roadmap-request.md&title=%5BSuggestion%5D'} noLinkStyle target='_blank'
           >
@@ -57,6 +58,7 @@ export const newsRoadmapCallout =
     </CardContent>
   </Card>;
 
+// @uxid src/apps/news/AppNews::BuildInfoCard
 export function BuildInfoCard(props: { noMargin?: boolean }) {
   return (
     <Card variant='solid' color='neutral' invertedColors sx={props.noMargin ? undefined : { mb: 3 }}>
@@ -68,6 +70,7 @@ export function BuildInfoCard(props: { noMargin?: boolean }) {
   );
 }
 
+// @uxid src/apps/news/AppNews::BuildInfoSheet
 function BuildInfoSheet() {
   const backendBuild = React.useMemo(() => getBackendCapabilities().build, []);
   const frontendBuild = React.useMemo(() => Release.buildInfo('frontend'), []);
@@ -95,6 +98,7 @@ function BuildInfoSheet() {
 }
 
 
+// @uxid src/apps/news/AppNews::NewsCard
 function NewsCard(props: {
   newsItem: typeof NewsItems[number];
   idx: number;
@@ -171,6 +175,7 @@ function NewsCard(props: {
 }
 
 
+// @uxid src/apps/news/AppNews::AppNews
 export function AppNews() {
   // state
   const [lastNewsIdx, setLastNewsIdx] = React.useState<number>(NEWS_INITIAL_COUNT - 1);
@@ -211,7 +216,7 @@ export function AppNews() {
         </Typography>
 
         <Box sx={{ mb: 5, display: 'flex', gap: 2, flexWrap: 'wrap', justifyContent: 'center' }}>
-          <Button
+          <Button /* @uxid src/apps/news/AppNews::AppNews.button */
             variant='solid' color='neutral' size='lg'
             component={Link} href={ROUTE_INDEX} noLinkStyle
             endDecorator={<ArrowForwardRoundedIcon />}
@@ -223,7 +228,7 @@ export function AppNews() {
             Continue
           </Button>
           {!Release.IsNodeDevBuild && (
-            <Button
+            <Button /* @uxid src/apps/news/AppNews::AppNews.button-2 */
               variant='solid' color='primary' size='lg'
               component={Link} href={bigAgiProUrl} target='_blank' noLinkStyle
               endDecorator={<><ArrowOutwardRoundedIcon /></>}
@@ -291,7 +296,7 @@ export function AppNews() {
           {!isMobile && <BuildInfoCard />}
 
           {canExpand && (
-            <Button
+            <Button /* @uxid src/apps/news/AppNews::AppNews.button-3 */
               fullWidth
               variant='soft'
               color='neutral'

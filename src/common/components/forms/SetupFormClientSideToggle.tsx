@@ -10,6 +10,7 @@ import { FormLabelStart } from './FormLabelStart';
  * Appears with animation when client key is present.
  * Shows a tooltip recommendation when local host is detected but CSF is off.
  */
+// @uxid src/common/components/forms/SetupFormClientSideToggle::SetupFormClientSideToggle
 export function SetupFormClientSideToggle(props: {
   visible: boolean;
   checked: boolean;
@@ -46,7 +47,7 @@ export function SetupFormClientSideToggle(props: {
             placement='top-end'
             title='Recommended ON for local services'
           >
-            <Switch
+            <Switch /* @uxid src/common/components/forms/SetupFormClientSideToggle::SetupFormClientSideToggle.switch */
               checked={props.checked}
               onChange={event => props.onChange(event.target.checked)}
               endDecorator={props.checked ? 'On' : 'Off'}

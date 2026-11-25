@@ -138,6 +138,7 @@ const _styles = {
 } as const satisfies Record<string, SxProps>;
 
 
+// @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal
 export function CameraCaptureModal(props: {
   allowMultiCapture?: boolean;
   allowLiveFeed?: boolean;
@@ -316,7 +317,7 @@ export function CameraCaptureModal(props: {
     // Live-feed-only mode: single prominent red Record button
     if (liveFeedOnly) {
       btns.push(
-        <Button key='rec' size='md' color='danger' disabled={cameraIdx === -1} onClick={handleStartLiveFeedClicked} endDecorator={<FiberManualRecordIcon />} sx={_styles.recButtonLarge}>
+        <Button /* @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal.button */ key='rec' size='md' color='danger' disabled={cameraIdx === -1} onClick={handleStartLiveFeedClicked} endDecorator={<FiberManualRecordIcon />} sx={_styles.recButtonLarge}>
           Live Capture
         </Button>,
       );
@@ -326,12 +327,12 @@ export function CameraCaptureModal(props: {
     // After first capture: [wide +] [Done (N)] - no confusing Capture
     if (capturedCount > 0) {
       btns.push(
-        <Button key='add' size='lg' disabled={isAddButtonDisabled} onClick={handleVideoAddClicked} endDecorator={<CameraEnhanceIcon />} sx={{ ..._styles.captureButton, minWidth: 'unset', '--Button-gap': '0.25rem', px: 5 }}>
+        <Button /* @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal.button-2 */ key='add' size='lg' disabled={isAddButtonDisabled} onClick={handleVideoAddClicked} endDecorator={<CameraEnhanceIcon />} sx={{ ..._styles.captureButton, minWidth: 'unset', '--Button-gap': '0.25rem', px: 5 }}>
           +
         </Button>,
       );
       btns.push(
-        <Button key='done' size='lg' variant='soft' onClick={handleCloseModal} sx={{ px: 3, py: 1.5 }}>
+        <Button /* @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal.button-3 */ key='done' size='lg' variant='soft' onClick={handleCloseModal} sx={{ px: 3, py: 1.5 }}>
           Attach {capturedCount}
         </Button>,
       );
@@ -342,20 +343,20 @@ export function CameraCaptureModal(props: {
     if (allowMultiCapture)
       btns.push(
         <Tooltip key='add' disableInteractive arrow placement='top' title='Add to message'>
-          <IconButton size='sm' disabled={isAddButtonDisabled} onClick={handleVideoAddClicked} sx={_styles.addButton}>
+          <IconButton /* @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal.iconbutton */ size='sm' disabled={isAddButtonDisabled} onClick={handleVideoAddClicked} sx={_styles.addButton}>
             <AddRoundedIcon />
           </IconButton>
         </Tooltip>,
       );
     btns.push(
-      <Button key='snap' size='lg' onClick={handleVideoSnapClicked} endDecorator={<CameraEnhanceIcon />} sx={_styles.captureButton}>
+      <Button /* @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal.button-4 */ key='snap' size='lg' onClick={handleVideoSnapClicked} endDecorator={<CameraEnhanceIcon />} sx={_styles.captureButton}>
         Capture
       </Button>,
     );
     if (allowLiveFeed)
       btns.push(
         <Tooltip key='live' disableInteractive arrow placement='top' title='Start live feed'>
-          <IconButton
+          <IconButton /* @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal.iconbutton-2 */
             size='sm'
             color='danger'
             disabled={cameraIdx === -1}
@@ -371,7 +372,7 @@ export function CameraCaptureModal(props: {
 
 
   return (
-    <Modal
+    <Modal /* @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal.modal */
       open
       onClose={handleCloseModal}
       slotProps={_modalSlotProps}
@@ -383,7 +384,7 @@ export function CameraCaptureModal(props: {
         {/* Top bar */}
         <Sheet variant='solid' invertedColors={true} sx={_styles.topBar}>
           <Box sx={_styles.topBarLeft}>
-            <Select
+            <Select /* @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal.select */
               size='sm'
               variant={displayCameras.length > 1 ? 'soft' : 'plain'}
               color='neutral'
@@ -411,13 +412,13 @@ export function CameraCaptureModal(props: {
             </Select>
 
             {canSwitchCameras && (
-              <IconButton size='sm' onClick={handleCameraSwitch}>
+              <IconButton /* @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal.iconbutton-3 */ size='sm' onClick={handleCameraSwitch}>
                 {isFrontCamera ? <CameraRearIcon /> : isBackCamera ? <CameraFrontIcon /> : <FlipCameraAndroidOutlinedIcon />}
               </IconButton>
             )}
           </Box>
 
-          <ModalClose size='lg' onClick={handleCloseModal} sx={{ position: 'static' }} />
+          <ModalClose /* @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal.modalclose */ size='lg' onClick={handleCloseModal} sx={{ position: 'static' }} />
         </Sheet>
 
         {/* (main) Video */}
@@ -463,7 +464,7 @@ export function CameraCaptureModal(props: {
           <Box paddingBottom={zoomControl ? 1 : undefined} sx={_styles.captureButtonContainer}>
 
             {/* Info */}
-            <IconButton disabled={!info} onClick={() => setShowInfo((prev) => !prev)}>
+            <IconButton /* @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal.iconbutton-4 */ disabled={!info} onClick={() => setShowInfo((prev) => !prev)}>
               <InfoOutlinedIcon />
             </IconButton>
 
@@ -477,7 +478,7 @@ export function CameraCaptureModal(props: {
             </ButtonGroup>
 
             {/* Download */}
-            <IconButton onClick={handleVideoDownloadClicked}>
+            <IconButton /* @uxid src/common/components/camera/CameraCaptureModal::CameraCaptureModal.iconbutton-5 */ onClick={handleVideoDownloadClicked}>
               <DownloadIcon />
             </IconButton>
 

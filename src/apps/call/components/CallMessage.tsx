@@ -6,6 +6,7 @@ import { SxProps } from '@mui/joy/styles/types';
 import type { DMessage } from '~/common/stores/chat/chat.message';
 
 
+// @uxid src/apps/call/components/CallMessage::CallMessage
 export function CallMessage(props: {
   text?: string | React.JSX.Element,
   variant?: VariantProp, color?: ColorPaletteProp,

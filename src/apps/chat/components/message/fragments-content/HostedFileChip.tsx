@@ -51,10 +51,11 @@ const _styles = {
 
 
 /** Icon button in the chip's action row, with the busy spinner - for vendor actions such as Copy or Play */
+// @uxid src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChipButton
 export function HostedFileChipButton(props: { title: string; icon: React.ReactNode; busy: boolean; disabled: boolean; onClick: () => void }) {
   return (
     <GoodTooltip title={props.title}>
-      <IconButton variant='soft' color='primary' disabled={props.disabled} onClick={props.onClick} size='sm' sx={{ bgcolor: 'transparent' }}>
+      <IconButton /* @uxid src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChipButton.iconbutton */ variant='soft' color='primary' disabled={props.disabled} onClick={props.onClick} size='sm' sx={{ bgcolor: 'transparent' }}>
         {props.busy ? <CircularProgress size='sm' /> : props.icon}
       </IconButton>
     </GoodTooltip>
@@ -67,6 +68,7 @@ export function HostedFileChipButton(props: { title: string; icon: React.ReactNo
  * The vendor chips own the data and the handlers; this owns the layout, the busy and error rendering, and the
  * two-step delete confirmed inside the menu.
  */
+// @uxid src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChip
 export function HostedFileChip(props: {
   title: React.ReactNode;
   subtitle?: React.ReactNode;
@@ -113,7 +115,7 @@ export function HostedFileChip(props: {
 
       {gone ? (!!onRemove && (
         <GoodTooltip title='Remove from message'>
-          <IconButton variant='plain' color='danger' onClick={onRemove} size='sm' sx={{ bgcolor: 'transparent' }}>
+          <IconButton /* @uxid src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChip.iconbutton */ variant='plain' color='danger' onClick={onRemove} size='sm' sx={{ bgcolor: 'transparent' }}>
             <DeleteOutlineIcon sx={{ fontSize: 'lg' }} />
           </IconButton>
         </GoodTooltip>
@@ -121,8 +123,8 @@ export function HostedFileChip(props: {
 
         {leading}
 
-        {!!onCopy && <HostedFileChipButton title='Copy to clipboard' icon={<ContentCopyIcon sx={{ fontSize: 'lg' }} />} busy={busy === 'copy'} disabled={isBusy} onClick={onCopy} />}
-        {!!onDownload && <HostedFileChipButton title='Download file' icon={<DownloadIcon sx={{ fontSize: 'lg' }} />} busy={busy === 'download'} disabled={isBusy} onClick={onDownload} />}
+        {!!onCopy && <HostedFileChipButton /* @uxid src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChip.hostedfilechipbutton */ title='Copy to clipboard' icon={<ContentCopyIcon sx={{ fontSize: 'lg' }} />} busy={busy === 'copy'} disabled={isBusy} onClick={onCopy} />}
+        {!!onDownload && <HostedFileChipButton /* @uxid src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChip.hostedfilechipbutton-2 */ title='Download file' icon={<DownloadIcon sx={{ fontSize: 'lg' }} />} busy={busy === 'download'} disabled={isBusy} onClick={onDownload} />}
 
         {hasMenu && (
           <Dropdown>
@@ -131,13 +133,13 @@ export function HostedFileChip(props: {
             </MenuButton>
             <Menu placement='bottom-end' sx={{ minWidth: 220 }}>
               {!!onDownload && (
-                <MenuItem disabled={isBusy} onClick={onDownload}>
+                <MenuItem /* @uxid src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChip.menuitem */ disabled={isBusy} onClick={onDownload}>
                   <ListItemDecorator><DownloadIcon /></ListItemDecorator>
                   Download
                 </MenuItem>
               )}
               {!!onInline && (
-                <MenuItem disabled={!canInline || isBusy} onClick={onInline}>
+                <MenuItem /* @uxid src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChip.menuitem-2 */ disabled={!canInline || isBusy} onClick={onInline}>
                   <ListItemDecorator><UnfoldMoreIcon /></ListItemDecorator>
                   <div>
                     Embed
@@ -148,7 +150,7 @@ export function HostedFileChip(props: {
               {menuExtras}
               {!!onDelete && <ListDivider />}
               {!!onDelete && (
-                <ConfirmMenuItem label='Delete' confirmLabel={deleteFrom ? `Delete from ${deleteFrom}` : 'Confirm Deletion'} disabled={isBusy} onConfirm={onDelete} />
+                <ConfirmMenuItem /* @uxid src/apps/chat/components/message/fragments-content/HostedFileChip::HostedFileChip.confirmmenuitem */ label='Delete' confirmLabel={deleteFrom ? `Delete from ${deleteFrom}` : 'Confirm Deletion'} disabled={isBusy} onConfirm={onDelete} />
               )}
             </Menu>
           </Dropdown>

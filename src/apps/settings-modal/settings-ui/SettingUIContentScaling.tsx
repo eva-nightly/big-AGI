@@ -8,6 +8,7 @@ import { FormLabelStart } from '~/common/components/forms/FormLabelStart';
 import { useUIPreferencesStore } from '~/common/stores/store-ui';
 
 
+// @uxid src/apps/settings-modal/settings-ui/SettingUIContentScaling::SettingUIContentScaling
 export function SettingUIContentScaling(props: { noLabel?: boolean }) {
 
   // external state
@@ -30,7 +31,7 @@ export function SettingUIContentScaling(props: { noLabel?: boolean }) {
         {(['xs', 'sm', 'md'] as ContentScaling[]).map(sizeKey => {
           const isActive = sizeKey === contentScaling;
           return (
-            <Step
+            <Step /* @uxid src/apps/settings-modal/settings-ui/SettingUIContentScaling::SettingUIContentScaling.step */
               key={sizeKey}
               onClick={() => setContentScaling(sizeKey)}
               indicator={

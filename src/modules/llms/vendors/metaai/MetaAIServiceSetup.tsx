@@ -20,6 +20,7 @@ import { ModelVendorMetaAI } from './metaai.vendor';
 const METAAI_REG_LINK = 'https://dev.meta.ai/api-keys';
 
 
+// @uxid src/modules/llms/vendors/metaai/MetaAIServiceSetup::MetaAIServiceSetup
 export function MetaAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
   // state
@@ -49,10 +50,10 @@ export function MetaAIServiceSetup(props: { serviceId: DModelsServiceId }) {
 
     <ApproximateCosts serviceId={service?.id} />
 
-    <FormInputKey
+    <FormInputKey /* @uxid src/modules/llms/vendors/metaai/MetaAIServiceSetup::MetaAIServiceSetup.forminputkey */
       autoCompleteId='metaai-key' label='Meta AI Key'
       rightLabel={<>{needsUserKey
-        ? !metaaiKey && <ExternalLink level='body-sm' href={METAAI_REG_LINK}>get a Key</ExternalLink>
+        ? !metaaiKey && <ExternalLink /* @uxid src/modules/llms/vendors/metaai/MetaAIServiceSetup::MetaAIServiceSetup.externallink */ level='body-sm' href={METAAI_REG_LINK}>get a Key</ExternalLink>
         : <AlreadySet overridden={!!metaaiKey} />}
       </>}
       value={metaaiKey} onChange={value => updateSettings({ metaaiKey: value })}
@@ -60,7 +61,7 @@ export function MetaAIServiceSetup(props: { serviceId: DModelsServiceId }) {
       placeholder='LLM_...'
     />
 
-    {showAdvanced && <FormTextField
+    {showAdvanced && <FormTextField /* @uxid src/modules/llms/vendors/metaai/MetaAIServiceSetup::MetaAIServiceSetup.formtextfield */
       autoCompleteId='metaai-host'
       title='API Host'
       tooltip={`An alternative Meta AI endpoint to use instead of the default 'api.meta.ai'.`}
@@ -69,7 +70,7 @@ export function MetaAIServiceSetup(props: { serviceId: DModelsServiceId }) {
       onChange={text => updateSettings({ metaaiHost: text })}
     />}
 
-    {showAdvanced && <SetupFormClientSideToggle
+    {showAdvanced && <SetupFormClientSideToggle /* @uxid src/modules/llms/vendors/metaai/MetaAIServiceSetup::MetaAIServiceSetup.setupformclientsidetoggle */
       visible={!!metaaiKey}
       checked={!!clientSideFetch}
       onChange={on => updateSettings({ csf: on })}

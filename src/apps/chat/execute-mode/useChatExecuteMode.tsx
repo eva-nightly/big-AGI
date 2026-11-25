@@ -34,7 +34,7 @@ export function useChatExecuteMode(capabilityHasT2I: boolean, isMobile: boolean)
 
 
   const chatExecuteMenuComponent = React.useMemo(() => !!chatExecuteModeMenuAnchor && (
-    <ExecuteModeMenu
+    <ExecuteModeMenu /* @uxid src/apps/chat/execute-mode/useChatExecuteMode::useChatExecuteMode.executemodemenu */
       isMobile={isMobile}
       hasCapabilityT2I={capabilityHasT2I}
       anchorEl={chatExecuteModeMenuAnchor}

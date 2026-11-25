@@ -21,6 +21,7 @@ const FALLBACK_PRESELECT_MODEL = 'llama3.3';
 const _stableNoPullable = [] as const;
 const _stableNoPullableTags = [] as const;
 
+// @uxid src/modules/llms/vendors/ollama/OllamaAdministration::OllamaAdministration
 export function OllamaAdministration(props: { access: OllamaAccessSchema, onClose: () => void }) {
 
   // state
@@ -71,7 +72,7 @@ export function OllamaAdministration(props: { access: OllamaAccessSchema, onClos
 
 
   return (
-    <GoodModal title='Ollama Administration' dividers open onClose={props.onClose}>
+    <GoodModal /* @uxid src/modules/llms/vendors/ollama/OllamaAdministration::OllamaAdministration.goodmodal */ title='Ollama Administration' dividers open onClose={props.onClose}>
 
       <Box sx={{ display: 'grid', gap: 'var(--Card-padding)' }}>
         <Typography level='body-sm'>
@@ -83,7 +84,7 @@ export function OllamaAdministration(props: { access: OllamaAccessSchema, onClos
           <FormControl sx={{ flexGrow: 1, flexBasis: 0.55 }}>
             <FormLabelStart title={sortByPulls ? 'Model (Sorted by Downloads)' : 'Popular Model'} />
             <Box sx={{ display: 'flex', gap: 1 }}>
-              <Select
+              <Select /* @uxid src/modules/llms/vendors/ollama/OllamaAdministration::OllamaAdministration.select */
                 value={selectedModelName || ''}
                 onChange={(_event: any, value: string | null) => setSelectedModelName(value)}
                 sx={{ flexGrow: 1 }}
@@ -95,7 +96,7 @@ export function OllamaAdministration(props: { access: OllamaAccessSchema, onClos
                 )}
               </Select>
               <GoodTooltip title='Sort by Downloads'>
-                <IconButton
+                <IconButton /* @uxid src/modules/llms/vendors/ollama/OllamaAdministration::OllamaAdministration.iconbutton */
                   variant={sortByPulls ? 'solid' : 'outlined'}
                   onClick={() => setSortByPulls(!sortByPulls)}
                 >
@@ -107,7 +108,7 @@ export function OllamaAdministration(props: { access: OllamaAccessSchema, onClos
           <FormControl sx={{ flexGrow: 1, flexBasis: 0.45 }}>
             <FormLabelStart title='Tag' />
             <Box sx={{ display: 'flex', gap: 1 }}>
-              <Autocomplete
+              <Autocomplete /* @uxid src/modules/llms/vendors/ollama/OllamaAdministration::OllamaAdministration.autocomplete */
                 freeSolo
                 openOnFocus
                 clearOnEscape
@@ -127,7 +128,7 @@ export function OllamaAdministration(props: { access: OllamaAccessSchema, onClos
               {/*  slotProps={{ input: { size: 10 } }} // halve the min width*/}
               {/*/>*/}
               {!!selectedModelName && (
-                <IconButton component={Link} href={`https://ollama.ai/library/${selectedModelName}`} target='_blank'>
+                <IconButton /* @uxid src/modules/llms/vendors/ollama/OllamaAdministration::OllamaAdministration.iconbutton-2 */ component={Link} href={`https://ollama.ai/library/${selectedModelName}`} target='_blank'>
                   <LaunchIcon />
                 </IconButton>
               )}
@@ -152,7 +153,7 @@ export function OllamaAdministration(props: { access: OllamaAccessSchema, onClos
           </Typography>
 
           <Box sx={{ display: 'flex', flexWrap: 1, gap: 1, alignItems: 'start' }}>
-            <Button
+            <Button /* @uxid src/modules/llms/vendors/ollama/OllamaAdministration::OllamaAdministration.button */
               variant='outlined'
               color={deleteStatus === 'error' ? 'danger' : deleteStatus === 'success' ? 'success' : 'primary'}
               loading={isDeleting} disabled={isPulling} onClick={handleModelDelete}
@@ -161,7 +162,7 @@ export function OllamaAdministration(props: { access: OllamaAccessSchema, onClos
               Delete
             </Button>
 
-            <Button
+            <Button /* @uxid src/modules/llms/vendors/ollama/OllamaAdministration::OllamaAdministration.button-2 */
               color={pullStatus === 'error' ? 'danger' : pullStatus === 'success' ? 'success' : 'primary'}
               loading={isPulling} disabled={isDeleting} onClick={handleModelPull}
               sx={{ minWidth: 100 }}

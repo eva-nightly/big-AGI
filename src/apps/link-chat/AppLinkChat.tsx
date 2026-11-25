@@ -29,6 +29,7 @@ import { LinkChatViewer } from './LinkChatViewer';
 const SPECIAL_LIST_PAGE_ID = 'list';
 
 
+// @uxid src/apps/link-chat/AppLinkChat::Centerer
 const Centerer = (props: { backgroundColor: string, children?: React.ReactNode }) =>
   <Box sx={{
     backgroundColor: props.backgroundColor,
@@ -38,6 +39,7 @@ const Centerer = (props: { backgroundColor: string, children?: React.ReactNode }
     {props.children}
   </Box>;
 
+// @uxid src/apps/link-chat/AppLinkChat::ListPlaceholder
 const ListPlaceholder = (props: { hasLinks: boolean }) =>
   <Box sx={{ p: { xs: 3, md: 6 } }}>
     <Card>
@@ -55,6 +57,7 @@ const ListPlaceholder = (props: { hasLinks: boolean }) =>
   </Box>;
 
 
+// @uxid src/apps/link-chat/AppLinkChat::ShowLoading
 const ShowLoading = () =>
   <Centerer backgroundColor={themeBgAppDarker}>
     <LogoProgress showProgress={true} />
@@ -63,6 +66,7 @@ const ShowLoading = () =>
     </Typography>
   </Centerer>;
 
+// @uxid src/apps/link-chat/AppLinkChat::ShowError
 const ShowError = (props: { error: any }) =>
   <Centerer backgroundColor={themeBgAppDarker}>
     <InlineError error={props.error} severity='warning' />
@@ -97,6 +101,7 @@ async function fetchStoredChatV1(objectId: string | null) {
 }
 
 
+// @uxid src/apps/link-chat/AppLinkChat::AppLinkChat
 export function AppLinkChat(props: { chatLinkId: string | null }) {
 
   // state
@@ -191,7 +196,7 @@ export function AppLinkChat(props: { chatLinkId: string | null }) {
 
     {/* -> Drawer */}
     <OptimaDrawerIn>
-      <LinkChatDrawer
+      <LinkChatDrawer /* @uxid src/apps/link-chat/AppLinkChat::AppLinkChat.linkchatdrawer */
         activeLinkId={linkId}
         sharedChatLinkItems={sharedChatLinkItems}
         onDeleteLink={handleConfirmDeletion}
@@ -200,7 +205,7 @@ export function AppLinkChat(props: { chatLinkId: string | null }) {
 
     {/* -> Panel */}
     <OptimaPanelIn>
-      <LinkChatAppMenuItems
+      <LinkChatAppMenuItems /* @uxid src/apps/link-chat/AppLinkChat::AppLinkChat.linkchatappmenuitems */
         activeLinkId={linkId}
         onDeleteLink={handleConfirmDeletion}
       />
@@ -220,7 +225,7 @@ export function AppLinkChat(props: { chatLinkId: string | null }) {
 
     {/* Delete confirmation */}
     {!!deleteConfirmId && (deleteConfirmKey === null) && (
-      <ConfirmationModal
+      <ConfirmationModal /* @uxid src/apps/link-chat/AppLinkChat::AppLinkChat.confirmationmodal */
         onClose={handleCancelDeletion} onPositive={handleConfirmDeletionKey}
         confirmationText='Are you sure you want to delete this link?'
         positiveActionText={'Yes, Delete'}
@@ -229,7 +234,7 @@ export function AppLinkChat(props: { chatLinkId: string | null }) {
 
     {/* Deletion Key Input */}
     {!!deleteConfirmId && (deleteConfirmKey !== null) && (
-      <GoodModal
+      <GoodModal /* @uxid src/apps/link-chat/AppLinkChat::AppLinkChat.goodmodal */
         open title='Enter Deletion Key'
         titleStartDecorator={<WarningRoundedIcon sx={{ color: 'danger.solidBg' }} />}
         onClose={handleCancelDeletionKey}
@@ -239,16 +244,16 @@ export function AppLinkChat(props: { chatLinkId: string | null }) {
         <Typography level='body-md'>
           You need to enter the original deletion key to delete this conversation.
         </Typography>
-        <Input
+        <Input /* @uxid src/apps/link-chat/AppLinkChat::AppLinkChat.input */
           value={deleteConfirmKey}
           onChange={event => setDeleteConfirmKey(event.target.value)}
           sx={{ flexGrow: 1 }}
         />
         <Box sx={{ display: 'flex', gap: 1, justifyContent: 'flex-end', mt: 2 }}>
-          <Button autoFocus variant='plain' color='neutral' onClick={handleCancelDeletionKey}>
+          <Button /* @uxid src/apps/link-chat/AppLinkChat::AppLinkChat.button */ autoFocus variant='plain' color='neutral' onClick={handleCancelDeletionKey}>
             Cancel
           </Button>
-          <Button
+          <Button /* @uxid src/apps/link-chat/AppLinkChat::AppLinkChat.button-2 */
             variant='solid' color='danger'
             disabled={!deleteConfirmKey.trim()}
             onClick={handleDeletionKeyConfirmed}

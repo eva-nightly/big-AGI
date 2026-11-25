@@ -15,6 +15,7 @@ export const chipExpanderSx = {
 } as const;
 
 
+// @uxid src/common/components/ChipExpander::ChipExpander
 export function ChipExpander(props: {
   text: React.ReactNode,
   expanded: boolean,
@@ -22,7 +23,7 @@ export function ChipExpander(props: {
   onToggleExpanded?: () => void
 }) {
   return (
-    <Chip
+    <Chip /* @uxid src/common/components/ChipExpander::ChipExpander.chip */
       variant={props.expanded ? 'solid' : 'outlined'}
       size={props.size}
       onClick={props.onToggleExpanded}

@@ -117,6 +117,7 @@ function _dateText(at: number, withTime: boolean): string {
 }
 
 /** '+3' / '~2' / '-1' count chips of a meaningful entry */
+// @uxid src/modules/llms/models-modal/ModelsChangelogPanel::CountChips
 function CountChips(props: { entry: DModelsChangelogEntry }) {
   const { add, rem, mod } = props.entry;
   const modCount = mod ? Object.keys(mod).length : 0;
@@ -133,6 +134,7 @@ function CountChips(props: { entry: DModelsChangelogEntry }) {
  * Updates screen of the AI Models dialog: a status header, one row per service (when it was last
  * listed, what changed last), and per-service history on expansion.
  */
+// @uxid src/modules/llms/models-modal/ModelsChangelogPanel::ModelsChangelogPanel
 export function ModelsChangelogPanel(props: {
   modelsServices: DModelsService[],
   isMobile: boolean,
@@ -179,7 +181,7 @@ export function ModelsChangelogPanel(props: {
   }, [entriesByService, modelsServices, sortBy]);
 
   const sortHeader = (key: 'label' | 'change', label: string, style?: React.CSSProperties) => (
-    <th className={sortBy === key ? 'sortable sorted' : 'sortable'} aria-sort={sortBy !== key ? undefined : key === 'label' ? 'ascending' : 'descending'} style={style} onClick={() => setSortBy(key)}>
+    <th /* @uxid src/modules/llms/models-modal/ModelsChangelogPanel::ModelsChangelogPanel.th */ className={sortBy === key ? 'sortable sorted' : 'sortable'} aria-sort={sortBy !== key ? undefined : key === 'label' ? 'ascending' : 'descending'} style={style} onClick={() => setSortBy(key)}>
       {label}
       <KeyboardArrowRightIcon sx={{ fontSize: 'sm', verticalAlign: 'text-bottom', transform: 'rotate(90deg)' }} />
     </th>
@@ -197,7 +199,7 @@ export function ModelsChangelogPanel(props: {
     headerSubtitle = `${summary.done} of ${summary.total} done, ${summary.inFlight} in flight`;
     headerAside = <>
       <LinearProgress determinate value={100 * summary.done / Math.max(1, summary.total)} sx={{ width: '10rem' }} />
-      {!!batch.stop && <Link component='button' level='body-sm' onClick={batch.stop}>Stop</Link>}
+      {!!batch.stop && <Link /* @uxid src/modules/llms/models-modal/ModelsChangelogPanel::ModelsChangelogPanel.link */ component='button' level='body-sm' onClick={batch.stop}>Stop</Link>}
     </>;
   } else if (summary.state === 'done' && summary.at !== null) {
     headerTitle = `Updated ${prettyTimeAgoEn(summary.at, now)}`;
@@ -243,7 +245,7 @@ export function ModelsChangelogPanel(props: {
         </thead>
         <tbody>
         {sortedServices.map(service => (
-          <ServiceChangelogRow
+          <ServiceChangelogRow /* @uxid src/modules/llms/models-modal/ModelsChangelogPanel::ModelsChangelogPanel.servicechangelogrow */
             key={service.id}
             service={service}
             isMobile={isMobile}
@@ -265,6 +267,7 @@ export function ModelsChangelogPanel(props: {
 }
 
 
+// @uxid src/modules/llms/models-modal/ModelsChangelogPanel::ServiceChangelogRow
 function ServiceChangelogRow(props: {
   service: DModelsService,
   isMobile: boolean,
@@ -325,12 +328,12 @@ function ServiceChangelogRow(props: {
 
   return <>
 
-    <tr onClick={handleToggle} style={expanded ? { ...styles.expandedRow, cursor: 'pointer' } : canExpand ? { cursor: 'pointer' } : undefined} aria-expanded={canExpand ? expanded : undefined}>
+    <tr /* @uxid src/modules/llms/models-modal/ModelsChangelogPanel::ServiceChangelogRow.tr */ onClick={handleToggle} style={expanded ? { ...styles.expandedRow, cursor: 'pointer' } : canExpand ? { cursor: 'pointer' } : undefined} aria-expanded={canExpand ? expanded : undefined}>
       <td>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, minWidth: 0, '--Icon-fontSize': '1.25rem' }}>
           <Box sx={styles.iconSlot}>{isFetching ? <CircularProgress size='sm' color='neutral' sx={{ '--CircularProgress-size': '20px', '--CircularProgress-thickness': '2px' }} /> : <LLMVendorIconSprite vendorId={service.vId} />}</Box>
           {/* the name opens the service setup; the rest of the row expands the history */}
-          <Link component='button' level='body-sm' color='neutral' textColor={dimmed ?? 'text.primary'} underline='hover' onClick={handleConfigure} sx={{ minWidth: 0 }}>
+          <Link /* @uxid src/modules/llms/models-modal/ModelsChangelogPanel::ServiceChangelogRow.link */ component='button' level='body-sm' color='neutral' textColor={dimmed ?? 'text.primary'} underline='hover' onClick={handleConfigure} sx={{ minWidth: 0 }}>
             {/* the link is inline-flex, so the ellipsis needs a block child */}
             <Box component='span' className='agi-ellipsize' sx={{ display: 'block', minWidth: 0 }}>{service.label}</Box>
           </Link>
@@ -373,10 +376,10 @@ function ServiceChangelogRow(props: {
               </Typography>
             )}
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 1, mr: -1 }}>
-              {hiddenEntries > 0 && <Link component='button' level='body-xs' color='neutral' onClick={handleShowAllEntries}>Show {hiddenEntries} more</Link>}
+              {hiddenEntries > 0 && <Link /* @uxid src/modules/llms/models-modal/ModelsChangelogPanel::ServiceChangelogRow.link-2 */ component='button' level='body-xs' color='neutral' onClick={handleShowAllEntries}>Show {hiddenEntries} more</Link>}
               <Box sx={{ flex: 1 }} />
-              <Button size='sm' variant='soft' color='neutral' onClick={handleConfigure}>Configure...</Button>
-              <Button
+              <Button /* @uxid src/modules/llms/models-modal/ModelsChangelogPanel::ServiceChangelogRow.button */ size='sm' variant='soft' color='neutral' onClick={handleConfigure}>Configure...</Button>
+              <Button /* @uxid src/modules/llms/models-modal/ModelsChangelogPanel::ServiceChangelogRow.button-2 */
                 size='sm' variant='soft' color='neutral' disabled={isFetching}
                 startDecorator={isFetching ? <CircularProgress size='sm' sx={{ '--CircularProgress-size': '16px' }} /> : <RefreshIcon />}
                 onClick={handleUpdateOnly}

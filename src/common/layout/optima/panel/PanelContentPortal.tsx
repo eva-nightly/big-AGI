@@ -16,6 +16,7 @@ const portalContentSx: SxProps = {
 };
 
 
+// @uxid src/common/layout/optima/panel/PanelContentPortal::PanelContentPortal
 export function PanelContentPortal() {
 
   // external state
